@@ -1,0 +1,70 @@
+
+ dim  = 1000 
+ code = i
+  median: 0.372555
+     max: 0.372555
+    mean: 0.372551
+     min: 0.372546
+
+ dim  = 1000 
+ code = x
+  median: 0.40276
+     max: 0.40276
+    mean: 0.402757
+     min: 0.402753
+
+ dim  = 1000 
+ code = I
+  median: 1.3593
+     max: 1.3593
+    mean: 1.35899
+     min: 1.35868
+
+ dim  = 1000 
+ code = X
+  median: 0.402755
+     max: 0.402755
+    mean: 0.40273
+     min: 0.402705
+
+ dim  = 1000 
+ code = B
+  median: 3.81586
+     max: 3.81586
+    mean: 3.79226
+     min: 3.76867
+
+ dim  = 2000 
+ code = i
+  median: 0.226267
+     max: 0.226267
+    mean: 0.226267
+     min: 0.226267
+
+ dim  = 2000 
+ code = x
+  median: 0.332074
+     max: 0.332074
+    mean: 0.332074
+     min: 0.332074
+
+ dim  = 2000 
+ code = I
+  median: 0.934791
+     max: 0.934791
+    mean: 0.934791
+     min: 0.934791
+
+ dim  = 2000 
+ code = X
+  median: 0.332806
+     max: 0.332806
+    mean: 0.332806
+     min: 0.332806
+
+ dim  = 2000 
+ code = B
+  median: 3.84827
+     max: 3.84827
+    mean: 3.84827
+     min: 3.84827

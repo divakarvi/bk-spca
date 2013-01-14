@@ -1,0 +1,156 @@
+                               Device Count: 2
+                                Device Name: Tesla M2050
+                          Clock rate in GHz: 1.147
+                      Major revision number: 2
+                      Minor revision number: 0
+                        Global memory in GB: 2.81798
+            Shared memory per SM (in bytes): 49152
+                 Number of registers per SM: 32768
+                 Number of threads per warp: 32
+        Maximum number of threads per block: 1024
+         Maximum of each dimension of block: 1024 x 1024 x 64
+          Maximum of each dimension of grid: 65535 x 65535 x 65535
+                                    Overlap: enabled
+
+
+(32,14)
+ptxas info    : Compiling entry function '_Z7leibnizlPdS_' for 'sm_20'
+ptxas info    : Used 34 registers, 56 bytes cmem[0]
+
+(512,14)
+ptxas info    : Compiling entry function '_Z7leibnizlPd' for 'sm_20'
+ptxas info    : Used 34 registers, 48 bytes cmem[0]
+
+(1024,14)
+ptxas info    : Compiling entry function '_Z7leibnizlPd' for 'sm_20'
+ptxas info    : Used 20 registers, 48 bytes cmem[0]
+
+(512, 28)
+ptxas info    : Compiling entry function '_Z7leibnizlPd' for 'sm_20'
+ptxas info    : Used 20 registers, 48 bytes cmem[0]
+
+
+
+        leibniz partial sum = 3.14159
+                 NUMTHREADS = 32
+                  NUMBLOCKS = 14
+               Time elapsed = 15406.2 milliseconds
+            Cycles per term = 1.34317
+ Cycles per term X nthreads = 601.742/32 = 19
+
+
+        leibniz partial sum = 3.14159
+                 NUMTHREADS = 64
+                  NUMBLOCKS = 14
+               Time elapsed = 7780.94 milliseconds
+            Cycles per term = 0.678373
+ Cycles per term X nthreads = 607.823 = 19
+
+        leibniz partial sum = 3.14159
+                 NUMTHREADS = 128
+                  NUMBLOCKS = 14
+               Time elapsed = 4143.37 milliseconds
+            Cycles per term = 0.361236
+ Cycles per term X nthreads = 647.334 = 20
+
+
+
+        leibniz partial sum = 3.14159
+                 NUMTHREADS = 256
+                  NUMBLOCKS = 14
+               Time elapsed = 3039.86 milliseconds
+            Cycles per term = 0.265027
+ Cycles per term X nthreads = 949.856 = 29
+
+
+        leibniz partial sum = 3.14159
+                 NUMTHREADS = 512
+                  NUMBLOCKS = 14
+               Time elapsed = 1456.15 milliseconds
+            Cycles per term = 0.126953
+ Cycles per term X nthreads = 909.996 = 28
+
+        leibniz partial sum = 3.14159
+                 NUMTHREADS = 1024
+                  NUMBLOCKS = 14
+               Time elapsed = 1643.75 milliseconds
+            Cycles per term = 0.143309
+ Cycles per term X nthreads = 2054.47 = 64
+
+        leibniz partial sum = 3.14159
+                 NUMTHREADS = 758
+                  NUMBLOCKS = 14
+               Time elapsed = 1573.47 milliseconds
+            Cycles per term = 0.137181
+ Cycles per term X nthreads = 1455.77
+
+        leibniz partial sum = 3.14159
+                 NUMTHREADS = 512
+                  NUMBLOCKS = 28
+               Time elapsed = 2318.64 milliseconds
+            Cycles per term = 0.202148
+ Cycles per term X nthreads = 2897.99 = 91
+
+
+***************************single precision data********************
+
+[root@ip-10-17-145-180 bq-gpu]# leibniz.exe
+        leibniz partial sum = 3.14159
+                 NUMTHREADS = 512
+                  NUMBLOCKS = 14
+               Time elapsed = 1456.16 milliseconds
+            Cycles per term = 0.126954
+       Warp cycles per term = 28.4377
+
+                       Leibniz in blocks
+               Time elapsed = 1456.99 milliseconds
+        leibniz partial sum = 3.14159
+
+             Leibniz in single precision
+        leibniz partial sum = 3.1412
+                 NUMTHREADS = 512
+                  NUMBLOCKS = 14
+               Time elapsed = 317.232 milliseconds
+            Cycles per term = 0.171721
+       Warp cycles per term = 38.4655
+
+
+[root@ip-10-17-145-180 bq-gpu]# leibniz.exe
+        leibniz partial sum = 3.14159
+                 NUMTHREADS = 1024
+                  NUMBLOCKS = 14
+               Time elapsed = 1638.89 milliseconds
+            Cycles per term = 0.142885
+       Warp cycles per term = 64.0126
+
+                       Leibniz in blocks
+               Time elapsed = 1699.83 milliseconds
+        leibniz partial sum = 3.14159
+
+             Leibniz in single precision
+        leibniz partial sum = 3.14132
+                 NUMTHREADS = 1024
+                  NUMBLOCKS = 14
+               Time elapsed = 160.185 milliseconds
+            Cycles per term = 0.0867094
+       Warp cycles per term = 38.8458
+
+[root@ip-10-17-145-180 bq-gpu]# leibniz.exe
+        leibniz partial sum = 3.14159
+                 NUMTHREADS = 384
+                  NUMBLOCKS = 56
+               Time elapsed = 1538.36 milliseconds
+            Cycles per term = 0.13412
+       Warp cycles per term = 90.1288
+
+                       Leibniz in blocks
+               Time elapsed = 1541.73 milliseconds
+        leibniz partial sum = 3.14159
+
+             Leibniz in single precision
+        leibniz partial sum = 3.14141
+                 NUMTHREADS = 384
+                  NUMBLOCKS = 56
+               Time elapsed = 161.108 milliseconds
+            Cycles per term = 0.087209
+       Warp cycles per term = 58.6045

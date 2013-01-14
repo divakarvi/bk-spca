@@ -1,0 +1,14 @@
+(4x200x4)flops per cycle = 3.20056
+x = 4.99902e+06
+flops per cycle (4x200x12) = 3.32471
+x = 4.92811e+08
+flops per cycle (600x200x12) (in cache) = 3.22746
+flops per cycle (600x200x12) (C out of cache) = 3.22487
+x = 1.17863e+07
+flops per cycle 600x200x3000 (in cache) = 3.21002
+flops per cycle 600x200x3000 (out of cache) = 3.20845
+x = 1.55225e+06
+flops per cycle 3000x200x3000 = 3.18717
+x = 250262
+flops per cycle = 3.19418
+C[1] = 22522.8

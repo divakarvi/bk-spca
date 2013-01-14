@@ -1,0 +1,6 @@
+partial sum = 3.14159
+cycles per term in series = 22.0516
+partial sum = 3.14159
+cycles per term in series = 11.0384
+partial sum = 3.14159
+cycles per term in series = 11.0216

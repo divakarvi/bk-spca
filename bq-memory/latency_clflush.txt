@@ -1,0 +1,156 @@
+
+
+4 pages
+latency = 147.008
+latency = 159.656
+latency = 130.289
+latency = 120.336
+latency = 147.266
+CACHE FLUSH
+  median: 105.484
+     max: 159.656
+    mean: 108.259
+     min: 95.4062
+
+
+8 pages
+latency = 126.047
+latency = 114.531
+latency = 125.711
+latency = 120.367
+latency = 107.977
+CACHE FLUSH
+  median: 102.312
+     max: 126.047
+    mean: 103.637
+     min: 94.7344
+
+
+16 pages
+latency = 129.965
+latency = 124.238
+latency = 123.188
+latency = 124.145
+latency = 124.238
+CACHE FLUSH
+  median: 102.328
+     max: 149.312
+    mean: 104.902
+     min: 94.7695
+
+
+32 pages
+latency = 181.379
+latency = 180.207
+latency = 188.711
+latency = 180.627
+latency = 181.756
+CACHE FLUSH
+  median: 181.162
+     max: 188.711
+    mean: 181.386
+     min: 179.652
+
+
+40 pages
+latency = 181.458
+latency = 181.93
+latency = 180.898
+latency = 182.405
+latency = 180.919
+CACHE FLUSH
+  median: 181.202
+     max: 186.227
+    mean: 181.488
+     min: 179.036
+
+
+60 pages
+latency = 182.019
+latency = 182.711
+latency = 182.365
+latency = 181.446
+latency = 182.168
+CACHE FLUSH
+  median: 181.52
+     max: 185.195
+    mean: 181.8
+     min: 180.643
+
+
+100 pages
+latency = 184.356
+latency = 185.565
+latency = 184.834
+latency = 184.334
+latency = 187.34
+CACHE FLUSH
+  median: 184.559
+     max: 187.34
+    mean: 184.684
+     min: 183.589
+
+
+400 pages
+latency = 188.835
+latency = 188.438
+latency = 188.247
+latency = 188.466
+latency = 188.17
+CACHE FLUSH
+  median: 188.551
+     max: 189.029
+    mean: 188.536
+     min: 187.84
+
+
+500 pages
+latency = 188.907
+latency = 189.057
+latency = 188.54
+latency = 188.663
+latency = 188.747
+CACHE FLUSH
+  median: 188.754
+     max: 189.28
+    mean: 188.792
+     min: 188.506
+
+
+4000 pages
+latency = 185.794
+latency = 183.37
+latency = 183.499
+latency = 183.458
+latency = 183.305
+CACHE FLUSH
+  median: 183.404
+     max: 185.794
+    mean: 183.445
+     min: 183.211
+
+
+40000 pages
+latency = 192.55
+latency = 192.509
+latency = 192.509
+latency = 192.565
+latency = 192.528
+CACHE FLUSH
+  median: 192.528
+     max: 192.565
+    mean: 192.532
+     min: 192.509
+
+
+400000 pages
+latency = 199.133
+latency = 199.122
+latency = 199.127
+latency = 199.115
+latency = 199.135
+CACHE FLUSH
+  median: 199.127
+     max: 199.135
+    mean: 199.126
+     min: 199.115

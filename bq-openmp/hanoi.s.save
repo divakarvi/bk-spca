@@ -1,0 +1,296 @@
+# -- Machine type EFI2
+# mark_description "Intel(R) C++ Compiler for applications running on Intel(R) 64, Version 11.1    Build 20101201 %s";
+# mark_description "-O3 -S -fno-inline-functions";
+	.file "hanoi.c"
+	.text
+..TXTST0:
+# -- Begin  main
+# mark_begin;
+       .align    16,0x90
+	.globl main
+main:
+..B1.1:                         # Preds ..B1.0
+..___tag_value_main.1:                                          #14.11
+        pushq     %rbp                                          #14.11
+..___tag_value_main.2:                                          #
+        movq      %rsp, %rbp                                    #14.11
+..___tag_value_main.3:                                          #
+        andq      $-128, %rsp                                   #14.11
+        subq      $128, %rsp                                    #14.11
+        movl      $3, %edi                                      #14.11
+        call      __intel_new_proc_init                         #14.11
+                                # LOE rbx r12 r13 r14 r15
+..B1.7:                         # Preds ..B1.1
+        stmxcsr   (%rsp)                                        #14.11
+        orl       $32832, (%rsp)                                #14.11
+        ldmxcsr   (%rsp)                                        #14.11
+        movl      $_2__STRING.1, %edi                           #16.3
+        xorl      %eax, %eax                                    #16.3
+        call      printf                                        #16.3
+                                # LOE rbx r12 r13 r14 r15
+..B1.2:                         # Preds ..B1.7
+        lea       (%rsp), %rsi                                  #17.3
+        movl      $_2__STRING.2, %edi                           #17.3
+        xorl      %eax, %eax                                    #17.3
+        call      scanf                                         #17.3
+                                # LOE rbx r12 r13 r14 r15
+..B1.3:                         # Preds ..B1.2
+        movl      (%rsp), %edx                                  #18.3
+        xorl      %edi, %edi                                    #18.3
+        movl      $1, %esi                                      #18.3
+        call      hanoi                                         #18.3
+                                # LOE rbx r12 r13 r14 r15
+..B1.4:                         # Preds ..B1.3
+        xorl      %eax, %eax                                    #19.1
+        movq      %rbp, %rsp                                    #19.1
+        popq      %rbp                                          #19.1
+..___tag_value_main.5:                                          #
+        ret                                                     #19.1
+        .align    16,0x90
+..___tag_value_main.7:                                          #
+                                # LOE
+# mark_end;
+	.type	main,@function
+	.size	main,.-main
+	.data
+# -- End  main
+	.text
+# -- Begin  hanoi
+# mark_begin;
+       .align    16,0x90
+	.globl hanoi
+hanoi:
+# parameter 1: %edi
+# parameter 2: %esi
+# parameter 3: %edx
+..B2.1:                         # Preds ..B2.0
+..___tag_value_hanoi.8:                                         #3.36
+        pushq     %r15                                          #3.36
+..___tag_value_hanoi.9:                                         #
+        pushq     %r14                                          #3.36
+..___tag_value_hanoi.11:                                        #
+        pushq     %r13                                          #3.36
+..___tag_value_hanoi.13:                                        #
+        pushq     %r12                                          #3.36
+..___tag_value_hanoi.15:                                        #
+        pushq     %rbx                                          #3.36
+..___tag_value_hanoi.17:                                        #
+        movl      %edx, %ecx                                    #3.36
+        movl      %esi, %edx                                    #3.36
+        movl      %edi, %esi                                    #3.36
+        movl      %edx, %eax                                    #4.23
+        negl      %eax                                          #4.23
+        addl      $3, %eax                                      #4.23
+        movl      %eax, %r13d                                   #4.23
+        movl      %edx, %r12d                                   #4.23
+        movl      %ecx, %r14d                                   #4.23
+        movl      %esi, %ebx                                    #4.23
+                                # LOE rbp ebx r12d r13d r14d
+..B2.2:                         # Preds ..B2.5 ..B2.1
+        movl      %r13d, %r15d                                  #4.23
+        subl      %ebx, %r15d                                   #4.23
+        cmpl      $1, %r14d                                     #5.9
+        je        ..B2.6        # Prob 2%                       #5.9
+                                # LOE rbp ebx r12d r13d r14d r15d
+..B2.3:                         # Preds ..B2.2
+        decl      %r14d                                         #8.26
+        movl      %ebx, %edi                                    #8.5
+        movl      %r15d, %esi                                   #8.5
+        movl      %r14d, %edx                                   #8.5
+        call      hanoi                                         #8.5
+                                # LOE rbp ebx r12d r13d r14d r15d
+..B2.4:                         # Preds ..B2.3
+        movl      $_2__STRING.0, %edi                           #9.5
+        movl      %ebx, %esi                                    #9.5
+        movl      %r12d, %edx                                   #9.5
+        xorl      %eax, %eax                                    #9.5
+        call      printf                                        #9.5
+                                # LOE rbp r12d r13d r14d r15d
+..B2.5:                         # Preds ..B2.4
+        movl      %r15d, %ebx                                   #10.5
+        jmp       ..B2.2        # Prob 100%                     #10.5
+                                # LOE rbp ebx r12d r13d r14d
+..B2.6:                         # Preds ..B2.2                  # Infreq
+        movl      %ebx, %esi                                    #
+        movl      %r12d, %edx                                   #
+        movl      $_2__STRING.0, %edi                           #6.5
+        xorl      %eax, %eax                                    #6.5
+        call      printf                                        #6.5
+                                # LOE rbx rbp r12 r13 r14 r15
+..B2.7:                         # Preds ..B2.6                  # Infreq
+..___tag_value_hanoi.19:                                        #12.1
+        popq      %rbx                                          #12.1
+..___tag_value_hanoi.20:                                        #
+        popq      %r12                                          #12.1
+..___tag_value_hanoi.22:                                        #
+        popq      %r13                                          #12.1
+..___tag_value_hanoi.24:                                        #
+        popq      %r14                                          #12.1
+..___tag_value_hanoi.26:                                        #
+        popq      %r15                                          #12.1
+..___tag_value_hanoi.28:                                        #
+        ret                                                     #12.1
+        .align    16,0x90
+..___tag_value_hanoi.29:                                        #
+                                # LOE
+# mark_end;
+	.type	hanoi,@function
+	.size	hanoi,.-hanoi
+	.data
+# -- End  hanoi
+	.section .rodata.str1.4, "aMS",@progbits,1
+	.align 4
+	.align 4
+_2__STRING.1:
+	.byte	110
+	.byte	32
+	.byte	61
+	.byte	32
+	.byte	0
+	.type	_2__STRING.1,@object
+	.size	_2__STRING.1,5
+	.space 3	# pad
+	.align 4
+_2__STRING.2:
+	.byte	37
+	.byte	100
+	.byte	0
+	.type	_2__STRING.2,@object
+	.size	_2__STRING.2,3
+	.space 1	# pad
+	.align 4
+_2__STRING.0:
+	.byte	109
+	.byte	111
+	.byte	118
+	.byte	101
+	.byte	32
+	.byte	102
+	.byte	114
+	.byte	111
+	.byte	109
+	.byte	32
+	.byte	37
+	.byte	100
+	.byte	32
+	.byte	116
+	.byte	111
+	.byte	32
+	.byte	37
+	.byte	100
+	.byte	32
+	.byte	10
+	.byte	0
+	.type	_2__STRING.0,@object
+	.size	_2__STRING.0,21
+	.data
+	.section .note.GNU-stack, ""
+// -- Begin DWARF2 SEGMENT .debug_line
+	.section .debug_line
+.debug_line_seg:
+	.align 1
+// -- Begin DWARF2 SEGMENT .eh_frame
+	.section .eh_frame,"a",@progbits
+.eh_frame_seg:
+	.align 8
+	.4byte 0x00000014
+	.4byte 0x00000000
+	.byte 0x01
+	.byte 0x00
+	.byte 0x01
+	.byte 0x78
+	.byte 0x10
+	.4byte 0x9008070c
+	.byte 0x01
+	.4byte 0x00000000
+	.2byte 0x0000
+	.4byte 0x00000034
+	.4byte 0x0000001c
+	.8byte ..___tag_value_main.1
+	.8byte ..___tag_value_main.7-..___tag_value_main.1
+	.byte 0x04
+	.4byte ..___tag_value_main.2-..___tag_value_main.1
+	.byte 0x0c
+	.2byte 0x1007
+	.byte 0x04
+	.4byte ..___tag_value_main.3-..___tag_value_main.2
+	.byte 0x0c
+	.2byte 0x1006
+	.byte 0x86
+	.byte 0x02
+	.byte 0x04
+	.4byte ..___tag_value_main.5-..___tag_value_main.3
+	.byte 0x0c
+	.2byte 0x0807
+	.byte 0x09
+	.2byte 0x0606
+	.2byte 0x0000
+	.byte 0x00
+	.4byte 0x00000084
+	.4byte 0x00000054
+	.8byte ..___tag_value_hanoi.8
+	.8byte ..___tag_value_hanoi.29-..___tag_value_hanoi.8
+	.byte 0x04
+	.4byte ..___tag_value_hanoi.9-..___tag_value_hanoi.8
+	.byte 0x8f
+	.byte 0x02
+	.byte 0x0c
+	.2byte 0x1007
+	.byte 0x04
+	.4byte ..___tag_value_hanoi.11-..___tag_value_hanoi.9
+	.byte 0x8e
+	.byte 0x03
+	.byte 0x0c
+	.2byte 0x1807
+	.byte 0x04
+	.4byte ..___tag_value_hanoi.13-..___tag_value_hanoi.11
+	.byte 0x8d
+	.byte 0x04
+	.byte 0x0c
+	.2byte 0x2007
+	.byte 0x04
+	.4byte ..___tag_value_hanoi.15-..___tag_value_hanoi.13
+	.byte 0x8c
+	.byte 0x05
+	.byte 0x0c
+	.2byte 0x2807
+	.byte 0x04
+	.4byte ..___tag_value_hanoi.17-..___tag_value_hanoi.15
+	.byte 0x83
+	.byte 0x06
+	.byte 0x0c
+	.2byte 0x3007
+	.byte 0x04
+	.4byte ..___tag_value_hanoi.19-..___tag_value_hanoi.17
+	.byte 0x09
+	.2byte 0x0303
+	.byte 0x04
+	.4byte ..___tag_value_hanoi.20-..___tag_value_hanoi.19
+	.byte 0x0c
+	.2byte 0x2807
+	.byte 0x09
+	.2byte 0x0c0c
+	.byte 0x04
+	.4byte ..___tag_value_hanoi.22-..___tag_value_hanoi.20
+	.byte 0x0c
+	.2byte 0x2007
+	.byte 0x09
+	.2byte 0x0d0d
+	.byte 0x04
+	.4byte ..___tag_value_hanoi.24-..___tag_value_hanoi.22
+	.byte 0x0c
+	.2byte 0x1807
+	.byte 0x09
+	.2byte 0x0e0e
+	.byte 0x04
+	.4byte ..___tag_value_hanoi.26-..___tag_value_hanoi.24
+	.byte 0x0c
+	.2byte 0x1007
+	.byte 0x09
+	.2byte 0x0f0f
+	.byte 0x04
+	.4byte ..___tag_value_hanoi.28-..___tag_value_hanoi.26
+	.byte 0x0c
+	.2byte 0x0807
+	.2byte 0x0000
+# End

@@ -1,0 +1,16 @@
+[root@ip-10-17-129-108 bq-gpu]# make dcopy.exe
+nvcc --ptxas-options=-v -arch=sm_20 dcopy.cu -o dcopy.exe
+ptxas info    : Compiling entry function '_Z5dcopyPdS_i' for 'sm_20'
+ptxas info    : Used 12 registers, 52 bytes cmem[0]
+[root@ip-10-17-129-108 bq-gpu]# dcopy.exe
+dcopy: operating on vectors of 10000000 doubles (= 8.000e+07 bytes)
+dcopy: using 384 threads per block, 26042 blocks
+dcopy: mintime = 1.735 msec  throughput = 92.22 GB/sec
+[root@ip-10-17-129-108 bq-gpu]# make dcopy.exe
+nvcc --ptxas-options=-v -arch=sm_20 dcopy.cu -o dcopy.exe
+ptxas info    : Compiling entry function '_Z5dcopyPdS_i' for 'sm_20'
+ptxas info    : Used 12 registers, 52 bytes cmem[0]
+[root@ip-10-17-129-108 bq-gpu]# dcopy.exe
+dcopy: operating on vectors of 10000000 doubles (= 8.000e+07 bytes)
+dcopy: using 384 threads per block, 26042 blocks
+dcopy: mintime = 2.571 msec  throughput = 62.23 GB/sec

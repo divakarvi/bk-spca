@@ -1,0 +1,10 @@
+      69:	0f 28 04 24          	movaps (%rsp),%xmm0
+      6d:	0f 28 4c 24 10       	movaps 0x10(%rsp),%xmm1
+      72:	66 0f 58 c1          	addpd  %xmm1,%xmm0
+      76:	0f 29 04 24          	movaps %xmm0,(%rsp)
+
+
+     ef5:	0f 28 47 60          	movaps 0x60(%rdi),%xmm0
+     ef9:	66 0f 59 c1          	mulpd  %xmm1,%xmm0
+     efd:	66 0f 58 d8          	addpd  %xmm0,%xmm3
+     f01:	0f 29 9f 40 06 00 00 	movaps %xmm3,0x640(%rdi)

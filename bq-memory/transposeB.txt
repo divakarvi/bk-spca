@@ -1,0 +1,166 @@
+block size = 8
+m=n=2^14
+easytrans
+  median: 1.01031e+10
+     max: 1.06426e+10
+    mean: 1.01573e+10
+     min: 1.01013e+10
+bytes per cycle = 0.425114
+blocktrans
+  median: 5.30176e+09
+     max: 5.30233e+09
+    mean: 5.30149e+09
+     min: 5.30035e+09
+bytes per cycle = 0.810102
+blocktransx
+  median: 5.08745e+09
+     max: 5.08775e+09
+    mean: 5.08717e+09
+     min: 5.08639e+09
+bytes per cycle = 0.844228
+recursivetrans
+  median: 4.64856e+09
+     max: 4.64883e+09
+    mean: 4.64848e+09
+     min: 4.64809e+09
+bytes per cycle = 0.923934
+pow2trans
+  median: 4.48647e+09
+     max: 4.48668e+09
+    mean: 4.48641e+09
+     min: 4.48605e+09
+bytes per cycle = 0.957315
+
+**********************************************************************
+block size = 16
+m=n=2^14
+easytrans
+  median: 1.01939e+10
+     max: 1.07484e+10
+    mean: 1.02495e+10
+     min: 1.01934e+10
+bytes per cycle = 0.421329
+blocktrans
+  median: 3.43682e+09
+     max: 3.43709e+09
+    mean: 3.43683e+09
+     min: 3.43659e+09
+bytes per cycle = 1.24969
+blocktransx
+  median: 3.28962e+09
+     max: 3.28974e+09
+    mean: 3.2896e+09
+     min: 3.28948e+09
+bytes per cycle = 1.30561
+recursivetrans
+  median: 3.24329e+09
+     max: 3.2434e+09
+    mean: 3.24328e+09
+     min: 3.24314e+09
+bytes per cycle = 1.32426
+pow2trans
+  median: 3.19256e+09
+     max: 3.19377e+09
+    mean: 3.19267e+09
+     min: 3.19234e+09
+bytes per cycle = 1.34531
+**********************************************************************
+block size = 32
+m=n=2^14
+easytrans
+  median: 1.01042e+10
+     max: 1.0639e+10
+    mean: 1.01578e+10
+     min: 1.01033e+10
+bytes per cycle = 0.425066
+blocktrans
+  median: 3.67154e+09
+     max: 3.67224e+09
+    mean: 3.67156e+09
+     min: 3.67105e+09
+bytes per cycle = 1.1698
+blocktransx
+  median: 3.6703e+09
+     max: 3.67072e+09
+    mean: 3.6703e+09
+     min: 3.66982e+09
+bytes per cycle = 1.1702
+recursivetrans
+  median: 3.51819e+09
+     max: 3.51935e+09
+    mean: 3.51826e+09
+     min: 3.51757e+09
+bytes per cycle = 1.22079
+pow2trans
+  median: 3.51142e+09
+     max: 3.51235e+09
+    mean: 3.51146e+09
+     min: 3.51084e+09
+bytes per cycle = 1.22314
+**********************************************************************
+block size = 64
+m=n=2^14
+easytrans
+  median: 1.04097e+10
+     max: 1.09745e+10
+    mean: 1.04659e+10
+     min: 1.04089e+10
+bytes per cycle = 0.412593
+blocktrans
+  median: 3.66565e+09
+     max: 3.66656e+09
+    mean: 3.66584e+09
+     min: 3.66531e+09
+bytes per cycle = 1.17168
+blocktransx
+  median: 3.66228e+09
+     max: 3.66269e+09
+    mean: 3.66223e+09
+     min: 3.66164e+09
+bytes per cycle = 1.17276
+recursivetrans
+  median: 3.63023e+09
+     max: 3.63109e+09
+    mean: 3.63027e+09
+     min: 3.63001e+09
+bytes per cycle = 1.18311
+pow2trans
+  median: 3.62806e+09
+     max: 3.62823e+09
+    mean: 3.628e+09
+     min: 3.6276e+09
+bytes per cycle = 1.18382
+**********************************************************************
+block size = 128
+m=n=2^14
+easytrans
+  median: 1.03184e+10
+     max: 1.08784e+10
+    mean: 1.03745e+10
+     min: 1.03178e+10
+bytes per cycle = 0.416243
+blocktrans
+  median: 7.37026e+09
+     max: 7.37116e+09
+    mean: 7.37031e+09
+     min: 7.36973e+09
+bytes per cycle = 0.582743
+blocktransx
+  median: 7.40074e+09
+     max: 7.40136e+09
+    mean: 7.40078e+09
+     min: 7.40025e+09
+bytes per cycle = 0.580343
+recursivetrans
+  median: 7.3697e+09
+     max: 7.37324e+09
+    mean: 7.37032e+09
+     min: 7.36883e+09
+bytes per cycle = 0.582787
+pow2trans
+  median: 7.36874e+09
+     max: 7.36953e+09
+    mean: 7.36877e+09
+     min: 7.36824e+09
+bytes per cycle = 0.582863
+

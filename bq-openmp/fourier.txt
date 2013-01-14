@@ -1,0 +1,473 @@
+
+     max: 2.99585e+10
+    mean: 2.65356e+10
+  median: 2.61553e+10
+     min: 2.61526e+10
+
+     max: 2.75624e+10
+    mean: 2.75491e+10
+  median: 2.75478e+10
+     min: 2.75459e+10
+n = 125
+total size = 16 GB
+fftw cycles per transform = 3269.42
+mkl cycles per transform = 3443.47
+
+-----------------------------------------------
+
+     max: 1.68917e+10
+    mean: 1.33845e+10
+  median: 1.30083e+10
+     min: 1.29549e+10
+
+     max: 1.44884e+10
+    mean: 1.32059e+10
+  median: 1.29371e+10
+     min: 1.28453e+10
+n = 125
+total size = 16 GB
+fftw cycles per transform = 1626.04
+mkl cycles per transform = 1617.13
+
+-----------------------------------------------
+
+     max: 9.20704e+09
+    mean: 7.34755e+09
+  median: 7.14601e+09
+     min: 7.11105e+09
+
+     max: 7.0909e+09
+    mean: 7.03697e+09
+  median: 7.03864e+09
+     min: 7.00654e+09
+n = 125
+total size = 16 GB
+fftw cycles per transform = 893.251
+mkl cycles per transform = 879.83
+
+-----------------------------------------------
+
+     max: 5.70326e+09
+    mean: 4.40694e+09
+  median: 4.26025e+09
+     min: 4.2476e+09
+
+     max: 4.29636e+09
+    mean: 4.2605e+09
+  median: 4.2648e+09
+     min: 4.23007e+09
+n = 125
+total size = 16 GB
+fftw cycles per transform = 532.531
+mkl cycles per transform = 533.1
+
+-----------------------------------------------
+
+     max: 5.61103e+09
+    mean: 3.88493e+09
+  median: 3.69685e+09
+     min: 3.68115e+09
+
+     max: 3.69063e+09
+    mean: 3.68734e+09
+  median: 3.68862e+09
+     min: 3.68249e+09
+n = 125
+total size = 16 GB
+fftw cycles per transform = 462.106
+mkl cycles per transform = 461.077
+
+
+*******************************************
+
+
+     max: 2.90016e+10
+    mean: 2.86976e+10
+  median: 2.89994e+10
+     min: 2.5992e+10
+
+     max: 2.92132e+10
+    mean: 2.9176e+10
+  median: 2.91726e+10
+     min: 2.9168e+10
+n = 128
+total size = 16 GB
+fftw cycles per transform = 3711.92
+mkl cycles per transform = 3734.1
+
+-----------------------------------------------
+
+     max: 1.57463e+10
+    mean: 1.48556e+10
+  median: 1.47129e+10
+     min: 1.45485e+10
+
+     max: 1.49559e+10
+    mean: 1.4798e+10
+  median: 1.47873e+10
+     min: 1.47629e+10
+n = 128
+total size = 16 GB
+fftw cycles per transform = 1883.25
+mkl cycles per transform = 1892.77
+
+-----------------------------------------------
+
+     max: 9.7578e+09
+    mean: 9.03407e+09
+  median: 9.13492e+09
+     min: 8.70258e+09
+
+     max: 9.02544e+09
+    mean: 8.75506e+09
+  median: 8.71392e+09
+     min: 8.6697e+09
+n = 128
+total size = 16 GB
+fftw cycles per transform = 1169.27
+mkl cycles per transform = 1115.38
+
+-----------------------------------------------
+
+     max: 5.90265e+09
+    mean: 5.70012e+09
+  median: 5.67706e+09
+     min: 5.67494e+09
+
+     max: 5.6964e+09
+    mean: 5.67914e+09
+  median: 5.67682e+09
+     min: 5.67197e+09
+n = 128
+total size = 16 GB
+fftw cycles per transform = 726.664
+mkl cycles per transform = 726.634
+
+-----------------------------------------------
+
+     max: 5.15394e+09
+    mean: 4.20902e+09
+  median: 4.10707e+09
+     min: 4.09454e+09
+
+     max: 4.11449e+09
+    mean: 4.10591e+09
+  median: 4.11064e+09
+     min: 4.0926e+09
+n = 128
+total size = 16 GB
+fftw cycles per transform = 525.705
+mkl cycles per transform = 526.162
+
+     max: 2.96761e+10
+    mean: 2.92027e+10
+  median: 2.91506e+10
+     min: 2.91475e+10
+
+     max: 2.89974e+10
+    mean: 2.89954e+10
+  median: 2.89957e+10
+     min: 2.8993e+10
+n = 1024
+total size = 16 GB
+fftw cycles per transform = 29850.3
+mkl cycles per transform = 29691.6
+
+-----------------------------------------------
+
+     max: 1.72206e+10
+    mean: 1.69245e+10
+  median: 1.70273e+10
+     min: 1.63801e+10
+
+     max: 1.69761e+10
+    mean: 1.68634e+10
+  median: 1.69667e+10
+     min: 1.64438e+10
+n = 1024
+total size = 16 GB
+fftw cycles per transform = 17436
+mkl cycles per transform = 17373.9
+
+-----------------------------------------------
+
+     max: 8.37568e+09
+    mean: 7.90399e+09
+  median: 7.78132e+09
+     min: 7.70433e+09
+
+     max: 7.77053e+09
+    mean: 7.70095e+09
+  median: 7.68563e+09
+     min: 7.67458e+09
+n = 1024
+total size = 16 GB
+fftw cycles per transform = 7968.09
+mkl cycles per transform = 7870.1
+
+-----------------------------------------------
+
+     max: 6.04849e+09
+    mean: 4.95226e+09
+  median: 4.83506e+09
+     min: 4.81714e+09
+
+     max: 4.8325e+09
+    mean: 4.81964e+09
+  median: 4.81554e+09
+     min: 4.81209e+09
+n = 1024
+total size = 16 GB
+fftw cycles per transform = 4951.11
+mkl cycles per transform = 4931.12
+
+-----------------------------------------------
+
+     max: 5.87091e+09
+    mean: 4.00657e+09
+  median: 3.8016e+09
+     min: 3.79406e+09
+
+     max: 3.79753e+09
+    mean: 3.79507e+09
+  median: 3.79582e+09
+     min: 3.79145e+09
+n = 1024
+total size = 16 GB
+fftw cycles per transform = 3892.84
+mkl cycles per transform = 3886.93
+
+     max: 4.11903e+10
+    mean: 3.77255e+10
+  median: 3.73367e+10
+     min: 3.73338e+10
+
+     max: 3.74409e+10
+    mean: 3.74325e+10
+  median: 3.74319e+10
+     min: 3.74269e+10
+n = 1125
+total size = 16 GB
+fftw cycles per transform = 42003.8
+mkl cycles per transform = 42111
+
+-----------------------------------------------
+
+     max: 2.28831e+10
+    mean: 2.01072e+10
+  median: 2.02086e+10
+     min: 1.87179e+10
+
+     max: 2.01255e+10
+    mean: 1.98113e+10
+  median: 1.99718e+10
+     min: 1.88998e+10
+n = 1125
+total size = 16 GB
+fftw cycles per transform = 22734.7
+mkl cycles per transform = 22468.3
+
+-----------------------------------------------
+
+     max: 1.17307e+10
+    mean: 1.02682e+10
+  median: 1.0026e+10
+     min: 9.93686e+09
+
+     max: 1.00465e+10
+    mean: 9.9651e+09
+  median: 9.95694e+09
+     min: 9.95413e+09
+n = 1125
+total size = 16 GB
+fftw cycles per transform = 11279.3
+mkl cycles per transform = 11201.6
+
+-----------------------------------------------
+
+     max: 7.17413e+09
+    mean: 5.73419e+09
+  median: 5.575e+09
+     min: 5.5517e+09
+
+     max: 5.5711e+09
+    mean: 5.56539e+09
+  median: 5.56583e+09
+     min: 5.56232e+09
+n = 1125
+total size = 16 GB
+fftw cycles per transform = 6271.88
+mkl cycles per transform = 6261.56
+
+-----------------------------------------------
+
+     max: 6.31098e+09
+    mean: 4.42206e+09
+  median: 4.21235e+09
+     min: 4.20864e+09
+
+     max: 4.21599e+09
+    mean: 4.21358e+09
+  median: 4.21432e+09
+     min: 4.21012e+09
+n = 1125
+total size = 16 GB
+fftw cycles per transform = 4738.9
+mkl cycles per transform = 4741.11
+
+------------------------------
+     max: 3.86485e+10
+    mean: 3.7453e+10
+  median: 3.73202e+10
+     min: 3.73191e+10
+
+     max: 3.72668e+10
+    mean: 3.72656e+10
+  median: 3.72656e+10
+     min: 3.72646e+10
+n = 8192
+total size = 16 GB
+fftw cycles per transform = 305728
+mkl cycles per transform = 305281
+
+-----------------------------------------------
+
+     max: 2.02562e+10
+    mean: 1.9038e+10
+  median: 1.89082e+10
+     min: 1.88425e+10
+
+     max: 1.8899e+10
+    mean: 1.88667e+10
+  median: 1.8857e+10
+     min: 1.88531e+10
+n = 8192
+total size = 16 GB
+fftw cycles per transform = 154896
+mkl cycles per transform = 154477
+
+-----------------------------------------------
+
+     max: 1.06023e+10
+    mean: 9.90574e+09
+  median: 9.81909e+09
+     min: 9.7898e+09
+
+     max: 1.06331e+10
+    mean: 9.9841e+09
+  median: 9.7983e+09
+     min: 9.79056e+09
+n = 8192
+total size = 15.9997 GB
+fftw cycles per transform = 80439.5
+mkl cycles per transform = 80269.2
+
+-----------------------------------------------
+
+     max: 6.92774e+09
+    mean: 5.58502e+09
+  median: 5.44206e+09
+     min: 5.41524e+09
+
+     max: 5.99479e+09
+    mean: 5.81025e+09
+  median: 5.87307e+09
+     min: 5.43934e+09
+n = 8192
+total size = 15.9992 GB
+fftw cycles per transform = 44583.7
+mkl cycles per transform = 48114.7
+
+-----------------------------------------------
+
+     max: 6.5322e+09
+    mean: 4.81641e+09
+  median: 4.62676e+09
+     min: 4.61973e+09
+
+     max: 4.60504e+09
+    mean: 4.60214e+09
+  median: 4.60192e+09
+     min: 4.59901e+09
+n = 8192
+total size = 15.9992 GB
+fftw cycles per transform = 37904.4
+mkl cycles per transform = 37700.9
+
+     max: 6.32931e+10
+    mean: 6.31231e+10
+  median: 6.32884e+10
+     min: 6.16317e+10
+
+     max: 6.29762e+10
+    mean: 6.29699e+10
+  median: 6.29697e+10
+     min: 6.29638e+10
+n = 10125
+total size = 15.9999 GB
+fftw cycles per transform = 640798
+mkl cycles per transform = 637571
+
+-----------------------------------------------
+
+     max: 3.41802e+10
+    mean: 3.26668e+10
+  median: 3.25786e+10
+     min: 3.15964e+10
+
+     max: 3.47226e+10
+    mean: 3.23846e+10
+  median: 3.22935e+10
+     min: 3.02122e+10
+n = 10125
+total size = 15.9998 GB
+fftw cycles per transform = 329863
+mkl cycles per transform = 326977
+
+-----------------------------------------------
+
+     max: 1.71251e+10
+    mean: 1.6513e+10
+  median: 1.64129e+10
+     min: 1.63119e+10
+
+     max: 1.66669e+10
+    mean: 1.64819e+10
+  median: 1.6532e+10
+     min: 1.6333e+10
+n = 10125
+total size = 15.9998 GB
+fftw cycles per transform = 166183
+mkl cycles per transform = 167389
+
+-----------------------------------------------
+
+     max: 9.59307e+09
+    mean: 9.17152e+09
+  median: 9.14491e+09
+     min: 9.04983e+09
+
+     max: 9.23732e+09
+    mean: 9.12571e+09
+  median: 9.10765e+09
+     min: 9.06747e+09
+n = 10125
+total size = 15.9991 GB
+fftw cycles per transform = 92597.3
+mkl cycles per transform = 92220.1
+
+-----------------------------------------------
+
+     max: 7.68865e+09
+    mean: 6.5044e+09
+  median: 6.36576e+09
+     min: 6.35733e+09
+
+     max: 6.34397e+09
+    mean: 6.34102e+09
+  median: 6.3409e+09
+     min: 6.33863e+09
+n = 10125
+total size = 15.9991 GB
+fftw cycles per transform = 64456.9
+mkl cycles per transform = 64205.2

@@ -1,0 +1,180 @@
+nthreads = 1
+n = 125
+total size = 16 GB
+fftw cycles per transform = 3269.42
+mkl cycles per transform = 3443.47
+
+-----------------------------------------------
+n = 125
+total size = 16 GB
+fftw cycles per transform = 1626.04
+mkl cycles per transform = 1617.13
+
+-----------------------------------------------
+n = 125
+total size = 16 GB
+fftw cycles per transform = 893.251
+mkl cycles per transform = 879.83
+
+-----------------------------------------------
+n = 125
+total size = 16 GB
+fftw cycles per transform = 532.531
+mkl cycles per transform = 533.1
+
+-----------------------------------------------
+n = 125
+total size = 16 GB
+fftw cycles per transform = 462.106
+mkl cycles per transform = 461.077
+
+
+*******************************************
+n = 128
+total size = 16 GB
+fftw cycles per transform = 3711.92
+mkl cycles per transform = 3734.1
+
+-----------------------------------------------
+n = 128
+total size = 16 GB
+fftw cycles per transform = 1883.25
+mkl cycles per transform = 1892.77
+
+-----------------------------------------------
+n = 128
+total size = 16 GB
+fftw cycles per transform = 1169.27
+mkl cycles per transform = 1115.38
+
+-----------------------------------------------
+n = 128
+total size = 16 GB
+fftw cycles per transform = 726.664
+mkl cycles per transform = 726.634
+
+-----------------------------------------------
+n = 128
+total size = 16 GB
+fftw cycles per transform = 525.705
+mkl cycles per transform = 526.162
+
+**************************************************
+n = 1024
+total size = 16 GB
+fftw cycles per transform = 29850.3
+mkl cycles per transform = 29691.6
+
+-----------------------------------------------
+n = 1024
+total size = 16 GB
+fftw cycles per transform = 17436
+mkl cycles per transform = 17373.9
+
+-----------------------------------------------
+n = 1024
+total size = 16 GB
+fftw cycles per transform = 7968.09
+mkl cycles per transform = 7870.1
+
+-----------------------------------------------
+n = 1024
+total size = 16 GB
+fftw cycles per transform = 4951.11
+mkl cycles per transform = 4931.12
+
+-----------------------------------------------
+n = 1024
+total size = 16 GB
+fftw cycles per transform = 3892.84
+mkl cycles per transform = 3886.93
+
+**************************************************
+n = 1125
+total size = 16 GB
+fftw cycles per transform = 42003.8
+mkl cycles per transform = 42111
+
+-----------------------------------------------
+n = 1125
+total size = 16 GB
+fftw cycles per transform = 22734.7
+mkl cycles per transform = 22468.3
+
+-----------------------------------------------
+n = 1125
+total size = 16 GB
+fftw cycles per transform = 11279.3
+mkl cycles per transform = 11201.6
+
+-----------------------------------------------
+n = 1125
+total size = 16 GB
+fftw cycles per transform = 6271.88
+mkl cycles per transform = 6261.56
+
+-----------------------------------------------
+n = 1125
+total size = 16 GB
+fftw cycles per transform = 4738.9
+mkl cycles per transform = 4741.11
+
+------------------------------
+n = 8192
+total size = 16 GB
+fftw cycles per transform = 305728
+mkl cycles per transform = 305281
+
+-----------------------------------------------
+n = 8192
+total size = 16 GB
+fftw cycles per transform = 154896
+mkl cycles per transform = 154477
+
+-----------------------------------------------
+n = 8192
+total size = 15.9997 GB
+fftw cycles per transform = 80439.5
+mkl cycles per transform = 80269.2
+
+-----------------------------------------------
+n = 8192
+total size = 15.9992 GB
+fftw cycles per transform = 44583.7
+mkl cycles per transform = 48114.7
+
+-----------------------------------------------
+n = 8192
+total size = 15.9992 GB
+fftw cycles per transform = 37904.4
+mkl cycles per transform = 37700.9
+
+**************************************************
+n = 10125
+total size = 15.9999 GB
+fftw cycles per transform = 640798
+mkl cycles per transform = 637571
+
+-----------------------------------------------
+n = 10125
+total size = 15.9998 GB
+fftw cycles per transform = 329863
+mkl cycles per transform = 326977
+
+-----------------------------------------------
+n = 10125
+total size = 15.9998 GB
+fftw cycles per transform = 166183
+mkl cycles per transform = 167389
+
+-----------------------------------------------
+n = 10125
+total size = 15.9991 GB
+fftw cycles per transform = 92597.3
+mkl cycles per transform = 92220.1
+
+-----------------------------------------------
+n = 10125
+total size = 15.9991 GB
+fftw cycles per transform = 64456.9
+mkl cycles per transform = 64205.2

@@ -1,0 +1,131 @@
+const stride = 1
+sum of list
+  median: 1.96993e+09
+     max: 1.97027e+09
+    mean: 1.96981e+09
+     min: 1.96917e+09
+bytes per cycle = 4.36053
+
+sum of list with stride=STR
+  median: 3.52807e+09
+     max: 3.5282e+09
+    mean: 3.52797e+09
+     min: 3.52768e+09
+bytes per cycle = 2.43474
+
+sum of list with const stride
+  median: 1.96968e+09
+     max: 1.96989e+09
+    mean: 1.96962e+09
+     min: 1.96936e+09
+bytes per cycle = 4.36109
+
+copy list to list
+  median: 4.86087e+09
+     max: 7.14586e+09
+    mean: 5.08908e+09
+     min: 4.85962e+09
+bytes per cycle = 3.53432
+
+copy const stride list to list
+  median: 4.86044e+09
+     max: 4.86233e+09
+    mean: 4.86044e+09
+     min: 4.85863e+09
+bytes per cycle = 3.53463
+
+**********************************************************************
+const stride = 2
+sum of list with stride=STR
+  median: 2.02626e+09
+     max: 2.02655e+09
+    mean: 2.02615e+09
+     min: 2.02576e+09
+bytes per cycle = 2.11965
+
+sum of list with const stride
+  median: 1.90509e+09
+     max: 1.90553e+09
+    mean: 1.90502e+09
+     min: 1.90459e+09
+bytes per cycle = 2.25448
+
+copy const stride list to list
+  median: 4.68592e+09
+     max: 6.82397e+09
+    mean: 4.89825e+09
+     min: 4.67805e+09
+bytes per cycle = 1.83314
+
+**********************************************************************
+const stride = 4
+sum of list with stride=STR
+  median: 1.77469e+09
+     max: 1.77521e+09
+    mean: 1.77465e+09
+     min: 1.77418e+09
+bytes per cycle = 1.21006
+
+sum of list with const stride
+  median: 1.76986e+09
+     max: 1.77009e+09
+    mean: 1.76978e+09
+     min: 1.76929e+09
+bytes per cycle = 1.21336
+
+copy const stride list to list
+  median: 4.66656e+09
+     max: 6.74713e+09
+    mean: 4.87217e+09
+     min: 4.65273e+09
+bytes per cycle = 0.920371
+
+**********************************************************************
+const stride = 6
+sum of list with stride=STR
+  median: 1.7818e+09
+     max: 1.78261e+09
+    mean: 1.78196e+09
+     min: 1.78157e+09
+bytes per cycle = 0.80349
+
+sum of list with const stride
+  median: 1.77249e+09
+     max: 1.77276e+09
+    mean: 1.77248e+09
+     min: 1.77218e+09
+bytes per cycle = 0.807709
+
+copy const stride list to list
+  median: 4.65256e+09
+     max: 6.74943e+09
+    mean: 4.8602e+09
+     min: 4.6343e+09
+bytes per cycle = 0.615428
+
+**********************************************************************
+const stride = 8
+sum of list with stride=STR
+  median: 1.79417e+09
+     max: 1.79488e+09
+    mean: 1.79414e+09
+     min: 1.79383e+09
+bytes per cycle = 0.59846
+
+sum of list with const stride
+  median: 1.77709e+09
+     max: 1.77742e+09
+    mean: 1.77709e+09
+     min: 1.77686e+09
+bytes per cycle = 0.604214
+
+copy const stride list to list
+  median: 4.62679e+09
+     max: 6.74462e+09
+    mean: 4.83304e+09
+     min: 4.60007e+09
+bytes per cycle = 0.464141
+
+
+
+

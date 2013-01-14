@@ -1,0 +1,60 @@
+number of threads = 1
+read bandwidth = 4.3781 bytes/cycle
+write bandwidth = 2.94832 bytes/cycle
+copy bandwidth = 3.62317 bytes/cycle
+**************************************************
+number of threads = 2
+read bandwidth = 8.71699 bytes/cycle
+write bandwidth = 5.84518 bytes/cycle
+copy bandwidth = 7.46485 bytes/cycle
+**************************************************
+number of threads = 3
+read bandwidth = 9.70989 bytes/cycle
+write bandwidth = 5.50705 bytes/cycle
+copy bandwidth = 7.54282 bytes/cycle
+**************************************************
+number of threads = 4
+read bandwidth = 12.6497 bytes/cycle
+write bandwidth = 7.12447 bytes/cycle
+copy bandwidth = 9.70928 bytes/cycle
+**************************************************
+number of threads = 5
+read bandwidth = 12.0129 bytes/cycle
+write bandwidth = 6.08367 bytes/cycle
+copy bandwidth = 8.13744 bytes/cycle
+**************************************************
+number of threads = 6
+read bandwidth = 14.3078 bytes/cycle
+write bandwidth = 7.19695 bytes/cycle
+copy bandwidth = 10.0285 bytes/cycle
+**************************************************
+number of threads = 7
+read bandwidth = 12.9205 bytes/cycle
+write bandwidth = 6.87516 bytes/cycle
+copy bandwidth = 8.9496 bytes/cycle
+**************************************************
+number of threads = 8
+read bandwidth = 14.435 bytes/cycle
+write bandwidth = 7.73921 bytes/cycle
+copy bandwidth = 10.051 bytes/cycle
+**************************************************
+number of threads = 9
+read bandwidth = 13.3361 bytes/cycle
+write bandwidth = 6.97245 bytes/cycle
+copy bandwidth = 8.99003 bytes/cycle
+**************************************************
+number of threads = 10
+read bandwidth = 14.5241 bytes/cycle
+write bandwidth = 7.66015 bytes/cycle
+copy bandwidth = 10.0295 bytes/cycle
+**************************************************
+number of threads = 11
+read bandwidth = 13.6437 bytes/cycle
+write bandwidth = 6.90331 bytes/cycle
+copy bandwidth = 9.19937 bytes/cycle
+**************************************************
+number of threads = 12
+read bandwidth = 14.7253 bytes/cycle
+write bandwidth = 7.45636 bytes/cycle
+copy bandwidth = 9.9506 bytes/cycle
+**************************************************

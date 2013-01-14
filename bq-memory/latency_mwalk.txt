@@ -1,0 +1,156 @@
+
+
+4 pages
+latency = 128.328
+latency = 111.688
+latency = 103.734
+latency = 105.016
+latency = 108.641
+MEMWALK
+  median: 106.141
+     max: 128.328
+    mean: 107.103
+     min: 93.4375
+
+
+8 pages
+latency = 106.703
+latency = 110.453
+latency = 109.812
+latency = 104.234
+latency = 100.617
+MEMWALK
+  median: 107.633
+     max: 128.094
+    mean: 108.304
+     min: 100.617
+
+
+16 pages
+latency = 108.344
+latency = 114.145
+latency = 106.938
+latency = 109.949
+latency = 106.582
+MEMWALK
+  median: 108.336
+     max: 135.379
+    mean: 109.149
+     min: 101.004
+
+
+32 pages
+latency = 181.205
+latency = 186.404
+latency = 181.617
+latency = 180.574
+latency = 182.527
+MEMWALK
+  median: 182.465
+     max: 207.529
+    mean: 183.286
+     min: 179.014
+
+
+40 pages
+latency = 183.259
+latency = 182.9
+latency = 187.438
+latency = 183.325
+latency = 184.544
+MEMWALK
+  median: 183.373
+     max: 194.048
+    mean: 183.898
+     min: 180.481
+
+
+60 pages
+latency = 184.764
+latency = 186.738
+latency = 183.398
+latency = 183.83
+latency = 185.149
+MEMWALK
+  median: 184.753
+     max: 197.407
+    mean: 185.509
+     min: 182.916
+
+
+100 pages
+latency = 187.887
+latency = 189.821
+latency = 190.158
+latency = 189.627
+latency = 189.799
+MEMWALK
+  median: 189.706
+     max: 197.005
+    mean: 190.847
+     min: 187.708
+
+
+400 pages
+latency = 193.527
+latency = 193.334
+latency = 193.693
+latency = 193.665
+latency = 194.815
+MEMWALK
+  median: 193.638
+     max: 195.711
+    mean: 193.898
+     min: 193.043
+
+
+500 pages
+latency = 193.746
+latency = 193.865
+latency = 193.843
+latency = 194.187
+latency = 194.917
+MEMWALK
+  median: 193.973
+     max: 195.843
+    mean: 194.211
+     min: 193.526
+
+
+4000 pages
+latency = 186.413
+latency = 186.353
+latency = 186.267
+latency = 186.503
+latency = 186.332
+MEMWALK
+  median: 186.379
+     max: 186.657
+    mean: 186.379
+     min: 186.193
+
+
+40000 pages
+latency = 194.495
+latency = 194.581
+latency = 194.437
+latency = 194.472
+latency = 194.482
+MEMWALK
+  median: 194.482
+     max: 194.581
+    mean: 194.494
+     min: 194.437
+
+
+400000 pages
+latency = 200.856
+latency = 200.809
+latency = 200.825
+latency = 200.822
+latency = 200.824
+MEMWALK
+  median: 200.824
+     max: 200.856
+    mean: 200.827
+     min: 200.809

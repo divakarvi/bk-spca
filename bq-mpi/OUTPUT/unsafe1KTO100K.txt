@@ -1,0 +1,45 @@
+      unsafe exchange of 1 hundred doubles
+          clock cycles = 3.31193e+07
+
+      unsafe exchange of 2 hundred doubles
+          clock cycles = 65442
+
+      unsafe exchange of 3 hundred doubles
+          clock cycles = 78867
+
+      unsafe exchange of 4 hundred doubles
+          clock cycles = 41725
+
+      unsafe exchange of 5 hundred doubles
+          clock cycles = 40434
+
+      unsafe exchange of 6 hundred doubles
+          clock cycles = 55292
+
+      unsafe exchange of 7 hundred doubles
+          clock cycles = 46100
+
+      unsafe exchange of 8 hundred doubles
+          clock cycles = 448109
+
+      unsafe exchange of 9 hundred doubles
+          clock cycles = 72000
+
+      unsafe exchange of 10 hundred doubles
+          clock cycles = 46625
+
+      unsafe exchange of 11 hundred doubles
+          clock cycles = 62141
+
+      unsafe exchange of 12 hundred doubles
+          clock cycles = 56966
+
+      unsafe exchange of 13 hundred doubles
+          clock cycles = 56834
+
+      unsafe exchange of 14 hundred doubles
+          clock cycles = 52450
+
+      unsafe exchange of 15 hundred doubles
+          clock cycles = 57225
+

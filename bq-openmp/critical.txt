@@ -1,0 +1,21 @@
+n = 1000
+cppwith2 = 2000
+cppwith2f = 2000
+cppwith2v = 1089
+withcritical = 2000
+withcriticalx = 2000
+
+n = 1000000
+cppwith2 = 2000000
+cppwith2f = 2000000
+cppwith2v = 1240984
+withcritical = 2000000
+withcriticalx = 2000000
+
+n = 1000000000
+cppwith2 = 2000000000
+cppwith2f = 2000000000
+cppwith2v = 1463790346
+withcritical = 1999997879
+withcriticalx = 2000000000
+

@@ -1,0 +1,444 @@
+
+NOTE: B=1 used easytrans()
+
+initial m = 40000
+nthreads = 1, B = 1, m/(nthreads*B) = 40000
+     max: 4.68065e+10
+    mean: 4.68028e+10
+  median: 4.68028e+10
+     min: 4.68e+10
+bytes per cycle = 0.546976
+
+
+initial m = 40000
+nthreads = 2, B = 1, m/(nthreads*B) = 20000
+     max: 1.04353e+10
+    mean: 1.03941e+10
+  median: 1.03845e+10
+     min: 1.0382e+10
+bytes per cycle = 2.46522
+
+
+initial m = 40000
+nthreads = 3, B = 1, m/(nthreads*B) = 13333
+     max: 6.8578e+09
+    mean: 6.85573e+09
+  median: 6.85573e+09
+     min: 6.85244e+09
+bytes per cycle = 3.73391
+
+
+initial m = 40000
+nthreads = 4, B = 1, m/(nthreads*B) = 10000
+     max: 5.23708e+09
+    mean: 5.19324e+09
+  median: 5.18551e+09
+     min: 5.17706e+09
+bytes per cycle = 4.93683
+
+
+initial m = 40000
+nthreads = 5, B = 1, m/(nthreads*B) = 8000
+     max: 5.48135e+09
+    mean: 5.35024e+09
+  median: 5.34137e+09
+     min: 5.31996e+09
+bytes per cycle = 4.79278
+
+
+initial m = 40000
+nthreads = 6, B = 1, m/(nthreads*B) = 6666
+     max: 4.5456e+09
+    mean: 4.52359e+09
+  median: 4.52072e+09
+     min: 4.51149e+09
+bytes per cycle = 5.66168
+
+
+initial m = 40000
+nthreads = 7, B = 1, m/(nthreads*B) = 5714
+     max: 4.76088e+09
+    mean: 4.75217e+09
+  median: 4.751e+09
+     min: 4.74812e+09
+bytes per cycle = 5.3878
+
+
+initial m = 40000
+nthreads = 8, B = 1, m/(nthreads*B) = 5000
+     max: 4.33288e+09
+    mean: 4.32113e+09
+  median: 4.32433e+09
+     min: 4.30217e+09
+bytes per cycle = 5.92
+
+
+initial m = 40000
+nthreads = 9, B = 1, m/(nthreads*B) = 4444
+     max: 4.71409e+09
+    mean: 4.70552e+09
+  median: 4.70595e+09
+     min: 4.69684e+09
+bytes per cycle = 5.43883
+
+
+initial m = 40000
+nthreads = 10, B = 1, m/(nthreads*B) = 4000
+     max: 4.35633e+09
+    mean: 4.34356e+09
+  median: 4.34367e+09
+     min: 4.33423e+09
+bytes per cycle = 5.89363
+
+
+initial m = 40000
+nthreads = 11, B = 1, m/(nthreads*B) = 3636
+     max: 4.50285e+09
+    mean: 4.50122e+09
+  median: 4.50127e+09
+     min: 4.49977e+09
+bytes per cycle = 5.68615
+
+
+initial m = 40000
+nthreads = 12, B = 1, m/(nthreads*B) = 3333
+     max: 3.66793e+09
+    mean: 3.65992e+09
+  median: 3.65999e+09
+     min: 3.64617e+09
+bytes per cycle = 6.99316
+
+
+
+
+
+**************************************************
+
+initial m = 40000
+nthreads = 1, B = 50, m/(nthreads*B) = 800
+     max: 1.45602e+10
+    mean: 1.45591e+10
+  median: 1.4559e+10
+     min: 1.45584e+10
+bytes per cycle = 1.75836
+
+
+initial m = 40000
+nthreads = 2, B = 50, m/(nthreads*B) = 400
+     max: 7.6705e+09
+    mean: 7.64164e+09
+  median: 7.63991e+09
+     min: 7.63347e+09
+bytes per cycle = 3.35082
+
+
+initial m = 40000
+nthreads = 3, B = 50, m/(nthreads*B) = 266
+     max: 5.69907e+09
+    mean: 5.67784e+09
+  median: 5.67432e+09
+     min: 5.67e+09
+bytes per cycle = 4.48902
+
+
+initial m = 40000
+nthreads = 4, B = 50, m/(nthreads*B) = 200
+     max: 4.32634e+09
+    mean: 4.27358e+09
+  median: 4.25904e+09
+     min: 4.2558e+09
+bytes per cycle = 6.01075
+
+
+initial m = 40000
+nthreads = 5, B = 50, m/(nthreads*B) = 160
+     max: 4.69388e+09
+    mean: 4.67322e+09
+  median: 4.6704e+09
+     min: 4.6669e+09
+bytes per cycle = 5.48133
+
+
+initial m = 40000
+nthreads = 6, B = 50, m/(nthreads*B) = 133
+     max: 3.50763e+09
+    mean: 3.50595e+09
+  median: 3.50581e+09
+     min: 3.50461e+09
+bytes per cycle = 7.26569
+
+
+initial m = 40000
+nthreads = 7, B = 50, m/(nthreads*B) = 114
+     max: 4.42127e+09
+    mean: 4.4196e+09
+  median: 4.41977e+09
+     min: 4.41816e+09
+bytes per cycle = 5.76324
+
+
+initial m = 40000
+nthreads = 8, B = 50, m/(nthreads*B) = 100
+     max: 3.25581e+09
+    mean: 3.24197e+09
+  median: 3.23996e+09
+     min: 3.23883e+09
+bytes per cycle = 7.90134
+
+
+initial m = 40000
+nthreads = 9, B = 50, m/(nthreads*B) = 88
+     max: 4.3361e+09
+    mean: 4.33076e+09
+  median: 4.33414e+09
+     min: 4.32172e+09
+bytes per cycle = 5.78905
+
+
+initial m = 40000
+nthreads = 10, B = 50, m/(nthreads*B) = 80
+     max: 3.10681e+09
+    mean: 3.10503e+09
+  median: 3.10501e+09
+     min: 3.10418e+09
+bytes per cycle = 8.24474
+
+
+initial m = 40000
+nthreads = 11, B = 50, m/(nthreads*B) = 72
+     max: 4.33561e+09
+    mean: 4.33448e+09
+  median: 4.33482e+09
+     min: 4.33322e+09
+bytes per cycle = 5.78815
+
+
+initial m = 40000
+nthreads = 12, B = 50, m/(nthreads*B) = 66
+     max: 3.2622e+09
+    mean: 3.25515e+09
+  median: 3.25507e+09
+     min: 3.25109e+09
+bytes per cycle = 7.70815
+
+
+**************************************************
+
+initial m = 40000
+nthreads = 1, B = 125, m/(nthreads*B) = 320
+     max: 1.25829e+10
+    mean: 1.25656e+10
+  median: 1.25632e+10
+     min: 1.25626e+10
+bytes per cycle = 2.0377
+
+
+initial m = 40000
+nthreads = 2, B = 125, m/(nthreads*B) = 160
+     max: 8.68526e+09
+    mean: 8.40502e+09
+  median: 8.4552e+09
+     min: 7.7321e+09
+bytes per cycle = 3.02772
+
+
+initial m = 40000
+nthreads = 3, B = 125, m/(nthreads*B) = 106
+     max: 5.40961e+09
+    mean: 5.13424e+09
+  median: 5.36393e+09
+     min: 4.49441e+09
+bytes per cycle = 4.71315
+
+
+initial m = 40000
+nthreads = 4, B = 125, m/(nthreads*B) = 80
+     max: 4.01109e+09
+    mean: 4.00407e+09
+  median: 4.00403e+09
+     min: 3.99643e+09
+bytes per cycle = 6.39356
+
+
+initial m = 40000
+nthreads = 5, B = 125, m/(nthreads*B) = 64
+     max: 4.14151e+09
+    mean: 4.11407e+09
+  median: 4.11122e+09
+     min: 4.10975e+09
+bytes per cycle = 6.22686
+
+
+initial m = 40000
+nthreads = 6, B = 125, m/(nthreads*B) = 53
+     max: 3.1333e+09
+    mean: 3.11844e+09
+  median: 3.11592e+09
+     min: 3.11529e+09
+bytes per cycle = 8.11349
+
+
+initial m = 40000
+nthreads = 7, B = 125, m/(nthreads*B) = 45
+     max: 4.47288e+09
+    mean: 4.43906e+09
+  median: 4.46654e+09
+     min: 4.20602e+09
+bytes per cycle = 5.5538
+
+
+initial m = 40000
+nthreads = 8, B = 125, m/(nthreads*B) = 40
+     max: 3.12839e+09
+    mean: 3.07798e+09
+  median: 3.06695e+09
+     min: 3.05544e+09
+bytes per cycle = 8.34704
+
+
+initial m = 40000
+nthreads = 9, B = 125, m/(nthreads*B) = 35
+     max: 4.54558e+09
+    mean: 4.31902e+09
+  median: 4.22642e+09
+     min: 4.21677e+09
+bytes per cycle = 5.86933
+
+
+initial m = 40000
+nthreads = 10, B = 125, m/(nthreads*B) = 32
+     max: 3.00792e+09
+    mean: 2.99311e+09
+  median: 2.99319e+09
+     min: 2.98085e+09
+bytes per cycle = 8.55274
+
+
+initial m = 40000
+nthreads = 11, B = 125, m/(nthreads*B) = 29
+     max: 4.43546e+09
+    mean: 4.33916e+09
+  median: 4.33394e+09
+     min: 4.28919e+09
+bytes per cycle = 5.87001
+
+
+initial m = 40000
+nthreads = 12, B = 125, m/(nthreads*B) = 26
+     max: 3.20101e+09
+    mean: 3.19774e+09
+  median: 3.1981e+09
+     min: 3.1901e+09
+bytes per cycle = 7.60951
+
+
+**************************************************
+
+initial m = 40000
+nthreads = 1, B = 200, m/(nthreads*B) = 200
+     max: 1.27582e+10
+    mean: 1.27577e+10
+  median: 1.27578e+10
+     min: 1.2757e+10
+bytes per cycle = 2.00661
+
+
+initial m = 40000
+nthreads = 2, B = 200, m/(nthreads*B) = 100
+     max: 6.5209e+09
+    mean: 6.50552e+09
+  median: 6.50875e+09
+     min: 6.49781e+09
+bytes per cycle = 3.93316
+
+
+initial m = 40000
+nthreads = 3, B = 200, m/(nthreads*B) = 66
+     max: 4.34696e+09
+    mean: 4.34197e+09
+  median: 4.34182e+09
+     min: 4.33838e+09
+bytes per cycle = 5.77881
+
+
+initial m = 40000
+nthreads = 4, B = 200, m/(nthreads*B) = 50
+     max: 3.74788e+09
+    mean: 3.74314e+09
+  median: 3.74272e+09
+     min: 3.74135e+09
+bytes per cycle = 6.83995
+
+
+initial m = 40000
+nthreads = 5, B = 200, m/(nthreads*B) = 40
+     max: 4.12058e+09
+    mean: 4.11644e+09
+  median: 4.11682e+09
+     min: 4.11324e+09
+bytes per cycle = 6.2184
+
+
+initial m = 40000
+nthreads = 6, B = 200, m/(nthreads*B) = 33
+     max: 3.17116e+09
+    mean: 3.15245e+09
+  median: 3.14725e+09
+     min: 3.14442e+09
+bytes per cycle = 7.97222
+
+
+initial m = 40000
+nthreads = 7, B = 200, m/(nthreads*B) = 28
+     max: 4.1353e+09
+    mean: 4.13227e+09
+  median: 4.13212e+09
+     min: 4.12931e+09
+bytes per cycle = 5.95004
+
+
+initial m = 40000
+nthreads = 8, B = 200, m/(nthreads*B) = 25
+     max: 3.04086e+09
+    mean: 3.03977e+09
+  median: 3.03991e+09
+     min: 3.03874e+09
+bytes per cycle = 8.42131
+
+
+initial m = 40000
+nthreads = 9, B = 200, m/(nthreads*B) = 22
+     max: 4.2237e+09
+    mean: 4.22084e+09
+  median: 4.22067e+09
+     min: 4.21861e+09
+bytes per cycle = 5.94469
+
+
+initial m = 40000
+nthreads = 10, B = 200, m/(nthreads*B) = 20
+     max: 2.98364e+09
+    mean: 2.98149e+09
+  median: 2.98172e+09
+     min: 2.97957e+09
+bytes per cycle = 8.58565
+
+
+initial m = 40000
+nthreads = 11, B = 200, m/(nthreads*B) = 18
+     max: 4.31517e+09
+    mean: 4.31323e+09
+  median: 4.31339e+09
+     min: 4.31119e+09
+bytes per cycle = 5.8169
+
+
+initial m = 40000
+nthreads = 12, B = 200, m/(nthreads*B) = 16
+     max: 3.88341e+09
+    mean: 3.88027e+09
+  median: 3.88104e+09
+     min: 3.87589e+09
+bytes per cycle = 6.07902
+
+
