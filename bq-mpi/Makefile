@@ -1,9 +1,7 @@
-#########
 CPP = icpc
-DFLAGS = -g -DDEBUG -openmp -I$$MKL_INC `mpiCC -showme:compile`
-OFLAGS = -O3 -prec-div -no-ftz -DNDEBUG -I$$MKL_INC -openmp `mpiCC -showme:compile`
+DFLAGS = -g -DDEBUG -openmp  `$$HOME/openmpi-1.6.3/bin/mpiCC -showme:compile`
+OFLAGS = -O3 -prec-div -no-ftz -DNDEBUG -openmp `$$HOME/openmpi-1.6.3/bin/mpiCC -showme:compile`
 CFLAGS = $(OFLAGS)
-MKLLIBS= -L$$MKL_LINK -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthread #from link advisor
 
 ##########
 .SUFFIXES: .cpp .c .o .exe
@@ -14,12 +12,10 @@ MKLLIBS= -L$$MKL_LINK -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthread #fr
 %.s: %.cpp
 	$(CPP) $(CFLAGS) -S $< 
 %.exe: %.o
-	$(CPP)  -openmp `mpiCC -showme:link` -o $@ $^ 
+	$(CPP)  -openmp `$$HOME/openmpi-1.6.3/bin/mpiCC -showme:link` -o $@ $^ 
 
 
 ##########
-all: procname unsafe exchange exchgpackets cycle jacobi collective transpose
-
 procname: procname.exe
 	echo 'procname done'
 procname.o: procname.cpp
@@ -30,15 +26,15 @@ unsafe: unsafe.exe
 unsafe.o: unsafe.cpp
 unsafe.exe: unsafe.o
 
-exchange: exchange.exe
-	echo 'exchange done'
-exchange.o: exchange.cpp
-exchange.exe: exchange.o
-
 cycle: cycle.exe
 	echo 'cycle done'
 cycle.o: cycle.cpp
 cycle.exe: cycle.o
+
+exchange: exchange.exe
+	echo 'exchange done'
+exchange.o: exchange.cpp
+exchange.exe: exchange.o
 
 jacobi: jacobi.exe
 	echo 'jacobi done'
@@ -54,7 +50,6 @@ collective: collective.exe
 	echo 'collective done'
 collective.o: collective.cpp
 collective.exe: collective.o
-
 
 ##########
 clean:

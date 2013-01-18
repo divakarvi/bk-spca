@@ -1,0 +1,960 @@
+                 MCA mca: parameter "mca_param_files" (current value: </home1/00013/tg456871/.openmpi/mca-params.conf:/home1/00013/tg456871/openmpi-1.6.3/etc/openmpi-mca-params.conf>, data source: default value)
+                          Path for MCA configuration files containing default parameter values
+                 MCA mca: parameter "mca_base_param_file_prefix" (current value: <none>, data source: default value)
+                          Aggregate MCA parameter file sets
+                 MCA mca: parameter "mca_base_param_file_path" (current value: </home1/00013/tg456871/openmpi-1.6.3/share/openmpi/amca-param-sets:/home1/00013/tg456871/openmpi-1.6.3/bin>, data source: default value)
+                          Aggregate MCA parameter Search path
+                 MCA mca: parameter "mca_base_param_file_path_force" (current value: <none>, data source: default value)
+                          Forced Aggregate MCA parameter Search path
+                 MCA mca: parameter "mca_component_path" (current value: </home1/00013/tg456871/openmpi-1.6.3/lib/openmpi:/home1/00013/tg456871/.openmpi/components>, data source: default value)
+                          Path where to look for Open MPI and ORTE components
+                 MCA mca: parameter "mca_component_show_load_errors" (current value: <1>, data source: default value)
+                          Whether to show errors for components that failed to load or not
+                 MCA mca: parameter "mca_component_disable_dlopen" (current value: <0>, data source: default value)
+                          Whether to attempt to disable opening dynamic components or not
+                 MCA mca: parameter "mca_verbose" (current value: <stderr>, data source: default value)
+                          Specifies where the default error output stream goes (this is separate from distinct help messages).  Accepts a comma-delimited list of: stderr, stdout, syslog, syslogpri:<notice|info|debug>, syslogid:<str> (where str is the prefix string for all syslog notices), file[:filename] (if filename is not specified, a default filename is used), fileappend (if not specified, the file is opened for truncation), level[:N] (if specified, integer verbose level; otherwise, 0 is implied)
+                 MCA mpi: parameter "mpi_paffinity_alone" (current value: <0>, data source: default value, synonym of: opal_paffinity_alone)
+                          If nonzero, assume that this job is the only (set of) process(es) running on each node and bind processes to processors, starting with processor ID 0
+                 MCA mpi: parameter "mpi_param_check" (current value: <1>, data source: default value)
+                          Whether you want MPI API parameters checked at run-time or not.  Possible values are 0 (no checking) and 1 (perform checking at run-time)
+                 MCA mpi: parameter "mpi_yield_when_idle" (current value: <-1>, data source: default value)
+                          Yield the processor when waiting for MPI communication (for MPI processes, will default to 1 when oversubscribing nodes)
+                 MCA mpi: parameter "mpi_event_tick_rate" (current value: <-1>, data source: default value)
+                          How often to progress TCP communications (0 = never, otherwise specified in microseconds)
+                 MCA mpi: parameter "mpi_show_handle_leaks" (current value: <0>, data source: default value)
+                          Whether MPI_FINALIZE shows all MPI handles that were not freed or not
+                 MCA mpi: parameter "mpi_no_free_handles" (current value: <0>, data source: default value)
+                          Whether to actually free MPI objects when their handles are freed
+                 MCA mpi: parameter "mpi_show_mpi_alloc_mem_leaks" (current value: <0>, data source: default value)
+                          If >0, MPI_FINALIZE will show up to this many instances of memory allocated by MPI_ALLOC_MEM that was not freed by MPI_FREE_MEM
+                 MCA mpi: parameter "mpi_show_mca_params" (current value: <none>, data source: default value)
+                          Whether to show all MCA parameter values during MPI_INIT or not (good for reproducability of MPI jobs for debug purposes). Accepted values are all, default, file, api, and enviro - or a comma delimited combination of them
+                 MCA mpi: parameter "mpi_show_mca_params_file" (current value: <none>, data source: default value)
+                          If mpi_show_mca_params is true, setting this string to a valid filename tells Open MPI to dump all the MCA parameter values into a file suitable for reading via the mca_param_files parameter (good for reproducability of MPI jobs)
+                 MCA mpi: parameter "mpi_keep_peer_hostnames" (current value: <1>, data source: default value)
+                          If nonzero, save the string hostnames of all MPI peer processes (mostly for error / debugging output messages).  This can add quite a bit of memory usage to each MPI process.
+                 MCA mpi: parameter "mpi_abort_delay" (current value: <0>, data source: default value)
+                          If nonzero, print out an identifying message when MPI_ABORT is invoked (hostname, PID of the process that called MPI_ABORT) and delay for that many seconds before exiting (a negative delay value means to never abort).  This allows attaching of a debugger before quitting the job.
+                 MCA mpi: parameter "mpi_abort_print_stack" (current value: <0>, data source: default value)
+                          If nonzero, print out a stack trace when MPI_ABORT is invoked
+                 MCA mpi: parameter "mpi_preconnect_mpi" (current value: <0>, data source: default value, synonyms: mpi_preconnect_all)
+                          Whether to force MPI processes to fully wire-up the MPI connections between MPI processes during MPI_INIT (vs. making connections lazily -- upon the first MPI traffic between each process peer pair)
+                 MCA mpi: parameter "mpi_preconnect_all" (current value: <0>, data source: default value, deprecated, synonym of: mpi_preconnect_mpi)
+                          Whether to force MPI processes to fully wire-up the MPI connections between MPI processes during MPI_INIT (vs. making connections lazily -- upon the first MPI traffic between each process peer pair)
+                 MCA mpi: parameter "mpi_leave_pinned" (current value: <-1>, data source: default value)
+                          Whether to use the "leave pinned" protocol or not.  Enabling this setting can help bandwidth performance when repeatedly sending and receiving large messages with the same buffers over RDMA-based networks (0 = do not use "leave pinned" protocol, 1 = use "leave pinned" protocol, -1 = allow network to choose at runtime).
+                 MCA mpi: parameter "mpi_leave_pinned_pipeline" (current value: <0>, data source: default value)
+                          Whether to use the "leave pinned pipeline" protocol or not.
+                 MCA mpi: parameter "mpi_warn_on_fork" (current value: <1>, data source: default value)
+                          If nonzero, issue a warning if program forks under conditions that could cause system errors
+                 MCA mpi: information "mpi_have_sparse_group_storage" (value: <0>, data source: default value)
+                          Whether this Open MPI installation supports storing of data in MPI groups in "sparse" formats (good for extremely large process count MPI jobs that create many communicators/groups)
+                 MCA mpi: parameter "mpi_use_sparse_group_storage" (current value: <0>, data source: default value)
+                          Whether to use "sparse" storage formats for MPI groups (only relevant if mpi_have_sparse_group_storage is 1)
+                 MCA mpi: parameter "mpi_notify_init_finalize" (current value: <1>, data source: default value)
+                          If nonzero, send two notifications during MPI_INIT: one near when MPI_INIT starts, and another right before MPI_INIT finishes, and send 2 notifications during MPI_FINALIZE: one right when MPI_FINALIZE starts, and another near when MPI_FINALIZE finishes.
+                MCA orte: parameter "orte_base_help_aggregate" (current value: <1>, data source: default value)
+                          If orte_base_help_aggregate is true, duplicate help messages will be aggregated rather than displayed individually.  This can be helpful for parallel jobs that experience multiple identical failures; rather than print out the same help/failure message N times, display it once with a count of how many processes sent the same message.
+                MCA orte: parameter "orte_tmpdir_base" (current value: <none>, data source: default value)
+                          Base of the session directory tree
+                MCA orte: parameter "orte_no_session_dirs" (current value: <none>, data source: default value)
+                          Prohibited locations for session directories (multiple locations separated by ',', default=NULL)
+                MCA orte: parameter "orte_send_profile" (current value: <0>, data source: default value)
+                          Send profile info in launch message
+                MCA orte: parameter "orte_debug" (current value: <0>, data source: default value)
+                          Top-level ORTE debug switch (default verbosity: 1)
+                MCA orte: parameter "orte_debug_verbose" (current value: <-1>, data source: default value)
+                          Verbosity level for ORTE debug messages (default: 1)
+                MCA orte: parameter "orte_debug_daemons" (current value: <0>, data source: default value)
+                          Whether to debug the ORTE daemons or not
+                MCA orte: parameter "orte_debug_daemons_file" (current value: <0>, data source: default value)
+                          Whether want stdout/stderr of daemons to go to a file or not
+                MCA orte: parameter "orte_daemon_bootstrap" (current value: <0>, data source: default value)
+                          Bootstrap the connection to the HNP
+                MCA orte: parameter "orte_leave_session_attached" (current value: <0>, data source: default value)
+                          Whether applications and/or daemons should leave their sessions attached so that any output can be received - this allows X forwarding without all the attendant debugging output
+                MCA orte: parameter "orte_output_debugger_proctable" (current value: <0>, data source: default value)
+                          Whether or not to output the debugger proctable after launch (default: false)
+                MCA orte: parameter "orte_debugger_test_daemon" (current value: <none>, data source: default value)
+                          Name of the executable to be used to simulate a debugger colaunch (relative or absolute path)
+                MCA orte: parameter "orte_debugger_test_attach" (current value: <0>, data source: default value)
+                          Test debugger colaunch after debugger attachment
+                MCA orte: parameter "orte_debugger_check_rate" (current value: <0>, data source: default value)
+                          Set rate (in secs) for auto-detect of debugger attachment (0 => do not check)
+                MCA orte: parameter "orte_do_not_launch" (current value: <0>, data source: default value)
+                          Perform all necessary operations to prepare to launch the application, but do not actually launch it
+                MCA orte: parameter "orte_daemon_spin" (current value: <0>, data source: default value)
+                          Have any orteds spin until we can connect a debugger to them
+                MCA orte: parameter "orte_daemon_fail" (current value: <-1>, data source: default value)
+                          Have the specified orted fail after init for debugging purposes
+                MCA orte: parameter "orte_daemon_fail_delay" (current value: <0>, data source: default value)
+                          Have the specified orted fail after specified number of seconds (default: 0 => no delay)
+                MCA orte: parameter "orte_heartbeat_rate" (current value: <0>, data source: default value)
+                          Seconds between checks for daemon state-of-health (default: 0 => do not check)
+                MCA orte: parameter "orte_startup_timeout" (current value: <0>, data source: default value)
+                          Milliseconds/daemon to wait for startup before declaring failed_to_start (default: 0 => do not check)
+                MCA orte: parameter "orte_timing" (current value: <0>, data source: default value)
+                          Request that critical timing loops be measured
+                MCA orte: parameter "orte_timing_details" (current value: <0>, data source: default value)
+                          Request that detailed timing data by reported
+                MCA orte: parameter "orte_base_user_debugger" (current value: <totalview @mpirun@ -a @mpirun_args@ : ddt -n @np@ -start @executable@ @executable_argv@ @single_app@ : fxp @mpirun@ -a @mpirun_args@>, data source: default value)
+                          Sequence of user-level debuggers to search for in orterun
+                MCA orte: parameter "orte_abort_timeout" (current value: <1>, data source: default value)
+                          Max time to wait [in secs] before aborting an ORTE operation (default: 1sec)
+                MCA orte: parameter "orte_timeout_step" (current value: <1000>, data source: default value)
+                          Time to wait [in usecs/proc] before aborting an ORTE operation (default: 1000 usec/proc)
+                MCA orte: parameter "orte_default_hostfile" (current value: </home1/00013/tg456871/openmpi-1.6.3/etc/openmpi-default-hostfile>, data source: default value)
+                          Name of the default hostfile (relative or absolute path, "none" to ignore environmental or default MCA param setting)
+                MCA orte: parameter "orte_rankfile" (current value: <none>, data source: default value, synonyms: rmaps_rank_file_path)
+                          Name of the rankfile to be used for mapping processes (relative or absolute path)
+                MCA orte: parameter "orte_keep_fqdn_hostnames" (current value: <0>, data source: default value)
+                          Whether or not to keep FQDN hostnames [default: no]
+                MCA orte: parameter "orte_use_regexp" (current value: <0>, data source: default value)
+                          Whether or not to use regular expressions for launch [default: no]
+                MCA orte: parameter "orte_tag_output" (current value: <0>, data source: default value)
+                          Tag all output with [job,rank] (default: false)
+                MCA orte: parameter "orte_xml_output" (current value: <0>, data source: default value)
+                          Display all output in XML format (default: false)
+                MCA orte: parameter "orte_xml_file" (current value: <none>, data source: default value)
+                          Provide all output in XML format to the specified file
+                MCA orte: parameter "orte_timestamp_output" (current value: <0>, data source: default value)
+                          Timestamp all application process output (default: false)
+                MCA orte: parameter "orte_output_filename" (current value: <none>, data source: default value)
+                          Redirect output from application processes into filename.rank [default: NULL]
+                MCA orte: parameter "orte_show_resolved_nodenames" (current value: <0>, data source: default value)
+                          Display any node names that are resolved to a different name (default: false)
+                MCA orte: parameter "orte_hetero_apps" (current value: <0>, data source: default value)
+                          Indicates that multiple app_contexts are being provided that are a mix of 32/64 bit binaries (default: false)
+                MCA orte: parameter "orte_launch_agent" (current value: <orted>, data source: default value)
+                          Command used to start processes on remote nodes (default: orted)
+                MCA orte: parameter "orte_allocation_required" (current value: <0>, data source: default value)
+                          Whether or not an allocation by a resource manager is required [default: no]
+                MCA orte: parameter "orte_xterm" (current value: <none>, data source: default value)
+                          Create a new xterm window and display output from the specified ranks there [default: none]
+                MCA orte: parameter "orte_forward_job_control" (current value: <0>, data source: default value)
+                          Forward SIGTSTP (after converting to SIGSTOP) and SIGCONT signals to the application procs [default: no]
+                MCA orte: parameter "orte_rsh_agent" (current value: <ssh : rsh>, data source: default value, synonyms: pls_rsh_agent, plm_rsh_agent)
+                          The command used to launch executables on remote nodes (typically either "ssh" or "rsh")
+                MCA orte: parameter "orte_assume_same_shell" (current value: <1>, data source: default value, synonyms: plm_rsh_assume_same_shell)
+                          If set to 1, assume that the shell on the remote node is the same as the shell on the local node.  Otherwise, probe for what the remote shell [default: 1]
+                MCA orte: parameter "orte_report_launch_progress" (current value: <0>, data source: default value)
+                          Output a brief periodic report on launch progress [default: no]
+                MCA orte: parameter "orte_num_boards" (current value: <1>, data source: default value)
+                          Number of processor boards/node (1-256) [default: 1]
+                MCA orte: parameter "orte_num_sockets" (current value: <0>, data source: default value)
+                          Number of sockets/board (1-256)
+                MCA orte: parameter "orte_num_cores" (current value: <0>, data source: default value)
+                          Number of cores/socket (1-256)
+                MCA orte: parameter "orte_process_binding" (current value: <none>, data source: default value)
+                          Policy for binding processes [none | core | socket | board] (supported qualifier: if-avail)
+                MCA orte: parameter "orte_report_bindings" (current value: <0>, data source: default value)
+                          Report bindings
+                MCA orte: parameter "orte_report_events" (current value: <none>, data source: default value)
+                          URI to which events are to be reported (default: NULL)]
+                MCA opal: parameter "opal_net_private_ipv4" (current value: <10.0.0.0/8;172.16.0.0/12;192.168.0.0/16;169.254.0.0/16>, data source: default value)
+                          Semicolon-delimited list of CIDR notation entries specifying what networks are considered "private" (default value based on RFC1918 and RFC3330)
+                MCA opal: parameter "opal_signal" (current value: <6,7,8,11>, data source: default value)
+                          Comma-delimited list of integer signal numbers to Open MPI to attempt to intercept.  Upon receipt of the intercepted signal, Open MPI will display a stack trace and abort.  Open MPI will *not* replace signals if handlers are already installed by the time MPI_INIT is invoked.  Optionally append ":complain" to any signal number in the comma-delimited list to make Open MPI complain if it detects another signal handler (and therefore does not insert its own).
+                MCA opal: parameter "opal_profile" (current value: <0>, data source: default value)
+                          Set to non-zero to profile component selections
+                MCA opal: parameter "opal_profile_file" (current value: <none>, data source: default value)
+                          Name of the file containing the cluster configuration information
+                MCA opal: parameter "opal_paffinity_alone" (current value: <0>, data source: default value, synonyms: mpi_paffinity_alone)
+                          If nonzero, assume that this job is the only (set of) process(es) running on each node and bind processes to processors, starting with processor ID 0
+                MCA opal: parameter "opal_set_max_sys_limits" (current value: <0>, data source: default value)
+                          Set to non-zero to automatically set any system-imposed limits to the maximum allowed
+                MCA opal: parameter "opal_event_include" (current value: <poll>, data source: default value)
+                          Comma-delimited list of libevent subsystems to use (epoll, poll, select -- available on your platform)
+           MCA backtrace: parameter "backtrace" (current value: <none>, data source: default value)
+                          Default selection set of components for the backtrace framework (<none> means use all components that can be found)
+           MCA backtrace: parameter "backtrace_base_verbose" (current value: <0>, data source: default value)
+                          Verbosity level for the backtrace framework (0 = no verbosity)
+           MCA backtrace: parameter "backtrace_execinfo_priority" (current value: <0>, data source: default value)
+          MCA memchecker: parameter "memchecker" (current value: <none>, data source: default value)
+                          Default selection set of components for the memchecker framework (<none> means use all components that can be found)
+              MCA memory: parameter "memory" (current value: <none>, data source: default value)
+                          Default selection set of components for the memory framework (<none> means use all components that can be found)
+              MCA memory: parameter "memory_base_verbose" (current value: <0>, data source: default value)
+                          Verbosity level for the memory framework (0 = no verbosity)
+              MCA memory: information "memory_linux_ptmalloc2_available" (value: <1>, data source: default value)
+                          Whether ptmalloc2 support is included in Open MPI or not (1 = yes, 0 = no)
+              MCA memory: information "memory_linux_ummunotify_available" (value: <0>, data source: default value)
+                          Whether ummunotify support is included in Open MPI or not (1 = yes, 0 = no)
+              MCA memory: parameter "memory_linux_ptmalloc2_enable" (current value: <-1>, data source: default value)
+                          Whether to enable ptmalloc2 support or not (negative = try to enable, but continue even if support is not available, 0 = do not enable support, positive = try to enable and fail if support is not available)
+              MCA memory: parameter "memory_linux_ummunotify_enable" (current value: <-1>, data source: default value)
+                          Whether to enable ummunotify support or not (negative = try to enable, but continue even if support is not available, 0 = do not enable support, positive = try to enable and fail if support is not available)
+              MCA memory: parameter "memory_linux_disable" (current value: <0>, data source: default value)
+                          If this MCA parameter is set to 1 **VIA ENVIRONMENT VARIABLE ONLY*** (this MCA parameter *CANNOT* be set in a file or on the mpirun command line!), this component will be disabled and will not attempt to use either ummunotify or memory hook support
+              MCA memory: parameter "memory_linux_priority" (current value: <0>, data source: default value)
+           MCA paffinity: parameter "paffinity_base_verbose" (current value: <0>, data source: default value)
+                          Verbosity level of the paffinity framework
+           MCA paffinity: parameter "paffinity" (current value: <none>, data source: default value)
+                          Default selection set of components for the paffinity framework (<none> means use all components that can be found)
+           MCA paffinity: parameter "paffinity_hwloc_priority" (current value: <40>, data source: default value)
+                          Priority of the hwloc paffinity component
+               MCA carto: parameter "carto_base_verbose" (current value: <0>, data source: default value)
+                          Verbosity level of the carto framework
+               MCA carto: parameter "carto" (current value: <none>, data source: default value)
+                          Default selection set of components for the carto framework (<none> means use all components that can be found)
+               MCA carto: parameter "carto_auto_detect_priority" (current value: <11>, data source: default value)
+                          Priority of the auto_detect carto component
+               MCA carto: parameter "carto_file_path" (current value: <none>, data source: default value)
+                          The path to the cartography file
+               MCA carto: parameter "carto_file_priority" (current value: <10>, data source: default value)
+                          Priority of the file carto component
+               MCA shmem: parameter "shmem_base_verbose" (current value: <0>, data source: default value)
+                          Verbosity level of the shmem framework
+               MCA shmem: parameter "shmem" (current value: <none>, data source: default value)
+                          Default selection set of components for the shmem framework (<none> means use all components that can be found)
+               MCA shmem: parameter "shmem_mmap_enable_nfs_warning" (current value: <1>, data source: default value)
+                          Enable the warning emitted when Open MPI detects that its shared memory backing file is located on a network filesystem (1 = enabled, 0 = disabled).
+               MCA shmem: parameter "shmem_mmap_priority" (current value: <50>, data source: default value)
+                          Priority of the mmap shmem component
+               MCA shmem: parameter "shmem_mmap_relocate_backing_file" (current value: <0>, data source: default value)
+                          Whether to change the default placement of backing files or not (Negative = try to relocate backing files to an area rooted at the path specified by shmem_mmap_opal_shmem_mmap_backing_file_base_dir, but continue with the default path if the relocation fails, 0 = do not relocate, Positive = same as the negative option, but will fail if the relocation fails.
+               MCA shmem: parameter "shmem_mmap_backing_file_base_dir" (current value: </dev/shm>, data source: default value)
+                          Specifies where backing files will be created when shmem_mmap_relocate_backing_file is in use.
+               MCA shmem: parameter "shmem_posix_priority" (current value: <40>, data source: default value)
+                          Priority of the posix shmem component
+               MCA shmem: parameter "shmem_sysv_priority" (current value: <30>, data source: default value)
+                          Priority of the sysv shmem component
+           MCA maffinity: parameter "maffinity_base_verbose" (current value: <0>, data source: default value)
+                          Verbosity level of the maffinity framework
+           MCA maffinity: parameter "maffinity" (current value: <none>, data source: default value)
+                          Default selection set of components for the maffinity framework (<none> means use all components that can be found)
+           MCA maffinity: parameter "maffinity_first_use_priority" (current value: <10>, data source: default value)
+                          Priority of the first_use maffinity component
+           MCA maffinity: parameter "maffinity_hwloc_priority" (current value: <40>, data source: default value)
+                          Priority of the hwloc maffinity component
+               MCA timer: parameter "timer" (current value: <none>, data source: default value)
+                          Default selection set of components for the timer framework (<none> means use all components that can be found)
+               MCA timer: parameter "timer_base_verbose" (current value: <0>, data source: default value)
+                          Verbosity level for the timer framework (0 = no verbosity)
+               MCA timer: parameter "timer_linux_priority" (current value: <0>, data source: default value)
+             MCA sysinfo: parameter "sysinfo" (current value: <none>, data source: default value)
+                          Default selection set of components for the sysinfo framework (<none> means use all components that can be found)
+             MCA sysinfo: parameter "sysinfo_base_verbose" (current value: <0>, data source: default value)
+                          Verbosity level for the sysinfo framework (0 = no verbosity)
+             MCA sysinfo: parameter "sysinfo_linux_priority" (current value: <0>, data source: default value)
+               MCA hwloc: parameter "hwloc_base_verbose" (current value: <0>, data source: default value)
+                          Verbosity level of the hwloc framework
+               MCA hwloc: parameter "hwloc_base_mem_alloc_policy" (current value: <none>, data source: default value)
+                          General memory allocations placement policy (this is not memory binding). "none" means that no memory policy is applied. "local_only" means that a process' memory allocations will be restricted to its local NUMA node. If using direct launch, this policy will not be in effect until after MPI_INIT. Note that operating system paging policies are unaffected by this setting. For example, if "local_only" is used and local NUMA node memory is exhausted, a new memory allocation may cause paging.
+               MCA hwloc: parameter "hwloc_base_mem_bind_failure_action" (current value: <error>, data source: default value)
+                          What Open MPI will do if it explicitly tries to bind memory to a specific NUMA location, and fails.  Note that this is a different case than the general allocation policy described by hwloc_base_alloc_policy.  A value of "warn" means that Open MPI will warn the first time this happens, but allow the job to continue (possibly with degraded performance).  A value of "error" means that Open MPI will abort the job if this happens.
+               MCA hwloc: parameter "hwloc" (current value: <none>, data source: default value)
+                          Default selection set of components for the hwloc framework (<none> means use all components that can be found)
+               MCA hwloc: parameter "hwloc_hwloc132_priority" (current value: <0>, data source: default value)
+                 MCA dpm: parameter "dpm" (current value: <none>, data source: default value)
+                          Default selection set of components for the dpm framework (<none> means use all components that can be found)
+                 MCA dpm: parameter "dpm_base_verbose" (current value: <0>, data source: default value)
+                          Verbosity level for the dpm framework (0 = no verbosity)
+                 MCA dpm: parameter "dpm_orte_priority" (current value: <0>, data source: default value)
+              MCA pubsub: parameter "pubsub" (current value: <none>, data source: default value)
+                          Default selection set of components for the pubsub framework (<none> means use all components that can be found)
+              MCA pubsub: parameter "pubsub_base_verbose" (current value: <0>, data source: default value)
+                          Verbosity level for the pubsub framework (0 = no verbosity)
+              MCA pubsub: parameter "pubsub_orte_priority" (current value: <50>, data source: default value)
+                          Priority of the pubsub pmi component
+           MCA allocator: parameter "allocator" (current value: <none>, data source: default value)
+                          Default selection set of components for the allocator framework (<none> means use all components that can be found)
+           MCA allocator: parameter "allocator_base_verbose" (current value: <0>, data source: default value)
+                          Verbosity level for the allocator framework (0 = no verbosity)
+           MCA allocator: parameter "allocator_basic_priority" (current value: <0>, data source: default value)
+           MCA allocator: parameter "allocator_bucket_num_buckets" (current value: <30>, data source: default value)
+           MCA allocator: parameter "allocator_bucket_priority" (current value: <0>, data source: default value)
+                MCA coll: parameter "coll" (current value: <none>, data source: default value)
+                          Default selection set of components for the coll framework (<none> means use all components that can be found)
+                MCA coll: parameter "coll_base_verbose" (current value: <0>, data source: default value)
+                          Verbosity level for the coll framework (0 = no verbosity)
+                MCA coll: parameter "coll_basic_priority" (current value: <10>, data source: default value)
+                          Priority of the basic coll component
+                MCA coll: parameter "coll_basic_crossover" (current value: <4>, data source: default value)
+                          Minimum number of processes in a communicator before using the logarithmic algorithms
+                MCA coll: parameter "coll_hierarch_priority" (current value: <0>, data source: default value)
+                          Priority of the hierarchical coll component
+                MCA coll: parameter "coll_hierarch_verbose" (current value: <0>, data source: default value)
+                          Turn verbose message of the hierarchical coll component on/off
+                MCA coll: parameter "coll_hierarch_use_rdma" (current value: <0>, data source: default value)
+                          Switch from the send btl list used to detect hierarchies to the rdma btl list
+                MCA coll: parameter "coll_hierarch_ignore_sm" (current value: <0>, data source: default value)
+                          Ignore sm protocol when detecting hierarchies. Required to enable the usage of protocol specific collective operations
+                MCA coll: parameter "coll_hierarch_detection_alg" (current value: <2>, data source: default value)
+                          Used to specify the algorithm for detecting Hierarchy.Choose between all or two levels of hierarchy
+                MCA coll: parameter "coll_hierarch_bcast_alg" (current value: <4>, data source: default value)
+                          Used to specify the algorithm used for bcast operations.
+                MCA coll: parameter "coll_hierarch_segment_size" (current value: <32768>, data source: default value)
+                          Used to specify the segment size for segmented algorithms.
+                MCA coll: parameter "coll_inter_priority" (current value: <40>, data source: default value)
+                          Priority of the inter coll component
+                MCA coll: parameter "coll_inter_verbose" (current value: <0>, data source: default value)
+                          Turn verbose message of the inter coll component on/off
+                MCA coll: parameter "coll_self_priority" (current value: <75>, data source: default value)
+                MCA coll: parameter "coll_sm_priority" (current value: <0>, data source: default value)
+                          Priority of the sm coll component
+                MCA coll: parameter "coll_sm_control_size" (current value: <4096>, data source: default value)
+                          Length of the control data -- should usually be either the length of a cache line on most SMPs, or the size of a page on machines that support direct memory affinity page placement (in bytes)
+                MCA coll: parameter "coll_sm_fragment_size" (current value: <8192>, data source: default value)
+                          Fragment size (in bytes) used for passing data through shared memory (will be rounded up to the nearest control_size size)
+                MCA coll: parameter "coll_sm_comm_in_use_flags" (current value: <2>, data source: default value)
+                          Number of "in use" flags, used to mark a message passing area segment as currently being used or not (must be >= 2 and <= comm_num_segments)
+                MCA coll: parameter "coll_sm_comm_num_segments" (current value: <8>, data source: default value)
+                          Number of segments in each communicator's shared memory message passing area (must be >= 2, and must be a multiple of comm_in_use_flags)
+                MCA coll: parameter "coll_sm_tree_degree" (current value: <4>, data source: default value)
+                          Degree of the tree for tree-based operations (must be => 1 and <= min(control_size, 255))
+                MCA coll: parameter "coll_sm_info_num_procs" (current value: <4>, data source: default value)
+                          Number of processes to use for the calculation of the shared_mem_size MCA information parameter (must be => 2)
+                MCA coll: information "coll_sm_shared_mem_used_data" (value: <548864>, data source: default value)
+                          Amount of shared memory used, per communicator, in the shared memory data area for info_num_procs processes (in bytes)
+                MCA coll: parameter "coll_sync_priority" (current value: <50>, data source: default value)
+                          Priority of the sync coll component; only relevant if barrier_before or barrier_after is > 0
+                MCA coll: parameter "coll_sync_barrier_before" (current value: <1000>, data source: default value)
+                          Do a synchronization before each Nth collective
+                MCA coll: parameter "coll_sync_barrier_after" (current value: <0>, data source: default value)
+                          Do a synchronization after each Nth collective
+                MCA coll: parameter "coll_tuned_priority" (current value: <30>, data source: default value)
+                          Priority of the tuned coll component
+                MCA coll: parameter "coll_tuned_pre_allocate_memory_comm_size_limit" (current value: <32768>, data source: default value)
+                          Size of communicator were we stop pre-allocating memory for the fixed internal buffer used for message requests etc that is hung off the communicator data segment. I.e. if you have a 100'000 nodes you might not want to pre-allocate 200'000 request handle slots per communicator instance!
+                MCA coll: parameter "coll_tuned_init_tree_fanout" (current value: <4>, data source: default value)
+                          Inital fanout used in the tree topologies for each communicator. This is only an initial guess, if a tuned collective needs a different fanout for an operation, it build it dynamically. This parameter is only for the first guess and might save a little time
+                MCA coll: parameter "coll_tuned_init_chain_fanout" (current value: <4>, data source: default value)
+                          Inital fanout used in the chain (fanout followed by pipeline) topologies for each communicator. This is only an initial guess, if a tuned collective needs a different fanout for an operation, it build it dynamically. This parameter is only for the first guess and might save a little time
+                MCA coll: parameter "coll_tuned_use_dynamic_rules" (current value: <0>, data source: default value)
+                          Switch used to decide if we use static (compiled/if statements) or dynamic (built at runtime) decision function rules
+                  MCA io: parameter "io_base_freelist_initial_size" (current value: <16>, data source: default value)
+                          Initial MPI-2 IO request freelist size
+                  MCA io: parameter "io_base_freelist_max_size" (current value: <64>, data source: default value)
+                          Max size of the MPI-2 IO request freelist
+                  MCA io: parameter "io_base_freelist_increment" (current value: <16>, data source: default value)
+                          Increment size of the MPI-2 IO request freelist
+                  MCA io: parameter "io" (current value: <none>, data source: default value)
+                          Default selection set of components for the io framework (<none> means use all components that can be found)
+                  MCA io: parameter "io_base_verbose" (current value: <0>, data source: default value)
+                          Verbosity level for the io framework (0 = no verbosity)
+                  MCA io: parameter "io_romio_priority" (current value: <10>, data source: default value)
+                          Priority of the io romio component
+                  MCA io: parameter "io_romio_delete_priority" (current value: <10>, data source: default value)
+                          Delete priority of the io romio component
+                  MCA io: information "io_romio_version" (value: <from MPICH2 v1.3.1 with an additional patch from romio-maint@mcs.anl.gov about an attribute issue>, data source: default value)
+                          Version of ROMIO
+                  MCA io: information "io_romio_user_configure_params" (value: <none>, data source: default value)
+                          User-specified command line parameters passed to ROMIO's configure script
+                  MCA io: information "io_romio_complete_configure_params" (value: < CFLAGS='-DNDEBUG -g -O2 -finline-functions -fno-strict-aliasing -restrict -pthread' CPPFLAGS='  -I/home1/00013/tg456871/openmpi-1.6.3/opal/mca/hwloc/hwloc132/hwloc/include   -I/opt/ofed/include/infiniband -I/opt/ofed/include/infiniband' FFLAGS='' LDFLAGS=' ' --enable-shared --disable-static  --prefix=/home1/00013/tg456871/openmpi-1.6.3 --with-mpi=open_mpi --disable-aio>, data source: default value)
+                          Complete set of command line parameters passed to ROMIO's configure script
+               MCA mpool: parameter "mpool" (current value: <none>, data source: default value)
+                          Default selection set of components for the mpool framework (<none> means use all components that can be found)
+               MCA mpool: parameter "mpool_base_verbose" (current value: <0>, data source: default value)
+                          Verbosity level for the mpool framework (0 = no verbosity)
+               MCA mpool: parameter "mpool_fake_priority" (current value: <0>, data source: default value)
+               MCA mpool: parameter "mpool_rdma_rcache_name" (current value: <vma>, data source: default value)
+                          The name of the registration cache the mpool should use
+               MCA mpool: parameter "mpool_rdma_rcache_size_limit" (current value: <0>, data source: default value)
+                          the maximum size of registration cache in bytes. 0 is unlimited (default 0)
+               MCA mpool: parameter "mpool_rdma_print_stats" (current value: <0>, data source: default value)
+                          print pool usage statistics at the end of the run
+               MCA mpool: parameter "mpool_rdma_priority" (current value: <0>, data source: default value)
+               MCA mpool: parameter "mpool_sm_allocator" (current value: <bucket>, data source: default value)
+                          Name of allocator component to use with sm mpool
+               MCA mpool: parameter "mpool_sm_min_size" (current value: <67108864>, data source: default value)
+                          Minimum size of the sm mpool shared memory file
+               MCA mpool: parameter "mpool_sm_verbose" (current value: <0>, data source: default value)
+                          Enable verbose output for mpool sm component
+               MCA mpool: parameter "mpool_sm_priority" (current value: <0>, data source: default value)
+                 MCA pml: parameter "pml_base_verbose" (current value: <0>, data source: default value)
+                          Verbosity level of the PML framework
+                 MCA pml: parameter "pml" (current value: <none>, data source: default value)
+                          Default selection set of components for the pml framework (<none> means use all components that can be found)
+                 MCA pml: parameter "pml_bfo_verbose" (current value: <0>, data source: default value)
+                 MCA pml: parameter "pml_bfo_free_list_num" (current value: <4>, data source: default value)
+                 MCA pml: parameter "pml_bfo_free_list_max" (current value: <-1>, data source: default value)
+                 MCA pml: parameter "pml_bfo_free_list_inc" (current value: <64>, data source: default value)
+                 MCA pml: parameter "pml_bfo_priority" (current value: <5>, data source: default value)
+                 MCA pml: parameter "pml_bfo_send_pipeline_depth" (current value: <3>, data source: default value)
+                 MCA pml: parameter "pml_bfo_recv_pipeline_depth" (current value: <4>, data source: default value)
+                 MCA pml: parameter "pml_bfo_rdma_put_retries_limit" (current value: <5>, data source: default value)
+                 MCA pml: parameter "pml_bfo_max_rdma_per_request" (current value: <4>, data source: default value)
+                 MCA pml: parameter "pml_bfo_max_send_per_range" (current value: <4>, data source: default value)
+                 MCA pml: parameter "pml_bfo_unexpected_limit" (current value: <128>, data source: default value)
+                 MCA pml: parameter "pml_bfo_allocator" (current value: <bucket>, data source: default value)
+                          Name of allocator component for unexpected messages
+                 MCA pml: parameter "pml_cm_free_list_num" (current value: <4>, data source: default value)
+                          Initial size of request free lists
+                 MCA pml: parameter "pml_cm_free_list_max" (current value: <-1>, data source: default value)
+                          Maximum size of request free lists
+                 MCA pml: parameter "pml_cm_free_list_inc" (current value: <64>, data source: default value)
+                          Number of elements to add when growing request free lists
+                 MCA pml: parameter "pml_cm_priority" (current value: <10>, data source: default value)
+                          CM PML selection priority
+                 MCA pml: parameter "pml_csum_free_list_num" (current value: <4>, data source: default value)
+                 MCA pml: parameter "pml_csum_free_list_max" (current value: <-1>, data source: default value)
+                 MCA pml: parameter "pml_csum_free_list_inc" (current value: <64>, data source: default value)
+                 MCA pml: parameter "pml_csum_send_pipeline_depth" (current value: <3>, data source: default value)
+                 MCA pml: parameter "pml_csum_recv_pipeline_depth" (current value: <4>, data source: default value)
+                 MCA pml: parameter "pml_csum_max_rdma_per_request" (current value: <4>, data source: default value)
+                 MCA pml: parameter "pml_csum_max_send_per_range" (current value: <4>, data source: default value)
+                 MCA pml: parameter "pml_csum_unexpected_limit" (current value: <128>, data source: default value)
+                 MCA pml: parameter "pml_csum_allocator" (current value: <bucket>, data source: default value)
+                          Name of allocator component for unexpected messages
+                 MCA pml: parameter "pml_csum_priority" (current value: <0>, data source: default value)
+                 MCA pml: parameter "pml_ob1_free_list_num" (current value: <4>, data source: default value)
+                 MCA pml: parameter "pml_ob1_free_list_max" (current value: <-1>, data source: default value)
+                 MCA pml: parameter "pml_ob1_free_list_inc" (current value: <64>, data source: default value)
+                 MCA pml: parameter "pml_ob1_priority" (current value: <20>, data source: default value)
+                 MCA pml: parameter "pml_ob1_send_pipeline_depth" (current value: <3>, data source: default value)
+                 MCA pml: parameter "pml_ob1_recv_pipeline_depth" (current value: <4>, data source: default value)
+                 MCA pml: parameter "pml_ob1_max_rdma_per_request" (current value: <4>, data source: default value)
+                 MCA pml: parameter "pml_ob1_max_send_per_range" (current value: <4>, data source: default value)
+                 MCA pml: parameter "pml_ob1_unexpected_limit" (current value: <128>, data source: default value)
+                 MCA pml: parameter "pml_ob1_allocator" (current value: <bucket>, data source: default value)
+                          Name of allocator component for unexpected messages
+                 MCA pml: parameter "pml_v_priority" (current value: <-1>, data source: default value)
+                 MCA pml: parameter "pml_v_output" (current value: <stderr>, data source: default value)
+                 MCA pml: parameter "pml_v_verbose" (current value: <0>, data source: default value)
+                 MCA bml: parameter "bml" (current value: <none>, data source: default value)
+                          Default selection set of components for the bml framework (<none> means use all components that can be found)
+                 MCA bml: parameter "bml_base_verbose" (current value: <0>, data source: default value)
+                          Verbosity level for the bml framework (0 = no verbosity)
+                 MCA bml: parameter "bml_r2_show_unreach_errors" (current value: <1>, data source: default value)
+                          Show error message when procs are unreachable
+                 MCA bml: parameter "bml_r2_priority" (current value: <0>, data source: default value)
+              MCA rcache: parameter "rcache" (current value: <none>, data source: default value)
+                          Default selection set of components for the rcache framework (<none> means use all components that can be found)
+              MCA rcache: parameter "rcache_base_verbose" (current value: <0>, data source: default value)
+                          Verbosity level for the rcache framework (0 = no verbosity)
+              MCA rcache: parameter "rcache_vma_priority" (current value: <0>, data source: default value)
+                 MCA btl: parameter "btl_base_verbose" (current value: <0>, data source: default value)
+                          Verbosity level of the BTL framework
+                 MCA btl: parameter "btl" (current value: <none>, data source: default value)
+                          Default selection set of components for the btl framework (<none> means use all components that can be found)
+                 MCA btl: parameter "btl_ofud_max_btls" (current value: <4>, data source: default value)
+                          Maximum number of HCAs/ports to use
+                 MCA btl: parameter "btl_ofud_if_include" (current value: <none>, data source: default value)
+                          Comma-delimited list of HCAs/ports to be used; empty value means to use all HCAs/ports found
+                 MCA btl: parameter "btl_ofud_if_exclude" (current value: <none>, data source: default value)
+                          Comma-delimited list of HCAs/ports to be excluded; empty value means to use all HCAs/ports found
+                 MCA btl: parameter "btl_ofud_mpool" (current value: <rdma>, data source: default value)
+                          Name of the memory pool to be used
+                 MCA btl: parameter "btl_ofud_ib_pkey_index" (current value: <0>, data source: default value)
+                          IB pkey index
+                 MCA btl: parameter "btl_ofud_ib_qkey" (current value: <20119859>, data source: default value)
+                          IB qkey
+                 MCA btl: parameter "btl_ofud_ib_service_level" (current value: <0>, data source: default value)
+                          IB service level
+                 MCA btl: parameter "btl_ofud_ib_src_path_bits" (current value: <0>, data source: default value)
+                          IB source path bits
+                 MCA btl: parameter "btl_ofud_sd_num" (current value: <128>, data source: default value)
+                          maximum send descriptors to post
+                 MCA btl: parameter "btl_ofud_rd_num" (current value: <6000>, data source: default value)
+                          number of receive buffers
+                 MCA btl: parameter "btl_ofud_min_send_size" (current value: <2048>, data source: default value)
+                          minimum send size
+                 MCA btl: parameter "btl_ofud_max_send_size" (current value: <2048>, data source: default value)
+                          maximum send size
+                 MCA btl: parameter "btl_ofud_exclusivity" (current value: <1024>, data source: default value)
+                          BTL exclusivity
+                 MCA btl: parameter "btl_ofud_bandwidth" (current value: <800>, data source: default value)
+                          Approximate maximum bandwidth of interconnect
+                 MCA btl: parameter "btl_ofud_priority" (current value: <0>, data source: default value)
+                 MCA btl: parameter "btl_openib_verbose" (current value: <0>, data source: default value)
+                          Output some verbose OpenIB BTL information (0 = no output, nonzero = output)
+                 MCA btl: parameter "btl_openib_warn_no_device_params_found" (current value: <1>, data source: default value, synonyms: btl_openib_warn_no_hca_params_found)
+                          Warn when no device-specific parameters are found in the INI file specified by the btl_openib_device_param_files MCA parameter (0 = do not warn; any other value = warn)
+                 MCA btl: parameter "btl_openib_warn_no_hca_params_found" (current value: <1>, data source: default value, deprecated, synonym of: btl_openib_warn_no_device_params_found)
+                          Warn when no device-specific parameters are found in the INI file specified by the btl_openib_device_param_files MCA parameter (0 = do not warn; any other value = warn)
+                 MCA btl: parameter "btl_openib_warn_default_gid_prefix" (current value: <1>, data source: default value)
+                          Warn when there is more than one active ports and at least one of them connected to the network with only default GID prefix configured (0 = do not warn; any other value = warn)
+                 MCA btl: parameter "btl_openib_warn_nonexistent_if" (current value: <1>, data source: default value)
+                          Warn if non-existent devices and/or ports are specified in the btl_openib_if_[in|ex]clude MCA parameters (0 = do not warn; any other value = warn)
+                 MCA btl: parameter "btl_openib_abort_not_enough_reg_mem" (current value: <0>, data source: default value)
+                          If there is not enough registered memory available on the system for Open MPI to function properly, Open MPI will issue a warning.  If this MCA parameter is set to true, then Open MPI will also abort all MPI jobs (0 = warn, but do not abort; any other value = warn and abort)
+                 MCA btl: parameter "btl_openib_want_fork_support" (current value: <-1>, data source: default value)
+                          Whether fork support is desired or not (negative = try to enable fork support, but continue even if it is not available, 0 = do not enable fork support, positive = try to enable fork support and fail if it is not available)
+                 MCA btl: parameter "btl_openib_device_param_files" (current value: </home1/00013/tg456871/openmpi-1.6.3/share/openmpi/mca-btl-openib-device-params.ini>, data source: default value, synonyms: btl_openib_hca_param_files)
+                          Colon-delimited list of INI-style files that contain device vendor/part-specific parameters
+                 MCA btl: parameter "btl_openib_hca_param_files" (current value: </home1/00013/tg456871/openmpi-1.6.3/share/openmpi/mca-btl-openib-device-params.ini>, data source: default value, deprecated, synonym of: btl_openib_device_param_files)
+                          Colon-delimited list of INI-style files that contain device vendor/part-specific parameters
+                 MCA btl: parameter "btl_openib_device_type" (current value: <all>, data source: default value)
+                          Specify to only use IB or iWARP network adapters (infiniband = only use InfiniBand HCAs; iwarp = only use iWARP NICs; all = use any available adapters)
+                 MCA btl: parameter "btl_openib_max_btls" (current value: <-1>, data source: default value)
+                          Maximum number of device ports to use (-1 = use all available, otherwise must be >= 1)
+                 MCA btl: parameter "btl_openib_free_list_num" (current value: <8>, data source: default value)
+                          Initial size of free lists (must be >= 1)
+                 MCA btl: parameter "btl_openib_free_list_max" (current value: <-1>, data source: default value)
+                          Maximum size of free lists (-1 = infinite, otherwise must be >= 0)
+                 MCA btl: parameter "btl_openib_free_list_inc" (current value: <32>, data source: default value)
+                          Increment size of free lists (must be >= 1)
+                 MCA btl: parameter "btl_openib_mpool" (current value: <rdma>, data source: default value)
+                          Name of the memory pool to be used (it is unlikely that you will ever want to change this)
+                 MCA btl: parameter "btl_openib_reg_mru_len" (current value: <16>, data source: default value)
+                          Length of the registration cache most recently used list (must be >= 1)
+                 MCA btl: parameter "btl_openib_cq_size" (current value: <8192>, data source: default value, synonyms: btl_openib_ib_cq_size)
+                          Minimum size of the OpenFabrics completion queue (CQs are automatically sized based on the number of peer MPI processes; this value determines the *minimum* size of all CQs)
+                 MCA btl: parameter "btl_openib_ib_cq_size" (current value: <8192>, data source: default value, deprecated, synonym of: btl_openib_cq_size)
+                          Minimum size of the OpenFabrics completion queue (CQs are automatically sized based on the number of peer MPI processes; this value determines the *minimum* size of all CQs)
+                 MCA btl: parameter "btl_openib_max_inline_data" (current value: <-1>, data source: default value, synonyms: btl_openib_ib_max_inline_data)
+                          Maximum size of inline data segment (-1 = run-time probe to discover max value, otherwise must be >= 0). If not explicitly set, use max_inline_data from the INI file containing device-specific parameters
+                 MCA btl: parameter "btl_openib_ib_max_inline_data" (current value: <-1>, data source: default value, deprecated, synonym of: btl_openib_max_inline_data)
+                          Maximum size of inline data segment (-1 = run-time probe to discover max value, otherwise must be >= 0). If not explicitly set, use max_inline_data from the INI file containing device-specific parameters
+                 MCA btl: parameter "btl_openib_pkey" (current value: <0>, data source: default value, synonyms: btl_openib_ib_pkey_val)
+                          OpenFabrics partition key (pkey) value. Unsigned integer decimal or hex values are allowed (e.g., "3" or "0x3f") and will be masked against the maximum allowable IB partition key value (0x7fff)
+                 MCA btl: parameter "btl_openib_ib_pkey_val" (current value: <0>, data source: default value, deprecated, synonym of: btl_openib_pkey)
+                          OpenFabrics partition key (pkey) value. Unsigned integer decimal or hex values are allowed (e.g., "3" or "0x3f") and will be masked against the maximum allowable IB partition key value (0x7fff)
+                 MCA btl: parameter "btl_openib_psn" (current value: <0>, data source: default value, synonyms: btl_openib_ib_psn)
+                          OpenFabrics packet sequence starting number (must be >= 0)
+                 MCA btl: parameter "btl_openib_ib_psn" (current value: <0>, data source: default value, deprecated, synonym of: btl_openib_psn)
+                          OpenFabrics packet sequence starting number (must be >= 0)
+                 MCA btl: parameter "btl_openib_ib_qp_ous_rd_atom" (current value: <4>, data source: default value)
+                          InfiniBand outstanding atomic reads (must be >= 0)
+                 MCA btl: parameter "btl_openib_mtu" (current value: <3>, data source: default value, synonyms: btl_openib_ib_mtu)
+                          OpenFabrics MTU, in bytes (if not specified in INI files).  Valid values are: 1=256 bytes, 2=512 bytes, 3=1024 bytes, 4=2048 bytes, 5=4096 bytes
+                 MCA btl: parameter "btl_openib_ib_mtu" (current value: <3>, data source: default value, deprecated, synonym of: btl_openib_mtu)
+                          OpenFabrics MTU, in bytes (if not specified in INI files).  Valid values are: 1=256 bytes, 2=512 bytes, 3=1024 bytes, 4=2048 bytes, 5=4096 bytes
+                 MCA btl: parameter "btl_openib_ib_min_rnr_timer" (current value: <25>, data source: default value)
+                          InfiniBand minimum "receiver not ready" timer, in seconds (must be >= 0 and <= 31)
+                 MCA btl: parameter "btl_openib_ib_timeout" (current value: <20>, data source: default value)
+                          InfiniBand transmit timeout, plugged into formula: 4.096 microseconds * (2^btl_openib_ib_timeout) (must be >= 0 and <= 31)
+                 MCA btl: parameter "btl_openib_ib_retry_count" (current value: <7>, data source: default value)
+                          InfiniBand transmit retry count (must be >= 0 and <= 7)
+                 MCA btl: parameter "btl_openib_ib_rnr_retry" (current value: <7>, data source: default value)
+                          InfiniBand "receiver not ready" retry count; applies *only* to SRQ/XRC queues.  PP queues use RNR retry values of 0 because Open MPI performs software flow control to guarantee that RNRs never occur (must be >= 0 and <= 7; 7 = "infinite")
+                 MCA btl: parameter "btl_openib_ib_max_rdma_dst_ops" (current value: <4>, data source: default value)
+                          InfiniBand maximum pending RDMA destination operations (must be >= 0)
+                 MCA btl: parameter "btl_openib_ib_service_level" (current value: <0>, data source: default value)
+                          InfiniBand service level (must be >= 0 and <= 15)
+                 MCA btl: parameter "btl_openib_use_eager_rdma" (current value: <-1>, data source: default value)
+                          Use RDMA for eager messages (-1 = use device default, 0 = do not use eager RDMA, 1 = use eager RDMA)
+                 MCA btl: parameter "btl_openib_eager_rdma_threshold" (current value: <16>, data source: default value)
+                          Use RDMA for short messages after this number of messages are received from a given peer (must be >= 1)
+                 MCA btl: parameter "btl_openib_max_eager_rdma" (current value: <16>, data source: default value)
+                          Maximum number of peers allowed to use RDMA for short messages (RDMA is used for all long messages, except if explicitly disabled, such as with the "dr" pml) (must be >= 0)
+                 MCA btl: parameter "btl_openib_eager_rdma_num" (current value: <16>, data source: default value)
+                          Number of RDMA buffers to allocate for small messages (must be >= 1)
+                 MCA btl: parameter "btl_openib_btls_per_lid" (current value: <1>, data source: default value)
+                          Number of BTLs to create for each InfiniBand LID (must be >= 1)
+                 MCA btl: parameter "btl_openib_max_lmc" (current value: <0>, data source: default value)
+                          Maximum number of LIDs to use for each device port (must be >= 0, where 0 = use all available)
+                 MCA btl: parameter "btl_openib_enable_apm_over_lmc" (current value: <0>, data source: default value)
+                          Maximum number of alternative paths for each device port (must be >= -1, where 0 = disable apm, -1 = all available alternative paths )
+                 MCA btl: parameter "btl_openib_enable_apm_over_ports" (current value: <0>, data source: default value)
+                          Enable alternative path migration (APM) over different ports of the same device (must be >= 0, where 0 = disable APM over ports, 1 = enable APM over ports of the same device)
+                 MCA btl: parameter "btl_openib_use_async_event_thread" (current value: <1>, data source: default value)
+                          If nonzero, use the thread that will handle InfiniBand asynchronous events
+                 MCA btl: parameter "btl_openib_enable_srq_resize" (current value: <1>, data source: default value)
+                          Enable/Disable on demand SRQ resize. (0 = without resizing, nonzero = with resizing)
+                 MCA btl: parameter "btl_openib_buffer_alignment" (current value: <64>, data source: default value)
+                          Preferred communication buffer alignment, in bytes (must be > 0 and power of two)
+                 MCA btl: parameter "btl_openib_use_message_coalescing" (current value: <1>, data source: default value)
+                          If nonzero, use message coalescing
+                 MCA btl: parameter "btl_openib_cq_poll_ratio" (current value: <100>, data source: default value)
+                          How often to poll high priority CQ versus low priority CQ
+                 MCA btl: parameter "btl_openib_eager_rdma_poll_ratio" (current value: <100>, data source: default value)
+                          How often to poll eager RDMA channel versus CQ
+                 MCA btl: parameter "btl_openib_hp_cq_poll_per_progress" (current value: <10>, data source: default value)
+                          Max number of completion events to process for each call of BTL progress engine
+                 MCA btl: information "btl_openib_have_fork_support" (value: <1>, data source: default value)
+                          Whether the OpenFabrics stack supports applications that invoke the "fork()" system call or not (0 = no, 1 = yes). Note that this value does NOT indicate whether the system being run on supports "fork()" with OpenFabrics applications or not.
+                 MCA btl: parameter "btl_openib_exclusivity" (current value: <1024>, data source: default value)
+                          BTL exclusivity (must be >= 0)
+                 MCA btl: parameter "btl_openib_flags" (current value: <310>, data source: default value)
+                          BTL bit flags (general flags: SEND=1, PUT=2, GET=4, SEND_INPLACE=8, RDMA_MATCHED=64, HETEROGENEOUS_RDMA=256; flags only used by the "dr" PML (ignored by others): ACK=16, CHECKSUM=32, RDMA_COMPLETION=128; flags only used by the "bfo" PML (ignored by others): FAILOVER_SUPPORT=512)
+                 MCA btl: parameter "btl_openib_rndv_eager_limit" (current value: <12288>, data source: default value)
+                          Size (in bytes) of "phase 1" fragment sent for all large messages (must be >= 0 and <= eager_limit)
+                 MCA btl: parameter "btl_openib_eager_limit" (current value: <12288>, data source: default value)
+                          Maximum size (in bytes) of "short" messages (must be >= 1).
+                 MCA btl: parameter "btl_openib_max_send_size" (current value: <65536>, data source: default value)
+                          Maximum size (in bytes) of a single "phase 2" fragment of a long message when using the pipeline protocol (must be >= 1)
+                 MCA btl: parameter "btl_openib_rdma_pipeline_send_length" (current value: <1048576>, data source: default value)
+                          Length of the "phase 2" portion of a large message (in bytes) when using the pipeline protocol.  This part of the message will be split into fragments of size max_send_size and sent using send/receive semantics (must be >= 0; only relevant when the PUT flag is set)
+                 MCA btl: parameter "btl_openib_rdma_pipeline_frag_size" (current value: <1048576>, data source: default value)
+                          Maximum size (in bytes) of a single "phase 3" fragment from a long message when using the pipeline protocol.  These fragments will be sent using RDMA semantics (must be >= 1; only relevant when the PUT flag is set)
+                 MCA btl: parameter "btl_openib_min_rdma_pipeline_size" (current value: <262144>, data source: default value)
+                          Messages smaller than this size (in bytes) will not use the RDMA pipeline protocol.  Instead, they will be split into fragments of max_send_size and sent using send/receive semantics (must be >=0, and is automatically adjusted up to at least (eager_limit+btl_rdma_pipeline_send_length); only relevant when the PUT flag is set)
+                 MCA btl: parameter "btl_openib_bandwidth" (current value: <0>, data source: default value)
+                          Approximate maximum bandwidth of interconnect(0 = auto-detect value at run-time [not supported in all BTL modules], >= 1 = bandwidth in Mbps)
+                 MCA btl: parameter "btl_openib_latency" (current value: <4>, data source: default value)
+                          Approximate latency of interconnect (must be >= 0)
+                 MCA btl: parameter "btl_openib_receive_queues" (current value: <P,128,256,192,128:S,2048,256,128,32:S,12288,256,128,32:S,65536,256,128,32>, data source: default value)
+                          Colon-delimited, comma-delimited list of receive queues: P,4096,8,6,4:P,32768,8,6,4
+                 MCA btl: parameter "btl_openib_if_include" (current value: <none>, data source: default value)
+                          Comma-delimited list of devices/ports to be used (e.g. "mthca0,mthca1:2"; empty value means to use all ports found).  Mutually exclusive with btl_openib_if_exclude.
+                 MCA btl: parameter "btl_openib_if_exclude" (current value: <none>, data source: default value)
+                          Comma-delimited list of device/ports to be excluded (empty value means to not exclude any ports).  Mutually exclusive with btl_openib_if_include.
+                 MCA btl: parameter "btl_openib_ipaddr_include" (current value: <none>, data source: default value)
+                          Comma-delimited list of IP Addresses to be used (e.g. "192.168.1.0/24").  Mutually exclusive with btl_openib_ipaddr_exclude.
+                 MCA btl: parameter "btl_openib_ipaddr_exclude" (current value: <none>, data source: default value)
+                          Comma-delimited list of IP Addresses to be excluded (e.g. "192.168.1.0/24").  Mutually exclusive with btl_openib_ipaddr_include.
+                 MCA btl: parameter "btl_openib_gid_index" (current value: <0>, data source: default value)
+                          GID index to use on verbs device ports
+                 MCA btl: parameter "btl_openib_memalign" (current value: <32>, data source: default value)
+                          [64 | 32 | 0] - Enable (64bit or 32bit)/Disable(0) memoryalignment for all malloc calls if btl openib is used.
+                 MCA btl: parameter "btl_openib_memalign_threshold" (current value: <0>, data source: default value)
+                          Allocating memory more than btl_openib_memalign_threshholdbytes will automatically be algined to the value of btl_openib_memalign bytes.memalign_threshhold defaults to the same value as mca_btl_openib_eager_limit.
+                 MCA btl: parameter "btl_openib_cpc_include" (current value: <none>, data source: default value)
+                          Method used to select OpenFabrics connections (valid values: oob,xoob,rdmacm)
+                 MCA btl: parameter "btl_openib_cpc_exclude" (current value: <none>, data source: default value)
+                          Method used to exclude OpenFabrics connections (valid values: oob,xoob,rdmacm)
+                 MCA btl: parameter "btl_openib_connect_oob_priority" (current value: <50>, data source: default value)
+                          The selection method priority for oob
+                 MCA btl: parameter "btl_openib_connect_xoob_priority" (current value: <60>, data source: default value)
+                          The selection method priority for xoob
+                 MCA btl: parameter "btl_openib_connect_rdmacm_priority" (current value: <30>, data source: default value)
+                          The selection method priority for rdma_cm
+                 MCA btl: parameter "btl_openib_connect_rdmacm_port" (current value: <0>, data source: default value)
+                          The selection method port for rdma_cm
+                 MCA btl: parameter "btl_openib_connect_rdmacm_resolve_timeout" (current value: <30000>, data source: default value)
+                          The timeout (in miliseconds) for address and route resolution
+                 MCA btl: parameter "btl_openib_connect_rdmacm_retry_count" (current value: <20>, data source: default value)
+                          Maximum number of times rdmacm will retry route resolution
+                 MCA btl: parameter "btl_openib_connect_rdmacm_reject_causes_connect_error" (current value: <0>, data source: default value)
+                          The drivers for some devices are buggy such that an RDMA REJECT action may result in a CONNECT_ERROR event instead of a REJECTED event.  Setting this MCA parameter to true tells Open MPI to treat CONNECT_ERROR events on connections where a REJECT is expected as a REJECT (default: false)
+                 MCA btl: parameter "btl_openib_priority" (current value: <0>, data source: default value)
+                 MCA btl: parameter "btl_self_free_list_num" (current value: <0>, data source: default value)
+                          Number of fragments by default
+                 MCA btl: parameter "btl_self_free_list_max" (current value: <-1>, data source: default value)
+                          Maximum number of fragments
+                 MCA btl: parameter "btl_self_free_list_inc" (current value: <32>, data source: default value)
+                          Increment by this number of fragments
+                 MCA btl: parameter "btl_self_exclusivity" (current value: <65536>, data source: default value)
+                          BTL exclusivity (must be >= 0)
+                 MCA btl: parameter "btl_self_flags" (current value: <10>, data source: default value)
+                          BTL bit flags (general flags: SEND=1, PUT=2, GET=4, SEND_INPLACE=8, RDMA_MATCHED=64, HETEROGENEOUS_RDMA=256; flags only used by the "dr" PML (ignored by others): ACK=16, CHECKSUM=32, RDMA_COMPLETION=128; flags only used by the "bfo" PML (ignored by others): FAILOVER_SUPPORT=512)
+                 MCA btl: parameter "btl_self_rndv_eager_limit" (current value: <131072>, data source: default value)
+                          Size (in bytes) of "phase 1" fragment sent for all large messages (must be >= 0 and <= eager_limit)
+                 MCA btl: parameter "btl_self_eager_limit" (current value: <131072>, data source: default value)
+                          Maximum size (in bytes) of "short" messages (must be >= 1).
+                 MCA btl: parameter "btl_self_max_send_size" (current value: <262144>, data source: default value)
+                          Maximum size (in bytes) of a single "phase 2" fragment of a long message when using the pipeline protocol (must be >= 1)
+                 MCA btl: parameter "btl_self_rdma_pipeline_send_length" (current value: <2147483647>, data source: default value)
+                          Length of the "phase 2" portion of a large message (in bytes) when using the pipeline protocol.  This part of the message will be split into fragments of size max_send_size and sent using send/receive semantics (must be >= 0; only relevant when the PUT flag is set)
+                 MCA btl: parameter "btl_self_rdma_pipeline_frag_size" (current value: <2147483647>, data source: default value)
+                          Maximum size (in bytes) of a single "phase 3" fragment from a long message when using the pipeline protocol.  These fragments will be sent using RDMA semantics (must be >= 1; only relevant when the PUT flag is set)
+                 MCA btl: parameter "btl_self_min_rdma_pipeline_size" (current value: <0>, data source: default value)
+                          Messages smaller than this size (in bytes) will not use the RDMA pipeline protocol.  Instead, they will be split into fragments of max_send_size and sent using send/receive semantics (must be >=0, and is automatically adjusted up to at least (eager_limit+btl_rdma_pipeline_send_length); only relevant when the PUT flag is set)
+                 MCA btl: parameter "btl_self_bandwidth" (current value: <100>, data source: default value)
+                          Approximate maximum bandwidth of interconnect(0 = auto-detect value at run-time [not supported in all BTL modules], >= 1 = bandwidth in Mbps)
+                 MCA btl: parameter "btl_self_latency" (current value: <0>, data source: default value)
+                          Approximate latency of interconnect (must be >= 0)
+                 MCA btl: parameter "btl_self_priority" (current value: <0>, data source: default value)
+                 MCA btl: information "btl_sm_have_knem_support" (value: <0>, data source: default value)
+                          Whether this component supports the knem Linux kernel module or not
+                 MCA btl: parameter "btl_sm_use_knem" (current value: <0>, data source: default value)
+                          Whether knem support is desired or not (negative = try to enable knem support, but continue even if it is not available, 0 = do not enable knem support, positive = try to enable knem support and fail if it is not available)
+                 MCA btl: parameter "btl_sm_knem_dma_min" (current value: <0>, data source: default value)
+                          Minimum message size (in bytes) to use the knem DMA mode; ignored if knem does not support DMA mode (0 = do not use the knem DMA mode)
+                 MCA btl: parameter "btl_sm_knem_max_simultaneous" (current value: <0>, data source: default value)
+                          Max number of simultaneous ongoing knem operations to support (0 = do everything synchronously, which probably gives the best large message latency; >0 means to do all operations asynchronously, which supports better overlap for simultaneous large message sends)
+                 MCA btl: parameter "btl_sm_free_list_num" (current value: <8>, data source: default value)
+                 MCA btl: parameter "btl_sm_free_list_max" (current value: <-1>, data source: default value)
+                 MCA btl: parameter "btl_sm_free_list_inc" (current value: <64>, data source: default value)
+                 MCA btl: parameter "btl_sm_max_procs" (current value: <-1>, data source: default value)
+                 MCA btl: parameter "btl_sm_mpool" (current value: <sm>, data source: default value)
+                 MCA btl: parameter "btl_sm_fifo_size" (current value: <4096>, data source: default value)
+                 MCA btl: parameter "btl_sm_num_fifos" (current value: <1>, data source: default value)
+                 MCA btl: parameter "btl_sm_fifo_lazy_free" (current value: <120>, data source: default value)
+                 MCA btl: parameter "btl_sm_sm_extra_procs" (current value: <0>, data source: default value)
+                 MCA btl: parameter "btl_sm_exclusivity" (current value: <65535>, data source: default value)
+                          BTL exclusivity (must be >= 0)
+                 MCA btl: parameter "btl_sm_flags" (current value: <1>, data source: default value)
+                          BTL bit flags (general flags: SEND=1, PUT=2, GET=4, SEND_INPLACE=8, RDMA_MATCHED=64, HETEROGENEOUS_RDMA=256; flags only used by the "dr" PML (ignored by others): ACK=16, CHECKSUM=32, RDMA_COMPLETION=128; flags only used by the "bfo" PML (ignored by others): FAILOVER_SUPPORT=512)
+                 MCA btl: parameter "btl_sm_rndv_eager_limit" (current value: <4096>, data source: default value)
+                          Size (in bytes) of "phase 1" fragment sent for all large messages (must be >= 0 and <= eager_limit)
+                 MCA btl: parameter "btl_sm_eager_limit" (current value: <4096>, data source: default value)
+                          Maximum size (in bytes) of "short" messages (must be >= 1).
+                 MCA btl: parameter "btl_sm_max_send_size" (current value: <32768>, data source: default value)
+                          Maximum size (in bytes) of a single "phase 2" fragment of a long message when using the pipeline protocol (must be >= 1)
+                 MCA btl: parameter "btl_sm_bandwidth" (current value: <9000>, data source: default value)
+                          Approximate maximum bandwidth of interconnect(0 = auto-detect value at run-time [not supported in all BTL modules], >= 1 = bandwidth in Mbps)
+                 MCA btl: parameter "btl_sm_latency" (current value: <1>, data source: default value)
+                          Approximate latency of interconnect (must be >= 0)
+                 MCA btl: parameter "btl_sm_priority" (current value: <0>, data source: default value)
+                 MCA btl: parameter "btl_tcp_links" (current value: <1>, data source: default value)
+                 MCA btl: parameter "btl_tcp_if_include" (current value: <none>, data source: default value)
+                          Comma-delimited list of devices or CIDR notation of networks to use for MPI communication (e.g., "eth0,eth1" or "192.168.0.0/16,10.1.4.0/24").  Mutually exclusive with btl_tcp_if_exclude.
+                 MCA btl: parameter "btl_tcp_if_exclude" (current value: <127.0.0.1/8,sppp>, data source: default value)
+                          Comma-delimited list of devices and/or CIDR notation of networks to NOT use for MPI communication -- all devices not matching these specifications will be used (e.g., "eth0,192.168.0.0/16").  If set to a non-default value, it is mutually exclusive with btl_tcp_if_include.
+                 MCA btl: parameter "btl_tcp_free_list_num" (current value: <8>, data source: default value)
+                 MCA btl: parameter "btl_tcp_free_list_max" (current value: <-1>, data source: default value)
+                 MCA btl: parameter "btl_tcp_free_list_inc" (current value: <32>, data source: default value)
+                 MCA btl: parameter "btl_tcp_sndbuf" (current value: <131072>, data source: default value)
+                 MCA btl: parameter "btl_tcp_rcvbuf" (current value: <131072>, data source: default value)
+                 MCA btl: parameter "btl_tcp_endpoint_cache" (current value: <30720>, data source: default value)
+                          The size of the internal cache for each TCP connection. This cache is used to reduce the number of syscalls, by replacing them with memcpy. Every read will read the expected data plus the amount of the endpoint_cache
+                 MCA btl: parameter "btl_tcp_use_nagle" (current value: <0>, data source: default value)
+                          Whether to use Nagle's algorithm or not (using Nagle's algorithm may increase short message latency)
+                 MCA btl: parameter "btl_tcp_port_min_v4" (current value: <1024>, data source: default value)
+                          The minimum port where the TCP BTL will try to bind (default 1024)
+                 MCA btl: parameter "btl_tcp_port_range_v4" (current value: <64511>, data source: default value)
+                          The number of ports where the TCP BTL will try to bind (default 64511). This parameter together with the port min, define a range of ports where Open MPI will open sockets.
+                 MCA btl: parameter "btl_tcp_exclusivity" (current value: <100>, data source: default value)
+                          BTL exclusivity (must be >= 0)
+                 MCA btl: parameter "btl_tcp_flags" (current value: <314>, data source: default value)
+                          BTL bit flags (general flags: SEND=1, PUT=2, GET=4, SEND_INPLACE=8, RDMA_MATCHED=64, HETEROGENEOUS_RDMA=256; flags only used by the "dr" PML (ignored by others): ACK=16, CHECKSUM=32, RDMA_COMPLETION=128; flags only used by the "bfo" PML (ignored by others): FAILOVER_SUPPORT=512)
+                 MCA btl: parameter "btl_tcp_rndv_eager_limit" (current value: <65536>, data source: default value)
+                          Size (in bytes) of "phase 1" fragment sent for all large messages (must be >= 0 and <= eager_limit)
+                 MCA btl: parameter "btl_tcp_eager_limit" (current value: <65536>, data source: default value)
+                          Maximum size (in bytes) of "short" messages (must be >= 1).
+                 MCA btl: parameter "btl_tcp_max_send_size" (current value: <131072>, data source: default value)
+                          Maximum size (in bytes) of a single "phase 2" fragment of a long message when using the pipeline protocol (must be >= 1)
+                 MCA btl: parameter "btl_tcp_rdma_pipeline_send_length" (current value: <131072>, data source: default value)
+                          Length of the "phase 2" portion of a large message (in bytes) when using the pipeline protocol.  This part of the message will be split into fragments of size max_send_size and sent using send/receive semantics (must be >= 0; only relevant when the PUT flag is set)
+                 MCA btl: parameter "btl_tcp_rdma_pipeline_frag_size" (current value: <2147483647>, data source: default value)
+                          Maximum size (in bytes) of a single "phase 3" fragment from a long message when using the pipeline protocol.  These fragments will be sent using RDMA semantics (must be >= 1; only relevant when the PUT flag is set)
+                 MCA btl: parameter "btl_tcp_min_rdma_pipeline_size" (current value: <0>, data source: default value)
+                          Messages smaller than this size (in bytes) will not use the RDMA pipeline protocol.  Instead, they will be split into fragments of max_send_size and sent using send/receive semantics (must be >=0, and is automatically adjusted up to at least (eager_limit+btl_rdma_pipeline_send_length); only relevant when the PUT flag is set)
+                 MCA btl: parameter "btl_tcp_bandwidth" (current value: <100>, data source: default value)
+                          Approximate maximum bandwidth of interconnect(0 = auto-detect value at run-time [not supported in all BTL modules], >= 1 = bandwidth in Mbps)
+                 MCA btl: parameter "btl_tcp_latency" (current value: <100>, data source: default value)
+                          Approximate latency of interconnect (must be >= 0)
+                 MCA btl: parameter "btl_tcp_disable_family" (current value: <0>, data source: default value)
+                 MCA btl: parameter "btl_tcp_if_seq" (current value: <none>, data source: default value)
+                          If specified, a comma-delimited list of TCP interfaces.  Interfaces will be assigned, one to each MPI process, in a round-robin fashion on each server.  For example, if the list is "eth0,eth1" and four MPI processes are run on a single server, then local ranks 0 and 2 will use eth0 and local ranks 1 and 3 will use eth1.
+                 MCA btl: parameter "btl_tcp_priority" (current value: <0>, data source: default value)
+                 MCA btl: parameter "btl_base_include" (current value: <none>, data source: default value)
+                 MCA btl: parameter "btl_base_exclude" (current value: <none>, data source: default value)
+                 MCA btl: parameter "btl_base_warn_component_unused" (current value: <1>, data source: default value)
+                          This parameter is used to turn on warning messages when certain NICs are not used
+                 MCA mtl: parameter "mtl" (current value: <none>, data source: default value)
+                          Default selection set of components for the mtl framework (<none> means use all components that can be found)
+                 MCA mtl: parameter "mtl_base_verbose" (current value: <0>, data source: default value)
+                          Verbosity level for the mtl framework (0 = no verbosity)
+                MCA topo: parameter "topo" (current value: <none>, data source: default value)
+                          Default selection set of components for the topo framework (<none> means use all components that can be found)
+                MCA topo: parameter "topo_base_verbose" (current value: <0>, data source: default value)
+                          Verbosity level for the topo framework (0 = no verbosity)
+                MCA topo: parameter "topo_unity_priority" (current value: <0>, data source: default value)
+                 MCA osc: parameter "osc" (current value: <none>, data source: default value)
+                          Default selection set of components for the osc framework (<none> means use all components that can be found)
+                 MCA osc: parameter "osc_base_verbose" (current value: <0>, data source: default value)
+                          Verbosity level for the osc framework (0 = no verbosity)
+                 MCA osc: parameter "osc_pt2pt_no_locks" (current value: <0>, data source: default value)
+                          Enable optimizations available only if MPI_LOCK is not used.
+                 MCA osc: parameter "osc_pt2pt_eager_limit" (current value: <16384>, data source: default value)
+                          Max size of eagerly sent data
+                 MCA osc: parameter "osc_pt2pt_priority" (current value: <0>, data source: default value)
+                 MCA osc: parameter "osc_rdma_eager_send" (current value: <1>, data source: default value)
+                          Attempt to start data movement during communication call, instead of at synchrnoization time.  Info key of same name overrides this value.
+                 MCA osc: parameter "osc_rdma_use_buffers" (current value: <1>, data source: default value)
+                          Coalesce messages during an epoch to reduce network utilization.  Info key of same name overrides this value.
+                 MCA osc: parameter "osc_rdma_use_rdma" (current value: <0>, data source: default value)
+                          Use real RDMA operations to transfer data.  Info key of same name overrides this value.
+                 MCA osc: parameter "osc_rdma_rdma_completion_wait" (current value: <1>, data source: default value)
+                          Wait for all completion of rdma events before sending acknowledgment.  Info key of same name overrides this value.
+                 MCA osc: parameter "osc_rdma_no_locks" (current value: <0>, data source: default value)
+                          Enable optimizations available only if MPI_LOCK is not used.  Info key of same name overrides this value.
+                 MCA osc: parameter "osc_rdma_priority" (current value: <0>, data source: default value)
+                  MCA op: parameter "op_base_verbose" (current value: <0>, data source: default value)
+                          Verbosity level of the op framework
+                 MCA iof: parameter "iof" (current value: <none>, data source: default value)
+                          Default selection set of components for the iof framework (<none> means use all components that can be found)
+                 MCA iof: parameter "iof_base_verbose" (current value: <0>, data source: default value)
+                          Verbosity level for the iof framework (0 = no verbosity)
+                 MCA iof: parameter "iof_hnp_priority" (current value: <0>, data source: default value)
+                 MCA iof: parameter "iof_orted_priority" (current value: <0>, data source: default value)
+                 MCA iof: parameter "iof_tool_priority" (current value: <0>, data source: default value)
+                 MCA oob: parameter "oob" (current value: <none>, data source: default value)
+                          Default selection set of components for the oob framework (<none> means use all components that can be found)
+                 MCA oob: parameter "oob_base_verbose" (current value: <0>, data source: default value)
+                          Verbosity level for the oob framework (0 = no verbosity)
+                 MCA oob: parameter "oob_tcp_verbose" (current value: <0>, data source: default value)
+                          Verbose level for the OOB tcp component
+                 MCA oob: parameter "oob_tcp_peer_limit" (current value: <-1>, data source: default value)
+                          Maximum number of peer connections to simultaneously maintain (-1 = infinite)
+                 MCA oob: parameter "oob_tcp_peer_retries" (current value: <60>, data source: default value)
+                          Number of times to try shutting down a connection before giving up
+                 MCA oob: parameter "oob_tcp_debug" (current value: <0>, data source: default value)
+                          Enable (1) / disable (0) debugging output for this component
+                 MCA oob: parameter "oob_tcp_sndbuf" (current value: <131072>, data source: default value)
+                          TCP socket send buffering size (in bytes)
+                 MCA oob: parameter "oob_tcp_rcvbuf" (current value: <131072>, data source: default value)
+                          TCP socket receive buffering size (in bytes)
+                 MCA oob: parameter "oob_tcp_if_include" (current value: <none>, data source: default value)
+                          Comma-delimited list of TCP interfaces to use
+                 MCA oob: parameter "oob_tcp_if_exclude" (current value: <none>, data source: default value)
+                          Comma-delimited list of TCP interfaces to exclude
+                 MCA oob: parameter "oob_tcp_connect_sleep" (current value: <1>, data source: default value)
+                          Enable (1) / disable (0) random sleep for connection wireup.
+                 MCA oob: parameter "oob_tcp_listen_mode" (current value: <event>, data source: default value)
+                          Mode for HNP to accept incoming connections: event, listen_thread.
+                 MCA oob: parameter "oob_tcp_listen_thread_max_queue" (current value: <10>, data source: default value)
+                          High water mark for queued accepted socket list size.  Used only when listen_mode is listen_thread.
+                 MCA oob: parameter "oob_tcp_listen_thread_wait_time" (current value: <10>, data source: default value)
+                          Time in milliseconds to wait before actively checking for new connections when listen_mode is listen_thread.
+                 MCA oob: parameter "oob_tcp_static_ports" (current value: <none>, data source: default value)
+                          Static ports for daemons and procs (IPv4)
+                 MCA oob: parameter "oob_tcp_dynamic_ports" (current value: <none>, data source: default value)
+                          Range of ports to be dynamically used by daemons and procs (IPv4)
+                 MCA oob: parameter "oob_tcp_disable_family" (current value: <0>, data source: default value)
+                          Disable IPv4 (4) or IPv6 (6)
+                 MCA oob: parameter "oob_tcp_priority" (current value: <0>, data source: default value)
+                MCA odls: parameter "odls_base_sigkill_timeout" (current value: <1>, data source: default value)
+                          Time to wait for a process to die after issuing a kill signal to it
+                MCA odls: parameter "odls" (current value: <none>, data source: default value)
+                          Default selection set of components for the odls framework (<none> means use all components that can be found)
+                MCA odls: parameter "odls_base_verbose" (current value: <0>, data source: default value)
+                          Verbosity level for the odls framework (0 = no verbosity)
+                MCA odls: parameter "odls_default_priority" (current value: <0>, data source: default value)
+                 MCA ras: parameter "ras_base_display_alloc" (current value: <0>, data source: default value)
+                          Whether to display the allocation after it is determined
+                 MCA ras: parameter "ras_base_display_devel_alloc" (current value: <0>, data source: default value)
+                          Whether to display a developer-detail allocation after it is determined
+                 MCA ras: parameter "ras" (current value: <none>, data source: default value)
+                          Default selection set of components for the ras framework (<none> means use all components that can be found)
+                 MCA ras: parameter "ras_base_verbose" (current value: <0>, data source: default value)
+                          Verbosity level for the ras framework (0 = no verbosity)
+                 MCA ras: parameter "ras_cm_priority" (current value: <0>, data source: default value)
+                 MCA ras: parameter "ras_gridengine_debug" (current value: <0>, data source: default value)
+                          Enable debugging output for the gridengine ras component
+                 MCA ras: parameter "ras_gridengine_priority" (current value: <100>, data source: default value)
+                          Priority of the gridengine ras component
+                 MCA ras: parameter "ras_gridengine_verbose" (current value: <0>, data source: default value)
+                          Enable verbose output for the gridengine ras component
+                 MCA ras: parameter "ras_gridengine_show_jobid" (current value: <0>, data source: default value)
+                          Show the JOB_ID of the Grid Engine job
+                 MCA ras: parameter "ras_loadleveler_priority" (current value: <90>, data source: default value)
+                          Priority of the loadleveler ras component
+                 MCA ras: parameter "ras_slurm_priority" (current value: <75>, data source: default value)
+                          Priority of the slurm ras component
+               MCA rmaps: parameter "rmaps_rank_file_path" (current value: <none>, data source: default value, synonym of: orte_rankfile)
+                          Name of the rankfile to be used for mapping processes (relative or absolute path)
+               MCA rmaps: parameter "rmaps_base_schedule_policy" (current value: <slot>, data source: default value)
+                          Scheduling Policy for RMAPS. [slot (alias:core) | socket | board | node]
+               MCA rmaps: parameter "rmaps_base_pernode" (current value: <0>, data source: default value)
+                          Launch one ppn as directed
+               MCA rmaps: parameter "rmaps_base_n_pernode" (current value: <-1>, data source: default value)
+                          Launch n procs/node
+               MCA rmaps: parameter "rmaps_base_n_perboard" (current value: <-1>, data source: default value)
+                          Launch n procs/board
+               MCA rmaps: parameter "rmaps_base_n_persocket" (current value: <-1>, data source: default value)
+                          Launch n procs/socket
+               MCA rmaps: parameter "rmaps_base_loadbalance" (current value: <0>, data source: default value)
+                          Balance total number of procs across all allocated nodes
+               MCA rmaps: parameter "rmaps_base_cpus_per_proc" (current value: <1>, data source: default value, synonyms: rmaps_base_cpus_per_rank)
+                          Number of cpus to use for each rank [1-2**15 (default=1)]
+               MCA rmaps: parameter "rmaps_base_cpus_per_rank" (current value: <1>, data source: default value, synonym of: rmaps_base_cpus_per_proc)
+                          Number of cpus to use for each rank [1-2**15 (default=1)]
+               MCA rmaps: parameter "rmaps_base_stride" (current value: <1>, data source: default value)
+                          When binding multiple cores to a rank, the step size to use between cores [1-2**15 (default: 1)]
+               MCA rmaps: parameter "rmaps_base_slot_list" (current value: <none>, data source: default value)
+                          List of processor IDs to bind MPI processes to (e.g., used in conjunction with rank files) [default=NULL]
+               MCA rmaps: parameter "rmaps_base_no_schedule_local" (current value: <0>, data source: default value)
+                          If false, allow scheduling MPI applications on the same node as mpirun (default).  If true, do not schedule any MPI applications on the same node as mpirun
+               MCA rmaps: parameter "rmaps_base_no_oversubscribe" (current value: <0>, data source: default value)
+                          If true, then do not allow oversubscription of nodes - mpirun will return an error if there aren't enough nodes to launch all processes without oversubscribing
+               MCA rmaps: parameter "rmaps_base_display_map" (current value: <0>, data source: default value)
+                          Whether to display the process map after it is computed
+               MCA rmaps: parameter "rmaps_base_display_devel_map" (current value: <0>, data source: default value)
+                          Whether to display a developer-detail process map after it is computed
+               MCA rmaps: parameter "rmaps" (current value: <none>, data source: default value)
+                          Default selection set of components for the rmaps framework (<none> means use all components that can be found)
+               MCA rmaps: parameter "rmaps_base_verbose" (current value: <0>, data source: default value)
+                          Verbosity level for the rmaps framework (0 = no verbosity)
+               MCA rmaps: parameter "rmaps_load_balance_priority" (current value: <0>, data source: default value)
+               MCA rmaps: parameter "rmaps_rank_file_priority" (current value: <0>, data source: default value)
+               MCA rmaps: parameter "rmaps_resilient_fault_grp_file" (current value: <none>, data source: default value)
+                          Filename that contains a description of fault groups for this system
+               MCA rmaps: parameter "rmaps_resilient_priority" (current value: <0>, data source: default value)
+               MCA rmaps: parameter "rmaps_round_robin_priority" (current value: <0>, data source: default value)
+               MCA rmaps: parameter "rmaps_seq_priority" (current value: <0>, data source: default value)
+               MCA rmaps: parameter "rmaps_topo_priority" (current value: <0>, data source: default value)
+                 MCA rml: parameter "rml_wrapper" (current value: <none>, data source: default value)
+                          Use a Wrapper component around the selected RML component
+                 MCA rml: parameter "rml" (current value: <none>, data source: default value)
+                          Default selection set of components for the rml framework (<none> means use all components that can be found)
+                 MCA rml: parameter "rml_base_verbose" (current value: <0>, data source: default value)
+                          Verbosity level for the rml framework (0 = no verbosity)
+                 MCA rml: parameter "rml_oob_priority" (current value: <0>, data source: default value)
+              MCA routed: parameter "routed" (current value: <none>, data source: default value)
+                          Default selection set of components for the routed framework (<none> means use all components that can be found)
+              MCA routed: parameter "routed_base_verbose" (current value: <0>, data source: default value)
+                          Verbosity level for the routed framework (0 = no verbosity)
+              MCA routed: parameter "routed_binomial_priority" (current value: <0>, data source: default value)
+              MCA routed: parameter "routed_cm_priority" (current value: <0>, data source: default value)
+              MCA routed: parameter "routed_direct_priority" (current value: <0>, data source: default value)
+              MCA routed: parameter "routed_linear_priority" (current value: <0>, data source: default value)
+              MCA routed: parameter "routed_radix_priority" (current value: <0>, data source: default value)
+              MCA routed: parameter "routed_slave_priority" (current value: <0>, data source: default value)
+                 MCA plm: parameter "plm_rsh_agent" (current value: <ssh : rsh>, data source: default value, deprecated, synonym of: orte_rsh_agent)
+                          The command used to launch executables on remote nodes (typically either "ssh" or "rsh")
+                 MCA plm: parameter "plm_rsh_assume_same_shell" (current value: <1>, data source: default value, deprecated, synonym of: orte_assume_same_shell)
+                          If set to 1, assume that the shell on the remote node is the same as the shell on the local node.  Otherwise, probe for what the remote shell [default: 1]
+                 MCA plm: parameter "plm" (current value: <none>, data source: default value)
+                          Default selection set of components for the plm framework (<none> means use all components that can be found)
+                 MCA plm: parameter "plm_base_verbose" (current value: <0>, data source: default value)
+                          Verbosity level for the plm framework (0 = no verbosity)
+                 MCA plm: parameter "plm_rsh_num_concurrent" (current value: <128>, data source: default value)
+                          How many plm_rsh_agent instances to invoke concurrently (must be > 0)
+                 MCA plm: parameter "plm_rsh_force_rsh" (current value: <0>, data source: default value)
+                          Force the launcher to always use rsh
+                 MCA plm: parameter "plm_rsh_disable_qrsh" (current value: <0>, data source: default value)
+                          Disable the launcher to use qrsh when under the SGE parallel environment
+                 MCA plm: parameter "plm_rsh_daemonize_qrsh" (current value: <0>, data source: default value)
+                          Daemonize the orted under the SGE parallel environment
+                 MCA plm: parameter "plm_rsh_disable_llspawn" (current value: <0>, data source: default value)
+                          Disable the use of llspawn when under the LoadLeveler environment
+                 MCA plm: parameter "plm_rsh_daemonize_llspawn" (current value: <0>, data source: default value)
+                          Daemonize the orted when under the LoadLeveler environment
+                 MCA plm: parameter "plm_rsh_priority" (current value: <10>, data source: default value)
+                          Priority of the rsh plm component
+                 MCA plm: parameter "plm_rsh_delay" (current value: <1>, data source: default value)
+                          Delay (in seconds) between invocations of the remote agent, but only used when the "debug" MCA parameter is true, or the top-level MCA debugging is enabled (otherwise this value is ignored)
+                 MCA plm: parameter "plm_rsh_tree_spawn" (current value: <0>, data source: default value)
+                          If set to 1, launch via a tree-based topology
+                 MCA plm: parameter "plm_slurm_args" (current value: <none>, data source: default value)
+                          Custom arguments to srun
+                 MCA plm: parameter "plm_slurm_priority" (current value: <0>, data source: default value)
+               MCA filem: parameter "filem" (current value: <none>, data source: default value)
+                          Which Filem component to use (empty = auto-select)
+               MCA filem: parameter "filem_base_verbose" (current value: <0>, data source: default value)
+                          Verbosity level for the filem framework (0 = no verbosity)
+               MCA filem: parameter "filem_rsh_priority" (current value: <20>, data source: default value)
+                          Priority of the FILEM rsh component
+               MCA filem: parameter "filem_rsh_verbose" (current value: <0>, data source: default value)
+                          Verbose level for the FILEM rsh component
+               MCA filem: parameter "filem_rsh_rcp" (current value: <scp>, data source: default value)
+                          The rsh cp command for the FILEM rsh component
+               MCA filem: parameter "filem_rsh_cp" (current value: <cp>, data source: default value)
+                          The Unix cp command for the FILEM rsh component
+               MCA filem: parameter "filem_rsh_rsh" (current value: <ssh>, data source: default value)
+                          The remote shell command for the FILEM rsh component
+               MCA filem: parameter "filem_rsh_max_incomming" (current value: <10>, data source: default value)
+                          Maximum number of incomming connections (0 = any)
+               MCA filem: parameter "filem_rsh_max_outgoing" (current value: <10>, data source: default value)
+                          Maximum number of out going connections (0 = any)
+              MCA errmgr: parameter "errmgr" (current value: <none>, data source: default value)
+                          Default selection set of components for the errmgr framework (<none> means use all components that can be found)
+              MCA errmgr: parameter "errmgr_base_verbose" (current value: <0>, data source: default value)
+                          Verbosity level for the errmgr framework (0 = no verbosity)
+              MCA errmgr: parameter "errmgr_default_priority" (current value: <0>, data source: default value)
+                 MCA ess: parameter "ess" (current value: <none>, data source: default value)
+                          Default selection set of components for the ess framework (<none> means use all components that can be found)
+                 MCA ess: parameter "ess_base_verbose" (current value: <0>, data source: default value)
+                          Verbosity level for the ess framework (0 = no verbosity)
+                 MCA ess: parameter "ess_env_priority" (current value: <0>, data source: default value)
+                 MCA ess: parameter "ess_hnp_priority" (current value: <0>, data source: default value)
+                 MCA ess: parameter "ess_singleton_priority" (current value: <0>, data source: default value)
+                 MCA ess: parameter "ess_slave_priority" (current value: <0>, data source: default value)
+                 MCA ess: parameter "ess_slurm_priority" (current value: <0>, data source: default value)
+                 MCA ess: parameter "ess_slurmd_priority" (current value: <0>, data source: default value)
+                 MCA ess: parameter "ess_tool_priority" (current value: <0>, data source: default value)
+             MCA grpcomm: parameter "grpcomm" (current value: <none>, data source: default value)
+                          Default selection set of components for the grpcomm framework (<none> means use all components that can be found)
+             MCA grpcomm: parameter "grpcomm_base_verbose" (current value: <0>, data source: default value)
+                          Verbosity level for the grpcomm framework (0 = no verbosity)
+             MCA grpcomm: parameter "grpcomm_bad_priority" (current value: <0>, data source: default value)
+             MCA grpcomm: parameter "grpcomm_basic_priority" (current value: <0>, data source: default value)
+            MCA notifier: parameter "notifier_threshold_severity" (current value: <critical>, data source: default value)
+                          Report all events at or above this severity [default: critical]
+            MCA notifier: parameter "notifier" (current value: <none>, data source: default value)
+                          Default selection set of components for the notifier framework (<none> means use all components that can be found)
+            MCA notifier: parameter "notifier_base_verbose" (current value: <0>, data source: default value)
+                          Verbosity level for the notifier framework (0 = no verbosity)
+            MCA notifier: parameter "notifier_command_cmd" (current value: </sbin/initlog -f $s -n "Open MPI" -s "$S: $m (errorcode: $e)">, data source: default value)
+                          Command to execute, with substitution.  $s = integer severity; $S = string severity; $e = integer error code; $m = string message
+            MCA notifier: parameter "notifier_command_timeout" (current value: <30>, data source: default value)
+                          Timeout (in seconds) of the command
+            MCA notifier: parameter "notifier_command_priority" (current value: <10>, data source: default value)
+                          Priority of this component
+            MCA notifier: parameter "notifier_syslog_priority" (current value: <0>, data source: default value)

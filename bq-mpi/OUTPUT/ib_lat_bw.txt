@@ -1,0 +1,63 @@
+------------------------------------------------------------------
+                    Send Latency Test
+ Connection type : RC
+ Inline data is used up to 400 bytes message
+ Link type is IB 
+ local address: LID 0x371 QPN 0x740061 PSN 0xc068b9
+ remote address: LID 0x7b5 QPN 0x2c0061 PSN 0x98fed0
+ Mtu : 2048
+------------------------------------------------------------------
+ #bytes #iterations    t_min[usec]    t_max[usec]  t_typical[usec]
+ 2       1000          1.90           14.49        1.96   
+------------------------------------------------------------------
+------------------------------------------------------------------
+                    RDMA_Write Latency Test
+ Inline data is used up to 400 bytes message
+ Connection type : RC
+ Link type is IB 
+ local address: LID 0x371 QPN 0x780061 PSN 0xc538bd RKey 0x003b75 VAddr 0x00000017cec000
+ remote address: LID 0x7b5 QPN 0x300061 PSN 0xab5400 RKey 0xd8003b8e VAddr 0x00000003390000
+ Mtu : 2048
+------------------------------------------------------------------
+ #bytes #iterations    t_min[usec]    t_max[usec]  t_typical[usec]
+ 2       1000          1.80           23.38        1.83   
+------------------------------------------------------------------
+------------------------------------------------------------------
+                    RDMA_Read Latency Test
+ Connection type : RC
+ Link type is IB 
+ Number of outstanding reads is 16
+ local address: LID 0x371 QPN 0x7c0061 PSN 0x823533 OUT 0x10 RKey 0x8003b75 VAddr 0x0000001a2cc000
+ remote address: LID 0x7b5 QPN 0x340061 PSN 0xb84db3 OUT 0x10 RKey 0xe0003b8e VAddr 0x00000002e10000
+Mtu : 2048
+------------------------------------------------------------------
+ #bytes #iterations    t_min[usec]    t_max[usec]  t_typical[usec]
+ 2       1000          3.37           12.20        3.42   
+------------------------------------------------------------------
+------------------------------------------------------------------
+                    RDMA_Write Bidirectional BW Test
+ Number of qp's running 1
+ Connection type : RC
+ Each Qp will post up to 100 messages each time
+ Inline data is used up to 0 bytes message
+ Link type is IB 
+ local address: LID 0x371 QPN 0x100061 PSN 0x2b7aad RKey 0x30003b75 VAddr 0x002b3a998ce000
+ remote address: LID 0x7b5 QPN 0x480061 PSN 0xcdbb6a RKey 0x8003b8f VAddr 0x002b6af6dd6000
+ Mtu : 2048
+------------------------------------------------------------------
+ #bytes     #iterations    BW peak[MB/sec]    BW average[MB/sec]
+ 65536      5000           6243.54            6243.45
+------------------------------------------------------------------
+------------------------------------------------------------------
+                    RDMA_Read Bidirectional BW Test
+ Connection type : RC
+ Link type is IB 
+ Number of outstanding reads is 16
+ local address: LID 0x371 QPN 0x140061 PSN 0xe57560 OUT 0x10 RKey 0x38003b75 VAddr 0x002b86407c8000
+ remote address: LID 0x7b5 QPN 0x4c0061 PSN 0x92ec1d OUT 0x10 RKey 0x10003b8f VAddr 0x002b8cbe5ab000
+ Mtu : 2048
+------------------------------------------------------------------
+ #bytes     #iterations    BW peak[MB/sec]    BW average[MB/sec]
+ 65536      1000           6159.62            6157.31
+------------------------------------------------------------------
+

@@ -273,6 +273,12 @@ void IterateJacobi(int rank, int nprocs, int dim1, int dim2, int nitns){
    double cycles = clk.toc();
    if(rank==0){
      ofstream ofile("OUTPUT/Jacobi.txt", ios_base::app);
+     long posn = ofile.tellp();
+     if(posn <= 0){
+       ofile<<"set nitns = 100"<<endl;
+       ofile<<setw(15)<<"nprocs"<<setw(13)<<"dim1"<<
+       setw(14)<<"dim2"<<setw(20)<<"cycles/entry/itn"<<endl;
+     }
      ofile<<setw(15)<<nprocs<<setw(13)<<dim1<<
        setw(14)<<dim2<<setw(20)<<cycles/nitns/dim1/(dim2+2)<<endl;
      ofile.close();

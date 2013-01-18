@@ -1,0 +1,28 @@
+hca_id:	mlx4_0
+	transport:			InfiniBand (0)
+	fw_ver:				2.9.1000
+	node_guid:			0024:e890:97ff:83d8
+	sys_image_guid:			0024:e890:97ff:83db
+	vendor_id:			0x02c9
+	vendor_part_id:			26428
+	hw_ver:				0xB0
+	board_id:			DEL08F0120009
+	phys_port_cnt:			2
+		port:	1
+			state:			PORT_ACTIVE (4)
+			max_mtu:		2048 (4)
+			active_mtu:		2048 (4)
+			sm_lid:			1
+			port_lid:		1973
+			port_lmc:		0x00
+			link_layer:		IB
+
+		port:	2
+			state:			PORT_DOWN (1)
+			max_mtu:		2048 (4)
+			active_mtu:		2048 (4)
+			sm_lid:			0
+			port_lid:		0
+			port_lmc:		0x00
+			link_layer:		IB
+

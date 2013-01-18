@@ -332,8 +332,8 @@ int main(int argc, char **argv){
   int nprocs;
   mpi_initialize(rank, nprocs);
   //runtransposeA(rank, nprocs, 100, 50);
-  runtransposeB(rank, nprocs, 1017, 537);
-  //WriteOutput(rank, nprocs, argc, argv);
+  //runtransposeB(rank, nprocs, 1017, 537);
+  WriteOutput(rank, nprocs, argc, argv);
   ofilePP.close();
   MPI_Finalize();
 }

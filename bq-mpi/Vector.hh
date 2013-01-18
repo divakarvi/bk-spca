@@ -4,7 +4,6 @@
 #include <cmath>
 #include <iostream>
 #include <fstream>
-#include <mkl.h>
 
 using namespace std;
 const double PI = 3.1415926535897932384e+00;
