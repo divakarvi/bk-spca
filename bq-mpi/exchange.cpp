@@ -123,8 +123,13 @@ double Exchg::wait(){
   return cycles;
 }
 
+#undef CHK_RDMA_POLLING
+
 void time_nonblocking(int rank, int nprocs, int n, char *outputstring){
   int count = NUMREPEATS/n;
+#ifdef CHK_RDMA_POLLING
+  count = 10;
+#endif
   StatVector stats(count);
   double* sendbuf;
   double* recvbuf;
@@ -164,6 +169,9 @@ void time_blocking(int rank, int nprocs, int n, char *outputstring){
 
 void time_persistent(int rank, int nprocs, int n, char *outputstring){
   int count = NUMREPEATS/n;
+#ifdef CHK_RDMA_POLLING
+  count = 10;
+#endif
   StatVector stats(count);
   Exchg xchg(rank, nprocs, n);
   for(int i=0; i < n; i++)
@@ -216,9 +224,36 @@ void CreateOutput(int rank, int nprocs){
   }
 }
 
+#ifdef CHK_RDMA_POLLING
+//uncomment printfs (keyword DV) in
+// 1. ompi/mca/btl/openib/btl_openib_component.c
+// 2. ompi/mca/btl/openib/btl_openib.c
+void checkRDMApipeline(int rank, int nprocs){
+  int nlist[2] = {100, 1000*1000};
+  char ostring[200];
+  for(int i=0; i < 2; i++){
+    cout<<"n = "<<nlist[i]<<endl;
+    cout<<"begin nonblocking"<<endl;
+    time_nonblocking(rank, nprocs, nlist[i], ostring);
+    cout<<"end nonblocking"<<endl;
+    if(rank==0)
+      cout<<ostring<<endl;
+    cout<<"begin persistent"<<endl;
+    time_persistent(rank, nprocs, nlist[i], ostring);
+    cout<<"end persistent"<<endl;
+    if(rank==0)
+      cout<<ostring<<endl;
+  }
+}
+#endif
+
 int main(){
   int rank, nprocs;
   mpi_initialize(rank, nprocs);
+#ifdef CHK_RDMA_POLLING
+  checkRDMApipeline(rank, nprocs);
+#else
   CreateOutput(rank, nprocs);
+#endif
   MPI_Finalize();
 }

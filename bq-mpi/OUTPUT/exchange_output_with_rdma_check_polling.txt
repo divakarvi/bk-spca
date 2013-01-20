@@ -1,0 +1,184 @@
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+n = 100
+begin nonblocking
+n = 100
+begin nonblocking
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+end nonblocking
+1.00e+02 &         8441 &    2.581e+04 &    1.625e+07 &        0.062 
+begin persistent
+DV: registering memory 
+end nonblocking
+begin persistent
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+end persistent
+1.00e+02 &    1.562e+04 &    2.022e+04 &    4.437e+05 &       0.0791 
+n = 1000000
+begin nonblocking
+end persistent
+n = 1000000
+begin nonblocking
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: RDMA read 
+DV: RDMA read 
+DV: RDMA read 
+DV: RDMA read 
+DV: RDMA read 
+DV: RDMA read 
+DV: RDMA read 
+DV: RDMA read 
+DV: RDMA read 
+DV: RDMA read 
+DV: RDMA read 
+DV: RDMA read 
+DV: RDMA read 
+DV: RDMA read 
+DV: RDMA read 
+DV: RDMA read 
+DV: RDMA read 
+DV: RDMA read 
+DV: RDMA read 
+DV: RDMA read 
+end nonblocking
+1.00e+06 &    9.262e+06 &    9.327e+06 &    1.867e+07 &         1.72 
+begin persistent
+DV: registering memory 
+end nonblocking
+begin persistent
+DV: registering memory 
+DV: registering memory 
+DV: registering memory 
+DV: RDMA read 
+DV: RDMA read 
+DV: RDMA read 
+DV: RDMA read 
+DV: RDMA read 
+DV: RDMA read 
+DV: RDMA read 
+DV: RDMA read 
+DV: RDMA read 
+DV: RDMA read 
+DV: RDMA read 
+DV: RDMA read 
+DV: RDMA read 
+DV: RDMA read 
+DV: RDMA read 
+DV: RDMA read 
+DV: RDMA read 
+DV: RDMA read 
+DV: RDMA read 
+DV: RDMA read 
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+end persistent
+1.00e+06 &    9.176e+06 &    9.261e+06 &    1.241e+07 &         1.73 
+end persistent
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
+DV: deregistering memory
