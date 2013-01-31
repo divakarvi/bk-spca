@@ -228,6 +228,7 @@ void CreateOutput(int rank, int nprocs){
 //uncomment printfs (keyword DV) in
 // 1. ompi/mca/btl/openib/btl_openib_component.c
 // 2. ompi/mca/btl/openib/btl_openib.c
+// 3. ompi/mpi/init.c
 void checkRDMApipeline(int rank, int nprocs){
   int nlist[2] = {100, 1000*1000};
   char ostring[200];

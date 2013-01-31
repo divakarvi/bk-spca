@@ -6,7 +6,7 @@
 #include "TimeStamp.hh"
 #include "StatVector.hh"
 using namespace std;
-const double NUMREPEATS=5e8;
+const double NUMREPEATS=1e7;//5e8 (dbg)
 
 void mpi_initialize(int& rank, int& nprocs){
   MPI_Init(NULL,NULL);
@@ -107,7 +107,7 @@ double Cycle::wait(){
 void CreateOutput(int rank, int nprocs){
   ofstream ofile;
   if(rank==0){
-    ofile.open("OUTPUT/cycle.txt", ios_base::app);
+    ofile.open("OUTPUT/cycle_temp.txt", ios_base::app);//dbg
     char ostring[200];
     long int posn = ofile.tellp();
     if(posn<=0){

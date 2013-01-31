@@ -2,6 +2,7 @@
 #include <iomanip>
 #include <fstream>
 #include <mpi.h>
+#include <omp.h>
 #include <cstdlib>
 #include <cassert>
 #include "TimeStamp.hh"
@@ -12,8 +13,11 @@ double cycles_scopy;
 double cycles_mpi;
 double cycles_rcopy;
 char outstring_with_split[200];
-
 ofstream ofilePP;
+#undef OMPCPY
+#ifdef OMPCPY
+#define NTHREADS 10
+#endif
 
 void mpi_initialize(int& rank, int& nprocs){
   MPI_Init(NULL, NULL);
@@ -91,12 +95,28 @@ Transpose::~Transpose(){
     delete[] recvbuf;
 }
 
+#define B 50
 void transposewlda(double *in, int lda, 
 			   long nrows, long ncols,
 			   double *out){
+#ifdef OMPCPY
+#pragma omp parallel for			\
+  num_threads(NTHREADS)				\
+  default(none)					\
+  shared(in, lda, nrows, ncols, out)
+  for(int i=0; i < nrows; i+=B)
+    for(int j=0; j < ncols; j+=B){
+      int iib = (nrows-i < B)?nrows-i:B;
+      int jjb = (ncols-j < B)?ncols-j:B;
+      for(int ii=0; ii < iib;ii++)
+  	for(int jj=0; jj < jjb;jj++)
+  	  out[j+jj+(i+ii)*ncols] = in[i+ii+(j+jj)*lda];
+    }
+#else
   for(long i=0; i < nrows; i++)
     for(long j=0; j < ncols; j++)
       out[j+i*ncols] = in[i+j*lda];
+#endif
 }
 
 void Transpose::copyTOsendbuf(double *localMN){
@@ -147,9 +167,19 @@ void Transpose::wait(){
 }
 
 void copywlda(double *in, int nrows, int ncols, double *out, int lda){
+#ifdef OMPCPY
+#pragma omp parallel for			\
+  num_threads(NTHREADS)				\
+  default(none)					\
+  shared(in, nrows, ncols, out, lda, ofilePP)
+  for(long j=0; j < ncols; j++)
+    for(long i=0; i < nrows; i++)
+      out[i+j*lda] = in[i+j*nrows];
+#else
     for(long j=0; j < ncols; j++)
       for(long i=0; i < nrows; i++)
 	out[i+j*lda] = in[i+j*nrows];
+#endif
 }
 
 void Transpose::copyFROMrecvbuf(double *localNM){
@@ -265,6 +295,8 @@ time_transpose(int rank, int nprocs, long M, long N){
   int localn = transmn.getN(rank+1)-transmn.getN(rank);
   localMN=new double[M*localn];
   localNM=new double[localm*N];
+  transmn.transpose(localMN, localNM);//numa awareness
+  transnm.transpose(localNM, localMN);
   for(long i=0;i < M*localn; i++)
     localMN[i] = rand()*1.0/RAND_MAX-0.5;
   for(int i=0; i < count; i++){
@@ -299,7 +331,11 @@ time_transpose(int rank, int nprocs, long M, long N){
 void WriteOutput(int rank, int nprocs, int argc, char **argv){
   ofstream ofile;
   if(rank==0){
+#ifdef OMPCPY
+    ofile.open("OUTPUT/transposex.txt", ios_base::app);
+#else
     ofile.open("OUTPUT/transpose.txt", ios_base::app);
+#endif
     long int posn = ofile.tellp();
     if(posn<=0)
       ofile<<setw(8)<<"nprocs"
@@ -331,8 +367,8 @@ int main(int argc, char **argv){
   int rank;
   int nprocs;
   mpi_initialize(rank, nprocs);
-  //runtransposeA(rank, nprocs, 100, 50);
-  //runtransposeB(rank, nprocs, 1017, 537);
+  //runtransposeA(rank, nprocs, 107, 56);
+  runtransposeB(rank, nprocs, 1017, 537);
   WriteOutput(rank, nprocs, argc, argv);
   ofilePP.close();
   MPI_Finalize();
