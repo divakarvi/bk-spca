@@ -14,7 +14,7 @@ double cycles_mpi;
 double cycles_rcopy;
 char outstring_with_split[200];
 ofstream ofilePP;
-#undef OMPCPY
+#define OMPCPY
 #ifdef OMPCPY
 #define NTHREADS 10
 #endif
@@ -73,11 +73,13 @@ Transpose::Transpose(int rank, int nprocs, long Mi, long Ni)
   long ncols = fstN[p+1]-fstN[p];
   if(ncols*M > 0)
     sendbuf = new double[ncols*M];
+    //MPI_Alloc_mem(8*ncols*M, MPI_INFO_NULL, (void *)(&sendbuf));
   else 
     sendbuf = NULL;
   long nrows = fstM[p+1]-fstM[p];
   if(nrows*N > 0)
     recvbuf = new double[nrows*N];
+    //MPI_Alloc_mem(8*nrows*N, MPI_INFO_NULL, (void *)(&recvbuf));
   else
     recvbuf = NULL;
   sreqlist = new MPI_Request[P];
@@ -91,8 +93,10 @@ Transpose::~Transpose(){
   delete[] rreqlist;
   if(fstN[p+1]*M>fstN[p]*M)
     delete[] sendbuf;
+  //MPI_Free_mem(sendbuf);
   if(fstM[p+1]*N>fstM[p]*N)
     delete[] recvbuf;
+  //MPI_Free_mem(recvbuf);
 }
 
 #define B 50

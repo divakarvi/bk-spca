@@ -36,8 +36,6 @@ double exchange_blocking(int rank, int nprocs,
     MPI_Send(sendbuf, bufsize, MPI_DOUBLE, 0, tag,
 	     MPI_COMM_WORLD);
   }
-  for(int i=0; i < bufsize; i++)
-    sendbuf[i] = recvbuf[i];
   return cycles;
 }
 
@@ -58,9 +56,6 @@ double exchange_nonblocking(int rank, int nprocs,
   MPI_Wait(&req1, &status); 
   MPI_Wait(&req2, &status);
   cycles = clk.toc();
- 
-  for(int i=0; i < bufsize; i++)
-    sendbuf[i] = recvbuf[i];
   return cycles;
 }
 
@@ -77,11 +72,14 @@ public:
   ~Exchg();
   void post();
   double wait();
-  double& operator()(int i){return sendbuf[i];};
+  int getbufsize(){return bufsize;}
+  double *getsbuf(){return sendbuf;}
+  double *getrbuf(){return recvbuf;}
 };
 
 
 Exchg::Exchg(int rank, int nprocs, int bsize){
+  assert(nprocs==2);
   bufsize = bsize;
   MPI_Alloc_mem(bufsize*8, MPI_INFO_NULL, (void *)(&sendbuf));
   MPI_Alloc_mem(bufsize*8, MPI_INFO_NULL, (void *)(&recvbuf));
@@ -118,9 +116,58 @@ double Exchg::wait(){
   MPI_Wait(&req1, &status);
   MPI_Wait(&req2, &status);
   double cycles = clk.toc();
-  for(int i=0; i < bufsize; i++)
-    sendbuf[i]=recvbuf[i];
   return cycles;
+}
+
+void runexchg(int rank, int nprocs){
+  const int bufsize = 100;
+  double sendbuf[bufsize];
+  double recvbuf[bufsize];
+  for(int i=0; i < bufsize; i++){
+    sendbuf[i] = (rank+1)*100;
+    recvbuf[i] = -1;
+  }
+  if(rank==0){
+    for(int i=0; i < bufsize; i+=10)
+      cout<<sendbuf[i]<<endl;
+    cout<<endl<<endl;
+  }
+  for(int i=0; i < 11; i++){
+    exchange_blocking(rank, nprocs, sendbuf, recvbuf, bufsize);
+    for(int j=0; j < bufsize; j++)
+      sendbuf[j] = recvbuf[j];
+  }
+  if(rank==0){
+    for(int i=0; i < bufsize; i+=10)
+      cout<<sendbuf[i]<<endl;
+    cout<<endl<<endl;
+  }
+  for(int i=0; i < 11; i++){
+    exchange_nonblocking(rank, nprocs, sendbuf, recvbuf, bufsize);
+    for(int j=0; j < bufsize; j++)
+      sendbuf[j] = recvbuf[j];
+  }
+  if(rank==0){
+    for(int i=0; i < bufsize; i+=10)
+      cout<<sendbuf[i]<<endl;
+    cout<<endl<<endl;
+  }
+  Exchg exchg(rank, nprocs, bufsize);
+  double *sbuf = exchg.getsbuf();
+  double *rbuf = exchg.getrbuf();
+  for(int i=0; i < bufsize; i++)
+    sbuf[i] = sendbuf[i];
+  for(int i=0; i < 11; i++){
+    exchg.post();
+    exchg.wait();
+    for(int j=0; j < bufsize; j++)
+      sbuf[j] = rbuf[j];
+  }
+  if(rank==0){
+    for(int i=0; i < bufsize; i+=10)
+      cout<<sbuf[i]<<endl;
+    cout<<endl<<endl;
+  }
 }
 
 #undef CHK_RDMA_POLLING
@@ -174,8 +221,9 @@ void time_persistent(int rank, int nprocs, int n, char *outputstring){
 #endif
   StatVector stats(count);
   Exchg xchg(rank, nprocs, n);
+  double *sbuf = xchg.getsbuf();
   for(int i=0; i < n; i++)
-    xchg(i) = (rank+1)*10;
+    sbuf[i] = (rank+1)*10;
   double cycles;
   for(int i=0; i < count; i++){
     xchg.post();
@@ -187,6 +235,7 @@ void time_persistent(int rank, int nprocs, int n, char *outputstring){
 	  stats.min(), stats.median(), stats.max(), 16.0*n/stats.median());
 }
 
+#ifndef CHK_RDMA_POLLING
 void CreateOutput(int rank, int nprocs){
   int nlist[7] = {100, 1000, 10000, 100000, 1000*1000, 1000*1000*10,
 		 1000*1000*100};
@@ -223,8 +272,7 @@ void CreateOutput(int rank, int nprocs){
     ofile_persist.close();
   }
 }
-
-#ifdef CHK_RDMA_POLLING
+#else
 //uncomment printfs (keyword DV) in
 // 1. ompi/mca/btl/openib/btl_openib_component.c
 // 2. ompi/mca/btl/openib/btl_openib.c
@@ -251,10 +299,11 @@ void checkRDMApipeline(int rank, int nprocs){
 int main(){
   int rank, nprocs;
   mpi_initialize(rank, nprocs);
-#ifdef CHK_RDMA_POLLING
-  checkRDMApipeline(rank, nprocs);
-#else
+#ifndef CHK_RDMA_POLLING
+//runexchg(rank, nprocs);
   CreateOutput(rank, nprocs);
+#else
+  checkRDMApipeline(rank, nprocs);
 #endif
   MPI_Finalize();
 }

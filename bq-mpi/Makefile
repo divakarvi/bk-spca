@@ -51,6 +51,18 @@ collective: collective.exe
 collective.o: collective.cpp
 collective.exe: collective.o
 
+diskio-serial: diskio-serial.exe
+	echo 'diskio-serial done'
+diskio-serial.o: diskio-serial.cpp
+	icpc -O3 -c $<
+diskio-serial.exe: diskio-serial.o
+	icpc -o $@ $^
+
+diskio-mpi: diskio-mpi.exe
+	echo 'diskio-mpi done'
+diskio-mpi.o: diskio-mpi.cpp
+diskio-mpi.exe: diskio-mpi.o
+
 ##########
 clean:
 	rm *.exe; rm *.o;

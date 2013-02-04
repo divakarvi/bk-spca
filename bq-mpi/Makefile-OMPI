@@ -51,6 +51,11 @@ collective: collective.exe
 collective.o: collective.cpp
 collective.exe: collective.o
 
+diskio: diskio.exe
+	echo 'diskio done'
+diskio.o: diskio.cpp
+diskio.exe: diskio.o
+
 ##########
 clean:
 	rm *.exe; rm *.o;
