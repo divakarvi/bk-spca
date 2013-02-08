@@ -19,7 +19,6 @@ double exchange_blocking(int rank, int nprocs,
 			 int bufsize){
   TimeStamp clk;
   int tag = 0;
-  MPI_Status status;
   double cycles=0;
   if(rank==0){
     clk.tic();
@@ -27,12 +26,12 @@ double exchange_blocking(int rank, int nprocs,
 	     MPI_COMM_WORLD);
     MPI_Recv(recvbuf, bufsize, MPI_DOUBLE, nprocs-1, tag, 
 	     MPI_COMM_WORLD,
-	     &status);
+	     MPI_STATUS_IGNORE);
     cycles = clk.toc();
   }
   else if(rank==nprocs-1){
     MPI_Recv(recvbuf, bufsize, MPI_DOUBLE, 0, tag, 
-	     MPI_COMM_WORLD, &status);
+	     MPI_COMM_WORLD, MPI_STATUS_IGNORE);
     MPI_Send(sendbuf, bufsize, MPI_DOUBLE, 0, tag,
 	     MPI_COMM_WORLD);
   }
@@ -44,7 +43,6 @@ double exchange_nonblocking(int rank, int nprocs,
 			    int bufsize){
   TimeStamp clk;
   int tag = 0;
-  MPI_Status status;
   double cycles=0;
   MPI_Request req1, req2;
   int destn = (rank==0)?nprocs-1:0;
@@ -53,8 +51,8 @@ double exchange_nonblocking(int rank, int nprocs,
 	    MPI_COMM_WORLD, &req1);
   MPI_Irecv(recvbuf, bufsize, MPI_DOUBLE, destn, tag, 
 	    MPI_COMM_WORLD, &req2);
-  MPI_Wait(&req1, &status); 
-  MPI_Wait(&req2, &status);
+  MPI_Wait(&req1, MPI_STATUS_IGNORE); 
+  MPI_Wait(&req2, MPI_STATUS_IGNORE);
   cycles = clk.toc();
   return cycles;
 }
@@ -112,9 +110,8 @@ void Exchg::post(){
 }
 
 double Exchg::wait(){
-  MPI_Status status;
-  MPI_Wait(&req1, &status);
-  MPI_Wait(&req2, &status);
+  MPI_Wait(&req1, MPI_STATUS_IGNORE);
+  MPI_Wait(&req2, MPI_STATUS_IGNORE);
   double cycles = clk.toc();
   return cycles;
 }
@@ -244,14 +241,14 @@ void CreateOutput(int rank, int nprocs){
   sprintf(banner, 
   "     n            min         median            max            b/w(16.0*n/cycles)");
   if(rank==0){
-    ofile_blk.open("OUTPUT/exchange_blocking.txt");
-    ofile_blk<<"number of trials = "<<NUMREPEATS<<"/n"<<endl;
+    ofile_blk.open("OUTPUT/exchange_blocking.txt", ios::app);
+    ofile_blk<<"(mvapich2) number of trials = "<<NUMREPEATS<<"/n"<<endl;
     ofile_blk<<banner<<endl;
-    ofile_nonblk.open("OUTPUT/exchange_nonblocking.txt");
-    ofile_nonblk<<"number of trials = "<<NUMREPEATS<<"/n"<<endl;
+    ofile_nonblk.open("OUTPUT/exchange_nonblocking.txt",ios::app);
+    ofile_nonblk<<"(mvapich2) number of trials = "<<NUMREPEATS<<"/n"<<endl;
     ofile_nonblk<<banner<<endl;
-    ofile_persist.open("OUTPUT/exchange_persistent.txt");
-    ofile_persist<<"number of trials = "<<NUMREPEATS<<"/n"<<endl;
+    ofile_persist.open("OUTPUT/exchange_persistent.txt",ios::app);
+    ofile_persist<<"(mvapich2) number of trials = "<<NUMREPEATS<<"/n"<<endl;
     ofile_persist<<banner<<endl;
   }
   char ostring[200];

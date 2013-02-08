@@ -116,11 +116,10 @@ void Jacobi2D::postsendrecv(){
 }
 
 void Jacobi2D::wait(){
-  MPI_Status status;
-  MPI_Wait(&sreq1, &status);
-  MPI_Wait(&sreq2, &status);
-  MPI_Wait(&rreq2, &status);
-  MPI_Wait(&rreq1, &status);
+  MPI_Wait(&sreq1, MPI_STATUS_IGNORE);
+  MPI_Wait(&sreq2, MPI_STATUS_IGNORE);
+  MPI_Wait(&rreq2, MPI_STATUS_IGNORE);
+  MPI_Wait(&rreq1, MPI_STATUS_IGNORE);
 }
 
 void Jacobi2D::updateinterior(int col1, int col2){

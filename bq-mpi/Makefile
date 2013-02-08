@@ -65,6 +65,6 @@ diskio-mpi.exe: diskio-mpi.o
 
 ##########
 clean:
-	rm *.exe; rm *.o;
+	rm *.exe; rm *.o; rm core*;
 cleanx:
-	rm pbs*.*; rm outP*.txt;
+	rm pbs*.*; rm outP*.txt; rm core*;

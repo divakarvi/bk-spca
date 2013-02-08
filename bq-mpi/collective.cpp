@@ -66,7 +66,7 @@ void CreateOutputBcast(int rank, int nprocs){
     double bwidth = 8.0*n/cycles;
     sprintf(ostring, "%6d & %12.2g & %12.3g", nprocs, (double)n, bwidth);
     if(rank == 0)
-      ofile<<ostring<<endl;
+      ofile<<"mvapich2:"<<endl<<ostring<<endl;
   }  
   if(rank==0)
     ofile.close();
@@ -101,9 +101,8 @@ double isend_all2all(int rank, int nprocs,
 	      MPI_COMM_WORLD, rreqlist+i);
   }
   for(int i=0; i < nprocs; i++){
-    MPI_Status status;
-    MPI_Wait(sreqlist+i, &status);
-    MPI_Wait(rreqlist+i, &status);
+    MPI_Wait(sreqlist+i, MPI_STATUS_IGNORE);
+    MPI_Wait(rreqlist+i, MPI_STATUS_IGNORE);
   }
   double cycles = clk.toc();
   return cycles;
@@ -205,7 +204,7 @@ void CreateOutputScatter(int rank, int nprocs){
     sprintf(ostring, "%6d & %12.2g & %12.3g &%12.3g", 
 	    nprocs, (double)n, bw_scatter, bw_isend);
     if(rank == 0)
-      ofile<<ostring<<endl;
+      ofile<<"mvapich2:"<<endl<<ostring<<endl;
   }
   if(rank==0)
     ofile.close();

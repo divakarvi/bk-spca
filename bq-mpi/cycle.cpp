@@ -91,11 +91,10 @@ void Cycle::post(){
 }
 
 double Cycle::wait(){
-  MPI_Status status;
-  MPI_Wait(&sreq1, &status);
-  MPI_Wait(&sreq2, &status);
-  MPI_Wait(&rreq1, &status);
-  MPI_Wait(&rreq2, &status);
+  MPI_Wait(&sreq1, MPI_STATUS_IGNORE);
+  MPI_Wait(&sreq2, MPI_STATUS_IGNORE);
+  MPI_Wait(&rreq1, MPI_STATUS_IGNORE);
+  MPI_Wait(&rreq2, MPI_STATUS_IGNORE);
   double ticks = clk.toc();
   for(int i=0; i < bufsize; i++){
     sendbufr[i]=recvbufl[i];

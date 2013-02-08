@@ -73,13 +73,13 @@ Transpose::Transpose(int rank, int nprocs, long Mi, long Ni)
   long ncols = fstN[p+1]-fstN[p];
   if(ncols*M > 0)
     sendbuf = new double[ncols*M];
-    //MPI_Alloc_mem(8*ncols*M, MPI_INFO_NULL, (void *)(&sendbuf));
+  //MPI_Alloc_mem(8*ncols*M, MPI_INFO_NULL, (void *)(&sendbuf));
   else 
     sendbuf = NULL;
   long nrows = fstM[p+1]-fstM[p];
   if(nrows*N > 0)
     recvbuf = new double[nrows*N];
-    //MPI_Alloc_mem(8*nrows*N, MPI_INFO_NULL, (void *)(&recvbuf));
+  //MPI_Alloc_mem(8*nrows*N, MPI_INFO_NULL, (void *)(&recvbuf));
   else
     recvbuf = NULL;
   sreqlist = new MPI_Request[P];
@@ -163,11 +163,10 @@ void Transpose::postrecv(){
 }
 
 void Transpose::wait(){
-  MPI_Status status;
   for(long q=0; q < P; q++)
-    MPI_Wait(sreqlist+q, &status);
+    MPI_Wait(sreqlist+q, MPI_STATUS_IGNORE);
   for(long q=0; q < P; q++)
-    MPI_Wait(rreqlist+q, &status);
+    MPI_Wait(rreqlist+q, MPI_STATUS_IGNORE);
 }
 
 void copywlda(double *in, int nrows, int ncols, double *out, int lda){
@@ -175,7 +174,7 @@ void copywlda(double *in, int nrows, int ncols, double *out, int lda){
 #pragma omp parallel for			\
   num_threads(NTHREADS)				\
   default(none)					\
-  shared(in, nrows, ncols, out, lda, ofilePP)
+  shared(in, nrows, ncols, out, lda)
   for(long j=0; j < ncols; j++)
     for(long i=0; i < nrows; i++)
       out[i+j*lda] = in[i+j*nrows];
@@ -350,6 +349,8 @@ void WriteOutput(int rank, int nprocs, int argc, char **argv){
 	   <<setw(8)<<"mpi%"
 	   <<setw(8)<<"rcopy%"<<endl;
   }
+  if(argc<3)
+    return;
   int M = atoi(*++argv);
   int N = atoi(*++argv);
   N = N*nprocs;
@@ -372,8 +373,8 @@ int main(int argc, char **argv){
   int nprocs;
   mpi_initialize(rank, nprocs);
   //runtransposeA(rank, nprocs, 107, 56);
+  //ofilePP.close();
   runtransposeB(rank, nprocs, 1017, 537);
   WriteOutput(rank, nprocs, argc, argv);
-  ofilePP.close();
   MPI_Finalize();
 }
