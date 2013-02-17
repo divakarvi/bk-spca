@@ -26,18 +26,18 @@ private:
   int lrank;
   int rrank;
   MPI_Request sreq1, sreq2, rreq1, rreq2;
+  void leftrightinit();
+  void initialize(int col1, int col2);
+  void updateinterior(int col1, int col2);
+  void copy(int col1, int col2);
 public:
   Jacobi2D(int d1, int d2, int rank, int nprocs);
   ~Jacobi2D();
-  void leftrightinit();
-  void initialize(int col1, int col2);
   void initializepp();
   void postsendrecv();
-  void updateinterior(int col1, int col2);
   void updateinteriorpp();
   void wait();
   void updateboundary();
-  void copy(int col1, int col2);
   void copypp();
   double& operator()(int i, int j){return a[i+j*dim1];}
   double& l(int i){return left[i];}

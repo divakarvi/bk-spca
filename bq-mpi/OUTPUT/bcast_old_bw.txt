@@ -1,0 +1,56 @@
+num of trials = 5e+08/bufsize
+nprocs    &     bufsize      &      b/w
+    10 &        1e+05 &         0.42
+    10 &        1e+06 &        0.609
+    10 &        1e+08 &        0.607
+    20 &        1e+05 &        0.626
+    20 &        1e+06 &         0.43
+    20 &        1e+08 &        0.471
+mvapich2:
+    10 &        1e+05 &        0.319
+mvapich2:
+    10 &        1e+06 &        0.448
+mvapich2:
+    10 &        1e+08 &        0.437
+mpi_bcast:
+    10 &        1e+05 &         0.47
+loop_bcast
+    10 &        1e+05 &        0.109
+mpi_bcast:
+    10 &        1e+06 &        0.694
+loop_bcast
+    10 &        1e+06 &        0.109
+mpi_bcast:
+    10 &        1e+08 &        0.688
+loop_bcast
+    10 &        1e+08 &        0.109
+mpi_bcast:
+    20 &        1e+05 &        0.793
+loop_bcast
+    20 &        1e+05 &       0.0518
+mpi_bcast:
+    20 &        1e+06 &        0.458
+loop_bcast
+    20 &        1e+06 &       0.0518
+mpi_bcast:
+    20 &        1e+08 &        0.514
+loop_bcast
+    20 &        1e+08 &       0.0517
+mpi_bcast:
+    10 &        1e+05 &        0.461
+mpi_bcast:
+    10 &        1e+06 &        0.705
+mpi_bcast:
+    10 &        1e+08 &        0.696
+mpi_bcast:
+    20 &        1e+05 &        0.788
+mpi_bcast:
+    20 &        1e+06 &        0.365
+mpi_bcast:
+    20 &        1e+08 &        0.378
+mpi_bcast:
+    50 &        1e+05 &        0.782
+mpi_bcast:
+    50 &        1e+06 &        0.768
+mpi_bcast:
+    50 &        1e+08 &        0.341

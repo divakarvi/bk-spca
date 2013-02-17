@@ -1,5 +1,0 @@
-num of trials = 3e+10/dim1*dim1
-nprocs         dim1          dim2          cycles/entry/itn
-              4       100000         12000             8.26044
-             20       100000         12000             8.05157
-            100       100000         12000             7.90596
