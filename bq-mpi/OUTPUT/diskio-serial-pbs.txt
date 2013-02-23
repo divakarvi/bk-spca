@@ -1,0 +1,17 @@
+avgv/diff = 0.0162509/0
+avgv/diff = 5.77805e-05/0
+avgv/diff = 5.9561e-05/0
+avgv/diff = 0.0086967/0
+avgv/diff = -0.000422128/0
+avgv/diff = 2.02907e-05/0
+total 8042008
+-rw-r--r-- 1 tg456871 G-80640 8000000000 Feb 17 16:18 direct.dat
+-rw-r--r-- 1 tg456871 G-80640  234999599 Feb 17 16:18 easy.dat
+/scratch/00013/tg456871/single-core/direct.dat
+lmm_stripe_count:   2
+lmm_stripe_size:    1048576
+lmm_stripe_offset:  70
+	obdidx		 objid		objid		 group
+	    70	      44278108	    0x2a3a15c	             0
+	    89	      44513638	    0x2a73966	             0
+
