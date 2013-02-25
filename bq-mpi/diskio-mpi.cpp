@@ -215,12 +215,15 @@ void CreateOutputRW(int rank, int nprocs, int flag=0){
   for(int i=0; i < 3; i++)//local to totalsize
     nlist[i] *= nprocs;
   ofstream ofile;
-  ofile.open("OUTPUT/diskio-mpi.txt",ios_base::app);
-  long posn = ofile.tellp();
-  if(posn <= 0 && rank==0){
-    char s[200];
-    sprintf(s, " nprocs\tstripes\tlocaln\t\twrite bw\tread bw (GB/s) (med/hgh)");
-    ofile<<s<<endl;
+   
+  if(rank==0){
+    ofile.open("OUTPUT/diskio-mpi.txt",ios_base::app);
+    long posn = ofile.tellp();
+    if(posn<=0){ 
+      char s[200];
+      sprintf(s, " nprocs\tstripes\tlocaln\t\twrite bw\tread bw (GB/s) (med/hgh)");
+      ofile<<s<<endl;
+    }
   }
   MPI_Barrier(MPI_COMM_WORLD);
   struct BW_RW bw;
@@ -232,9 +235,12 @@ void CreateOutputRW(int rank, int nprocs, int flag=0){
       if(flag==0)
 	stripecount = time_lustre(rank, nprocs, nlist[i], bw);
       else
-	stripecount = time_lustre(rank, nprocs, nlist[i], bw, 20);
+	stripecount = time_lustre(rank, nprocs, nlist[i], bw, 10);
       rstat.insert(bw.bw_read);
       wstat.insert(bw.bw_write);
+      if(rank==0){//dbg
+	cout<<bw.bw_read<<" "<<bw.bw_write<<endl;
+      }
     }
     if(rank==0){
       char s[200];
@@ -245,7 +251,8 @@ void CreateOutputRW(int rank, int nprocs, int flag=0){
       ofile<<s<<endl;
     }
   }
-  ofile.close();
+  if(rank==0)
+    ofile.close();
   if(rank==0){
     char cmd[200];
     sprintf(cmd, "ls -l %s/"DIODIRNAME, getenv("SCRATCH"));
@@ -294,6 +301,7 @@ int main(){
   //runwrite(1000l*1000*1000*20);
   int rank, nprocs;
   mpi_initialize(rank, nprocs);
-  CreateOutputRW(rank, nprocs);
+  int flag=1;
+  CreateOutputRW(rank, nprocs,flag);
   MPI_Finalize();
 }

@@ -2,7 +2,9 @@
 #include <iomanip>
 #include <iostream>
 #include <cstdlib>
+#include <cstdio>
 #include "TimeStamp.hh"
+#include "StatVector.hh"
 using namespace std;
 
 
@@ -125,8 +127,113 @@ void CreateOutputRW(){
   system(cmd);
 }
 
+void latency2disk_init(const char *dir, long fszby8, int nfiles){
+  double *list = new double[fszby8];
+  for(long i=0; i < fszby8; i++)
+    list[i] = i;
+  for(int i=0; i < nfiles;i++){
+    char fname[200];
+    sprintf(fname, "%s/file%d.dat",dir,i);
+    FILE *fptr;
+    fptr = fopen(fname, "w");
+    fwrite((void *)list, sizeof(double), fszby8, fptr);
+    fclose(fptr);
+  }
+  delete[] list;
+}
 
+struct disk_latency{
+  double fopen_cycles;
+  double fseek_cycles;
+  double fread_cycles;
+  double fclose_cycles;
+};
+
+double latency2disk(const char *dir, int filenum, long posn,
+		    struct disk_latency& lat){
+  char fname[200];
+  sprintf(fname, "%s/file%d.dat", dir, filenum);
+  TimeStamp clk;
+  FILE *fptr;
+  clk.tic();
+  fptr = fopen(fname,"r");
+  lat.fopen_cycles = clk.toc();
+
+  clk.tic();
+  fseek(fptr,8l*posn,SEEK_SET);
+  lat.fseek_cycles=clk.toc();
+  
+  double x;
+  clk.tic();
+  fread(&x,sizeof(double),1,fptr);
+  lat.fread_cycles=clk.toc();
+  
+  clk.tic();
+  fclose(fptr);
+  lat.fclose_cycles = clk.toc();
+  return x;
+}
+
+void latency2disk_finalize(const char *dir, int nfiles){
+  for(int i=0; i < nfiles;i++){
+    char cmd[200];
+    sprintf(cmd, "rm %s/file%d.dat",dir,i);
+    system(cmd);
+  }
+}
+
+void CreateOutputLatency(){
+  const double CPUGHZ=3.33;
+  int nfiles[3]={100,10,1}; 
+  long fszby8[3]={1000l*1000,1000l*1000*10,1000l*1000*1000};
+  
+  char dir[200];
+  sprintf(dir, "%s/diskio-latency", getenv("SCRATCH"));
+  char cmd[200];
+  sprintf(cmd, "mkdir %s", dir);
+  system(cmd);
+  
+  ofstream ofile;
+  ofile.open("OUTPUT/diskio-latency.txt", ios_base::app);
+  long posn = ofile.tellp();
+  if(posn<=0){
+    ofile<<"latency in milliseconds"<<endl;
+    char s[200];
+    sprintf(s, "size\tnfiles\topen\t\tseek\t\tread\t\tclose");
+    ofile<<s<<endl;
+  }
+  double error=0;
+  for(int i=0; i < 3; i++){
+    latency2disk_init(dir, fszby8[i], nfiles[i]);
+    int ntrials = 1000;
+    StatVector stato(ntrials), stats(ntrials), statr(ntrials),
+      statc(ntrials);
+    struct disk_latency dklat;
+    for(int j=0; j < ntrials; j++){
+      int filenum = rand()%nfiles[i];
+      long posn = (rand()*1l*RAND_MAX+rand())%(fszby8[i]);
+      double x = latency2disk(dir, filenum, posn, dklat);
+      error += fabs(x-posn);
+      stato.insert(dklat.fopen_cycles);
+      stats.insert(dklat.fseek_cycles);
+      statr.insert(dklat.fread_cycles);
+      statc.insert(dklat.fclose_cycles);
+    }
+    latency2disk_finalize(dir, nfiles[i]);
+    char s[200];
+    sprintf(s, "%.1e\t%.1e\t%.2e\t%.2e\t%.2e\t%.2e",
+	    fszby8[i]*8.0, nfiles[i]*1.0, 
+	    stato.median()/CPUGHZ*1e-6, 
+	    stats.median()/CPUGHZ*1e-6,
+	    statr.median()/CPUGHZ*1e-6,
+	    statc.median()/CPUGHZ*1e-6);
+    ofile<<s<<endl;
+  }
+  ofile.close();
+  cout<<"error = "<<error<<endl;
+}
 
 int main(){
-  CreateOutputRW();
+  //CreateOutputRW();
+  CreateOutputLatency();
 }
