@@ -63,6 +63,13 @@ diskio-mpi: diskio-mpi.exe
 diskio-mpi.o: diskio-mpi.cpp
 diskio-mpi.exe: diskio-mpi.o
 
+sockets: sockets.exe
+	echo 'sockets done'
+sockets.o: sockets.cpp	
+	g++ -c -O3 $<
+sockets.exe: sockets.o
+	g++ -o $@ $^
+
 ##########
 clean:
 	rm *.exe; rm *.o; rm core*;
