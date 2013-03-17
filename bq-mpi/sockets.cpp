@@ -8,6 +8,10 @@
 #include <cstdlib>
 #include <cstring>
 #include <iostream>
+#include <fstream>
+#include <cassert>
+#include "TimeStamp.hh"
+#include "StatVector.hh"
 using namespace std;
 const char *PORTNUM="28537";
 const int MAXLEN = 1000*1000*10;
@@ -62,6 +66,7 @@ void run_ipaddr(){
   char myname[200];
   gethostname(myname, 200);
   print_ipaddr(myname);
+  print_ipaddr("lonestar.tacc.utexas.edu");
   print_ipaddr("www.sagemath.org");
   print_ipaddr("www.ft.com");
   print_ipaddr("www.economist.com");
@@ -95,41 +100,102 @@ int connect2server(const char *server, const char *portnum){
   return sock2server;
 }
 
-int partialsum_client(int sock2server, 
-		      double *series, int n,
-		      int packetsize,
-		      double *psum){
-  int status = 0;
-  int count = n/packetsize;
-  if(n%packetsize>0)
-    count++;
-  for(int i=0; i < count; i++){
-    if(i==count-1)
-      packetsize = n-(count-1)*packetsize;
-    int ns=send(sock2server, series, 8*packetsize, 0);
-    int nr=recv(sock2server, psum, 8*packetsize, 0);
-    series += packetsize;
-    psum += packetsize;
-    if((ns != 8*packetsize)||(nr != ns)){
-      status = -1;
-      break;
-    }
+int block_send(int sockfd, void *buf, int len){
+  int total_sent = 0;
+  int num_sends=0;
+  while(total_sent < len){
+    int ns = send(sockfd, buf, len-total_sent, 0);
+    buf = (char *)buf+ns;
+    total_sent += ns;
+    num_sends += 1;
   }
-  close(sock2server);
-  return status;
+  return num_sends;
 }
 
-void client(){
-  const char* server = "login1.ls4.tacc.utexas.edu";
+int block_recv(int sockfd, void *buf, int len){
+  int total_recv = 0;
+  int num_recv = 0;
+  while(total_recv < len){
+    int nr = recv(sockfd, buf, len-total_recv, 0);
+    if(nr==0){
+      num_recv=0;
+      break;
+    }
+    buf = (char *)buf+nr;
+    total_recv += nr;
+    num_recv += 1;
+  }
+  return num_recv;
+}
+
+void partialsum_client(int sock2server, 
+		       double *series, int n,
+		       int blocksize,
+		       double *psum,
+		       StatVector& stat_ns,
+		       StatVector& stat_nr,
+		       StatVector& stat_ts,
+		       StatVector& stat_tr){
+  assert(n%blocksize==0);
+  int count = n/blocksize;
+  double cycles;
+  TimeStamp clk;
+  for(int i=0; i < count; i++){
+    clk.tic();
+    int nsend=block_send(sock2server, series, 8*blocksize);
+    cycles = clk.toc();
+    stat_ns.insert((double)nsend);
+    stat_ts.insert((double)cycles);
+    clk.tic();
+    int nrecv=block_recv(sock2server, psum, 8*blocksize);
+    cycles = clk.toc();
+    stat_nr.insert((double)nrecv);
+    stat_tr.insert((double)cycles);
+    series += blocksize;
+    psum += blocksize;
+  }
+  close(sock2server);
+}
+
+#define CPUGHZ 1
+
+void client(const char* server, int blocksize){
+  int n;
+  if(blocksize < 1000)
+    n = 1000*blocksize;
+  else
+    n=1000*1000;
+  n = (n/blocksize)*blocksize;
   int sock2server = connect2server(server, PORTNUM);
-  const int n = 100;
-  double series[n];
+  double *series= new double[n];
   for(int i=0; i < n; i++)
-    series[i] = i;
-  double psum[n];
-  partialsum_client(sock2server, series, n, n, psum);
-  for(int i=0; i < n; i++)
-    cout<<psum[i]<<endl;
+    series[i] = (i%2==0)?4.0/(2*i+1):-4.0/(2*i+1);
+  double *psum=new double[n];
+  int count = n/blocksize;
+  StatVector stat_ns(count), stat_nr(count),
+    stat_ts(count), stat_tr(count);
+  TimeStamp clk;
+  clk.tic();
+  partialsum_client(sock2server, series, n, blocksize, psum,
+		    stat_ns, stat_nr, stat_ts, stat_tr);
+  double cycles = clk.toc();
+
+  system("uname -n >> OUTPUT/tcpip.txt");
+  ofstream ofile("OUTPUT/tcpip.txt", ios_base::app);
+  ofile<<"n = "<<n<<endl;
+  ofile<<"blksize = "<<blocksize<<endl;
+  ofile<<"pi = "<<psum[n-1]<<endl;
+  ofile<<"error = "<<3.141592653589793238462643383-psum[n-1]<<endl;
+  ofile<<"nsend = "<<stat_ns.median()<<endl;
+  ofile<<"nrecv = "<<stat_nr.median()<<endl;
+  ofile<<"send  = "<<stat_ts.median()/(1e9*CPUGHZ)*1e3<<" ms"<<endl;
+  ofile<<"recv  = "<<stat_tr.median()/(1e9*CPUGHZ)*1e3<<" ms"<<endl;
+  ofile<<"bandwidth = "<<16.0*n/cycles*1e9*CPUGHZ/1e3<<" kbps"<<endl;
+  for(int i=0; i < 70; i++)
+    ofile<<"-";
+  ofile<<endl;
+  delete[] series;
+  delete[] psum;
 }
 
 int bind2port(const char* portnum){
@@ -157,43 +223,39 @@ int connect2client(int sock2port){
   return sock2client;
 }
 
-void partialsum_server(int sock2client, 
-		       double *sendbuf, double *recvbuf){
-  
+void partialsum_server(int sock2client, int blocksize){
+  double *recvbuf = new double[blocksize];
+  double *sendbuf = new double[blocksize];
   double S=0;
   while(1){
-    int nr = recv(sock2client, recvbuf, 8*MAXLEN, 0);
-    if((nr%8>0)||(nr<=0))
+    int nrecv=block_recv(sock2client, recvbuf, 8*blocksize);
+    if(nrecv==0)
       break;
-    for(int i=0; i < nr/8; i++){
+    for(int i=0; i < blocksize; i++){
       S += recvbuf[i];
       sendbuf[i] = S;
     }
-    int ns = send(sock2client, sendbuf, nr, 0);
-    if(ns!=nr)
-      break;
+    block_send(sock2client, sendbuf, 8*blocksize);
   }
   close(sock2client);
+  delete[] recvbuf;
+  delete[] sendbuf;
 }
 
-void server(){
-  double *sendbuf = new double[MAXLEN];
-  double *recvbuf = new double[MAXLEN];
+void server(int blocksize){
   int sock2port= bind2port(PORTNUM);
   while(1){
     int sock2client = connect2client(sock2port);
-    partialsum_server(sock2client, sendbuf, recvbuf); 
+    partialsum_server(sock2client, blocksize); 
   }
-
-  delete[] sendbuf;
-  delete[] recvbuf;
 }
 
-int main(){
+int main(int argc, char **argv){
+  const int BLKSZ=1000*1000;
 #ifdef SERVER
-  server();
+  server(BLKSZ);
 #elif CLIENT
-  client();
+  client(argv[1],BLKSZ);
 #else
   run_ipaddr();
 #endif
