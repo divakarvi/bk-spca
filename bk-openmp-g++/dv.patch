@@ -1,0 +1,133 @@
+diff -uNrp fc17-original/arch/x86/kernel/process.c fc17-dv/arch/x86/kernel/process.c
+--- fc17-original/arch/x86/kernel/process.c	2012-12-17 14:22:18.527876960 -0500
++++ fc17-dv/arch/x86/kernel/process.c	2012-12-27 14:08:29.338683240 -0500
+@@ -293,6 +293,9 @@ long
+ sys_clone(unsigned long clone_flags, unsigned long newsp,
+ 	  void __user *parent_tid, void __user *child_tid, struct pt_regs *regs)
+ {
++	if((100<=dv_print_flag)&&(dv_print_flag<200))
++		printk(KERN_ALERT "cloning \n");
++		
+ 	if (!newsp)
+ 		newsp = regs->sp;
+ 	return do_fork(clone_flags, newsp, regs, 0, parent_tid, child_tid);
+diff -uNrp fc17-original/arch/x86/syscalls/syscall_64.tbl fc17-dv/arch/x86/syscalls/syscall_64.tbl
+--- fc17-original/arch/x86/syscalls/syscall_64.tbl	2012-12-17 14:22:18.521876700 -0500
++++ fc17-dv/arch/x86/syscalls/syscall_64.tbl	2012-12-19 15:57:40.753516790 -0500
+@@ -319,6 +319,7 @@
+ 310	64	process_vm_readv	sys_process_vm_readv
+ 311	64	process_vm_writev	sys_process_vm_writev
+ 312	common	kcmp			sys_kcmp
++313 	common	set_dvflag		sys_set_dvflag
+ 
+ #
+ # x32-specific system call numbers start at 512 to avoid cache impact
+diff -uNrp fc17-original/drivers/tty/pty.c fc17-dv/drivers/tty/pty.c
+--- fc17-original/drivers/tty/pty.c	2012-12-17 14:22:19.615877461 -0500
++++ fc17-dv/drivers/tty/pty.c	2012-12-29 12:43:14.611974133 -0500
+@@ -208,6 +208,8 @@ static void pty_flush_buffer(struct tty_
+ 
+ static int pty_open(struct tty_struct *tty, struct file *filp)
+ {
++	if((200<=dv_print_flag)&&(dv_print_flag<300))
++		printk(KERN_ALERT "opening pty device\n");
+ 	int	retval = -ENODEV;
+ 
+ 	if (!tty || !tty->link)
+diff -uNrp fc17-original/include/linux/printk.h fc17-dv/include/linux/printk.h
+--- fc17-original/include/linux/printk.h	2012-12-17 14:22:19.829877463 -0500
++++ fc17-dv/include/linux/printk.h	2012-12-19 15:56:56.509516864 -0500
+@@ -6,6 +6,7 @@
+ 
+ extern const char linux_banner[];
+ extern const char linux_proc_banner[];
++extern int dv_print_flag;
+ 
+ static inline int printk_get_level(const char *buffer)
+ {
+diff -uNrp fc17-original/include/linux/syscalls.h fc17-dv/include/linux/syscalls.h
+--- fc17-original/include/linux/syscalls.h	2012-12-17 14:22:19.873877463 -0500
++++ fc17-dv/include/linux/syscalls.h	2012-12-19 15:57:54.309516403 -0500
+@@ -860,4 +860,6 @@ asmlinkage long sys_process_vm_writev(pi
+ 
+ asmlinkage long sys_kcmp(pid_t pid1, pid_t pid2, int type,
+ 			 unsigned long idx1, unsigned long idx2);
++
++asmlinkage long sys_set_dvflag(int flag);
+ #endif
+diff -uNrp fc17-original/init/main.c fc17-dv/init/main.c
+--- fc17-original/init/main.c	2012-12-17 15:49:11.171915802 -0500
++++ fc17-dv/init/main.c	2012-12-19 15:43:44.233523568 -0500
+@@ -468,6 +468,8 @@ asmlinkage void __init start_kernel(void
+ 	char * command_line;
+ 	extern const struct kernel_param __start___param[], __stop___param[];
+ 
++	printk(KERN_ALERT "penguins at last???\n");
++
+ 	/*
+ 	 * Need to run as early as possible, to initialize the
+ 	 * lockdep hash:
+diff -uNrp fc17-original/kernel/fork.c fc17-dv/kernel/fork.c
+--- fc17-original/kernel/fork.c	2012-12-17 14:22:19.005877457 -0500
++++ fc17-dv/kernel/fork.c	2012-12-29 12:49:44.360003597 -0500
+@@ -1153,6 +1153,8 @@ static struct task_struct *copy_process(
+ 	int retval;
+ 	struct task_struct *p;
+ 	int cgroup_callbacks_done = 0;
++	if((100<=dv_print_flag)&&(dv_print_flag<200))
++		printk(KERN_ALERT "copying process\n\n");
+ 
+ 	if ((clone_flags & (CLONE_NEWNS|CLONE_FS)) == (CLONE_NEWNS|CLONE_FS))
+ 		return ERR_PTR(-EINVAL);
+@@ -1583,7 +1585,14 @@ long do_fork(unsigned long clone_flags,
+ 	struct task_struct *p;
+ 	int trace = 0;
+ 	long nr;
+-
++	if((100<=dv_print_flag)&&(dv_print_flag<200)){
++		printk(KERN_ALERT "forking \n");
++		printk(KERN_ALERT "sizeof(struct task_struct) = %d \n", 
++		       sizeof(struct task_struct));
++		printk(KERN_ALERT "pid = %d\n", current->pid);
++		printk(KERN_ALERT "smp = %d\n", smp_processor_id());
++		
++	}
+ 	/*
+ 	 * Do some preliminary argument and permissions checking before we
+ 	 * actually start allocating stuff
+diff -uNrp fc17-original/kernel/sys.c fc17-dv/kernel/sys.c
+--- fc17-original/kernel/sys.c	2012-12-17 14:22:19.006877457 -0500
++++ fc17-dv/kernel/sys.c	2012-12-21 14:42:46.504479135 -0500
+@@ -2242,3 +2242,11 @@ int orderly_poweroff(bool force)
+ 	return ret;
+ }
+ EXPORT_SYMBOL_GPL(orderly_poweroff);
++
++int dv_print_flag=0;
++EXPORT_SYMBOL(dv_print_flag);
++
++asmlinkage long sys_set_dvflag(int flag){
++  dv_print_flag = flag;
++  return 77;
++}
+diff -uNrp fc17-original/kernel/timer.c fc17-dv/kernel/timer.c
+--- fc17-original/kernel/timer.c	2012-12-17 14:22:19.005877457 -0500
++++ fc17-dv/kernel/timer.c	2013-01-01 18:10:14.460814867 -0500
+@@ -1420,6 +1420,17 @@ SYSCALL_DEFINE1(alarm, unsigned int, sec
+  */
+ SYSCALL_DEFINE0(getpid)
+ {
++	  if((300<=dv_print_flag)&&(dv_print_flag<400)){
++	    struct vm_area_struct *dv_vmptr = find_vma(current->mm,
++						current->mm->start_stack);
++	    printk(KERN_ALERT "start_stack = %lx \n",
++		   current->mm->start_stack);
++	    printk(KERN_ALERT "vm_start = %lx \n",
++		   dv_vmptr->vm_start);
++	    printk(KERN_ALERT "vm_end = %lx \n",
++		   dv_vmptr->vm_end);
++	  }
++    
+ 	return task_tgid_vnr(current);
+ }
+ 

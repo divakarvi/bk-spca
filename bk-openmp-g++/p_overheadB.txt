@@ -1,0 +1,189 @@
+nthreads = 3
+count = 10
+First ten:
+383674
+260686
+191036
+133808
+120240
+129966
+115862
+238076
+148206
+222190
+
+     max: 383674
+    mean: 194374
+  median: 191036
+     min: 115862
+
+worst 10: 
+383674
+260686
+238076
+222190
+191036
+148206
+133808
+129966
+120240
+115862
+
+----------------------------------------
+output from dmesg
+----------------------------------------
+
+[  307.544493] cloning 
+[  307.544498] forking 
+[  307.544499] sizeof(struct task_struct) = 5904 
+[  307.544501] pid = 1497
+[  307.544502] smp = 2
+[  307.544503] copying process
+[  307.544503] 
+[  307.546266] cloning 
+[  307.546270] forking 
+[  307.546272] sizeof(struct task_struct) = 5904 
+[  307.546273] pid = 1806
+[  307.546274] smp = 1
+[  307.546275] copying process
+[  307.546275] 
+[  307.546302] cloning 
+[  307.546303] forking 
+[  307.546304] sizeof(struct task_struct) = 5904 
+[  307.546306] pid = 1806
+[  307.546307] smp = 1
+[  307.546308] copying process
+[  307.546308] 
+[  307.546439] cloning 
+[  307.546440] forking 
+[  307.546442] sizeof(struct task_struct) = 5904 
+[  307.546443] pid = 1806
+[  307.546444] smp = 1
+[  307.546445] copying process
+[  307.546445] 
+[  307.546455] cloning 
+[  307.546457] forking 
+[  307.546458] sizeof(struct task_struct) = 5904 
+[  307.546459] pid = 1806
+[  307.546460] smp = 1
+[  307.546461] copying process
+[  307.546461] 
+[  307.546530] cloning 
+[  307.546532] forking 
+[  307.546533] sizeof(struct task_struct) = 5904 
+[  307.546534] pid = 1806
+[  307.546535] smp = 1
+[  307.546536] copying process
+[  307.546536] 
+[  307.546545] cloning 
+[  307.546546] forking 
+[  307.546547] sizeof(struct task_struct) = 5904 
+[  307.546548] pid = 1806
+[  307.546549] smp = 1
+[  307.546550] copying process
+[  307.546550] 
+[  307.546622] cloning 
+[  307.546624] forking 
+[  307.546625] sizeof(struct task_struct) = 5904 
+[  307.546626] pid = 1806
+[  307.546627] smp = 1
+[  307.546628] copying process
+[  307.546628] 
+[  307.546637] cloning 
+[  307.546638] forking 
+[  307.546639] sizeof(struct task_struct) = 5904 
+[  307.546640] pid = 1806
+[  307.546641] smp = 1
+[  307.546642] copying process
+[  307.546642] 
+[  307.546702] cloning 
+[  307.546703] forking 
+[  307.546704] sizeof(struct task_struct) = 5904 
+[  307.546705] pid = 1806
+[  307.546706] smp = 1
+[  307.546707] copying process
+[  307.546707] 
+[  307.546716] cloning 
+[  307.546717] forking 
+[  307.546718] sizeof(struct task_struct) = 5904 
+[  307.546720] pid = 1806
+[  307.546721] smp = 1
+[  307.546721] copying process
+[  307.546721] 
+[  307.546766] cloning 
+[  307.546767] forking 
+[  307.546768] sizeof(struct task_struct) = 5904 
+[  307.546770] pid = 1806
+[  307.546770] smp = 1
+[  307.546771] copying process
+[  307.546771] 
+[  307.546781] cloning 
+[  307.546782] forking 
+[  307.546783] sizeof(struct task_struct) = 5904 
+[  307.546784] pid = 1806
+[  307.546785] smp = 1
+[  307.546786] copying process
+[  307.546786] 
+[  307.546824] cloning 
+[  307.546825] forking 
+[  307.546826] sizeof(struct task_struct) = 5904 
+[  307.546827] pid = 1806
+[  307.546828] smp = 1
+[  307.546829] copying process
+[  307.546829] 
+[  307.546839] cloning 
+[  307.546840] forking 
+[  307.546841] sizeof(struct task_struct) = 5904 
+[  307.546842] pid = 1806
+[  307.546843] smp = 1
+[  307.546844] copying process
+[  307.546844] 
+[  307.546880] cloning 
+[  307.546882] forking 
+[  307.546883] sizeof(struct task_struct) = 5904 
+[  307.546884] pid = 1806
+[  307.546885] smp = 1
+[  307.546886] copying process
+[  307.546886] 
+[  307.546896] cloning 
+[  307.546897] forking 
+[  307.546898] sizeof(struct task_struct) = 5904 
+[  307.546899] pid = 1806
+[  307.546900] smp = 1
+[  307.546901] copying process
+[  307.546901] 
+[  307.546937] cloning 
+[  307.546939] forking 
+[  307.546940] sizeof(struct task_struct) = 5904 
+[  307.546941] pid = 1806
+[  307.546942] smp = 1
+[  307.546943] copying process
+[  307.546943] 
+[  307.546952] cloning 
+[  307.546953] forking 
+[  307.546954] sizeof(struct task_struct) = 5904 
+[  307.546955] pid = 1806
+[  307.546956] smp = 1
+[  307.546957] copying process
+[  307.546957] 
+[  307.547014] cloning 
+[  307.547020] forking 
+[  307.547026] sizeof(struct task_struct) = 5904 
+[  307.547031] pid = 1806
+[  307.547037] smp = 1
+[  307.547042] copying process
+[  307.547042] 
+[  307.547056] cloning 
+[  307.547062] forking 
+[  307.547067] sizeof(struct task_struct) = 5904 
+[  307.547072] pid = 1806
+[  307.547077] smp = 1
+[  307.547080] copying process
+[  307.547080] 
+[  311.110258] cloning 
+[  311.110262] forking 
+[  311.110264] sizeof(struct task_struct) = 5904 
+[  311.110265] pid = 1497
+[  311.110266] smp = 3
+[  311.110267] copying process
+[  311.110267] 

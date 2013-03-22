@@ -1,0 +1,17 @@
+run = 5
+a0 (in f0)= 0x7ffff42c5b40(-17600)
+pid (in f0) = 3023
+in ff0: sum = 0
+getpid() again = 3023 
+
+
+[ 4591.782743] start_stack = 7ffff42c7bc0 
+[ 4591.782747] vm_start = 7ffff42a8000(-139264) 
+[ 4591.782748] vm_end = 7ffff42ca000 
+[ 4591.784917] start_stack = 7ffff42c7bc0 
+[ 4591.784919] vm_start = 7ffff413d000(-1626112) 
+[ 4591.784920] vm_end = 7ffff42ca000 
+
+
+
+

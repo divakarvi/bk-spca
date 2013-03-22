@@ -1,0 +1,91 @@
+
+
+4 pages
+latency = 230.562
+latency = 227.422
+latency = 224.871
+latency = 227.141
+latency = 225.512
+MEMWALK
+  median: 228.473
+     max: 246.82
+    mean: 228.716
+     min: 217.375
+
+
+16 pages
+latency = 230.459
+latency = 229.57
+latency = 230.474
+latency = 229.523
+latency = 229.951
+MEMWALK
+  median: 229.116
+     max: 236.327
+    mean: 229.295
+     min: 225.345
+
+
+32 pages
+latency = 233.803
+latency = 232.147
+latency = 231.64
+latency = 230.535
+latency = 233.276
+MEMWALK
+  median: 231.615
+     max: 254.815
+    mean: 233.478
+     min: 229.634
+
+
+40 pages
+latency = 233.437
+latency = 231.011
+latency = 236.181
+latency = 231.311
+latency = 236.946
+MEMWALK
+  median: 231.68
+     max: 237.504
+    mean: 232.006
+     min: 229.651
+
+
+100 pages
+latency = 243.81
+latency = 235.457
+latency = 235.642
+latency = 234.443
+latency = 236.988
+MEMWALK
+  median: 235.386
+     max: 244.696
+    mean: 235.792
+     min: 233.513
+
+
+400 pages
+latency = 240.921
+latency = 239.264
+latency = 240.166
+latency = 240.656
+latency = 239.152
+MEMWALK
+  median: 239.717
+     max: 243.218
+    mean: 239.873
+     min: 238.616
+
+
+4000 pages
+latency = 241.3
+latency = 239.222
+latency = 238.915
+latency = 238.902
+latency = 238.779
+MEMWALK
+  median: 238.895
+     max: 241.3
+    mean: 238.95
+     min: 238.577

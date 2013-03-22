@@ -1,0 +1,64 @@
+nthreads = 3
+count = 10
+number of threads = 3 
+     max: 365110
+    mean: 41728.4
+  median: 3604
+     min: 3444
+first 10: 
+365110
+16328
+10438
+4318
+3604
+3520
+3450
+3518
+3444
+3554
+worst 10: 
+365110
+16328
+10438
+4318
+3604
+3554
+3520
+3518
+3450
+3444
+fraction of trials greater than 10% of median = 0.4
+
+----------------------------------------
+output from dmesg follows
+----------------------------------------
+[  141.815664] cloning 
+[  141.815669] forking 
+[  141.815670] sizeof(struct task_struct) = 5904 
+[  141.815672] pid = 1497
+[  141.815673] smp = 2
+[  141.815674] copying process
+[  141.815674] 
+[  141.817553] cloning 
+[  141.817556] forking 
+[  141.817558] sizeof(struct task_struct) = 5904 
+[  141.817559] pid = 1673
+[  141.817561] smp = 1
+[  141.817562] copying process
+[  141.817562] 
+[  141.817589] cloning 
+[  141.817590] forking 
+[  141.817591] sizeof(struct task_struct) = 5904 
+[  141.817593] pid = 1673
+[  141.817594] smp = 1
+[  141.817594] copying process
+[  141.817594] 
+[  147.319774] cloning 
+[  147.319777] forking 
+[  147.319779] sizeof(struct task_struct) = 5904 
+[  147.319780] pid = 1497
+[  147.319781] smp = 3
+[  147.319782] copying process
+[  147.319782] 
+
+

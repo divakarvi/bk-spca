@@ -1,0 +1,22 @@
+run = 4
+a0 (in f0)= 0x7fff5361a720(-14560)
+pid (in f0) = 2518
+in ff0: sum = 0
+Segmentation fault (core dumped)
+
+
+[ 3261.192605] start_stack = 7fff5361c7a0 
+[ 3261.192609] vm_start = 7fff535fc000(-139264) 
+[ 3261.192610] vm_end = 7fff5361e000 
+[ 3261.192651] segf.exe[2518]: segfault at 9 ip 0000000000000009 sp 00007fff5361a710 error 14 in segf.exe[400000+2000]
+[ 3261.237057] start_stack = 7fff550b6b80 
+[ 3261.237058] vm_start = 7fff55096000 
+[ 3261.237059] vm_end = 7fff550b8000 
+
+
+
+
+
+
+
+
