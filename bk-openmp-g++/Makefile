@@ -1,3 +1,7 @@
+.PHONY: all 
+
+all: syscall.exe time_syscall.exe segf mreg overhead latency dvmesg
+
 syscall.exe: syscall.c
 	gcc -O3 -o syscall.exe syscall.c
 
@@ -30,6 +34,9 @@ drv-mreg.o: drv-mreg.cpp
 mreg.o: mreg.cpp
 	g++ -O0 -c $<
 
+overhead: overhead.exe p_overhead.exe ompadd.exe p_fastadd.exe
+	echo "overhead done"
+
 overhead.exe: overhead.o parallelA.o parallelB.o dummy.o
 	g++ -fopenmp -o $@ $^
 overhead.o: overhead.cpp
@@ -46,23 +53,43 @@ p_overhead.exe: p_overhead.o
 p_overhead.o: p_overhead.cpp
 	g++ -O3 -c $<
 
-p_fastadd.exe: p_fastadd.o
+ompadd.exe: ompadd.o
 	g++ -o $@ $^ -fopenmp
-p_fastadd.o: p_fastadd.cpp
+ompadd.o: ompadd.cpp
 	g++ -O3 -c $< -fopenmp
 
-p_ompadd.exe: p_ompadd.o
+p_fastadd_c.exe: p_fastadd_c.o
 	g++ -o $@ $^ -fopenmp
-p_ompadd.o: p_ompadd.cpp
+p_fastadd_c.o: p_fastadd_c.cpp
 	g++ -O3 -c $< -fopenmp
 
+p_fastadd_spin.exe: p_fastadd_spin.o
+	g++ -o $@ $^ -fopenmp
+p_fastadd_spin.o: p_fastadd_spin.cpp
+	g++ -O3 -c $< -fopenmp
+
+p_fastadd_mtx.exe: p_fastadd_mtx.o
+	g++ -o $@ $^ -fopenmp
+p_fastadd_mtx.o: p_fastadd_mtx.cpp
+	g++ -O3 -c $< -fopenmp
+
+p_fastadd_cond.exe: p_fastadd_cond.o
+	g++ -o $@ $^ -fopenmp
+p_fastadd_cond.o: p_fastadd_cond.cpp
+	g++ -O3 -c $< -fopenmp
+
+
+latency: latency4n.exe
+	echo "latency done"
 latency.exe: latency.cpp
 	g++ -O3 -o latency.exe latency.cpp
-
 latency4n.exe: latency4n.o dummy.o
 	g++ -o $@ $^
 latency4n.o: latency4n.cpp
 	g++ -O3 -c $<
+
+dvmesg: dvmesg.c
+	gcc -o dvmesg dvmesg.c
 
 clean:
 	rm *.exe; rm *.o;

@@ -8,69 +8,70 @@
 _Z3ff0PlS_l:
 .LFB0:
 	.cfi_startproc
-	pushq	%rbp
-	.cfi_def_cfa_offset 16
-	.cfi_offset 6, -16
-	movq	%rsp, %rbp
-	.cfi_def_cfa_register 6
-	subq	$48, %rsp
-	movq	%rdi, -24(%rbp)
-	movq	%rsi, -32(%rbp)
-	movq	%rdx, -40(%rbp)
-	movl	$0, -4(%rbp)
+	pushl	%ebp
+	.cfi_def_cfa_offset 8
+	.cfi_offset 5, -8
+	movl	%esp, %ebp
+	.cfi_def_cfa_register 5
+	pushl	%ebx
+	subl	$36, %esp
+	.cfi_offset 3, -12
+	movl	$0, -16(%ebp)
 	jmp	.L2
 .L3:
-	movl	-4(%rbp), %eax
-	cltq
-	leaq	0(,%rax,8), %rdx
-	movq	-24(%rbp), %rax
-	addq	%rdx, %rax
-	movq	$0, (%rax)
-	addl	$1, -4(%rbp)
+	movl	-16(%ebp), %eax
+	leal	0(,%eax,4), %edx
+	movl	8(%ebp), %eax
+	addl	%edx, %eax
+	movl	$0, (%eax)
+	addl	$1, -16(%ebp)
 .L2:
-	cmpl	$999, -4(%rbp)
+	cmpl	$999, -16(%ebp)
 	setle	%al
 	testb	%al, %al
 	jne	.L3
-	movq	$0, -16(%rbp)
+	movl	$0, -12(%ebp)
 	jmp	.L4
 .L5:
-	movq	-16(%rbp), %rax
-	leaq	0(,%rax,8), %rdx
-	movq	-32(%rbp), %rax
-	addq	%rdx, %rax
-	movq	(%rax), %rax
-	leaq	0(,%rax,8), %rdx
-	movq	-24(%rbp), %rax
-	addq	%rax, %rdx
-	movq	-16(%rbp), %rax
-	leaq	0(,%rax,8), %rcx
-	movq	-32(%rbp), %rax
-	addq	%rcx, %rax
-	movq	(%rax), %rcx
-	movq	-16(%rbp), %rax
-	leaq	0(,%rax,8), %rsi
-	movq	-32(%rbp), %rax
-	addq	%rsi, %rax
-	movq	(%rax), %rax
-	imulq	%rcx, %rax
-	movq	%rax, (%rdx)
-	addq	$1, -16(%rbp)
+	movl	-12(%ebp), %eax
+	leal	0(,%eax,4), %edx
+	movl	12(%ebp), %eax
+	addl	%edx, %eax
+	movl	(%eax), %eax
+	leal	0(,%eax,4), %edx
+	movl	8(%ebp), %eax
+	addl	%eax, %edx
+	movl	-12(%ebp), %eax
+	leal	0(,%eax,4), %ecx
+	movl	12(%ebp), %eax
+	addl	%ecx, %eax
+	movl	(%eax), %ecx
+	movl	-12(%ebp), %eax
+	leal	0(,%eax,4), %ebx
+	movl	12(%ebp), %eax
+	addl	%ebx, %eax
+	movl	(%eax), %eax
+	imull	%ecx, %eax
+	movl	%eax, (%edx)
+	addl	$1, -12(%ebp)
 .L4:
-	movq	-16(%rbp), %rax
-	cmpq	-40(%rbp), %rax
+	movl	-12(%ebp), %eax
+	cmpl	16(%ebp), %eax
 	setl	%al
 	testb	%al, %al
 	jne	.L5
-	movl	$.LC0, %edi
-	movl	$0, %eax
+	movl	$.LC0, (%esp)
 	call	printf
-	movq	-24(%rbp), %rax
-	movl	$1000, %esi
-	movq	%rax, %rdi
+	movl	$1000, 4(%esp)
+	movl	8(%ebp), %eax
+	movl	%eax, (%esp)
 	call	_Z7sum_arrPll
-	leave
-	.cfi_def_cfa 7, 8
+	addl	$36, %esp
+	popl	%ebx
+	.cfi_restore 3
+	popl	%ebp
+	.cfi_restore 5
+	.cfi_def_cfa 4, 4
 	ret
 	.cfi_endproc
 .LFE0:
@@ -84,51 +85,48 @@ _Z3ff0PlS_l:
 _Z2f1Pll:
 .LFB1:
 	.cfi_startproc
-	.cfi_personality 0x3,__gxx_personality_v0
-	.cfi_lsda 0x3,.LLSDA1
-	pushq	%rbp
-	.cfi_def_cfa_offset 16
-	.cfi_offset 6, -16
-	movq	%rsp, %rbp
-	.cfi_def_cfa_register 6
-	subq	$8000032, %rsp
-	movq	%rdi, -8000024(%rbp)
-	movq	%rsi, -8000032(%rbp)
-	movl	$0, -4(%rbp)
+	.cfi_personality 0,__gxx_personality_v0
+	.cfi_lsda 0,.LLSDA1
+	pushl	%ebp
+	.cfi_def_cfa_offset 8
+	.cfi_offset 5, -8
+	movl	%esp, %ebp
+	.cfi_def_cfa_register 5
+	subl	$4000040, %esp
+	movl	$0, -4000012(%ebp)
 	jmp	.L7
 .L8:
-	movl	-4(%rbp), %eax
-	cltq
-	movq	$0, -8000016(%rbp,%rax,8)
-	addl	$1, -4(%rbp)
+	movl	-4000012(%ebp), %eax
+	movl	$0, -4000008(%ebp,%eax,4)
+	addl	$1, -4000012(%ebp)
 .L7:
-	cmpl	$999999, -4(%rbp)
+	cmpl	$999999, -4000012(%ebp)
 	setle	%al
 	testb	%al, %al
 	jne	.L8
-	movq	-8000032(%rbp), %rdx
-	movq	-8000024(%rbp), %rax
-	movq	%rdx, %rsi
-	movq	%rax, %rdi
+	movl	12(%ebp), %eax
+	movl	%eax, 4(%esp)
+	movl	8(%ebp), %eax
+	movl	%eax, (%esp)
 .LEHB0:
 	call	_Z2f0Pll
-	movl	$.LC1, %edi
-	movl	$0, %eax
+	movl	$.LC1, (%esp)
 	call	printf
-	leaq	-8000016(%rbp), %rax
-	movl	$1000000, %esi
-	movq	%rax, %rdi
+	movl	$1000000, 4(%esp)
+	leal	-4000008(%ebp), %eax
+	movl	%eax, (%esp)
 	call	_Z7sum_arrPll
 .LEHE0:
 	jmp	.L11
 .L10:
-	movq	%rax, %rdi
+	movl	%eax, (%esp)
 .LEHB1:
 	call	_Unwind_Resume
 .LEHE1:
 .L11:
 	leave
-	.cfi_def_cfa 7, 8
+	.cfi_restore 5
+	.cfi_def_cfa 4, 4
 	ret
 	.cfi_endproc
 .LFE1:
@@ -160,44 +158,43 @@ _Z2f1Pll:
 _Z2f2v:
 .LFB2:
 	.cfi_startproc
-	.cfi_personality 0x3,__gxx_personality_v0
-	.cfi_lsda 0x3,.LLSDA2
-	pushq	%rbp
-	.cfi_def_cfa_offset 16
-	.cfi_offset 6, -16
-	movq	%rsp, %rbp
-	.cfi_def_cfa_register 6
-	subq	$8000016, %rsp
-	movl	$0, -4(%rbp)
+	.cfi_personality 0,__gxx_personality_v0
+	.cfi_lsda 0,.LLSDA2
+	pushl	%ebp
+	.cfi_def_cfa_offset 8
+	.cfi_offset 5, -8
+	movl	%esp, %ebp
+	.cfi_def_cfa_register 5
+	subl	$4000040, %esp
+	movl	$0, -4000012(%ebp)
 	jmp	.L13
 .L14:
-	movl	-4(%rbp), %eax
-	cltq
-	movq	$0, -8000016(%rbp,%rax,8)
-	addl	$1, -4(%rbp)
+	movl	-4000012(%ebp), %eax
+	movl	$0, -4000008(%ebp,%eax,4)
+	addl	$1, -4000012(%ebp)
 .L13:
-	cmpl	$999999, -4(%rbp)
+	cmpl	$999999, -4000012(%ebp)
 	setle	%al
 	testb	%al, %al
 	jne	.L14
-	movl	$.LC2, %edi
-	movl	$0, %eax
+	movl	$.LC2, (%esp)
 .LEHB2:
 	call	printf
-	leaq	-8000016(%rbp), %rax
-	movl	$1000000, %esi
-	movq	%rax, %rdi
+	movl	$1000000, 4(%esp)
+	leal	-4000008(%ebp), %eax
+	movl	%eax, (%esp)
 	call	_Z7sum_arrPll
 .LEHE2:
 	jmp	.L17
 .L16:
-	movq	%rax, %rdi
+	movl	%eax, (%esp)
 .LEHB3:
 	call	_Unwind_Resume
 .LEHE3:
 .L17:
 	leave
-	.cfi_def_cfa 7, 8
+	.cfi_restore 5
+	.cfi_def_cfa 4, 4
 	ret
 	.cfi_endproc
 .LFE2:
@@ -219,5 +216,5 @@ _Z2f2v:
 .LLSDACSE2:
 	.text
 	.size	_Z2f2v, .-_Z2f2v
-	.ident	"GCC: (GNU) 4.7.2 20120921 (Red Hat 4.7.2-2)"
+	.ident	"GCC: (Ubuntu/Linaro 4.7.2-2ubuntu1) 4.7.2"
 	.section	.note.GNU-stack,"",@progbits

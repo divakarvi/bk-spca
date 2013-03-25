@@ -1,0 +1,134 @@
+diff --git a/arch/x86/syscalls/syscall_32.tbl b/arch/x86/syscalls/syscall_32.tbl
+index 28e3fa9..fb221e4 100644
+--- a/arch/x86/syscalls/syscall_32.tbl
++++ b/arch/x86/syscalls/syscall_32.tbl
+@@ -357,3 +357,4 @@
+ 348	i386	process_vm_writev	sys_process_vm_writev		compat_sys_process_vm_writev
+ 349	i386	kcmp			sys_kcmp
+ 350	i386	finit_module		sys_finit_module
++351 	i386	set_dvflag		sys_set_dvflag
+diff --git a/drivers/tty/pty.c b/drivers/tty/pty.c
+index ac35c90..61db385 100644
+--- a/drivers/tty/pty.c
++++ b/drivers/tty/pty.c
+@@ -240,6 +240,9 @@ static void pty_flush_buffer(struct tty_struct *tty)
+ 
+ static int pty_open(struct tty_struct *tty, struct file *filp)
+ {
++	if((100<=dv_print_flag)&&(dv_print_flag<200))
++		printk(KERN_ALERT "opening pty device\n");
++
+ 	int	retval = -ENODEV;
+ 
+ 	if (!tty || !tty->link)
+diff --git a/include/linux/printk.h b/include/linux/printk.h
+index 9afc01e..493c8e6 100644
+--- a/include/linux/printk.h
++++ b/include/linux/printk.h
+@@ -4,6 +4,7 @@
+ #include <linux/init.h>
+ #include <linux/kern_levels.h>
+ 
++extern int dv_print_flag;
+ extern const char linux_banner[];
+ extern const char linux_proc_banner[];
+ 
+diff --git a/include/linux/syscalls.h b/include/linux/syscalls.h
+index 45e2db2..6619623 100644
+--- a/include/linux/syscalls.h
++++ b/include/linux/syscalls.h
+@@ -878,4 +878,5 @@ asmlinkage long sys_process_vm_writev(pid_t pid,
+ asmlinkage long sys_kcmp(pid_t pid1, pid_t pid2, int type,
+ 			 unsigned long idx1, unsigned long idx2);
+ asmlinkage long sys_finit_module(int fd, const char __user *uargs, int flags);
++asmlinkage long sys_set_dvflag(int flag);
+ #endif
+diff --git a/init/main.c b/init/main.c
+index cee4b5c..3cae0f5 100644
+--- a/init/main.c
++++ b/init/main.c
+@@ -470,6 +470,8 @@ asmlinkage void __init start_kernel(void)
+ 	char * command_line;
+ 	extern const struct kernel_param __start___param[], __stop___param[];
+ 
++	printk(KERN_ALERT "penguins at last???\n");
++
+ 	/*
+ 	 * Need to run as early as possible, to initialize the
+ 	 * lockdep hash:
+diff --git a/kernel/fork.c b/kernel/fork.c
+index 5630e52..5208835 100644
+--- a/kernel/fork.c
++++ b/kernel/fork.c
+@@ -1135,6 +1135,8 @@ static struct task_struct *copy_process(unsigned long clone_flags,
+ 					struct pid *pid,
+ 					int trace)
+ {
++	if((200<=dv_print_flag)&&(dv_print_flag<300))
++		printk(KERN_ALERT "copying process\n\n");
+ 	int retval;
+ 	struct task_struct *p;
+ 
+@@ -1559,6 +1561,14 @@ long do_fork(unsigned long clone_flags,
+ 	int trace = 0;
+ 	long nr;
+ 
++	if((200<=dv_print_flag)&&(dv_print_flag<300)){
++		printk(KERN_ALERT "forking \n");
++		printk(KERN_ALERT "sizeof(struct task_struct) = %d \n", 
++		       sizeof(struct task_struct));
++		printk(KERN_ALERT "pid = %d\n", current->pid);
++		printk(KERN_ALERT "smp = %d\n", smp_processor_id());
++	}
++
+ 	/*
+ 	 * Do some preliminary argument and permissions checking before we
+ 	 * actually start allocating stuff
+@@ -1671,6 +1681,10 @@ SYSCALL_DEFINE5(clone, unsigned long, clone_flags, unsigned long, newsp,
+ 		 int, tls_val)
+ #endif
+ {
++	
++	if((200<=dv_print_flag)&&(dv_print_flag<300))
++		printk(KERN_ALERT "cloning \n");
++	
+ 	long ret = do_fork(clone_flags, newsp, 0, parent_tidptr, child_tidptr);
+ 	asmlinkage_protect(5, ret, clone_flags, newsp,
+ 			parent_tidptr, child_tidptr, tls_val);
+diff --git a/kernel/sys.c b/kernel/sys.c
+index 265b376..f264120 100644
+--- a/kernel/sys.c
++++ b/kernel/sys.c
+@@ -2242,3 +2242,11 @@ int orderly_poweroff(bool force)
+ 	return ret;
+ }
+ EXPORT_SYMBOL_GPL(orderly_poweroff);
++
++int dv_print_flag=0;
++EXPORT_SYMBOL(dv_print_flag);
++
++asmlinkage long sys_set_dvflag(int flag){
++	dv_print_flag = flag;
++	return 77;
++}
+diff --git a/kernel/timer.c b/kernel/timer.c
+index 367d008..fd374a7 100644
+--- a/kernel/timer.c
++++ b/kernel/timer.c
+@@ -1406,6 +1406,16 @@ SYSCALL_DEFINE1(alarm, unsigned int, seconds)
+  */
+ SYSCALL_DEFINE0(getpid)
+ {
++	if((300<=dv_print_flag)&&(dv_print_flag<400)){
++		struct vm_area_struct *dv_vmptr = find_vma(current->mm,
++							   current->mm->start_stack);
++	    printk(KERN_ALERT "start_stack = %lx \n",
++		   current->mm->start_stack);
++	    printk(KERN_ALERT "vm_start = %lx \n",
++		   dv_vmptr->vm_start);
++	    printk(KERN_ALERT "vm_end = %lx \n",
++		   dv_vmptr->vm_end);
++	}
+ 	return task_tgid_vnr(current);
+ }
+ 
