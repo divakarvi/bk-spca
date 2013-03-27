@@ -95,28 +95,6 @@ hanoi.exe: hanoi.c
 hanoi.s: hanoi.c
 	icc -O3 -S -fno-inline-functions $<
 
-segf: segf.exe segf.s drv-segf.s
-	echo "done segf"
-segf.exe: drv-segf.o segf.o  
-	icpc -o $@ $^
-drv-segf.o: drv-segf.cpp
-	icpc -fno-inline-functions -O0 -c $<
-segf.o: segf.cpp
-	icpc -fno-inline-functions -O0 -c $<
-drv-segf.s: drv-segf.cpp
-	icpc -S -O0 -c $<
-segf.s: segf.cpp
-	icpc -S -O0 -c $<
-
-mreg: mreg.exe 
-	echo "done mreg"
-mreg.exe: drv-mreg.o mreg.o dummy.o 
-	icpc -o $@ $^
-drv-mreg.o: drv-mreg.cpp
-	icpc -O0 -c $<
-mreg.o: mreg.cpp
-	icpc -O0 -c $<
-
 p_print_mesg.exe: p_print_mesg.o
 	icpc -o $@ $^ -lpthread
 p_print_mesg.o:	p_print_mesg.cpp
@@ -128,22 +106,6 @@ p_leibniz.exe: p_leibniz.o
 	icpc -o $@ $^ -lpthread 
 p_leibniz.o: p_leibniz.cpp
 	icpc -O3 -c $^
-
-p_overhead.exe: p_overhead.o
-	icpc -o $@ $^ -lpthread 
-p_overhead.o: p_overhead.cpp
-	icpc -O3 -c $^
-
-p_fastadd.exe: p_fastadd.o
-	icpc -o $@ $^ -lpthread 
-p_fastadd.o: p_fastadd.cpp
-	icpc -O3 -c $^
-
-p_ompadd.exe: p_ompadd.o 
-	icpc -o $@ $^ -fopenmp
-p_ompadd.o: p_ompadd.cpp
-	icpc -O3 -c $^ -fopenmp
-
 
 
 ##########
