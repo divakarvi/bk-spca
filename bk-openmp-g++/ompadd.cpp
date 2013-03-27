@@ -36,7 +36,7 @@ void ompmaster(long *list, int nthreads, int count){
 }
 
 int main(){
-  const int nthreads = 3;
+  const int nthreads = 4;
   long list[nthreads];
   int count = 1000*1000; count = 1000;
   for(int i=0; i < nthreads; i++)

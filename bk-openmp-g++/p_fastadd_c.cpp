@@ -6,7 +6,7 @@
 using namespace std;
 
 
-const int nthreads = 3;
+const int nthreads = 4;
 typedef void (*fnlist_t[nthreads])(void *);
 volatile fnlist_t fnlist;
 typedef void *arglist_t[nthreads];
@@ -50,10 +50,11 @@ void spawn_workers(){
     if(i>0){
       pthread_create(plist+i-1, NULL, worker, (void *)(tidlist+i));
       pthread_detach(plist[i-1]);
+    }
   }
 }
 
-void shut_down_workers(){
+void shutdown_workers(){
   for(int i=1; i < nthreads; i++){
     fnlist[i] = exitfn;
     asm volatile("cpuid"::"a"(0x01):"ebx","ecx","edx");
@@ -75,7 +76,7 @@ void organizer(long *list, int count){
     for(int j=0; j < nthreads; j++)
       while(work_count[j]>done_count[j]);
   }
-  shut_down_workers();
+  shutdown_workers();
 }
 
 int main(){

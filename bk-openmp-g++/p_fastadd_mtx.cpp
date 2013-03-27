@@ -5,7 +5,7 @@
 #include "TimeStamp.hh"
 using namespace std;
 
-const int nthreads = 2;
+const int nthreads = 3;
 void (*fnlist[nthreads])(void *);
 void *arglist[nthreads];
 int workflag[nthreads];
@@ -103,7 +103,7 @@ int main(){
   long list[nthreads];
   for(int i=0; i < nthreads; i++)
     list[i] = 0;
-  int count = 1000*1000; 
+  int count = 1000; 
   TimeStamp clk;
   clk.tic();
   organizer(list, count);
