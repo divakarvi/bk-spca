@@ -1,11 +1,10 @@
 #include <unistd.h>
 #include <pthread.h>
 #include <iostream>
-#include "StatVector.hh"
 #include "TimeStamp.hh"
 using namespace std;
 
-const int nthreads=5;
+const int nthreads=2;
 void (*fnlist[nthreads])(void *);
 void *arglist[nthreads];
 pthread_mutex_t wrklock[nthreads-1];
@@ -105,7 +104,7 @@ void altadd12(long *list, int count){
 
 int main(){
 	long list[nthreads]={0};
-	int count = 1000; 
+	int count = 1000*1000; 
 	TimeStamp clk;
 	clk.tic();
 	altadd12(list, count);

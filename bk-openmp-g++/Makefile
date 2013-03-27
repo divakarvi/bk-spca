@@ -53,29 +53,34 @@ p_overhead.exe: p_overhead.o
 p_overhead.o: p_overhead.cpp
 	g++ -O3 -c $<
 
-ompadd.exe: ompadd.o
+altadd_omp.exe: altadd_omp.o
 	g++ -o $@ $^ -fopenmp
-ompadd.o: ompadd.cpp
+altadd_omp.o: altadd_omp.cpp
 	g++ -O3 -c $< -fopenmp
 
-p_fastadd_c.exe: p_fastadd_c.o
+altadd_c.exe: altadd_c.o
 	g++ -o $@ $^ -fopenmp
-p_fastadd_c.o: p_fastadd_c.cpp
+altadd_c.o: altadd_c.cpp
 	g++ -O3 -c $< -fopenmp
 
-p_fastadd_spin.exe: p_fastadd_spin.o
+altadd_mtx.exe: altadd_mtx.o
 	g++ -o $@ $^ -fopenmp
-p_fastadd_spin.o: p_fastadd_spin.cpp
+altadd_mtx.o: altadd_mtx.cpp
 	g++ -O3 -c $< -fopenmp
 
-p_fastadd_mtx.exe: p_fastadd_mtx.o
+altadd_spin.exe: altadd_spin.o
 	g++ -o $@ $^ -fopenmp
-p_fastadd_mtx.o: p_fastadd_mtx.cpp
+altadd_spin.o: altadd_spin.cpp
 	g++ -O3 -c $< -fopenmp
 
-p_fastadd_cond.exe: p_fastadd_cond.o
+altadd_cond.exe: altadd_cond.o
 	g++ -o $@ $^ -fopenmp
-p_fastadd_cond.o: p_fastadd_cond.cpp
+altadd_cond.o: altadd_cond.cpp
+	g++ -O3 -c $< -fopenmp
+
+altadd_barrier.exe: altadd_barrier.o
+	g++ -o $@ $^ -fopenmp
+altadd_barrier.o: altadd_barrier.cpp
 	g++ -O3 -c $< -fopenmp
 
 

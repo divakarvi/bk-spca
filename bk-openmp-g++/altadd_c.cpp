@@ -1,12 +1,11 @@
 #include <unistd.h>
 #include <pthread.h>
 #include <iostream>
-#include "StatVector.hh"
 #include "TimeStamp.hh"
 using namespace std;
 
 
-const int nthreads = 4;
+const int nthreads = 2;
 typedef void (*fnlist_t[nthreads])(void *);
 volatile fnlist_t fnlist;
 typedef void *arglist_t[nthreads];
@@ -83,7 +82,7 @@ int main(){
   long list[nthreads];
   for(int i=0; i < nthreads; i++)
     list[i] = 0;
-  int count = 1000*1000*10; count = 1000; 
+  int count = 1000*1000*10; //count = 1000; 
   TimeStamp clk;
   clk.tic();
   organizer(list, count);
