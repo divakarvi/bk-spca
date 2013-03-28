@@ -83,6 +83,10 @@ altadd_barrier.exe: altadd_barrier.o
 altadd_barrier.o: altadd_barrier.cpp
 	g++ -O3 -c $< -fopenmp
 
+alex.exe: alexonlinux.o
+	g++ -o $@ $^ -fopenmp
+alexonlinux.o: alexonlinux.cpp
+	g++ -DUSE_SPINLOCK -O3 -c $< -fopenmp
 
 latency: latency4n.exe
 	echo "latency done"
@@ -93,8 +97,8 @@ latency4n.exe: latency4n.o dummy.o
 latency4n.o: latency4n.cpp
 	g++ -O3 -c $<
 
-dvmesg: dvmesg.c
-	gcc -o dvmesg dvmesg.c
+dvmesg.exe: dvmesg.c
+	gcc -o $@ $<
 
 clean:
 	rm *.exe; rm *.o;

@@ -2,7 +2,10 @@
 #include <pthread.h>
 #include <iostream>
 #include "TimeStamp.hh"
+#include "dvmesg.h"
 using namespace std;
+
+#define DV_KERNEL_MESG
 
 const int nthreads = 2;
 void (*fnlist[nthreads-1])(void *);
@@ -87,6 +90,9 @@ void assignwork(int i, int tid, long *list){
 
 void manager(long *list, int count){
 	spawn_workers();
+#ifdef DV_KERNEL_MESG
+	set_dvflag(400);
+#endif
 	for(int i=0; i < count; i++){
 		for(int tid=1; tid < nthreads; tid++)
 			assignwork(i, tid, list);
@@ -95,6 +101,9 @@ void manager(long *list, int count){
 		else
 			addtwo((void *)list);
 	}
+#ifdef DV_KERNEL_MESG
+	set_dvflag(0);
+#endif
 	shutdown_workers();
 }
 
@@ -103,6 +112,9 @@ int main(){
 	for(int i=0; i < nthreads; i++)
 		list[i] = 0;
 	int count = 1000*1000; 
+#ifdef DV_KERNEL_MESG
+	count = 6;
+#endif
 	TimeStamp clk;
 	clk.tic();
 	manager(list, count);
