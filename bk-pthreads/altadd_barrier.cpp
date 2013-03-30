@@ -2,11 +2,17 @@
 #include <pthread.h>
 #include <iostream>
 #include "TimeStamp.hh"
+#include "dvmesg.h"
 using namespace std;
 
-const int nthreads = 2;
+#define DV_KERNEL_MESG
+const int nprocs = 2;
+const int nthreads = 4;
+
+
 void (*fnlist[nthreads-1])(void *);
 void *arglist[nthreads-1];
+
 pthread_barrier_t barrier;
 pthread_t pthrd[nthreads-1];
 
@@ -76,12 +82,25 @@ void altadd12(long *list, int count){
 	shutdown();
 }
 
+
 int main(){
 	long list[nthreads]={0};
-	int count = 10000; 
+	int count = 10000;
+#ifdef DV_KERNEL_MESG
+	count = 6;
+#endif 
 	TimeStamp clk;
 	clk.tic();
+#ifdef DV_KERNEL_MESG
+	set_dvflag(400);
+#endif
 	altadd12(list, count);
+#ifdef DV_KERNEL_MESG
+	set_dvflag(0);
+#endif
+	cout<<"nprocs = "<<nprocs<<endl;
+	cout<<"nthreads = "<<nthreads<<endl;
+	cout<<"count = "<<count<<endl;	
 	double cycles = clk.toc();
 	cout<<"average per parallel region = "<<cycles/count<<endl;
 	for(int i=0; i < nthreads; i++)

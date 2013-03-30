@@ -53,6 +53,8 @@ p_overhead.exe: p_overhead.o
 p_overhead.o: p_overhead.cpp
 	g++ -O3 -c $<
 
+altadd: altadd_omp.exe altadd_c.exe altadd_mtx.exe altadd_spin.exe altadd_cond.exe altadd_barrier.exe
+
 altadd_omp.exe: altadd_omp.o
 	g++ -o $@ $^ -fopenmp
 altadd_omp.o: altadd_omp.cpp

@@ -1,0 +1,247 @@
+diff --git a/init/main.c b/init/main.c
+index 66418ab..3cae0f5 100644
+--- a/init/main.c
++++ b/init/main.c
+@@ -471,10 +471,6 @@ asmlinkage void __init start_kernel(void)
+ 	extern const struct kernel_param __start___param[], __stop___param[];
+ 
+ 	printk(KERN_ALERT "penguins at last???\n");
+-	printk(KERN_ALERT "penguins at last???\n");
+-	printk(KERN_ALERT "penguins at last???\n");
+-	printk(KERN_ALERT "penguins at last???\n");
+-	printk(KERN_ALERT "penguins at last???\n");
+ 
+ 	/*
+ 	 * Need to run as early as possible, to initialize the
+diff --git a/kernel/futex.c b/kernel/futex.c
+index 8879430..c19ae1c 100644
+--- a/kernel/futex.c
++++ b/kernel/futex.c
+@@ -1804,8 +1804,16 @@ static void futex_wait_queue_me(struct futex_hash_bucket *hb, struct futex_q *q,
+ 		 * flagged for rescheduling. Only call schedule if there
+ 		 * is no timeout, or if it has yet to expire.
+ 		 */
+-		if (!timeout || timeout->task)
++		if (!timeout || timeout->task){
++			if((400<=dv_print_flag)&&(dv_print_flag<500))
++				printk(KERN_ALERT 
++				       "futex_wait_queue_me:"
++				       "  calling schedule()"
++				       "  pid = %d"
++				       "  smp = %d\n",
++				       current->pid, smp_processor_id());
+ 			schedule();
++		}
+ 	}
+ 	__set_current_state(TASK_RUNNING);
+ }
+@@ -1906,6 +1914,17 @@ static int futex_wait(u32 __user *uaddr, unsigned int flags, u32 val,
+ 				      CLOCK_REALTIME : CLOCK_MONOTONIC,
+ 				      HRTIMER_MODE_ABS);
+ 		hrtimer_init_sleeper(to, current);
++
++		if((400<=dv_print_flag)&&(dv_print_flag<500))
++			printk(KERN_ALERT "futex_wait: abs_time = %ld nsecs"
++			       "  delta = %ld nsecs"
++			       "  pid = %d"
++			       "  smp = %d\n",
++			       abs_time->tv64,
++			       current->timer_slack_ns,
++			       current->pid,
++			       smp_processor_id());
++
+ 		hrtimer_set_expires_range_ns(&to->timer, *abs_time,
+ 					     current->timer_slack_ns);
+ 	}
+@@ -1916,21 +1935,79 @@ retry:
+ 	 * q.key refs.
+ 	 */
+ 	ret = futex_wait_setup(uaddr, val, flags, &q, &hb);
++	if((400<=dv_print_flag)&&(dv_print_flag<500)){
++		if(ret==0)
++			printk(KERN_ALERT "futex_wait:"
++			       "  futex_wait_setup holds hash bucket lock"
++			       "  pid = %d"
++			       "  smp = %d\n",
++			       current->pid, smp_processor_id());
++		else if(ret==-EWOULDBLOCK)
++			printk(KERN_ALERT "futex_wait:"
++			       "  futex_wait_setup could not lock hash bucket"
++			       "  EWOULDLOCK"
++			       "  pid = %d"
++			       "  smp = %d\n",
++			       current->pid, smp_processor_id());
++		else
++			printk(KERN_ALERT "futex_wait:"
++			       "  futex_wait_setup could not lock hash bucket"
++			       "  NOT EWOULDLOCK however"
++			       "  pid = %d"
++			       "  smp = %d\n",
++			       current->pid, smp_processor_id());
++	}
++			
+ 	if (ret)
+ 		goto out;
+ 
++	if((400<=dv_print_flag)&&(dv_print_flag<500))
++		printk(KERN_ALERT "futex_wait:"
++		       "  calling futex_wait_queue_me()"
++		       "  pid = %d"
++		       "  smp = %d\n",
++		       current->pid, smp_processor_id());
++	
+ 	/* queue_me and wait for wakeup, timeout, or a signal. */
+ 	futex_wait_queue_me(hb, &q, to);
+ 
+ 	/* If we were woken (and unqueued), we succeeded, whatever. */
+ 	ret = 0;
+ 	/* unqueue_me() drops q.key ref */
+-	if (!unqueue_me(&q))
++	if (!unqueue_me(&q)){
++		if((400<=dv_print_flag)&&(dv_print_flag<500))
++			printk(KERN_ALERT "futex_wait:"
++			       "  unqueue_me() returned 0"
++			       "  futex_q woken by the waking thread"
++			       "  returning 0"
++			       "  pid = %d"
++			       "  smp = %d\n",
++			       current->pid, smp_processor_id());
+ 		goto out;
++	}
++	
++	if((400<=dv_print_flag)&&(dv_print_flag<500))
++		printk(KERN_ALERT "futex_wait:"
++		       "  unqueue_me() returned 1"
++		       "  futex_q not removed by the waking thread"
++		       "  will probably return -ETIMEDOUT"
++		       "  pid = %d"
++		       "  smp = %d\n",
++		       current->pid, smp_processor_id());
++
+ 	ret = -ETIMEDOUT;
+ 	if (to && !to->task)
+ 		goto out;
+ 
++	if((400<=dv_print_flag)&&(dv_print_flag<500))
++		printk(KERN_ALERT "futex_wait:"
++		       "  unqueue_me() returned 1"
++		       "  futex_q not removed by the waking thread"
++		       "  but not returning -ETIMEDOUT"
++		       "  pid = %d"
++		       "  smp = %d\n",
++		       current->pid, smp_processor_id());
++
+ 	/*
+ 	 * We expect signal_pending(current), but we might be the
+ 	 * victim of a spurious wakeup as well.
+@@ -2703,6 +2780,76 @@ SYSCALL_DEFINE6(futex, u32 __user *, uaddr, int, op, u32, val,
+ 	u32 val2 = 0;
+ 	int cmd = op & FUTEX_CMD_MASK;
+ 
++	if((400<=dv_print_flag)&&(dv_print_flag<500)){
++		printk(KERN_ALERT 
++		       "in syscall_futex(), " 
++		       "pid = %d, "
++		       "smp = %d\n",
++		       current->pid, smp_processor_id());
++		switch (cmd) {
++		case FUTEX_WAIT:
++			printk(KERN_ALERT 
++			       "FUTEX_WAIT, pid = %d, smp = %d\n",
++			       current->pid, smp_processor_id());
++			break;
++		case FUTEX_WAIT_BITSET:
++			printk(KERN_ALERT 
++			       "FUTEX_WAIT_BITSET, pid = %d, smp = %d\n",
++			       current->pid, smp_processor_id());
++			break;
++		case FUTEX_WAKE:
++			printk(KERN_ALERT 
++			       "FUTEX_WAKE, pid = %d, smp = %d\n",
++			       current->pid, smp_processor_id());
++			break;
++		case FUTEX_WAKE_BITSET:
++			printk(KERN_ALERT 
++			       "FUTEX_WAKE_BITSET, pid = %d, smp = %d\n",
++			       current->pid, smp_processor_id());
++			break;
++		case FUTEX_REQUEUE:
++			printk(KERN_ALERT 
++			       "FUTEX_REQUEUE, pid = %d, smp = %d\n",
++			       current->pid, smp_processor_id());
++			break;
++		case FUTEX_CMP_REQUEUE:
++			printk(KERN_ALERT 
++			       "FUTEX_CMP_REQUEUE, pid = %d, smp = %d\n",
++			       current->pid, smp_processor_id());
++			break;
++		case FUTEX_WAKE_OP:
++			printk(KERN_ALERT 
++			       "FUTEX_WAKE_OP, pid = %d, smp = %d\n",
++			       current->pid, smp_processor_id());
++			break;
++		case FUTEX_LOCK_PI:
++			printk(KERN_ALERT 
++			       "FUTEX_LOCK_PI, pid = %d, smp = %d\n",
++			       current->pid, smp_processor_id());
++			break;
++		case FUTEX_UNLOCK_PI:
++			printk(KERN_ALERT 
++			       "FUTEX_UNLOCK_PI, pid = %d, smp = %d\n",
++			       current->pid, smp_processor_id());
++			break;
++		case FUTEX_TRYLOCK_PI:
++			printk(KERN_ALERT 
++			       "FUTEX_TRYLOCK_PI, pid = %d, smp = %d\n",
++			       current->pid, smp_processor_id());
++			break;
++		case FUTEX_WAIT_REQUEUE_PI:
++			printk(KERN_ALERT 
++			       "FUTEX_WAIT, pid = %d, smp = %d\n",
++			       current->pid, smp_processor_id());
++			break;
++		case FUTEX_CMP_REQUEUE_PI:
++			printk(KERN_ALERT 
++			       "FUTEX_WAIT_REQUEUE_PI, pid = %d, smp = %d\n",
++			       current->pid, smp_processor_id());
++			break;
++		}
++	}
++	
+ 	if (utime && (cmd == FUTEX_WAIT || cmd == FUTEX_LOCK_PI ||
+ 		      cmd == FUTEX_WAIT_BITSET ||
+ 		      cmd == FUTEX_WAIT_REQUEUE_PI)) {
+diff --git a/kernel/sched/core.c b/kernel/sched/core.c
+index 26058d0..f8b1270 100644
+--- a/kernel/sched/core.c
++++ b/kernel/sched/core.c
+@@ -1957,6 +1957,15 @@ context_switch(struct rq *rq, struct task_struct *prev,
+ 
+ 	context_tracking_task_switch(prev, next);
+ 	/* Here we just switch the register state and the stack. */
++
++	
++	if((400<=dv_print_flag)&&(dv_print_flag<500))
++		printk(KERN_ALERT 
++		       "in context_switch(), calling switch_to(), "
++		       "pid = %d, "
++		       "smp = %d\n",
++		       current->pid, smp_processor_id());
++	
+ 	switch_to(prev, next, prev);
+ 
+ 	barrier();
+@@ -2887,6 +2896,13 @@ static void __sched __schedule(void)
+ 	struct rq *rq;
+ 	int cpu;
+ 
++	if((400<=dv_print_flag)&&(dv_print_flag<500))
++		printk(KERN_ALERT 
++		       "in _schedule(), "
++		       "pid = %d, "
++		       "smp = %d\n\n", 
++		       current->pid, smp_processor_id());
++
+ need_resched:
+ 	preempt_disable();
+ 	cpu = smp_processor_id();

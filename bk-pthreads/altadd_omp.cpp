@@ -5,6 +5,9 @@ using namespace std;
 #include "dvmesg.h"
 
 #define DV_KERNEL_MESG
+const int nprocs = 2;
+const int nthreads = 4;
+
 
 void addone(void *arg){
 	long *p = (long *)(arg);
@@ -38,11 +41,9 @@ void ompmaster(long *list, int nthreads, int count){
 }
 
 int main(){
-	const int nthreads = 5;
-	long list[nthreads];
-	int count = 1000*1000; count = 1000;
-	for(int i=0; i < nthreads; i++)
-		list[i] = 0;
+	long list[nthreads]={0};
+	int count = (nthreads<=nprocs)?1000*1000*10:1000; 
+
 #ifdef DV_KERNEL_MESG
 	count = 6;
 	ompmaster(list, nthreads, count);
@@ -54,8 +55,12 @@ int main(){
 	clk.tic();
 	ompmaster(list, nthreads, count);
 	double cycles = clk.toc();
+	cout<<"nprocs = "<<nprocs<<endl;
+	cout<<"nthreads = "<<nthreads<<endl;
+	cout<<"count = "<<count<<endl;
 	cout<<"cycles per parallel region = "<<cycles/count<<endl;
 #endif
+
 	for(int i=0; i < nthreads; i++)
 		cout<<list[i]<<endl;
 
