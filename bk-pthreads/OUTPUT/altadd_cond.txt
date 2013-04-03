@@ -1,0 +1,25 @@
+nprocs = 4
+nthreads = 2
+count = 1000000
+average per parallel region = 30164.6
+
+nprocs = 4
+nthreads = 3
+count = 1000000
+average per parallel region = 28296.9
+
+nprocs = 4
+nthreads = 8
+count = 100000
+average per parallel region = 18704.6
+
+nprocs = 4
+nthreads = 8
+count = 1000000
+average per parallel region = 18313.6
+
+nprocs = 4
+nthreads = 4
+count = 1000000
+average per parallel region = 8775.56
+

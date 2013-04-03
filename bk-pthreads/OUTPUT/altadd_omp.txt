@@ -1,0 +1,54 @@
+
+nprocs = 4
+nthreads = 2
+count = 10000000
+WORK_COUNT = 0
+cycles per parallel region = 1360.42
+
+nprocs = 4
+nthreads = 3
+count = 10000000
+WORK_COUNT = 0
+cycles per parallel region = 1712.64
+
+nprocs = 4
+nthreads = 8
+count = 100000
+WORK_COUNT = 0
+cycles per parallel region = 40161.3
+
+nprocs = 4
+nthreads = 2
+count = 100000
+WORK_COUNT = 100
+cycles per parallel region = 132589
+
+nprocs = 4
+nthreads = 2
+count = 100000
+WORK_COUNT = 10
+cycles per parallel region = 14078.4
+
+nprocs = 4
+nthreads = 2
+count = 100000
+WORK_COUNT = 10
+cycles per parallel region = 8343.52
+
+nprocs = 4
+nthreads = 2
+count = 1000000
+WORK_COUNT = 10
+cycles per parallel region = 7780.56
+
+nprocs = 4
+nthreads = 2
+count = 1000000
+WORK_COUNT = 1
+cycles per parallel region = 1858.57
+
+nprocs = 4
+nthreads = 2
+count = 1000000
+WORK_COUNT = 20
+cycles per parallel region = 14472.5

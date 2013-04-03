@@ -1,0 +1,69 @@
+[ 3227.393416] in _schedule(), pid = 0, smp = 2
+[ 3227.393416] 
+[ 3227.393423] in context_switch(), calling switch_to(), pid = 0, smp = 2
+[ 3227.393435] in _schedule(), pid = 0, smp = 3
+[ 3227.393435] 
+[ 3227.393441] sys_futex: FUTEX_WAIT, pid = 2956, smp = 1
+[ 3227.393442] sys_futex: FUTEX_WAKE, pid = 2957, smp = 2
+[ 3227.393445] futex_wait:  futex_wait_setup could not lock hash bucket  EWOULDLOCK  pid = 2956  smp = 1
+[ 3227.393446] sys_futex: FUTEX_WAIT, pid = 2957, smp = 2
+[ 3227.393447] sys_futex: FUTEX_WAKE, pid = 2956, smp = 1
+[ 3227.393449] futex_wait:  futex_wait_setup could not lock hash bucket  EWOULDLOCK  pid = 2957  smp = 2
+[ 3227.393450] sys_futex: FUTEX_WAKE, pid = 2957, smp = 2
+[ 3227.393455] in context_switch(), calling switch_to(), pid = 0, smp = 3
+[ 3227.393460] sys_futex: FUTEX_WAIT, pid = 2956, smp = 1
+[ 3227.393462] sys_futex: FUTEX_WAKE, pid = 2958, smp = 3
+[ 3227.393467] futex_wait:  futex_wait_setup could not lock hash bucket  EWOULDLOCK  pid = 2956  smp = 1
+[ 3227.393469] sys_futex: FUTEX_WAIT, pid = 2956, smp = 1
+[ 3227.393470] sys_futex: FUTEX_WAKE, pid = 2958, smp = 3
+[ 3227.393472] futex_wait:  futex_wait_setup could not lock hash bucket  EWOULDLOCK  pid = 2956  smp = 1
+[ 3227.393474] sys_futex: FUTEX_WAIT, pid = 2958, smp = 3
+[ 3227.393475] sys_futex: FUTEX_WAKE, pid = 2956, smp = 1
+[ 3227.393477] sys_futex: FUTEX_WAIT, pid = 2957, smp = 2
+[ 3227.393478] sys_futex: FUTEX_WAKE, pid = 2956, smp = 1
+[ 3227.393479] futex_wait:  futex_wait_setup could not lock hash bucket  EWOULDLOCK  pid = 2957  smp = 2
+[ 3227.393481] sys_futex: FUTEX_WAKE, pid = 2957, smp = 2
+[ 3227.393484] futex_wait:  futex_wait_setup could not lock hash bucket  EWOULDLOCK  pid = 2958  smp = 3
+[ 3227.393486] sys_futex: FUTEX_WAIT, pid = 2958, smp = 3
+[ 3227.393487] sys_futex: FUTEX_WAKE, pid = 2956, smp = 1
+[ 3227.393490] futex_wait:  futex_wait_setup could not lock hash bucket  EWOULDLOCK  pid = 2958  smp = 3
+[ 3227.393492] sys_futex: FUTEX_WAIT, pid = 2958, smp = 3
+[ 3227.393492] sys_futex: FUTEX_WAKE, pid = 2956, smp = 1
+[ 3227.393495] futex_wait:  futex_wait_setup could not lock hash bucket  EWOULDLOCK  pid = 2958  smp = 3
+[ 3227.393497] sys_futex: FUTEX_WAIT, pid = 2956, smp = 1
+[ 3227.393498] sys_futex: FUTEX_WAKE, pid = 2958, smp = 3
+[ 3227.393501] futex_wait:  futex_wait_setup could not lock hash bucket  EWOULDLOCK  pid = 2956  smp = 1
+[ 3227.393503] sys_futex: FUTEX_WAIT, pid = 2958, smp = 3
+[ 3227.393504] sys_futex: FUTEX_WAKE, pid = 2956, smp = 1
+[ 3227.393505] sys_futex: FUTEX_WAIT, pid = 2957, smp = 2
+[ 3227.393506] sys_futex: FUTEX_WAKE, pid = 2956, smp = 1
+[ 3227.393507] futex_wait:  futex_wait_setup could not lock hash bucket  EWOULDLOCK  pid = 2957  smp = 2
+[ 3227.393509] sys_futex: FUTEX_WAKE, pid = 2957, smp = 2
+[ 3227.393512] futex_wait:  futex_wait_setup could not lock hash bucket  EWOULDLOCK  pid = 2958  smp = 3
+[ 3227.393514] sys_futex: FUTEX_WAIT, pid = 2956, smp = 1
+[ 3227.393515] sys_futex: FUTEX_WAKE, pid = 2958, smp = 3
+[ 3227.393518] futex_wait:  futex_wait_setup could not lock hash bucket  EWOULDLOCK  pid = 2956  smp = 1
+[ 3227.393519] sys_futex: FUTEX_WAIT, pid = 2956, smp = 1
+[ 3227.393520] sys_futex: FUTEX_WAKE, pid = 2958, smp = 3
+[ 3227.393523] futex_wait:  futex_wait_setup could not lock hash bucket  EWOULDLOCK  pid = 2956  smp = 1
+[ 3227.393525] sys_futex: FUTEX_WAIT, pid = 2958, smp = 3
+[ 3227.393526] sys_futex: FUTEX_WAKE, pid = 2956, smp = 1
+[ 3227.393527] sys_futex: FUTEX_WAIT, pid = 2956, smp = 1
+[ 3227.393528] sys_futex: FUTEX_WAKE, pid = 2957, smp = 2
+[ 3227.393530] futex_wait:  futex_wait_setup could not lock hash bucket  EWOULDLOCK  pid = 2956  smp = 1
+[ 3227.393531] sys_futex: FUTEX_WAIT, pid = 2957, smp = 2
+[ 3227.393532] sys_futex: FUTEX_WAKE, pid = 2956, smp = 1
+[ 3227.393534] futex_wait:  futex_wait_setup could not lock hash bucket  EWOULDLOCK  pid = 2957  smp = 2
+[ 3227.393535] sys_futex: FUTEX_WAKE, pid = 2957, smp = 2
+[ 3227.393539] futex_wait:  futex_wait_setup could not lock hash bucket  EWOULDLOCK  pid = 2958  smp = 3
+[ 3227.393541] sys_futex: FUTEX_WAIT, pid = 2956, smp = 1
+[ 3227.393542] sys_futex: FUTEX_WAKE, pid = 2958, smp = 3
+[ 3227.393545] futex_wait:  futex_wait_setup could not lock hash bucket  EWOULDLOCK  pid = 2956  smp = 1
+[ 3227.393547] sys_futex: FUTEX_WAIT, pid = 2958, smp = 3
+[ 3227.393548] sys_futex: FUTEX_WAKE, pid = 2956, smp = 1
+[ 3227.393549] sys_futex: FUTEX_WAIT, pid = 2957, smp = 2
+[ 3227.393550] sys_futex: FUTEX_WAKE, pid = 2956, smp = 1
+[ 3227.393552] futex_wait:  futex_wait_setup could not lock hash bucket  EWOULDLOCK  pid = 2957  smp = 2
+[ 3227.393553] sys_futex: FUTEX_WAKE, pid = 2957, smp = 2
+[ 3227.393556] futex_wait:  futex_wait_setup could not lock hash bucket  EWOULDLOCK  pid = 2958  smp = 3
+[ 3227.393558] sys_futex: FUTEX_WAKE, pid = 2958, smp = 3

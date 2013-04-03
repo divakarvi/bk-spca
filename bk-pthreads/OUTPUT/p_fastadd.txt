@@ -1,3 +1,0 @@
-average per parallel region = 481.901
-30000000
-30000000

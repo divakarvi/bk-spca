@@ -1,13 +1,15 @@
 #include <unistd.h>
 #include <pthread.h>
 #include <iostream>
+#include <fstream>
 #include "TimeStamp.hh"
 #include "dvmesg.h"
 using namespace std;
 
 #define DV_KERNEL_MESG
-const int nprocs = 2;
-const int nthreads = 2;
+const int nthreads = 8;
+const int nprocs = 4;
+
 
 void (*fnlist[nthreads-1])(void *);
 void *arglist[nthreads-1];
@@ -112,7 +114,7 @@ int main(){
 	long list[nthreads];
 	for(int i=0; i < nthreads; i++)
 		list[i] = 0;
-	int count = (nthreads<=nprocs)?1000*1000*10:1000; 
+	int count = (nthreads<=nprocs)?1000*1000*25:1000; 
 #ifdef DV_KERNEL_MESG
 	count = 6;
 #endif
@@ -126,10 +128,15 @@ int main(){
 	set_dvflag(0);
 #endif
 	double cycles = clk.toc();
-	cout<<"nprocs = "<<nprocs<<endl;
-	cout<<"nthreads = "<<nthreads<<endl;
-	cout<<"count = "<<count<<endl;	
-	cout<<"average per parallel region = "<<cycles/count<<endl;
+#ifndef DV_KERNEL_MESG
+	ofstream ofile("OUTPUT/altadd_mtx.txt", ios_base::app);
+	ofile<<"nprocs = "<<nprocs<<endl;
+	ofile<<"nthreads = "<<nthreads<<endl;
+	ofile<<"count = "<<count<<endl;	
+	ofile<<"average per parallel region = "<<cycles/count<<endl<<endl;
+	ofile.close();
+#endif
+	cout<<"tgid = "<<getpid()<<endl;
 	for(int i=0; i < nthreads; i++)
 		cout<<list[i]<<endl;
 }

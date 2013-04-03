@@ -1,22 +1,33 @@
 #include <iostream>
+#include <fstream>
+#include <cstdlib>
 #include "TimeStamp.hh"
 #include <omp.h>
 using namespace std;
 #include "dvmesg.h"
 
 #define DV_KERNEL_MESG
-const int nprocs = 2;
-const int nthreads = 4;
+#define WORK_COUNT 10000
+const int nprocs = 4;
+const int nthreads = 2;
 
 
 void addone(void *arg){
 	long *p = (long *)(arg);
 	*p += 1;
+#ifdef WORK_COUNT
+	for(int i=0; i < WORK_COUNT; i++)
+		*p += (*p)%37;
+#endif
 }
 
 void addtwo(void *arg){
 	long *p = (long *)(arg);
 	*p += 2;
+#ifdef WORK_COUNT
+	for(int i=0; i < WORK_COUNT; i++)
+		*p += rand();
+#endif
 }
 
 void ompmaster(long *list, int nthreads, int count){
@@ -42,10 +53,14 @@ void ompmaster(long *list, int nthreads, int count){
 
 int main(){
 	long list[nthreads]={0};
-	int count = (nthreads<=nprocs)?1000*1000*10:1000; 
+	int count = (nthreads<=nprocs)?1000*1000*10:1000*100; 
+	if(WORK_COUNT > 0)
+		count = 1000*100*10;
 
 #ifdef DV_KERNEL_MESG
 	count = 6;
+	cout<<"tgid = "<<getpid()<<endl;
+	cout<<"WORK_COUNT = "<<WORK_COUNT<<endl;
 	ompmaster(list, nthreads, count);
 	set_dvflag(400);
 	ompmaster(list, nthreads, count);
@@ -55,10 +70,14 @@ int main(){
 	clk.tic();
 	ompmaster(list, nthreads, count);
 	double cycles = clk.toc();
-	cout<<"nprocs = "<<nprocs<<endl;
-	cout<<"nthreads = "<<nthreads<<endl;
-	cout<<"count = "<<count<<endl;
-	cout<<"cycles per parallel region = "<<cycles/count<<endl;
+	ofstream ofile("OUTPUT/altadd_omp.txt", ios_base::app);
+	ofile<<endl;
+	ofile<<"nprocs = "<<nprocs<<endl;
+	ofile<<"nthreads = "<<nthreads<<endl;
+	ofile<<"count = "<<count<<endl;
+	ofile<<"WORK_COUNT = "<<WORK_COUNT<<endl;
+	ofile<<"cycles per parallel region = "<<cycles/count<<endl;
+	ofile.close();
 #endif
 
 	for(int i=0; i < nthreads; i++)

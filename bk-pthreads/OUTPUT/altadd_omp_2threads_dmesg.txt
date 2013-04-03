@@ -1,0 +1,12 @@
+[ 1677.228842] sys_futex: FUTEX_WAKE, pid = 2604, smp = 0
+[ 1677.228848] sys_futex: FUTEX_WAKE, pid = 2604, smp = 0
+[ 1677.228850] sys_futex: FUTEX_WAKE, pid = 2604, smp = 0
+[ 1677.228852] sys_futex: FUTEX_WAKE, pid = 2604, smp = 0
+[ 1677.228854] sys_futex: FUTEX_WAKE, pid = 2604, smp = 0
+[ 1677.228856] sys_futex: FUTEX_WAKE, pid = 2604, smp = 0
+[ 1677.228858] sys_futex: FUTEX_WAKE, pid = 2604, smp = 0
+[ 1677.228859] sys_futex: FUTEX_WAKE, pid = 2604, smp = 0
+[ 1677.228861] sys_futex: FUTEX_WAKE, pid = 2604, smp = 0
+[ 1677.228863] sys_futex: FUTEX_WAKE, pid = 2604, smp = 0
+[ 1677.228865] sys_futex: FUTEX_WAKE, pid = 2604, smp = 0
+[ 1677.228867] sys_futex: FUTEX_WAKE, pid = 2604, smp = 0

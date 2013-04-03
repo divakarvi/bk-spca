@@ -70,25 +70,16 @@ altadd_mtx.exe: altadd_mtx.o
 altadd_mtx.o: altadd_mtx.cpp
 	g++ -O3 -c $< -fopenmp
 
-altadd_spin.exe: altadd_spin.o
-	g++ -o $@ $^ -fopenmp
-altadd_spin.o: altadd_spin.cpp
-	g++ -O3 -c $< -fopenmp
-
 altadd_cond.exe: altadd_cond.o
 	g++ -o $@ $^ -fopenmp
 altadd_cond.o: altadd_cond.cpp
 	g++ -O3 -c $< -fopenmp
 
-altadd_barrier.exe: altadd_barrier.o
-	g++ -o $@ $^ -fopenmp
-altadd_barrier.o: altadd_barrier.cpp
-	g++ -O3 -c $< -fopenmp
 
 alex.exe: alexonlinux.o
 	g++ -o $@ $^ -fopenmp
 alexonlinux.o: alexonlinux.cpp
-	g++ -DUSE_SPINLOCK -O3 -c $< -fopenmp
+	g++ -UUSE_SPINLOCK -O3 -c $< -fopenmp
 
 latency: latency4n.exe
 	echo "latency done"

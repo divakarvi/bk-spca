@@ -1,4 +1,0 @@
-cycles per parallel region = 1677.67
-3000000
-3000000
-3000000
