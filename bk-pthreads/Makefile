@@ -61,25 +61,30 @@ altadd_omp.o: altadd_omp.cpp
 	g++ -O3 -c $< -fopenmp
 
 altadd_c.exe: altadd_c.o
-	g++ -o $@ $^ -fopenmp
+	g++ -o $@ $^ -pthread
 altadd_c.o: altadd_c.cpp
-	g++ -O3 -c $< -fopenmp
+	g++ -O3 -c $< 
 
 altadd_mtx.exe: altadd_mtx.o
-	g++ -o $@ $^ -fopenmp
+	g++ -o $@ $^ -pthread
 altadd_mtx.o: altadd_mtx.cpp
-	g++ -O3 -c $< -fopenmp
+	g++ -O3 -c $< 
 
 altadd_cond.exe: altadd_cond.o
-	g++ -o $@ $^ -fopenmp
+	g++ -o $@ $^ -pthread
 altadd_cond.o: altadd_cond.cpp
-	g++ -O3 -c $< -fopenmp
+	g++ -O3 -c $< 
+
+altadd_spin.exe: altadd_spin.o
+	g++ -o $@ $^ -pthread
+altadd_spin.o: altadd_spin.cpp
+	g++ -O3 -c $< 
 
 
 alex.exe: alexonlinux.o
-	g++ -o $@ $^ -fopenmp
+	g++ -o $@ $^ -pthread
 alexonlinux.o: alexonlinux.cpp
-	g++ -UUSE_SPINLOCK -O3 -c $< -fopenmp
+	g++ -UUSE_SPINLOCK -O3 -c $<
 
 latency: latency4n.exe
 	echo "latency done"

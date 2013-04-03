@@ -13,3 +13,8 @@ nthreads = 8
 count = 1000
 average per parallel region = 9.17238e+07
 
+nprocs = 4
+nthreads = 4
+count = 25000000
+average per parallel region = 6538.53
+

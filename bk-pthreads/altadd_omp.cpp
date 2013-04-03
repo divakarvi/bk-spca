@@ -6,10 +6,12 @@
 using namespace std;
 #include "dvmesg.h"
 
-#define DV_KERNEL_MESG
-#define WORK_COUNT 10000
+#undef DV_KERNEL_MESG
+#define WORK_COUNT 0
+
+const int nthreads = 4;
 const int nprocs = 4;
-const int nthreads = 2;
+
 
 
 void addone(void *arg){
@@ -53,7 +55,7 @@ void ompmaster(long *list, int nthreads, int count){
 
 int main(){
 	long list[nthreads]={0};
-	int count = (nthreads<=nprocs)?1000*1000*10:1000*100; 
+	int count = (nthreads<=nprocs)?1000*1000*100:1000*100; 
 	if(WORK_COUNT > 0)
 		count = 1000*100*10;
 

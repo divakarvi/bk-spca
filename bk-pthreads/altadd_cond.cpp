@@ -6,8 +6,9 @@
 #include "dvmesg.h"
 using namespace std;
 
-#define DV_KERNEL_MESG
-const int nthreads=8;
+#undef DV_KERNEL_MESG
+
+const int nthreads=4;
 const int nprocs=4;
 
 void (*fnlist[nthreads])(void *);
@@ -117,7 +118,7 @@ void altadd12(long *list, int count){
 
 int main(){
 	long list[nthreads]={0};
-	int count = (nthreads<=nprocs)?1000*1000:1000*1000;
+	int count = (nthreads<=nprocs)?1000*1000*25:1000*1000;
 #ifdef DV_KERNEL_MESG
 	count = 6;
 #endif
