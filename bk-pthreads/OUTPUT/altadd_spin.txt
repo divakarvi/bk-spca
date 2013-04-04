@@ -1,3 +1,4 @@
+--------------------NO TIEBREAK--------------------
 nprocs = 4
 nthreads = 2
 count = 1000000
@@ -7,4 +8,396 @@ nprocs = 4
 nthreads = 2
 count = 10000000
 average per parallel region = 120361
+
+nprocs = 4
+nthreads = 2
+count = 1000000
+average per parallel region = 1.19055e+06
+
+--------------------TIEBREAK=100--------------------
+
+nprocs = 4
+nthreads = 2
+count = 1000000
+average per parallel region = 910.517
+
+nprocs = 4
+nthreads = 2
+count = 10000000
+average per parallel region = 917.016
+
+nprocs = 4
+nthreads = 3
+count = 10000000
+average per parallel region = 2092.7
+
+nprocs = 4
+nthreads = 3
+count = 10000000
+average per parallel region = 2076.22
+
+nprocs = 4
+nthreads = 4
+count = 10000000
+average per parallel region = 8627.71
+
+nprocs = 4
+nthreads = 4
+count = 10000000
+average per parallel region = 10549.3
+
+nprocs = 4
+nthreads = 4
+count = 10000000
+average per parallel region = 8923.57
+
+----------------------------------------------------------------------
+
+nprocs = 4
+nthreads = 2
+count = 10000000
+TIEBREAK = 1
+average per parallel region = 751.405
+
+nprocs = 4
+nthreads = 2
+count = 10000000
+TIEBREAK = 1
+average per parallel region = 750.26
+
+nprocs = 4
+nthreads = 2
+count = 10000000
+TIEBREAK = 1
+average per parallel region = 758.898
+
+nprocs = 4
+nthreads = 2
+count = 10000000
+TIEBREAK = 10
+average per parallel region = 762.975
+
+nprocs = 4
+nthreads = 2
+count = 10000000
+TIEBREAK = 10
+average per parallel region = 761.678
+
+nprocs = 4
+nthreads = 2
+count = 10000000
+TIEBREAK = 10
+average per parallel region = 782.54
+
+----------------------------------------------------------------------
+
+nprocs = 4
+nthreads = 3
+count = 10000000
+TIEBREAK = 1
+average per parallel region = 6012.88
+
+nprocs = 4
+nthreads = 3
+count = 10000000
+TIEBREAK = 1
+average per parallel region = 6560.53
+
+
+nprocs = 4
+nthreads = 3
+count = 10000000
+TIEBREAK = 10
+average per parallel region = 4834.23
+
+nprocs = 4
+nthreads = 3
+count = 10000000
+TIEBREAK = 200
+average per parallel region = 1861.16
+
+nprocs = 4
+nthreads = 3
+count = 10000000
+TIEBREAK = 200
+average per parallel region = 1978.73
+
+nprocs = 4
+nthreads = 3
+count = 10000000
+TIEBREAK = 200
+average per parallel region = 1879.04
+
+
+
+----------------------------------------------------------------------
+
+nprocs = 4
+nthreads = 4
+count = 10000000
+TIEBREAK = 1
+average per parallel region = 9790.43
+
+nprocs = 4
+nthreads = 4
+count = 10000000
+TIEBREAK = 1
+average per parallel region = 9358.72
+
+nprocs = 4
+nthreads = 4
+count = 10000000
+TIEBREAK = 200
+average per parallel region = 6156.16
+
+nprocs = 4
+nthreads = 4
+count = 10000000
+TIEBREAK = 600
+average per parallel region = 4252.81
+
+nprocs = 4
+nthreads = 4
+count = 10000000
+TIEBREAK = 1200
+average per parallel region = 6465.09
+
+nprocs = 4
+nthreads = 4
+count = 10000000
+TIEBREAK = 600
+average per parallel region = 4184.73
+
+nprocs = 4
+nthreads = 4
+count = 10000000
+TIEBREAK = 600
+average per parallel region = 4113.86
+
+nprocs = 4
+nthreads = 4
+count = 10000000
+TIEBREAK = 600
+average per parallel region = 4207.82
+
+
+
+----------------------------------------------------------------------
+
+nprocs = 4
+nthreads = 8
+count = 100
+TIEBREAK = 600
+average per parallel region = 669395
+
+nprocs = 4
+nthreads = 8
+count = 1000
+TIEBREAK = 600
+average per parallel region = 597145
+
+nprocs = 4
+nthreads = 8
+count = 1000
+TIEBREAK = 600
+average per parallel region = 288452
+
+nprocs = 4
+nthreads = 8
+count = 1000
+TIEBREAK = 1
+average per parallel region = 78037.6
+
+nprocs = 4
+nthreads = 8
+count = 1000
+TIEBREAK = 1
+average per parallel region = 88697.6
+
+nprocs = 4
+nthreads = 8
+count = 1000
+TIEBREAK = 1
+average per parallel region = 311762
+
+nprocs = 4
+nthreads = 8
+count = 1000
+TIEBREAK = 1
+average per parallel region = 188749
+
+nprocs = 4
+nthreads = 8
+count = 1000
+TIEBREAK = 1
+average per parallel region = 141487
+
+nprocs = 4
+nthreads = 8
+count = 1000
+TIEBREAK = 1
+average per parallel region = 119834
+
+nprocs = 4
+nthreads = 8
+count = 1000
+TIEBREAK = 1
+average per parallel region = 287681
+
+nprocs = 4
+nthreads = 8
+count = 1000
+TIEBREAK = 1
+average per parallel region = 78822
+
+nprocs = 4
+nthreads = 8
+count = 1000
+TIEBREAK = 1
+average per parallel region = 175236
+
+nprocs = 4
+nthreads = 8
+count = 1000
+TIEBREAK = 1
+average per parallel region = 516011
+
+nprocs = 4
+nthreads = 8
+count = 1000
+TIEBREAK = 1
+average per parallel region = 80015.3
+
+nprocs = 4
+nthreads = 8
+count = 1000
+TIEBREAK = 1
+average per parallel region = 248718
+
+nprocs = 4
+nthreads = 8
+count = 1000
+TIEBREAK = 10000
+average per parallel region = 7.22341e+07
+
+nprocs = 4
+nthreads = 8
+count = 1000
+TIEBREAK = 10000
+average per parallel region = 7.02138e+07
+
+nprocs = 4
+nthreads = 8
+count = 1000
+TIEBREAK = 10000
+average per parallel region = 7.15877e+07
+
+nprocs = 4
+nthreads = 8
+count = 100
+TIEBREAK = 0
+average per parallel region = 1.172e+08
+
+
+nprocs = 4
+nthreads = 8
+count = 100
+TIEBREAK = 1
+average per parallel region = 195949
+
+nprocs = 4
+nthreads = 8
+count = 100
+TIEBREAK = 1
+average per parallel region = 383953
+
+nprocs = 4
+nthreads = 8
+count = 100
+TIEBREAK = 1
+average per parallel region = 387465
+
+nprocs = 4
+nthreads = 8
+count = 100
+TIEBREAK = 1
+average per parallel region = 2.60175e+06
+
+nprocs = 4
+nthreads = 8
+count = 100
+TIEBREAK = 1
+average per parallel region = 565367
+
+nprocs = 4
+nthreads = 8
+count = 100
+TIEBREAK = 1
+average per parallel region = 487012
+
+nprocs = 4
+nthreads = 8
+count = 100
+TIEBREAK = 1
+average per parallel region = 376021
+
+nprocs = 4
+nthreads = 8
+count = 100
+TIEBREAK = 1
+average per parallel region = 443668
+
+nprocs = 4
+nthreads = 8
+count = 100
+TIEBREAK = 1
+average per parallel region = 186374
+
+nprocs = 4
+nthreads = 8
+count = 100
+TIEBREAK = 1
+average per parallel region = 446867
+
+nprocs = 4
+nthreads = 8
+count = 100
+TIEBREAK = 1
+average per parallel region = 474477
+
+nprocs = 4
+nthreads = 8
+count = 100
+TIEBREAK = 1
+average per parallel region = 143180
+
+nprocs = 4
+nthreads = 8
+count = 100
+TIEBREAK = 1
+average per parallel region = 430577
+
+nprocs = 4
+nthreads = 8
+count = 100
+TIEBREAK = 1
+average per parallel region = 2.49252e+06
+
+nprocs = 4
+nthreads = 8
+count = 100
+TIEBREAK = 1
+average per parallel region = 179960
+
+nprocs = 4
+nthreads = 8
+count = 100
+TIEBREAK = 1
+average per parallel region = 308422
+
+nprocs = 4
+nthreads = 8
+count = 100
+TIEBREAK = 1
+average per parallel region = 446712
 

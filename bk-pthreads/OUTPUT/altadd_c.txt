@@ -18,3 +18,84 @@ nthreads = 8
 count = 1000
 average per parallel region = 8.09933e+07
 
+nprocs = 4
+nthreads = 2
+count = 10000000
+average per parallel region = 1387.02
+
+nprocs = 4
+nthreads = 3
+count = 10000000
+average per parallel region = 1680.76
+
+nprocs = 4
+nthreads = 4
+count = 10000000
+average per parallel region = 1975.1
+
+nprocs = 4
+nthreads = 8
+count = 1000
+average per parallel region = 7.35995e+07
+
+
+--------------------without cpuid--------------------
+
+nprocs = 4
+nthreads = 2
+count = 10000000
+average per parallel region = 455.074
+
+nprocs = 4
+nthreads = 2
+count = 10000000
+average per parallel region = 446.333
+
+nprocs = 4
+nthreads = 3
+count = 10000000
+average per parallel region = 702.952
+
+nprocs = 4
+nthreads = 3
+count = 10000000
+average per parallel region = 693.386
+
+nprocs = 4
+nthreads = 4
+count = 10000000
+average per parallel region = 1055.8
+
+nprocs = 4
+nthreads = 4
+count = 10000000
+average per parallel region = 1152.78
+
+(master does no work)
+
+nprocs = 4
+nthreads = 4
+count = 10000000
+average per parallel region = 1087.48
+
+nprocs = 4
+nthreads = 2
+count = 10000000
+average per parallel region = 291.294
+
+nprocs = 4
+nthreads = 2
+count = 10000000
+average per parallel region = 283.886
+
+nprocs = 4
+nthreads = 3
+count = 10000000
+average per parallel region = 583.877
+
+nprocs = 4
+nthreads = 3
+count = 10000000
+average per parallel region = 622.201
+
+

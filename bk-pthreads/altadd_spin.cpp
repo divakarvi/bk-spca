@@ -1,14 +1,20 @@
 #include <unistd.h>
 #include <pthread.h>
 #include <iostream>
+#include <cstdlib>
 #include "StatVector.hh"
 #include "TimeStamp.hh"
 #include "dvmesg.h"
 using namespace std;
 
 #undef DV_KERNEL_MESG
+#ifdef DV_KERNEL_MESG
+#undef TIEBREAK 
+#else 
+#define TIEBREAK 1
+#endif
 
-const int nthreads = 2;
+const int nthreads = 8;
 const int nprocs = 4;
 
 
@@ -35,8 +41,13 @@ void exitfn(void *arg){
 	pthread_exit(NULL);
 }
 
+extern void dummy();
+
 void *worker(void *arg){
 	int tid = *((int *) arg);
+#ifdef TIEBREAK
+	srand((tid+1)*28887);
+#endif
 	while(1){
 		pthread_spin_lock(spin+tid-1);
 		if(workflag[tid-1]==1){
@@ -44,6 +55,11 @@ void *worker(void *arg){
 			workflag[tid-1] = 0;
 		}
 		pthread_spin_unlock(spin+tid-1);
+#ifdef TIEBREAK
+		int count = rand()%TIEBREAK;
+		for(int i=0; i < count; i++)
+			dummy();
+#endif
 	}
 	return NULL;
 }
@@ -72,6 +88,7 @@ void shutdown_workers(){
 				break;
 			}
 			pthread_spin_unlock(spin+i);
+			
 		}
 		pthread_join(pthrd[i], NULL);
 		pthread_spin_destroy(spin+i);
@@ -90,6 +107,11 @@ void assignwork(int i, int tid, long *list){
 			return;
 		}
 		pthread_spin_unlock(spin+j);
+#ifdef TIEBREAK
+		int count = rand()%TIEBREAK;
+		for(int i=0; i < count; i++)
+			dummy();
+#endif
 	}
 }
 
@@ -135,9 +157,23 @@ int main(){
 	ofile<<"nprocs = "<<nprocs<<endl;
 	ofile<<"nthreads = "<<nthreads<<endl;
 	ofile<<"count = "<<count<<endl;
+#ifdef TIEBREAK
+	ofile<<"TIEBREAK = "<<TIEBREAK<<endl;
+#else
+	ofile<<"TIEBREAK = "<<0<<endl;
+#endif
 	ofile<<"average per parallel region = "<<cycles/count<<endl<<endl;
 	ofile.close();
 #endif
+	cout<<"nprocs = "<<nprocs<<endl;
+	cout<<"nthreads = "<<nthreads<<endl;
+	cout<<"count = "<<count<<endl;
+#ifdef TIEBREAK
+	cout<<"TIEBREAK = "<<TIEBREAK<<endl;
+#else
+	cout<<"TIEBREAK = "<<0<<endl;
+#endif
+	cout<<"average per parallel region = "<<cycles/count<<endl<<endl;
 	cout<<"tgid = "<<getpid()<<endl;
 	for(int i=0; i < nthreads; i++)
 		cout<<list[i]<<endl;

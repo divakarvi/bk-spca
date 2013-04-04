@@ -46,7 +46,7 @@ parallelA.o: parallelA.cpp
 parallelB.o: parallelB.cpp
 	g++ -fopenmp -c $<
 dummy.o: dummy.cpp
-	g++ -fopenmp -c $<
+	g++ -c $<
 
 p_overhead.exe: p_overhead.o
 	g++ -o $@ $^ -lpthread 
@@ -75,10 +75,12 @@ altadd_cond.exe: altadd_cond.o
 altadd_cond.o: altadd_cond.cpp
 	g++ -O3 -c $< 
 
-altadd_spin.exe: altadd_spin.o
-	g++ -o $@ $^ -pthread
+altadd_spin.exe: altadd_spin.o dummy.o
+	g++ -o $@ $^ -pthread 
 altadd_spin.o: altadd_spin.cpp
-	g++ -O3 -c $< 
+	g++ -O3 -fno-inline-functions -c $< 
+altadd_spin.s: altadd_spin.cpp
+	g++ -S -fno-inline-functions $<
 
 
 alex.exe: alexonlinux.o
