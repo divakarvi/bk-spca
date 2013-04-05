@@ -1,0 +1,665 @@
+[15103.329913] in _schedule(), pid = 4266, smp = 1
+[15103.329913] 
+[15103.329940] in context_switch(), calling switch_to(), pid = 4266, smp = 1
+[15103.330082] in _schedule(), pid = 0, smp = 1
+[15103.330082] 
+[15103.330091] in context_switch(), calling switch_to(), pid = 0, smp = 1
+[15103.330122] in syscall_futex(), pid = 5464, smp = 1
+[15103.330126] FUTEX_WAKE, pid = 5464, smp = 1
+[15103.332034] in _schedule(), pid = 5464, smp = 1
+[15103.332034] 
+[15103.332043] in context_switch(), calling switch_to(), pid = 5464, smp = 1
+[15103.332062] in _schedule(), pid = 5463, smp = 0
+[15103.332062] 
+[15103.332091] in context_switch(), calling switch_to(), pid = 5463, smp = 0
+[15103.332120] in _schedule(), pid = 10, smp = 0
+[15103.332120] 
+[15103.332129] in context_switch(), calling switch_to(), pid = 10, smp = 0
+[15103.332164] in syscall_futex(), pid = 914, smp = 1
+[15103.332170] FUTEX_WAKE_OP, pid = 914, smp = 1
+[15103.332192] in _schedule(), pid = 5463, smp = 0
+[15103.332192] 
+[15103.332204] in context_switch(), calling switch_to(), pid = 5463, smp = 0
+[15103.332212] futex_wait:  unqueue_me() returned 0  futex_q woken by the waking thread  returning 0  pid = 912  smp = 0
+[15103.332226] in syscall_futex(), pid = 914, smp = 1
+[15103.332230] in syscall_futex(), pid = 912, smp = 0
+[15103.332233] FUTEX_WAKE, pid = 912, smp = 0
+[15103.332243] FUTEX_WAIT, pid = 914, smp = 1
+[15103.332250] futex_wait:  futex_wait_setup could not lock hash bucket  EWOULDLOCK  pid = 914  smp = 1
+[15103.332256] in syscall_futex(), pid = 914, smp = 1
+[15103.332260] FUTEX_WAKE, pid = 914, smp = 1
+[15103.332441] in _schedule(), pid = 914, smp = 1
+[15103.332441] 
+[15103.332451] in context_switch(), calling switch_to(), pid = 914, smp = 1
+[15103.332559] in _schedule(), pid = 52, smp = 1
+[15103.332559] 
+[15103.332569] in context_switch(), calling switch_to(), pid = 52, smp = 1
+[15103.332574] in _schedule(), pid = 6, smp = 1
+[15103.332574] 
+[15103.332583] in context_switch(), calling switch_to(), pid = 6, smp = 1
+[15103.332762] in _schedule(), pid = 5464, smp = 1
+[15103.332762] 
+[15103.332770] in context_switch(), calling switch_to(), pid = 5464, smp = 1
+[15103.332781] in _schedule(), pid = 52, smp = 1
+[15103.332781] 
+[15103.332788] in context_switch(), calling switch_to(), pid = 52, smp = 1
+[15103.332880] in _schedule(), pid = 5464, smp = 1
+[15103.332880] 
+[15103.332887] in context_switch(), calling switch_to(), pid = 5464, smp = 1
+[15103.332895] in _schedule(), pid = 52, smp = 1
+[15103.332895] 
+[15103.332902] in context_switch(), calling switch_to(), pid = 52, smp = 1
+[15103.333005] in _schedule(), pid = 5464, smp = 1
+[15103.333005] 
+[15103.333011] in context_switch(), calling switch_to(), pid = 5464, smp = 1
+[15103.333021] in _schedule(), pid = 52, smp = 1
+[15103.333021] 
+[15103.333027] in context_switch(), calling switch_to(), pid = 52, smp = 1
+[15103.333129] in _schedule(), pid = 5464, smp = 1
+[15103.333129] 
+[15103.333136] in context_switch(), calling switch_to(), pid = 5464, smp = 1
+[15103.333144] in _schedule(), pid = 52, smp = 1
+[15103.333144] 
+[15103.333151] in context_switch(), calling switch_to(), pid = 52, smp = 1
+[15103.333256] in _schedule(), pid = 5464, smp = 1
+[15103.333256] 
+[15103.333262] in context_switch(), calling switch_to(), pid = 5464, smp = 1
+[15103.333270] in _schedule(), pid = 52, smp = 1
+[15103.333270] 
+[15103.333277] in context_switch(), calling switch_to(), pid = 52, smp = 1
+[15103.333349] in syscall_futex(), pid = 912, smp = 0
+[15103.333355] FUTEX_WAIT, pid = 912, smp = 0
+[15103.333361] futex_wait:  futex_wait_setup holds hash bucket lock  pid = 912  smp = 0
+[15103.333365] futex_wait:  calling futex_wait_queue_me()  pid = 912  smp = 0
+[15103.333370] futex_wait_queue_me:  calling schedule()  pid = 912  smp = 0
+[15103.333374] in _schedule(), pid = 912, smp = 0
+[15103.333374] 
+[15103.333380] in _schedule(), pid = 5464, smp = 1
+[15103.333380] 
+[15103.333388] in context_switch(), calling switch_to(), pid = 5464, smp = 1
+[15103.333391] in context_switch(), calling switch_to(), pid = 912, smp = 0
+[15103.333404] in _schedule(), pid = 52, smp = 1
+[15103.333404] 
+[15103.333411] in context_switch(), calling switch_to(), pid = 52, smp = 1
+[15103.335951] in _schedule(), pid = 5464, smp = 1
+[15103.335951] 
+[15103.335959] in context_switch(), calling switch_to(), pid = 5464, smp = 1
+[15103.337406] in _schedule(), pid = 4266, smp = 1
+[15103.337406] 
+[15103.337432] in context_switch(), calling switch_to(), pid = 4266, smp = 1
+[15103.339399] in syscall_futex(), pid = 5463, smp = 0
+[15103.339404] FUTEX_WAIT, pid = 5463, smp = 0
+[15103.339409] futex_wait:  futex_wait_setup holds hash bucket lock  pid = 5463  smp = 0
+[15103.339413] futex_wait:  calling futex_wait_queue_me()  pid = 5463  smp = 0
+[15103.339417] futex_wait_queue_me:  calling schedule()  pid = 5463  smp = 0
+[15103.339421] in _schedule(), pid = 5463, smp = 0
+[15103.339421] 
+[15103.339499] in context_switch(), calling switch_to(), pid = 5463, smp = 0
+[15103.339719] in syscall_futex(), pid = 914, smp = 0
+[15103.339723] FUTEX_WAKE_OP, pid = 914, smp = 0
+[15103.339827] in _schedule(), pid = 1113, smp = 1
+[15103.339827] 
+[15103.339864] in context_switch(), calling switch_to(), pid = 1113, smp = 1
+[15103.340060] in _schedule(), pid = 5464, smp = 1
+[15103.340060] 
+[15103.340068] in context_switch(), calling switch_to(), pid = 5464, smp = 1
+[15103.340081] in _schedule(), pid = 10, smp = 1
+[15103.340081] 
+[15103.340089] in context_switch(), calling switch_to(), pid = 10, smp = 1
+[15103.340208] in _schedule(), pid = 914, smp = 0
+[15103.340208] 
+[15103.340222] in context_switch(), calling switch_to(), pid = 914, smp = 0
+[15103.340227] futex_wait:  unqueue_me() returned 0  futex_q woken by the waking thread  returning 0  pid = 912  smp = 0
+[15103.340233] in syscall_futex(), pid = 912, smp = 0
+[15103.340237] FUTEX_WAKE, pid = 912, smp = 0
+[15103.340998] in syscall_futex(), pid = 5464, smp = 1
+[15103.341004] FUTEX_WAKE, pid = 5464, smp = 1
+[15103.342518] in syscall_futex(), pid = 912, smp = 0
+[15103.342523] FUTEX_WAIT, pid = 912, smp = 0
+[15103.342528] futex_wait:  futex_wait_setup holds hash bucket lock  pid = 912  smp = 0
+[15103.342531] futex_wait:  calling futex_wait_queue_me()  pid = 912  smp = 0
+[15103.342535] futex_wait_queue_me:  calling schedule()  pid = 912  smp = 0
+[15103.342539] in _schedule(), pid = 912, smp = 0
+[15103.342539] 
+[15103.342552] in context_switch(), calling switch_to(), pid = 912, smp = 0
+[15103.342814] in syscall_futex(), pid = 5464, smp = 1
+[15103.342820] FUTEX_WAIT, pid = 5464, smp = 1
+[15103.342826] futex_wait:  futex_wait_setup holds hash bucket lock  pid = 5464  smp = 1
+[15103.342830] futex_wait:  calling futex_wait_queue_me()  pid = 5464  smp = 1
+[15103.342836] futex_wait_queue_me:  calling schedule()  pid = 5464  smp = 1
+[15103.342839] in _schedule(), pid = 5464, smp = 1
+[15103.342839] 
+[15103.342850] in context_switch(), calling switch_to(), pid = 5464, smp = 1
+[15103.342856] futex_wait:  unqueue_me() returned 0  futex_q woken by the waking thread  returning 0  pid = 5463  smp = 1
+[15103.342889] in syscall_futex(), pid = 5463, smp = 1
+[15103.342893] FUTEX_WAKE, pid = 5463, smp = 1
+[15103.343548] in _schedule(), pid = 4266, smp = 0
+[15103.343548] 
+[15103.343585] in context_switch(), calling switch_to(), pid = 4266, smp = 0
+[15103.344046] in _schedule(), pid = 5463, smp = 1
+[15103.344046] 
+[15103.344054] in context_switch(), calling switch_to(), pid = 5463, smp = 1
+[15103.344082] in _schedule(), pid = 2086, smp = 1
+[15103.344082] 
+[15103.344090] in context_switch(), calling switch_to(), pid = 2086, smp = 1
+[15103.345437] in _schedule(), pid = 1113, smp = 0
+[15103.345437] 
+[15103.345466] in context_switch(), calling switch_to(), pid = 1113, smp = 0
+[15103.345692] in _schedule(), pid = 1693, smp = 0
+[15103.345692] 
+[15103.345702] in context_switch(), calling switch_to(), pid = 1693, smp = 0
+[15103.345834] in _schedule(), pid = 1113, smp = 0
+[15103.345834] 
+[15103.345846] in context_switch(), calling switch_to(), pid = 1113, smp = 0
+[15103.346003] in syscall_futex(), pid = 914, smp = 0
+[15103.346007] FUTEX_WAKE_OP, pid = 914, smp = 0
+[15103.346288] in _schedule(), pid = 914, smp = 0
+[15103.346288] 
+[15103.346299] in context_switch(), calling switch_to(), pid = 914, smp = 0
+[15103.346307] futex_wait:  unqueue_me() returned 0  futex_q woken by the waking thread  returning 0  pid = 912  smp = 0
+[15103.346316] in syscall_futex(), pid = 912, smp = 0
+[15103.346319] FUTEX_WAKE, pid = 912, smp = 0
+[15103.347793] in syscall_futex(), pid = 912, smp = 0
+[15103.347797] FUTEX_WAIT, pid = 912, smp = 0
+[15103.347803] futex_wait:  futex_wait_setup holds hash bucket lock  pid = 912  smp = 0
+[15103.347807] futex_wait:  calling futex_wait_queue_me()  pid = 912  smp = 0
+[15103.347812] futex_wait_queue_me:  calling schedule()  pid = 912  smp = 0
+[15103.347816] in _schedule(), pid = 912, smp = 0
+[15103.347816] 
+[15103.347898] in context_switch(), calling switch_to(), pid = 912, smp = 0
+[15103.347905] futex_wait:  unqueue_me() returned 0  futex_q woken by the waking thread  returning 0  pid = 5464  smp = 0
+[15103.348064] in _schedule(), pid = 5463, smp = 1
+[15103.348064] 
+[15103.348074] in context_switch(), calling switch_to(), pid = 5463, smp = 1
+[15103.348080] in _schedule(), pid = 10, smp = 1
+[15103.348080] 
+[15103.348088] in context_switch(), calling switch_to(), pid = 10, smp = 1
+[15103.350860] in syscall_futex(), pid = 5463, smp = 1
+[15103.350864] FUTEX_WAIT, pid = 5463, smp = 1
+[15103.350868] futex_wait:  futex_wait_setup holds hash bucket lock  pid = 5463  smp = 1
+[15103.350872] futex_wait:  calling futex_wait_queue_me()  pid = 5463  smp = 1
+[15103.350876] futex_wait_queue_me:  calling schedule()  pid = 5463  smp = 1
+[15103.350879] in _schedule(), pid = 5463, smp = 1
+[15103.350879] 
+[15103.350949] in context_switch(), calling switch_to(), pid = 5463, smp = 1
+[15103.351070] in syscall_futex(), pid = 914, smp = 1
+[15103.351074] FUTEX_WAKE_OP, pid = 914, smp = 1
+[15103.351093] in _schedule(), pid = 5464, smp = 0
+[15103.351093] 
+[15103.351106] in context_switch(), calling switch_to(), pid = 5464, smp = 0
+[15103.351111] futex_wait:  unqueue_me() returned 0  futex_q woken by the waking thread  returning 0  pid = 912  smp = 0
+[15103.351120] in syscall_futex(), pid = 914, smp = 1
+[15103.351122] in syscall_futex(), pid = 912, smp = 0
+[15103.351125] FUTEX_WAKE, pid = 912, smp = 0
+[15103.351135] FUTEX_WAIT, pid = 914, smp = 1
+[15103.351140] futex_wait:  futex_wait_setup could not lock hash bucket  EWOULDLOCK  pid = 914  smp = 1
+[15103.351146] in syscall_futex(), pid = 914, smp = 1
+[15103.351150] FUTEX_WAKE, pid = 914, smp = 1
+[15103.351280] in syscall_futex(), pid = 914, smp = 1
+[15103.351284] FUTEX_WAIT, pid = 914, smp = 1
+[15103.351287] in syscall_futex(), pid = 912, smp = 0
+[15103.351290] FUTEX_WAKE, pid = 912, smp = 0
+[15103.351300] futex_wait:  futex_wait_setup could not lock hash bucket  EWOULDLOCK  pid = 914  smp = 1
+[15103.351306] in syscall_futex(), pid = 914, smp = 1
+[15103.351309] FUTEX_WAKE, pid = 914, smp = 1
+[15103.351491] in _schedule(), pid = 914, smp = 1
+[15103.351491] 
+[15103.351510] in context_switch(), calling switch_to(), pid = 914, smp = 1
+[15103.351535] in _schedule(), pid = 0, smp = 1
+[15103.351535] 
+[15103.351541] in context_switch(), calling switch_to(), pid = 0, smp = 1
+[15103.351545] in _schedule(), pid = 10, smp = 1
+[15103.351545] 
+[15103.351552] in context_switch(), calling switch_to(), pid = 10, smp = 1
+[15103.351563] in _schedule(), pid = 13, smp = 1
+[15103.351563] 
+[15103.351578] in _schedule(), pid = 912, smp = 0
+[15103.351578] 
+[15103.351587] in context_switch(), calling switch_to(), pid = 13, smp = 1
+[15103.352052] in _schedule(), pid = 912, smp = 0
+[15103.352052] 
+[15103.352060] in context_switch(), calling switch_to(), pid = 912, smp = 0
+[15103.352119] in _schedule(), pid = 5381, smp = 0
+[15103.352119] 
+[15103.352129] in context_switch(), calling switch_to(), pid = 5381, smp = 0
+[15103.352813] in syscall_futex(), pid = 912, smp = 0
+[15103.352817] FUTEX_WAIT, pid = 912, smp = 0
+[15103.352822] futex_wait:  futex_wait_setup holds hash bucket lock  pid = 912  smp = 0
+[15103.352826] futex_wait:  calling futex_wait_queue_me()  pid = 912  smp = 0
+[15103.352830] futex_wait_queue_me:  calling schedule()  pid = 912  smp = 0
+[15103.352834] in _schedule(), pid = 912, smp = 0
+[15103.352834] 
+[15103.352845] in context_switch(), calling switch_to(), pid = 912, smp = 0
+[15103.353208] in _schedule(), pid = 5464, smp = 0
+[15103.353208] 
+[15103.353220] in context_switch(), calling switch_to(), pid = 5464, smp = 0
+[15103.353324] in _schedule(), pid = 4266, smp = 1
+[15103.353324] 
+[15103.353359] in context_switch(), calling switch_to(), pid = 4266, smp = 1
+[15103.353374] in _schedule(), pid = 10, smp = 1
+[15103.353374] 
+[15103.353383] in context_switch(), calling switch_to(), pid = 10, smp = 1
+[15103.353526] in syscall_futex(), pid = 914, smp = 1
+[15103.353530] FUTEX_WAKE_OP, pid = 914, smp = 1
+[15103.353804] in _schedule(), pid = 914, smp = 1
+[15103.353804] 
+[15103.353817] in context_switch(), calling switch_to(), pid = 914, smp = 1
+[15103.353829] futex_wait:  unqueue_me() returned 0  futex_q woken by the waking thread  returning 0  pid = 912  smp = 1
+[15103.353846] in syscall_futex(), pid = 912, smp = 1
+[15103.353850] FUTEX_WAKE, pid = 912, smp = 1
+[15103.355303] in syscall_futex(), pid = 912, smp = 1
+[15103.355309] FUTEX_WAIT, pid = 912, smp = 1
+[15103.355317] futex_wait:  futex_wait_setup holds hash bucket lock  pid = 912  smp = 1
+[15103.355321] futex_wait:  calling futex_wait_queue_me()  pid = 912  smp = 1
+[15103.355328] futex_wait_queue_me:  calling schedule()  pid = 912  smp = 1
+[15103.355332] in _schedule(), pid = 912, smp = 1
+[15103.355332] 
+[15103.355485] in context_switch(), calling switch_to(), pid = 912, smp = 1
+[15103.355816] in _schedule(), pid = 0, smp = 1
+[15103.355816] 
+[15103.355828] in context_switch(), calling switch_to(), pid = 0, smp = 1
+[15103.356238] in _schedule(), pid = 1693, smp = 1
+[15103.356238] 
+[15103.356252] in context_switch(), calling switch_to(), pid = 1693, smp = 1
+[15103.356370] in syscall_futex(), pid = 914, smp = 1
+[15103.356374] FUTEX_WAKE_OP, pid = 914, smp = 1
+[15103.356540] in _schedule(), pid = 914, smp = 1
+[15103.356540] 
+[15103.356555] in context_switch(), calling switch_to(), pid = 914, smp = 1
+[15103.356561] futex_wait:  unqueue_me() returned 0  futex_q woken by the waking thread  returning 0  pid = 912  smp = 1
+[15103.356570] in syscall_futex(), pid = 912, smp = 1
+[15103.356574] FUTEX_WAKE, pid = 912, smp = 1
+[15103.357256] in _schedule(), pid = 1113, smp = 0
+[15103.357256] 
+[15103.357289] in syscall_futex(), pid = 912, smp = 1
+[15103.357298] FUTEX_WAIT, pid = 912, smp = 1
+[15103.357302] futex_wait:  futex_wait_setup holds hash bucket lock  pid = 912  smp = 1
+[15103.357306] futex_wait:  calling futex_wait_queue_me()  pid = 912  smp = 1
+[15103.357312] futex_wait_queue_me:  calling schedule()  pid = 912  smp = 1
+[15103.357317] in _schedule(), pid = 912, smp = 1
+[15103.357317] 
+[15103.357322] in context_switch(), calling switch_to(), pid = 1113, smp = 0
+[15103.357346] in context_switch(), calling switch_to(), pid = 912, smp = 1
+[15103.357595] in _schedule(), pid = 1693, smp = 1
+[15103.357595] 
+[15103.357606] in context_switch(), calling switch_to(), pid = 1693, smp = 1
+[15103.357971] in _schedule(), pid = 1113, smp = 1
+[15103.357971] 
+[15103.357985] in context_switch(), calling switch_to(), pid = 1113, smp = 1
+[15103.358069] in _schedule(), pid = 1693, smp = 1
+[15103.358069] 
+[15103.358108] in context_switch(), calling switch_to(), pid = 1693, smp = 1
+[15103.359857] in syscall_futex(), pid = 5464, smp = 0
+[15103.359863] FUTEX_WAKE, pid = 5464, smp = 0
+[15103.359915] in _schedule(), pid = 0, smp = 1
+[15103.359915] 
+[15103.359928] in context_switch(), calling switch_to(), pid = 0, smp = 1
+[15103.359936] futex_wait:  unqueue_me() returned 0  futex_q woken by the waking thread  returning 0  pid = 5463  smp = 1
+[15103.359976] in syscall_futex(), pid = 5463, smp = 1
+[15103.359980] FUTEX_WAKE, pid = 5463, smp = 1
+[15103.360099] in _schedule(), pid = 5463, smp = 1
+[15103.360099] 
+[15103.360104] in _schedule(), pid = 5464, smp = 0
+[15103.360104] 
+[15103.360116] in context_switch(), calling switch_to(), pid = 5464, smp = 0
+[15103.360131] in context_switch(), calling switch_to(), pid = 5463, smp = 1
+[15103.360148] in _schedule(), pid = 10, smp = 1
+[15103.360148] 
+[15103.360158] in context_switch(), calling switch_to(), pid = 10, smp = 1
+[15103.360176] in _schedule(), pid = 5381, smp = 0
+[15103.360176] 
+[15103.360204] in context_switch(), calling switch_to(), pid = 5381, smp = 0
+[15103.360371] in syscall_futex(), pid = 914, smp = 1
+[15103.360378] FUTEX_WAKE_OP, pid = 914, smp = 1
+[15103.360698] in _schedule(), pid = 914, smp = 1
+[15103.360698] 
+[15103.360711] in context_switch(), calling switch_to(), pid = 914, smp = 1
+[15103.360718] futex_wait:  unqueue_me() returned 0  futex_q woken by the waking thread  returning 0  pid = 912  smp = 1
+[15103.360728] in syscall_futex(), pid = 912, smp = 1
+[15103.360733] FUTEX_WAKE, pid = 912, smp = 1
+[15103.362286] in syscall_futex(), pid = 912, smp = 1
+[15103.362291] FUTEX_WAIT, pid = 912, smp = 1
+[15103.362301] futex_wait:  futex_wait_setup holds hash bucket lock  pid = 912  smp = 1
+[15103.362304] futex_wait:  calling futex_wait_queue_me()  pid = 912  smp = 1
+[15103.362310] futex_wait_queue_me:  calling schedule()  pid = 912  smp = 1
+[15103.362314] in _schedule(), pid = 912, smp = 1
+[15103.362314] 
+[15103.362329] in context_switch(), calling switch_to(), pid = 912, smp = 1
+[15103.364052] in _schedule(), pid = 5463, smp = 1
+[15103.364052] 
+[15103.364059] in context_switch(), calling switch_to(), pid = 5463, smp = 1
+[15103.364076] in _schedule(), pid = 5464, smp = 0
+[15103.364076] 
+[15103.364100] in context_switch(), calling switch_to(), pid = 5464, smp = 0
+[15103.364133] in _schedule(), pid = 10, smp = 0
+[15103.364133] 
+[15103.364153] in context_switch(), calling switch_to(), pid = 10, smp = 0
+[15103.364171] in syscall_futex(), pid = 914, smp = 1
+[15103.364177] FUTEX_WAKE_OP, pid = 914, smp = 1
+[15103.364326] in _schedule(), pid = 914, smp = 1
+[15103.364326] 
+[15103.364337] in context_switch(), calling switch_to(), pid = 914, smp = 1
+[15103.364342] futex_wait:  unqueue_me() returned 0  futex_q woken by the waking thread  returning 0  pid = 912  smp = 1
+[15103.364348] in syscall_futex(), pid = 912, smp = 1
+[15103.364351] FUTEX_WAKE, pid = 912, smp = 1
+[15103.365085] in syscall_futex(), pid = 912, smp = 1
+[15103.365090] FUTEX_WAIT, pid = 912, smp = 1
+[15103.365094] futex_wait:  futex_wait_setup holds hash bucket lock  pid = 912  smp = 1
+[15103.365098] futex_wait:  calling futex_wait_queue_me()  pid = 912  smp = 1
+[15103.365102] futex_wait_queue_me:  calling schedule()  pid = 912  smp = 1
+[15103.365106] in _schedule(), pid = 912, smp = 1
+[15103.365106] 
+[15103.365117] in context_switch(), calling switch_to(), pid = 912, smp = 1
+[15103.368024] in _schedule(), pid = 5464, smp = 0
+[15103.368024] 
+[15103.368034] in _schedule(), pid = 5463, smp = 1
+[15103.368034] 
+[15103.368041] in context_switch(), calling switch_to(), pid = 5463, smp = 1
+[15103.368060] in context_switch(), calling switch_to(), pid = 5464, smp = 0
+[15103.368117] in _schedule(), pid = 5381, smp = 0
+[15103.368117] 
+[15103.368126] in context_switch(), calling switch_to(), pid = 5381, smp = 0
+[15103.368136] in syscall_futex(), pid = 914, smp = 1
+[15103.368142] FUTEX_WAKE_OP, pid = 914, smp = 1
+[15103.368261] in syscall_futex(), pid = 5464, smp = 0
+[15103.368283] FUTEX_WAIT, pid = 5464, smp = 0
+[15103.368293] futex_wait:  futex_wait_setup holds hash bucket lock  pid = 5464  smp = 0
+[15103.368299] futex_wait:  calling futex_wait_queue_me()  pid = 5464  smp = 0
+[15103.368306] futex_wait_queue_me:  calling schedule()  pid = 5464  smp = 0
+[15103.368309] in _schedule(), pid = 5464, smp = 0
+[15103.368309] 
+[15103.368369] in _schedule(), pid = 914, smp = 1
+[15103.368369] 
+[15103.368386] in context_switch(), calling switch_to(), pid = 914, smp = 1
+[15103.368392] futex_wait:  unqueue_me() returned 0  futex_q woken by the waking thread  returning 0  pid = 912  smp = 1
+[15103.368397] in syscall_futex(), pid = 912, smp = 1
+[15103.368401] FUTEX_WAKE, pid = 912, smp = 1
+[15103.368443] in context_switch(), calling switch_to(), pid = 5464, smp = 0
+[15103.368778] in _schedule(), pid = 1693, smp = 0
+[15103.368778] 
+[15103.368792] in context_switch(), calling switch_to(), pid = 1693, smp = 0
+[15103.369298] in syscall_futex(), pid = 912, smp = 1
+[15103.369305] FUTEX_WAIT, pid = 912, smp = 1
+[15103.369310] futex_wait:  futex_wait_setup holds hash bucket lock  pid = 912  smp = 1
+[15103.369314] futex_wait:  calling futex_wait_queue_me()  pid = 912  smp = 1
+[15103.369318] futex_wait_queue_me:  calling schedule()  pid = 912  smp = 1
+[15103.369322] in _schedule(), pid = 912, smp = 1
+[15103.369322] 
+[15103.369338] in context_switch(), calling switch_to(), pid = 912, smp = 1
+[15103.369530] in _schedule(), pid = 1113, smp = 0
+[15103.369530] 
+[15103.369576] in context_switch(), calling switch_to(), pid = 1113, smp = 0
+[15103.369641] in _schedule(), pid = 0, smp = 0
+[15103.369641] 
+[15103.369648] in context_switch(), calling switch_to(), pid = 0, smp = 0
+[15103.369664] in _schedule(), pid = 10, smp = 0
+[15103.369664] 
+[15103.369674] in context_switch(), calling switch_to(), pid = 10, smp = 0
+[15103.369690] in _schedule(), pid = 3, smp = 0
+[15103.369690] 
+[15103.369701] in context_switch(), calling switch_to(), pid = 3, smp = 0
+[15103.369716] in _schedule(), pid = 0, smp = 0
+[15103.369716] 
+[15103.369722] in context_switch(), calling switch_to(), pid = 0, smp = 0
+[15103.369728] in _schedule(), pid = 3, smp = 0
+[15103.369728] 
+[15103.369735] in context_switch(), calling switch_to(), pid = 3, smp = 0
+[15103.369741] in _schedule(), pid = 10, smp = 0
+[15103.369741] 
+[15103.369752] in context_switch(), calling switch_to(), pid = 10, smp = 0
+[15103.369764] in _schedule(), pid = 0, smp = 0
+[15103.369764] 
+[15103.369770] in context_switch(), calling switch_to(), pid = 0, smp = 0
+[15103.369774] in _schedule(), pid = 3, smp = 0
+[15103.369774] 
+[15103.369781] in context_switch(), calling switch_to(), pid = 3, smp = 0
+[15103.369787] in _schedule(), pid = 10, smp = 0
+[15103.369787] 
+[15103.369797] in context_switch(), calling switch_to(), pid = 10, smp = 0
+[15103.370744] in syscall_futex(), pid = 5463, smp = 1
+[15103.370751] FUTEX_WAKE, pid = 5463, smp = 1
+[15103.370790] in _schedule(), pid = 0, smp = 0
+[15103.370790] 
+[15103.370806] in context_switch(), calling switch_to(), pid = 0, smp = 0
+[15103.370816] futex_wait:  unqueue_me() returned 0  futex_q woken by the waking thread  returning 0  pid = 5464  smp = 0
+[15103.370833] in syscall_futex(), pid = 5463, smp = 1
+[15103.370841] FUTEX_WAKE, pid = 5463, smp = 1
+[15103.372070] in _schedule(), pid = 5463, smp = 1
+[15103.372070] 
+[15103.372079] in context_switch(), calling switch_to(), pid = 5463, smp = 1
+[15103.372085] in _schedule(), pid = 5464, smp = 0
+[15103.372085] 
+[15103.372096] in context_switch(), calling switch_to(), pid = 5464, smp = 0
+[15103.372130] in _schedule(), pid = 10, smp = 0
+[15103.372130] 
+[15103.372157] in context_switch(), calling switch_to(), pid = 10, smp = 0
+[15103.372291] in syscall_futex(), pid = 914, smp = 1
+[15103.372298] FUTEX_WAKE_OP, pid = 914, smp = 1
+[15103.372683] in _schedule(), pid = 914, smp = 1
+[15103.372683] 
+[15103.372694] in context_switch(), calling switch_to(), pid = 914, smp = 1
+[15103.372698] futex_wait:  unqueue_me() returned 0  futex_q woken by the waking thread  returning 0  pid = 912  smp = 1
+[15103.372706] in syscall_futex(), pid = 912, smp = 1
+[15103.372709] FUTEX_WAKE, pid = 912, smp = 1
+[15103.374325] in _schedule(), pid = 5464, smp = 0
+[15103.374325] 
+[15103.374337] in context_switch(), calling switch_to(), pid = 5464, smp = 0
+[15103.374348] futex_wait:  unqueue_me() returned 1  futex_q not removed by the waking thread  will probably return -ETIMEDOUT  pid = 4685  smp = 0
+[15103.374391] in syscall_futex(), pid = 4685, smp = 0
+[15103.374396] FUTEX_WAKE, pid = 4685, smp = 0
+[15103.374613] in syscall_futex(), pid = 4685, smp = 0
+[15103.374616] FUTEX_WAKE, pid = 4685, smp = 0
+[15103.374641] in _schedule(), pid = 4685, smp = 0
+[15103.374641] 
+[15103.374649] in syscall_futex(), pid = 912, smp = 1
+[15103.374653] in context_switch(), calling switch_to(), pid = 4685, smp = 0
+[15103.374662] futex_wait:  unqueue_me() returned 0  futex_q woken by the waking thread  returning 0  pid = 4691  smp = 0
+[15103.374671] FUTEX_WAIT, pid = 912, smp = 1
+[15103.374677] futex_wait:  futex_wait_setup holds hash bucket lock  pid = 912  smp = 1
+[15103.374681] futex_wait:  calling futex_wait_queue_me()  pid = 912  smp = 1
+[15103.374685] futex_wait_queue_me:  calling schedule()  pid = 912  smp = 1
+[15103.374689] in _schedule(), pid = 912, smp = 1
+[15103.374689] 
+[15103.374696] in _schedule(), pid = 4691, smp = 0
+[15103.374696] 
+[15103.374706] in context_switch(), calling switch_to(), pid = 4691, smp = 0
+[15103.374714] in context_switch(), calling switch_to(), pid = 912, smp = 1
+[15103.374794] in _schedule(), pid = 52, smp = 1
+[15103.374794] 
+[15103.374807] in context_switch(), calling switch_to(), pid = 52, smp = 1
+[15103.374930] in _schedule(), pid = 5463, smp = 1
+[15103.374930] 
+[15103.374940] in context_switch(), calling switch_to(), pid = 5463, smp = 1
+[15103.374957] in _schedule(), pid = 52, smp = 1
+[15103.374957] 
+[15103.374964] in context_switch(), calling switch_to(), pid = 52, smp = 1
+[15103.375005] in syscall_futex(), pid = 4685, smp = 0
+[15103.375013] FUTEX_WAIT, pid = 4685, smp = 0
+[15103.375026] futex_wait: abs_time = -1775031872 nsecs  delta = 3516 nsecs  pid = 50000  smp = 4685
+[15103.375031] futex_wait:  futex_wait_setup holds hash bucket lock  pid = 4685  smp = 0
+[15103.375035] futex_wait:  calling futex_wait_queue_me()  pid = 4685  smp = 0
+[15103.375042] futex_wait_queue_me:  calling schedule()  pid = 4685  smp = 0
+[15103.375046] in _schedule(), pid = 4685, smp = 0
+[15103.375046] 
+[15103.375060] in context_switch(), calling switch_to(), pid = 4685, smp = 0
+[15103.375133] in _schedule(), pid = 5463, smp = 1
+[15103.375133] 
+[15103.375143] in context_switch(), calling switch_to(), pid = 5463, smp = 1
+[15103.375152] in _schedule(), pid = 52, smp = 1
+[15103.375152] 
+[15103.375160] in context_switch(), calling switch_to(), pid = 52, smp = 1
+[15103.375258] in _schedule(), pid = 5463, smp = 1
+[15103.375258] 
+[15103.375264] in context_switch(), calling switch_to(), pid = 5463, smp = 1
+[15103.375275] in _schedule(), pid = 52, smp = 1
+[15103.375275] 
+[15103.375282] in context_switch(), calling switch_to(), pid = 52, smp = 1
+[15103.375653] in _schedule(), pid = 5464, smp = 0
+[15103.375653] 
+[15103.375664] in context_switch(), calling switch_to(), pid = 5464, smp = 0
+[15103.375675] in syscall_futex(), pid = 4691, smp = 0
+[15103.375679] FUTEX_WAIT, pid = 4691, smp = 0
+[15103.375684] futex_wait:  futex_wait_setup holds hash bucket lock  pid = 4691  smp = 0
+[15103.375688] futex_wait:  calling futex_wait_queue_me()  pid = 4691  smp = 0
+[15103.375692] futex_wait_queue_me:  calling schedule()  pid = 4691  smp = 0
+[15103.375695] in _schedule(), pid = 4691, smp = 0
+[15103.375695] 
+[15103.375705] in context_switch(), calling switch_to(), pid = 4691, smp = 0
+[15103.376053] in _schedule(), pid = 5463, smp = 1
+[15103.376053] 
+[15103.376067] in context_switch(), calling switch_to(), pid = 5463, smp = 1
+[15103.376094] in _schedule(), pid = 5464, smp = 0
+[15103.376094] 
+[15103.376119] in context_switch(), calling switch_to(), pid = 5464, smp = 0
+[15103.376174] in _schedule(), pid = 5381, smp = 0
+[15103.376174] 
+[15103.376206] in context_switch(), calling switch_to(), pid = 5381, smp = 0
+[15103.376301] in syscall_futex(), pid = 914, smp = 1
+[15103.377087] FUTEX_WAKE_OP, pid = 914, smp = 1
+[15103.377355] in _schedule(), pid = 914, smp = 1
+[15103.377355] 
+[15103.377362] in context_switch(), calling switch_to(), pid = 914, smp = 1
+[15103.377365] futex_wait:  unqueue_me() returned 0  futex_q woken by the waking thread  returning 0  pid = 912  smp = 1
+[15103.377368] in syscall_futex(), pid = 912, smp = 1
+[15103.377370] FUTEX_WAKE, pid = 912, smp = 1
+[15103.377887] in _schedule(), pid = 5253, smp = 0
+[15103.377887] 
+[15103.377893] in context_switch(), calling switch_to(), pid = 5253, smp = 0
+[15103.377902] in _schedule(), pid = 5381, smp = 0
+[15103.377902] 
+[15103.377906] in context_switch(), calling switch_to(), pid = 5381, smp = 0
+[15103.378696] in syscall_futex(), pid = 912, smp = 1
+[15103.378700] FUTEX_WAIT, pid = 912, smp = 1
+[15103.378703] futex_wait:  futex_wait_setup holds hash bucket lock  pid = 912  smp = 1
+[15103.378705] futex_wait:  calling futex_wait_queue_me()  pid = 912  smp = 1
+[15103.378708] futex_wait_queue_me:  calling schedule()  pid = 912  smp = 1
+[15103.378710] in _schedule(), pid = 912, smp = 1
+[15103.378710] 
+[15103.378718] in context_switch(), calling switch_to(), pid = 912, smp = 1
+[15103.379923] in syscall_futex(), pid = 5464, smp = 0
+[15103.379926] FUTEX_WAIT, pid = 5464, smp = 0
+[15103.379928] futex_wait:  futex_wait_setup holds hash bucket lock  pid = 5464  smp = 0
+[15103.379930] futex_wait:  calling futex_wait_queue_me()  pid = 5464  smp = 0
+[15103.379933] futex_wait_queue_me:  calling schedule()  pid = 5464  smp = 0
+[15103.379935] in _schedule(), pid = 5464, smp = 0
+[15103.379935] 
+[15103.379946] in context_switch(), calling switch_to(), pid = 5464, smp = 0
+[15103.380032] in _schedule(), pid = 0, smp = 0
+[15103.380032] 
+[15103.380032] in context_switch(), calling switch_to(), pid = 0, smp = 0
+[15103.380096] in syscall_futex(), pid = 914, smp = 0
+[15103.380099] FUTEX_WAKE_OP, pid = 914, smp = 0
+[15103.380110] in _schedule(), pid = 5463, smp = 1
+[15103.380110] 
+[15103.380117] in context_switch(), calling switch_to(), pid = 5463, smp = 1
+[15103.380120] futex_wait:  unqueue_me() returned 0  futex_q woken by the waking thread  returning 0  pid = 912  smp = 1
+[15103.380124] in syscall_futex(), pid = 912, smp = 1
+[15103.380126] FUTEX_WAKE, pid = 912, smp = 1
+[15103.380130] in syscall_futex(), pid = 914, smp = 0
+[15103.380132] in syscall_futex(), pid = 912, smp = 1
+[15103.380133] FUTEX_WAKE, pid = 912, smp = 1
+[15103.380138] FUTEX_WAIT, pid = 914, smp = 0
+[15103.380141] futex_wait:  futex_wait_setup could not lock hash bucket  EWOULDLOCK  pid = 914  smp = 0
+[15103.380144] in syscall_futex(), pid = 914, smp = 0
+[15103.380146] FUTEX_WAKE, pid = 914, smp = 0
+[15103.380312] in _schedule(), pid = 914, smp = 0
+[15103.380312] 
+[15103.380340] in context_switch(), calling switch_to(), pid = 914, smp = 0
+[15103.380909] in syscall_futex(), pid = 912, smp = 1
+[15103.380912] FUTEX_WAIT, pid = 912, smp = 1
+[15103.380915] futex_wait:  futex_wait_setup holds hash bucket lock  pid = 912  smp = 1
+[15103.380917] futex_wait:  calling futex_wait_queue_me()  pid = 912  smp = 1
+[15103.380919] futex_wait_queue_me:  calling schedule()  pid = 912  smp = 1
+[15103.380921] in _schedule(), pid = 912, smp = 1
+[15103.380921] 
+[15103.380929] in context_switch(), calling switch_to(), pid = 912, smp = 1
+[15103.381560] in syscall_futex(), pid = 5463, smp = 1
+[15103.381562] FUTEX_WAKE, pid = 5463, smp = 1
+[15103.381575] in _schedule(), pid = 0, smp = 0
+[15103.381575] 
+[15103.381580] in context_switch(), calling switch_to(), pid = 0, smp = 0
+[15103.381583] futex_wait:  unqueue_me() returned 0  futex_q woken by the waking thread  returning 0  pid = 5464  smp = 0
+[15103.381587] in syscall_futex(), pid = 5464, smp = 0
+[15103.381589] FUTEX_WAKE, pid = 5464, smp = 0
+[15103.383344] in _schedule(), pid = 5463, smp = 1
+[15103.383344] 
+[15103.383350] in context_switch(), calling switch_to(), pid = 5463, smp = 1
+[15103.383436] in _schedule(), pid = 4266, smp = 1
+[15103.383436] 
+[15103.383441] in context_switch(), calling switch_to(), pid = 4266, smp = 1
+[15103.384014] in _schedule(), pid = 5464, smp = 0
+[15103.384014] 
+[15103.384019] in context_switch(), calling switch_to(), pid = 5464, smp = 0
+[15103.384062] in syscall_futex(), pid = 914, smp = 0
+[15103.384064] FUTEX_WAKE_OP, pid = 914, smp = 0
+[15103.384074] in _schedule(), pid = 5463, smp = 1
+[15103.384074] 
+[15103.384080] in context_switch(), calling switch_to(), pid = 5463, smp = 1
+[15103.384083] futex_wait:  unqueue_me() returned 0  futex_q woken by the waking thread  returning 0  pid = 912  smp = 1
+[15103.384089] in syscall_futex(), pid = 912, smp = 1
+[15103.384090] FUTEX_WAKE, pid = 912, smp = 1
+[15103.384095] in syscall_futex(), pid = 914, smp = 0
+[15103.384097] in syscall_futex(), pid = 912, smp = 1
+[15103.384098] FUTEX_WAKE, pid = 912, smp = 1
+[15103.384103] FUTEX_WAIT, pid = 914, smp = 0
+[15103.384106] futex_wait:  futex_wait_setup could not lock hash bucket  EWOULDLOCK  pid = 914  smp = 0
+[15103.384109] in syscall_futex(), pid = 914, smp = 0
+[15103.384111] FUTEX_WAKE, pid = 914, smp = 0
+[15103.384235] in syscall_futex(), pid = 914, smp = 0
+[15103.384237] FUTEX_WAIT, pid = 914, smp = 0
+[15103.384239] in syscall_futex(), pid = 912, smp = 1
+[15103.384242] FUTEX_WAKE, pid = 912, smp = 1
+[15103.384245] futex_wait:  futex_wait_setup could not lock hash bucket  EWOULDLOCK  pid = 914  smp = 0
+[15103.384248] in syscall_futex(), pid = 914, smp = 0
+[15103.384250] FUTEX_WAKE, pid = 914, smp = 0
+[15103.384314] in _schedule(), pid = 914, smp = 0
+[15103.384314] 
+[15103.384319] in context_switch(), calling switch_to(), pid = 914, smp = 0
+[15103.384967] in syscall_futex(), pid = 912, smp = 1
+[15103.384970] FUTEX_WAIT, pid = 912, smp = 1
+[15103.384973] futex_wait:  futex_wait_setup holds hash bucket lock  pid = 912  smp = 1
+[15103.384976] futex_wait:  calling futex_wait_queue_me()  pid = 912  smp = 1
+[15103.384978] futex_wait_queue_me:  calling schedule()  pid = 912  smp = 1
+[15103.384980] in _schedule(), pid = 912, smp = 1
+[15103.384980] 
+[15103.384987] in context_switch(), calling switch_to(), pid = 912, smp = 1
+[15103.386006] in syscall_futex(), pid = 5463, smp = 1
+[15103.386008] FUTEX_WAKE, pid = 5463, smp = 1
+[15103.386016] in syscall_futex(), pid = 5463, smp = 1
+[15103.386018] FUTEX_WAKE, pid = 5463, smp = 1
+[15103.388014] in _schedule(), pid = 5464, smp = 0
+[15103.388014] 
+[15103.388019] in context_switch(), calling switch_to(), pid = 5464, smp = 0
+[15103.388050] in syscall_futex(), pid = 914, smp = 0
+[15103.388052] FUTEX_WAKE_OP, pid = 914, smp = 0
+[15103.388061] in _schedule(), pid = 5463, smp = 1
+[15103.388061] 
+[15103.388067] in context_switch(), calling switch_to(), pid = 5463, smp = 1
+[15103.388070] futex_wait:  unqueue_me() returned 0  futex_q woken by the waking thread  returning 0  pid = 912  smp = 1
+[15103.388074] in syscall_futex(), pid = 914, smp = 0
+[15103.388076] in syscall_futex(), pid = 912, smp = 1
+[15103.388077] FUTEX_WAKE, pid = 912, smp = 1
+[15103.388082] FUTEX_WAIT, pid = 914, smp = 0
+[15103.388085] futex_wait:  futex_wait_setup could not lock hash bucket  EWOULDLOCK  pid = 914  smp = 0
+[15103.388088] in syscall_futex(), pid = 914, smp = 0
+[15103.388090] FUTEX_WAKE, pid = 914, smp = 0
+[15103.388169] in syscall_futex(), pid = 914, smp = 0
+[15103.388171] in syscall_futex(), pid = 912, smp = 1
+[15103.388174] FUTEX_WAKE, pid = 912, smp = 1
+[15103.388177] FUTEX_WAIT, pid = 914, smp = 0
+[15103.388180] futex_wait:  futex_wait_setup could not lock hash bucket  EWOULDLOCK  pid = 914  smp = 0
+[15103.388183] in syscall_futex(), pid = 914, smp = 0
+[15103.388185] FUTEX_WAKE, pid = 914, smp = 0
+[15103.388257] in _schedule(), pid = 914, smp = 0
+[15103.388257] 
+[15103.388262] in context_switch(), calling switch_to(), pid = 914, smp = 0
+[15103.388733] in syscall_futex(), pid = 912, smp = 1
+[15103.388736] FUTEX_WAIT, pid = 912, smp = 1
+[15103.388738] futex_wait:  futex_wait_setup holds hash bucket lock  pid = 912  smp = 1
+[15103.388740] futex_wait:  calling futex_wait_queue_me()  pid = 912  smp = 1
+[15103.388742] futex_wait_queue_me:  calling schedule()  pid = 912  smp = 1
+[15103.388744] in _schedule(), pid = 912, smp = 1
+[15103.388744] 
+[15103.388751] in context_switch(), calling switch_to(), pid = 912, smp = 1
+[15103.390051] in syscall_futex(), pid = 5463, smp = 1
+[15103.390053] FUTEX_WAKE, pid = 5463, smp = 1
