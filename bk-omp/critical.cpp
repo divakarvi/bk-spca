@@ -70,10 +70,10 @@ void enter_criticalx(int tid,
 		     volatile int& yield, 
 		     volatile int interested[2]){
 	interested[tid] = 1;
-	int other = 1 - tid;
+	asm volatile("mfence");
 	yield = tid;
-	//#pragma omp flush
-	asm volatile("cpuid"::"a"(0x01):"ebx", "ecx","edx");
+	asm volatile("mfence");
+	int other = 1 - tid;
 	while((yield==tid) && (interested[other]==1));
 }
 
