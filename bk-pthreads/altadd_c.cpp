@@ -6,9 +6,9 @@
 #include "dvmesg.h"
 using namespace std;
 
-#define DV_KERNEL_MESG
+#undef DV_KERNEL_MESG
 
-const int nthreads = 2;
+const int nthreads = 3;
 const int nprocs = 4;
 
 typedef void (*fnlist_t[nthreads])(void *);

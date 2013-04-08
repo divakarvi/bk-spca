@@ -12,10 +12,24 @@ WORK_COUNT = 0
 cycles per parallel region = 1712.64
 
 nprocs = 4
+nthreads = 4
+count = 10000000
+WORK_COUNT = 0
+cycles per parallel region = 2037.15
+
+nprocs = 4
+nthreads = 4
+count = 100000000
+WORK_COUNT = 0
+cycles per parallel region = 2093.3
+
+nprocs = 4
 nthreads = 8
 count = 100000
 WORK_COUNT = 0
 cycles per parallel region = 40161.3
+
+______________________________________________________________________
 
 nprocs = 4
 nthreads = 2
@@ -53,14 +67,3 @@ count = 1000000
 WORK_COUNT = 20
 cycles per parallel region = 14472.5
 
-nprocs = 4
-nthreads = 4
-count = 10000000
-WORK_COUNT = 0
-cycles per parallel region = 2037.15
-
-nprocs = 4
-nthreads = 4
-count = 100000000
-WORK_COUNT = 0
-cycles per parallel region = 2093.3
