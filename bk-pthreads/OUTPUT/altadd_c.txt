@@ -98,4 +98,29 @@ nthreads = 3
 count = 10000000
 average per parallel region = 622.201
 
+-------------------------a6400z-------------------------
+
+(with mfence)
+
+nprocs = 2
+nthreads = 2
+count = 10000000
+average per parallel region = 1178.95
+
+nprocs = 2
+nthreads = 2
+count = 10000000
+average per parallel region = 1161.12
+
+(with cpuid)
+
+nprocs = 2
+nthreads = 2
+count = 10000000
+average per parallel region = 1565.13
+
+nprocs = 2
+nthreads = 2
+count = 10000000
+average per parallel region = 1608.02
 

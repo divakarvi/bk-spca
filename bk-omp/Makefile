@@ -37,7 +37,7 @@ dummy.s: dummy.cpp
 
 critical: critical.exe critical.s 
 	echo 'critical done'
-critical.exe: critical.o 
+critical.exe: critical.o dummy.o
 critical.o: critical.cpp
 critical.s: critical.cpp
 

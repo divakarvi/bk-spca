@@ -8,8 +8,8 @@ using namespace std;
 
 #undef DV_KERNEL_MESG
 
-const int nthreads = 3;
-const int nprocs = 4;
+const int nthreads = 2;
+const int nprocs = 2;
 
 typedef void (*fnlist_t[nthreads])(void *);
 volatile fnlist_t fnlist;
@@ -38,7 +38,7 @@ void *worker(void *arg){
 		while(work_count[tid] == done_count[tid]);
 		if(work_count[tid]==done_count[tid]+1){
 			(*(fnlist[tid]))(arglist[tid]);
-			asm volatile("cpuid"::"a"(0x01):"ebx","ecx","edx");
+			asm volatile("mfence");
 			done_count[tid] += 1;
 		}
 	}
@@ -62,7 +62,7 @@ void spawn_workers(){
 void shutdown_workers(){
 	for(int i=1; i < nthreads; i++){
 		fnlist[i] = exitfn;
-		asm volatile("cpuid"::"a"(0x01):"ebx","ecx","edx");
+		asm volatile("mfence");
 		work_count[i] += 1;
 	}
 }
@@ -73,7 +73,7 @@ void organizer(long *list, int count){
 		for(int j=0; j < nthreads; j++){
 			fnlist[j] = (i%2==0)?addone:addtwo;
 			arglist[j] = (void *)(list+j);
-			asm volatile("cpuid"::"a"(0x01):"ebx","ecx","edx");
+			asm volatile("mfence");
 			work_count[j] += 1;
 		}
 		(*(fnlist[0]))(arglist[0]);

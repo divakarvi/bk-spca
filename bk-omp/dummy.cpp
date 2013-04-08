@@ -1,6 +1,10 @@
 #include <iostream>
 using namespace std;
 
+#ifdef __GNUC__
+#define restrict __restrict
+#endif
+
 void dummy(){
 }
 
