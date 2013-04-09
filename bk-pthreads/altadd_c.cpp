@@ -8,8 +8,8 @@ using namespace std;
 
 #undef DV_KERNEL_MESG
 
-const int nthreads = 2;
-const int nprocs = 2;
+const int nthreads = 8;
+const int nprocs = 4;
 
 typedef void (*fnlist_t[nthreads])(void *);
 volatile fnlist_t fnlist;
@@ -88,7 +88,7 @@ int main(){
 	long list[nthreads];
 	for(int i=0; i < nthreads; i++)
 		list[i] = 0;
-	int count = (nthreads<=nprocs)?1000*1000*10:1000;
+	int count = (nthreads<=nprocs)?1000*1000*100:1000;
 #ifdef DV_KERNEL_MESG
 	count = 6;
 #endif

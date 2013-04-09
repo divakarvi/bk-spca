@@ -124,3 +124,30 @@ nthreads = 2
 count = 10000000
 average per parallel region = 1608.02
 
+
+--------------------MFENCE--------------------
+nprocs = 4
+nthreads = 2
+count = 10000000
+average per parallel region = 734.049
+
+nprocs = 4
+nthreads = 2
+count = 100000000
+average per parallel region = 716.896
+
+nprocs = 4
+nthreads = 3
+count = 100000000
+average per parallel region = 975.673
+
+nprocs = 4
+nthreads = 4
+count = 100000000
+average per parallel region = 1225.63
+
+nprocs = 4
+nthreads = 8
+count = 1000
+average per parallel region = 8.04904e+07
+
