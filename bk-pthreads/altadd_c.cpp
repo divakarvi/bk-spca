@@ -12,8 +12,8 @@ const int nthreads = 8;
 const int nprocs = 4;
 
 typedef void (*fnlist_t[nthreads])(void *);
-volatile fnlist_t fnlist;
 typedef void *arglist_t[nthreads];
+volatile fnlist_t fnlist;
 volatile arglist_t arglist;
 volatile long work_count[nthreads];
 volatile long done_count[nthreads];
@@ -67,7 +67,7 @@ void shutdown_workers(){
 	}
 }
 
-void organizer(long *list, int count){
+void manager(long *list, int count){
 	spawn_workers();
 	for(int i=0; i < count; i++){
 		for(int j=0; j < nthreads; j++){
@@ -97,7 +97,7 @@ int main(){
 #ifdef DV_KERNEL_MESG
 	set_dvflag(400);
 #endif
-	organizer(list, count);
+	manager(list, count);
 #ifdef DV_KERNEL_MESG
 	set_dvflag(0);
 #endif
