@@ -56,8 +56,9 @@ struct BW_RW{
   double bw_write;
 };
 
+const double CPUGHZ=3.33;
+
 void time_diskio(const char *dir, long n, struct BW_RW& bw, int flag){
-  const double CPUGHZ=3.33;
   TimeStamp clk;
   double cycles;
   double fac = (flag==0)?23.5:8.0;

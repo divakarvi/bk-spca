@@ -24,7 +24,7 @@ double bcast(int rank, int nprocs, double *buffer, int bufsize){
 	return cycles;
 }
 
-double bcast_root(int rank, int nprocs, double *buffer, int bufsize){
+double bcast_srecv(int rank, int nprocs, double *buffer, int bufsize){
 	TimeStamp clk;
 	int tag=0;
 	
@@ -60,7 +60,7 @@ double time_bcast(int rank, int nprocs, int n, int flag){
 		if(flag==0)
 			cycles = bcast(rank, nprocs, buffer, n);
 		else
-			cycles = bcast_root(rank, nprocs, buffer, n);
+			cycles = bcast_srecv(rank, nprocs, buffer, n);
 		stats.insert(cycles);
 	}
 	for(int i=0; i < nprocs; i++){//limited check
@@ -119,31 +119,31 @@ double scatter_all2all(int rank, int nprocs,
 
 double mpi_all2all(int rank, int nprocs, 
 		       double *sendbuf, double *recvbuf, int n){
-  TimeStamp clk;
-  clk.tic();
-  MPI_Alltoall(sendbuf, n, MPI_DOUBLE, recvbuf, n, MPI_DOUBLE,
-	       MPI_COMM_WORLD);
-  double cycles = clk.toc();
-  return cycles;
+	TimeStamp clk;
+	clk.tic();
+	MPI_Alltoall(sendbuf, n, MPI_DOUBLE, recvbuf, n, MPI_DOUBLE,
+		     MPI_COMM_WORLD);
+	double cycles = clk.toc();
+	return cycles;
 }
 
 
 MPI_Request *all2all_init(int rank, int nprocs, 
 			  double *sendbuf, double *recvbuf, int n){
-  MPI_Request *reqlist = new MPI_Request[2*nprocs];
-  for(int i=0; i < nprocs; i++) {
-	  int dest = i;
-	  int tag = rank;
-	  MPI_Send_init(sendbuf+dest*n, n, MPI_DOUBLE, dest, tag, 
-			MPI_COMM_WORLD, reqlist+i);
-  }
-  for(int i=0; i < nprocs; i++){
-	  int source = i;
-	  int tag = source;
-	  MPI_Recv_init(recvbuf+source*n, n, MPI_DOUBLE, source, tag, 
-			MPI_COMM_WORLD, reqlist+nprocs+i);
-  }
-  return reqlist;
+	MPI_Request *reqlist = new MPI_Request[2*nprocs];
+	for(int i=0; i < nprocs; i++) {
+		int dest = i;
+		int tag = rank;
+		MPI_Send_init(sendbuf+dest*n, n, MPI_DOUBLE, dest, tag, 
+			      MPI_COMM_WORLD, reqlist+i);
+	}
+	for(int i=0; i < nprocs; i++){
+		int source = i;
+		int tag = source;
+		MPI_Recv_init(recvbuf+source*n, n, MPI_DOUBLE, source, tag, 
+			      MPI_COMM_WORLD, reqlist+nprocs+i);
+	}
+	return reqlist;
 }
 
 double all2all(int rank, int nprocs, MPI_Request* reqlist){
@@ -237,7 +237,7 @@ void CreateOutputScatter(int rank, int nprocs){
 	char ostring[200];
 	ofstream ofile;
 	if(rank==0){
-		ofile.open("OUTPUT/scatter.txt", ios_base::app);
+		ofile.open("OUTPUT/all2all.txt", ios_base::app);
 		long int posn = ofile.tellp();
 		if(posn<=0){
 			ofile<<"num of trials = "
