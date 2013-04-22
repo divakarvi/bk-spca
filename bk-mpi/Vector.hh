@@ -2,6 +2,7 @@
 #define __MYVECTOR__
 #include <cassert>
 #include <cmath>
+#include <cstring>
 #include <iostream>
 #include <fstream>
 

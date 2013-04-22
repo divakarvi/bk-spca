@@ -54,9 +54,9 @@ collective.exe: collective.o
 diskio-serial: diskio-serial.exe
 	echo 'diskio-serial done'
 diskio-serial.o: diskio-serial.cpp
-	icpc -O3 -c $<
+	g++ -O3 -Wno-unused-result -c $<
 diskio-serial.exe: diskio-serial.o
-	icpc -o $@ $^
+	g++ -o $@ $^
 
 diskio-mpi: diskio-mpi.exe
 	echo 'diskio-mpi done'
