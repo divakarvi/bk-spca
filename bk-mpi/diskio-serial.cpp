@@ -8,7 +8,7 @@
 using namespace std;
 
 #define GEN_OUTPUT
-const double CPUGHZ=1.8;//1.8 or 3.33 or 3.67
+const double CPUGHZ=3.33;//1.8 or 3.33 or 3.67
 
 void write_easy(double *v, long len, const char *fname){
 	ofstream ofile(fname);
@@ -279,6 +279,7 @@ void CreateOutputLatency(){
 }
 
 int main(){
+	cout<<"CPUGHZ = "<<CPUGHZ<<endl;
 	CreateOutputRW();
 	CreateOutputLatency();
 }

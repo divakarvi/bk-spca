@@ -1,0 +1,5 @@
+latency in milliseconds
+size	nfiles	open		seek		read		close
+8.0e+06	1.0e+02	2.63e-01	6.08e-01	8.74e-01	2.19e-01
+8.0e+07	1.0e+01	2.57e-01	6.18e-01	9.41e-01	2.18e-01
+8.0e+09	1.0e+00	2.61e-01	6.42e-01	9.42e-01	2.22e-01

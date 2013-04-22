@@ -54,7 +54,7 @@ collective.exe: collective.o
 diskio-serial: diskio-serial.exe
 	echo 'diskio-serial done'
 diskio-serial.o: diskio-serial.cpp
-	g++ -O3 -Wno-unused-result -c $<
+	g++ -O3 -c $<
 diskio-serial.exe: diskio-serial.o
 	g++ -o $@ $^
 
