@@ -1,0 +1,347 @@
+DV: initializing ompi 
+DV: initializing ompi 
+DV: initializing ompi 
+DV: initializing ompi 
+DV: initializing ompi 
+DV: initializing ompi 
+DV: initializing ompi 
+DV: initializing ompi 
+DV: initializing ompi 
+DV: initializing ompi 
+DV: initializing ompi 
+DV: initializing ompi 
+DV: initializing ompi 
+DV: initializing ompi 
+DV: initializing ompi 
+DV: initializing ompi 
+DV: initializing ompi 
+DV: initializing ompi 
+DV: initializing ompi 
+DV: initializing ompi 
+rank = 2 diff error  = 0
+rank = 0 diff error  = 0
+rank = 6 diff error  = 0
+rank = 18 diff error  = 0
+rank = 14 diff error  = 0
+rank = 1 diff error  = 0
+rank = 16 diff error  = 0
+rank = 3 diff error  = 0
+rank = 13 diff error  = 0
+rank = 4 diff error  = 0
+rank = 10 diff error  = 0
+rank = 8 diff error  = 0
+rank = 12 diff error  = 0
+rank = 9 diff error  = 0
+rank = 5 diff error  = 0
+rank = 17 diff error  = 0
+rank = 11 diff error  = 0
+rank = 15 diff error  = 0
+rank = 7 diff error  = 0
+rank = 19 diff error  = 0
+rank = 3 diff error  = 0
+rank = 9 diff error  = 0
+rank = 16 diff error  = 0
+rank = 5 diff error  = 0
+rank = 13 diff error  = 0
+rank = 1 diff error  = 0
+rank = 11 diff error  = 0
+rank = 19 diff error  = 0
+rank = 15 diff error  = 0
+rank = 0 diff error  = 0
+rank = 10 diff error  = 0
+rank = 17 diff error  = 0
+rank = 4 diff error  = 0
+rank = 12 diff error  = 0
+rank = 8 diff error  = 0
+rank = 7 diff error  = 0
+rank = 18 diff error  = 0
+rank = 2 diff error  = 0
+rank = 14 diff error  = 0
+rank = 6 diff error  = 0
+rank = 7 diff error  = 0
+rank = 5 diff error  = 0
+rank = 3 diff error  = 0
+rank = 13 diff error  = 0
+rank = 15 diff error  = 0
+rank = 9 diff error  = 0
+rank = 17 diff error  = 0
+rank = 1 diff error  = 0
+rank = 11 diff error  = 0
+rank = 19 diff error  = 0
+rank = 16 diff error  = 0
+rank = 0 diff error  = 0
+rank = 12 diff error  = 0
+rank = 4 diff error  = 0
+rank = 8 diff error  = 0
+rank = 6 diff error  = 0
+rank = 14 diff error  = 0
+rank = 2 diff error  = 0
+rank = 18 diff error  = 0
+rank = 10 diff error  = 0
+rank = 0 diff error  = 0
+rank = 19 diff error  = 0
+rank = 15 diff error  = 0
+rank = 17 diff error  = 0
+rank = 11 diff error  = 0
+rank = 1 diff error  = 0
+rank = 13 diff error  = 0
+rank = 9 diff error  = 0
+rank = 5 diff error  = 0
+rank = 2 diff error  = 0
+rank = 4 diff error  = 0
+rank = 14 diff error  = 0
+rank = 10 diff error  = 0
+rank = 6 diff error  = 0
+rank = 16 diff error  = 0
+rank = 12 diff error  = 0
+rank = 8 diff error  = 0
+rank = 18 diff error  = 0
+rank = 7 diff error  = 0
+rank = 3 diff error  = 0
+rank = 9 diff error  = 0
+rank = 19 diff error  = 0
+rank = 17 diff error  = 0
+rank = 11 diff error  = 0
+rank = 15 diff error  = 0
+rank = 5 diff error  = 0
+rank = 13 diff error  = 0
+rank = 1 diff error  = 0
+rank = 3 diff error  = 0
+rank = 7 diff error  = 0
+rank = 8 diff error  = 0
+rank = 4 diff error  = 0
+rank = 0 diff error  = 0
+rank = 12 diff error  = 0
+rank = 16 diff error  = 0
+rank = 10 diff error  = 0
+rank = 18 diff error  = 0
+rank = 14 diff error  = 0
+rank = 6 diff error  = 0
+rank = 2 diff error  = 0
+rank = 5 diff error  = 0
+rank = 13 diff error  = 0
+rank = 11 diff error  = 0
+rank = 12 diff error  = 0
+rank = 15 diff error  = 0
+rank = 14 diff error  = 0
+rank = 18 diff error  = 0
+rank = 19 diff error  = 0
+rank = 7 diff error  = 0
+rank = 2 diff error  = 0
+rank = 10 diff error  = 0
+rank = 4 diff error  = 0
+rank = 16 diff error  = 0
+rank = 3 diff error  = 0
+rank = 1 diff error  = 0
+rank = 8 diff error  = 0
+rank = 9 diff error  = 0
+rank = 0 diff error  = 0
+rank = 6 diff error  = 0
+rank = 17 diff error  = 0
+rank = 11 diff error  = 0
+rank = 12 diff error  = 0
+rank = 14 diff error  = 0
+rank = 18 diff error  = 0
+rank = 2 diff error  = 0
+rank = 5 diff error  = 0
+rank = 15 diff error  = 0
+rank = 3 diff error  = 0
+rank = 0 diff error  = 0
+rank = 7 diff error  = 0
+rank = 13 diff error  = 0
+rank = 10 diff error  = 0
+rank = 4 diff error  = 0
+rank = 19 diff error  = 0
+rank = 16 diff error  = 0
+rank = 1 diff error  = 0
+rank = 9 diff error  = 0
+rank = 6 diff error  = 0
+rank = 8 diff error  = 0
+rank = 17 diff error  = 0
+rank = 3 diff error  = 0
+rank = 12 diff error  = 0
+rank = 11 diff error  = 0
+rank = 5 diff error  = 0
+rank = 15 diff error  = 0
+rank = 18 diff error  = 0
+rank = 0 diff error  = 0
+rank = 14 diff error  = 0
+rank = 7 diff error  = 0
+rank = 13 diff error  = 0
+rank = 2 diff error  = 0
+rank = 10 diff error  = 0
+rank = 4 diff error  = 0
+rank = 16 diff error  = 0
+rank = 1 diff error  = 0
+rank = 9 diff error  = 0
+rank = 6 diff error  = 0
+rank = 19 diff error  = 0
+rank = 8 diff error  = 0
+rank = 17 diff error  = 0
+rank = 3 diff error  = 0
+rank = 11 diff error  = 0
+rank = 12 diff error  = 0
+rank = 2 diff error  = 0
+rank = 5 diff error  = 0
+rank = 15 diff error  = 0
+rank = 18 diff error  = 0
+rank = 14 diff error  = 0
+rank = 0 diff error  = 0
+rank = 7 diff error  = 0
+rank = 13 diff error  = 0
+rank = 10 diff error  = 0
+rank = 4 diff error  = 0
+rank = 16 diff error  = 0
+rank = 9 diff error  = 0
+rank = 1 diff error  = 0
+rank = 17 diff error  = 0
+rank = 6 diff error  = 0
+rank = 19 diff error  = 0
+rank = 8 diff error  = 0
+rank = 4 diff error  = 0
+rank = 14 diff error  = 0
+rank = 18 diff error  = 0
+rank = 12 diff error  = 0
+rank = 11 diff error  = 0
+rank = 16 diff error  = 0
+rank = 5 diff error  = 0
+rank = 15 diff error  = 0
+rank = 9 diff error  = 0
+rank = 0 diff error  = 0
+rank = 7 diff error  = 0
+rank = 13 diff error  = 0
+rank = 2 diff error  = 0
+rank = 10 diff error  = 0
+rank = 8 diff error  = 0
+rank = 3 diff error  = 0
+rank = 1 diff error  = 0
+rank = 6 diff error  = 0
+rank = 19 diff error  = 0
+rank = 17 diff error  = 0
+total 3535166060
+-rw-r--r-- 1 tg456871 G-80640 2000000000000 Feb 23 22:01 parallel100.dat
+-rw-r--r-- 1 tg456871 G-80640  200000000000 Apr 24 06:20 parallel10.dat
+-rw-r--r-- 1 tg456871 G-80640   20000000000 Apr 24 05:57 parallel1.dat
+-rw-r--r-- 1 tg456871 G-80640  400000000000 Apr 24 06:44 parallel20.dat
+-rw-r--r-- 1 tg456871 G-80640 1000000000000 Feb 24 18:48 parallel50.dat
+/scratch/00013/tg456871/diskio-mpi/parallel100.dat
+lmm_stripe_count:   50
+lmm_stripe_size:    1048576
+lmm_stripe_offset:  15
+	obdidx		 objid		objid		 group
+	    15	      57347983	    0x36b0f8f	             0
+	     9	      56348442	    0x35bcf1a	             0
+	    65	      45034528	    0x2af2c20	             0
+	     4	      56025829	    0x356e2e5	             0
+	     7	      56745194	    0x361dcea	             0
+	     6	      56094941	    0x357f0dd	             0
+	    33	      56458868	    0x35d7e74	             0
+	    75	      44970390	    0x2ae3196	             0
+	    39	      57020759	    0x3661157	             0
+	    89	      45230513	    0x2b229b1	             0
+	    14	      57059565	    0x366a8ed	             0
+	    32	      57353849	    0x36b2679	             0
+	    73	      44679779	    0x2a9c263	             0
+	    48	      55827080	    0x353da88	             0
+	    57	      55486698	    0x34ea8ea	             0
+	    46	      55841234	    0x35411d2	             0
+	    87	      45393954	    0x2b4a822	             0
+	    49	      56807677	    0x362d0fd	             0
+	    78	      45021016	    0x2aef758	             0
+	    26	      56525655	    0x35e8357	             0
+	    42	      56658898	    0x3608bd2	             0
+	    64	      44548778	    0x2a7c2aa	             0
+	    50	      57062190	    0x366b32e	             0
+	    18	      54584826	    0x340e5fa	             0
+	    16	      57163092	    0x3683d54	             0
+	    45	      55624410	    0x350c2da	             0
+	    44	      56063950	    0x35777ce	             0
+	    21	      54706273	    0x342c061	             0
+	     2	      55941209	    0x3559859	             0
+	     5	      55942935	    0x3559f17	             0
+	    10	      56104897	    0x35817c1	             0
+	    20	      56200196	    0x3598c04	             0
+	    76	      44137325	    0x2a17b6d	             0
+	    66	      44442720	    0x2a62460	             0
+	    27	      57194894	    0x368b98e	             0
+	    81	      44898683	    0x2ad197b	             0
+	    47	      56317112	    0x35b54b8	             0
+	    77	      45071341	    0x2afbbed	             0
+	    43	      57174570	    0x3686a2a	             0
+	    67	      45764833	    0x2ba50e1	             0
+	    19	      52947138	    0x327e8c2	             0
+	    80	      44418275	    0x2a5c4e3	             0
+	    41	      55993038	    0x35662ce	             0
+	    71	      44089186	    0x2a0bf62	             0
+	    84	      45098897	    0x2b02791	             0
+	    38	      56658763	    0x3608b4b	             0
+	     1	      56368388	    0x35c1d04	             0
+	    25	      56562127	    0x35f11cf	             0
+	    37	      55008844	    0x3475e4c	             0
+	    28	      56585102	    0x35f6b8e	             0
+
+/scratch/00013/tg456871/diskio-mpi/parallel10.dat
+lmm_stripe_count:   10
+lmm_stripe_size:    1048576
+lmm_stripe_offset:  73
+	obdidx		 objid		objid		 group
+	    73	      51796752	    0x3165b10	             0
+	    40	      62461752	    0x3b91738	             0
+	    58	      63699638	    0x3cbfab6	             0
+	    87	      52238635	    0x31d192b	             0
+	    86	      51716722	    0x3152272	             0
+	    69	      51662777	    0x3144fb9	             0
+	    57	      63367759	    0x3c6ea4f	             0
+	    47	      64121808	    0x3d26bd0	             0
+	    59	      64680656	    0x3daf2d0	             0
+	    51	      65069584	    0x3e0e210	             0
+
+/scratch/00013/tg456871/diskio-mpi/parallel1.dat
+lmm_stripe_count:   1
+lmm_stripe_size:    1048576
+lmm_stripe_offset:  79
+	obdidx		 objid		objid		 group
+	    79	      51537499	    0x312665b	             0
+
+/scratch/00013/tg456871/diskio-mpi/parallel20.dat
+lmm_stripe_count:   20
+lmm_stripe_size:    1048576
+lmm_stripe_offset:  60
+	obdidx		 objid		objid		 group
+	    60	      51243415	    0x30de997	             0
+	    22	      63100533	    0x3c2d675	             0
+	    68	      51260542	    0x30e2c7e	             0
+	     3	      64518454	    0x3d87936	             0
+	    64	      51691238	    0x314bee6	             0
+	    12	      64226000	    0x3d402d0	             0
+	    81	      52428785	    0x31ffff1	             0
+	    57	      63369050	    0x3c6ef5a	             0
+	    23	      64668922	    0x3dac4fa	             0
+	    26	      63457291	    0x3c8480b	             0
+	     6	      63687252	    0x3cbca54	             0
+	    55	      63507315	    0x3c90b73	             0
+	    49	      64174433	    0x3d33961	             0
+	    82	      52035832	    0x31a00f8	             0
+	    17	      62282925	    0x3b65cad	             0
+	    40	      62462872	    0x3b91b98	             0
+	    38	      63157681	    0x3c3b5b1	             0
+	    73	      51798006	    0x3165ff6	             0
+	    79	      51539112	    0x3126ca8	             0
+	    47	      64122830	    0x3d26fce	             0
+
+/scratch/00013/tg456871/diskio-mpi/parallel50.dat
+lmm_stripe_count:   10
+lmm_stripe_size:    1048576
+lmm_stripe_offset:  60
+	obdidx		 objid		objid		 group
+	    60	      44212258	    0x2a2a022	             0
+	    63	      44731402	    0x2aa8c0a	             0
+	    33	      56525917	    0x35e845d	             0
+	     8	      56808762	    0x362d53a	             0
+	    26	      56593504	    0x35f8c60	             0
+	    41	      56060660	    0x3576af4	             0
+	    24	      55407034	    0x34d71ba	             0
+	    80	      44471500	    0x2a694cc	             0
+	    44	      56131312	    0x3587ef0	             0
+	    43	      57240737	    0x3696ca1	             0
+
