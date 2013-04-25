@@ -104,11 +104,17 @@ void CreateOutputRW(){
 	char cmd[200];
 	sprintf(cmd, "mkdir %s", dir);
 	system(cmd);
-	for(int flag=0; flag < 2; flag++){
-		long nlist[3] = {1000l, 1000l*100, 1000l*100*100};
-		if(flag!=0){
-			nlist[1] *= 10;
-			nlist[2] *= 100;
+	for(int flag=0; flag <= 1; flag++){
+		long nlist[3];
+		if(flag==0){
+			nlist[0] = 250;
+			nlist[1] = 250*100;
+			nlist[2] = 250*1000;
+		}
+		else{
+			nlist[0] = 250;
+			nlist[1] = 2500*1000;
+			nlist[2] = 1250*1000*1000;
 		}
 #ifdef GEN_OUTPUT
 		ofstream ofile;
@@ -244,10 +250,10 @@ void CreateOutputLatency(){
 	char s[200];
 	sprintf(s, "%.1e\t%.1e\t%.2e\t%.2e\t%.2e\t%.2e",
 		fszby8*8.0, nfiles*1.0, 
-		stato.median()/CPUGHZ*1e-6, 
-		stats.median()/CPUGHZ*1e-6,
-		statr.median()/CPUGHZ*1e-6,
-		statc.median()/CPUGHZ*1e-6);
+		stato.mean()/CPUGHZ*1e-6, 
+		stats.mean()/CPUGHZ*1e-6,
+		statr.mean()/CPUGHZ*1e-6,
+		statc.mean()/CPUGHZ*1e-6);
 	stato.print("file open");
 	stats.print("file seek");
 	statr.print("file read");
