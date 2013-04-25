@@ -8,7 +8,7 @@
 using namespace std;
 
 #define GEN_OUTPUT
-const double CPUGHZ=3.33;//1.8 or 3.33 or 3.40
+const double CPUGHZ=3.4;//1.8 or 3.33 or 3.40
 
 void write_easy(double *v, long len, const char *fname){
 	ofstream ofile(fname);
@@ -208,8 +208,8 @@ void latency2disk_finalize(const char *dir, int nfiles){
 }
 
 void CreateOutputLatency(){
-	int nfiles[3]={100,10,1}; 
-	long fszby8[3]={1000l*1000,1000l*1000*10,1000l*1000*1000};//change 1e9
+	int nfiles=100; 
+	long fszby8=1000l*1000*125;
 	
 	char dir[200];
 	if(getenv("SCRATCH")==NULL){
@@ -220,7 +220,38 @@ void CreateOutputLatency(){
 	char cmd[200];
 	sprintf(cmd, "mkdir %s", dir);
 	system(cmd);
-	
+
+	double error=0;
+
+	latency2disk_init(dir, fszby8, nfiles);
+	int ntrials = 10;
+	StatVector stato(ntrials*nfiles), stats(ntrials*nfiles), 
+		statr(ntrials*nfiles), statc(ntrials*nfiles);
+	struct disk_latency dklat;
+	for(int j=0; j < ntrials*nfiles; j++){
+		int filenum = j%nfiles;
+		int jj = j/nfiles;
+		long delta = fszby8/ntrials;
+		long posn = delta/2+jj*delta;
+		double x = latency2disk(dir, filenum, posn, dklat);
+		error += fabs(x-posn);
+		stato.insert(dklat.fopen_cycles);
+		stats.insert(dklat.fseek_cycles);
+		statr.insert(dklat.fread_cycles);
+		statc.insert(dklat.fclose_cycles);
+	}
+	latency2disk_finalize(dir, nfiles);
+	char s[200];
+	sprintf(s, "%.1e\t%.1e\t%.2e\t%.2e\t%.2e\t%.2e",
+		fszby8*8.0, nfiles*1.0, 
+		stato.median()/CPUGHZ*1e-6, 
+		stats.median()/CPUGHZ*1e-6,
+		statr.median()/CPUGHZ*1e-6,
+		statc.median()/CPUGHZ*1e-6);
+	stato.print("file open");
+	stats.print("file seek");
+	statr.print("file read");
+	statc.print("file close");
 #ifdef GEN_OUTPUT
 	ofstream ofile;
 	FILE* unm = popen("uname -n", "r");
@@ -238,42 +269,10 @@ void CreateOutputLatency(){
 			"size\tnfiles\topen\t\tseek\t\tread\t\tclose");
 		ofile<<s<<endl;
 	}
-#endif
-	double error=0;
-	for(int i=0; i < 3; i++){
-		latency2disk_init(dir, fszby8[i], nfiles[i]);
-		int ntrials = 1000;
-		StatVector stato(ntrials), stats(ntrials), statr(ntrials),
-			statc(ntrials);
-		struct disk_latency dklat;
-		for(int j=0; j < ntrials; j++){
-			int filenum = rand()%nfiles[i];
-			long posn = (rand()*1l*RAND_MAX+rand())%(fszby8[i]);
-			if(posn < 0)//32 bit
-				posn = rand()%fszby8[i];
-			double x = latency2disk(dir, filenum, posn, dklat);
-			error += fabs(x-posn);
-			stato.insert(dklat.fopen_cycles);
-			stats.insert(dklat.fseek_cycles);
-			statr.insert(dklat.fread_cycles);
-			statc.insert(dklat.fclose_cycles);
-		}
-		latency2disk_finalize(dir, nfiles[i]);
-		char s[200];
-		sprintf(s, "%.1e\t%.1e\t%.2e\t%.2e\t%.2e\t%.2e",
-			fszby8[i]*8.0, nfiles[i]*1.0, 
-			stato.median()/CPUGHZ*1e-6, 
-			stats.median()/CPUGHZ*1e-6,
-			statr.median()/CPUGHZ*1e-6,
-			statc.median()/CPUGHZ*1e-6);
-#ifdef GEN_OUTPUT
-		ofile<<s<<endl;
-#else
-		cout<<s<<endl;
-#endif
-	}
-#ifdef GEN_OUTPUT
+	ofile<<s<<endl;
 	ofile.close();
+#else
+	cout<<s<<endl;
 #endif
 	cout<<"error = "<<error<<endl;
 }
