@@ -36,7 +36,7 @@ void write_mpi(void *data, long len,
 	int maxcount = 2000*1000*1000;
 	while(len > 0){
 		int count = (len<maxcount)?len:maxcount;
-		MPI_File_write_at_all(ofile,
+		MPI_File_write_at(ofile,
 				      displacement,
 				      data,
 				      count,
@@ -69,7 +69,7 @@ void read_mpi(void *data, long len,
 	int maxcount = 2000*1000*1000;
 	while(len > 0){
 		int count = (len<maxcount)?len:maxcount;
-		MPI_File_read_at_all(ifile,
+		MPI_File_read_at(ifile,
 				 displacement,
 				 data,
 				 count,
