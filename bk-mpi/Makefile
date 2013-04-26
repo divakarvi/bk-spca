@@ -55,7 +55,9 @@ diskio-serial: diskio-serial.exe
 	echo 'diskio-serial done'
 diskio-serial.o: diskio-serial.cpp
 	g++ -O3 -c $<
-diskio-serial.exe: diskio-serial.o
+dummy.o: dummy.cpp	
+	g++ -O3 -c $<
+diskio-serial.exe: diskio-serial.o dummy.o
 	g++ -o $@ $^
 
 diskio-mpi: diskio-mpi.exe

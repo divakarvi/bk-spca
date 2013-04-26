@@ -10,6 +10,13 @@ using namespace std;
 #define GEN_OUTPUT
 const double CPUGHZ=3.33;//1.8 or 3.33 or 3.40
 
+#undef DCACHE_FLUSH
+#ifndef DCACHE_FLUSH
+#define FLUSH_COUNT 1
+#else
+#define FLUSH_COUNT 10
+#endif
+
 void write_easy(double *v, long len, const char *fname){
 	ofstream ofile(fname);
 	ofile<<scientific;
@@ -29,13 +36,24 @@ void write_direct(double *v, long len, const char *fname){
 	FILE *fptr;
 	fptr = fopen(fname, "w");
 	fwrite((void *)v, len, sizeof(double), fptr);
+#ifdef DCACHE_FLUSH
+	for(int i=1; i < FLUSH_COUNT; i++)
+		fwrite((void *)v, len, sizeof(double), fptr);
+#endif
 	fclose(fptr);
 }
 
+extern void dummy(void *);
 void read_direct(double *v, long len, const char *fname){
 	FILE *fptr;
 	fptr = fopen(fname, "r");
 	fread((void *)v, len, sizeof(double), fptr);
+#ifdef DCACHE_FLUSH
+	for(int i=1; i < FLUSH_COUNT; i++){
+		fread((void *)v, len, sizeof(double), fptr);
+		dummy(v);
+	}
+#endif
 	fclose(fptr);
 }
 
@@ -87,6 +105,10 @@ void time_diskio(const char *dir, long n, struct BW_RW& bw, int flag){
 		read_direct(w, n, fname);
 	cycles = clk.toc();
 	bw.bw_read = fac*n/cycles*CPUGHZ;
+#ifdef DCACHE_FLUSH
+	bw.bw_write *= FLUSH_COUNT;
+	bw.bw_read  *= FLUSH_COUNT;
+#endif
 	double avgv = v_avg(v, n);
 	double avgw = v_avg(v, n);
 	cout<<"avgv/diff = "<<avgv<<"/"<<avgw-avgv<<endl;
@@ -109,11 +131,11 @@ void CreateOutputRW(){
 		if(flag==0){
 			nlist[0] = 250;
 			nlist[1] = 250*100;
-			nlist[2] = 250*1000;
+			nlist[2] = 125*1000*10;
 		}
 		else{
 			nlist[0] = 250;
-			nlist[1] = 2500*1000;
+			nlist[1] = 125*1000*40;
 			nlist[2] = 1250*1000*1000;
 		}
 #ifdef GEN_OUTPUT
@@ -140,12 +162,13 @@ void CreateOutputRW(){
 		for(int i=0; i < 3; i++){
 			time_diskio(dir, nlist[i], bw, flag);
 #ifdef GEN_OUTPUT
-			ofile<<"\t"<<(double)nlist[i]<<"\t\t"<<bw.bw_write
-			     <<"\t\t"<<bw.bw_read<<endl;
-#else
-			cout<<"\t"<<(double)nlist[i]<<"\t\t"<<bw.bw_write
-			     <<"\t\t"<<bw.bw_read<<endl;
+			ostream &ofref(ofile);
+#else 
+			ostream &ofref(cout);
 #endif
+			ofref<<endl<<"FLUSH_COUNT = "<<FLUSH_COUNT<<endl;
+			ofref<<"\t"<<(double)nlist[i]<<"\t\t"<<bw.bw_write
+			     <<"\t\t"<<bw.bw_read<<endl;
 			
 		}
 #ifdef GEN_OUTPUT

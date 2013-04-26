@@ -94,7 +94,7 @@ public:
 	LustreFile(int ranki, int nprocsi,
 		   const char *diri, const char *fnamei, long sizei);
 	long getlocalsize() {return localsize;}
-	void setstripe(int count);
+	void setstripe(int count, int stripesize=1);//size in MB
 	void printinfo();
 	void write(double *v);
 	void read(double *v);
@@ -113,13 +113,13 @@ LustreFile::LustreFile(int ranki, int nprocsi,
 		localsize = totalsize - (nprocs-1)*localsize;
 }
 
-void LustreFile::setstripe(int count){
+void LustreFile::setstripe(int count, int stripesize){
 	if(rank==0){
 		char cmd[200];
 		sprintf(cmd, "rm %s/%s", dir, fname);
 		system(cmd);
-		sprintf(cmd, "lfs setstripe --count %d %s/%s", 
-			count, dir, fname);
+		sprintf(cmd, "lfs setstripe --size %dM --count %d %s/%s",
+				stripesize, count, dir, fname);
 		system(cmd);
 	}
 	MPI_Barrier(MPI_COMM_WORLD);
@@ -167,14 +167,17 @@ double v_avg(double *v, long len){
 struct BW_RW{
 	double bw_read;
 	double bw_write;
+	int stripesize;
+	int stripecount;
 };
 
 #define DIODIRNAME "diskio-mpi"
 
 //size = total size
-int time_lustre(int rank, int nprocs, long size, 
-		 struct BW_RW& bw, int stripecount=-1){
+void time_lustre(int rank, int nprocs, long size, 
+		 struct BW_RW& bw){
 	TimeStamp clk;
+
 	char dir[200];
 	sprintf(dir, "%s/"DIODIRNAME,getenv("SCRATCH"));
 	if(rank==0){
@@ -182,44 +185,69 @@ int time_lustre(int rank, int nprocs, long size,
 		sprintf(cmd, "mkdir %s", dir);
 		system(cmd);
 	}
+
 	char fname[200];
 	sprintf(fname, "parallel%d.dat", nprocs);
 	LustreFile lustre(rank, nprocs, dir, fname, size);
 	long lsize = lustre.getlocalsize();
+
 	double *v = new double[lsize];
 	v_init(v, lsize, rank);
 	double avg1 = v_avg(v, lsize);
-	if(stripecount==-1)
-		stripecount = (nprocs<=50)?nprocs:50;
-	lustre.setstripe(stripecount);
+
+	int stripecount = bw.stripecount;
+	int stripesize = bw.stripesize;
+	lustre.setstripe(stripecount, stripesize);
+	bw.stripecount = stripecount;
+
 	clk.tic();
 	lustre.write(v);
 	double cycles = clk.toc();
 	bw.bw_write = 8.0*size/cycles*CPUGHZ;
+
 	for(long i=0; i < lsize; i++)
 		v[i] = -1e100;
 	clk.tic();
 	lustre.read(v);
 	cycles = clk.toc();
 	bw.bw_read = 8.0*size/cycles*CPUGHZ;
+
 	double avg2 = v_avg(v, lsize);
 	cout<<"rank = "<<rank<<" diff error  = "
 	    <<fabs(avg1-avg2)/fabs(avg1)<<endl;
-	//if(rank==0)
-	//lustre.printinfo();
+
 	delete[] v;
-	return stripecount;
 }
 
-//flag==1 sets stripecount to 10
-void CreateOutputRW(int rank, int nprocs, int stripecount=-1){
-	long nlist[2] = {1000l*1000, 2500l*1000*1000};
+
+void CreateOutputRW(int rank, int nprocs, 
+		    int stripecount=-1, int bigflag=0){
+	if(stripecount==-1)
+		stripecount = (nprocs<=50)?nprocs:50;
+	int stripesize = (bigflag==0)?1:4000;
+	struct BW_RW bw;
+	bw.stripecount = stripecount;
+	bw.stripesize = stripesize;
+
+	long nlist[2]; 
+	if(!bigflag){
+		nlist[0] = 1250l*1000;
+		nlist[1] = 2500l*1000*1000;
+	}
+	else{
+		nlist[0] = 1250l*1000;
+		nlist[1] = 4000l*1024*1024/8*5;
+	}
 	for(int i=0; i < 2; i++)//local to totalsize
 		nlist[i] *= nprocs;
-	ofstream ofile;
 	
+	ofstream ofile;
 	if(rank==0){
-		ofile.open("OUTPUT/diskio-mpi.txt",ios_base::app);
+		if(!bigflag)
+			ofile.open("OUTPUT/diskio-mpi.txt",ios_base::app);
+		else
+			ofile.open("OUTPUT/diskio-mpi-4Gstripe.txt",
+				   ios_base::app);
 		long posn = ofile.tellp();
 		if(posn<=0){ 
 			char s[200];
@@ -230,20 +258,18 @@ void CreateOutputRW(int rank, int nprocs, int stripecount=-1){
 		}
 	}
 	MPI_Barrier(MPI_COMM_WORLD);
-	struct BW_RW bw;
 	for(int i=0; i < 2; i++){
 		int ntrials=5;
 		StatVector rstat(ntrials), wstat(ntrials);
 		for(int j=0; j < ntrials; j++){
-			stripecount = time_lustre(rank, nprocs, 
-						  nlist[i], bw, stripecount);
+			time_lustre(rank, nprocs, nlist[i], bw);
 			rstat.insert(bw.bw_read);
 			wstat.insert(bw.bw_write);
 		}
 		if(rank==0){
 			char s[200];
 			sprintf(s, " %d\t%d\t%7.2e\t%7.2e/%7.2e\t%7.2e/%7.2e",
-				nprocs, stripecount, 1.0*nlist[i]/nprocs, 
+				nprocs, bw.stripecount, 1.0*nlist[i]/nprocs, 
 				wstat.median(),wstat.max(),
 				rstat.median(),rstat.max());
 			ofile<<s<<endl;
@@ -300,6 +326,8 @@ int main(){
 	int rank, nprocs;
 	mpi_initialize(rank, nprocs);
 	int stripecount = -1;
-	CreateOutputRW(rank, nprocs,stripecount);
+	//CreateOutputRW(rank, nprocs,stripecount);
+	int bigflag = 1;
+	CreateOutputRW(rank, nprocs, stripecount, bigflag);
 	MPI_Finalize();
 }
