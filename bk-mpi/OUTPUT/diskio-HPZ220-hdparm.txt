@@ -1,0 +1,95 @@
+[from internet]
+Western Digital
+1.0TB Caviar® Blue Hard Disk Drive
+3.5-Inch | SATA 6.0Gb/s | 7200RPM | 64MB Cache
+
+/dev/sda:
+
+ATA device, with non-removable media
+	Model Number:       WDC WD10EZEX-60ZF5A0                    
+	Serial Number:      WD-WMC1S1754385
+	Firmware Revision:  80.00A80
+	Transport:          Serial, SATA 1.0a, SATA II Extensions, SATA Rev 2.5, SATA Rev 2.6, SATA Rev 3.0
+Standards:
+	Supported: 9 8 7 6 5 
+	Likely used: 9
+Configuration:
+	Logical		max	current
+	cylinders	16383	16383
+	heads		16	16
+	sectors/track	63	63
+	--
+	CHS current addressable sectors:   16514064
+	LBA    user addressable sectors:  268435455
+	LBA48  user addressable sectors: 1953525168
+	Logical  Sector size:                   512 bytes
+	Physical Sector size:                  4096 bytes
+	device size with M = 1024*1024:      953869 MBytes
+	device size with M = 1000*1000:     1000204 MBytes (1000 GB)
+	cache/buffer size  = unknown
+	Form Factor: 3.5 inch
+	Nominal Media Rotation Rate: 7200
+Capabilities:
+	LBA, IORDY(can be disabled)
+	Queue depth: 32
+	Standby timer values: spec'd by Standard, with device specific minimum
+	R/W multiple sector transfer: Max = 16	Current = 16
+	DMA: mdma0 mdma1 mdma2 udma0 udma1 udma2 udma3 udma4 *udma5 
+	     Cycle time: min=120ns recommended=120ns
+	PIO: pio0 pio1 pio2 pio3 pio4 
+	     Cycle time: no flow control=120ns  IORDY flow control=120ns
+Commands/features:
+	Enabled	Supported:
+	   *	SMART feature set
+	    	Security Mode feature set
+	   *	Power Management feature set
+	   *	Write cache
+	   *	Look-ahead
+	   *	WRITE_BUFFER command
+	   *	READ_BUFFER command
+	   *	NOP cmd
+	   *	DOWNLOAD_MICROCODE
+	   *	48-bit Address feature set
+	   *	Device Configuration Overlay feature set
+	   *	Mandatory FLUSH_CACHE
+	   *	FLUSH_CACHE_EXT
+	   *	SMART error logging
+	   *	SMART self-test
+	   *	General Purpose Logging feature set
+	   *	64-bit World wide name
+	   *	WRITE_UNCORRECTABLE_EXT command
+	   *	{READ,WRITE}_DMA_EXT_GPL commands
+	   *	Segmented DOWNLOAD_MICROCODE
+	   *	Gen1 signaling speed (1.5Gb/s)
+	   *	Gen2 signaling speed (3.0Gb/s)
+	   *	Gen3 signaling speed (6.0Gb/s)
+	   *	Native Command Queueing (NCQ)
+	   *	Phy event counters
+	   *	unknown 76[15]
+	   *	DMA Setup Auto-Activate optimization
+	    	Device-initiated interface power management
+	   *	Software settings preservation
+	   *	SMART Command Transport (SCT) feature set
+	   *	SCT LBA Segment Access (AC2)
+	   *	SCT Error Recovery Control (AC3)
+	   *	SCT Features Control (AC4)
+	   *	SCT Data Tables (AC5)
+	    	unknown 206[7]
+	    	unknown 206[12] (vendor specific)
+	    	unknown 206[13] (vendor specific)
+	   *	reserved 69[3]
+	   *	Long physical sector diagnostics
+Security: 
+	Master password revision code = 65534
+		supported
+	not	enabled
+	not	locked
+		frozen
+	not	expired: security count
+		supported: enhanced erase
+	114min for SECURITY ERASE UNIT. 114min for ENHANCED SECURITY ERASE UNIT.
+Logical Unit WWN Device Identifier: 50014ee25cdc8a57
+	NAA		: 5
+	IEEE OUI	: 0014ee
+	Unique ID	: 25cdc8a57
+Checksum: correct

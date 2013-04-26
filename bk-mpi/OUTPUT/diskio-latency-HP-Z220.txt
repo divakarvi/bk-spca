@@ -2,6 +2,4 @@ latency in milliseconds
 size	nfiles	open		seek		read		close
 8.0e+06	1.0e+02	1.29e-03	2.17e-03	8.72e-04	1.77e-03
 1.0e+09	3.0e+00	1.37e-03	2.27e-03	9.50e-04	1.91e-03
-1.0e+09	1.0e+02	7.03e-03	6.51e+00	1.94e-01	1.11e-02
-(mean)
 1.0e+09	1.0e+02	6.82e-03	6.84e+00	2.68e+00	1.05e-02

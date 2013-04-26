@@ -1,0 +1,150 @@
+00:00.0 Host bridge: Intel Corporation Ivy Bridge DRAM Controller (rev 09)
+	Subsystem: Hewlett-Packard Company Device 1791
+	Flags: bus master, fast devsel, latency 0
+	Capabilities: [e0] Vendor Specific Information: Len=0c <?>
+
+00:01.0 PCI bridge: Intel Corporation Ivy Bridge PCI Express Root Port (rev 09) (prog-if 00 [Normal decode])
+	Flags: bus master, fast devsel, latency 0
+	Bus: primary=00, secondary=01, subordinate=01, sec-latency=0
+	I/O behind bridge: 0000e000-0000efff
+	Memory behind bridge: f6000000-f70fffff
+	Prefetchable memory behind bridge: 00000000e8000000-00000000f1ffffff
+	Capabilities: [88] Subsystem: Hewlett-Packard Company Device 1791
+	Capabilities: [80] Power Management version 3
+	Capabilities: [90] MSI: Enable+ Count=1/1 Maskable- 64bit-
+	Capabilities: [a0] Express Root Port (Slot+), MSI 00
+	Capabilities: [100] Virtual Channel
+	Capabilities: [140] Root Complex Link
+	Capabilities: [d94] #19
+	Kernel driver in use: pcieport
+	Kernel modules: shpchp
+
+00:14.0 USB controller: Intel Corporation Panther Point USB xHCI Host Controller (rev 04) (prog-if 30 [XHCI])
+	Subsystem: Hewlett-Packard Company Device 1791
+	Flags: bus master, medium devsel, latency 0, IRQ 42
+	Memory at f7120000 (64-bit, non-prefetchable) [size=64K]
+	Capabilities: [70] Power Management version 2
+	Capabilities: [80] MSI: Enable+ Count=1/8 Maskable- 64bit+
+	Kernel driver in use: xhci_hcd
+
+00:16.0 Communication controller: Intel Corporation Panther Point MEI Controller #1 (rev 04)
+	Subsystem: Hewlett-Packard Company Device 1791
+	Flags: bus master, fast devsel, latency 0, IRQ 44
+	Memory at f713c000 (64-bit, non-prefetchable) [size=16]
+	Capabilities: [50] Power Management version 3
+	Capabilities: [8c] MSI: Enable+ Count=1/1 Maskable- 64bit+
+	Kernel driver in use: mei
+	Kernel modules: mei
+
+00:16.3 Serial controller: Intel Corporation Panther Point KT Controller (rev 04) (prog-if 02 [16550])
+	Subsystem: Hewlett-Packard Company Device 1791
+	Flags: bus master, 66MHz, fast devsel, latency 0, IRQ 19
+	I/O ports at f0a0 [size=8]
+	Memory at f713a000 (32-bit, non-prefetchable) [size=4K]
+	Capabilities: [c8] Power Management version 3
+	Capabilities: [d0] MSI: Enable- Count=1/1 Maskable- 64bit+
+	Kernel driver in use: serial
+
+00:19.0 Ethernet controller: Intel Corporation 82579LM Gigabit Network Connection (rev 04)
+	Subsystem: Hewlett-Packard Company Device 1791
+	Flags: bus master, fast devsel, latency 0, IRQ 43
+	Memory at f7100000 (32-bit, non-prefetchable) [size=128K]
+	Memory at f7139000 (32-bit, non-prefetchable) [size=4K]
+	I/O ports at f040 [size=32]
+	Capabilities: [c8] Power Management version 2
+	Capabilities: [d0] MSI: Enable+ Count=1/1 Maskable- 64bit+
+	Capabilities: [e0] PCI Advanced Features
+	Kernel driver in use: e1000e
+	Kernel modules: e1000e
+
+00:1a.0 USB controller: Intel Corporation Panther Point USB Enhanced Host Controller #2 (rev 04) (prog-if 20 [EHCI])
+	Subsystem: Hewlett-Packard Company Device 1791
+	Flags: bus master, medium devsel, latency 0, IRQ 16
+	Memory at f7138000 (32-bit, non-prefetchable) [size=1K]
+	Capabilities: [50] Power Management version 2
+	Capabilities: [58] Debug port: BAR=1 offset=00a0
+	Capabilities: [98] PCI Advanced Features
+	Kernel driver in use: ehci_hcd
+
+00:1b.0 Audio device: Intel Corporation Panther Point High Definition Audio Controller (rev 04)
+	Subsystem: Hewlett-Packard Company Device 1791
+	Flags: bus master, fast devsel, latency 0, IRQ 45
+	Memory at f7130000 (64-bit, non-prefetchable) [size=16K]
+	Capabilities: [50] Power Management version 2
+	Capabilities: [60] MSI: Enable+ Count=1/1 Maskable- 64bit+
+	Capabilities: [70] Express Root Complex Integrated Endpoint, MSI 00
+	Capabilities: [100] Virtual Channel
+	Capabilities: [130] Root Complex Link
+	Kernel driver in use: snd_hda_intel
+	Kernel modules: snd-hda-intel
+
+00:1d.0 USB controller: Intel Corporation Panther Point USB Enhanced Host Controller #1 (rev 04) (prog-if 20 [EHCI])
+	Subsystem: Hewlett-Packard Company Device 1791
+	Flags: bus master, medium devsel, latency 0, IRQ 23
+	Memory at f7137000 (32-bit, non-prefetchable) [size=1K]
+	Capabilities: [50] Power Management version 2
+	Capabilities: [58] Debug port: BAR=1 offset=00a0
+	Capabilities: [98] PCI Advanced Features
+	Kernel driver in use: ehci_hcd
+
+00:1e.0 PCI bridge: Intel Corporation 82801 PCI Bridge (rev a4) (prog-if 01 [Subtractive decode])
+	Flags: bus master, fast devsel, latency 0
+	Bus: primary=00, secondary=02, subordinate=02, sec-latency=128
+	Capabilities: [50] Subsystem: Hewlett-Packard Company Device 1791
+
+00:1f.0 ISA bridge: Intel Corporation Panther Point LPC Controller (rev 04)
+	Subsystem: Hewlett-Packard Company Device 1791
+	Flags: bus master, medium devsel, latency 0
+	Capabilities: [e0] Vendor Specific Information: Len=0c <?>
+	Kernel modules: iTCO_wdt
+
+00:1f.2 RAID bus controller: Intel Corporation 82801 SATA Controller [RAID mode] (rev 04)
+	Subsystem: Hewlett-Packard Company Device 1791
+	Flags: bus master, 66MHz, medium devsel, latency 0, IRQ 41
+	I/O ports at f090 [size=8]
+	I/O ports at f080 [size=4]
+	I/O ports at f070 [size=8]
+	I/O ports at f060 [size=4]
+	I/O ports at f020 [size=32]
+	Memory at f7136000 (32-bit, non-prefetchable) [size=2K]
+	Capabilities: [80] MSI: Enable+ Count=1/1 Maskable- 64bit-
+	Capabilities: [70] Power Management version 3
+	Capabilities: [a8] SATA HBA v1.0
+	Capabilities: [b0] PCI Advanced Features
+	Kernel driver in use: ahci
+
+00:1f.3 SMBus: Intel Corporation Panther Point SMBus Controller (rev 04)
+	Subsystem: Hewlett-Packard Company Device 1791
+	Flags: medium devsel, IRQ 5
+	Memory at f7135000 (64-bit, non-prefetchable) [size=256]
+	I/O ports at f000 [size=32]
+	Kernel modules: i2c-i801
+
+01:00.0 VGA compatible controller: NVIDIA Corporation GF108 [Quadro 600] (rev a1) (prog-if 00 [VGA controller])
+	Subsystem: Hewlett-Packard Company Device 0835
+	Flags: bus master, fast devsel, latency 0, IRQ 16
+	Memory at f6000000 (32-bit, non-prefetchable) [size=16M]
+	Memory at e8000000 (64-bit, prefetchable) [size=128M]
+	Memory at f0000000 (64-bit, prefetchable) [size=32M]
+	I/O ports at e000 [size=128]
+	[virtual] Expansion ROM at f7000000 [disabled] [size=512K]
+	Capabilities: [60] Power Management version 3
+	Capabilities: [68] MSI: Enable- Count=1/1 Maskable- 64bit+
+	Capabilities: [78] Express Endpoint, MSI 00
+	Capabilities: [b4] Vendor Specific Information: Len=14 <?>
+	Capabilities: [100] Virtual Channel
+	Capabilities: [128] Power Budgeting <?>
+	Capabilities: [600] Vendor Specific Information: ID=0001 Rev=1 Len=024 <?>
+	Kernel driver in use: nvidia
+	Kernel modules: nvidia_experimental_304, nouveau, nvidiafb
+
+01:00.1 Audio device: NVIDIA Corporation GF108 High Definition Audio Controller (rev a1)
+	Subsystem: Hewlett-Packard Company Device 0835
+	Flags: bus master, fast devsel, latency 0, IRQ 17
+	Memory at f7080000 (32-bit, non-prefetchable) [size=16K]
+	Capabilities: [60] Power Management version 3
+	Capabilities: [68] MSI: Enable- Count=1/1 Maskable- 64bit+
+	Capabilities: [78] Express Endpoint, MSI 00
+	Kernel driver in use: snd_hda_intel
+	Kernel modules: snd-hda-intel
+
