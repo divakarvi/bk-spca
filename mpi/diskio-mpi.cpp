@@ -32,17 +32,17 @@ void write_mpi(void *data, long len,
 			  MPI_BYTE,
 			  datarep,
 			  MPI_INFO_NULL);
-	long displacement = 0;
+	long offset = 0;
 	int maxcount = 2000*1000*1000;
 	while(len > 0){
 		int count = (len<maxcount)?len:maxcount;
 		MPI_File_write_at(ofile,
-				  displacement,
+				  offset,
 				  data,
 				  count,
 				  MPI_BYTE,
 				  MPI_STATUS_IGNORE);
-		displacement += count;
+		offset += count;
 		data = ((char *)data+count);
 		len -= count;
 	}
@@ -65,17 +65,17 @@ void read_mpi(void *data, long len,
 		    MPI_BYTE,
 		    datarep,
 		    MPI_INFO_NULL);
-	long displacement = 0;
+	long offset = 0;
 	int maxcount = 2000*1000*1000;
 	while(len > 0){
 		int count = (len<maxcount)?len:maxcount;
 		MPI_File_read_at(ifile,
-				 displacement,
+				 offset,
 				 data,
 				 count,
 				 MPI_BYTE,
 				 MPI_STATUS_IGNORE);
-		displacement += count;
+		offset += count;
 		data = ((char *)data+count);
 		len -= count;
 	}
