@@ -60,6 +60,9 @@ dummy.o: dummy.cpp
 diskio-serial.exe: diskio-serial.o dummy.o
 	g++ -o $@ $^
 
+diskio-pagecache: diskio-pagecache.cpp
+	g++ -O3 -o diskio-pagecache.exe $<
+
 diskio-mpi: diskio-mpi.exe
 	echo 'diskio-mpi done'
 diskio-mpi.o: diskio-mpi.cpp

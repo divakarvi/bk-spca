@@ -37,11 +37,11 @@ void write_mpi(void *data, long len,
 	while(len > 0){
 		int count = (len<maxcount)?len:maxcount;
 		MPI_File_write_at(ofile,
-				      displacement,
-				      data,
-				      count,
-				      MPI_BYTE,
-				      MPI_STATUS_IGNORE);
+				  displacement,
+				  data,
+				  count,
+				  MPI_BYTE,
+				  MPI_STATUS_IGNORE);
 		displacement += count;
 		data = ((char *)data+count);
 		len -= count;
