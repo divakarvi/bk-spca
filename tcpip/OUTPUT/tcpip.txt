@@ -1,0 +1,11 @@
+turing.math.lsa.umich.edu
+n = 1000000
+blksize = 1000000
+pi = 3.14159
+error = 1e-06
+nsend = 1
+nrecv = 5650
+send  = 10001 ms
+recv  = 12188.3 ms
+bandwidth = 721.066 kbps
+----------------------------------------------------------------------
