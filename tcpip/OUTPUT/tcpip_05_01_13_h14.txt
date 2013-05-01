@@ -1,0 +1,12 @@
+HP-Z220
+Send on client broken up to fit MTU
+n = 1.25e+06
+blksize = 10000
+pi = 3.14159
+error = 8e-07
+nsend = 54
+nrecv = 6
+send  = 0.19708 ms
+recv  = 163.53 ms
+bandwidth = 564.269 kbps
+----------------------------------------------------------------------

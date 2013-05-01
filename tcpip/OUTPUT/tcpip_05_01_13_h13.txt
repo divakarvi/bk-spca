@@ -1,0 +1,36 @@
+HP-Z220
+Send on client broken up to fit MTU
+n = 1.25e+06
+blksize = 10000
+pi = 3.14159
+error = 8e-07
+nsend = 54
+nrecv = 10
+send  = 0.13573 ms
+recv  = 652.955 ms
+bandwidth = 302.84 kbps
+----------------------------------------------------------------------
+HP-Z220
+Send on client broken up to fit MTU
+n = 1.25e+06
+blksize = 10000
+pi = 3.14159
+error = 8e-07
+nsend = 54
+nrecv = 8
+send  = 0.147228 ms
+recv  = 437.13 ms
+bandwidth = 387.593 kbps
+----------------------------------------------------------------------
+HP-Z220
+Send on client broken up to fit MTU
+n = 1.25e+06
+blksize = 10000
+pi = 3.14159
+error = 8e-07
+nsend = 54
+nrecv = 9
+send  = 0.13774 ms
+recv  = 653.024 ms
+bandwidth = 313.601 kbps
+----------------------------------------------------------------------

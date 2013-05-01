@@ -16,11 +16,13 @@
 
 
 using namespace std;
+#define CPUGHZ 3.4  //1.8 or 3.3 or 3.4
+
 #ifdef CLIENT
-#define FIT_MTU
+#define FIT_MTU_CLIENT
 #endif
 const char* PORTNUM="28537";
-const int MAXLEN = 1000*1000*10;
+
 
 void cmd2str(const char*cmd, char *s){
 	FILE* pipe = popen(cmd, "r");
@@ -112,7 +114,7 @@ int connect2server(const char *server, const char *portnum){
 	return sock2server;
 }
 
-#ifndef FIT_MTU
+#ifndef FIT_MTU_CLIENT
 int block_send(int sockfd, void *buf, int len){
 	int total_sent = 0;
 	int num_sends=0;
@@ -125,6 +127,12 @@ int block_send(int sockfd, void *buf, int len){
 	return num_sends;
 }
 #else
+TimeStamp clk_cgwin;
+double *t_cgwin;//in milliseconds
+int *cgwin;
+int i_cgwin=0;
+int max_cgwin;
+
 int block_send(int sockfd, void *buf, int len){
 	const int sub_blk=1500;
 	struct tcp_info info;
@@ -140,7 +148,11 @@ int block_send(int sockfd, void *buf, int len){
 		num_sends += 1;
 		getsockopt(sockfd, SOL_TCP, TCP_INFO, 
 			   &info, (socklen_t *)&tisize);
-		cout<<info.tcpi_snd_cwnd<<endl;
+		cgwin[i_cgwin] = info.tcpi_snd_cwnd;
+		t_cgwin[i_cgwin] = clk_cgwin.toc()/CPUGHZ*1e-6;
+		i_cgwin++;
+		if(i_cgwin >= max_cgwin)
+			i_cgwin = 0;
 	}
 	return num_sends;
 }
@@ -191,14 +203,20 @@ void partialsum_client(int sock2server,
 	close(sock2server);
 }
 
-#define CPUGHZ 3.4  //1.8 or 3.3 or 3.4
 
 void client(const char* server, int blocksize){
 	int n;
+#ifndef FIT_MTU_CLIENT
+	if(blocksize < 1000)
+		n = 1000*blocksize*10;
+	else
+		n=1000*1000*20;
+#else
 	if(blocksize < 1000)
 		n = 1000*blocksize;
 	else
-		n=1000*1000*10/100;
+		n=1000*1250;
+#endif
 	n = (n/blocksize)*blocksize;
 	int sock2server = connect2server(server, PORTNUM);
 	double *series= new double[n];
@@ -222,6 +240,9 @@ void client(const char* server, int blocksize){
 	sprintf(cmd, "uname -n >> %s", fname);
 	system(cmd);
 	ofstream ofile(fname, ios_base::app);
+#ifdef FIT_MTU_CLIENT
+	ofile<<"Send on client broken up to fit MTU"<<endl;
+#endif
 	ofile<<"n = "<<n*1.0<<endl;
 	ofile<<"blksize = "<<blocksize*1.0<<endl;
 	ofile<<"pi = "<<psum[n-1]<<endl;
@@ -253,8 +274,9 @@ int bind2port(const char* portnum){
 	int backlog=10;
 	listen(sock2port, backlog);
 	int yes = 1;
+	/*causes seg fault occasionally*/
 	setsockopt(sock2port, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(int));
-	//freeaddrinfo(llist);//causes mem error occasionally
+	//freeaddrinfo(llist);
 	return sock2port;
 }
 
@@ -291,8 +313,25 @@ void server(int blocksize){
 	}
 }
 
+void display_cgwin(double *t, int *cgwin, int len){
+	FILE *fptr;
+	fptr = fopen("OUTPUT/cgwin.dat", "w");
+	for(int i=0; i < len; i++)
+		fprintf(fptr, "\t%8.3e \t\t %d \n", t[i], cgwin[i]);
+	fclose(fptr);
+}
+
 int main(int argc, char **argv){
 	int BLKSZ;
+
+#ifdef FIT_MTU_CLIENT
+	clk_cgwin.tic();
+	i_cgwin = 0;
+	max_cgwin = 1000*1000;
+	t_cgwin = new double[max_cgwin];
+	cgwin = new int[max_cgwin];
+#endif
+
 #ifdef SERVER
        BLKSZ = atoi(argv[1]);
        cout<<"BLKSZ = "<<BLKSZ<<endl;
@@ -302,5 +341,11 @@ int main(int argc, char **argv){
        client(argv[1],BLKSZ);
 #else
        run_ipaddr();
+#endif
+
+#ifdef FIT_MTU_CLIENT
+       display_cgwin(t_cgwin, cgwin, i_cgwin);
+       delete[] t_cgwin;
+       delete[] cgwin;
 #endif
 }
