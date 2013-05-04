@@ -19,9 +19,9 @@ using namespace std;
 #define CPUGHZ 3.4  //1.8 or 3.3 or 3.4
 
 #ifdef CLIENT
-#define FIT_MTU_CLIENT
+#undef FIT_MTU_CLIENT
 #endif
-const char* PORTNUM="28537";
+const char* PORTNUM="80"; //28537
 
 
 void cmd2str(const char*cmd, char *s){
