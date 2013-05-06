@@ -21,7 +21,7 @@ using namespace std;
 #ifdef CLIENT
 #undef FIT_MTU_CLIENT
 #endif
-const char* PORTNUM="80"; //28537
+const char* PORTNUM="28537"; 
 
 
 void cmd2str(const char*cmd, char *s){
@@ -87,7 +87,6 @@ void run_ipaddr(){
 	print_ipaddr("www.economist.com");
 	print_ipaddr("www.kernel.org");
 	print_ipaddr("xubuntu.org");
-	print_ipaddr("www.archlinux.org");
 	print_ipaddr("krugman.blogs.nytimes.com");
 	print_ipaddr("news.bbc.co.uk");
 	print_ipaddr("www.guardian.co.uk");
@@ -99,20 +98,7 @@ void run_ipaddr(){
 	print_ipaddr("www.walmart.com");
 }
 
-int connect2server(const char *server, const char *portnum){
-	struct addrinfo hint;
-	memset(&hint, 0, sizeof(hint));
-	hint.ai_family = AF_UNSPEC;
-	hint.ai_socktype = SOCK_STREAM;
-	struct addrinfo *llist;
-	getaddrinfo(server, portnum, &hint, &llist);
-	int sock2server = socket(llist->ai_family, 
-				 llist->ai_socktype,
-				 llist->ai_protocol);
-	connect(sock2server, llist->ai_addr, llist->ai_addrlen);
-	freeaddrinfo(llist);
-	return sock2server;
-}
+
 
 #ifndef FIT_MTU_CLIENT
 int block_send(int sockfd, void *buf, int len){
@@ -172,6 +158,21 @@ int block_recv(int sockfd, void *buf, int len){
 		num_recv += 1;
 	}
 	return num_recv;
+}
+
+int connect2server(const char *server, const char *portnum){
+	struct addrinfo hint;
+	memset(&hint, 0, sizeof(hint));
+	hint.ai_family = AF_UNSPEC;
+	hint.ai_socktype = SOCK_STREAM;
+	struct addrinfo *llist;
+	getaddrinfo(server, portnum, &hint, &llist);
+	int sock2server = socket(llist->ai_family, 
+				 llist->ai_socktype,
+				 llist->ai_protocol);
+	connect(sock2server, llist->ai_addr, llist->ai_addrlen);
+	freeaddrinfo(llist);
+	return sock2server;
 }
 
 void partialsum_client(int sock2server, 
@@ -274,9 +275,10 @@ int bind2port(const char* portnum){
 	int backlog=10;
 	listen(sock2port, backlog);
 	int yes = 1;
-	/*causes seg fault occasionally*/
 	setsockopt(sock2port, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(int));
-	//freeaddrinfo(llist);
+	/*causes seg fault occasionally*/
+	/*may be socket needs to be closed first*/
+	//freeaddrinfo(llist);	
 	return sock2port;
 }
 

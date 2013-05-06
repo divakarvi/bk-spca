@@ -14,6 +14,7 @@ avg3 = np.average(cg3[:,1])
 cg4 = np.genfromtxt("cgwin_1050kbs.txt")
 avg4 = np.average(cg4[:,1])
 print 'average/bw = ', avg0/317, avg1/500, avg2/820, avg3/850, avg4/1050
+print 'avg cg in figure: ',avg0, avg1, avg4
 p1, = plt.plot(cg0[:,0]/1000, cg0[:,1],ls=':',lw=3.0)
 p2, = plt.plot(cg1[:,0]/1000, cg1[:,1], ls='--',lw=2.0)
 p3, = plt.plot(cg4[:,0]/1000, cg4[:,1],lw=1.0)
