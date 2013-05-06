@@ -1,0 +1,168 @@
+HP-Z220
+n = 2e+07
+blksize = 1e+06
+pi = 3.14159
+error = 5e-08
+nsend = 1
+nrecv = 274
+send  = 40.1024 ms
+recv  = 102.308 ms
+bandwidth = 111125 kbps
+----------------------------------------------------------------------
+HP-Z220
+n = 2e+07
+blksize = 1e+06
+pi = 3.14159
+error = 5e-08
+nsend = 1
+nrecv = 273
+send  = 40.3134 ms
+recv  = 102.531 ms
+bandwidth = 102855 kbps
+----------------------------------------------------------------------
+HP-Z220
+n = 2e+07
+blksize = 1e+06
+pi = 3.14159
+error = 5e-08
+nsend = 1
+nrecv = 273
+send  = 57.0389 ms
+recv  = 85.7776 ms
+bandwidth = 111540 kbps
+----------------------------------------------------------------------
+HP-Z220
+n = 2e+07
+blksize = 100000
+pi = 3.14159
+error = 5e-08
+nsend = 1
+nrecv = 28
+send  = 0.393998 ms
+recv  = 14.0662 ms
+bandwidth = 110353 kbps
+----------------------------------------------------------------------
+HP-Z220
+n = 2e+07
+blksize = 100000
+pi = 3.14159
+error = 5e-08
+nsend = 1
+nrecv = 28
+send  = 0.394822 ms
+recv  = 14.058 ms
+bandwidth = 110339 kbps
+----------------------------------------------------------------------
+HP-Z220
+n = 2e+07
+blksize = 100000
+pi = 3.14159
+error = 5e-08
+nsend = 1
+nrecv = 28
+send  = 0.396157 ms
+recv  = 14.0494 ms
+bandwidth = 110140 kbps
+----------------------------------------------------------------------
+HP-Z220
+n = 2e+07
+blksize = 10000
+pi = 3.14159
+error = 5e-08
+nsend = 1
+nrecv = 4
+send  = 0.04859 ms
+recv  = 1.85025 ms
+bandwidth = 84694.5 kbps
+----------------------------------------------------------------------
+HP-Z220
+n = 2e+07
+blksize = 10000
+pi = 3.14159
+error = 5e-08
+nsend = 1
+nrecv = 4
+send  = 0.0486424 ms
+recv  = 1.84915 ms
+bandwidth = 84399 kbps
+----------------------------------------------------------------------
+HP-Z220
+n = 2e+07
+blksize = 10000
+pi = 3.14159
+error = 5e-08
+nsend = 1
+nrecv = 4
+send  = 0.04868 ms
+recv  = 1.85071 ms
+bandwidth = 84388.7 kbps
+----------------------------------------------------------------------
+HP-Z220
+n = 1e+06
+blksize = 100
+pi = 3.14159
+error = 1e-06
+nsend = 1
+nrecv = 1
+send  = 0.00818235 ms
+recv  = 0.225133 ms
+bandwidth = 6812.09 kbps
+----------------------------------------------------------------------
+HP-Z220
+n = 1e+06
+blksize = 100
+pi = 3.14159
+error = 1e-06
+nsend = 1
+nrecv = 1
+send  = 0.00819235 ms
+recv  = 0.225043 ms
+bandwidth = 6792.96 kbps
+----------------------------------------------------------------------
+HP-Z220
+n = 1e+06
+blksize = 100
+pi = 3.14159
+error = 1e-06
+nsend = 1
+nrecv = 1
+send  = 0.00819235 ms
+recv  = 0.225223 ms
+bandwidth = 6798.81 kbps
+----------------------------------------------------------------------
+HP-Z220
+Send on client broken up to fit MTU
+n = 1.25e+06
+blksize = 10000
+pi = 3.14159
+error = 8e-07
+nsend = 54
+nrecv = 4
+send  = 0.256985 ms
+recv  = 1.59501 ms
+bandwidth = 82939.8 kbps
+----------------------------------------------------------------------
+HP-Z220
+Send on client broken up to fit MTU
+n = 1.25e+06
+blksize = 10000
+pi = 3.14159
+error = 8e-07
+nsend = 54
+nrecv = 4
+send  = 0.264152 ms
+recv  = 1.57898 ms
+bandwidth = 84621.2 kbps
+----------------------------------------------------------------------
+HP-Z220
+Send on client broken up to fit MTU
+n = 1.25e+08
+blksize = 10000
+pi = 3.14159
+error = 8.00047e-09
+nsend = 54
+nrecv = 4
+send  = 0.271405 ms
+recv  = 1.56595 ms
+bandwidth = 86156 kbps
+----------------------------------------------------------------------
