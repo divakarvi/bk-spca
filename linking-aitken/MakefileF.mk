@@ -1,5 +1,5 @@
 leibnizf.exe: leibnizf.o aitkenf.o
-	ifort -v -o leibnizf.exe leibnizf.o aitkenf.o 
+	ifort -o leibnizf.exe leibnizf.o aitkenf.o 
 
 logseriesf.exe: logseriesf.o aitkenf.o
 	ifort -o logseriesf.exe logseriesf.o aitkenf.o 
