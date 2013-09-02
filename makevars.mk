@@ -1,24 +1,27 @@
 #########
 CPP 	:= icpc
-ifdef $(NOINLINE)
-	CFLAGS 	:= -O3 -prec-div -no-ftz -restrict -Wshadow	\
-	-fno-inline-functions					\
-	-I $$MKL_INC 						\
-	-I $$FFTW_INC						\
-	-openmp							\
-	`mpiCC -showme:compile`	
-else
-	CFLAGS 	:= -O3 -prec-div -no-ftz -restrict -Wshadow	\
-	-I $$MKL_INC 						\
-	-I $$FFTW_INC						\
-	-openmp							\
-	`mpiCC -showme:compile`
+ifdef MPI
+	MPIINC 	:= `mpiCC -showme:compile1`
 endif
+ifdef FFTW
+	FFTWINC := -I $$FFTW_INC
+endif
+ifdef NOINLINE
+	NOINLINEOPT := -fno-inline-functions
+endif
+CFLAGS 	:= -O3 -prec-div -no-ftz -restrict -Wshadow	\
+	$(NOINLINEOPT)					\
+	-I $$MKL_INC 					\
+	$(FFTWINC)					\
+	$(OMP)						\
+	$(MPIINC)
+
 MKLLIBS := -L$$MKL_LINK -lmkl_intel_lp64 -lmkl_sequential -lmkl_core 	\
 	-lpthread
 MKLTHRD := -L$$MKL_LINK -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core 	\
 	-lpthread -lm
 FFTWLIB :=  -L $$FFTW_LINK -lfftw3
+MPILIBS := `mpiCC -showme:link`
 
 #########
 .SUFFIXES:

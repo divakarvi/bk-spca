@@ -1,5 +1,5 @@
 #include "Aitken.hh"
-#include "Vector.hh"
+#include "../utils/Vector.hh"
 #include <cstdlib>
 #include <cmath>
 

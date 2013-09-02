@@ -1,5 +1,5 @@
 #include "Aitken.hh"
-#include "Vector.hh"
+#include "../utils/Vector.hh"
 #include <cstdlib>
 
 //partials sums of 4(1-1/3+1/5-1/7+1/9-...)

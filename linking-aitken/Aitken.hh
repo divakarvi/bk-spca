@@ -1,6 +1,6 @@
 #ifndef __AitkenAugust09DVjli__
 #define __AitkenAugust09DVjli__
-#include "Vector.hh"
+#include "../utils/Vector.hh"
 
 //applies Aitken transformation to seq1 to produce seq2.
 //length of seq2 must be 2 less than that of seq1.
