@@ -45,12 +45,12 @@ int main(){
 	for(i=0; i < N; i++)
 		xlist[i] = 1.0*i/(N-1);
 	
-	printf("partial sum, extrapolated sum,  true value\n");
+	printf("\tpartial sum \textrapolated sum  \ttrue value\n");
 	for(i=0; i < N+1; i++){
 		val1 = partialSum(xlist[i], n);
 		val2 = extrapolateSum(xlist[i], n);
 		val3 = log(1+xlist[i]);
-		printf("\n %.10f    %.10f    %.10f \n", 
+		printf("\n\t%.10f\t%.10f\t\t%.10f \n", 
 		       val1, val2, val3);
 	}
 }

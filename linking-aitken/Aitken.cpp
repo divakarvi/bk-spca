@@ -6,14 +6,10 @@
 void Aitken(Vector& seq1){
 	int len = seq1.getSize();
 	for(int i=0; i < len-2; i++){
-		double si = seq1(i);
-		double sip1 = seq1(i+1);
-		double sip2 = seq1(i+2);
-		if(si==sip1)
-			seq1(i) = si;
-		else //divide by zero is possible
-			seq1(i) = si - 
-				(sip1-si)*(sip1-si)/(sip2-2*sip1+si);
+		double a = seq1(i);
+		double b = seq1(i+1);
+		double c = seq1(i+2);
+		seq1(i) = a - (b-a)*(b-a)/(a-2*b+c);
 	}
 	seq1(len-2) = 0;//invalid entries
 	seq1(len-1) = 0;

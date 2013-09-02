@@ -12,7 +12,7 @@ void leibniz(double* seq, int len){
 		if(i==0)
 			seq[i] = 4.0;
 		else if(i%2==1)
-	  seq[i] = seq[i-1] - 4.0/(2.0*i+1);
+			seq[i] = seq[i-1] - 4.0/(2.0*i+1);
 		else
 			seq[i] = seq[i-1] + 4.0/(2.0*i+1);
 }

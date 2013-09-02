@@ -3,17 +3,13 @@
 
 void aitken(const double* seq1, double* seq2, int len){
 	int i;
-	double si, sip1, sip2;
+	double a, b, c;
 	assert(len > 2); //length must be greater than 2
 	for(i=0; i < len-2; i++){
-		si = seq1[i];
-		sip1 = seq1[i+1];
-		sip2 = seq1[i+2];
-		if(si==sip1)
-			seq2[i] = si;
-		else //divide by zero is possible
-			seq2[i] = 
-				si - (sip1-si)*(sip1-si)/(sip2-2*sip1+si);
+		a = seq1[i];
+		b = seq1[i+1];
+		c = seq1[i+2];
+		seq2[i] =  a - (b-a)*(b-a)/(a-2*b+c);
 	}
 }
 
