@@ -74,6 +74,11 @@ void array_in(double *v, int size,  const char* fname){
 	ifile.close();
 }
 
+void array_flush(double *v, int size){
+	for(long int i=0; i < size; i++)
+		_mm_clflush(v + i);
+}
+
 void solve2x2(double *restrict A, double *restrict rhs, double *restrict x){
   double a = A[0];
   double b = A[2];

@@ -71,6 +71,6 @@ public:
 		cout<<setw(10)<<"median: "<<this->median()<<endl;
 		cout<<setw(10)<<"min: "<<this->min()<<endl;
 		cout<<setw(10)<<"max: "<<this->max()<<endl;
-  }
+	}
 };
 #endif

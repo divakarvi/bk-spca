@@ -86,7 +86,7 @@ void open_ofile(const char* dir, const char* file, std::ofstream& ofile);
 void verify_dir(const char *dir);
 
 /*
- * prints the file to cout (omitting unprintable charaters)
+ * prints the file to cout (omitting unprintable characters)
  * the contents of the file are put inside a box
  */
 void box_file(const char* fname, const char* mesg);
