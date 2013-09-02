@@ -3,6 +3,9 @@ include ../makevars.mk
 LIBS := $(MKLLIBS)
 
 ##################################################
+include MakefileC.mk
+
+include MakefileF.mk
 
 Aitken.o: Aitken.cpp
 include Aitken.d
@@ -16,3 +19,5 @@ include LogSeries.d
 Leibniz.exe: Leibniz.o Aitken.o
 
 LogSeries.exe: LogSeries.exe Aitken.o
+
+include MakefileFCPP.mk
