@@ -18,6 +18,6 @@ include LogSeries.d
 
 Leibniz.exe: Leibniz.o Aitken.o
 
-LogSeries.exe: LogSeries.exe Aitken.o
+LogSeries.exe: LogSeries.o Aitken.o
 
 include MakefileFCPP.mk
