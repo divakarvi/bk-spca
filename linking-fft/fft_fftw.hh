@@ -19,6 +19,8 @@ public:
 	void fwd(double *f){
 		assrt((long)f%16 == 0);
 		fftw_execute_dft(pf, (fftw_complex *)f, (fftw_complex *)f);
+		for(int i=0; i < 2*n; i++)
+			f[i] /= n;
 	}
 	void bwd(double *f){
 		assrt((long)f%16 == 0);

@@ -48,10 +48,12 @@ static void four1(double data[], unsigned long nn, int isign){
 	}
 }
 
-void nrfwd(double *f, long n){
+void nrfwd(double *f, unsigned long n){
 	four1(f-1, n, -1);
+	for(unsigned long j=0; j < 2*n; j++)
+		f[j] /= n*1.0;
 }
 
-void nrbwd(double *f, long n){
+void nrbwd(double *f, unsigned long n){
 	four1(f-1, n, 1);
 }
