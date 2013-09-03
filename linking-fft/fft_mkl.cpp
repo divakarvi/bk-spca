@@ -4,7 +4,6 @@
 fft_mkl::fft_mkl(int nin)
   :n(nin)
 {
-	assert(n > 0);
 	DftiCreateDescriptor(&handle,DFTI_DOUBLE,DFTI_COMPLEX,
 			     1,n);
 	DftiSetValue(handle, DFTI_FORWARD_SCALE, 1.0/n);

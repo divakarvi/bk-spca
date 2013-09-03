@@ -1,4 +1,5 @@
 #include "nr.hh"
+#include <cmath>
 
 //From Numerical Recipes in C, 2nd edition, p. 507
 #define SWAP(a,b) tempr=(a);(a)=(b);(b)=tempr

@@ -9,7 +9,7 @@
 enum mkl_align_flag {MKL_ALIGN, MKL_NOALIGN};
 
 void test_mkl(int n, enum mkl_align_flag flag){
-	double *ptr = MKL_alloc((4*n+2)*sizeof(double), 16);
+	double *ptr = (double *)MKL_malloc((4*n+2)*sizeof(double), 16);
 	double *v;
 	switch(flag){
 	case MKL_ALIGN:
@@ -39,7 +39,7 @@ void test_mkl(int n, enum mkl_align_flag flag){
 	fft.bwd(v);
 	array_diff(v, w, 2*n);
 	double rerror = array_max(v, 2*n)/array_max(w, 2*n);
-	std::cout<<"\terror in complex 1D fft"<<std::endl;
+	std::cout<<"\n\terror in complex 1D fft"<<std::endl;
 	std::cout<<"\tn = "<<n<<std::endl;
 	std::cout<<"\trel error = "<<rerror<<std::endl;
 
@@ -47,7 +47,8 @@ void test_mkl(int n, enum mkl_align_flag flag){
 }
 
 int main(){
-	test_mkl(10);
-	test_mkl(128);
-	test_mkl(1024*12);
+	test_mkl(10, MKL_ALIGN);
+	test_mkl(128, MKL_NOALIGN);
+	test_mkl(1024*12, MKL_ALIGN);
+	test_mkl(8, MKL_NOALIGN);
 }
