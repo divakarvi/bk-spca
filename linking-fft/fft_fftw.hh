@@ -1,5 +1,6 @@
 #ifndef __fftw2Sept2013__
 #define __fftw2Sept2013__
+#include "../utils/utils.hh"
 #include <fftw3.h>
 
 class fft_fftw{
@@ -16,9 +17,11 @@ public:
 	 * bwd: f fourier---> phys in-place
 	 */
 	void fwd(double *f){
+		assrt((long)f%16 == 0);
 		fftw_execute_dft(pf, (fftw_complex *)f, (fftw_complex *)f);
 	}
 	void bwd(double *f){
+		assrt((long)f%16 == 0);
 		fftw_execute_dft(pb, (fftw_complex *)f, (fftw_complex *)f);
 	}
 };

@@ -32,18 +32,22 @@ void array_abs(double *v, int n);
  * returns max of abs values of v[0..n-1]
  */
 double array_max(double *v, int n);
+
  /*
   * display n entries of v on stdout
   */
 void array_show(double *v, int n, const char* mesg);
+
 /*
  * v = v - w
  */
 void array_diff(double *restrict v, double *restrict w, int n);
+
  /*
-  * copy v = w
+  * copy w = v
   */
  void array_copy(double *restrict v, double *restrict w, int n);
+
 /*
  * v[]   = array to be output (column major)
  * m     = num of rows
@@ -51,11 +55,13 @@ void array_diff(double *restrict v, double *restrict w, int n);
  * fname = name of file for output
  */
 void array_out(double *v, int m, int n, const char *fname);
+
  /*
   * same as above except for lda
   * i,j th entry = v[i+j*lda]
   */
 void array_out(double *v, int m, int n, int lda, const char *fname);
+
 /*
  * counterpart of array_out()
  * size = number of entries of v
@@ -68,16 +74,6 @@ void array_in(double *v, int size,  const char* fname);
  * x = soln of Ax=rhs
  */
 void solve2x2(double *restrict A, double *restrict rhs, double *restrict x);
-
-/*
- * dir = directory name without trailing /
- * file = pathless file name 
- * open_ifile --> open for input
- * open_ofile --> open for output
- * complete file name is assumed to be less than 200 chars
- */
-void open_ifile(const char* dir, const char* file, std::ifstream& ifile);
-void open_ofile(const char* dir, const char* file, std::ofstream& ofile);
 
  /*
   * verify if the directory exists

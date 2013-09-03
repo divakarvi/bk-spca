@@ -31,7 +31,7 @@ void array_diff(double *restrict v, double *restrict w, int n){
 
 void array_copy(double *restrict v, double *restrict w, int n){
 	for(int i=0; i < n; i++)
-		v[i] = w[i];
+		w[i] = v[i];
 }
 
 void array_out(double *v, int m, int n, const char* fname){
@@ -88,24 +88,6 @@ void solve2x2(double *restrict A, double *restrict rhs, double *restrict x){
   x[0] = (rhs[0]*d-rhs[1]*b)/det;
   x[1] = (-rhs[0]*c+rhs[1]*a)/det;
 
-}
-
-void open_ifile(const char* dir, const char* file, std::ifstream& ifile){
-	if(ifile.is_open())
-		ifile.close();
-	char fname[200];
-	sprintf(fname, "%s/%s", dir, file);
-	ifile.open(fname);
-	assrt(ifile.is_open());
-}
-
-void open_ofile(const char* dir, const char* file, std::ofstream& ofile){
-	if(ofile.is_open())
-		ofile.close();
-	char fname[200];
-	sprintf(fname, "%s/%s", dir, file);
-	ofile.open(fname);
-	assrt(ofile.is_open());
 }
 
 void verify_dir(const char *dir){
