@@ -15,7 +15,7 @@ class cVector;
 class Vector{
 private:
 	long int size;
-	double * data;
+	double *data;
 	int owner;
 public:
 	//empty constructor
@@ -156,11 +156,6 @@ public:
 			if(ans < fabs(data[i]))
 				ans = fabs(data[i]);
 		return ans;
-	}
-
-	void cacheflush(){//evict from cache
-		for(long int i=0; i < size; i++)
-			_mm_clflush(data+i);
 	}
 
 	//output vector to file fname
