@@ -8,15 +8,19 @@
 #include <cstring>
 
 using namespace std;
+#ifndef __dvutils25June2013__
 const double PI = 3.1415926535897932384e+00;
-class cVector;
+#endif
 
+class Matrix;
 
 class Vector{
 private:
 	long int size;
 	double *data;
 	int owner;
+public:
+	friend class Matrix;
 public:
 	//empty constructor
 	Vector(){

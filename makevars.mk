@@ -36,7 +36,7 @@ MPILIBS := `mpiCC -showme:link`
 %.s: %.cpp 
 	$(CPP) $(CFLAGS) -S $< 
 %.exe: %.o 
-	$(CPP) $(OMP) -o $@ $^ $(LIBS) 
+	$(CPP) $(OMP) -o $@ $(filter %.o,$^) $(LIBS) 
 
 ########
 .PHONY: clean cleanx cleanxx
