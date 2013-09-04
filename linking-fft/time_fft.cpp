@@ -9,7 +9,9 @@
 #include <unistd.h>
 #include <iostream>
 
-static enum yesno_type {YES, NO};
+#undef FWD
+
+enum yesno_type {YES, NO};
 
 static StatVector *stat_mkl = NULL, *stat_fftw = NULL, *stat_nr = NULL;
 
@@ -38,41 +40,49 @@ void time_fft(int n, enum yesno_type march_on){
 	/*
 	 * allocate stat objects
 	 */
-	if(stat_mkl != NULL){
+	if(stat_mkl != NULL)
 		delete stat_mkl;
-		stat_mkl = new StatVector(count);
-	}
+	stat_mkl = new StatVector(count);
 
-	if(stat_fftw != NULL){
+	if(stat_fftw != NULL)
 		delete stat_fftw;
-		stat_fftw = new StatVector(count);
-	}
+	stat_fftw = new StatVector(count);
 
-	if(stat_nr != NULL){
+	if(stat_nr != NULL)
 		delete stat_nr;
-		stat_nr = new StatVector(count);
-	}
+	stat_nr = new StatVector(count);
+
 
 	/*
 	 * initialize data
 	 */
-	for(long i = 0; i < count; i++){
-		double *v = (march_on == YES) ? space + i*(2*n) : space;
-		for(int j = 0; j < n; j++){//"random" and cheap
-			v[2*j] = 7.0/(8.0+i+j);
-			v[2*j+1] = 77/0/(8.0+i*i+j);
+	if(march_on == YES)
+		for(long i = 0; i < count; i++){
+			double *v = space + i*(2*n);
+			for(int j = 0; j < n; j++){//"random" and cheap
+				v[2*j] = 7.0/(8.0+i+j);
+				v[2*j+1] = 77/(8.0+i*i+j);
+			}
 		}
+	else{
+		double *v = space;
+		for(int j = 0; j < n; j++)
+			v[2*j] = v[2*j+1] = 0;
 	}
 	
 	TimeStamp clk;
 	/*
 	 * collect mkl stat
 	 */
-	fft_mkl fftmkl(n);
+	fft_mkl mkl(n);
 	for(long i = 0; i < count; i++){
 		double *v = (march_on == YES) ? space + i*(2*n) : space;
 		clk.tic();
-		fft_mkl.fwd(v);
+#ifdef FWD
+		mkl.fwd(v);
+#else
+		mkl.bwd(v);
+#endif
 		double cycles = clk.toc();
 		stat_mkl->insert(cycles);
 	}
@@ -84,7 +94,11 @@ void time_fft(int n, enum yesno_type march_on){
 	for(long i = 0; i < count; i++){
 		double *v = (march_on == YES) ? space + i*(2*n) : space;
 		clk.tic();
+#ifdef FWD
 		fftw.fwd(v);
+#else
+		fftw.bwd(v);
+#endif
 		double cycles = clk.toc();
 		stat_fftw->insert(cycles);
 	}
@@ -94,14 +108,17 @@ void time_fft(int n, enum yesno_type march_on){
 	 */
 	switch(pow2){
 	case NO:
-		stat_nr->insert(0);
+		stat_nr->insert(-1);
 		break;
 	case YES:
 		for(long i=0; i < count; i++){
-			double *v = (march_on == YES) ? space + i*(2*n)
-				                      : space;
+			double *v = (march_on == YES) ? space + i*(2*n): space;
 			clk.tic();
+#ifdef FWD
 			nrfwd(v, n);
+#else
+			nrbwd(v, n);
+#endif
 			double cycles = clk.toc();
 			stat_nr->insert(cycles);
 		}
@@ -111,12 +128,14 @@ void time_fft(int n, enum yesno_type march_on){
 	MKL_free(space);
 }
 
-void make_table(enum yesno_flag march_onoff){
-	int n[] = {32, 64, 80, 8*3*7, 192, 1024, 1024*128, 1024*1024};
+void make_table(enum yesno_type march_onoff){
+	int n[] = {32, 64, 80, 
+		   8*3*7, 192, 1024, 
+		   1024*128, 1024*1024};
 	
-	for(int i=0; i < 9; i++){
-		time_fft(n[i], march_on);
-		std::cout<<"\n\nn= "<<n[i]<<std::endl;
+	for(int i=0; i < 8; i++){
+		time_fft(n[i], march_onoff);
+		std::cout<<"\n\nn = "<<n[i]<<std::endl;
 		std::cout<<stat_mkl->median()<<std::endl;
 		std::cout<<stat_fftw->median()<<std::endl;
 		std::cout<<stat_nr->median()<<std::endl;
@@ -124,6 +143,11 @@ void make_table(enum yesno_flag march_onoff){
 }
 
 int main(){
+#ifdef FWD
+	std::cout<<"using fwd transform"<<std::endl;
+#else
+	std::cout<<"using bwd transform"<<std::endl;
+#endif
 	make_table(YES);
 	make_table(NO);
 }
