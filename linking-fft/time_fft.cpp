@@ -9,11 +9,9 @@
 #include <unistd.h>
 #include <iostream>
 
-enum yesno_type {YES, NO};
+static enum yesno_type {YES, NO};
 
-static StatVector *stat_mkl = NULL, 
-	*stat_fftw = NULL, 
-	*stat_nr = NULL;
+static StatVector *stat_mkl = NULL, *stat_fftw = NULL, *stat_nr = NULL;
 
 /*
  * no cache effects if march_on == YES
@@ -101,7 +99,7 @@ void time_fft(int n, enum yesno_type march_on){
 	case YES:
 		for(long i=0; i < count; i++){
 			double *v = (march_on == YES) ? space + i*(2*n)
-				                       : space;
+				                      : space;
 			clk.tic();
 			nrfwd(v, n);
 			double cycles = clk.toc();
@@ -111,4 +109,21 @@ void time_fft(int n, enum yesno_type march_on){
 	}
 	
 	MKL_free(space);
+}
+
+void make_table(enum yesno_flag march_onoff){
+	int n[] = {32, 64, 80, 8*3*7, 192, 1024, 1024*128, 1024*1024};
+	
+	for(int i=0; i < 9; i++){
+		time_fft(n[i], march_on);
+		std::cout<<"\n\nn= "<<n[i]<<std::endl;
+		std::cout<<stat_mkl->median()<<std::endl;
+		std::cout<<stat_fftw->median()<<std::endl;
+		std::cout<<stat_nr->median()<<std::endl;
+	}
+}
+
+int main(){
+	make_table(YES);
+	make_table(NO);
 }
