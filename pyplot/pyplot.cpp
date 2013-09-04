@@ -1,5 +1,5 @@
-#include "pyplot.hh"
 #include "../utils/utils.hh"
+#include "pyplot.hh"
 #include <cstring>
 #include <cstdlib>
 
@@ -48,7 +48,8 @@ PyPlot::~PyPlot(){
 		assrt(rval != -1);
 	}
 	
-	if(savedata==0){//pipe must be closed before data is removed
+	//pipe must be closed (as above) before data is removed
+	if(savedata==0){
 		sprintf(cmdstr, "rm FIGS/%s_*", name);
 		system(cmdstr);
 	}
@@ -67,7 +68,7 @@ void PyPlot::issue_command(const char *cstr){
 }
 
 void PyPlot::prep_line(double *x, double *y, int n){
-	assrt(state < 2);
+	assrt(state == 0 || state == 1);
 	state = 1;
 	linenum++;
 
