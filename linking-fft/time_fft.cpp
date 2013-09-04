@@ -10,7 +10,7 @@
 #include <unistd.h>
 #include <iostream>
 
-#undef FWD
+#define FWD
 
 enum yesno_type {YES, NO};
 
@@ -109,7 +109,7 @@ void time_fft(int n, enum yesno_type march_on){
 	 */
 	switch(pow2){
 	case NO:
-		stat_nr->insert(-1);
+		stat_nr->insert(0);
 		break;
 	case YES:
 		for(long i=0; i < count; i++){
@@ -136,7 +136,7 @@ void make_table(enum yesno_type march_onoff, const char* banner){
 			  1024*128, 1024*1024};
 	double data[3*ntrials];
 	for(int i=0; i < ntrials; i++){
-		double nmlz = n*log(1.0*n)/log(2.0);
+		double nmlz = n[i]*log(1.0*n[i])/log(2.0);
 		time_fft(n[i], march_onoff);
 		data[i] = stat_mkl->median()/nmlz;
 		data[i+ntrials] = stat_fftw->median()/nmlz;
@@ -145,11 +145,11 @@ void make_table(enum yesno_type march_onoff, const char* banner){
 	
 	Table table;
 	table.dim(ntrials, 3);
-	const char *rows[] = {
+	const char *rows[ntrials] = {
 		"32", "64", "80", 
 		"8*3*7", "192", "1024", 
 		"1024*128", "1024*1024"
-	}
+	};
 	table.rows(rows);
 	const char* cols[] = {"mkl", "fftw", "n recipes"};
 	table.cols(cols);
@@ -168,9 +168,9 @@ int main(){
 #endif
 	cout.rdbuf(ofile.rdbuf()); //redirect output
 	char banner[200];
-	sprintf(banner, "with cache eviction %s", s1);
+	sprintf(banner, "with cache eviction (nmlz by n*lg2n) %s", s1);
 	make_table(YES, banner);
-	sprintf(banner, "without cache eviction %s", s1);
+	sprintf(banner, "without cache eviction (nmlz by n*lg2n) %s", s1);
 	make_table(NO, banner);
 	ofile.close();
 }

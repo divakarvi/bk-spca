@@ -48,7 +48,7 @@ void Table::print(const char* banner){
 	state = 1;
 	cout<<endl;
 	cout<<endl;
-	cout<<setw(40)<<"Table: "<<banner<<endl<<endl;
+	cout<<"Table: "<<banner<<endl<<endl;
 	drawline(width, n);
 	drawblankline(width, n);
 	drawtoprow(width, collist, n);
