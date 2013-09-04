@@ -30,5 +30,4 @@ test_fft.exe: test_fft.o fft_mkl.o fft_fftw.o nr.o 		\
 	      ../utils ../utils/utils.o
 
 time_fft.exe: time_fft.o fft_mkl.o fft_fftw.o nr.o		\
-	      ../utils ../utils/utils.o				\
-	      ../pyplot ../pyplot/pyplot.o
+	      ../utils ../utils/utils.o ../utils/Table.o

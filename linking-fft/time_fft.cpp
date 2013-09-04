@@ -1,6 +1,7 @@
 #include "../utils/utils.hh"
 #include "../utils/StatVector.hh"
 #include "../utils/TimeStamp.hh"
+#include "../utils/Table.hh"
 #include "../pyplot/pyplot.hh"
 #include "fft_mkl.hh"
 #include "fft_fftw.hh"
@@ -128,26 +129,48 @@ void time_fft(int n, enum yesno_type march_on){
 	MKL_free(space);
 }
 
-void make_table(enum yesno_type march_onoff){
-	int n[] = {32, 64, 80, 
-		   8*3*7, 192, 1024, 
-		   1024*128, 1024*1024};
-	
-	for(int i=0; i < 8; i++){
+void make_table(enum yesno_type march_onoff, const char* banner){
+	const int ntrials = 8;
+	int n[ntrials] = {32, 64, 80, 
+			  8*3*7, 192, 1024, 
+			  1024*128, 1024*1024};
+	double data[3*ntrials];
+	for(int i=0; i < ntrials; i++){
+		double nmlz = n*log(1.0*n)/log(2.0);
 		time_fft(n[i], march_onoff);
-		std::cout<<"\n\nn = "<<n[i]<<std::endl;
-		std::cout<<stat_mkl->median()<<std::endl;
-		std::cout<<stat_fftw->median()<<std::endl;
-		std::cout<<stat_nr->median()<<std::endl;
+		data[i] = stat_mkl->median()/nmlz;
+		data[i+ntrials] = stat_fftw->median()/nmlz;
+		data[i+2*ntrials] = stat_nr->median()/nmlz;
 	}
+	
+	Table table;
+	table.dim(ntrials, 3);
+	const char *rows[] = {
+		"32", "64", "80", 
+		"8*3*7", "192", "1024", 
+		"1024*128", "1024*1024"
+	}
+	table.rows(rows);
+	const char* cols[] = {"mkl", "fftw", "n recipes"};
+	table.cols(cols);
+	table.data(data);
+	table.print(banner);
 }
 
 int main(){
+	verify_dir("DBG/");
 #ifdef FWD
-	std::cout<<"using fwd transform"<<std::endl;
+	const char *s1 = "(fwd fft)";
+	ofstream ofile("DBG/time_fft_fwd.dat");
 #else
-	std::cout<<"using bwd transform"<<std::endl;
+	const char *s1 = "(bwd fft)";
+	ofstream ofile("DBG/time_fft_bwd.dat");
 #endif
-	make_table(YES);
-	make_table(NO);
+	cout.rdbuf(ofile.rdbuf()); //redirect output
+	char banner[200];
+	sprintf(banner, "with cache eviction %s", s1);
+	make_table(YES, banner);
+	sprintf(banner, "without cache eviction %s", s1);
+	make_table(NO, banner);
+	ofile.close();
 }
