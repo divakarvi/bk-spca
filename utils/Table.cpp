@@ -21,7 +21,7 @@ static void drawblankline(int width, int n){
 	cout<<endl;
 }
 
-static void drawtoprow(int width, const char* cols, int n){
+static void drawtoprow(int width, const char* cols[], int n){
 	cout<<"|";
 	for(int j=1; j < width; j++)
 		cout<<" ";
@@ -43,18 +43,23 @@ static void drawrow(int width,
 } 
 
 
-void Table::print(){
+void Table::print(const char* banner){
+	assrt(state == 4);
+	state = 1;
+	cout<<endl;
+	cout<<endl;
+	cout<<setw(40)<<"Table: "<<banner<<endl<<endl;
 	drawline(width, n);
 	drawblankline(width, n);
-	drawtoprow(width, cols, n);
+	drawtoprow(width, collist, n);
 	drawblankline(width, n);
 	drawline(width, n);
-	double rdata = new double[n];
+	double *rdata = new double[n];
 	for(int i=0; i < m; i++){
 		drawblankline(width, n);
 		for(int j=0; j < n; j++)
-			rdata[j] = data[i+j*m];
-		drawrow(width, rows[i], rdata, n);
+			rdata[j] = datarr[i+j*m];
+		drawrow(width, rowlist[i], rdata, n);
 		drawblankline(width, n);
 		drawline(width, n);
 	}

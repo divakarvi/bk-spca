@@ -17,6 +17,6 @@ test_stat.exe: test_stat.o
 test_table.o: test_table.cpp
 include test_table.d
 
-test_table.exe: test_table.o
+test_table.exe: test_table.o Table.o
 #########
 

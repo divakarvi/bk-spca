@@ -6,16 +6,20 @@ class Table{
 private:
 	int state;
 	int width;
-	const char* rows[];
-	const char* cols[];
-	double *data;
+	const char* (*rowlist);
+	const char* (*collist);
+	double *datarr;
 	int m, n; //dim of data
 public:
-	Table(int wi = 15):state(0){
-		width = wi;
+	Table():state(0){
+		width = 15;
 	};
-	void width
-	dim(int mi, int ni){
+	void set_width(int w){
+		assrt(state == 0);
+		width = w;
+	}
+	void dim(int mi, int ni){
+		assrt(state == 0);
 		state = 1;
 		m = mi;
 		n = ni;
@@ -24,13 +28,13 @@ public:
 	void rows(const char *rowsi[]){
 		assrt(state == 1);
 		state = 2;
-		rows = rowsi;
+		rowlist = rowsi;
 	}
 	
 	void cols(const char* colsi[]){
 		assrt(state == 2);
 		state = 3;
-		cols = colsi;
+		collist = colsi;
 	}
 	
 	/*
@@ -39,10 +43,10 @@ public:
 	void data(double *datai){
 		assrt(state == 3);
 		state = 4;
-		data = datai;
+		datarr = datai;
 	}
 	
-	void print();
+	void print(const char *banner="");
 };
 
 #endif
