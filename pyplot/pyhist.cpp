@@ -90,6 +90,12 @@ void PyHist::bins(int b){
 	issue_command(cmdstr);
 }
 
+void PyPlot::title(const char* s){
+	assrt(state==2);
+	sprintf(cmdstr, "plt.title('%s', fontsize=20) \n", s);
+	issue_command(cmdstr);
+}
+
 void PyHist::show(){
 	assrt(state == 2);
 	state = 3;

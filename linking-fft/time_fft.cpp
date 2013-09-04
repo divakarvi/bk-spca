@@ -7,7 +7,6 @@
 #include "fft_fftw.hh"
 #include "nr.hh"
 #include <mkl.h>
-#include <unistd.h>
 #include <iostream>
 
 #define FWD

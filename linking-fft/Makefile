@@ -23,11 +23,18 @@ include nr.d
 test_fft.o: test_fft.cpp
 include test_fft.d
 
-time_fft.o: time_fft.cpp
-include time_fft.d
-
 test_fft.exe: test_fft.o fft_mkl.o fft_fftw.o nr.o 		\
 	      ../utils ../utils/utils.o
 
+time_fft.o: time_fft.cpp
+include time_fft.d
+
 time_fft.exe: time_fft.o fft_mkl.o fft_fftw.o nr.o		\
 	      ../utils ../utils/utils.o ../utils/Table.o
+
+time_hist.o: time_hist.cpp
+include time_hist.d
+
+time_hist.exe: time_hist.o fft_mkl.o				\
+	       ../utils ../utils/utils.o			\
+	       ../pyplot ../pyplot/pyhist.o

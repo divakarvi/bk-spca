@@ -23,6 +23,7 @@ public:
 	~PyHist();
 	void hist(double *x, int n);
 	void bins(int b);
+	void title(const char* s);
 	void show();
 	void output();
 	void savescript();
