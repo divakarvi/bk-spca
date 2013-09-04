@@ -72,7 +72,7 @@ void PyHist::prep_data(double *x, int n){
 	sprintf(fname, "FIGS/%s_x.dat", name);
 	array_out(x, n, 1, fname);
 	sprintf(cmdstr, 
-		"x = genfromtxt(FIGS/%s_x.dat, dtype='float')\n", name);
+		"x = genfromtxt('%s_x.dat', dtype='float')\n", name);
 	issue_command(cmdstr);
 }
 
@@ -86,7 +86,7 @@ void PyHist::bins(int b){
 	assrt(state == 1);
 	state = 2;
 	sprintf(cmdstr, 
-		"h, b, p = plt.hist(x, bins = %d)\n", bins);
+		"h, b, p = plt.hist(x, bins = %d)\n", b);
 	issue_command(cmdstr);
 }
 
@@ -97,14 +97,14 @@ void PyHist::show(){
 	issue_command(cmdstr);
 }
 
-void PyPlot::output(){
+void PyHist::output(){
 	assrt(state == 2);
 	state = 3;
 	sprintf(cmdstr, "plt.savefig('%s.eps') \n",name);
 	issue_command(cmdstr);
 }
 
-void PyPlot::savescript(){
+void PyHist::savescript(){
 	assrt(state==3);
 	savedata = 1;
 	char fname[200];

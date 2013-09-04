@@ -1,4 +1,5 @@
 include ../makevars.mk
+LIBS := $(MKLLIBS)
 
 ##########
 .PHONY: ../utils
