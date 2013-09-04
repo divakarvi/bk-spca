@@ -5,6 +5,7 @@
 #include <mkl.h>
 #include <unistd.h>
 #include <iostream>
+
 enum mkl_align_flag {MKL_ALIGN, MKL_NOALIGN};
 
 /*
