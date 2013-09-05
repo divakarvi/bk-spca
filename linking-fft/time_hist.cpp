@@ -60,31 +60,40 @@ int window(double *cyc_list, int len,
  * window_begin/end = fft times are windowed using these parameters
  */
 void makehist(int n, int count, int bins,
-	      double window_begin, double window_end,
-	      const char* name){
+	      double* window_begin, double* window_end, int window_len)
+{
 	double *cyc_list = new double[count];
-	
 	cyclelist(n, count, cyc_list);
-	int wcount = window(cyc_list, count, window_begin, window_end);
+	
+	for(int i=0; i < window_len; i++){
+		int wcount = window(cyc_list, count, 
+				    window_begin[i], window_end[i]);
 
-	PyHist hist(name, PIPE_OFF);
-	hist.hist(cyc_list, wcount);
-	hist.bins(bins);
+		char name[100];
+		sprintf(name, "fftxx%d", i);
+		PyHist hist(name, PIPE_OFF);
+		hist.hist(cyc_list, wcount);
+		hist.bins(bins);
 	
-	char title[200];
-	sprintf(title, "n = %d, total trials = %d", n, count);
-	hist.title(title);
-	
-	hist.show();
-	hist.savescript();
+		char title[200];
+		sprintf(title, "n = %d, total trials = %d", n, count);
+		hist.title(title);
+		
+		hist.show();
+		hist.savescript();
+	}
 	delete[] cyc_list;
 } 
 
 int main(){
-	makehist(1024, 1000*1000, 500,
-		 18000, 24000, "fft1");
-	makehist(1024, 1000*1000, 4000,
-		 18000, 36000, "fft2");
-	makehist(1024, 1000*1000, 10000,
-		 18000, 50000, "fft3");
+	double window_begin[] = {18000};
+	double window_end[] = {50000};
+	/*
+	 * fft dimension
+	 */
+	int n = 1024;
+	int count = 1000*1000;
+	int bins = 1500;
+	makehist(n, count, bins, window_begin, window_end, 1);
+
 }
