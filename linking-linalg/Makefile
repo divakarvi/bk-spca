@@ -2,11 +2,12 @@ include ../makevars.mk
 LIBS := $(MKLLIBS)
 
 ##############
-.PHONY: ../utils
+.PHONY: ../utils all
 ../utils:
 	make --directory=$@ all
 
 ##############
+all: linalg.o
 
 linAlg.o: linalg.cpp
 include linalg.d

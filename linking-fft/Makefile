@@ -3,7 +3,7 @@ include ../makevars.mk
 LIBS := $(MKLLIBS) $(FFTWLIBS)
 
 ##################################################
-.PHONY: ../utils ../pyplot
+.PHONY: ../utils ../pyplot all
 
 ../utils:
 	make --directory=$@ all
@@ -11,6 +11,8 @@ LIBS := $(MKLLIBS) $(FFTWLIBS)
 ../pyplot:
 	make --directory=$@ all
 ##################################################
+all: fft_mkl.o fft_fftw.o nr.o
+
 fft_mkl.o: fft_mkl.cpp
 include fft_mkl.d
 
