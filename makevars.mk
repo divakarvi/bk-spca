@@ -9,7 +9,9 @@ endif
 ifdef NOINLINE
 	NOINLINEOPT := -fno-inline-functions
 endif
+PIC := -fPIC
 CFLAGS 	:= -O3 -prec-div -no-ftz -restrict -Wshadow	\
+	$(PIC)						\
 	$(NOINLINEOPT)					\
 	-I $$MKL_INC 					\
 	$(FFTWINC)					\

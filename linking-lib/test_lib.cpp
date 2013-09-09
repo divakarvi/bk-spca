@@ -5,7 +5,7 @@ extern "C"{
 #include "../linking-fft/fft_mkl.hh"
 
 int main(){
-	double x[6] = {1, 2, 3, 4, 5, 6};
+	double x[6] = {1, 2*2, 3*3, 4*4, 5*5, 6*6};
 	double y[4];
 
 	aitken(x, y, 6);

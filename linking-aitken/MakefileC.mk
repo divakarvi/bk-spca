@@ -5,7 +5,7 @@ logseries.exe: logseries.o aitken.o
 	icc  -o logseries.exe logseries.o aitken.o -lm
 
 aitken.o: aitken.c aitken.h
-	icc -c aitken.c
+	icc -fPIC -c aitken.c
 
 leibniz.o: leibniz.c aitken.h
 	icc -c leibniz.c

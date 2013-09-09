@@ -9,7 +9,7 @@ include MakefileF.mk
 
 .PHONY: all
 
-all: Aitken.o 
+all: aitken.o aitkenf.o Aitken.o 
 
 Aitken.o: Aitken.cpp
 include Aitken.d
