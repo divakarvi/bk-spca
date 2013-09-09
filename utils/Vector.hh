@@ -32,7 +32,7 @@ public:
 	//only constructor to allocate space for data
 	Vector(long int  n){
 		size = n;
-		data = (double *)MKL_malloc(sizeof(double)*n, 16);
+		data = (double *)MKL_malloc(sizeof(double)*n, 64);
 		owner = 1;
 	}
   
