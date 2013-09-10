@@ -1,6 +1,6 @@
 CPP = icpc
-DFLAGS = -g -DDEBUG -openmp  `$$HOME/openmpi-1.6.3/bin/mpiCC -showme:compile`
-OFLAGS = -O3 -prec-div -no-ftz -DNDEBUG -openmp `$$HOME/openmpi-1.6.3/bin/mpiCC -showme:compile`
+DFLAGS = -g -DDEBUG -openmp  `mpiCC -showme:compile`
+OFLAGS = -O3 -prec-div -no-ftz -DNDEBUG -openmp `mpiCC -showme:compile`
 CFLAGS = $(OFLAGS)
 
 ##########
@@ -12,7 +12,7 @@ CFLAGS = $(OFLAGS)
 %.s: %.cpp
 	$(CPP) $(CFLAGS) -S $< 
 %.exe: %.o
-	$(CPP)  -openmp `$$HOME/openmpi-1.6.3/bin/mpiCC -showme:link` -o $@ $^ 
+	$(CPP)  -openmp `mpiCC -showme:link` -o $@ $^ 
 
 
 ##########
@@ -54,19 +54,15 @@ collective.exe: collective.o
 diskio-serial: diskio-serial.exe
 	echo 'diskio-serial done'
 diskio-serial.o: diskio-serial.cpp
-	g++ -O3 -c $<
-dummy.o: dummy.cpp	
-	g++ -O3 -c $<
-diskio-serial.exe: diskio-serial.o dummy.o
-	g++ -o $@ $^
-
-diskio-pagecache: diskio-pagecache.cpp
-	g++ -O3 -o diskio-pagecache.exe $<
+	icpc -O3 -c $<
+diskio-serial.exe: diskio-serial.o
+	icpc -o $@ $^
 
 diskio-mpi: diskio-mpi.exe
 	echo 'diskio-mpi done'
 diskio-mpi.o: diskio-mpi.cpp
 diskio-mpi.exe: diskio-mpi.o
+
 
 ##########
 clean:
