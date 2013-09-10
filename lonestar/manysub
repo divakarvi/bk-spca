@@ -1,0 +1,38 @@
+#! /usr/bin/env python
+import sys
+import os
+import shutil
+inlist= sys.argv
+if((len(inlist)<8)or(inlist[1]!='-j')or(inlist[3]!='-h')or(inlist[5]!='-np')):
+    print 'Usage: '+inlist[0]+' -j jobname -h hours -np numofnodes exec arglist'
+else:
+    jobname = 'pbs_'+inlist[2];
+    hours = inlist[4];
+    numofnodes = inlist[6];
+    execname = inlist[7];
+    newexecname = jobname+'_'+execname;
+    shutil.copy2(execname, newexecname);
+    if(len(inlist)<9):
+        args = ''
+    else:
+        args = inlist[8:]
+    arglist = ''
+    for x in args:
+        arglist = arglist+' '+x   
+    file = open(jobname+'.pbs','w');
+    file.write('#!/bin/bash\n');
+    file.write('#$ -N '+jobname+'\n');
+    numcores = int(numofnodes)*12;
+    numcores = str(numcores);
+    file.write('#$ -pe 12way '+numcores+' \n');
+    file.write('#$ -l h_rt='+hours+':00:00 \n');
+    file.write('#$ -q normal \n')
+    file.write('#$ -j y \n');
+    file.write('#$ -V\n')
+    file.write('#$ -cwd \n');
+    currentdir = os.getcwd();
+    file.write('cd '+currentdir+'\n');
+    file.write('mpirun -np '+numofnodes+' -bynode '+newexecname+' '+arglist+' > '+currentdir+'/'+jobname+'.txt\n');
+    file.close();
+    os.execvp('qsub',['qsub',jobname+'.pbs']);
+    

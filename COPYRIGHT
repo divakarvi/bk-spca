@@ -1,0 +1,13 @@
+The copyright of all the documents and source files in the working directory
+as well as git commits in this project belongs Divakar Viswanath with the 
+following exceptions:
+
+1. Intel MKL header files included for pedagogical purposes.
+
+2. The assrt() macro in utils/utils.hh.
+
+3. linking-easy/kozen.c
+
+4. lonestar/.bashrc
+
+Sept 2013

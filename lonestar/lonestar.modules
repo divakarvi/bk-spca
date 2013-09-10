@@ -1,0 +1,4 @@
+module load mkl
+module unload mvapich2
+module load openmpi
+module load fftw3
