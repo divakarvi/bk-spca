@@ -1,0 +1,35 @@
+#! /usr/bin/env python
+import sys
+import os
+import shutil
+inlist = sys.argv
+if((len(inlist)<2)or(inlist[1] != '-j')):
+    print 'Usage: '+inlist[0]+' -j jobname -h hours execname arglist'
+elif (inlist[3] != '-h'):
+    print 'Usage: '+inlist[0]+' -j jobname -h hours execname arglist'
+else:
+    jobname = 'pbs_'+inlist[2]
+    hours = inlist[4];
+    execname = inlist[5]
+    newexecname = 'pbs_'+inlist[2]+'_'+execname;
+    shutil.copy2(execname, newexecname);
+    if(len(inlist)< 7):
+        args = ''
+    else:
+        args = inlist[7:]
+    arglist = ''
+    for x in args:
+        arglist = arglist+' '+x
+    file = open(jobname+'.pbs','w')
+    file.write('#! /bin/sh \n')
+    file.write('#$ -N '+jobname+'\n')
+    file.write('#$ -pe 1way 12 \n');
+    file.write('#$ -l h_rt=00:'+hours+'00:00 \n');
+    file.write('#$ -q normal \n')
+    file.write('#$ -j y \n');
+    file.write('#$ -V\n')
+    file.write('#$ -cwd \n');
+    currentdir = os.getcwd();
+    file.write(newexecname+' '+arglist+' > '+currentdir+'/'+jobname+'.txt\n')
+    file.close()
+    os.execvp('qsub',['qsub',jobname+'.pbs'])

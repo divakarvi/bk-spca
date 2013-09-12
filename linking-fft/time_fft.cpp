@@ -165,11 +165,14 @@ int main(){
 	const char *s1 = "(bwd fft)";
 	ofstream ofile("DBG/time_fft_bwd.dat");
 #endif
+	std::streambuf *sbuf;
+	sbuf = cout.rdbuf();
 	cout.rdbuf(ofile.rdbuf()); //redirect output
 	char banner[200];
 	sprintf(banner, "with cache eviction (nmlz by n*lg2n) %s", s1);
 	make_table(YES, banner);
 	sprintf(banner, "without cache eviction (nmlz by n*lg2n) %s", s1);
 	make_table(NO, banner);
+	cout.rdbuf(sbuf); //restore cout 
 	ofile.close();
 }
