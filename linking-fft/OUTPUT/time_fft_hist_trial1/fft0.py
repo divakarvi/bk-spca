@@ -15,6 +15,7 @@ def hist(x, xmin, xmax, bins):
     ax.set_yticks(yticks[1:])
     xticks = ax.get_xticks()
     ax.set_xticks(xticks[::2])
+    plt.xlabel("Cycles");
     plt.show() 
     plt.close()
 
