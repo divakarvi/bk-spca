@@ -9,7 +9,7 @@ LIBS := $(MKLLIBS)
 ##############
 all: linalg.o
 
-linAlg.o: linalg.cpp
+linalg.o: linalg.cpp
 include linalg.d
 
 test_linalg.o: test_linalg.cpp

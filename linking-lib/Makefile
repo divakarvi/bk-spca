@@ -2,7 +2,7 @@ include ../makevars.mk
 
 ##################
 MODS := ../utils ../linking-aitken ../linking-fft
-.PHONY: $(MODS) ld_lib_path
+.PHONY: $(MODS)
 $(MODS):
 	make --directory=$@ all
 
