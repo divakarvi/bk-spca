@@ -15,13 +15,14 @@ def hist(x, xmin, xmax, bins):
     ax.set_yticks(yticks[1:])
     xticks = ax.get_xticks()
     ax.set_xticks(xticks[::2])
+    plt.xlabel("Cycles");
     plt.show() 
     plt.close()
 
 if(__name__ == "__main__"):
     x = genfromtxt('fft0_x.dat', dtype='float')
     mpl.rcParams['font.size'] = 18
-    #hist(x, 18000, 50000, bins = 150)
-    #hist(x, 19000, 26000, bins = 150)
+    hist(x, 18000, 50000, bins = 150)
+    hist(x, 19000, 26000, bins = 150)
     hist(x, 26000, 40000, bins = 40)
 
