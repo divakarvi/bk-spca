@@ -31,6 +31,7 @@ test_fft.exe: test_fft.o fft_mkl.o fft_fftw.o nr.o 		\
 
 time_fft.o: time_fft.cpp
 include time_fft.d
+time_fft.s: time_fft.cpp
 
 time_fft.exe: time_fft.o fft_mkl.o fft_fftw.o nr.o		\
 	      ../utils ../utils/utils.o ../utils/Table.o
