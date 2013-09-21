@@ -19,24 +19,10 @@ CFLAGS = $(OFLAGS)
 
 
 ##########
-add.exe: add.o
-	gcc -o $@ $<
-add.o: add.s
-	as -o $@ $< 
-add.s: add.c 
-	gcc -O2 -S -o $@ $<
-addtwo.exe: addtwo.o
-	icc -o $@ $<
-addtwo.o: addtwo.s
-	icc -c $<
-addmany.exe: addmany.o
-	icc -o $@ $<
-addmany.o: addmany.s
-	icc -c $<
 
 
-cpuid.exe: cpuid.o
-cpuid.o: cpuid.cpp
+
+
 
 
 leibniz: leibniz.exe leibniz.s
