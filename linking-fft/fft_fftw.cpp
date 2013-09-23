@@ -12,6 +12,6 @@ fft_fftw::fft_fftw(int nin)
 }
 
 fft_fftw::~fft_fftw(){
-  fftw_destroy_plan(pf);
-  fftw_destroy_plan(pb);
+	fftw_destroy_plan(pf);
+	fftw_destroy_plan(pb);
 }

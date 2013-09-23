@@ -94,10 +94,7 @@ void verify_dir(const char *dir){
 	struct stat sb;
 	int rval = stat(dir, &sb);
 	if((rval == -1) && (errno == ENOENT)){
-		char cmd[200];
-		sprintf(cmd, "mkdir %s", dir);
-		printf("%s\n", cmd);
-		system(cmd);
+		mkdir(dir, 0700);
 		stat(dir, &sb);
 	}
 	assrt(S_ISDIR(sb.st_mode));
