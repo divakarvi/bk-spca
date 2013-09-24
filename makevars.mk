@@ -6,9 +6,6 @@ endif
 ifdef FFTW
 	FFTWINC := -I $$FFTW_INC
 endif
-ifdef NOINLINE
-	NOINLINEOPT := -fno-inline-functions
-endif
 
 CFLAGS 	:= -O3 -prec-div -no-ftz -restrict -Wshadow	\
 	$(PIC)						\
@@ -29,7 +26,7 @@ MPILIBS := `mpiCC -showme:link`
 .SUFFIXES:
 .SUFFIXES: .cpp .o .exe .s .d
 %.o: %.cpp
-	$(CPP) $(CFLAGS) -c $<
+	$(CPP) $(CFLAGS) $(CFLAGSXX) -c $<
 %.d: %.cpp
 	@set -e; rm -f $@; \
 	$(CPP) -M $(CFLAGS) $< > $@.$$$$; \
