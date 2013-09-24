@@ -14,6 +14,9 @@ public:
 	Table():state(0){
 		width = 15;
 	};
+	/*
+	 * change column width from default of 15
+	 */
 	void set_width(int w){
 		assrt(state == 0);
 		width = w;
