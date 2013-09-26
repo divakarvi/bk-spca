@@ -28,3 +28,10 @@ include xchg-driver.d
 xchg-driver.o: xchg-driver.cpp
 xchg-driver.exe: xchg-driver.o xchg-mult.o 			\
 		../utils ../utils/Table.o ../utils/utils.o 
+
+
+include cpp-mult.d
+#-fno-inline-functions not used here
+cpp-mult.o: cpp-mult.cpp
+	$(CPP) $(CFLAGS) $(MKLINC) -c $<
+cpp-mult.exe: cpp-mult.o
