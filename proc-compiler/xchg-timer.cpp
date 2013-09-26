@@ -3,9 +3,9 @@
 #include "../utils/Table.hh"
 #include "../utils/utils.hh"
 #include <iostream>
-#include <cmath>
-#include <cstdio>
 #include <mkl.h>
+
+#undef INCACHE
 
 using namespace std;
 
@@ -24,8 +24,23 @@ enum mmult_enum {ijk, ijkx, IJK, IJKX, BLAS};
  * returns number of flops per cycle in matrix mult
  */
 double time(int dim, enum mmult_enum flag){
-	long nbytes = 4l*1000*1000*100; //use 0.4 GB of memory
+	long nbytes = 1l*1000*1000*1000; //1 GB of memory
+	static int call_num = 0;
+	if(call_num == 0){
+		std::cout<<
+			"**************************************************\n";
+		std::cout<<
+			"**************************************************\n";
+		std::cout<<"\t\tmemory usage = "<<3.0*nbytes/1e9<<" GB"
+			 <<std::endl;
+		std::cout<<
+			"**************************************************\n";
+		std::cout<<
+			"**************************************************\n";
+	}
+	call_num++;
 	int count = nbytes/(dim*dim*sizeof(double)); 
+	assrt(count >= 1);
 	double *space = (double *)MKL_malloc(3*nbytes, 64);
 
 	double *a = space;
@@ -66,9 +81,11 @@ double time(int dim, enum mmult_enum flag){
 		}
 		double cycles = clk.toc();
 		stats.insert(cycles);
+#ifndef INCACHE
 		a += dim*dim;
 		b += dim*dim;
 		c += dim*dim;
+#endif
 	}
 	
 	MKL_free(space);
@@ -79,7 +96,7 @@ double time(int dim, enum mmult_enum flag){
 
 
 int main(){
-	int dim[4] = {100, 101, 102, 103};
+	int dim[4] = {100, 1000, 2000, 6000};
 	const char* rows[4] = {"100", "1000", "2000", "6000"};
 	enum mmult_enum flags[5] = {ijk, ijkx, IJK, IJKX, BLAS};
 	const char* cols[5] = {"ijk", "ijkx", "IJK", "IJKX", "MKL BLAS"};
@@ -96,11 +113,15 @@ int main(){
 
 	verify_dir("DBG");
 	std::streambuf *sbuf = std::cout.rdbuf();
+#ifndef INCACHE
 	ofstream ofile("DBG/xchg-mult.txt");
+#else
+	ofstream ofile("DBG/xchg-mult-in-cache.txt");
+#endif
 	std::cout.rdbuf(ofile.rdbuf());
 	
 	table.print("flops per cycle (mult of sq matrices)");
-		
+	
 	std::cout.rdbuf(sbuf);
 	ofile.close();
 }
