@@ -1,4 +1,5 @@
 include ../makevars.mk
+CFLAGSXX := -fPIC
 
 #########
 all: utils.o Table.o

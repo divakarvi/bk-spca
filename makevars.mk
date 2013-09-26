@@ -1,23 +1,11 @@
 #########
 CPP 	:= icpc
-ifdef MPI
-	MPIINC 	:= `mpiCC -showme:compile1`
-endif
-ifdef FFTW
-	FFTWINC := -I $$FFTW_INC
-endif
-ifdef NOINLINE
-	NOINLINEOPT := -fno-inline-functions
-endif
+CFLAGS 	:= -O3 -prec-div -no-ftz -restrict -Wshadow
 
-CFLAGS 	:= -O3 -prec-div -no-ftz -restrict -Wshadow	\
-	$(PIC)						\
-	$(NOINLINEOPT)					\
-	-I $$MKL_INC 					\
-	$(FFTWINC)					\
-	$(OMP)						\
-	$(MPIINC)
+MPIINC 	:= `mpiCC -showme:compile1`
+FFTWINC := -I $$FFTW_INC
 
+MKLINC 	:= -I $$MKL_INC
 MKLLIBS := -L$$MKL_LINK -lmkl_intel_lp64 -lmkl_sequential -lmkl_core 	\
 	-lpthread
 MKLTHRD := -L$$MKL_LINK -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core 	\
@@ -29,10 +17,10 @@ MPILIBS := `mpiCC -showme:link`
 .SUFFIXES:
 .SUFFIXES: .cpp .o .exe .s .d
 %.o: %.cpp
-	$(CPP) $(CFLAGS) -c $<
+	$(CPP) $(CFLAGS) $(CFLAGSXX) -c $<
 %.d: %.cpp
 	@set -e; rm -f $@; \
-	$(CPP) -M $(CFLAGS) $< > $@.$$$$; \
+	$(CPP) -M $(CFLAGS) $(CFLAGSXX) $< > $@.$$$$; \
 	sed 's,\($*\)\.o[ :]*,\1.o $@ : ,g' < $@.$$$$ > $@; \
 	rm -f $@.$$$$
 %.s: %.cpp 
