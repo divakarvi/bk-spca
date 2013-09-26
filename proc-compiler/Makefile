@@ -24,14 +24,16 @@ unrolljam.s: unrolljam.cpp
 include xchg-mult.d
 xchg-mult.o: xchg-mult.cpp
 
-include xchg-driver.d
-xchg-driver.o: xchg-driver.cpp
-xchg-driver.exe: xchg-driver.o xchg-mult.o 			\
-		../utils ../utils/Table.o ../utils/utils.o 
+include xchg-timer.d
+xchg-timer.o: xchg-timer.cpp
+xchg-timer.exe: xchg-timer.o xchg-mult.o 			\
+		../utils 					\
+		../utils/Table.o 				\
+		../utils/utils.o 
 
 
 include cpp-mult.d
 #-fno-inline-functions not used here
 cpp-mult.o: cpp-mult.cpp
 	$(CPP) $(CFLAGS) $(MKLINC) -c $<
-cpp-mult.exe: cpp-mult.o
+cpp-mult.exe: cpp-mult.o ../utils ../utils/utils.o
