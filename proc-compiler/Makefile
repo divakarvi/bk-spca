@@ -1,5 +1,6 @@
 include ../makevars.mk
-CFLAGSXX := -fno-inline-functions
+CFLAGSXX := -fno-inline-functions $(MKLINC)
+LIBS := $(MKLLIBS)
 
 .PHONY: ../utils
 ../utils: 
@@ -20,3 +21,10 @@ unrolljam.o: unrolljam.cpp
 unrolljam.exe: unrolljam.o ../utils ../utils/Table.o
 unrolljam.s: unrolljam.cpp
 
+include xchg-mult.d
+xchg-mult.o: xchg-mult.cpp
+
+include xchg-driver.d
+xchg-driver.o: xchg-driver.cpp
+xchg-driver.exe: xchg-driver.o xchg-mult.o 			\
+		../utils ../utils/Table.o ../utils/utils.o 

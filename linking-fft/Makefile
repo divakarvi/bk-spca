@@ -1,6 +1,5 @@
-FFTW := true
-PIC := -fPIC
 include ../makevars.mk
+CFLAGSXX := -fPIC $(MKLINC) $(FFTWINC)
 LIBS := $(MKLLIBS) $(FFTWLIBS)
 
 ##################################################
