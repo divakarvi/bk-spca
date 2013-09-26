@@ -16,7 +16,7 @@ extern void multIJK(double *restrict a, double *restrict b,
 extern void multIJKX(double *restrict a, double *restrict b, 
 		    double *restrict c, int dim);
 
-enum mmult_enum {ijk, ijkx, IJK, IJKX, DGEMM};
+enum mmult_enum {ijk, ijkx, IJK, IJKX, BLAS};
 
 /*
  * dim = dimension of square matrices multiplied
@@ -55,11 +55,11 @@ double time(int dim, enum mmult_enum flag){
 		case IJKX:
 			multIJKX(a, b, c, dim);
 			break;
-		case DGEMM:
+		case BLAS:
 			char trans[3] = "N ";
 			double alpha = 1;
 			double beta = 1;
-			dgemm_(trans, trans,
+			dgemm(trans, trans,
 			       &dim, &dim, &dim, &alpha,
 			       a, &dim, b, &dim, &beta, c, &dim);
 			break;
@@ -79,10 +79,10 @@ double time(int dim, enum mmult_enum flag){
 
 
 int main(){
-	int dim[4] = {100, 1000, 2000, 6000};
+	int dim[4] = {100, 101, 102, 103};
 	const char* rows[4] = {"100", "1000", "2000", "6000"};
-	enum mmult_enum flags[5] = {ijk, ijkx, IJK, IJKX, DGEMM};
-	const char* cols[5] = {"ijk", "ijkx", "IJK", "IJKX", "DGEMM"};
+	enum mmult_enum flags[5] = {ijk, ijkx, IJK, IJKX, BLAS};
+	const char* cols[5] = {"ijk", "ijkx", "IJK", "IJKX", "MKL BLAS"};
 	double flpscyc[20];
 
 	for(int j = 0; j < 5; j++)

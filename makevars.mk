@@ -20,7 +20,7 @@ MPILIBS := `mpiCC -showme:link`
 	$(CPP) $(CFLAGS) $(CFLAGSXX) -c $<
 %.d: %.cpp
 	@set -e; rm -f $@; \
-	$(CPP) -M $(CFLAGS) $< > $@.$$$$; \
+	$(CPP) -M $(CFLAGS) $(CFLAGSXX) $< > $@.$$$$; \
 	sed 's,\($*\)\.o[ :]*,\1.o $@ : ,g' < $@.$$$$ > $@; \
 	rm -f $@.$$$$
 %.s: %.cpp 
