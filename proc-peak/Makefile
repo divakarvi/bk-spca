@@ -9,3 +9,7 @@ include test_easy.d
 addxmm.exe: addxmm.o
 addxmm.o: addxmm.cpp
 include addxmm.d
+
+addmultxmm.exe: addmultxmm.o
+addmultxmm.o: addmultxmm.cpp
+include addmultxmm.d
