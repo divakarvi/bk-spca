@@ -135,7 +135,7 @@ int main(){
 	double cycles;
 
 	clk.tic();
-	loadaddmul(nitns);
+	loadaddmul(a, nitns);
 	cycles = clk.toc();
 	printf("\t\teach iteration has 5 adds and 5 muls\n");
 	printf("\t\tloaded reg reused as destn of mul\n");
@@ -144,7 +144,7 @@ int main(){
 	printf("\tcycles per iteration = %.2f\n\n", cycles/nitns);
 
 	clk.tic();
-	loadaddmul_unroll4(nitns);
+	loadaddmul_unroll4(a, nitns);
 	cycles = clk.toc();
 	printf("\t\teach iteration has 5 adds and 5 muls\n");
 	printf("\t\tloaded reg reused as destn of mul\n");
