@@ -25,6 +25,8 @@ MPILIBS := `mpiCC -showme:link`
 	rm -f $@.$$$$
 %.s: %.cpp 
 	$(CPP) $(CFLAGS) $(CFLAGSXX) -S $< 
+%.o: %.s 
+	$(CPP) $(CFLAGS) $(CFLAGSXX) -S $< 
 %.exe: %.o 
 	$(CPP) $(OMP) -o $@ $(filter %.o,$^) $(LIBS) 
 

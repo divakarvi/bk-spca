@@ -15,7 +15,7 @@
  *    temp data.
  */
 
-//R must be "%xmmi" 0<=i<=15
+//R must be "%xmmi" 0<=i<=15 (pxor instead of xorps works too)
 #define zeroxmm(R)				\
   asm volatile("xorps %" R ", %" R "\n\t":::R);
 
@@ -27,6 +27,10 @@
 #define mulxmm(R1, R2)					\
   asm volatile("mulpd %" R1 ", %" R2 "\n\t":::R1, R2);
 
+//R1 and R2 must be "%xmmi" 0<=i<=15 
+#define movxmm(R1, R2)					\
+  asm volatile("movaps %" R1 ", %" R2 "\n\t":::R1, R2);
+
 //R = "%xmmi" 0<=i<=15
 //a = double * (16 byte aligned)
 #define loadxmm(a, R)					\
@@ -36,5 +40,9 @@
 //a = double * (16 byte aligned)
 #define storexmm(R, a)					\
   asm volatile("movaps %" R ", %0 \n\t":"=m"(*(a))::R);	
+
+//R = "%xmmi" 0<=i<=15
+#define flipxmm(R)				\
+  asm volatile("shufpd $1, %" R ", %" R"\n\t":::R);
 
 #endif
