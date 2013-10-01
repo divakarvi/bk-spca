@@ -35,52 +35,57 @@ void test4xnx4(int n){
 	__declspec(align(16)) double a[4*n];
 	__declspec(align(16)) double b[4*n];
 	__declspec(align(16)) double c[16];
-
 	double cc[16];
+	double bb[4*n];
+	
 	for(int i=0; i < 16; i++)
 		c[i] = cc[i] = rand()*1.0/RAND_MAX-0.5;
 	for(int i=0; i < 4*n; i++){
 		a[i] = rand()*1.0/RAND_MAX-0.5;
 		b[i] = rand()*1.0/RAND_MAX-0.5;
 	}
-
-	 skew2x2(c, 4, 4);
-	 
-	 switch(n){
-	 case 1:
-		 asm4x1x4(a, b, c);
-		 break;
-	 case 4:
-		 asm4x4x4(a, b, c);
-		 break;	 
-	 case 20:
-		 asm4x20x4(a, b, c);
-		 break;
-	 case 40:
-		 asm4x40x4(a, b, c);
-		 break;
-	 case 100:
-		 asm4x100x4(a, b, c);
-		 break;	 
-	 case 200:
-		 asm4x200x4(a, b, c);
-		 break;
-	 default:
-		 assrt(0 == 1);
-	 }
-	 /*
-	  * unskew by skewing twice
-	  */
-	 skew2x2(c, 4, 4);
-	 skew2x2(c, 4, 4);
-	 easymult(a, b, cc, 4, n, 4);
 	
-	 array_diff(c, cc, 16);
-	 double rerr = array_max(c, 16)/array_max(cc,16);
-
-	 printf("\t\tTesting asm4x%dx4\n", n);
-	 printf("\t\tinit with rand()\n");
-	 printf("\tRelative Error = %.2e\n\n", rerr);
+	skew2x2(c, 4, 4);
+	for(int i=0; i < n; i++)
+		for(int j=0; j < 4; j++)
+			bb[i+j*n] = b[j+i*4]; 
+	
+ 
+	switch(n){
+	case 1:
+		asm4x1x4(a, b, c);
+		break;
+	case 4:
+		asm4x4x4(a, b, c);
+		break;	 
+	case 20:
+		asm4x20x4(a, b, c);
+		break;
+	case 40:
+		asm4x40x4(a, b, c);
+		break;
+	case 100:
+		asm4x100x4(a, b, c);
+		break;	 
+	case 200:
+		asm4x200x4(a, b, c);
+		break;
+	default:
+		assrt(0 == 1);
+	}
+	/*
+	 * unskew by skewing twice
+	 */
+	skew2x2(c, 4, 4);
+	skew2x2(c, 4, 4);
+	easymult(a, bb, cc, 4, n, 4);
+	
+	array_diff(c, cc, 16);
+	double rerr = array_max(c, 16)/array_max(cc,16);
+	
+	printf("\t\tTesting asm4x%dx4\n", n);
+	printf("\t\tinit with rand()\n");
+	printf("\tRelative Error = %.2e\n\n", rerr);
 }
 
 int main(){
