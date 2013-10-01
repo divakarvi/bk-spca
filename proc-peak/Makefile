@@ -17,3 +17,7 @@ include addmultxmm.d
 peak_onlyreg.exe: peak_onlyreg.o
 peak_onlyreg.o: peak_onlyreg.cpp
 include peak_onlyreg.d
+
+peak_withloads.exe: peak_withloads.o
+peak_withloads.o: peak_withloads.cpp
+include peak_withloads.d

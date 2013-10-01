@@ -222,7 +222,6 @@ void peak_dest2sourcexx(long int nitns){
 }
 
 int main(){
-	__declspec(align(16)) double a[1024]={0};
 	long int nitns = (long)1000*1000*1000;
 	TimeStamp clk;
 	double cycles;
@@ -245,7 +244,7 @@ int main(){
 	clk.tic();
 	peak_dest2sourcexx(nitns);
 	cycles = clk.toc();
-	printf("\t\teach iteration has 20 adds and 20 muls\n");
+	printf("\t\teach iteration has 15 adds and 15 muls\n");
 	printf("\t\tdest of mul reused as source by TWO adds\n");
 	printf("\tcycles per iteration = %.2f\n", cycles/nitns);
 }
