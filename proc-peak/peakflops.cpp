@@ -7,66 +7,13 @@
 #include "StatVector.hh"
 using namespace std;
 
-void fivecyclesA(long int nitns){
-  long int  i;
-  zeroxmm("%xmm0");
-  zeroxmm("%xmm1");
-  zeroxmm("%xmm2");
-  zeroxmm("%xmm3");
-  zeroxmm("%xmm4");
-  zeroxmm("%xmm5");
-  zeroxmm("%xmm6");
-  zeroxmm("%xmm7");
-  zeroxmm("%xmm8");
-  zeroxmm("%xmm9");
-  zeroxmm("%xmm10");
-  zeroxmm("%xmm11");
-  zeroxmm("%xmm12");
-  zeroxmm("%xmm13");
-  zeroxmm("%xmm14");
-  zeroxmm("%xmm15");
-  for(i=0; i < nitns; i++){
-    addxmm("%xmm8", "%xmm0");
-    addxmm("%xmm9", "%xmm1");
-    addxmm("%xmm10", "%xmm2");
-    mulxmm("%xmm11", "%xmm3");
-    mulxmm("%xmm12", "%xmm4");
-    mulxmm("%xmm13", "%xmm5");
-    mulxmm("%xmm14", "%xmm6");
-    mulxmm("%xmm15", "%xmm7");
-  }
-}
 
-void fivecyclesB(long int nitns){
-  long int  i;
-  zeroxmm("%xmm0");
-  zeroxmm("%xmm1");
-  zeroxmm("%xmm2");
-  zeroxmm("%xmm3");
-  zeroxmm("%xmm4");
-  zeroxmm("%xmm5");
-  zeroxmm("%xmm6");
-  zeroxmm("%xmm7");
-  zeroxmm("%xmm8");
-  for(i=0; i < nitns; i++){
-    addxmm("%xmm8", "%xmm0");
-    addxmm("%xmm8", "%xmm1");
-    addxmm("%xmm8", "%xmm2");
-    mulxmm("%xmm8", "%xmm3");
-    mulxmm("%xmm8", "%xmm4");
-    mulxmm("%xmm8", "%xmm5");
-    mulxmm("%xmm8", "%xmm6");
-    mulxmm("%xmm8", "%xmm7");
-  }
-}
+
+
 
 
 void runfivecycles(){
-  long int nitns = (long)1000*1000*1000;
-  TimeStamp clk;
-  clk.tic();
-  fivecyclesA(nitns);
-  double cycles = clk.toc();
+  
   cout<<"fivecyclesA: number of cycles per iteration = "<<cycles/nitns<<endl;
   clk.tic();
   fivecyclesB(nitns);

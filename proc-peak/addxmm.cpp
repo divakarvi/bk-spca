@@ -3,8 +3,8 @@
 #include <cstdio>
 
 /*
- * assembly of addreg() and add3reg() must be inspected 
- * to ensure the compiled code is as expected
+ * inspect assembly of addreg() and add3reg() to ensure the 
+ * compiled code is as expected
  */
 
 // a[0,1] += nitns*b[0,1]
