@@ -14,8 +14,8 @@ void addreg(double *a, double *b, long int nitns){
   loadxmm(a, "%xmm0");
   loadxmm(b, "%xmm1");
   for(i=0; i < nitns; i++)
-    addxmm("%xmm0","%xmm1");
-  storexmm("%xmm1", a);
+    addxmm("%xmm1","%xmm0");
+  storexmm("%xmm0", a);
 }
 
 // a[0..5] += nitns*b[0..5]
@@ -29,13 +29,13 @@ void add3reg(double *a, double *b, long int nitns){
 	loadxmm(a+4, "%xmm4");
 	loadxmm(b+4, "%xmm5");
 	for(i=0; i < nitns; i++){
-		addxmm("%xmm0","%xmm1");
-		addxmm("%xmm2","%xmm3");
-		addxmm("%xmm4","%xmm5");
+		addxmm("%xmm1","%xmm0");
+		addxmm("%xmm3","%xmm2");
+		addxmm("%xmm5","%xmm4");
 	}
-	storexmm("%xmm1", a);
-	storexmm("%xmm3", a+2);
-	storexmm("%xmm5", a+4);
+	storexmm("%xmm0", a);
+	storexmm("%xmm2", a+2);
+	storexmm("%xmm4", a+4);
 }
 
 int main(){
