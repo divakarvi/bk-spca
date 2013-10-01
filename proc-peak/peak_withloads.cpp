@@ -6,7 +6,7 @@
  * inspect assembly to verify correctness
  */
 
-void loadaddmul(double *a, long int nitns){
+void loadmuladd(double *a, long int nitns){
 	zeroxmm("%xmm0");
 	zeroxmm("%xmm1");
 	zeroxmm("%xmm2");
@@ -37,7 +37,7 @@ void loadaddmul(double *a, long int nitns){
 	}
 }
 
-void loadaddmul_unroll4(double *a, long int nitns){
+void loadmuladd_unroll4(double *a, long int nitns){
 	zeroxmm("%xmm0");
 	zeroxmm("%xmm1");
 	zeroxmm("%xmm2");
@@ -135,7 +135,7 @@ int main(){
 	double cycles;
 
 	clk.tic();
-	loadaddmul(a, nitns);
+	loadmuladd(a, nitns);
 	cycles = clk.toc();
 	printf("\t\teach iteration has 5 adds and 5 muls\n");
 	printf("\t\tloaded reg reused as destn of mul\n");
@@ -144,7 +144,7 @@ int main(){
 	printf("\tcycles per iteration = %.2f\n\n", cycles/nitns);
 
 	clk.tic();
-	loadaddmul_unroll4(a, nitns);
+	loadmuladd_unroll4(a, nitns);
 	cycles = clk.toc();
 	printf("\t\teach iteration has 5 adds and 5 muls\n");
 	printf("\t\tloaded reg reused as destn of mul\n");
