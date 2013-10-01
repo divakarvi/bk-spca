@@ -4,7 +4,10 @@
 #include "asm4xnx4.hh"
 #include <cstdio>
 #include <cstdlib>
-
+/*
+ * skewing is a permutation of order 3
+ * skew twice to reverse skewing
+ */
 void skew2x2(double *c, int m, int n){
 	int ldc = m;
 	for(int i=0; i < m; i+=2)
@@ -41,7 +44,20 @@ void test4x1x4(){
 		b[i] = rand()*1.0/RAND_MAX-0.5;
 	}
 
+	 skew2x2(c, 4, 4);
+	 asm4x1x4(a, b, c);
+	 skew2x2(c, 4, 4);
+	 skew2x2(c, 4, 4);
+	 easymult(a, b, cc, 4, 1, 4);
 	
-	
+	 array_diff(c, cc, 16);
+	 double rerr = array_max(c, 16)/array_max(cc,16);
 
+	 printf("\t\tTesting asm4x1x4\n");
+	 printf("\t\tinit with rand()\n");
+	 printf("\tRelative Error = %.2e", rerr);
+}
+
+int main(){
+	test4x1x4();
 }
