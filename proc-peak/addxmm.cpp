@@ -39,7 +39,7 @@ void add3reg(double *a, double *b, long int nitns){
 }
 
 int main(){
-	__declspec(align(16)) double a[6]={1e9};
+	__declspec(align(16)) double a[6]={1e9, 1e9, 1e9, 1e9, 1e9, 1e9};
 	__declspec(align(16)) double b[6]={1, 2, 3, 4, 5, 6};
 
 	long int nitns = 1000*1000*1000l;
@@ -47,20 +47,20 @@ int main(){
 	clk.tic();
 	addreg(a, b, nitns);
 	double cycles = clk.toc();	
-	printf("\t\t a[0..5] = \n");
+	printf("\t\t a[0..5] = 1e9\n");
 	printf("\t\t b[0..5] = 1,2,3,4,5,6\n");
 	printf("\t\t a[0,1] += 1e9*b[0,1]\n");
 	printf("\tcycles per itn\t= %.2f\n",cycles/nitns);
-	printf("\t          a[0]\t= %.4f\n", a[0]);
-	printf("\t          a[1]\t= %.4f\n\n", a[1]);
+	printf("\t          a[0]\t= %.4e\n", a[0]);
+	printf("\t          a[1]\t= %.4e\n\n", a[1]);
 	
 	clk.tic();
 	add3reg(a, b, nitns);
 	cycles = clk.toc();
 	printf("\t\t a[0..5] += 1e9*b[0..5]\n");
 	printf("\tcycles per itn\t= %.2f\n",cycles/nitns);
-	printf("\t          a[0]\t= %.4f\n", a[0]);
-	printf("\t          a[1]\t= %.4f\n", a[1]);
-	printf("\t          a[3]\t= %.4f\n", a[3]);
-	printf("\t          a[4]\t= %.4f\n", a[4]);
+	printf("\t          a[0]\t= %.4e\n", a[0]);
+	printf("\t          a[1]\t= %.4e\n", a[1]);
+	printf("\t          a[3]\t= %.4e\n", a[3]);
+	printf("\t          a[4]\t= %.4e\n", a[4]);
 }
