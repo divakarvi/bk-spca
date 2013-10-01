@@ -13,3 +13,7 @@ include addxmm.d
 addmultxmm.exe: addmultxmm.o
 addmultxmm.o: addmultxmm.cpp
 include addmultxmm.d
+
+peak_onlyreg.exe: peak_onlyreg.o
+peak_onlyreg.o: peak_onlyreg.cpp
+include peak_onlyreg.d
