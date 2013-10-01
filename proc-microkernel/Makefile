@@ -17,4 +17,6 @@ test_asm.o: test_asm.cpp
 include test_asm.d
 
 test_asm.exe: test_asm.o 
-test_asm.exe: asm4x1x4.o ../utils ../utils/utils.o
+test_asm.exe: asm4x1x4.o asm4x4x4.o  asm4x20x4.o  asm4x40x4.o 	\
+	      asm4x100x4.o asm4x200x4.o 
+test_asm.exe: ../utils ../utils/utils.o
