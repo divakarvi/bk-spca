@@ -71,7 +71,7 @@ int main(){
 
 	clk.tic();
 	fivecycles_nostall(nitns);
-	double cycles = clk.toc();
+	cycles = clk.toc();
 	printf("\t\t3 xmm adds + 5 xmm mults per iteration\n");
 	printf("\t\teach xmm op uses same source register\n");
 	printf("\t\ttotal number of registers used = 9");
