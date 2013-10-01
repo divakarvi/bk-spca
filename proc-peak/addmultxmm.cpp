@@ -66,7 +66,7 @@ int main(){
 	double cycles = clk.toc();
 	printf("\t\t3 xmm adds + 5 xmm mults per iteration\n");
 	printf("\t\teach xmm op uses diff registers\n");
-	printf("\t\ttotal number of registers used = 16");
+	printf("\t\ttotal number of registers used = 16\n");
 	printf("\tnumber of cycles per iteration = %.2f\n\n", cycles/nitns);
 
 	clk.tic();
@@ -74,6 +74,6 @@ int main(){
 	cycles = clk.toc();
 	printf("\t\t3 xmm adds + 5 xmm mults per iteration\n");
 	printf("\t\teach xmm op uses same source register\n");
-	printf("\t\ttotal number of registers used = 9");
+	printf("\t\ttotal number of registers used = 9\n");
 	printf("\tnumber of cycles per iteration = %.2f\n\n", cycles/nitns);
 }
