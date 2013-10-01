@@ -24,7 +24,7 @@ MPILIBS := `mpiCC -showme:link`
 	sed 's,\($*\)\.o[ :]*,\1.o $@ : ,g' < $@.$$$$ > $@; \
 	rm -f $@.$$$$
 %.s: %.cpp 
-	$(CPP) $(CFLAGS) -S $< 
+	$(CPP) $(CFLAGS) $(CFLAGSXX) -S $< 
 %.exe: %.o 
 	$(CPP) $(OMP) -o $@ $(filter %.o,$^) $(LIBS) 
 

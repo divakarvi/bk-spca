@@ -7,27 +7,7 @@
 #include "StatVector.hh"
 using namespace std;
 
-//R must be "%xmmi" 0<=i<=15
-#define zeroxmm(R)				\
-  asm volatile("xorps %" R ", %" R "\n\t":::R);
 
-//R1 and R2 must be "%xmmi" 0<=i<=15 
-#define addxmm(R1, R2)					\
-  asm volatile("addpd %" R1 ", %" R2 "\n\t":::R1, R2);
-
-//R1 and R2 must be "%xmmi" 0<=i<=15 
-#define mulxmm(R1, R2)					\
-  asm volatile("mulpd %" R1 ", %" R2 "\n\t":::R1, R2);
-
-//R = "%xmmi" 0<=i<=15
-//a = double * (16 byte aligned)
-#define loadxmm(a, R)					\
-  asm volatile("movaps %0, %" R "\n\t"::"m"(*(a)):R);	
-
-//R = "%xmmi" 0<=i<=15xmm
-//a = double * (16 byte aligned)
-#define storexmm(R, a)					\
-  asm volatile("movaps %" R ", %0 \n\t":"=m"(*(a))::R);	
 
 
 // a[0..2] += nitns*b[0..2]
