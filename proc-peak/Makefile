@@ -5,3 +5,7 @@ test_easy.exe: test_easy.o
 test_easy.o: test_easy.cpp
 test_easy.s: test_easy.cpp
 include test_easy.d
+
+addxmm.exe: addxmm.o
+addxmm.o: addxmm.cpp
+include addxmm.d

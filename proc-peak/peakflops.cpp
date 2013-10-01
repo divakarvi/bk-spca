@@ -7,62 +7,6 @@
 #include "StatVector.hh"
 using namespace std;
 
-
-
-
-// a[0..2] += nitns*b[0..2]
-//(expect 3 clock ticks per iteration)
-void addreg(double *a, double *b, long int nitns){
-  long int  i;
-  loadxmm(a, "%xmm0");
-  loadxmm(b, "%xmm1");
-  for(i=0; i < nitns; i++)
-    addxmm("%xmm0","%xmm1");
-  storexmm("%xmm1", a);
-}
-
-// a[0..2] += nitns*b[0..2]
-//(expect 3 clock ticks per iteration)
-void add3reg(double *a, double *b, long int nitns){
-  long int  i;
-  loadxmm(a, "%xmm0");
-  loadxmm(b, "%xmm1");
-  loadxmm(a+2, "%xmm2");
-  loadxmm(b+2, "%xmm3");
-  loadxmm(a+4, "%xmm4");
-  loadxmm(b+4, "%xmm5");
-  for(i=0; i < nitns; i++){
-    addxmm("%xmm0","%xmm1");
-    addxmm("%xmm2","%xmm3");
-    addxmm("%xmm4","%xmm5");
-  }
-  storexmm("%xmm1", a);
-  storexmm("%xmm3", a+2);
-  storexmm("%xmm5", a+4);
-}
-
-void runaddreg(){
-  __declspec(align(16)) double a[6]={0};
-  __declspec(align(16)) double b[6]={0};
-  a[0] = 0;
-  a[1] = 1;
-  b[0] = 1;
-  b[1] = 2;
-  long int nitns = 1000*1000*1000l;
-  TimeStamp clk;
-  clk.tic();
-  addreg(a, b, nitns);
-  double cycles = clk.toc();
-  cout<<"cycles per itn = "<<cycles/nitns<<endl;
-  cout<<"a = "<<a[0]<<"  "<<a[1]<<endl;
-  clk.tic();
-  add3reg(a, b, nitns);
-  cycles = clk.toc();
-  cout<<"cycles per itn = "<<cycles/nitns<<endl;
-  cout<<"a = "<<a[0]<<"  "<<a[1]<<endl;
-}
-
-
 void fivecyclesA(long int nitns){
   long int  i;
   zeroxmm("%xmm0");
