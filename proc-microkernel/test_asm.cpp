@@ -65,7 +65,7 @@ void test4xnx4(int n){
 	 case 200:
 		 asm4x200x4(a, b, c);
 		 break;
-	 case default:
+	 default:
 		 assrt(0 == 1);
 	 }
 	 /*
