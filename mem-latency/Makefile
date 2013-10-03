@@ -28,5 +28,5 @@ include dummy.d
 table_latency.o: table_latency.cpp
 include table_latency.d
 
-table_latency.exe: table_latency.o latency.o dummy.o 		\
+table_latency.exe: table_latency.o latency.o dummy.o latency_utils.o	\
 		   ../utils ../utils/utils.o ../utils/Table.o
