@@ -2,6 +2,7 @@
 #include "../utils/StatVector.hh"
 #include "../utils/Table.hh"
 #include "latency.hh"
+#include <mkl.h>
 #include <cstdio>
 #include <fstream>
 #include <iostream>
@@ -12,10 +13,12 @@ static StatVector stats(ntrials);
 void measure_latency(int n, StatVector& stobj){
 	assrt(stobj.getSize() >= ntrials);
 	stobj.flush();
+	int *npages = (int *)MKL_malloc(4096*n, 4096);
 	for(int i=0; i < ntrials; i++){
 		double cycles = latency(n);
 		stobj.insert(cycles);
 	}
+	MKL_free(npages);
 }
 
 int main(){

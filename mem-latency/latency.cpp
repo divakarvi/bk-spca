@@ -2,7 +2,6 @@
 #include "../utils/TimeStamp.hh"
 #include "latency_utils.hh"
 #include "latency.hh"
-#include <mkl.h>
 
 extern void dummy(int *a, int n);
 
@@ -20,15 +19,14 @@ void cache_flush(void *ptr, int nbytes){
 /*
  * single measurement of latency using n pages
  */
-double latency(int n){
+double latency(int n, int *npages){
+	assrt((long)npages%4096 == 0);
 	/*
 	 * n*4096/64 = n*64 cache lines in 4096 byte page
 	 */
 	int *list = new int[n*64];
 	random_cycle(list, n*64);
 
-	int *npages = (int *)MKL_malloc(n*4096, 4096);
-	assrt((long)npages%4096 == 0);
 	/*
 	 * create a random cycle between cache lines
 	 */
@@ -46,7 +44,6 @@ double latency(int n){
 	double cycles = clk.toc();
 	assrt(index == 17);
 
-	MKL_free(npages);
 	delete[] list;
 	
 	return cycles/(64*n);
