@@ -13,9 +13,9 @@ static StatVector stats(ntrials);
 void measure_latency(int n, StatVector& stobj){
 	assrt(stobj.getSize() >= ntrials);
 	stobj.flush();
-	int *npages = (int *)MKL_malloc(4096*n, 4096);
+	int *npages = (int *)MKL_malloc(1l*4096*n, 4096);
 	for(int i=0; i < ntrials; i++){
-		double cycles = latency(n);
+		double cycles = latency(n, npages);
 		stobj.insert(cycles);
 	}
 	MKL_free(npages);

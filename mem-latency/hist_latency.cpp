@@ -5,7 +5,7 @@
 int main(){
 	const int N = 1000*1000;
 	double *cycles = new double[N];
-	int *pages = (int *)MKL_malloc(N*4096, 4096);
+	int *pages = (int *)MKL_malloc(1l*N*4096, 4096);
 
 	for(int i=0; i < N; i++)
 		cycles[i] = latency(1, pages + i*1024);
