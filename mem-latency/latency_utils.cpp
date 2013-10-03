@@ -50,15 +50,25 @@ double probNoR(long int n, int count){
 
 /*
  * list[i] = i initiallly
- * list[i] exchanged with j, i <= j  < len, j "random"
+ * list[i] exchanged with j, i <= j  < n, j "random"
  */
-void randomp(int *list, int len){
-	for(int i=0; i < len; i++)
+void random_perm(int *list, int n){
+	for(int i=0; i < n; i++)
 		list[i] = i;
-	for(int i=0; i < len; i++){
-		int j = rand()%(len-i)+i;
+	for(int i=0; i < n; i++){
+		int j = rand()%(n-i)+i;
 		int temp = list[j];
 		list[j] = list[i];
 		list[i] = temp;
 	}
+}
+
+void random_cycle(int *list, int n){
+	int *tmp = new int[n];
+	
+	random_perm(tmp_list, n);
+	for(int i=0; i < n; i++)
+		list[tmp[i]] = tmp[(i+1)%n];
+
+	delete[] tmp;
 }

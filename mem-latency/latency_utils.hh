@@ -6,20 +6,26 @@
  * count = number of accesses
  * index = 0 initially
  * there after index = List[index]%n
- * returns number of repeats in first count accesses
+ * returns number of repeats in count chained accesses
  */
 int countrepeats(long int *List, long int n, int count);
 
 /*
  * n = size of array
  * count = number of accesses
- * return probability of no repeat access
+ * return probability of no repeat in chained access
  */
 double probNoR(long int n, int count);
 
 /*
- * List[] = int array of size n
- * List[0..n-1] initialized to random permutation of 0..n-1
+ * list[] = int array of size n
+ * list[0..n-1] initialized to random permutation of 0..n-1
  */
-void randomp(int *List, int n);
+void random_perm(int *list, int n);
+
+/*
+ * list[] = int array of size n
+ * list[0..n-1] initialized to random CYCLE
+ */
+void random_cycle(int *list, int n)
 #endif

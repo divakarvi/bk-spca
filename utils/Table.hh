@@ -21,11 +21,11 @@ public:
 		assrt(state == 0);
 		width = w;
 	}
-	void dim(int mi, int ni){
+	void dim(int nrows, int ncols){
 		assrt(state == 0);
 		state = 1;
-		m = mi;
-		n = ni;
+		m = nrows;
+		n = ncols;
 	}
 
 	void rows(const char *rowsi[]){
