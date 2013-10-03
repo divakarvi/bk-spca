@@ -56,7 +56,7 @@ void time_chain(){
 	
 	TimeStamp clk;
 	clk.tic();
-	double xx = chain_walk(list, n, count, xx);
+	double xx = chain_walk(list, n, count);
 	double cycles = clk.toc();
 
 	printf("\tcycles per access       =  %f\n", cycles/count);
