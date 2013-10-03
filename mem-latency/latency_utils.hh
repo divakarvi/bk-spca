@@ -15,7 +15,7 @@ int countrepeats(long int *List, long int n, int count);
  * count = number of accesses
  * return probability of no repeat access
  */
-double probNoR(long int n, int count)
+double probNoR(long int n, int count);
 
 /*
  * List[] = int array of size n
