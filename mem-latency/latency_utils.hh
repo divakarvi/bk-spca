@@ -27,5 +27,5 @@ void random_perm(int *list, int n);
  * list[] = int array of size n
  * list[0..n-1] initialized to random CYCLE
  */
-void random_cycle(int *list, int n)
+void random_cycle(int *list, int n);
 #endif

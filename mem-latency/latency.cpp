@@ -1,6 +1,7 @@
 #include "../utils/utils.hh"
 #include "../utils/TimeStamp.hh"
 #include "latency_utils.hh"
+#include "latency.hh"
 #include <mkl.h>
 
 extern dummy(int *a, int n);

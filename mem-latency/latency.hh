@@ -6,5 +6,5 @@
  * sets up a random cycle through n*64 cache lines
  * returns avg number of cycles per access
  */
-double latency(int n)
+double latency(int n);
 #endif
