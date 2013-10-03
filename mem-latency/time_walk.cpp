@@ -31,7 +31,7 @@ void time_stride(enum strideflag_enum flag){
 	printf("\t\t\tsum a[i], i = i + stride, from i=0 to 10^9\n");
 	printf("\t\t\tstride = %d\n", stride);
 	printf("\tcycles per array access = %.2f\n\n", 
-	       cycles/1000/1000/1000/stride); 
+	       cycles/(1e9/stride)); 
 
 	delete[] a;
 }
@@ -47,7 +47,7 @@ void time_chain(){
 		list[i] = rand();
 
 	printf("\t\t\t chained access of array of size 10^9\n");
-	printf("\t\t\t each entry is in [0,RAND_MAX]");
+	printf("\t\t\t each entry is in [0,RAND_MAX]\n");
 	printf("\t\t\t10^9/RAND_MAX = %f\n",1.0*n/RAND_MAX);
 	
 	int count = 6000;
