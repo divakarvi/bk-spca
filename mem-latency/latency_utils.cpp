@@ -1,4 +1,4 @@
-#include <latency_utils.hh>
+#include "latency_utils.hh"
 #include <mkl.h>
 #include <cstdlib>
 
