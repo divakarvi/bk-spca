@@ -66,7 +66,7 @@ void random_perm(int *list, int n){
 void random_cycle(int *list, int n){
 	int *tmp = new int[n];
 	
-	random_perm(tmp_list, n);
+	random_perm(tmp, n);
 	for(int i=0; i < n; i++)
 		list[tmp[i]] = tmp[(i+1)%n];
 
