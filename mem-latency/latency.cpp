@@ -4,7 +4,7 @@
 #include "latency.hh"
 #include <mkl.h>
 
-extern dummy(int *a, int n);
+extern void dummy(int *a, int n);
 
 void cache_flush(void *ptr, int nbytes){
 #ifdef MEMWALK
@@ -13,7 +13,7 @@ void cache_flush(void *ptr, int nbytes){
 	delete[] a;
 #else
 	for(int i=0; i < nbytes; i++)
-		_mm_clflush(ptr+i);
+		_mm_clflush((char *)ptr+i);
 #endif
 }
 

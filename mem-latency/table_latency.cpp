@@ -9,7 +9,7 @@
 static const int ntrials = 100;
 static StatVector stats(ntrials);
 
-void measure_latency(n, StatVector& stobj){
+void measure_latency(int n, StatVector& stobj){
 	assrt(stobj.getSize() >= ntrials);
 	stobj.flush();
 	for(int i=0; i < ntrials; i++){
@@ -40,8 +40,6 @@ int main(){
 		cyc2dram[i+2*nrows] = stats.max();
 	}
 	
-	int ntrials = 100;
-
 	std::streambuf *sbuf_backup;
 	sbuf_backup = cout.rdbuf();
 	ofstream ofile;
