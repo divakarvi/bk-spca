@@ -50,7 +50,7 @@ int main(){
 	ofile.open("DBG/latency_memwalk.txt");
 #else
 	ofile.open("DBG/latency_clflush.txt");
-#end
+#endif
 	cout.rdbuf(ofile.rdbuf());
 
 	Table tbl;
