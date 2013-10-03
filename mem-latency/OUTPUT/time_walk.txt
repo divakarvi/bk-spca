@@ -1,0 +1,16 @@
+			sum a[i], i = i + stride, from i=0 to 10^9
+			stride = 1
+	cycles per array access = 0.92
+
+			sum a[i], i = i + stride, from i=0 to 10^9
+			stride = 16
+	cycles per array access = 13.29
+
+			 chained access of array of size 10^9
+			 each entry is in [0,RAND_MAX]
+			10^9/RAND_MAX = 0.465661
+			 number of accesses = 6000
+	cycles per access       =  275.632000
+	number of repeats       =  0
+	theor prob of 0 repeats =  0.865907
+

@@ -1,9 +1,0 @@
-cycles/access = 0.924214
-cycles/access = 13.3029
-RAND_MAX=2147483647
-n/RAND_MAX = 0.465661
-num of repeats = 0
-cycles per access = 262.791
-probability of no repeats  = 0.865907
-index = 17
-cycles per access = 110.125
