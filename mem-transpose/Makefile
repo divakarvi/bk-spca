@@ -10,17 +10,17 @@ $(MODS):
 
 
 ########################################
-sumcopy.o: sumcopy.cpp
-include sumcopy.d
+transpose.o: transpose.cpp
+include transpose.d
 
-test_sumcopy.o: test_sumcopy.cpp
-include test_sumcopy.d
+test_transpose.o: test_transpose.cpp
+include test_transpose.d
 
-test_sumcopy.exe: test_sumcopy.o sumcopy.o
+test_transpose.exe: test_transpose.o transpose.o
 
-time_sumcopy.o: time_sumcopy.cpp
-include time_sumcopy.d
+time_transpose.o: time_transpose.cpp
+include time_transpose.d
 
-time_sumcopy.exe: time_sumcopy.o sumcopy.o			\
+time_transpose.exe: time_transpose.o transpose.o			\
 		  ../utils ../utils/utils.o ../utils/Table.o
 
