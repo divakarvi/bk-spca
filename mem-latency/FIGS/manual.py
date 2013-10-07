@@ -23,6 +23,6 @@ def hist(x, xmin, xmax, bins):
 if(__name__ == "__main__"):
     x = genfromtxt('latency_x.dat', dtype='float')
     mpl.rcParams['font.size'] = 18
-    hist(x, 0, 200, bins = 150)
-    hist(x, 0, 1000, bins = 400)
+    hist(x, 0, 200, bins = 60)
+    #hist(x, 0, 1000, bins = 400)
 

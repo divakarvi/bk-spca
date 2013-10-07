@@ -1,5 +1,5 @@
 include ../makevars.mk
-CFLAGSXX := -fno-inline-functions $(MKLINC)
+CFLAGSXX := -DMEMWALK -fno-inline-functions $(MKLINC)
 LIBS := $(MKLLIBS)
 MODS := ../utils ../pyplot
 
