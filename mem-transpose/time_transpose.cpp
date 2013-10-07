@@ -2,8 +2,9 @@
 #include "../utils/TimeStamp.hh"
 #include "../utils/StatVector.hh"
 #include "../utils/Table.hh"
-#include <fstream>
 #include "transpose.hh"
+#include <fstream>
+#include <mkl.h>
 
 enum transpose_enum {EASY, BLOCK, BLOCKX, RECURSIVE, POW2};
 
@@ -73,7 +74,7 @@ void table1(){
 
 	char fname[200];
 	verify_dir("DBG");
-	sprintf(fname, "DBG/time_trans_B_%d.dat", B);
+	sprintf(fname, "DBG/time_trans_B_%d.txt", B);
 	std::streambuf *sbuf_backup = std::cout.rdbuf();
 	std::ofstream ofile(fname);
 	std::cout.rdbuf(ofile.rdbuf());
@@ -103,10 +104,10 @@ void table2(){
 	/*
 	 * check B is a power of 2
 	 */
-	int b = B;
-	while(b > 1){
-		assrt(b%2 == 0);
-		b = b/2;
+	int BB = B;
+	while(BB > 1){
+		assrt(BB%2 == 0);
+		BB = BB/2;
 	}
 		
 
@@ -130,7 +131,7 @@ void table2(){
 
 	char fname[200];
 	verify_dir("DBG");
-	sprintf(fname, "DBG/time_pow2_B_%d.dat", B);
+	sprintf(fname, "DBG/time_pow2_B_%d.txt", B);
 	std::streambuf *sbuf_backup = std::cout.rdbuf();
 	std::ofstream ofile(fname);
 	std::cout.rdbuf(ofile.rdbuf());
@@ -152,6 +153,6 @@ void table2(){
 
 
 int main(){
-	table1(); //B = 1, 4, 8, 10, 20, 40, 50, 80, 100, 125, 200, 500, 1000
-	table2(); //B = 8, 16, 32, 64, 128
+	table1(); //B = 4, 8, 10, 20, 40, 50, 80, 100, 125, 200, 500, 1000
+	table2(); //B = 4, 8, 16, 32, 64, 128
 }

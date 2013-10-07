@@ -50,8 +50,8 @@ void recursivetrans(double *restrict a, double *restrict b,
 }
 
 void recursivetrans(double *restrict a, double *restrict b, int m, int n){
-	assert((m%B==0)&&(n%B==0));
-	assert((m>=B)&&(n>=B));
+	assrt(m%B == 0 && n%B == 0);
+	assrt(m >= B && n >= B);
 	recursivetrans(a, b, m, n, m, n);
 }
 

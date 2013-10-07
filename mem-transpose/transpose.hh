@@ -1,7 +1,7 @@
 #ifndef __TRANSPOSE7OCT2013__
 #define __TRANSPOSE7OCT2013__
 
-const int B = 1000;
+const int B = 8;
 
 /*
  * obvious way to transpose a to b 
