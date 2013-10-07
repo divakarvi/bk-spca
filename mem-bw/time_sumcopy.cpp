@@ -1,82 +1,85 @@
 #include "../utils/utils.hh"
 #include "../utils/TimeStamp.hh"
 #include "../utils/StatVector.hh"
+#include "../utils/Table.hh"
 #include "sumcopy.hh"
+#include <mkl.h>
 
-void time(){
-	cout<<"const stride = "<<STR<<endl;
-	
-	const long int n = 1024*1024*1024;
-	double a[n], b[n];
-	const int count = 10;
-	for(long  int i=0; i < n; i++)
-		a[i] = 1.0*i;
-	
-	TimeStamp clk;
+
+void init_mem(double *(&a), double *(&b),  int n){
+	long nbytes = 1l*n*8;
+	a = (double *)MKL_malloc(nbytes, 64);
+	b = (double *)MKL_malloc(nbytes, 64);
+
+	for(int i=0; i < n; i++)
+		a[i] = i;
+}
+
+void release_mem(double *a, double *b){
+	MKL_free(a);
+	MKL_free(b);
+}
+
+enum sumcopy_enum {SUM, SUMSTR, SUMCONSTSTR, COPY, COPYCONSTSTR};
+
+/*
+ * returns memory bandwidth as bytes per cycle
+ */
+double time(double *a, double *b, int n, enum sumcopy_enum flag){
+	const int count = 1;
 	StatVector stats(count);
-	double cycles;
-	if(STR==1){
-		for(int i=0; i < count; i++){
-			clk.tic();
-			double s = sum(a,n);
-			cycles = clk.toc();
-			stats.insert(cycles);
+	TimeStamp clk;
+	
+	long bytes = 8l*n;
+	for(int i=0; i < count; i++){
+		clk.tic();
+		switch(flag){
+		case SUM:
+			sum(a, n);
+			break;
+		case SUMSTR:
+			sumstride(a, n, STR);
+			break;
+		case SUMCONSTSTR:
+			sumconststride(a, n);
+			break;
+		case COPY:
+			copy(a, b, n);
+			bytes *= 2;
+			break;
+		case COPYCONSTSTR:
+			copyconststride(a, b, n);
+			bytes *= 2;
+			break;
 		}
-		stats.print("sum of list");
-		cycles = stats.median();
-		cout<<"bytes per cycle = "<<8.0*n/cycles<<endl<<endl;
-		stats.flush();
-	}
-	
-	int stride = STR;
-	for(int i=0; i < count; i++){
-		clk.tic();
-		double s = sumstride(a,n,stride);
-		cycles = clk.toc();
+		double cycles = clk.toc();
 		stats.insert(cycles);
 	}
-	
-	stats.print("sum of list with stride=STR");
-	cycles = stats.median();
-	cout<<"bytes per cycle = "<<8.0*n/stride/cycles<<endl<<endl;
-	stats.flush();
-	
-	for(int i=0; i < count; i++){
-		clk.tic();
-		double s = sumconststride(a,n);
-		cycles = clk.toc();
-		stats.insert(cycles);
-	}
-	stats.print("sum of list with const stride");
-	cycles = stats.median();
-	cout<<"bytes per cycle = "<<8.0*n/STR/cycles<<endl<<endl;
-	stats.flush();
-	
-	if(STR==1){
-		for(int i=0; i < count; i++){
-			clk.tic();
-			copy(a,b,n);
-			cycles = clk.toc();
-			stats.insert(cycles);
-		}
-		stats.print("copy list to list");
-		cycles = stats.median();
-		cout<<"bytes per cycle = "<<16.0*n/cycles<<endl<<endl;
-		stats.flush();
-	}
-	
-	for(int i=0; i < count; i++){
-		clk.tic();
-		copyconststride(a,b,n);
-		cycles = clk.toc();
-		stats.insert(cycles);
-	}
-	stats.print("copy const stride list to list");
-	cycles = stats.median();
-	cout<<"bytes per cycle = "<<16.0*n/STR/cycles<<endl<<endl;
-	stats.flush();
+	return bytes/stats.median();
 }
 
 int main(){
-	time();
+	const char* rows[5] = {"SUM", "SUMSTR", "SUMCONSTSTR", 
+			       "COPY", "COPYCONSTSTR" }
+	const char* cols[1] = {"n=1e9 doubles"};
+	const int n = 1000*1000*1000;
+	double *a, *b;
+	init_mem(a, b, n);
+	
+	double bw[5];
+	bw[0] = time(a, b, n, SUM);
+	bw[1] = time(a, b, n, SUMSTR);
+	bw[2] = time(a, b, n, SUMCONSTSTR);
+	bw[3] = time(a, b, n, COPY);
+	bw[4] = time(a, b, n, COPYCONSTSTR);
+
+	Table tbl;
+	tbl.dim(5, 1);
+	tbl.rows(rows);
+	tbl.cols(cols);
+	tbl.data(bw);
+	tbl.print()
+
+	release_mem(a, b);
+
 }
