@@ -4,7 +4,6 @@
 #include <iostream>
 #include <iomanip>
 #include "utils.hh"
-using namespace std;
 
 class StatVector{
 	double *v;
@@ -12,7 +11,7 @@ class StatVector{
 	int sortflag;
 	int numitems;
 	void dosort(){
-		sort(v, v+numitems);
+		std::sort(v, v+numitems);
 		sortflag = 1;
 	}
 public:
@@ -66,11 +65,11 @@ public:
 		numitems = 0; 
 	}
 	void print(const char* banner = ""){
-		cout<<setw(50)<<banner<<endl;
-		cout<<setw(10)<<"mean: "<<this->mean()<<endl;
-		cout<<setw(10)<<"median: "<<this->median()<<endl;
-		cout<<setw(10)<<"min: "<<this->min()<<endl;
-		cout<<setw(10)<<"max: "<<this->max()<<endl;
+		std::cout<<std::setw(50)<<banner<<std::endl;
+		std::cout<<std::setw(10)<<"mean: "<<this->mean()<<std::endl;
+		std::cout<<std::setw(10)<<"median: "<<this->median()<<std::endl;
+		std::cout<<std::setw(10)<<"min: "<<this->min()<<std::endl;
+		std::cout<<std::setw(10)<<"max: "<<this->max()<<std::endl;
 	}
 };
 #endif

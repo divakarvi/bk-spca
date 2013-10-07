@@ -26,6 +26,6 @@ void copy(double *restrict a, double *restrict b, long int n);
  */
 void copyconststride(double *restrict a, double *restrict b, long int n);
 
-const int STR=8;
+const int STR=1;
 
 #endif
