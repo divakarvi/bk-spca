@@ -1,4 +1,5 @@
 #include "../utils/utils.hh"
+#include "../proc-microk/asm4xnx4.hh"
 #include "multasm.hh"
 using namespace std;
 
@@ -86,6 +87,10 @@ void mult3000x200x3000(double *A, int ldA,
 void blockmult(double *A, double *B, double *C,
 	       int l, int m, int n,
 	       double *scratch){
+	assrt((long)A%16 == 0);
+	assrt((long)B%16 == 0);
+	assrt((long)C%16 == 0);
+
 	assrt(l%3000 == 0);
 	assrt(m%200 == 0);
 	assrt(n%3000 == 0);

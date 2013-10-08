@@ -1,0 +1,286 @@
+#include "../utils/utils.hh"
+#include "../utils/TimeStamp.hh"
+#include "../utils/StatVector.hh"
+#include "blockmult.hh"
+#include <mkl.h>
+
+enum cacheflag {L2cache, L3cached};
+
+/*
+ * L1 cache = 32 KB = 4000 doubles
+ * L2 cache = 260 KB = 32500 doubles
+ * L3 cache = 12.6 MB  = 1.5 million doubles
+ * a = 800*15  = 12000 doubles streamed from L2 cache (flag == L2cache)
+ * a = 800*150 = 120000 doubles streamed from L3 cache (flag == L3cache)
+ * b = 800 doubles is assumed to be in L1 cache
+ * returns avg cycles for a mult
+ */
+double time4x200x4(enum cacheflag flag){
+	int N;
+	if(flag == L2cache)
+		N = 15;
+	else if(flag == L3cache)
+		N = 150;
+	else
+		assrt(0 == 1);
+
+	__declspec(align(16)) double a[800*N];
+	__declspec(align(16)) double b[800];
+	__declspec(align(16)) double c[16*N];
+
+	for(int i=0; i < 800; i++)
+		b[i] = rand()*1.0/RAND_MAX-0.5;
+	for(int i=0; i < 800*N; i++)
+		a[i] = rand()*1.0/RAND_MAX-0.5;
+	for(int i=0; i < 16*N; i++)
+		c[i] = 0;
+
+	TimeStamp clk;
+	clk.tic();
+
+	for(int i=0; i < 1000*1000*10; i++)
+		asm4x200x4(a+(i%N)*800, b, c+(i%N)*16);
+
+	double cycles = clk.toc();
+	cycles = cycles/1e7;
+
+	return cycles;
+}
+
+/*
+ * a = 120000 or 12000 doubles (stream from L3 or L2)
+ * b = 2400 doubles
+ * return avg cycles
+ */
+double time4x200x12(enum cacheflag flag){
+	int N;
+	if(flag == L2cache)
+		N = 15;
+	else if(flag == L3cache)
+		N = 150;
+	else
+		assrt(0 == 1);
+	
+	__declspec(align(16)) double a[800*N];
+	__declspec(align(16)) double b[2400];
+	__declspec(align(16)) double c[48*N];
+
+	for(int i=0; i < 2400; i++)
+		b[i] = rand()*1.0/RAND_MAX;
+	for(int i=0; i < 48*N; i++)
+		c[i] = 0;
+	for(int i=0; i < 800*N; i++)
+		a[i] = rand()*1.0/RAND_MAX;
+
+	TimeStamp clk;
+	double cycles;
+	clk.tic();
+
+	for(int i=0; i < 1000*1000*10; i++)
+		mult4x200x12(a+800*(i%N), b, c+48*(i%N));
+
+	cycles = clk.toc();
+	cycles = cycles/1e7;
+	
+	return cycles;
+}
+
+/*
+ * a = 120000 doubles in L3 cache
+ * b = 200*12*1000 = 2,400,000 doubles loaded to L1 cache from memory
+ * C = 600*12*2000 = 600*12 matrix with large ldC
+ */
+double time600x200x12(){
+	__declspec(align(16)) double a[600*200];
+	__declspec(align(16)) double bb[200*12*1000];
+	double *C = (double *)MKL_malloc(600l*12*2000*sizeof(double), 16);
+	__declspec(align(16)) double scratch[7200];
+  
+	for(int i=0; i < 600*12; i++)
+		a[i] = rand()*1.0/RAND_MAX;
+	for(int i=0; i < 200*12*1000; i++)
+		bb[i] = rand()*1.0/RAND_MAX;
+	for(int i=0; i < 600*12*2000; i++)
+		C[i] = 0;
+  
+
+	int count = 1000*10;
+
+	TimeStamp clk;
+	double cycles;
+	clk.tic();
+
+	int ldC = 60000;
+	for(int i=0; i < count; i++)
+		mult600x200x12(a, bb, C, 600, scratch);
+
+	cycles = clk.toc();
+	cycles /= count;
+
+	clk.tic();
+	double x = 0;
+	for(int i=0; i < count; i++){
+		mult600x200x12(a, bb, C+(i%10000)*600, 6000, scratch);
+		x += C[(i%10000)*600]; 
+	}
+	cycles = clk.toc();
+	cycles /= count;
+
+	MKL_free(C);
+
+	return cycles
+}
+
+/*
+ * time while evicting A and C from cache
+ */
+double time600x200x3000(){
+	int ldA = 6000;
+	double* aa = 
+		(double *)MKL_malloc(600*200*10*2*sizeof(double, 16));
+	double *b = (double *)MKL_malloc(1l*sizeof(double)*200*3000, 16);
+	int ldC = 1200;
+	double *C = (double *)MKL_malloc(1l*sizeof(double)*600*3000*10, 16);
+	double *scratch = 
+		(double *)MKL_malloc(1l*sizeof(double)*7200+600*200, 16);
+	
+	for(int i=0; i < 600*200*10*2; i++)
+		aa[i] = rand()*1.0/RAND_MAX;
+	for(int i=0; i < 200*3000; i++)
+		b[i] = rand()*1.0/RAND_MAX;
+	for(int i=0; i < 600*3000*10; i++)
+		C[i] = 0;
+
+
+	int count = 400;
+	TimeStamp clk;
+	double cycles;
+	clk.tic();
+
+	for(int i=0; i < count; i++)
+		mult600x200x3000(aa+600*200*(i%5), 6000, 
+				 b, C+600*3000*(i%8), 600, scratch);
+
+
+
+	cycles = clk.toc();
+	cycles /= count;
+
+	MKL_free(aa);
+	MKL_free(b);
+	MKL_free(C);
+	MKL_free(scratch);
+
+	return cycles;
+}
+
+/*
+ * time with large ldB
+ */
+double time3000x200x3000(){
+	int ldA = 3000;
+	double *A = (double *)MKL_malloc(1l*sizeof(double)*3000*200, 16);
+	int ldB = 2000;
+	double *B = (double *)MKL_malloc(1l*sizeof(double)*200*3000*10, 16);
+	int ldC = 3000;
+	double *C = (double *)MKL_malloc(1l*sizeof(double)*3000*3000, 16);
+	double *scratch = 
+		(double *)MKL_malloc(1l*sizeof(double)
+				     *600*12+600*200+200*3000, 16);
+
+
+	for(int i=0; i < 3000*200; i++)
+		A[i] = rand()*1.0/RAND_MAX;
+	for(int i=0; i < 200*3000*10; i++)
+		B[i] = rand()*1.0/RAND_MAX;
+	for(int i=0; i < 3000*3000; i++)
+		C[i] = 0;
+  
+	int  count = 100;
+	TimeStamp clk;
+	double cycles;
+	clk.tic();
+
+	for(int i=0; i < count; i++)
+		mult3000x200x3000(A, 3000, B, 2000, C, 3000, scratch);
+
+
+	cycles = clk.toc();
+	cycles /= count;
+	
+	MKL_free(A);
+	MKL_free(B);
+	MKL_free(C);
+	MKL_free(scratch);
+
+	return cycles;
+}
+ 
+/*
+ * time 9000x9000x9000
+ */
+void timeblock(){
+	const int l = 9000;
+	const int m = 9000;
+	const int n = 9000;
+
+	double *A = (double *)MKL_malloc(1l*sizeof(double)*l*m, 16);
+	double *B = (double *)MKL_malloc(1l*sizeof(double)*m*n, 16);
+	double *C = (double *)MKL_malloc(1l*sizeof(double)*l*n, 16);
+	double *scratch = 
+		(double *)MKL_malloc(1l*sizeof(double)
+				     *600*12+600*200+200*3000, 16);
+  
+	for(int i=0; i < l*m; i++)
+		A[i] = rand()*1.0/RAND_MAX;
+	for(int i=0; i < m*n; i++)
+		B[i] = rand()*1.0/RAND_MAX;
+	for(int i=0; i < l*n; i++)
+		C[i] = 0.0;
+
+	int count = 10;
+	TimeStamp clk;
+	double cycles;
+	clk.tic();
+
+	for(int i=0; i < count; i++)
+		blockmult(A,B,C, l, m, n, scratch);
+
+	cycles = clk.toc();
+	cycles /= count;
+
+	MKL_free(A);
+	MKL_free(B);
+	MKL_free(C);
+	MKL_free(scratch);
+
+	return cycles;
+}
+
+int main(){
+	double cycles;
+
+	cycles = time4x200x4(L2cache);
+	std::cout<<cycles<<std::endl;
+
+	cycles = time4x200x4(L3cache);
+	std::cout<<cycles<<std::endl;
+
+	cycles = time4x200x12(L2cache);
+	std::cout<<cycles<<std::endl;
+
+	cycles = time4x200x12(L3cache);
+	std::cout<<cycles<<std::endl;
+
+	cycles = time600x200x12();
+	std::cout<<cycles<<std::endl;
+
+	cycles = time600x200x3000();
+	std::cout<<cycles<<std::endl;
+
+	cycles = time3000x200x3000();
+	std::cout<<cycles<<std::endl;
+
+	cycles = timeblock();
+	std::cout<<cycles<<std::endl;
+}
