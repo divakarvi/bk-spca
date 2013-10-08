@@ -5,60 +5,6 @@
 #include <cstdio>
 #include <cstdlib>
 
-void time4x1x4(){
-	__declspec(align(16)) double a[4]={1,2,3,4};
-	__declspec(align(16)) double b[4]={1,2,3,4};
-	__declspec(align(16)) double c[16] = {0};
-	double cc[16];
-
-	for(int i=0; i < 16; i++)
-		c[i] = cc[i] = rand()*1.0/RAND_MAX-0.5;
-
-	for(int i=0; i < 4; i++){
-		a[i] = rand()*1.0/RAND_MAX-0.5;
-		b[i] = rand()*1.0/RAND_MAX-0.5;
-	}
-
-
-	TimeStamp clk;
-	clk.tic();
-	for(int i=0; i < 1000*1000*1000; i++)
-		asm4x1x4(a, b, c);
-	double cycles = clk.toc();
-	std::cout<<"cycles per 4x1x4 mult = "<<cycles/1000/1000/1000<<std::endl;
-	cycles = cycles/1e9;
-	std::cout<<"flops per cycle = "<<2.0*16/cycles<<std::endl;
-}
-
-
-void time4x4x4(){
-	__declspec(align(16)) double a[16];
-	__declspec(align(16)) double b[16];
-	__declspec(align(16)) double c[16];
-	double bb[16], cc[16];
-
-	for(int i=0; i < 16; i++){
-		a[i] = rand()*1.0/RAND_MAX-0.5;
-		b[i] = rand()*1.0/RAND_MAX-0.5;
-		c[i] = cc[i] = (rand()/RAND_MAX*1.0-0.5);
-	}
-
-	for(int i=0; i < 4; i++)
-		for(int j=0; j < 4; j++){
-			bb[i+4*j] = b[j+4*i];
-		}
-
-	TimeStamp clk;
-	clk.tic();
-	for(int i=0; i < 1000*1000*1000; i++)
-		asm4x4x4(a, b, c);
-	double cycles = clk.toc();
-	std::cout<<"cycles per 4x4x4 mult = "<<cycles/1000/1000/1000<<std::endl;
-	cycles = cycles/1e9;
-	std::cout<<"flops per cycle = "<<2.0*16*4/cycles<<std::endl;
-
-}
-
 /*
  * returns average number of cycles for asm4xnx4
  * n = 1, 4, 20, 40, 100, 200

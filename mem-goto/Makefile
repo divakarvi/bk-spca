@@ -24,6 +24,6 @@ test_block.exe: test_block.o blockmult.o test_utils.o		\
 		../proc-microk ../proc-microk/asm4x200x4.o	\
 		../utils ../utils/utils.o
 
-time_block.exe: time_block.exe blockmult.o 			\
+time_block.exe: time_block.o blockmult.o 			\
 		../proc-microk ../proc-microk/asm4x200x4.o	\
 		../utils ../utils/utils.o ../utils/Table.o

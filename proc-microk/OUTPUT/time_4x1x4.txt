@@ -1,0 +1,4 @@
+
+number of cycles per 4x1x4 iteration = 23.7425
+
+number of cycles per 4x1x4 iteration (c out of loop) = 8.51528
