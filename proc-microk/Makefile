@@ -6,6 +6,8 @@ include ../makevars.mk
 	$(MAKE) --directory=$@ all
 
 ###########
+all: asm4x1x4.o asm4x4x4.o asm4x20x4.o asm4x40x4.o asm4x100x4.o asm4x200x4.o
+
 asm4x1x4.o: asm4x1x4.s
 asm4x4x4.o: asm4x4x4.s
 asm4x20x4.o: asm4x20x4.s

@@ -1,7 +1,7 @@
 #include "../utils/utils.hh"
 #include "test_utils.hh"
 #include "blockmult.hh"
-#include <cstdlid>
+#include <cstdlib>
 #include <cstdio>
 
 /*
@@ -163,7 +163,7 @@ double test3000x200x3000(){
 /*
  * returns rel err for 6000x6000x6000 mult
  */
-void testblock(){
+double testblock(){
 	const int l = 6000;
 	const int m = 6000;
 	const int n = 6000;
@@ -205,17 +205,17 @@ int main(){
 	printf("\t\t\t rel errors in block mult by stage\n");
 	
 	rerr = test4x200x12();
-	printf("\t rel error in 4x200x12       = %.2f\n", rerr);
+	printf("\t rel error in 4x200x12       = %.2e\n", rerr);
 	
 	rerr = test600x200x12();
-	printf("\t rel error in 600x200x12     = %.2f\n", rerr);
+	printf("\t rel error in 600x200x12     = %.2e\n", rerr);
 
 	rerr = test600x200x3000();
-	printf("\t rel error in 600x200x3000   = %.2f\n", rerr);
+	printf("\t rel error in 600x200x3000   = %.2e\n", rerr);
 
 	rerr = test3000x200x3000();
-	printf("\t rel error in 3000x200x3000  = %.2f\n", rerr);
+	printf("\t rel error in 3000x200x3000  = %.2e\n", rerr);
 
 	rerr = testblock();
-	printf("\t rel error in 6000x6000x6000 = %.2f\n", rerr);
+	printf("\t rel error in 6000x6000x6000 = %.2e\n", rerr);
 }

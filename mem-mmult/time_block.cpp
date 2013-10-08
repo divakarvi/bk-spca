@@ -1,10 +1,12 @@
 #include "../utils/utils.hh"
 #include "../utils/TimeStamp.hh"
 #include "../utils/StatVector.hh"
+#include "../utils/Table.hh"
+#include "../proc-microk/asm4xnx4.hh"
 #include "blockmult.hh"
 #include <mkl.h>
 
-enum cacheflag {L2cache, L3cached};
+enum cacheflag {L2cache, L3cache};
 
 /*
  * L1 cache = 32 KB = 4000 doubles
@@ -128,7 +130,7 @@ double time600x200x12(){
 
 	MKL_free(C);
 
-	return cycles
+	return cycles;
 }
 
 /*
@@ -137,12 +139,12 @@ double time600x200x12(){
 double time600x200x3000(){
 	int ldA = 6000;
 	double* aa = 
-		(double *)MKL_malloc(600*200*10*2*sizeof(double, 16));
+		(double *)MKL_malloc(600*200*10*2*sizeof(double), 16);
 	double *b = (double *)MKL_malloc(1l*sizeof(double)*200*3000, 16);
 	int ldC = 1200;
 	double *C = (double *)MKL_malloc(1l*sizeof(double)*600*3000*10, 16);
 	double *scratch = 
-		(double *)MKL_malloc(1l*sizeof(double)*7200+600*200, 16);
+		(double *)MKL_malloc(1l*sizeof(double)*(7200+600*200), 16);
 	
 	for(int i=0; i < 600*200*10*2; i++)
 		aa[i] = rand()*1.0/RAND_MAX;
@@ -150,8 +152,7 @@ double time600x200x3000(){
 		b[i] = rand()*1.0/RAND_MAX;
 	for(int i=0; i < 600*3000*10; i++)
 		C[i] = 0;
-
-
+	
 	int count = 400;
 	TimeStamp clk;
 	double cycles;
@@ -160,8 +161,6 @@ double time600x200x3000(){
 	for(int i=0; i < count; i++)
 		mult600x200x3000(aa+600*200*(i%5), 6000, 
 				 b, C+600*3000*(i%8), 600, scratch);
-
-
 
 	cycles = clk.toc();
 	cycles /= count;
@@ -186,7 +185,7 @@ double time3000x200x3000(){
 	double *C = (double *)MKL_malloc(1l*sizeof(double)*3000*3000, 16);
 	double *scratch = 
 		(double *)MKL_malloc(1l*sizeof(double)
-				     *600*12+600*200+200*3000, 16);
+				     *(600*12+600*200+200*3000), 16);
 
 
 	for(int i=0; i < 3000*200; i++)
@@ -219,7 +218,7 @@ double time3000x200x3000(){
 /*
  * time 9000x9000x9000
  */
-void timeblock(){
+double timeblock(){
 	const int l = 9000;
 	const int m = 9000;
 	const int n = 9000;
@@ -229,7 +228,7 @@ void timeblock(){
 	double *C = (double *)MKL_malloc(1l*sizeof(double)*l*n, 16);
 	double *scratch = 
 		(double *)MKL_malloc(1l*sizeof(double)
-				     *600*12+600*200+200*3000, 16);
+				     *(600*12+600*200+200*3000), 16);
   
 	for(int i=0; i < l*m; i++)
 		A[i] = rand()*1.0/RAND_MAX;
@@ -258,29 +257,60 @@ void timeblock(){
 }
 
 int main(){
+	const char* rows[8] = {"4x200x4,L2", "4x200x4,L3", 
+	                      "4x200x12,L2", "4x200x12,L3",
+	                      "600x200x12", "600x200x3000",
+			      "3000x300x3000", "9000x9000x9000"
+	};
+	const char* cols[2] = {"cycles", "flops/cycle"};
+	double data[16];
+
 	double cycles;
 
 	cycles = time4x200x4(L2cache);
-	std::cout<<cycles<<std::endl;
+	data[0] = cycles;
+	data[8] = 32.0*200/cycles;
 
 	cycles = time4x200x4(L3cache);
-	std::cout<<cycles<<std::endl;
+	data[1] = cycles;
+	data[9] = 32.0*200/cycles;
 
 	cycles = time4x200x12(L2cache);
-	std::cout<<cycles<<std::endl;
+	data[2] = cycles;
+	data[10] = 2.0*4*12*200/cycles;
 
 	cycles = time4x200x12(L3cache);
-	std::cout<<cycles<<std::endl;
+	data[3] = cycles;
+	data[11] = 2.0*4*12*200/cycles;
 
 	cycles = time600x200x12();
-	std::cout<<cycles<<std::endl;
+	data[4] = cycles;
+	data[12] = 2.0*600*12*200/cycles;
 
 	cycles = time600x200x3000();
-	std::cout<<cycles<<std::endl;
+	data[5] = cycles;
+	data[13] = 2.0*600*3000*200/cycles;
 
 	cycles = time3000x200x3000();
-	std::cout<<cycles<<std::endl;
+	data[6] = cycles;
+	data[15] = 2.0*3000*3000*200/cycles;
 
 	cycles = timeblock();
-	std::cout<<cycles<<std::endl;
+	data[7] = cycles;
+	data[15] = 2.0*9000*9000*9000/cycles;
+
+	verify_dir("DBG");
+	std::ofstream ofile("DBG/time_block.txt");
+	std::streambuf *sbuf = std::cout.rdbuf();
+	std::cout.rdbuf(ofile.rdbuf());
+
+
+	Table tbl;
+	tbl.dim(8, 2);
+	tbl.rows(rows);
+	tbl.cols(cols);
+	tbl.data(data);
+	tbl.print("matrix mult using asm4x200x4 microkernel");
+	
+	std::cout.rdbuf(sbuf);
 }
