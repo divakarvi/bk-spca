@@ -293,7 +293,7 @@ int main(){
 
 	cycles = time3000x200x3000();
 	data[6] = cycles;
-	data[15] = 2.0*3000*3000*200/cycles;
+	data[14] = 2.0*3000*3000*200/cycles;
 
 	cycles = timeblock();
 	data[7] = cycles;
