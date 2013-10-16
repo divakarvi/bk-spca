@@ -26,5 +26,5 @@ void exit_critical(int tid,
  */
 void enter_criticalx(int tid, 
 		     volatile int& yield, 
-		     volatile int interested[2])
+		     volatile int interested[2]);
 #endif

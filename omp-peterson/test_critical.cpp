@@ -1,5 +1,6 @@
 #include "../utils/Table.hh"
 #include "critical.hh"
+#include <omp.h>
 #include <fstream>
 #include <iostream>
 
@@ -60,7 +61,7 @@ int main(){
 	verify_dir("DBG");
 	std::ofstream ofile("DBG/critical.txt");
 	std::streambuf *sbuf;
-	sbuf = std:cout.rdbuf();
+	sbuf = std::cout.rdbuf();
 	std::cout.rdbuf(ofile.rdbuf());
 	std::cout.precision(10);
 	tbl.print("value of variable after 2 threads add to it n times");

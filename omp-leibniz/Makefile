@@ -1,6 +1,6 @@
 include ../makevars.mk
 MODS := ../utils
-CFLAGSXX := -openmp
+CFLAGSXX := fno-inline-functions -fno-verbose-asm -openmp
 LIBS := -openmp
 
 ###############
