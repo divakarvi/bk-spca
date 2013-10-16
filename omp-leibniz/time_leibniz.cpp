@@ -16,6 +16,8 @@ struct leib_struct time_leibniz(long int n, int nthreads, enum leib_enum flag){
 	TimeStamp clk;
 	clk.tic();
 	struct leib_struct ans;
+	int chunk = 10;
+	
 	switch(flag){
 	case LEIB:
 		ans.pi = leibniz(n);
@@ -30,7 +32,6 @@ struct leib_struct time_leibniz(long int n, int nthreads, enum leib_enum flag){
 		ans.pi = ompfor(n, nthreads);
 		break;
 	case FORCHUNK:
-		int chunk = 10;
 		ans.pi = ompforchunk(n, nthreads, chunk);
 		break;
 	case PLLFOR:
@@ -39,7 +40,7 @@ struct leib_struct time_leibniz(long int n, int nthreads, enum leib_enum flag){
 	case SCTN:
 		ans.pi = section(n);
 		break;
-	case default:
+	default:
 		assrt(0 == 1);
 	}
 	ans.cycles = clk.toc();
@@ -56,7 +57,7 @@ int main(){
 	const char* cols[2] = {"pi", "cycles/term"};
 
 	const int nthreads = 12;
-	const long n = 1l*1000*1000*1000;
+	const long n = 1l*1000*1000*1000*10;
 	double data[14];
 	struct leib_struct ans;
 	for(int i=0; i < 7; i++){
@@ -74,10 +75,10 @@ int main(){
 	std::ofstream ofile("DBG/time_leibniz.txt");
 	std::streambuf *sbuf;
 	sbuf = std::cout.rdbuf();
-	cout.rdbuf(ofile.rdbuf());
+	std::cout.rdbuf(ofile.rdbuf());
 	char banner[200];
 	sprintf(banner, "omp constructs, sum of %ld terms of Leibniz", n);
 	tbl.print(banner);
-	cout.rdbuf(sbuf);
+	std::cout.rdbuf(sbuf);
 	ofile.close();
 }

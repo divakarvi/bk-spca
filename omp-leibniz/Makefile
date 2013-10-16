@@ -1,5 +1,7 @@
 include ../makevars.mk
 MODS := ../utils
+CFLAGSXX := -openmp
+LIBS := -openmp
 
 ###############
 .PHONY: $(MODS)
