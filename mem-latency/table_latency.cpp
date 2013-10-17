@@ -43,16 +43,13 @@ int main(){
 		cyc2dram[i+2*nrows] = stats.max();
 	}
 	
-	std::streambuf *sbuf_backup;
-	sbuf_backup = cout.rdbuf();
-	ofstream ofile;
 	verify_dir("DBG");
 #ifdef MEMWALK
-	ofile.open("DBG/latency_memwalk.txt");
+	const char* fname = "DBG/latency_memwalk.txt";
 #else
-	ofile.open("DBG/latency_clflush.txt");
+	const char* fname = "DBG/latency_clflush.txt";
 #endif
-	cout.rdbuf(ofile.rdbuf());
+	link_cout(fname);
 
 	Table tbl;
 	tbl.dim(nrows, ncols);
@@ -64,5 +61,5 @@ int main(){
 		ntrials);
 	tbl.print(banner);
 	
-	cout.rdbuf(sbuf_backup);
+	unlink_cout();
 }

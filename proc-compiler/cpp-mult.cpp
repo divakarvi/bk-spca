@@ -47,14 +47,12 @@ int main(){
 	int count[4] = {4000, 40, 10, 1};
 
 	verify_dir("DBG/");
-	ofstream ofile("DBG/cpp-mult.txt");
-	std::streambuf *sbuf = cout.rdbuf();
-	cout.rdbuf(ofile.rdbuf());
+	const char* fname = "DBG/cpp-mult.txt";
+	link_cout(fname);
 	
 	for(int i=0; i < 4; i++){
 		timecppmult(dim[i], count[i]); 
 	}
 	
-	cout.rdbuf(sbuf);
-	ofile.close();
+	unlink_cout();
 }

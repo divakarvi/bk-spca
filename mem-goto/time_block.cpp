@@ -300,10 +300,8 @@ int main(){
 	data[15] = 2.0*9000*9000*9000/cycles;
 
 	verify_dir("DBG");
-	std::ofstream ofile("DBG/time_block.txt");
-	std::streambuf *sbuf = std::cout.rdbuf();
-	std::cout.rdbuf(ofile.rdbuf());
-
+	const char *fname = "DBG/time_block.txt";
+	link_cout(fname);
 
 	Table tbl;
 	tbl.dim(8, 2);
@@ -312,5 +310,5 @@ int main(){
 	tbl.data(data);
 	tbl.print("matrix mult using asm4x200x4 microkernel");
 	
-	std::cout.rdbuf(sbuf);
+	unlink_cout();
 }

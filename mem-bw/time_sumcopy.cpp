@@ -83,12 +83,10 @@ int main(){
 	bw[3] = time(a, b, n, COPY);
 	bw[4] = time(a, b, n, COPYCONSTSTR);
 
-	std::streambuf *sbuf_backup = std::cout.rdbuf();
 	verify_dir("DBG/");
 	char fname[200];
 	sprintf(fname, "DBG/time_sc_stride_%d.txt", STR);
-	std::ofstream ofile(fname);
-	std::cout.rdbuf(ofile.rdbuf());
+	link_cout(fname);
 
 	Table tbl;
 	tbl.dim(5, 1);
@@ -99,8 +97,7 @@ int main(){
 	sprintf(banner, "memory bw in bytes/cycle, stride = %d\n", STR);
 	tbl.print(banner);
 	
-	std::cout.rdbuf(sbuf_backup);
-	ofile.close();
+	unlink_cout();
 
 	release_mem(a, b);
 

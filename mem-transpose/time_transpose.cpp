@@ -3,7 +3,6 @@
 #include "../utils/StatVector.hh"
 #include "../utils/Table.hh"
 #include "transpose.hh"
-#include <fstream>
 #include <mkl.h>
 
 enum transpose_enum {EASY, BLOCK, BLOCKX, RECURSIVE, POW2};
@@ -75,9 +74,7 @@ void table1(){
 	char fname[200];
 	verify_dir("DBG");
 	sprintf(fname, "DBG/time_trans_B_%d.txt", B);
-	std::streambuf *sbuf_backup = std::cout.rdbuf();
-	std::ofstream ofile(fname);
-	std::cout.rdbuf(ofile.rdbuf());
+	link_cout(fname);
 
 	Table tbl;
 	tbl.dim(4, 1);
@@ -91,7 +88,7 @@ void table1(){
 	MKL_free(a);
 	MKL_free(b);
 
-	std::cout.rdbuf(sbuf_backup);
+	unlink_cout();
 }
 
 /*
@@ -132,9 +129,7 @@ void table2(){
 	char fname[200];
 	verify_dir("DBG");
 	sprintf(fname, "DBG/time_pow2_B_%d.txt", B);
-	std::streambuf *sbuf_backup = std::cout.rdbuf();
-	std::ofstream ofile(fname);
-	std::cout.rdbuf(ofile.rdbuf());
+	link_cout(fname);
 
 	Table tbl;
 	tbl.dim(5, 1);
@@ -148,7 +143,7 @@ void table2(){
 	MKL_free(a);
 	MKL_free(b);
 
-	std::cout.rdbuf(sbuf_backup);
+	unlink_cout();
 }
 
 

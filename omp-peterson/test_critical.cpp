@@ -1,7 +1,6 @@
 #include "../utils/Table.hh"
 #include "critical.hh"
 #include <omp.h>
-#include <fstream>
 #include <iostream>
 
 long withcritical(long int n){
@@ -59,12 +58,10 @@ int main(){
 	tbl.cols(cols);
 	tbl.data(data);
 	verify_dir("DBG");
-	std::ofstream ofile("DBG/critical.txt");
-	std::streambuf *sbuf;
-	sbuf = std::cout.rdbuf();
-	std::cout.rdbuf(ofile.rdbuf());
+
+	const char* fname = "DBG/critical.txt";
+	link_cout(fname);
 	std::cout.precision(10);
 	tbl.print("value of variable after 2 threads add to it n times");
-	std::cout.rdbuf(sbuf);
-	ofile.close();
+	unlink_cout();
 }

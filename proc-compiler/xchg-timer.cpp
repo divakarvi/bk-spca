@@ -112,16 +112,13 @@ int main(){
 	table.data(flpscyc);
 
 	verify_dir("DBG");
-	std::streambuf *sbuf = std::cout.rdbuf();
 #ifndef INCACHE
-	ofstream ofile("DBG/xchg-mult.txt");
+	const char* fname = "DBG/xchg-mult.txt";
 #else
-	ofstream ofile("DBG/xchg-mult-in-cache.txt");
+	const char* fname = "DBG/xchg-mult-in-cache.txt";
 #endif
-	std::cout.rdbuf(ofile.rdbuf());
-	
+	link_cout(fname);
 	table.print("flops per cycle (mult of sq matrices)");
-	
-	std::cout.rdbuf(sbuf);
-	ofile.close();
+	unlink_cout();
+
 }

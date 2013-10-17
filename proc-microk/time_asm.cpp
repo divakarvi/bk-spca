@@ -71,9 +71,8 @@ int main(){
 	data[5] = time(200); data[11] = 2*16*200/data[5];
 
 	verify_dir("DBG");
-	std::ofstream ofile("DBG/time_asm.txt");
-	std::streambuf *sbuf = std::cout.rdbuf();
-	std::cout.rdbuf(ofile.rdbuf());
+	const char* fname = "DBG/time_asm.txt";
+	link_cout(fname);
 
 	Table tbl;
 	tbl.dim(6, 2);
@@ -82,5 +81,5 @@ int main(){
 	tbl.data(data);
 	tbl.print("timing asm4xnx4.s");
 
-	std::cout.rdbuf(sbuf);
+	unlink_cout();
 }
