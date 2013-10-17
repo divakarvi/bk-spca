@@ -1,13 +1,14 @@
 include ../makevars.mk
-MODS := ../utils
 CFLAGSXX := fno-inline-functions -fno-verbose-asm -openmp
 LIBS := -openmp
+MODS := ../utils
 
 ###############
 .PHONY: $(MODS)
 $(MODS):
 	make --directory=$@ all
 
+##############
 leibniz.o: leibniz.cpp
 include leibniz.d
 
