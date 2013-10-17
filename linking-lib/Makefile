@@ -1,4 +1,5 @@
 include ../makevars.mk
+CFLAGSXX := $(MKLINC)
 
 ##################
 MODS := ../utils ../linking-aitken ../linking-fft
