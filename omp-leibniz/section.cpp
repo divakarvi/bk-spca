@@ -13,10 +13,10 @@ double section(long int n){
 #pragma omp sections
 		{
 #pragma omp section
-			for(int i=0; i < n; i=i+2)
+			for(long int i=0; i < n; i=i+2)
 				sum += 4.0/(2*i+1);
 #pragma omp section
-			for(int i=1; i < n; i=i+2)
+			for(long int i=1; i < n; i=i+2)
 				sum -= 4.0/(2*i+1);
 		}
 #pragma omp critical
