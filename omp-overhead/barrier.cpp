@@ -1,5 +1,8 @@
+#include "../utils/TimeStamp.hh"
 #include "overhead.hh"
 #include <omp.h>
+
+extern void dummy();
 
 double barrier(int nthreads, int count){
 	double cycles;

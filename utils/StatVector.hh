@@ -64,8 +64,8 @@ public:
 		sortflag = -1;
 		numitems = 0; 
 	}
-	double operator()(int i){
-		return v(i);
+	double operator()(int i) const{
+		return v[i];
 	}
 	void print(const char* banner = ""){
 		std::cout<<std::setw(50)<<banner<<std::endl;

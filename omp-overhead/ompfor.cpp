@@ -1,5 +1,8 @@
+#include "../utils/TimeStamp.hh"
 #include "overhead.hh"
 #include <omp.h>
+
+extern void dummy();
 
 double ompfor(int nthreads, int countinner, long int countouter){
 	double cycles;
@@ -46,8 +49,6 @@ double ompfor_overhead(int nthreads, int countinner, long int countouter){
 
 double ompfornowait(int nthreads, int countinner, long int countouter){
 	double cycles;
-	TimeStamp clk;
-	clk.tic();
 #pragma omp parallel				\
 	num_threads(nthreads)			\
 	default(none)				\
@@ -78,8 +79,6 @@ double ompfornowait_overhead(int nthreads, long int countinner,
 
 double ompfordynamic(int nthreads, int countinner, long int countouter){
 	double cycles;
-	TimeStamp clk;
-	clk.tic();
 #pragma omp parallel				\
 	num_threads(nthreads)			\
 	default(none)				\

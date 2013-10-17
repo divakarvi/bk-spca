@@ -14,9 +14,9 @@ dummy.o: dummy.cpp
 include dummy.d
 
 parallelA.o: parallelA.cpp
-include paralleA.d
+include parallelA.d
 
-parallelB.o: paralllelB.cpp
+parallelB.o: parallelB.cpp
 include parallelB.d
 
 time_parallel.o: time_parallel.cpp
@@ -35,4 +35,4 @@ calc_overhead.o: calc_overhead.cpp
 include calc_overhead.d
 
 calc_overhead.exe: calc_overhead.o barrier.o ompfor.o dummy.o	\
-		   ../utils ../utils/utils.o
+		   ../utils ../utils/utils.o ../utils/Table.o

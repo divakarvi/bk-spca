@@ -1,10 +1,11 @@
 #include "../utils/utils.hh"
 #include "../utils/TimeStamp.hh"
 #include "../utils/StatVector.hh"
+#include "parallel.hh"
 #include <omp.h>
 #include <fstream>
 
-void time_parallel(int nthreads, std::fstream& ofile){
+void time_parallel(int nthreads, std::ofstream& ofile){
 	int count = 1000*1000*100;
 	StatVector stats(2*count);
 	for(int i=0; i < count; i++){
