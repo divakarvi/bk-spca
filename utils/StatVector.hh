@@ -64,6 +64,9 @@ public:
 		sortflag = -1;
 		numitems = 0; 
 	}
+	double operator()(int i){
+		return v(i);
+	}
 	void print(const char* banner = ""){
 		std::cout<<std::setw(50)<<banner<<std::endl;
 		std::cout<<std::setw(10)<<"mean: "<<this->mean()<<std::endl;

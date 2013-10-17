@@ -100,6 +100,27 @@ void verify_dir(const char *dir){
 	assrt(S_ISDIR(sb.st_mode));
 }
 
+static streambuf *sbuf_backup;
+static ofstream ofile;
+static int link_state = 0;
+
+void link_cout(const char *fname){
+	assrt(link_state == 0);
+	link_state = 1;
+	
+	sbuf_backup = cout.rdbuf();
+	ofile.open(fname);
+	cout.rdbuf(ofile.rdbuf());
+}
+
+void unlink_cout(){
+	assrt(link_state == 1);
+	link_state = 0;
+
+	cout.rdbuf(sbuf_backup);
+	ofile.close();
+}
+
 void box_file(const char* fname, const char*mesg){
 	FILE *file;
 		file = fopen(fname, "r");

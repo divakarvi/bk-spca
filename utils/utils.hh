@@ -82,6 +82,16 @@ void solve2x2(double *restrict A, double *restrict rhs, double *restrict x);
 void verify_dir(const char *dir);
 
 /*
+ * open file fname and link its stream to that of cout
+ */
+void link_cout(const char *fname);
+
+/*
+ * close file opened with link2cout and restore cout stream
+ */
+void unlink_cout();
+
+/*
  * prints the file to cout (omitting unprintable characters)
  * the contents of the file are put inside a box
  */

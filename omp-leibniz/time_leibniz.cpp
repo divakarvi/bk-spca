@@ -72,13 +72,9 @@ int main(){
 	tbl.cols(cols);
 	tbl.data(data);
 	verify_dir("DBG");
-	std::ofstream ofile("DBG/time_leibniz.txt");
-	std::streambuf *sbuf;
-	sbuf = std::cout.rdbuf();
-	std::cout.rdbuf(ofile.rdbuf());
+	link_cout("DBG/time_leibniz.txt");
 	char banner[200];
-	sprintf(banner, "omp constructs, sum of %ld terms of Leibniz", n);
+	sprintf(banner, "sum of %ld terms of Leibniz", n);
 	tbl.print(banner);
-	std::cout.rdbuf(sbuf);
-	ofile.close();
+	unlink_cout();
 }
