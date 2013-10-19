@@ -100,9 +100,9 @@ void verify_dir(const char *dir){
 	assrt(S_ISDIR(sb.st_mode));
 }
 
-static streambuf *sbuf_backup;
-static ofstream ofile;
-static int link_state = 0;
+streambuf *sbuf_backup;
+ofstream ofile;
+int link_state = 0;
 
 void link_cout(const char *fname){
 	assrt(link_state == 0);

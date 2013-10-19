@@ -8,7 +8,7 @@ private:
 	int width;
 	const char* (*rowlist);
 	const char* (*collist);
-	double *data_arr;
+	double *datarr;
 	int m, n; //dim of data
 public:
 	Table():state(0){
@@ -46,7 +46,7 @@ public:
 	void data(double *datai){
 		assrt(state == 3);
 		state = 4;
-		data_arr = datai;
+		datarr = datai;
 	}
 	
 	void print(const char *banner="");

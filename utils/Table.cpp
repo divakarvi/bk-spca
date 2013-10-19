@@ -49,23 +49,19 @@ void Table::print(const char* banner){
 	cout<<endl;
 	cout<<endl;
 	cout<<"Table: "<<banner<<endl<<endl;
-	//drawline(width, n);
-	//drawblankline(width, n);
-	//drawtoprow(width, collist, n);
-	//drawblankline(width, n);
-	//drawline(width, n);
+	drawline(width, n);
+	drawblankline(width, n);
+	drawtoprow(width, collist, n);
+	drawblankline(width, n);
+	drawline(width, n);
 	double *rdata = new double[n];
-	cout<<data_arr[24]<<endl<<endl;
 	for(int i=0; i < m; i++){
-		//drawblankline(width, n);
-		for(int j=0; j < n; j++){
-			rdata[j] = data_arr[i+j*m];
-			cout<<rdata[j]<<endl;
-		}
-		cout<<endl;
-		//drawrow(width, rowlist[i], rdata, n);
-		//drawblankline(width, n);
-		//drawline(width, n);
+		drawblankline(width, n);
+		for(int j=0; j < n; j++)
+			rdata[j] = datarr[i+j*m];
+		drawrow(width, rowlist[i], rdata, n);
+		drawblankline(width, n);
+		drawline(width, n);
 	}
 	delete[] rdata;
 }

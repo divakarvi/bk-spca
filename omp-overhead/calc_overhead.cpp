@@ -2,6 +2,8 @@
 #include "../utils/TimeStamp.hh"
 #include "../utils/Table.hh"
 #include "overhead.hh"
+#include <fstream>
+#include <iostream>
 
 int main(){
 	const char *rows[12] = {"1", "2", "3", "4", "5", "6", 
@@ -22,18 +24,20 @@ int main(){
 							countouter/1000);
 	}
 
-	std::cout<<" "<<std::endl;
 	Table tbl;
 	tbl.dim(12, 4);
 	tbl.rows(rows);
 	tbl.cols(cols);
 	tbl.data(data);
 	verify_dir("DBG");
-	link_cout("DBG/overhead.txt");
+	//link_cout("DBG/overhead.txt");
+	std::ofstream ofile("DBG/overhead.txt");
+	std::streambuf *sbuf = std::cout.rdbuf();
+	std::cout.rdbuf(ofile.rdbuf());
 	std::cout<<"\t     count inner = "<<countinner<<std::endl;
 	std::cout<<"\t     count outer = "<<countouter<<std::endl;
 	std::cout<<"\t count [barrier] = "<<count<<std::endl;
-	std::cout<<data[24]<<"\n\n";
 	tbl.print("overhead in cycles, 1 to 12 threads");
-	unlink_cout();
+	//unlink_cout();
+	std::cout.rdbuf(sbuf);
 }
