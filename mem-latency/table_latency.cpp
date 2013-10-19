@@ -7,16 +7,17 @@
 #include <fstream>
 #include <iostream>
 
-static const int ntrials = 100;
-static StatVector stats(ntrials);
+#define NTRIALS 100
 
-void measure_latency(int n, StatVector& stobj){
-	assrt(stobj.getSize() >= ntrials);
-	stobj.flush();
+
+void measure_latency(int n, StatVector& stats){
+	const int ntrials = NTRIALS;
+	assrt(stats.getSize() >= ntrials);
+	stats.flush();
 	int *npages = (int *)MKL_malloc(1l*4096*n, 4096);
 	for(int i=0; i < ntrials; i++){
 		double cycles = latency(n, npages);
-		stobj.insert(cycles);
+		stats.insert(cycles);
 	}
 	MKL_free(npages);
 }
@@ -35,6 +36,7 @@ int main(){
 	const char *cols[ncols] = {"min", "median", "max"};
 	
 	double cyc2dram[nrows*ncols];
+	StatVector stats(NTRIALS);
 	
 	for(int i=0; i < nrows; i++){
 		measure_latency(nlist[i], stats);
@@ -58,7 +60,7 @@ int main(){
 	tbl.data(cyc2dram);
 	char banner[200];
 	sprintf(banner, "cycles to dram, ntrials = %d, when N pages accessed",
-		ntrials);
+		NTRIALS);
 	tbl.print(banner);
 	
 	unlink_cout();

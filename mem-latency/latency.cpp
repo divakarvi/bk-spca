@@ -22,7 +22,7 @@ void cache_flush(void *ptr, int nbytes){
 double latency(int n, int *npages){
 	assrt((long)npages%4096 == 0);
 	/*
-	 * n*4096/64 = n*64 cache lines in 4096 byte page
+	 * n*4096/64 = n*64 cache lines in n 4096 byte pages
 	 */
 	int *list = new int[n*64];
 	random_cycle(list, n*64);
