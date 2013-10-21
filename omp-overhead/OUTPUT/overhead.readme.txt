@@ -1,4 +1,0 @@
-for unknown reason using link_cout(), unlink_cout() to record the results
-of calc_overhead.cpp changes the output in a major way --- bizarre.
-
-counts reduced for for dynamic.

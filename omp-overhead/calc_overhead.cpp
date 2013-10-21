@@ -30,14 +30,14 @@ int main(){
 	tbl.cols(cols);
 	tbl.data(data);
 	verify_dir("DBG");
-	//link_cout("DBG/overhead.txt");
-	std::ofstream ofile("DBG/overhead.txt");
-	std::streambuf *sbuf = std::cout.rdbuf();
-	std::cout.rdbuf(ofile.rdbuf());
+	link_cout("DBG/overhead.txt");
+	//std::ofstream ofile("DBG/overhead.txt");
+	//std::streambuf *sbuf = std::cout.rdbuf();
+	//std::cout.rdbuf(ofile.rdbuf());
 	std::cout<<"\t     count inner = "<<countinner<<std::endl;
 	std::cout<<"\t     count outer = "<<countouter<<std::endl;
 	std::cout<<"\t count [barrier] = "<<count<<std::endl;
 	tbl.print("overhead in cycles, 1 to 12 threads");
-	//unlink_cout();
-	std::cout.rdbuf(sbuf);
+	//std::cout.rdbuf(sbuf);
+	unlink_cout();
 }

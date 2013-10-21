@@ -100,24 +100,25 @@ void verify_dir(const char *dir){
 	assrt(S_ISDIR(sb.st_mode));
 }
 
-streambuf *sbuf_backup;
-ofstream ofile;
-int link_state = 0;
-
+static std::streambuf *sbuf_backup;
+static std::ofstream ofile;
+static int linkcout_state = 0;
 void link_cout(const char *fname){
-	assrt(link_state == 0);
-	link_state = 1;
-	
-	sbuf_backup = cout.rdbuf();
+	assrt(linkcout_state == 0);
+	linkcout_state = 1;
+
 	ofile.open(fname);
-	cout.rdbuf(ofile.rdbuf());
+	assrt(ofile.good());
+	sbuf_backup = cout.rdbuf();
+	std::cout.rdbuf(ofile.rdbuf());
+	assrt(cout.good());
 }
 
 void unlink_cout(){
-	assrt(link_state == 1);
-	link_state = 0;
+	assrt(linkcout_state == 1);
+	linkcout_state = 0;
 
-	cout.rdbuf(sbuf_backup);
+	std::cout.rdbuf(sbuf_backup);
 	ofile.close();
 }
 
