@@ -1,5 +1,5 @@
 include ../makevars.mk
-CFLAGSXX := -DMEMWALK -fno-inline-functions $(MKLINC)
+CFLAGSXX := -fno-inline-functions $(MKLINC)
 LIBS := $(MKLLIBS)
 MODS := ../utils ../pyplot
 
@@ -7,6 +7,8 @@ MODS := ../utils ../pyplot
 .PHONY: $(MODS)
 $(MODS):
 	$(MAKE) --directory=$@ all
+
+all: latency.o latency_utils.o dummy.o
 
 latency_utils.o: latency_utils.cpp
 include latency_utils.d
