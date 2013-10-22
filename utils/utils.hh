@@ -53,14 +53,16 @@ void array_diff(double *restrict v, double *restrict w, int n);
  * m     = num of rows
  * n     = num of cols 
  * fname = name of file for output
+ *         (uses stdout if fname == NULL)
  */
-void array_out(double *v, int m, int n, const char *fname);
+void array_out(double *v, int m, int n, const char *fname = NULL);
 
  /*
   * same as above except for lda
   * i,j th entry = v[i+j*lda]
+  * uses stdout if fname == NULL
   */
-void array_out(double *v, int m, int n, int lda, const char *fname);
+void array_out(double *v, int m, int n, int lda, const char *fname = NULL);
 
 /*
  * counterpart of array_out()

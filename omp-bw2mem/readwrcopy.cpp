@@ -9,7 +9,6 @@ double sum_onecore(double *list, long n){
 }
 
 void init_manycore(double *list, long len, int nthreads){
-	double ans;
 #pragma omp parallel for			\
 	num_threads(nthreads)			\
 	default(none)				\
@@ -25,18 +24,27 @@ void init_manycore(double *list, long len, int nthreads){
 	}
 }
 
+void init_manycore_cheap(double *list, long len, int nthreads){
+#pragma omp parallel for			\
+	num_threads(nthreads)			\
+	default(none)				\
+	shared(list, len, nthreads)
+	for(long i=0; i < len; i++)
+		list[i] = 0;
+}
+
 double sum_manycore(double *list, long len, int nthreads){
 	double ans = 0;
 	
 #pragma omp parallel				\
 	num_threads(nthreads)			\
 	default(none)				\
-	shared(ans, len, list, cout)
+	shared(ans, list, len)
 	{
 		int tid = omp_get_thread_num();
 		long first = len*tid/nthreads;
-		long last = len*(tid+1)/nthreads;
-		double s = sum_onecore(list+first, last-first);
+		long next = len*(tid+1)/nthreads;
+		double s = sum_onecore(list+first, next-first);
 #pragma omp critical
 		ans += s;
 	}
@@ -52,14 +60,13 @@ void write_manycore(double *list, long len, int nthreads){
 #pragma omp parallel				\
 	num_threads(nthreads)			\
 	default(none)				\
-	shared(ans, len, list, cout)
+	shared(list, len)
 	{
 		int tid = omp_get_thread_num();
 		long first = len*tid/nthreads;
-		long last = len*(tid+1)/nthreads;
-		double s = write_onecore(list+first, last-first);
+		long next = len*(tid+1)/nthreads;
+		write_onecore(list+first, next-first);
 	}
-	return ans;
 }
 
 void copy_onecore(double *list, long n){
@@ -67,16 +74,15 @@ void copy_onecore(double *list, long n){
 		list[i] = list[n/2+i];
 }
 
-double copy_manycore(double *list, long len, int nthreads){
+void copy_manycore(double *list, long len, int nthreads){
 #pragma omp parallel				\
 	num_threads(nthreads)			\
 	default(none)				\
-	shared(ans, len, list, cout)
+	shared(list, len)
 	{
 		int tid = omp_get_thread_num();
 		long first = len*tid/nthreads;
-		long last = len*(tid+1)/nthreads;
-		double s = copy_onecore(list+first, last-first);
+		long next = len*(tid+1)/nthreads;
+		copy_onecore(list+first, next-first);
 	}
-	return ans;
 }
