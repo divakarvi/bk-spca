@@ -12,7 +12,7 @@ enum rwc_flag_enum {RWC_READ, RWC_WRITE, RWC_COPY};
  * returns bytes/cycle
  */
 double time(enum rwc_flag_enum flag, int nthreads){
-	const int count = 5;
+	const int count = 20;
 	const long len = 2l*1000*1000*1000; //16GB array
 	long nbytes = len*sizeof(double);
 	double *list = (double *)MKL_malloc(nbytes, 64);
@@ -50,8 +50,8 @@ int main(){
 	for(int i=0; i < 12; i++){
 		int nth = i + 1;
 		data[i] = time(RWC_READ, nth);
-		data[i+12] = time(RWC_READ, nth);
-		data[i+24] = time(RWC_READ, nth);
+		data[i+12] = time(RWC_WRITE, nth);
+		data[i+24] = time(RWC_COPY, nth);
 	}
 
 	verify_dir("DBG");

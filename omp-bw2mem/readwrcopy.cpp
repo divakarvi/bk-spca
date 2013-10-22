@@ -30,7 +30,7 @@ void init_manycore_cheap(double *list, long len, int nthreads){
 	default(none)				\
 	shared(list, len, nthreads)
 	for(long i=0; i < len; i++)
-		list[i] = 0;
+		list[i] = i/7.0;
 }
 
 double sum_manycore(double *list, long len, int nthreads){
