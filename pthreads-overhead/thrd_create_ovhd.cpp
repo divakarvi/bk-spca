@@ -54,7 +54,5 @@ int main(){
 	for(int i=1; i < 6; i++)
 		std::cout<<"\t\t"<<stats(count-i)<<std::endl;
 
-
-
 	unlink_cout();
 }
