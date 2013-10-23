@@ -1,5 +1,6 @@
-#include <cmath>
 #include "utils.hh"
+#include <emmintrin.h>
+#include <cmath>
 #include <cstdio>
 #include <iostream>
 #include <iomanip>
