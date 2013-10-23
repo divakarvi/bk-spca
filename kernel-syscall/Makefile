@@ -7,3 +7,6 @@ time_syscall.o: time_syscall.cpp
 	g++ -O3 -c time_syscall.cpp
 dummy_sys.o: dummy_sys.cpp
 	g++ -O3 -c dummy_sys.cpp
+
+dvmesg.exe: dvmesg.c
+	gcc -o $@ $<
