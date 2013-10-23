@@ -22,6 +22,10 @@ public:
 	 */
 	void fwd(double *v);
 	void bwd(double *v);
+	/*
+	 * numa initialize v to 0
+	 */
+	void numa_init(double *v);
 };
 
 #endif

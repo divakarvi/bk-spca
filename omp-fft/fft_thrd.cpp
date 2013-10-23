@@ -52,3 +52,20 @@ void fft_thrd::bwd(double *v){
 			self->fftlist[tid]->bwd(v + i*(2*nn));
 	}
 }
+
+void fft_thrd::numa_init(double *v){
+	fft_thrd *self = this;
+#pragma omp parallel				\
+	num_threads(nthreads)			\
+	default(none)				\
+	shared(v, self)
+	{
+		int nn = self->n;
+		int tid = omp_get_thread_num();
+		long first = count*tid/nthreads;
+		long next = count*(tid+1)/nthreads;
+		for(long i=first; i < next; i++)
+			for(int j=0; j < n; j++)
+				v[2*j + i*(2*n)] = v[2*j+1 + i*(2*n)] = 0;
+	}
+}
