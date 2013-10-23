@@ -12,7 +12,7 @@ void hanoi(int from, int to, int n){
 }
 
 int main(){
-	int n = 5;
+	int n;
 	printf("n = ");
 	scanf("%d", &n);
 	hanoi(0, 1, n);
