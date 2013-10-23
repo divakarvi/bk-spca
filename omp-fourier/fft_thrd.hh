@@ -1,6 +1,6 @@
 #ifndef __FFTTHRD23OCT2013__
 #define __FFTTHRD23OCT2013__
-#include "../linking-fft/fft-mkl.hh"
+#include "../linking-fft/fft_mkl.hh"
 
 class fft_thrd{
 private:
