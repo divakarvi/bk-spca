@@ -1,9 +1,10 @@
+#include "../utils/utils.hh"
+#include "../utils/TimeStamp.hh"
+#include "../kernel-syscall/dvmesg.h"
 #include <unistd.h>
 #include <pthread.h>
 #include <iostream>
 #include <fstream>
-#include "TimeStamp.hh"
-#include "dvmesg.h"
 using namespace std;
 
 #undef DV_KERNEL_MESG
@@ -129,7 +130,8 @@ int main(){
 #endif
 	double cycles = clk.toc();
 #ifndef DV_KERNEL_MESG
-	ofstream ofile("OUTPUT/altadd_mtx.txt", ios_base::app);
+	verify_dir("DBG");
+	ofstream ofile("DBG/altadd_mtx.txt", ios_base::app);
 	ofile<<"nprocs = "<<nprocs<<endl;
 	ofile<<"nthreads = "<<nthreads<<endl;
 	ofile<<"count = "<<count<<endl;	

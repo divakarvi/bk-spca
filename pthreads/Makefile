@@ -55,32 +55,6 @@ p_overhead.o: p_overhead.cpp
 
 altadd: altadd_omp.exe altadd_c.exe altadd_mtx.exe altadd_spin.exe altadd_cond.exe altadd_barrier.exe
 
-altadd_omp.exe: altadd_omp.o
-	g++ -o $@ $^ -fopenmp
-altadd_omp.o: altadd_omp.cpp
-	g++ -O3 -c $< -fopenmp
-
-altadd_c.exe: altadd_c.o
-	g++ -o $@ $^ -pthread
-altadd_c.o: altadd_c.cpp
-	g++ -O3 -c $< 
-
-altadd_mtx.exe: altadd_mtx.o
-	g++ -o $@ $^ -pthread
-altadd_mtx.o: altadd_mtx.cpp
-	g++ -O3 -c $< 
-
-altadd_cond.exe: altadd_cond.o
-	g++ -o $@ $^ -pthread
-altadd_cond.o: altadd_cond.cpp
-	g++ -O3 -c $< 
-
-altadd_spin.exe: altadd_spin.o dummy.o
-	g++ -o $@ $^ -pthread 
-altadd_spin.o: altadd_spin.cpp
-	g++ -O3 -fno-inline-functions -c $< 
-altadd_spin.s: altadd_spin.cpp
-	g++ -S -fno-inline-functions $<
 
 
 alex.exe: alexonlinux.o
