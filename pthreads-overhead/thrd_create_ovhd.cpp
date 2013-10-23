@@ -46,13 +46,15 @@ int main(){
 		double cycles=clk.toc();
 		stats.insert(cycles);
 		if(i < 5)
-			std::cout<<cycles<<std::endl;
+			std::cout<<"\t\t"<<cycles<<std::endl;
 	}
+	stats.print();
+
 	std::cout<<std::endl<<"worst 5: "<<std::endl;
 	for(int i=1; i < 6; i++)
-		std::cout<<stats(count-i)<<std::endl;
+		std::cout<<"\t\t"<<stats(count-i)<<std::endl;
 
-	stats.print();
+
 
 	unlink_cout();
 }
