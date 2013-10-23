@@ -10,7 +10,7 @@
  * num cycles normalized by n*lg(n)
  */
 double time(int n, int nth){
-	long nbytes = 16l*1000*1000*1000/1000;
+	long nbytes = 16l*1000*1000*1000;
 	long count = nbytes/(16*n);
 	double *v = (double *)MKL_malloc(nbytes, 64);
 
@@ -36,7 +36,7 @@ double time(int n, int nth){
 
 int main(){
 	const char* rows[3] = {"64", "1024", "8192"};
-	int n[i] = {64, 1024, 8192};
+	int n[3] = {64, 1024, 8192};
 	const char* cols[5] = {"1", "2", "4", "8", "12"};
 	int nth[5] = {1, 2, 4, 8, 12};
 	double data[15];
@@ -45,10 +45,18 @@ int main(){
 		for(int j=0; j < 5; j++)
 			data[i+j*3] = time(n[i], nth[j]);
 	
+	verify_dir("DBG");
+	link_cout("DBG/time_fft.txt");
+
 	Table tbl;
 	tbl.dim(3, 5);
 	tbl.rows(rows);
 	tbl.cols(cols);
 	tbl.data(data);
-	tbl.print();
+	tbl.print("\tnumber of cycles per fft\n"
+		  "\t1 to 12 threads\n"
+		  "\tnmlzd by nlgn\n"
+		  "\t16GB data");
+
+	unlink_cout();
 }
