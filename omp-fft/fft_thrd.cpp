@@ -1,5 +1,7 @@
 #include "../utils/utils.hh"
 #include "../linking-fft/fft_mkl.hh"
+#include "fft_thrd.hh"
+#include <omp.h>
 
 fft_thrd::fft_thrd(int ni, long counti, int nth)
 	:n(ni), count(counti), nthreads(nth)
@@ -25,9 +27,11 @@ void fft_thrd::fwd(double *v){
 	shared(v, self)
 	{
 		int nn = self->n;
+		int nth = self->nthreads;
+		int cnt = self->count;
 		int tid = omp_get_thread_num();
-		long first = count*tid/nthreads;
-		long next = count*(tid+1)/nthreads;
+		long first = cnt*tid/nth;
+		long next = cnt*(tid+1)/nth;
 		for(long i=first; i < next; i++)
 			self->fftlist[tid]->fwd(v + i*(2*nn));
 	}

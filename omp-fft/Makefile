@@ -1,6 +1,6 @@
 include ../makevars.mk
-CFLAGSXX := $(MKLINC)
-LIBS := $(MKLLIBS)
+CFLAGSXX := -openmp $(MKLINC)
+LIBS := -openmp $(MKLLIBS)
 MODS := ../utils ../linking-fft
 
 #############
