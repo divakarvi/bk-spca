@@ -14,7 +14,11 @@ struct rval_struct{
  * transpose m x m matrix and return m and bw (as bytes/cycle)
  */
 struct rval_struct time(int nthreads){
-	int m = 100*100*4;//8*1.6 = 12.8 GB matrix
+	/*
+	 * 12.8 GB is too big for lonestar
+	 */
+	//int m = 100*100*4;//8*1.6 = 12.8 GB matrix
+	int m = 100*100*2;//8*0.4 = 12.8/4 = 3.2 GB matrix
 	m = m/(B*nthreads)*B*nthreads;
 	assrt(m > 0);
 	int n = m;

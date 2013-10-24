@@ -4,7 +4,7 @@
 /*
  * Block size must be set manually here
  */
-const int B = 1;
+const int B = 125;
 void easytrans(double *restrict a, double *restrict b, int ldb,
 	       int m, int n);
 /*
