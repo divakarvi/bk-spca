@@ -12,7 +12,7 @@ int main(){
 	double data[48];
 	
 	int countinner = 10000;
-	int countouter = 1000*1000/100;
+	int countouter = 1000*1000;
 	int count = countouter;
 
 	for(int i=1; i <= 12; i++){
@@ -29,15 +29,14 @@ int main(){
 	tbl.rows(rows);
 	tbl.cols(cols);
 	tbl.data(data);
+	
 	verify_dir("DBG");
 	link_cout("DBG/overhead.txt");
-	//std::ofstream ofile("DBG/overhead.txt");
-	//std::streambuf *sbuf = std::cout.rdbuf();
-	//std::cout.rdbuf(ofile.rdbuf());
+	
 	std::cout<<"\t     count inner = "<<countinner<<std::endl;
 	std::cout<<"\t     count outer = "<<countouter<<std::endl;
 	std::cout<<"\t count [barrier] = "<<count<<std::endl;
 	tbl.print("overhead in cycles, 1 to 12 threads");
-	//std::cout.rdbuf(sbuf);
+
 	unlink_cout();
 }

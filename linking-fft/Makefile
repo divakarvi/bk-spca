@@ -35,9 +35,9 @@ time_fft.s: time_fft.cpp
 time_fft.exe: time_fft.o fft_mkl.o fft_fftw.o nr.o		\
 	      ../utils ../utils/utils.o ../utils/Table.o
 
-time_hist.o: time_hist.cpp
-include time_hist.d
+hist_fft.o: hist_fft.cpp
+include hist_fft.d
 
-time_hist.exe: time_hist.o fft_mkl.o				\
+hist_fft.exe: hist_fft.o fft_mkl.o				\
 	       ../utils ../utils/utils.o			\
 	       ../pyplot ../pyplot/pyhist.o
