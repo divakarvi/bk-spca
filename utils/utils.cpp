@@ -1,5 +1,6 @@
-#include <cmath>
 #include "utils.hh"
+#include <emmintrin.h>
+#include <cmath>
 #include <cstdio>
 #include <iostream>
 #include <iomanip>
@@ -36,26 +37,40 @@ void array_copy(double *restrict v, double *restrict w, int n){
 
 void array_out(double *v, int m, int n, const char* fname){
 	FILE *fp;
-	fp = fopen(fname, "w");
+	if(fname == NULL)
+		fp = stdout;
+	else
+		fp = fopen(fname, "w");
+
 	for(int i=0; i < m; i++){
 		for(int j=0; j < n; j++)
-			fprintf(fp, "%.15e  ", v[i+j*m]);
+			fprintf(fp, "%f  ", v[i+j*m]);
 		fprintf(fp, "\n");
 	}
-	int rval = fclose(fp);
-	assrt(rval !=  -1);
+
+	if(fname != NULL){
+		int rval = fclose(fp);
+		assrt(rval !=  -1);
+	}
 }
 
 void array_out(double *v, int m, int n, int lda, const char *fname){
 	FILE *fp;
-	fp = fopen(fname, "w");
+	if(fname == NULL)
+		fp = stdout;
+	else
+		fp = fopen(fname, "w");
+	
 	for(int i=0; i < m; i++){
 		for(int j=0; j < n; j++)
-			fprintf(fp, "%.15e  ", v[i+j*lda]);
+			fprintf(fp, "%f  ", v[i+j*lda]);
 		fprintf(fp, "\n");
 	}
-	int rval = fclose(fp);
-	assrt(rval !=  -1);
+
+	if(fname != NULL){
+		int rval = fclose(fp);
+		assrt(rval !=  -1);
+	}
 }
 
 void array_show(double *v, int n, const char* mesg){

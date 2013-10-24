@@ -1,10 +1,12 @@
+#include "../utils/utils.hh"
+#include "../utils/TimeStamp.hh"
+#include "../kernel-syscall/dvmesg.h"
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
-#include "TimeStamp.hh"
 #include <omp.h>
 using namespace std;
-#include "dvmesg.h"
+
 
 #undef DV_KERNEL_MESG
 
@@ -60,7 +62,8 @@ int main(){
 	clk.tic();
 	ompmaster(list, nthreads, count);
 	double cycles = clk.toc();
-	ofstream ofile("OUTPUT/altadd_omp.txt", ios_base::app);
+	verify_dir("DBG/");
+	ofstream ofile("DBG/altadd_omp.txt", ios_base::app);
 	ofile<<endl;
 	ofile<<"nprocs = "<<nprocs<<endl;
 	ofile<<"nthreads = "<<nthreads<<endl;

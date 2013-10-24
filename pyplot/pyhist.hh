@@ -25,7 +25,7 @@ public:
 	void bins(int b);
 	void title(const char* s);
 	void show();
-	void output();
+	void output(); /* eps output */
 	void savescript();
 };
 

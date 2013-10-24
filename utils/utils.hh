@@ -9,16 +9,16 @@ const double PI = 3.1415926535897932384e+00;
  * based on http://stackoverflow.com/questions/5252375/custom-c-assert-macro
  * works outside debug mode too
  */
-#define assrt(cond) \  
-    do \  
-    { \  
-	 if (!(cond)) \  
-	 { \  
+#define assrt(cond) \
+    do \
+    { \
+	 if (!(cond)) \
+	 { \
 		  std::cout<<"ASSRT FAILED:"<<#cond<<std::endl	\
 			   <<"file: "<<__FILE__<<std::endl	\
 			   <<"line: "<<__LINE__<<std::endl;	\
 		 __builtin_trap();				\
-        } \  
+        } \
     } while(0)  
 
 
@@ -53,14 +53,16 @@ void array_diff(double *restrict v, double *restrict w, int n);
  * m     = num of rows
  * n     = num of cols 
  * fname = name of file for output
+ *         (uses stdout if fname == NULL)
  */
-void array_out(double *v, int m, int n, const char *fname);
+void array_out(double *v, int m, int n, const char *fname = NULL);
 
  /*
   * same as above except for lda
   * i,j th entry = v[i+j*lda]
+  * uses stdout if fname == NULL
   */
-void array_out(double *v, int m, int n, int lda, const char *fname);
+void array_out(double *v, int m, int n, int lda, const char *fname = NULL);
 
 /*
  * counterpart of array_out()
@@ -101,4 +103,5 @@ void box_file(const char* fname, const char* mesg);
  * getpid() and use it to copy /proc/pid/status to std::cout
  */
 void print_proc_status(const char* mesg);
+
 #endif
