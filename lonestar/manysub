@@ -33,6 +33,7 @@ else:
     currentdir = os.getcwd();
     file.write('cd '+currentdir+'\n');
     file.write('mpirun -np '+numofnodes+' -bynode '+newexecname+' '+arglist+' > '+currentdir+'/'+jobname+'.txt\n');
+    file.write('rm core*\n');
     file.close();
     os.execvp('qsub',['qsub',jobname+'.pbs']);
     

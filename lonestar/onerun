@@ -21,12 +21,13 @@ else:
     file.write('#! /bin/sh \n')
     file.write('#$ -N '+jobname+'\n')
     file.write('#$ -pe 1way 12 \n');
-    file.write('#$ -l h_rt=00:15:00 \n');
+    file.write('#$ -l h_rt=1:00:00 \n');
     file.write('#$ -q development \n')
     file.write('#$ -j y \n');
     file.write('#$ -V\n')
     file.write('#$ -cwd \n');
     currentdir = os.getcwd();
     file.write(newexecname+' '+arglist+' > '+currentdir+'/'+jobname+'.txt\n')
+    file.write('rm core*\n');
     file.close()
     os.execvp('qsub',['qsub',jobname+'.pbs'])

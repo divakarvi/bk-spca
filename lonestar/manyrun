@@ -24,7 +24,7 @@ else:
     numcores = int(numofnodes)*12;
     numcores = str(numcores);
     file.write('#$ -pe 1way '+numcores+' \n');
-    file.write('#$ -l h_rt=00:45:00 \n');
+    file.write('#$ -l h_rt=01:00:00 \n');
     file.write('#$ -q development \n')
     file.write('#$ -j y \n');
     file.write('#$ -V\n')
@@ -32,6 +32,7 @@ else:
     currentdir = os.getcwd();
     file.write('cd '+currentdir+'\n');
     file.write('mpirun -np '+numofnodes+' -bynode '+newexecname+' '+arglist+' > '+currentdir+'/'+jobname+'.txt\n');
+    file.write('rm core*\n');
     file.close();
     os.execvp('qsub',['qsub',jobname+'.pbs']);
 

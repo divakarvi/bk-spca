@@ -31,5 +31,6 @@ else:
     file.write('#$ -cwd \n');
     currentdir = os.getcwd();
     file.write(newexecname+' '+arglist+' > '+currentdir+'/'+jobname+'.txt\n')
+    file.write('rm core*\n');
     file.close()
     os.execvp('qsub',['qsub',jobname+'.pbs'])
