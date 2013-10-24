@@ -1,13 +1,18 @@
 The copyright of all the documents and source files in the working directory
-as well as git commits in this project belongs Divakar Viswanath with the 
+as well as git commits in this project belongs to Divakar Viswanath with the 
 following exceptions:
 
 1. Intel MKL header files included for pedagogical purposes.
 
-2. The assrt() macro in utils/utils.hh.
+2. The assrt() macro in utils/utils.hh. This macro is based on a version
+   posted on a web forum. 
 
 3. linking-easy/kozen.c
 
-4. lonestar/.bashrc
+4. everything in the lonestar/
 
-Sept 2013
+5. alexonlinux.cpp in pthreads/. This file is in the git repo from an old
+   commit but not in the working directory. It was downloaded from 
+   www.alexonlinux.com.
+
+October 2013
