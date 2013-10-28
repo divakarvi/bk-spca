@@ -1,6 +1,6 @@
 #include "../utils/utils.hh"
 #include "../utils/Vector.hh"
-#include "../utils/Matrix.hh"
+#include "Matrix.hh"
 #include "../utils/TimeStamp.hh"
 #include "../utils/StatVector.hh"
 #include "../utils/Table.hh"

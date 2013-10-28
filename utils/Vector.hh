@@ -4,7 +4,7 @@
 #include <cmath>
 #include <iostream>
 #include <fstream>
-#include <mkl.h>
+#include <cstdlib>
 #include <cstring>
 
 using namespace std;
@@ -12,15 +12,11 @@ using namespace std;
 const double PI = 3.1415926535897932384e+00;
 #endif
 
-class Matrix;
-
 class Vector{
 private:
 	long int size;
 	double *data;
 	int owner;
-public:
-	friend class Matrix;
 public:
 	//empty constructor
 	Vector(){
@@ -32,7 +28,7 @@ public:
 	//only constructor to allocate space for data
 	Vector(long int  n){
 		size = n;
-		data = (double *)MKL_malloc(sizeof(double)*n, 64);
+		data = (double *)malloc(sizeof(double)*n);
 		owner = 1;
 	}
   
@@ -48,7 +44,7 @@ public:
 	//destructor, finds out if *this is a shadow or owns space
 	~Vector(){
 		if(owner!=0)
-			MKL_free(data);
+			free(data);
 	}
 	
 
@@ -83,7 +79,7 @@ public:
 	}
 
 
-	//use with care!
+	//use with care! better yet: don't use this class.
 	double * getRawData() const{
 		return data;
 	}

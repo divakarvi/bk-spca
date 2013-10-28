@@ -1,6 +1,6 @@
 include ../makevars.mk
-CFLAGSXX := $(MKLINC) -fno-inline-functions
-LIBS := $(MKLLIBS)
+CFLAGSXX :=  -fno-inline-functions
+LIBS := 
 
 ##################################################
 include MakefileC.mk

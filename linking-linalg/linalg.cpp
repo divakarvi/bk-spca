@@ -1,6 +1,5 @@
 #include "../utils/utils.hh"
-#include "../utils/Vector.hh"
-#include "../utils/Matrix.hh"
+#include "linalg.hh"
 #include <mkl.h>
 #include <cmath>
 #include <iostream>
@@ -18,26 +17,33 @@ extern "C" void dgetrs_(char *, int *, int *,
 		       int *);
 */
 
-void lufactorize(Matrix& M, int *ipiv){
-	int m = M.getm();
-	int n = M.getn();
-	double *A = M.getRawData();
-	int lda = M.getLDA();
+LU_Solve::LU_Solve(double *a, int dimi)
+	:dim(dimi)
+{
+	A = new double[dim*dim];
+	ipiv = new int[dim];
+	for(int i=0; i < dim*dim; i++)
+		A[i] = a[i];
+}
+
+LU_Solve::~LU_Solve(){
+	delete[] A;
+}
+
+void LU_Solve::factorize(){
+	int m = dim;
+	int n = dim;
+	int lda = dim;
 	int info;
 	dgetrf_(&m, &n, A, &lda, ipiv, &info); //LAPACK call
 }
 
-void lusolve(Matrix& M, int * ipiv, Vector & v){
+void LU_Solve::solve(double *v){
 	char trans[3] = "N ";
-	int n = M.getm();
-	assert(M.getm()==M.getn());
 	int nrhs = 1;
-	double *A = M.getRawData();
-	int lda = M.getLDA();
-	double *B = v.getRawData();
-	assert(v.getSize()==n);
-	int ldb  = n;
+	int lda = dim;
+	int ldv  = dim;
 	int info;
-	dgetrs_(trans, &n, &nrhs, A, &lda, ipiv, B, &ldb, 
+	dgetrs_(trans, &dim, &nrhs, A, &lda, ipiv, v, &ldv, 
 		&info);//LAPACK call
 }

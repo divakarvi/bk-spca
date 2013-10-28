@@ -1,6 +1,6 @@
 #ifndef __MYMATRIX__
 #define __MYMATRIX__
-#include "Vector.hh"
+#include "../utils/Vector.hh"
 #include <assert.h>
 #include <iostream>
 #include <fstream>
@@ -17,8 +17,6 @@ private:
 	double *data;
 	int owner;
 public:
-	friend class Vector;
-public:
 	//empty constructor
 	Matrix(){
 		size1 = 0;
@@ -33,7 +31,7 @@ public:
 		size1 = m;
 		size2 = n;
 		lda = m;
-		data = (double *)MKL_malloc(m*n*sizeof(double), 64);
+		data = (double *)malloc(m*n*sizeof(double));
 		owner = 1;
 		for(int i=0; i < size1*size2; i++)
 			data[i] = -i;
@@ -52,7 +50,7 @@ public:
 	//destructor, checks if *this is a shadow or owns space
 	~Matrix(){
 		if(owner!=0)
-			MKL_free(data);
+			free(data);
 	}
 	
 	//make *this a shadow of dataptr
@@ -92,7 +90,7 @@ public:
 		size1 = m;
 		size2 = n;
 		lda = m;
-		data = v.data + i1;
+		data = v.getRawData() + i1;
 		owner = 0;
 	}
 	
@@ -142,16 +140,6 @@ public:
   }
 
   
-	// returns a vector that shadows column j
-	Vector getColumn(int j){
-		Vector v;
-		assert(j<size2);
-		v.size = size1;
-		v.data = data + j*lda;
-		v.owner = 0;
-		return v;
-	}
-
 	//transpose square matrix
 	void transpose(){
 		assert(getm()==getn());

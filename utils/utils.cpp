@@ -44,7 +44,7 @@ void array_out(double *v, int m, int n, const char* fname){
 
 	for(int i=0; i < m; i++){
 		for(int j=0; j < n; j++)
-			fprintf(fp, "%f  ", v[i+j*m]);
+			fprintf(fp, "%.15e  ", v[i+j*m]);
 		fprintf(fp, "\n");
 	}
 
@@ -63,7 +63,7 @@ void array_out(double *v, int m, int n, int lda, const char *fname){
 	
 	for(int i=0; i < m; i++){
 		for(int j=0; j < n; j++)
-			fprintf(fp, "%f  ", v[i+j*lda]);
+			fprintf(fp, "%.15e  ", v[i+j*lda]);
 		fprintf(fp, "\n");
 	}
 
