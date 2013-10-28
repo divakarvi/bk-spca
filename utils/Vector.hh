@@ -73,7 +73,7 @@ public:
 		owner = 0;
 	}
   
-	//retuns length of (*this)
+	//returns length of (*this)
 	long int getSize() const{
 		return size;
 	}
@@ -109,41 +109,41 @@ public:
 		return(*this);
 	}
 
-	//*this = *this + v
+	//*this(i) = *this(i) + v(i)
 	void add(const Vector& v){
 		assert(size == v.size);
 		for(long int i=0; i < size; i++)
 			data[i] += (v.data)[i];
 	}
 
-	//*this = *this - v
+	//*this(i) = *this(i) - v(i)
 	void sub(const Vector& v){
 		assert(size == v.size);
 		for(long int i=0; i < size; i++)
 			data[i] -= (v.data)[i];
 	}
 
-	//*this = *this .* v
+	//*this(i) = *this(i) .* v(i)
 	void mul(const Vector& v){
 		assert(size == v.size);
 		for(long int i=0; i < size; i++)
 			data[i] *= (v.data)[i];
 	}
 
-	//*this = *this ./ v
+	//*this(i) = *this(i) ./ v(i)
 	void div(const Vector& v){
 		assert(size == v.size);
 		for(long int i=0; i < size; i++)
 			data[i] /= (v.data)[i];
 	}
 
-	//*this = x * (*this)
+	//*this(i) *= x 
 	void scale(const double x){
 		for(long int i=0; i < size; i++)
 			data[i] *= x;
 	}
 	
-	//*this = *this + x
+	//*this(i) +=  x
 	void add_constant(const double x){
 		for(long int i=0; i < size; i++)
 			data[i] += x;
@@ -178,11 +178,6 @@ public:
 		for(i=0; i < size; i++){
 			assert(!ifile.eof());
 			ifile>>(*this)(i);
-			if(ifile.fail()){
-				cout<<"Possible underflow in input from "
-				    <<fname<<endl;
-				ifile.clear();
-			}
 		}
 		ifile.close();
 	}
