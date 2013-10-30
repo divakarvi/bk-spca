@@ -2,10 +2,10 @@
 CPP 	:= icpc
 CFLAGS 	:= -O3 -prec-div -no-ftz -restrict -Wshadow
 
-MPIINC 	:= `mpiCC -showme:compile1`
+MPIINC 	:= `mpiCC -showme:compile`
 FFTWINC := -I $$FFTW_INC
-
 MKLINC 	:= -I $$MKL_INC
+
 MKLLIBS := -L$$MKL_LINK -lmkl_intel_lp64 -lmkl_sequential -lmkl_core 	\
 	-lpthread
 MKLTHRD := -L$$MKL_LINK -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core 	\

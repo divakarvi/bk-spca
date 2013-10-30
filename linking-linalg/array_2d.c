@@ -10,10 +10,10 @@ int main(){
 		for(j=0; j < 40; j++)
 			a[i][j] = i*100+j;
 
-	b = a;
+	b = a+5;
 	c = a[5];
 	
-	printf("b \t= %p\nc \t= %p\na + 5\t= %p\nb + 5\t= %p \n",
-	       b, c, a + 5, b + 5);
-	printf("c[2] = %f, b[5] = %p \n", c[2], b[5]); 
+	printf("a[5][7] \t= %f \n", a[5][7]); 
+	printf("b[0][7] \t= %f \n", b[0][7]); 
+	printf("c[7]    \t= %f \n", c[7]); 
 }
