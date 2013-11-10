@@ -8,12 +8,12 @@ LIBS := $(MKLLIBS)
 	make --directory=$@ all
 
 ##############
-all: linalg.o
+all: lusolve.o
 
-linalg.o: linalg.cpp
--include linalg.d
+lusolve.o: lusolve.cpp
+-include lusolve.d
 
-test_linalg.o: test_linalg.cpp
--include test_linalg.d
+test_lusolve.o: test_lusolve.cpp
+-include test_lusolve.d
 
-test_linalg.exe: test_linalg.o linalg.o ../utils ../utils/utils.o
+test_lusolve.exe: test_lusolve.o lusolve.o ../utils ../utils/utils.o

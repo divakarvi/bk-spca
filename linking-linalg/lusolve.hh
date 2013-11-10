@@ -1,5 +1,5 @@
-#ifndef __LINALG27OCT2013__
-#define __LINALG27OCT2013__
+#ifndef __LUSOLVE27OCT2013__
+#define __LUSOLVE27OCT2013__
 
 class LU_Solve{
 private:

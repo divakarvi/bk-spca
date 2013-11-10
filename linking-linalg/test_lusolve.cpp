@@ -1,5 +1,5 @@
 #include "../utils/utils.hh"
-#include "linalg.hh"
+#include "lusolve.hh"
 #include <unistd.h>
 #include <cstdlib>
 
@@ -20,7 +20,7 @@ void testlu(int n){
 	lu.solve(v);
 	array_out(v, n, 1, "DBG/x.dat");
 
-	system("test_linalg.py DBG/A.dat DBG/b.dat DBG/x.dat");
+	system("test_lusolve.py DBG/A.dat DBG/b.dat DBG/x.dat");
 
 	delete[] v;
 	delete[] A;

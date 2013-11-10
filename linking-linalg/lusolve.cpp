@@ -1,5 +1,5 @@
 #include "../utils/utils.hh"
-#include "linalg.hh"
+#include "lusolve.hh"
 #include <mkl.h>
 #include <cmath>
 #include <iostream>
