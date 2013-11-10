@@ -1,6 +1,6 @@
 #########
 CPP 	:= icpc
-CFLAGS 	:= -O3 -prec-div -no-ftz -restrict -Wshadow
+CFLAGS 	:= -O3 -prec-div -no-ftz -restrict -Wshadow -MMD -MP
 
 MPIINC 	:= `mpiCC -showme:compile1`
 FFTWINC := -I $$FFTW_INC
@@ -19,10 +19,8 @@ MPILIBS := `mpiCC -showme:link`
 %.o: %.cpp
 	$(CPP) $(CFLAGS) $(CFLAGSXX) -c $<
 %.d: %.cpp
-	@set -e; rm -f $@; \
-	$(CPP) -M $(CFLAGS) $(CFLAGSXX) $< > $@.$$$$; \
-	sed 's,\($*\)\.o[ :]*,\1.o $@ : ,g' < $@.$$$$ > $@; \
-	rm -f $@.$$$$
+	$(CPP) $(CFLAGS) $(CFLAGSXX) -P $<
+	rm $(subst .d,.i,$@)
 %.s: %.cpp 
 	$(CPP) $(CFLAGS) -fno-verbose-asm $(CFLAGSXX) -S $< 
 %.o: %.s 
