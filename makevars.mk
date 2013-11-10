@@ -18,9 +18,6 @@ MPILIBS := `mpiCC -showme:link`
 .SUFFIXES: .cpp .o .exe .s .d
 %.o: %.cpp
 	$(CPP) $(CFLAGS) $(CFLAGSXX) -c $<
-%.d: %.cpp
-	$(CPP) $(CFLAGS) $(CFLAGSXX) -P $<
-	rm $(subst .d,.i,$@)
 %.s: %.cpp 
 	$(CPP) $(CFLAGS) -fno-verbose-asm $(CFLAGSXX) -S $< 
 %.o: %.s 
