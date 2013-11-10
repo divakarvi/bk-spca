@@ -1,4 +1,4 @@
-include ../makevars.mk
+-include ../makevars.mk
 
 add.s: add.c 
 	gcc -O2 -S -o $@ $<
@@ -17,6 +17,6 @@ addmany.o: addmany.s
 addmany.exe: addmany.o
 	icc -o $@ $<
 
-include cpuid.d
+-include cpuid.d
 cpuid.o: cpuid.cpp
 cpuid.exe: cpuid.o

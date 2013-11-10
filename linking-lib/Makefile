@@ -1,4 +1,4 @@
-include ../makevars.mk
+-include ../makevars.mk
 CFLAGSXX := $(MKLINC)
 
 ##################
@@ -18,7 +18,7 @@ libxmath.a: $(MODS)
 		  ../linking-fft/fft_mkl.o
 
 test_lib.o: test_lib.cpp
-include test_lib.d
+-include test_lib.d
 
 #link against shared lib
 #to link against static, rm .so file

@@ -1,4 +1,4 @@
-include ../makevars.mk
+-include ../makevars.mk
 CFLAGSXX := -openmp $(MKLINC)
 LIBS := -openmp $(MKLLIBS)
 MODS := ../utils ../mem-latency
@@ -12,7 +12,7 @@ $(MODS):
 #############
 
 latency.o: latency.cpp
-include latency.d
+-include latency.d
 
 latency.exe: latency.o ../utils 					\
 	     ../utils/utils.o ../utils/Table.o 				\

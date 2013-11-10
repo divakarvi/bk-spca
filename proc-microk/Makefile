@@ -1,4 +1,4 @@
-include ../makevars.mk
+-include ../makevars.mk
 
 ############
 .PHONY: ../utils
@@ -16,16 +16,16 @@ asm4x100x4.o: asm4x100x4.s
 asm4x200x4.o: asm4x200x4.s
 
 test_asm.o: test_asm.cpp
-include test_asm.d
+-include test_asm.d
 
 time_asm.o: time_asm.cpp
-include time_asm.d
+-include time_asm.d
 
 xmm4x1x4.o: xmm4x1x4.cpp
-include xmm4x1x4.d
+-include xmm4x1x4.d
 
 time_4x1x4.o: time_4x1x4.cpp
-include time_4x1x4.d
+-include time_4x1x4.d
 
 time_4x1x4.exe: time_4x1x4.o xmm4x1x4.o
 

@@ -1,11 +1,11 @@
-include ../makevars.mk
+-include ../makevars.mk
 CFLAGSXX :=  -fno-inline-functions
 LIBS := 
 
 ##################################################
-include MakefileC.mk
+-include MakefileC.mk
 
-include MakefileF.mk
+-include MakefileF.mk
 
 .PHONY: all
 

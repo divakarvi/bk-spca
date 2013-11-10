@@ -1,4 +1,4 @@
-include ../makevars.mk
+-include ../makevars.mk
 CFLAGSXX := -fPIC $(MKLINC) $(FFTWINC)
 LIBS := $(MKLLIBS) $(FFTWLIBS)
 
@@ -14,29 +14,29 @@ LIBS := $(MKLLIBS) $(FFTWLIBS)
 all: fft_mkl.o fft_fftw.o nr.o
 
 fft_mkl.o: fft_mkl.cpp
-include fft_mkl.d
+-include fft_mkl.d
 
 fft_fftw.o: fft_fftw.cpp
-include fft_fftw.d
+-include fft_fftw.d
 
 nr.o: nr.cpp
-include nr.d
+-include nr.d
 
 test_fft.o: test_fft.cpp
-include test_fft.d
+-include test_fft.d
 
 test_fft.exe: test_fft.o fft_mkl.o fft_fftw.o nr.o 		\
 	      ../utils ../utils/utils.o
 
 time_fft.o: time_fft.cpp
-include time_fft.d
+-include time_fft.d
 time_fft.s: time_fft.cpp
 
 time_fft.exe: time_fft.o fft_mkl.o fft_fftw.o nr.o		\
 	      ../utils ../utils/utils.o ../utils/Table.o
 
 hist_fft.o: hist_fft.cpp
-include hist_fft.d
+-include hist_fft.d
 
 hist_fft.exe: hist_fft.o fft_mkl.o				\
 	       ../utils ../utils/utils.o			\

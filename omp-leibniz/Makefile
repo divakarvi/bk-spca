@@ -1,4 +1,4 @@
-include ../makevars.mk
+-include ../makevars.mk
 CFLAGSXX := -fno-inline-functions -fno-verbose-asm -openmp
 LIBS := -openmp
 MODS := ../utils
@@ -10,19 +10,19 @@ $(MODS):
 
 ##############
 leibniz.o: leibniz.cpp
-include leibniz.d
+-include leibniz.d
 
 parallel.o: parallel.cpp
-include parallel.d
+-include parallel.d
 
 ompfor.o: ompfor.cpp
-include ompfor.d
+-include ompfor.d
 
 section.o: section.cpp
-include section.d
+-include section.d
 
 time_leibniz.o: time_leibniz.cpp
-include time_leibniz.d
+-include time_leibniz.d
 
 
 time_leibniz.exe: time_leibniz.o leibniz.o parallel.o ompfor.o section.o\

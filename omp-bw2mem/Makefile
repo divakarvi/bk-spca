@@ -1,4 +1,4 @@
-include ../makevars.mk
+-include ../makevars.mk
 CFLAGSXX := -fno-inline-functions -openmp $(MKLINC)
 LIBS := -openmp $(MKLLIBS)
 MODS := ../utils
@@ -10,16 +10,16 @@ $(MODS):
 
 ############
 readwrcopy.o: readwrcopy.cpp
-include readwrcopy.d
+-include readwrcopy.d
 
 test_rwc.o: test_rwc.cpp
-include test_rwc.d
+-include test_rwc.d
 
 test_rwc.exe: test_rwc.o readwrcopy.o 				\
 	      ../utils ../utils/utils.o
 
 time_rwc.o: time_rwc.cpp
-include time_rwc.d
+-include time_rwc.d
 
 time_rwc.exe: time_rwc.o readwrcopy.o				\
 	      ../utils ../utils/utils.o ../utils/Table.o
