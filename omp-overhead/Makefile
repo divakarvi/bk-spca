@@ -1,4 +1,4 @@
--include ../makevars.mk
+include ../makevars.mk
 CFLAGSXX := -openmp -fno-inline-functions
 LIBS := -openmp
 MODS := ../utils

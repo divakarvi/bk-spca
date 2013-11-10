@@ -1,4 +1,4 @@
--include ../makevars.mk
+include ../makevars.mk
 
 utils.o: ../utils/utils.cpp
 	g++ -c -O3 -Drestrict=' ' $<

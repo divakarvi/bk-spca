@@ -1,4 +1,4 @@
--include ../makevars.mk
+include ../makevars.mk
 
 add.s: add.c 
 	gcc -O2 -S -o $@ $<

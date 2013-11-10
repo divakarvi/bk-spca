@@ -1,4 +1,4 @@
--include ../makevars.mk
+include ../makevars.mk
 CFLAGSXX := $(MKLINC)
 LIBS := $(MKLLIBS)
 

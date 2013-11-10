@@ -1,4 +1,4 @@
--include ../makevars.mk
+include ../makevars.mk
 
 thrd_create_ovhd.o: thrd_create_ovhd.cpp
 	g++ -c -O3 -Drestrict=' ' $<

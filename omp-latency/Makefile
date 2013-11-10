@@ -1,4 +1,4 @@
--include ../makevars.mk
+include ../makevars.mk
 CFLAGSXX := -openmp $(MKLINC)
 LIBS := -openmp $(MKLLIBS)
 MODS := ../utils ../mem-latency

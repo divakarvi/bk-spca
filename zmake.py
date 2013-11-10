@@ -9,7 +9,8 @@ for x in l:
         if 'Makefile' in os.listdir('.'):
                 os.system(
                         """sed 's/^include/-include/g' Makefile > tmp.mk;
-                           mv tmp.mk Makefile""")
+                           sed '1s/-include/include/g' tmp.mk > Makefile;
+                           rm tmp.mk""")
         print 'exit from directory: ', x
         os.chdir('..')
         
