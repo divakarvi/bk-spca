@@ -28,6 +28,7 @@ LU_Solve::LU_Solve(double *a, int dimi)
 
 LU_Solve::~LU_Solve(){
 	delete[] A;
+	delete[] ipiv;
 }
 
 void LU_Solve::factorize(){
