@@ -2,12 +2,11 @@
 #include "fft_thrd.hh"
 #include <iostream>
 #include <cmath>
-#include <mkl.h>
 
 void test(int n, long count, int nth){
 	long len = 2l*n*count;
 	long nbytes = len * sizeof(double);
-	double *v = (double *)MKL_malloc(nbytes, 64);
+	double *v = (double *)_mm_malloc(nbytes, 64);
 	
 	for(long j=0; j < count; j++)
 		for(int i=0; i < n; i++){
@@ -27,7 +26,7 @@ void test(int n, long count, int nth){
 		std::cout<<"\n\n";
 	}
 	
-	MKL_free(v);
+	_mm_free(v);
 }
 
 int main(){

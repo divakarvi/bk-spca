@@ -1,191 +1,257 @@
-# mark_description "Intel(R) C++ Intel(R) 64 Compiler XE for applications running on Intel(R) 64, Version 12.1 Build 20111011";
-# mark_description "-I /home/software/rhel6/fftw-3.3.2/intel-12.1/include -I/usr/caen/intel-12.1/mkl/include -O3 -prec-div -no-f";
-# mark_description "tz -fno-inline-functions -DNDEBUG -S";
 	.file "Aitken.cpp"
 	.text
 ..TXTST0:
 # -- Begin  _Z7AitkenERK6Vectori
-# mark_begin;
-..___tag_value__Z7AitkenERK6Vectori.2:                         #
+..___tag_value__Z7AitkenERK6Vectori.2:
         .align    16,0x90
 	.globl _Z7AitkenERK6Vectori
 _Z7AitkenERK6Vectori:
 # parameter 1: %rdi
 # parameter 2: %esi
-..B1.1:                         # Preds ..B1.0
-..___tag_value__Z7AitkenERK6Vectori.3:                          #28.49
-        pushq     %r13                                          #28.49
-..___tag_value__Z7AitkenERK6Vectori.5:                          #
-        pushq     %r14                                          #28.49
-..___tag_value__Z7AitkenERK6Vectori.7:                          #
-        pushq     %r15                                          #28.49
-..___tag_value__Z7AitkenERK6Vectori.9:                          #
-        pushq     %rbx                                          #28.49
-..___tag_value__Z7AitkenERK6Vectori.11:                         #
-        pushq     %rbp                                          #28.49
-..___tag_value__Z7AitkenERK6Vectori.13:                         #
-        subq      $64, %rsp                                     #28.49
-..___tag_value__Z7AitkenERK6Vectori.15:                         #
-        movq      %rdi, %r14                                    #28.49
-        movl      %esi, %ebx                                    #28.49
-        movl      $64, %esi                                     #30.16
-        movl      (%r14), %ebp                                  #29.17
-        movslq    %ebp, %rdi                                    #30.16
-        shlq      $3, %rdi                                      #30.16
-        movl      %ebp, 8(%rsp)                                 #30.10
-..___tag_value__Z7AitkenERK6Vectori.16:                         #30.16
-        call      MKL_malloc                                    #30.16
-..___tag_value__Z7AitkenERK6Vectori.18:                         #
-                                # LOE rax r12 r14 ebx ebp
-..B1.2:                         # Preds ..B1.1
-        movq      8(%r14), %r13                                 #31.9
-        cmpq      %r13, %rax                                    #31.9
-        movq      %rax, 16(%rsp)                                #30.10
-        movl      $1, 24(%rsp)                                  #30.10
-        je        ..B1.5        # Prob 33%                      #31.9
-..___tag_value__Z7AitkenERK6Vectori.20:                         #
-                                # LOE rax r12 r13 r14 ebx ebp
-..B1.3:                         # Preds ..B1.2
-        movslq    8(%rsp), %rdx                                 #31.9
-        movq      %rax, %rdi                                    #31.9
-        shlq      $3, %rdx                                      #31.9
-        movq      %r13, %rsi                                    #31.9
-        call      _intel_fast_memcpy                            #31.9
-..___tag_value__Z7AitkenERK6Vectori.21:                         #
-                                # LOE r12 r14 ebx ebp
-..B1.4:                         # Preds ..B1.3
-        movq      8(%r14), %r13                                 #33.5
-..___tag_value__Z7AitkenERK6Vectori.22:                         #
-                                # LOE r12 r13 r14 ebx ebp
-..B1.5:                         # Preds ..B1.4 ..B1.2
-        movl      (%r14), %r15d                                 #33.5
-        movl      %ebp, %r14d                                   #34.15
-        shrl      $31, %r14d                                    #34.15
-        addl      %ebp, %r14d                                   #34.15
-        sarl      $1, %r14d                                     #34.15
-        movl      %r15d, 32(%rsp)                               #33.3
-        andl      $-2147483647, %ebp                            #35.10
-        movq      %r13, 40(%rsp)                                #33.3
-        movl      $0, 48(%rsp)                                  #33.3
-        jge       ..B1.23       # Prob 50%                      #35.10
-..___tag_value__Z7AitkenERK6Vectori.23:                         #
-                                # LOE r12 r13 ebx ebp r14d r15d
-..B1.24:                        # Preds ..B1.5
-        subl      $1, %ebp                                      #35.10
-        orl       $-2, %ebp                                     #35.10
-        incl      %ebp                                          #35.10
-..___tag_value__Z7AitkenERK6Vectori.24:                         #
-                                # LOE r12 r13 ebx ebp r14d r15d
-..B1.23:                        # Preds ..B1.5 ..B1.24
-        testl     %ebp, %ebp                                    #36.5
-        lea       -1(%r14), %eax                                #36.5
-        cmove     %eax, %r14d                                   #36.5
-        cmpl      $1, %ebx                                      #37.17
-        je        ..B1.20       # Prob 5%                       #37.17
-..___tag_value__Z7AitkenERK6Vectori.25:                         #
-                                # LOE r12 r13 ebx r14d r15d
-..B1.6:                         # Preds ..B1.20 ..B1.23
-        xorl      %ebp, %ebp                                    #39.12
-        testl     %r14d, %r14d                                  #39.20
-        jle       ..B1.12       # Prob 4%                       #39.20
-..___tag_value__Z7AitkenERK6Vectori.26:                         #
-                                # LOE r12 r13 ebx ebp r14d r15d
-..B1.8:                         # Preds ..B1.6 ..B1.10
-        lea       32(%rsp), %rdi                                #40.5
-..___tag_value__Z7AitkenERK6Vectori.27:                         #40.5
-        call      _Z6AitkenR6Vector                             #40.5
-..___tag_value__Z7AitkenERK6Vectori.29:                         #
-                                # LOE r12 r13 ebx ebp r14d r15d
-..B1.9:                         # Preds ..B1.8
-        addl      $-2, %r15d                                    #41.32
-        movl      %r15d, 32(%rsp)                               #41.5
-        cmpl      $1, %ebx                                      #42.19
-        movl      $0, 48(%rsp)                                  #41.5
-        je        ..B1.15       # Prob 5%                       #42.19
-..___tag_value__Z7AitkenERK6Vectori.31:                         #
-                                # LOE r12 r13 ebx ebp r14d r15d
-..B1.10:                        # Preds ..B1.15 ..B1.9
-        incl      %ebp                                          #39.23
-        cmpl      %r14d, %ebp                                   #39.20
-        jl        ..B1.8        # Prob 82%                      #39.20
-..___tag_value__Z7AitkenERK6Vectori.32:                         #
-                                # LOE r12 r13 ebx ebp r14d r15d
-..B1.12:                        # Preds ..B1.10 ..B1.6          # Infreq
-        movslq    %r15d, %r15                                   #46.11
-        cmpl      $0, 24(%rsp)                                  #46.3
-        movsd     -8(%r13,%r15,8), %xmm0                        #46.11
-        je        ..B1.14       # Prob 78%                      #46.3
-..___tag_value__Z7AitkenERK6Vectori.33:                         #
-                                # LOE r12 xmm0
-..B1.13:                        # Preds ..B1.12                 # Infreq
-        movq      16(%rsp), %rdi                                #46.3
-        movsd     %xmm0, (%rsp)                                 #46.3
-..___tag_value__Z7AitkenERK6Vectori.34:                         #46.3
-        call      MKL_free                                      #46.3
-..___tag_value__Z7AitkenERK6Vectori.36:                         #
-                                # LOE r12
-..B1.26:                        # Preds ..B1.13                 # Infreq
-        movsd     (%rsp), %xmm0                                 #
-..___tag_value__Z7AitkenERK6Vectori.38:                         #
-                                # LOE r12 xmm0
-..B1.14:                        # Preds ..B1.26 ..B1.12         # Infreq
-        addq      $64, %rsp                                     #46.3
-..___tag_value__Z7AitkenERK6Vectori.39:                         #
-        popq      %rbp                                          #46.3
-..___tag_value__Z7AitkenERK6Vectori.42:                         #
-        popq      %rbx                                          #46.3
-..___tag_value__Z7AitkenERK6Vectori.44:                         #
-        popq      %r15                                          #46.3
-..___tag_value__Z7AitkenERK6Vectori.46:                         #
-        popq      %r14                                          #46.3
-..___tag_value__Z7AitkenERK6Vectori.48:                         #
-        popq      %r13                                          #46.3
-..___tag_value__Z7AitkenERK6Vectori.50:                         #
-        ret                                                     #46.3
-..___tag_value__Z7AitkenERK6Vectori.51:                         #
-                                # LOE
-..B1.15:                        # Preds ..B1.9                  # Infreq
-        lea       32(%rsp), %rdi                                #43.7
-..___tag_value__Z7AitkenERK6Vectori.58:                         #43.7
-        call      _Z8printseqRK6Vector                          #43.7
-..___tag_value__Z7AitkenERK6Vectori.60:                         #
-        jmp       ..B1.10       # Prob 100%                     #43.7
-..___tag_value__Z7AitkenERK6Vectori.61:                         #
-                                # LOE r12 r13 ebx ebp r14d r15d
+..B1.1:
+..___tag_value__Z7AitkenERK6Vectori.3:
+        pushq     %r12
+..___tag_value__Z7AitkenERK6Vectori.5:
+        pushq     %r13
+..___tag_value__Z7AitkenERK6Vectori.7:
+        pushq     %r14
+..___tag_value__Z7AitkenERK6Vectori.9:
+        pushq     %rbx
+..___tag_value__Z7AitkenERK6Vectori.11:
+        pushq     %rbp
+..___tag_value__Z7AitkenERK6Vectori.13:
+        subq      $64, %rsp
+..___tag_value__Z7AitkenERK6Vectori.15:
+        movq      %rdi, %r14
+        movl      %esi, %ebx
+        movq      (%r14), %rbp
+        movslq    %ebp, %r13
+        movq      %r13, 8(%rsp)
+        lea       (,%r13,8), %r12
+        movq      %r12, %rdi
+        call      malloc
+..___tag_value__Z7AitkenERK6Vectori.16:
+..B1.2:
+        movq      (%r14), %rcx
+        cmpq      %rcx, %r13
+        movq      %rax, 16(%rsp)
+        movl      $1, 24(%rsp)
+        jne       ..B1.36
+..___tag_value__Z7AitkenERK6Vectori.17:
+..B1.3:
+        movq      8(%r14), %rsi
+        cmpq      %rsi, %rax
+        jae       ..B1.5
+..___tag_value__Z7AitkenERK6Vectori.18:
+..B1.4:
+        lea       -8(%rax,%r13,8), %rdx
+        cmpq      %rdx, %rsi
+        ja        ..B1.7
+..___tag_value__Z7AitkenERK6Vectori.19:
+..B1.43:
+        cmpq      %rsi, %rax
+..___tag_value__Z7AitkenERK6Vectori.20:
+..B1.5:
+        jbe       ..B1.10
+..___tag_value__Z7AitkenERK6Vectori.21:
+..B1.6:
+        lea       -8(%rsi,%r13,8), %rdx
+        cmpq      %rdx, %rax
+        ja        ..B1.7
+..___tag_value__Z7AitkenERK6Vectori.22:
+..B1.42:
+        cmpq      %rsi, %rax
+        jne       ..B1.35
+        jmp       ..B1.11
+..___tag_value__Z7AitkenERK6Vectori.23:
+..B1.7:
+        cmpq      %rsi, %rax
+        je        ..B1.11
+..___tag_value__Z7AitkenERK6Vectori.24:
+..B1.8:
+        movq      %rax, %rdi
+        movq      %r12, %rdx
+        call      _intel_fast_memcpy
+..___tag_value__Z7AitkenERK6Vectori.25:
+..B1.9:
+        movq      (%r14), %rcx
+        movq      8(%r14), %rsi
+        jmp       ..B1.11
+..___tag_value__Z7AitkenERK6Vectori.26:
+..B1.10:
+        jne       ..B1.35
+..___tag_value__Z7AitkenERK6Vectori.27:
+..B1.11:
+        movl      %ebp, %r12d
+        shrl      $31, %r12d
+        addl      %ebp, %r12d
+        sarl      $1, %r12d
+        movq      %rcx, 32(%rsp)
+        andl      $-2147483647, %ebp
+        movq      %rsi, 40(%rsp)
+        movl      $0, 48(%rsp)
+        jge       ..B1.39
+..___tag_value__Z7AitkenERK6Vectori.28:
+..B1.40:
+        subl      $1, %ebp
+        orl       $-2, %ebp
+        incl      %ebp
+..___tag_value__Z7AitkenERK6Vectori.29:
+..B1.39:
+        testl     %ebp, %ebp
+        lea       -1(%r12), %eax
+        cmove     %eax, %r12d
+        cmpl      $1, %ebx
+        je        ..B1.34
+..___tag_value__Z7AitkenERK6Vectori.30:
+..B1.12:
+        xorl      %ebp, %ebp
+        testl     %r12d, %r12d
+        jle       ..B1.20
+..___tag_value__Z7AitkenERK6Vectori.31:
+..B1.14:
+        lea       32(%rsp), %rdi
+..___tag_value__Z7AitkenERK6Vectori.32:
+        call      _Z6AitkenR6Vector
+..___tag_value__Z7AitkenERK6Vectori.34:
+..B1.15:
+        movq      32(%rsp), %rax
+        cmpl      $0, 48(%rsp)
+        lea       -2(%rax), %rdx
+        jne       ..B1.33
+..___tag_value__Z7AitkenERK6Vectori.36:
+..B1.16:
+        cmpq      %rax, %rdx
+        jg        ..B1.32
+..___tag_value__Z7AitkenERK6Vectori.37:
+..B1.17:
+        movq      %rdx, 32(%rsp)
+        cmpl      $1, %ebx
+        movl      $0, 48(%rsp)
+        je        ..B1.27
+..___tag_value__Z7AitkenERK6Vectori.38:
+..B1.18:
+        incl      %ebp
+        cmpl      %r12d, %ebp
+        jl        ..B1.14
+..___tag_value__Z7AitkenERK6Vectori.39:
+..B1.20:
+        movq      32(%rsp), %rdx
+        lea       -1(%rdx), %rax
+        movslq    %eax, %rax
+        cmpq      %rdx, %rax
+        jge       ..B1.26
+..___tag_value__Z7AitkenERK6Vectori.40:
+..B1.21:
+        movq      40(%rsp), %rdi
+        cmpl      $0, 48(%rsp)
+        movsd     (%rdi,%rax,8), %xmm0
+        je        ..B1.23
+..___tag_value__Z7AitkenERK6Vectori.41:
+..B1.22:
+        movsd     %xmm0, (%rsp)
+        call      free
+..___tag_value__Z7AitkenERK6Vectori.42:
+..B1.45:
+        movsd     (%rsp), %xmm0
+..___tag_value__Z7AitkenERK6Vectori.43:
+..B1.23:
+        cmpl      $0, 24(%rsp)
+        je        ..B1.25
+..___tag_value__Z7AitkenERK6Vectori.44:
+..B1.24:
+        movq      16(%rsp), %rdi
+        movsd     %xmm0, (%rsp)
+        call      free
+..___tag_value__Z7AitkenERK6Vectori.45:
+..B1.44:
+        movsd     (%rsp), %xmm0
+..___tag_value__Z7AitkenERK6Vectori.46:
+..B1.25:
+        addq      $64, %rsp
+..___tag_value__Z7AitkenERK6Vectori.47:
+        popq      %rbp
+..___tag_value__Z7AitkenERK6Vectori.50:
+        popq      %rbx
+..___tag_value__Z7AitkenERK6Vectori.52:
+        popq      %r14
+..___tag_value__Z7AitkenERK6Vectori.54:
+        popq      %r13
+..___tag_value__Z7AitkenERK6Vectori.56:
+        popq      %r12
+..___tag_value__Z7AitkenERK6Vectori.58:
+        ret       
+..___tag_value__Z7AitkenERK6Vectori.59:
+..B1.26:
+        movl      $.L_2__STRING.3, %edi
+        movl      $.L_2__STRING.1, %esi
+        movl      $90, %edx
+        movl      $__$U3, %ecx
+        call      __assert_fail
+..___tag_value__Z7AitkenERK6Vectori.66:
+..B1.27:
+        lea       32(%rsp), %rdi
+..___tag_value__Z7AitkenERK6Vectori.67:
+        call      _Z8printseqRK6Vector
+..___tag_value__Z7AitkenERK6Vectori.69:
+        jmp       ..B1.18
+..___tag_value__Z7AitkenERK6Vectori.70:
 ..___tag_value__Z7AitkenERK6Vectori.1:
-..B1.16:                        # Preds ..B1.15 ..B1.20         # Infreq
-        movq      %rax, (%rsp)                                  #32.10
-..___tag_value__Z7AitkenERK6Vectori.62:                         #
-                                # LOE r12
-..B1.17:                        # Preds ..B1.16                 # Infreq
-        lea       32(%rsp), %rdi                                #32.10
-..___tag_value__Z7AitkenERK6Vectori.63:                         #32.10
-        call      _ZN6VectorD1Ev                                #32.10
-..___tag_value__Z7AitkenERK6Vectori.65:                         #
-                                # LOE r12
-..B1.18:                        # Preds ..B1.17                 # Infreq
-        lea       8(%rsp), %rdi                                 #30.16
-..___tag_value__Z7AitkenERK6Vectori.67:                         #30.16
-        call      _ZN6VectorD1Ev                                #30.16
-..___tag_value__Z7AitkenERK6Vectori.69:                         #
-                                # LOE r12
-..B1.19:                        # Preds ..B1.18                 # Infreq
-        xorl      %eax, %eax                                    #30.16
-        movq      (%rsp), %rdi                                  #30.16
-..___tag_value__Z7AitkenERK6Vectori.71:                         #30.16
-        call      _Unwind_Resume                                #30.16
-..___tag_value__Z7AitkenERK6Vectori.73:                         #
-                                # LOE
-..B1.20:                        # Preds ..B1.23                 # Infreq
-        lea       32(%rsp), %rdi                                #38.5
-..___tag_value__Z7AitkenERK6Vectori.75:                         #38.5
-        call      _Z8printseqRK6Vector                          #38.5
-..___tag_value__Z7AitkenERK6Vectori.77:                         #
-        jmp       ..B1.6        # Prob 100%                     #38.5
+..B1.28:
+        movq      %rax, (%rsp)
+..___tag_value__Z7AitkenERK6Vectori.71:
+..B1.29:
+        lea       32(%rsp), %rdi
+..___tag_value__Z7AitkenERK6Vectori.72:
+        call      _ZN6VectorD1Ev
+..___tag_value__Z7AitkenERK6Vectori.74:
+..B1.30:
+        lea       8(%rsp), %rdi
+..___tag_value__Z7AitkenERK6Vectori.76:
+        call      _ZN6VectorD1Ev
+..___tag_value__Z7AitkenERK6Vectori.78:
+..B1.31:
+        xorl      %eax, %eax
+        movq      (%rsp), %rdi
+..___tag_value__Z7AitkenERK6Vectori.80:
+        call      _Unwind_Resume
+..___tag_value__Z7AitkenERK6Vectori.82:
+..B1.32:
+        movl      $.L_2__STRING.2, %edi
+        movl      $.L_2__STRING.1, %esi
+        movl      $70, %edx
+        movl      $__$U2, %ecx
+        call      __assert_fail
+..___tag_value__Z7AitkenERK6Vectori.84:
+..B1.33:
+        movl      $.L_2__STRING.0, %edi
+        movl      $.L_2__STRING.1, %esi
+        movl      $69, %edx
+        movl      $__$U2, %ecx
+        call      __assert_fail
+..___tag_value__Z7AitkenERK6Vectori.85:
+..B1.34:
+        lea       32(%rsp), %rdi
+..___tag_value__Z7AitkenERK6Vectori.86:
+        call      _Z8printseqRK6Vector
+..___tag_value__Z7AitkenERK6Vectori.88:
+        jmp       ..B1.12
+..___tag_value__Z7AitkenERK6Vectori.89:
+..B1.35:
+        movl      $.L_2__STRING.6, %edi
+        movl      $.L_2__STRING.1, %esi
+        movl      $105, %edx
+        movl      $__$U5, %ecx
+        call      __assert_fail
+..___tag_value__Z7AitkenERK6Vectori.90:
+..B1.36:
+        movl      $.L_2__STRING.5, %edi
+        movl      $.L_2__STRING.1, %esi
+        movl      $102, %edx
+        movl      $__$U5, %ecx
+        call      __assert_fail
         .align    16,0x90
-..___tag_value__Z7AitkenERK6Vectori.78:                         #
-                                # LOE r12 r13 ebx r14d r15d
-# mark_end;
+..___tag_value__Z7AitkenERK6Vectori.91:
 	.type	_Z7AitkenERK6Vectori,@function
 	.size	_Z7AitkenERK6Vectori,.-_Z7AitkenERK6Vectori
 	.section .gcc_except_table, "a"
@@ -193,165 +259,165 @@ _Z7AitkenERK6Vectori:
 _Z7AitkenERK6Vectori$$LSDA:
 	.byte	255
 	.byte	0
-	.uleb128	..___tag_value__Z7AitkenERK6Vectori.82 - ..___tag_value__Z7AitkenERK6Vectori.81
-..___tag_value__Z7AitkenERK6Vectori.81:
+	.uleb128	..___tag_value__Z7AitkenERK6Vectori.95 - ..___tag_value__Z7AitkenERK6Vectori.94
+..___tag_value__Z7AitkenERK6Vectori.94:
 	.byte	1
-	.uleb128	..___tag_value__Z7AitkenERK6Vectori.80 - ..___tag_value__Z7AitkenERK6Vectori.79
-..___tag_value__Z7AitkenERK6Vectori.79:
-	.uleb128	..___tag_value__Z7AitkenERK6Vectori.16 - ..___tag_value__Z7AitkenERK6Vectori.3
-	.uleb128	..___tag_value__Z7AitkenERK6Vectori.18 - ..___tag_value__Z7AitkenERK6Vectori.16
-	.byte	0
-	.byte	0
-	.uleb128	..___tag_value__Z7AitkenERK6Vectori.27 - ..___tag_value__Z7AitkenERK6Vectori.3
-	.uleb128	..___tag_value__Z7AitkenERK6Vectori.29 - ..___tag_value__Z7AitkenERK6Vectori.27
+	.uleb128	..___tag_value__Z7AitkenERK6Vectori.93 - ..___tag_value__Z7AitkenERK6Vectori.92
+..___tag_value__Z7AitkenERK6Vectori.92:
+	.uleb128	..___tag_value__Z7AitkenERK6Vectori.32 - ..___tag_value__Z7AitkenERK6Vectori.3
+	.uleb128	..___tag_value__Z7AitkenERK6Vectori.69 - ..___tag_value__Z7AitkenERK6Vectori.32
 	.uleb128	..___tag_value__Z7AitkenERK6Vectori.1 - ..___tag_value__Z7AitkenERK6Vectori.3
 	.byte	0
-	.uleb128	..___tag_value__Z7AitkenERK6Vectori.34 - ..___tag_value__Z7AitkenERK6Vectori.3
-	.uleb128	..___tag_value__Z7AitkenERK6Vectori.36 - ..___tag_value__Z7AitkenERK6Vectori.34
+	.uleb128	..___tag_value__Z7AitkenERK6Vectori.80 - ..___tag_value__Z7AitkenERK6Vectori.3
+	.uleb128	..___tag_value__Z7AitkenERK6Vectori.82 - ..___tag_value__Z7AitkenERK6Vectori.80
 	.byte	0
 	.byte	0
-	.uleb128	..___tag_value__Z7AitkenERK6Vectori.58 - ..___tag_value__Z7AitkenERK6Vectori.3
-	.uleb128	..___tag_value__Z7AitkenERK6Vectori.60 - ..___tag_value__Z7AitkenERK6Vectori.58
+	.uleb128	..___tag_value__Z7AitkenERK6Vectori.86 - ..___tag_value__Z7AitkenERK6Vectori.3
+	.uleb128	..___tag_value__Z7AitkenERK6Vectori.88 - ..___tag_value__Z7AitkenERK6Vectori.86
 	.uleb128	..___tag_value__Z7AitkenERK6Vectori.1 - ..___tag_value__Z7AitkenERK6Vectori.3
 	.byte	0
-	.uleb128	..___tag_value__Z7AitkenERK6Vectori.71 - ..___tag_value__Z7AitkenERK6Vectori.3
-	.uleb128	..___tag_value__Z7AitkenERK6Vectori.73 - ..___tag_value__Z7AitkenERK6Vectori.71
-	.byte	0
-	.byte	0
-	.uleb128	..___tag_value__Z7AitkenERK6Vectori.75 - ..___tag_value__Z7AitkenERK6Vectori.3
-	.uleb128	..___tag_value__Z7AitkenERK6Vectori.77 - ..___tag_value__Z7AitkenERK6Vectori.75
-	.uleb128	..___tag_value__Z7AitkenERK6Vectori.1 - ..___tag_value__Z7AitkenERK6Vectori.3
-	.byte	0
-..___tag_value__Z7AitkenERK6Vectori.80:
+..___tag_value__Z7AitkenERK6Vectori.93:
 	.long	0x00000000,0x00000000
-..___tag_value__Z7AitkenERK6Vectori.82:
+..___tag_value__Z7AitkenERK6Vectori.95:
 	.data
 # -- End  _Z7AitkenERK6Vectori
 	.text
 # -- Begin  _Z8printseqRK6Vector
-# mark_begin;
        .align    16,0x90
 	.globl _Z8printseqRK6Vector
 _Z8printseqRK6Vector:
 # parameter 1: %rdi
-..B2.1:                         # Preds ..B2.0
-..___tag_value__Z8printseqRK6Vector.83:                         #22.31
-        pushq     %r12                                          #22.31
-..___tag_value__Z8printseqRK6Vector.85:                         #
-        subq      $16, %rsp                                     #22.31
-..___tag_value__Z8printseqRK6Vector.87:                         #
-        movq      %rdi, %r12                                    #22.31
-        movl      $.L_2__STRING.0, %edi                         #23.3
-        xorl      %eax, %eax                                    #23.3
-..___tag_value__Z8printseqRK6Vector.88:                         #23.3
-        call      printf                                        #23.3
-..___tag_value__Z8printseqRK6Vector.89:                         #
-                                # LOE rbx rbp r12 r13 r14 r15
-..B2.2:                         # Preds ..B2.1
-        xorl      %eax, %eax                                    #24.12
-        cmpl      $0, (%r12)                                    #24.22
-        jle       ..B2.7        # Prob 10%                      #24.22
-                                # LOE rax rbx rbp r12 r13 r14 r15
-..B2.3:                         # Preds ..B2.2
-        movq      %r13, (%rsp)                                  #
-..___tag_value__Z8printseqRK6Vector.90:                         #
-        movq      %r12, %r13                                    #
-        movq      %rax, %r12                                    #
-                                # LOE rbx rbp r12 r13 r14 r15
-..B2.4:                         # Preds ..B2.5 ..B2.3
-        movq      8(%r13), %rdx                                 #25.5
-        movl      $.L_2__STRING.1, %edi                         #25.5
-        movl      $1, %eax                                      #25.5
-        movsd     (%rdx,%r12,8), %xmm0                          #25.5
-..___tag_value__Z8printseqRK6Vector.91:                         #25.5
-        call      printf                                        #25.5
-..___tag_value__Z8printseqRK6Vector.92:                         #
-                                # LOE rbx rbp r12 r13 r14 r15
-..B2.5:                         # Preds ..B2.4
-        incq      %r12                                          #24.33
-        movslq    (%r13), %rdx                                  #24.22
-        cmpq      %rdx, %r12                                    #24.22
-        jl        ..B2.4        # Prob 82%                      #24.22
-                                # LOE rbx rbp r12 r13 r14 r15
-..B2.6:                         # Preds ..B2.5
-        movq      (%rsp), %r13                                  #
-..___tag_value__Z8printseqRK6Vector.93:                         #
-                                # LOE rbx rbp r13 r14 r15
-..B2.7:                         # Preds ..B2.6 ..B2.2
-        addq      $16, %rsp                                     #26.1
-..___tag_value__Z8printseqRK6Vector.94:                         #
-        popq      %r12                                          #26.1
-..___tag_value__Z8printseqRK6Vector.96:                         #
-        ret                                                     #26.1
+..B2.1:
+..___tag_value__Z8printseqRK6Vector.96:
+        pushq     %r12
+..___tag_value__Z8printseqRK6Vector.98:
+        subq      $16, %rsp
+..___tag_value__Z8printseqRK6Vector.100:
+        movq      %rdi, %r12
+        movl      $.L_2__STRING.7, %edi
+        xorl      %eax, %eax
+..___tag_value__Z8printseqRK6Vector.101:
+        call      printf
+..___tag_value__Z8printseqRK6Vector.102:
+..B2.2:
+        xorl      %edx, %edx
+        movq      (%r12), %rax
+        testq     %rax, %rax
+        jle       ..B2.7
+..B2.3:
+        movq      8(%r12), %rcx
+        movq      %rax, %r12
+        movq      %r13, 8(%rsp)
+..___tag_value__Z8printseqRK6Vector.103:
+        movq      %rdx, %r13
+        movq      %r14, (%rsp)
+..___tag_value__Z8printseqRK6Vector.104:
+        movq      %rcx, %r14
+..B2.4:
+        movsd     (%r14,%r13,8), %xmm0
+        movl      $.L_2__STRING.8, %edi
+        movl      $1, %eax
+..___tag_value__Z8printseqRK6Vector.105:
+        call      printf
+..___tag_value__Z8printseqRK6Vector.106:
+..B2.5:
+        incq      %r13
+        cmpq      %r12, %r13
+        jl        ..B2.4
+..B2.6:
+        movq      8(%rsp), %r13
+..___tag_value__Z8printseqRK6Vector.107:
+        movq      (%rsp), %r14
+..___tag_value__Z8printseqRK6Vector.108:
+..B2.7:
+        addq      $16, %rsp
+..___tag_value__Z8printseqRK6Vector.109:
+        popq      %r12
+..___tag_value__Z8printseqRK6Vector.111:
+        ret       
         .align    16,0x90
-..___tag_value__Z8printseqRK6Vector.97:                         #
-                                # LOE
-# mark_end;
+..___tag_value__Z8printseqRK6Vector.112:
 	.type	_Z8printseqRK6Vector,@function
 	.size	_Z8printseqRK6Vector,.-_Z8printseqRK6Vector
 	.data
 # -- End  _Z8printseqRK6Vector
 	.text
 # -- Begin  _Z6AitkenR6Vector
-# mark_begin;
        .align    16,0x90
 	.globl _Z6AitkenR6Vector
 _Z6AitkenR6Vector:
 # parameter 1: %rdi
-..B3.1:                         # Preds ..B3.0
-..___tag_value__Z6AitkenR6Vector.98:                            #6.26
-        xorl      %ecx, %ecx                                    #8.12
-        movl      (%rdi), %esi                                  #7.18
-        xorl      %eax, %eax                                    #8.12
-        lea       -2(%rsi), %edx                                #8.24
-        testl     %edx, %edx                                    #8.24
-        jle       ..B3.11       # Prob 10%                      #8.24
-                                # LOE rax rcx rbx rbp rdi r12 r13 r14 r15 esi
-..B3.2:                         # Preds ..B3.1
-        movslq    %esi, %rsi                                    #8.3
-        lea       -2(%rsi), %rdx                                #8.24
-                                # LOE rax rdx rcx rbx rbp rsi rdi r12 r13 r14 r15
-..B3.3:                         # Preds ..B3.6 ..B3.2
-        movq      8(%rdi), %r8                                  #9.21
-        movsd     (%r8,%rcx,8), %xmm4                           #9.21
-        movsd     8(%r8,%rcx,8), %xmm0                          #10.23
-        movsd     16(%r8,%rcx,8), %xmm2                         #11.23
-        ucomisd   %xmm0, %xmm4                                  #12.12
-        jp        ..B3.4        # Prob 0%                       #12.12
-        je        ..B3.6        # Prob 16%                      #12.12
-                                # LOE rax rdx rcx rbx rbp rsi rdi r8 r12 r13 r14 r15 xmm0 xmm2 xmm4
-..B3.4:                         # Preds ..B3.3
-        movaps    %xmm0, %xmm1                                  #16.8
-        subsd     %xmm4, %xmm1                                  #16.8
-        movaps    %xmm1, %xmm3                                  #16.18
-        mulsd     %xmm1, %xmm3                                  #16.18
-        addsd     %xmm0, %xmm1                                  #16.30
-        pxor      %xmm0, %xmm0                                  #16.30
-        subsd     %xmm1, %xmm0                                  #16.30
-        addsd     %xmm2, %xmm0                                  #16.35
-        divsd     %xmm0, %xmm3                                  #16.35
-        subsd     %xmm3, %xmm4                                  #16.35
-                                # LOE rax rdx rcx rbx rbp rsi rdi r8 r12 r13 r14 r15 xmm4
-..B3.6:                         # Preds ..B3.3 ..B3.4
-        movsd     %xmm4, (%r8,%rcx,8)                           #13.11
-        incq      %rcx                                          #8.27
-        cmpq      %rdx, %rcx                                    #8.24
-        jl        ..B3.3        # Prob 82%                      #8.24
-                                # LOE rax rdx rcx rbx rbp rsi rdi r12 r13 r14 r15
-..B3.8:                         # Preds ..B3.6 ..B3.11
-        movq      8(%rdi), %rdx                                 #18.7
-        movq      %rax, -16(%rdx,%rsi,8)                        #18.7
-        movq      8(%rdi), %rcx                                 #19.7
-        movq      %rax, -8(%rcx,%rsi,8)                         #19.7
-        ret                                                     #20.1
-                                # LOE
-..B3.11:                        # Preds ..B3.1
-        movslq    %esi, %rsi                                    #8.3
-        jmp       ..B3.8        # Prob 100%                     #8.3
+..B3.1:
+..___tag_value__Z6AitkenR6Vector.113:
+        pushq     %rsi
+..___tag_value__Z6AitkenR6Vector.115:
+        xorl      %edx, %edx
+        movq      (%rdi), %rax
+        movl      %eax, %r9d
+        movslq    %eax, %rcx
+        addl      $-2, %r9d
+        xorl      %esi, %esi
+        testl     %r9d, %r9d
+        lea       -2(%rcx), %r8
+        jle       ..B3.8
+..B3.3:
+        cmpq      %rax, %rdx
+        jge       ..B3.11
+..B3.4:
+        movq      8(%rdi), %r10
+        lea       1(%rdx), %r11
+        cmpq      %rax, %r11
+        movsd     (%r10,%rdx,8), %xmm3
+        jge       ..B3.11
+..B3.5:
+        movsd     (%r10,%r11,8), %xmm0
+        lea       2(%rdx), %r9
+        cmpq      %rax, %r9
+        jge       ..B3.11
+..B3.6:
+        movaps    %xmm0, %xmm1
+        cmpq      %r8, %r11
+        subsd     %xmm3, %xmm1
+        movaps    %xmm1, %xmm2
+        mulsd     %xmm1, %xmm2
+        addsd     %xmm0, %xmm1
+        pxor      %xmm0, %xmm0
+        subsd     %xmm1, %xmm0
+        addsd     (%r10,%r9,8), %xmm0
+        divsd     %xmm0, %xmm2
+        subsd     %xmm2, %xmm3
+        movsd     %xmm3, (%r10,%rdx,8)
+        movq      %r11, %rdx
+        jge       ..B3.7
+..B3.18:
+        movq      (%rdi), %rax
+        jmp       ..B3.3
+..B3.7:
+        movq      (%rdi), %rax
+..B3.8:
+        cmpq      %rax, %r8
+        jge       ..B3.11
+..B3.9:
+        movq      8(%rdi), %rax
+        decq      %rcx
+        movq      %rsi, (%rax,%r8,8)
+        cmpq      (%rdi), %rcx
+        jge       ..B3.11
+..B3.10:
+        movq      8(%rdi), %rax
+        movq      %rsi, (%rax,%rcx,8)
+        popq      %rcx
+..___tag_value__Z6AitkenR6Vector.116:
+        ret       
+..___tag_value__Z6AitkenR6Vector.117:
+..B3.11:
+        movl      $.L_2__STRING.3, %edi
+        movl      $.L_2__STRING.1, %esi
+        movl      $90, %edx
+        movl      $__$U3, %ecx
+        call      __assert_fail
         .align    16,0x90
-..___tag_value__Z6AitkenR6Vector.100:                           #
-                                # LOE rax rbx rbp rsi rdi r12 r13 r14 r15
-# mark_end;
+..___tag_value__Z6AitkenR6Vector.118:
 	.type	_Z6AitkenR6Vector,@function
 	.size	_Z6AitkenR6Vector,.-_Z6AitkenR6Vector
 	.data
@@ -359,67 +425,55 @@ _Z6AitkenR6Vector:
 	.section .text._ZN6VectorD1Ev, "xaG",@progbits,_ZN6VectorD1Ev,comdat
 ..TXTST1:
 # -- Begin  _ZN6VectorD1Ev
-# mark_begin;
        .align    16,0x90
 	.weak _ZN6VectorD1Ev
 _ZN6VectorD1Ev:
 # parameter 1: %rdi
-..B4.1:                         # Preds ..B4.0
-..___tag_value__ZN6VectorD1Ev.101:                              #50.12
-        pushq     %rsi                                          #50.12
-..___tag_value__ZN6VectorD1Ev.103:                              #
-        cmpl      $0, 16(%rdi)                                  #51.15
-        je        ..B4.3        # Prob 78%                      #51.15
-                                # LOE rbx rbp rdi r12 r13 r14 r15
-..B4.2:                         # Preds ..B4.1
-        movq      8(%rdi), %rdi                                 #52.7
-..___tag_value__ZN6VectorD1Ev.104:                              #52.7
-        call      MKL_free                                      #52.7
-..___tag_value__ZN6VectorD1Ev.105:                              #
-                                # LOE rbx rbp r12 r13 r14 r15
-..B4.3:                         # Preds ..B4.2 ..B4.1
-        popq      %rcx                                          #53.3
-..___tag_value__ZN6VectorD1Ev.106:                              #
-        ret                                                     #53.3
+..B4.1:
+..___tag_value__ZN6VectorD1Ev.119:
+        pushq     %rsi
+..___tag_value__ZN6VectorD1Ev.121:
+        cmpl      $0, 16(%rdi)
+        je        ..B4.3
+..B4.2:
+        movq      8(%rdi), %rdi
+        call      free
+..B4.3:
+        popq      %rcx
+..___tag_value__ZN6VectorD1Ev.122:
+        ret       
         .align    16,0x90
-..___tag_value__ZN6VectorD1Ev.107:                              #
-                                # LOE
-# mark_end;
+..___tag_value__ZN6VectorD1Ev.123:
 	.type	_ZN6VectorD1Ev,@function
 	.size	_ZN6VectorD1Ev,.-_ZN6VectorD1Ev
 	.data
 # -- End  _ZN6VectorD1Ev
 	.text
 # -- Begin  __sti__$E
-# mark_begin;
        .align    16,0x90
 __sti__$E:
-..B5.1:                         # Preds ..B5.0
-..___tag_value___sti__$E.108:                                   #
-        pushq     %rsi                                          #
-..___tag_value___sti__$E.110:                                   #
-        movl      $_ZSt8__ioinit, %edi                          #72.25
-..___tag_value___sti__$E.111:                                   #72.25
-        call      _ZNSt8ios_base4InitC1Ev                       #72.25
-..___tag_value___sti__$E.112:                                   #
-                                # LOE rbx rbp r12 r13 r14 r15
-..B5.2:                         # Preds ..B5.1
-        movl      $_ZNSt8ios_base4InitD1Ev, %edi                #72.25
-        movl      $_ZSt8__ioinit, %esi                          #72.25
-        movl      $__dso_handle, %edx                           #72.25
-        xorl      %eax, %eax                                    #72.25
-..___tag_value___sti__$E.113:                                   #72.25
-        call      __cxa_atexit                                  #72.25
-..___tag_value___sti__$E.114:                                   #
-                                # LOE rbx rbp r12 r13 r14 r15
-..B5.3:                         # Preds ..B5.2
-        popq      %rcx                                          #72.25
-..___tag_value___sti__$E.115:                                   #
-        ret                                                     #72.25
+..B5.1:
+..___tag_value___sti__$E.124:
+        pushq     %rsi
+..___tag_value___sti__$E.126:
+        movl      $_ZSt8__ioinit, %edi
+..___tag_value___sti__$E.127:
+        call      _ZNSt8ios_base4InitC1Ev
+..___tag_value___sti__$E.128:
+..B5.2:
+        movl      $_ZNSt8ios_base4InitD1Ev, %edi
+        movl      $_ZSt8__ioinit, %esi
+        movl      $__dso_handle, %edx
+        xorl      %eax, %eax
+..___tag_value___sti__$E.129:
+        call      __cxa_atexit
+..___tag_value___sti__$E.130:
+..B5.3:
+        popq      %rcx
+..___tag_value___sti__$E.131:
+        ret       
         .align    16,0x90
-..___tag_value___sti__$E.116:                                   #
-                                # LOE
-# mark_end;
+..___tag_value___sti__$E.132:
 	.type	__sti__$E,@function
 	.size	__sti__$E,.-__sti__$E
 	.data
@@ -431,18 +485,242 @@ _ZSt8__ioinit:
 	.type	_ZSt8__ioinit,@object
 	.size	_ZSt8__ioinit,1
 	.space 1	# pad
+	.section .rodata, "a"
+	.align 4
+	.align 1
+__$U5:
+	.byte	86
+	.byte	101
+	.byte	99
+	.byte	116
+	.byte	111
+	.byte	114
+	.byte	32
+	.byte	38
+	.byte	86
+	.byte	101
+	.byte	99
+	.byte	116
+	.byte	111
+	.byte	114
+	.byte	58
+	.byte	58
+	.byte	111
+	.byte	112
+	.byte	101
+	.byte	114
+	.byte	97
+	.byte	116
+	.byte	111
+	.byte	114
+	.byte	61
+	.byte	40
+	.byte	99
+	.byte	111
+	.byte	110
+	.byte	115
+	.byte	116
+	.byte	32
+	.byte	86
+	.byte	101
+	.byte	99
+	.byte	116
+	.byte	111
+	.byte	114
+	.byte	32
+	.byte	38
+	.byte	41
+	.byte	0
+	.type	__$U5,@object
+	.size	__$U5,42
+	.align 1
+__$U2:
+	.byte	118
+	.byte	111
+	.byte	105
+	.byte	100
+	.byte	32
+	.byte	86
+	.byte	101
+	.byte	99
+	.byte	116
+	.byte	111
+	.byte	114
+	.byte	58
+	.byte	58
+	.byte	115
+	.byte	104
+	.byte	97
+	.byte	100
+	.byte	111
+	.byte	119
+	.byte	40
+	.byte	99
+	.byte	111
+	.byte	110
+	.byte	115
+	.byte	116
+	.byte	32
+	.byte	86
+	.byte	101
+	.byte	99
+	.byte	116
+	.byte	111
+	.byte	114
+	.byte	32
+	.byte	38
+	.byte	44
+	.byte	32
+	.byte	108
+	.byte	111
+	.byte	110
+	.byte	103
+	.byte	44
+	.byte	32
+	.byte	108
+	.byte	111
+	.byte	110
+	.byte	103
+	.byte	41
+	.byte	0
+	.type	__$U2,@object
+	.size	__$U2,48
+	.align 1
+__$U3:
+	.byte	100
+	.byte	111
+	.byte	117
+	.byte	98
+	.byte	108
+	.byte	101
+	.byte	32
+	.byte	38
+	.byte	86
+	.byte	101
+	.byte	99
+	.byte	116
+	.byte	111
+	.byte	114
+	.byte	58
+	.byte	58
+	.byte	111
+	.byte	112
+	.byte	101
+	.byte	114
+	.byte	97
+	.byte	116
+	.byte	111
+	.byte	114
+	.byte	40
+	.byte	41
+	.byte	40
+	.byte	108
+	.byte	111
+	.byte	110
+	.byte	103
+	.byte	41
+	.byte	0
+	.type	__$U3,@object
+	.size	__$U3,33
 	.section .rodata.str1.4, "aMS",@progbits,1
 	.align 4
 	.align 4
+.L_2__STRING.1:
+	.byte	46
+	.byte	46
+	.byte	47
+	.byte	117
+	.byte	116
+	.byte	105
+	.byte	108
+	.byte	115
+	.byte	47
+	.byte	86
+	.byte	101
+	.byte	99
+	.byte	116
+	.byte	111
+	.byte	114
+	.byte	46
+	.byte	104
+	.byte	104
+	.byte	0
+	.type	.L_2__STRING.1,@object
+	.size	.L_2__STRING.1,19
+	.space 1, 0x00 	# pad
+	.align 4
+.L_2__STRING.5:
+	.byte	115
+	.byte	105
+	.byte	122
+	.byte	101
+	.byte	61
+	.byte	61
+	.byte	118
+	.byte	46
+	.byte	115
+	.byte	105
+	.byte	122
+	.byte	101
+	.byte	0
+	.type	.L_2__STRING.5,@object
+	.size	.L_2__STRING.5,13
+	.space 3, 0x00 	# pad
+	.align 4
 .L_2__STRING.0:
+	.byte	33
+	.byte	111
+	.byte	119
+	.byte	110
+	.byte	101
+	.byte	114
+	.byte	0
+	.type	.L_2__STRING.0,@object
+	.size	.L_2__STRING.0,7
+	.space 1, 0x00 	# pad
+	.align 4
+.L_2__STRING.2:
+	.byte	105
+	.byte	43
+	.byte	108
+	.byte	101
+	.byte	110
+	.byte	60
+	.byte	61
+	.byte	118
+	.byte	46
+	.byte	115
+	.byte	105
+	.byte	122
+	.byte	101
+	.byte	0
+	.type	.L_2__STRING.2,@object
+	.size	.L_2__STRING.2,14
+	.space 2, 0x00 	# pad
+	.align 4
+.L_2__STRING.3:
+	.byte	105
+	.byte	32
+	.byte	60
+	.byte	32
+	.byte	115
+	.byte	105
+	.byte	122
+	.byte	101
+	.byte	0
+	.type	.L_2__STRING.3,@object
+	.size	.L_2__STRING.3,9
+	.space 3, 0x00 	# pad
+	.align 4
+.L_2__STRING.7:
 	.byte	10
 	.byte	32
 	.byte	10
 	.byte	0
-	.type	.L_2__STRING.0,@object
-	.size	.L_2__STRING.0,4
+	.type	.L_2__STRING.7,@object
+	.size	.L_2__STRING.7,4
 	.align 4
-.L_2__STRING.1:
+.L_2__STRING.8:
 	.byte	37
 	.byte	45
 	.byte	46
@@ -451,8 +729,114 @@ _ZSt8__ioinit:
 	.byte	102
 	.byte	10
 	.byte	0
-	.type	.L_2__STRING.1,@object
-	.size	.L_2__STRING.1,8
+	.type	.L_2__STRING.8,@object
+	.size	.L_2__STRING.8,8
+	.section .rodata.str1.32, "aMS",@progbits,1
+	.align 32
+	.align 32
+.L_2__STRING.6:
+	.byte	40
+	.byte	40
+	.byte	100
+	.byte	97
+	.byte	116
+	.byte	97
+	.byte	60
+	.byte	118
+	.byte	46
+	.byte	100
+	.byte	97
+	.byte	116
+	.byte	97
+	.byte	41
+	.byte	38
+	.byte	38
+	.byte	40
+	.byte	40
+	.byte	100
+	.byte	97
+	.byte	116
+	.byte	97
+	.byte	43
+	.byte	115
+	.byte	105
+	.byte	122
+	.byte	101
+	.byte	45
+	.byte	49
+	.byte	41
+	.byte	60
+	.byte	118
+	.byte	46
+	.byte	100
+	.byte	97
+	.byte	116
+	.byte	97
+	.byte	41
+	.byte	41
+	.byte	124
+	.byte	124
+	.byte	32
+	.byte	40
+	.byte	40
+	.byte	100
+	.byte	97
+	.byte	116
+	.byte	97
+	.byte	62
+	.byte	118
+	.byte	46
+	.byte	100
+	.byte	97
+	.byte	116
+	.byte	97
+	.byte	41
+	.byte	38
+	.byte	38
+	.byte	32
+	.byte	40
+	.byte	100
+	.byte	97
+	.byte	116
+	.byte	97
+	.byte	62
+	.byte	40
+	.byte	118
+	.byte	46
+	.byte	100
+	.byte	97
+	.byte	116
+	.byte	97
+	.byte	43
+	.byte	115
+	.byte	105
+	.byte	122
+	.byte	101
+	.byte	45
+	.byte	49
+	.byte	41
+	.byte	41
+	.byte	41
+	.byte	124
+	.byte	124
+	.byte	32
+	.byte	40
+	.byte	100
+	.byte	97
+	.byte	116
+	.byte	97
+	.byte	61
+	.byte	61
+	.byte	118
+	.byte	46
+	.byte	100
+	.byte	97
+	.byte	116
+	.byte	97
+	.byte	41
+	.byte	0
+	.type	.L_2__STRING.6,@object
+	.size	.L_2__STRING.6,100
 	.section .ctors, "wa"
 	.align 8
 __init_0:
@@ -461,8 +845,6 @@ __init_0:
 	.quad	__sti__$E
 	.data
 	.hidden __dso_handle
-# mark_proc_addr_taken __sti__$E;
-# mark_proc_addr_taken _ZNSt8ios_base4InitD1Ev;
 	.section .note.GNU-stack, ""
 // -- Begin DWARF2 SEGMENT .eh_frame
 	.section .eh_frame,"a",@progbits
@@ -486,18 +868,18 @@ __init_0:
 	.4byte 0x00000094
 	.4byte 0x00000044
 	.8byte ..___tag_value__Z7AitkenERK6Vectori.3
-	.8byte ..___tag_value__Z7AitkenERK6Vectori.78-..___tag_value__Z7AitkenERK6Vectori.3
+	.8byte ..___tag_value__Z7AitkenERK6Vectori.91-..___tag_value__Z7AitkenERK6Vectori.3
 	.byte 0x08
 	.8byte _Z7AitkenERK6Vectori$$LSDA
 	.byte 0x04
 	.4byte ..___tag_value__Z7AitkenERK6Vectori.5-..___tag_value__Z7AitkenERK6Vectori.3
-	.4byte 0x100e028d
+	.4byte 0x100e028c
 	.byte 0x04
 	.4byte ..___tag_value__Z7AitkenERK6Vectori.7-..___tag_value__Z7AitkenERK6Vectori.5
-	.4byte 0x180e038e
+	.4byte 0x180e038d
 	.byte 0x04
 	.4byte ..___tag_value__Z7AitkenERK6Vectori.9-..___tag_value__Z7AitkenERK6Vectori.7
-	.4byte 0x200e048f
+	.4byte 0x200e048e
 	.byte 0x04
 	.4byte ..___tag_value__Z7AitkenERK6Vectori.11-..___tag_value__Z7AitkenERK6Vectori.9
 	.4byte 0x280e0583
@@ -508,70 +890,82 @@ __init_0:
 	.4byte ..___tag_value__Z7AitkenERK6Vectori.15-..___tag_value__Z7AitkenERK6Vectori.13
 	.2byte 0x700e
 	.byte 0x04
-	.4byte ..___tag_value__Z7AitkenERK6Vectori.39-..___tag_value__Z7AitkenERK6Vectori.15
+	.4byte ..___tag_value__Z7AitkenERK6Vectori.47-..___tag_value__Z7AitkenERK6Vectori.15
 	.4byte 0x04c6300e
-	.4byte ..___tag_value__Z7AitkenERK6Vectori.42-..___tag_value__Z7AitkenERK6Vectori.39
+	.4byte ..___tag_value__Z7AitkenERK6Vectori.50-..___tag_value__Z7AitkenERK6Vectori.47
 	.4byte 0x04c3280e
-	.4byte ..___tag_value__Z7AitkenERK6Vectori.44-..___tag_value__Z7AitkenERK6Vectori.42
-	.4byte 0x04cf200e
-	.4byte ..___tag_value__Z7AitkenERK6Vectori.46-..___tag_value__Z7AitkenERK6Vectori.44
-	.4byte 0x04ce180e
-	.4byte ..___tag_value__Z7AitkenERK6Vectori.48-..___tag_value__Z7AitkenERK6Vectori.46
-	.4byte 0x04cd100e
-	.4byte ..___tag_value__Z7AitkenERK6Vectori.50-..___tag_value__Z7AitkenERK6Vectori.48
+	.4byte ..___tag_value__Z7AitkenERK6Vectori.52-..___tag_value__Z7AitkenERK6Vectori.50
+	.4byte 0x04ce200e
+	.4byte ..___tag_value__Z7AitkenERK6Vectori.54-..___tag_value__Z7AitkenERK6Vectori.52
+	.4byte 0x04cd180e
+	.4byte ..___tag_value__Z7AitkenERK6Vectori.56-..___tag_value__Z7AitkenERK6Vectori.54
+	.4byte 0x04cc100e
+	.4byte ..___tag_value__Z7AitkenERK6Vectori.58-..___tag_value__Z7AitkenERK6Vectori.56
 	.2byte 0x080e
 	.byte 0x04
-	.4byte ..___tag_value__Z7AitkenERK6Vectori.51-..___tag_value__Z7AitkenERK6Vectori.50
-	.8byte 0x028d06860583700e
-	.4byte 0x048f038e
+	.4byte ..___tag_value__Z7AitkenERK6Vectori.59-..___tag_value__Z7AitkenERK6Vectori.58
+	.8byte 0x028c06860583700e
+	.4byte 0x048e038d
 	.2byte 0x0000
 	.byte 0x00
-	.4byte 0x00000044
+	.4byte 0x00000054
 	.4byte 0x000000bc
-	.8byte ..___tag_value__Z8printseqRK6Vector.83
-	.8byte ..___tag_value__Z8printseqRK6Vector.97-..___tag_value__Z8printseqRK6Vector.83
+	.8byte ..___tag_value__Z8printseqRK6Vector.96
+	.8byte ..___tag_value__Z8printseqRK6Vector.112-..___tag_value__Z8printseqRK6Vector.96
 	.2byte 0x0400
-	.4byte ..___tag_value__Z8printseqRK6Vector.85-..___tag_value__Z8printseqRK6Vector.83
+	.4byte ..___tag_value__Z8printseqRK6Vector.98-..___tag_value__Z8printseqRK6Vector.96
 	.4byte 0x100e028c
 	.byte 0x04
-	.4byte ..___tag_value__Z8printseqRK6Vector.87-..___tag_value__Z8printseqRK6Vector.85
+	.4byte ..___tag_value__Z8printseqRK6Vector.100-..___tag_value__Z8printseqRK6Vector.98
 	.2byte 0x200e
 	.byte 0x04
-	.4byte ..___tag_value__Z8printseqRK6Vector.90-..___tag_value__Z8printseqRK6Vector.87
-	.2byte 0x048d
+	.4byte ..___tag_value__Z8printseqRK6Vector.103-..___tag_value__Z8printseqRK6Vector.100
+	.2byte 0x038d
 	.byte 0x04
-	.4byte ..___tag_value__Z8printseqRK6Vector.93-..___tag_value__Z8printseqRK6Vector.90
+	.4byte ..___tag_value__Z8printseqRK6Vector.104-..___tag_value__Z8printseqRK6Vector.103
+	.2byte 0x048e
+	.byte 0x04
+	.4byte ..___tag_value__Z8printseqRK6Vector.107-..___tag_value__Z8printseqRK6Vector.104
 	.2byte 0x04cd
-	.4byte ..___tag_value__Z8printseqRK6Vector.94-..___tag_value__Z8printseqRK6Vector.93
+	.4byte ..___tag_value__Z8printseqRK6Vector.108-..___tag_value__Z8printseqRK6Vector.107
+	.2byte 0x04ce
+	.4byte ..___tag_value__Z8printseqRK6Vector.109-..___tag_value__Z8printseqRK6Vector.108
 	.4byte 0x04cc100e
-	.4byte ..___tag_value__Z8printseqRK6Vector.96-..___tag_value__Z8printseqRK6Vector.94
-	.4byte 0x0000080e
-	.byte 0x00
-	.4byte 0x0000001c
-	.4byte 0x00000104
-	.8byte ..___tag_value__Z6AitkenR6Vector.98
-	.8byte ..___tag_value__Z6AitkenR6Vector.100-..___tag_value__Z6AitkenR6Vector.98
-	.8byte 0x0000000000000000
-	.4byte 0x00000024
-	.4byte 0x00000124
-	.8byte ..___tag_value__ZN6VectorD1Ev.101
-	.8byte ..___tag_value__ZN6VectorD1Ev.107-..___tag_value__ZN6VectorD1Ev.101
+	.4byte ..___tag_value__Z8printseqRK6Vector.111-..___tag_value__Z8printseqRK6Vector.109
+	.8byte 0x000000000000080e
+	.4byte 0x0000002c
+	.4byte 0x00000114
+	.8byte ..___tag_value__Z6AitkenR6Vector.113
+	.8byte ..___tag_value__Z6AitkenR6Vector.118-..___tag_value__Z6AitkenR6Vector.113
 	.2byte 0x0400
-	.4byte ..___tag_value__ZN6VectorD1Ev.103-..___tag_value__ZN6VectorD1Ev.101
+	.4byte ..___tag_value__Z6AitkenR6Vector.115-..___tag_value__Z6AitkenR6Vector.113
 	.2byte 0x100e
 	.byte 0x04
-	.4byte ..___tag_value__ZN6VectorD1Ev.106-..___tag_value__ZN6VectorD1Ev.103
+	.4byte ..___tag_value__Z6AitkenR6Vector.116-..___tag_value__Z6AitkenR6Vector.115
+	.2byte 0x080e
+	.byte 0x04
+	.4byte ..___tag_value__Z6AitkenR6Vector.117-..___tag_value__Z6AitkenR6Vector.116
+	.4byte 0x0000100e
+	.4byte 0x00000024
+	.4byte 0x00000144
+	.8byte ..___tag_value__ZN6VectorD1Ev.119
+	.8byte ..___tag_value__ZN6VectorD1Ev.123-..___tag_value__ZN6VectorD1Ev.119
+	.2byte 0x0400
+	.4byte ..___tag_value__ZN6VectorD1Ev.121-..___tag_value__ZN6VectorD1Ev.119
+	.2byte 0x100e
+	.byte 0x04
+	.4byte ..___tag_value__ZN6VectorD1Ev.122-..___tag_value__ZN6VectorD1Ev.121
 	.2byte 0x080e
 	.byte 0x00
 	.4byte 0x00000024
-	.4byte 0x0000014c
-	.8byte ..___tag_value___sti__$E.108
-	.8byte ..___tag_value___sti__$E.116-..___tag_value___sti__$E.108
+	.4byte 0x0000016c
+	.8byte ..___tag_value___sti__$E.124
+	.8byte ..___tag_value___sti__$E.132-..___tag_value___sti__$E.124
 	.2byte 0x0400
-	.4byte ..___tag_value___sti__$E.110-..___tag_value___sti__$E.108
+	.4byte ..___tag_value___sti__$E.126-..___tag_value___sti__$E.124
 	.2byte 0x100e
 	.byte 0x04
-	.4byte ..___tag_value___sti__$E.115-..___tag_value___sti__$E.110
+	.4byte ..___tag_value___sti__$E.131-..___tag_value___sti__$E.126
 	.2byte 0x080e
 	.byte 0x00
 # End

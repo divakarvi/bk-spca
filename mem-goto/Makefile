@@ -1,6 +1,6 @@
 include ../makevars.mk
-LIBS := $(MKLLIBS)
-CFLAGSXX := -fno-inline-functions $(MKLINC)
+LIBS := 
+CFLAGSXX := -fno-inline-functions 
 MODS := ../utils ../proc-microk
 
 #########################

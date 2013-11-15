@@ -2,9 +2,9 @@
 #include "fft_mkl.hh"
 #include "fft_fftw.hh"
 #include "nr.hh"
-#include <mkl.h>
 #include <unistd.h>
 #include <iostream>
+#include <cstdlib>
 
 enum mkl_align_flag {MKL_ALIGN, MKL_NOALIGN};
 
@@ -13,7 +13,7 @@ enum mkl_align_flag {MKL_ALIGN, MKL_NOALIGN};
  * to test fftw replace fft_mkl fft_fftw and verify flag == MKL_ALIGN
  */
 void test_mkl(int n, enum mkl_align_flag flag){
-	double *space = (double *)MKL_malloc((4*n+2)*sizeof(double), 16);
+	double *space = (double *)_mm_malloc((4*n+2)*sizeof(double), 16);
 	double *v;
 	switch(flag){
 	case MKL_ALIGN:
@@ -44,7 +44,7 @@ void test_mkl(int n, enum mkl_align_flag flag){
 	std::cout<<"\tn = "<<n<<std::endl;
 	std::cout<<"\trel error = "<<rerror<<std::endl;
 
-	MKL_free(space);
+	_mm_free(space);
 }
 
 void test_nr(int n){

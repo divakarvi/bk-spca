@@ -24,9 +24,9 @@ unrolljam.s: unrolljam.cpp
 -include xchg-mult.d
 xchg-mult.o: xchg-mult.cpp
 
--include xchg-timer.d
-xchg-timer.o: xchg-timer.cpp
-xchg-timer.exe: xchg-timer.o xchg-mult.o 			\
+-include time-xchg.d
+time-xchg.o: time-xchg.cpp
+time-xchg.exe: time-xchg.o xchg-mult.o 			\
 		../utils 					\
 		../utils/Table.o 				\
 		../utils/utils.o 

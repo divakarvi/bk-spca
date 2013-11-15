@@ -6,7 +6,6 @@
 #include "fft_mkl.hh"
 #include "fft_fftw.hh"
 #include "nr.hh"
-#include <mkl.h>
 #include <iostream>
 
 #define FWD
@@ -34,7 +33,7 @@ void time_fft(int n, enum yesno_type march_on){
 	 * determine count of ffts so that 10 GB of data is accessed
 	 */
 	long bytes = 10l*1000*1000*1000;
-	double *space = (double *)MKL_malloc(bytes, 64);
+	double *space = (double *)_mm_malloc(bytes, 64);
 	long count = bytes/(1l*2*n*sizeof(double));
 
 	/*
@@ -125,7 +124,7 @@ void time_fft(int n, enum yesno_type march_on){
 		break;
 	}
 	
-	MKL_free(space);
+	_mm_free(space);
 }
 
 void make_table(enum yesno_type march_onoff, const char* banner){

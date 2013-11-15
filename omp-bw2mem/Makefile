@@ -1,6 +1,6 @@
 include ../makevars.mk
-CFLAGSXX := -fno-inline-functions -openmp $(MKLINC)
-LIBS := -openmp $(MKLLIBS)
+CFLAGSXX := -fno-inline-functions -openmp 
+LIBS := -openmp 
 MODS := ../utils
 
 ############

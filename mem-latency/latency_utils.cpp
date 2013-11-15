@@ -1,5 +1,4 @@
 #include "latency_utils.hh"
-#include <mkl.h>
 #include <cstdlib>
 
 int countrepeats(long int *list, long int n, int count){
@@ -8,7 +7,7 @@ int countrepeats(long int *list, long int n, int count){
 	 */
 	
 	long int *llist = (long int *)
-		MKL_malloc(count*sizeof(long int), 64);
+		_mm_malloc(count*sizeof(long int), 64);
 	llist[0] = 0;
 	long int index = 0;
 	for(long int i=1; i < count; i++){
@@ -28,7 +27,7 @@ int countrepeats(long int *list, long int n, int count){
 				break;
 			}
 	}
-	MKL_free(llist);
+	_mm_free(llist);
 	return repeats;
 }
 

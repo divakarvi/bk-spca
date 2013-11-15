@@ -4,7 +4,6 @@
 #include "../utils/Table.hh"
 #include "../proc-microk/asm4xnx4.hh"
 #include "blockmult.hh"
-#include <mkl.h>
 
 enum cacheflag {L2cache, L3cache};
 
@@ -95,7 +94,7 @@ double time4x200x12(enum cacheflag flag){
 double time600x200x12(){
 	__declspec(align(16)) double a[600*200];
 	__declspec(align(16)) double bb[200*12*1000];
-	double *C = (double *)MKL_malloc(600l*12*2000*sizeof(double), 16);
+	double *C = (double *)_mm_malloc(600l*12*2000*sizeof(double), 16);
 	__declspec(align(16)) double scratch[7200];
   
 	for(int i=0; i < 600*12; i++)
@@ -128,7 +127,7 @@ double time600x200x12(){
 	cycles = clk.toc();
 	cycles /= count;
 
-	MKL_free(C);
+	_mm_free(C);
 
 	return cycles;
 }
@@ -139,12 +138,12 @@ double time600x200x12(){
 double time600x200x3000(){
 	int ldA = 6000;
 	double* aa = 
-		(double *)MKL_malloc(600*200*10*2*sizeof(double), 16);
-	double *b = (double *)MKL_malloc(1l*sizeof(double)*200*3000, 16);
+		(double *)_mm_malloc(600*200*10*2*sizeof(double), 16);
+	double *b = (double *)_mm_malloc(1l*sizeof(double)*200*3000, 16);
 	int ldC = 1200;
-	double *C = (double *)MKL_malloc(1l*sizeof(double)*600*3000*10, 16);
+	double *C = (double *)_mm_malloc(1l*sizeof(double)*600*3000*10, 16);
 	double *scratch = 
-		(double *)MKL_malloc(1l*sizeof(double)*(7200+600*200), 16);
+		(double *)_mm_malloc(1l*sizeof(double)*(7200+600*200), 16);
 	
 	for(int i=0; i < 600*200*10*2; i++)
 		aa[i] = rand()*1.0/RAND_MAX;
@@ -165,10 +164,10 @@ double time600x200x3000(){
 	cycles = clk.toc();
 	cycles /= count;
 
-	MKL_free(aa);
-	MKL_free(b);
-	MKL_free(C);
-	MKL_free(scratch);
+	_mm_free(aa);
+	_mm_free(b);
+	_mm_free(C);
+	_mm_free(scratch);
 
 	return cycles;
 }
@@ -178,13 +177,13 @@ double time600x200x3000(){
  */
 double time3000x200x3000(){
 	int ldA = 3000;
-	double *A = (double *)MKL_malloc(1l*sizeof(double)*3000*200, 16);
+	double *A = (double *)_mm_malloc(1l*sizeof(double)*3000*200, 16);
 	int ldB = 2000;
-	double *B = (double *)MKL_malloc(1l*sizeof(double)*200*3000*10, 16);
+	double *B = (double *)_mm_malloc(1l*sizeof(double)*200*3000*10, 16);
 	int ldC = 3000;
-	double *C = (double *)MKL_malloc(1l*sizeof(double)*3000*3000, 16);
+	double *C = (double *)_mm_malloc(1l*sizeof(double)*3000*3000, 16);
 	double *scratch = 
-		(double *)MKL_malloc(1l*sizeof(double)
+		(double *)_mm_malloc(1l*sizeof(double)
 				     *(600*12+600*200+200*3000), 16);
 
 
@@ -207,10 +206,10 @@ double time3000x200x3000(){
 	cycles = clk.toc();
 	cycles /= count;
 	
-	MKL_free(A);
-	MKL_free(B);
-	MKL_free(C);
-	MKL_free(scratch);
+	_mm_free(A);
+	_mm_free(B);
+	_mm_free(C);
+	_mm_free(scratch);
 
 	return cycles;
 }
@@ -223,11 +222,11 @@ double timeblock(){
 	const int m = 9000;
 	const int n = 9000;
 
-	double *A = (double *)MKL_malloc(1l*sizeof(double)*l*m, 16);
-	double *B = (double *)MKL_malloc(1l*sizeof(double)*m*n, 16);
-	double *C = (double *)MKL_malloc(1l*sizeof(double)*l*n, 16);
+	double *A = (double *)_mm_malloc(1l*sizeof(double)*l*m, 16);
+	double *B = (double *)_mm_malloc(1l*sizeof(double)*m*n, 16);
+	double *C = (double *)_mm_malloc(1l*sizeof(double)*l*n, 16);
 	double *scratch = 
-		(double *)MKL_malloc(1l*sizeof(double)
+		(double *)_mm_malloc(1l*sizeof(double)
 				     *(600*12+600*200+200*3000), 16);
   
 	for(int i=0; i < l*m; i++)
@@ -248,10 +247,10 @@ double timeblock(){
 	cycles = clk.toc();
 	cycles /= count;
 
-	MKL_free(A);
-	MKL_free(B);
-	MKL_free(C);
-	MKL_free(scratch);
+	_mm_free(A);
+	_mm_free(B);
+	_mm_free(C);
+	_mm_free(scratch);
 
 	return cycles;
 }

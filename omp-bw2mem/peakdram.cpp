@@ -4,7 +4,6 @@
 #include <cstdio>
 #include <cmath>
 #include <cassert>
-#include <mkl.h>
 #include <omp.h>
 using namespace std;
 extern double dummy(double& x);
@@ -20,7 +19,7 @@ double sum_onecore(double *list, int n){
 void sum_manycore(int nthreads){
   int n = LEN*12/nthreads;
   double *glist = 
-    (double *)MKL_malloc(1l*nthreads*n*sizeof(double), 
+    (double *)_mm_malloc(1l*nthreads*n*sizeof(double), 
 			 4096);
 #pragma omp parallel				\
   num_threads(nthreads)				\
@@ -45,7 +44,7 @@ void sum_manycore(int nthreads){
       dummy(sum);
     }
   }
-  MKL_free(glist);
+  _mm_free(glist);
 }
 
 void write_onecore(double *list, int n){
@@ -55,7 +54,7 @@ void write_onecore(double *list, int n){
 
 void write_manycore(int nthreads){
   int n = LEN*12/nthreads;
-  double *glist = (double *)MKL_malloc(1l*nthreads*n*sizeof(double), 4096);
+  double *glist = (double *)_mm_malloc(1l*nthreads*n*sizeof(double), 4096);
 #pragma omp parallel				\
   num_threads(nthreads)				\
   default(none)					\
@@ -78,7 +77,7 @@ void write_manycore(int nthreads){
 	8.0*nthreads*n/cycles<<" bytes/cycle"<<endl;
     }
   }
-MKL_free(glist);
+_mm_free(glist);
 }
 
 void copy_onecore(double *list, int n){
@@ -88,7 +87,7 @@ void copy_onecore(double *list, int n){
 
 void copy_manycore(int nthreads){
   int n = LEN*12/nthreads;
-  double *glist = (double *)MKL_malloc(1l*nthreads*n*sizeof(double), 4096);
+  double *glist = (double *)_mm_malloc(1l*nthreads*n*sizeof(double), 4096);
 #pragma omp parallel				\
   num_threads(nthreads)				\
   default(none)					\
@@ -111,7 +110,7 @@ void copy_manycore(int nthreads){
 	8.0*nthreads*n/cycles<<" bytes/cycle"<<endl;
     }
   }
-MKL_free(glist);
+_mm_free(glist);
 }
 
 int main(){

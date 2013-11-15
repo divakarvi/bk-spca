@@ -41,7 +41,7 @@ double time(int dim, enum mmult_enum flag){
 	call_num++;
 	int count = nbytes/(dim*dim*sizeof(double)); 
 	assrt(count >= 1);
-	double *space = (double *)MKL_malloc(3*nbytes, 64);
+	double *space = (double *)_mm_malloc(3*nbytes, 64);
 
 	double *a = space;
 	double *b = space + nbytes/8;
@@ -88,7 +88,7 @@ double time(int dim, enum mmult_enum flag){
 #endif
 	}
 	
-	MKL_free(space);
+	_mm_free(space);
 
 	double cycles = stats.median();
 	return 2.0*dim*dim*dim/cycles;

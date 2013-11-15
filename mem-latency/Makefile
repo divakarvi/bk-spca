@@ -1,6 +1,6 @@
 include ../makevars.mk
-CFLAGSXX := -fno-inline-functions $(MKLINC)
-LIBS := $(MKLLIBS)
+CFLAGSXX := -fno-inline-functions 
+LIBS := 
 MODS := ../utils ../pyplot
 
 ##################

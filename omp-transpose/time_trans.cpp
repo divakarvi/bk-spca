@@ -3,7 +3,6 @@
 #include "../utils/StatVector.hh"
 #include "../utils/Table.hh"
 #include "transpose.hh"
-#include <mkl.h>
 
 struct rval_struct{
 	int m;
@@ -22,8 +21,8 @@ struct rval_struct time(int nthreads){
 	m = m/(B*nthreads)*B*nthreads;
 	assrt(m > 0);
 	int n = m;
-	double *a = (double *)MKL_malloc(1l*m*n*sizeof(double), 64);
-	double *b = (double *)MKL_malloc(1l*m*n*sizeof(double), 64);
+	double *a = (double *)_mm_malloc(1l*m*n*sizeof(double), 64);
+	double *b = (double *)_mm_malloc(1l*m*n*sizeof(double), 64);
 
 	blocktrans(a, b, m, n, nthreads);//numa awareness
 	for(int i=0; i < m*n; i++)
@@ -39,8 +38,8 @@ struct rval_struct time(int nthreads){
 		stats.insert(cycles);
 	}
 
-	MKL_free(a);
-	MKL_free(b);
+	_mm_free(a);
+	_mm_free(b);
 
 	struct rval_struct rval;
 	rval.m = m;

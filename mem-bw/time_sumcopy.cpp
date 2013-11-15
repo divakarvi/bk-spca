@@ -4,21 +4,20 @@
 #include "../utils/Table.hh"
 #include "sumcopy.hh"
 #include <fstream>
-#include <mkl.h>
 
 
 void init_mem(double *(&a), double *(&b),  int n){
 	long nbytes = 1l*n*8;
-	a = (double *)MKL_malloc(nbytes, 64);
-	b = (double *)MKL_malloc(nbytes, 64);
+	a = (double *)_mm_malloc(nbytes, 64);
+	b = (double *)_mm_malloc(nbytes, 64);
 
 	for(int i=0; i < n; i++)
 		a[i] = i;
 }
 
 void release_mem(double *a, double *b){
-	MKL_free(a);
-	MKL_free(b);
+	_mm_free(a);
+	_mm_free(b);
 }
 
 

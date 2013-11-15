@@ -1468,14 +1468,14 @@ _Z8time_ffti10yesno_type:
 ..B4.3:
         movl      %edx, %eax
         andl      $-2147483647, %eax
-        jge       ..B4.214
+        jge       ..B4.220
 ..___tag_value__Z8time_ffti10yesno_type.168:
-..B4.215:
+..B4.221:
         subl      $1, %eax
         orl       $-2, %eax
         incl      %eax
 ..___tag_value__Z8time_ffti10yesno_type.169:
-..B4.214:
+..B4.220:
         cmpl      $1, %eax
         cmove     %eax, %r13d
         movl      %edx, %eax
@@ -1488,12 +1488,11 @@ _Z8time_ffti10yesno_type:
 ..B4.5:
         movq      $0x2540be400, %rdi
         movl      $64, %esi
+        call      _mm_malloc@PLT
 ..___tag_value__Z8time_ffti10yesno_type.171:
-        call      MKL_malloc@PLT
-..___tag_value__Z8time_ffti10yesno_type.173:
-..B4.216:
+..B4.222:
         movq      %rax, %r12
-..___tag_value__Z8time_ffti10yesno_type.175:
+..___tag_value__Z8time_ffti10yesno_type.172:
 ..B4.6:
         movq      (%rsp), %rcx
         movq      $0x2540be400, %rax
@@ -1502,45 +1501,45 @@ _Z8time_ffti10yesno_type:
         divq      %rcx
         movq      stat_mkl(%rip), %rbx
         testq     %rbx, %rbx
-        movq      %rcx, 40(%rsp)
-        movq      %rax, 48(%rsp)
+        movq      %rcx, 64(%rsp)
+        movq      %rax, 72(%rsp)
         je        ..B4.10
-..___tag_value__Z8time_ffti10yesno_type.176:
+..___tag_value__Z8time_ffti10yesno_type.173:
 ..B4.7:
         movq      (%rbx), %rdi
         testq     %rdi, %rdi
         je        ..B4.9
-..___tag_value__Z8time_ffti10yesno_type.177:
+..___tag_value__Z8time_ffti10yesno_type.174:
 ..B4.8:
         call      _ZdaPv@PLT
-..___tag_value__Z8time_ffti10yesno_type.178:
+..___tag_value__Z8time_ffti10yesno_type.175:
 ..B4.9:
         movq      %rbx, %rdi
         call      _ZdlPv@PLT
-..___tag_value__Z8time_ffti10yesno_type.179:
+..___tag_value__Z8time_ffti10yesno_type.176:
 ..B4.10:
         movl      $24, %edi
         movl      $0, 16(%rsp)
-..___tag_value__Z8time_ffti10yesno_type.180:
+..___tag_value__Z8time_ffti10yesno_type.177:
         call      _Znwm@PLT
-..___tag_value__Z8time_ffti10yesno_type.182:
-..B4.213:
+..___tag_value__Z8time_ffti10yesno_type.179:
+..B4.219:
         movq      %rax, %rbx
-..___tag_value__Z8time_ffti10yesno_type.184:
+..___tag_value__Z8time_ffti10yesno_type.181:
 ..B4.11:
         movq      %rbx, 8(%rsp)
         testq     %rbx, %rbx
         je        ..B4.14
-..___tag_value__Z8time_ffti10yesno_type.185:
+..___tag_value__Z8time_ffti10yesno_type.182:
 ..B4.12:
-        movq      48(%rsp), %rax
+        movq      72(%rsp), %rax
         movslq    %eax, %rdi
         shlq      $3, %rdi
         movl      $1, 16(%rsp)
         movl      %eax, 8(%rbx)
-..___tag_value__Z8time_ffti10yesno_type.186:
+..___tag_value__Z8time_ffti10yesno_type.183:
         call      _Znam@PLT
-..___tag_value__Z8time_ffti10yesno_type.188:
+..___tag_value__Z8time_ffti10yesno_type.185:
 ..B4.13:
         movq      %rax, (%rbx)
         xorl      %eax, %eax
@@ -1549,51 +1548,51 @@ _Z8time_ffti10yesno_type:
         movl      $-1, 12(%rbx)
         movq      8(%rsp), %rax
         jmp       ..B4.15
-..___tag_value__Z8time_ffti10yesno_type.190:
+..___tag_value__Z8time_ffti10yesno_type.187:
 ..B4.14:
         xorl      %eax, %eax
-..___tag_value__Z8time_ffti10yesno_type.191:
+..___tag_value__Z8time_ffti10yesno_type.188:
 ..B4.15:
         movq      stat_fftw(%rip), %rbx
         testq     %rbx, %rbx
         movq      %rax, stat_mkl(%rip)
         je        ..B4.19
-..___tag_value__Z8time_ffti10yesno_type.192:
+..___tag_value__Z8time_ffti10yesno_type.189:
 ..B4.16:
         movq      (%rbx), %rdi
         testq     %rdi, %rdi
         je        ..B4.18
-..___tag_value__Z8time_ffti10yesno_type.193:
+..___tag_value__Z8time_ffti10yesno_type.190:
 ..B4.17:
         call      _ZdaPv@PLT
-..___tag_value__Z8time_ffti10yesno_type.194:
+..___tag_value__Z8time_ffti10yesno_type.191:
 ..B4.18:
         movq      %rbx, %rdi
         call      _ZdlPv@PLT
-..___tag_value__Z8time_ffti10yesno_type.195:
+..___tag_value__Z8time_ffti10yesno_type.192:
 ..B4.19:
         movl      $24, %edi
         movl      $0, 16(%rsp)
-..___tag_value__Z8time_ffti10yesno_type.196:
+..___tag_value__Z8time_ffti10yesno_type.193:
         call      _Znwm@PLT
-..___tag_value__Z8time_ffti10yesno_type.198:
-..B4.211:
+..___tag_value__Z8time_ffti10yesno_type.195:
+..B4.217:
         movq      %rax, %rbx
-..___tag_value__Z8time_ffti10yesno_type.200:
+..___tag_value__Z8time_ffti10yesno_type.197:
 ..B4.20:
         movq      %rbx, 8(%rsp)
         testq     %rbx, %rbx
         je        ..B4.23
-..___tag_value__Z8time_ffti10yesno_type.201:
+..___tag_value__Z8time_ffti10yesno_type.198:
 ..B4.21:
-        movq      48(%rsp), %rax
+        movq      72(%rsp), %rax
         movslq    %eax, %rdi
         shlq      $3, %rdi
         movl      $1, 16(%rsp)
         movl      %eax, 8(%rbx)
-..___tag_value__Z8time_ffti10yesno_type.202:
+..___tag_value__Z8time_ffti10yesno_type.199:
         call      _Znam@PLT
-..___tag_value__Z8time_ffti10yesno_type.204:
+..___tag_value__Z8time_ffti10yesno_type.201:
 ..B4.22:
         movq      %rax, (%rbx)
         xorl      %eax, %eax
@@ -1602,51 +1601,51 @@ _Z8time_ffti10yesno_type:
         movl      $-1, 12(%rbx)
         movq      8(%rsp), %rax
         jmp       ..B4.24
-..___tag_value__Z8time_ffti10yesno_type.206:
+..___tag_value__Z8time_ffti10yesno_type.203:
 ..B4.23:
         xorl      %eax, %eax
-..___tag_value__Z8time_ffti10yesno_type.207:
+..___tag_value__Z8time_ffti10yesno_type.204:
 ..B4.24:
         movq      stat_nr(%rip), %rbx
         testq     %rbx, %rbx
         movq      %rax, stat_fftw(%rip)
         je        ..B4.28
-..___tag_value__Z8time_ffti10yesno_type.208:
+..___tag_value__Z8time_ffti10yesno_type.205:
 ..B4.25:
         movq      (%rbx), %rdi
         testq     %rdi, %rdi
         je        ..B4.27
-..___tag_value__Z8time_ffti10yesno_type.209:
+..___tag_value__Z8time_ffti10yesno_type.206:
 ..B4.26:
         call      _ZdaPv@PLT
-..___tag_value__Z8time_ffti10yesno_type.210:
+..___tag_value__Z8time_ffti10yesno_type.207:
 ..B4.27:
         movq      %rbx, %rdi
         call      _ZdlPv@PLT
-..___tag_value__Z8time_ffti10yesno_type.211:
+..___tag_value__Z8time_ffti10yesno_type.208:
 ..B4.28:
         movl      $24, %edi
         movl      $0, 16(%rsp)
-..___tag_value__Z8time_ffti10yesno_type.212:
+..___tag_value__Z8time_ffti10yesno_type.209:
         call      _Znwm@PLT
-..___tag_value__Z8time_ffti10yesno_type.214:
-..B4.209:
+..___tag_value__Z8time_ffti10yesno_type.211:
+..B4.215:
         movq      %rax, %rbx
-..___tag_value__Z8time_ffti10yesno_type.216:
+..___tag_value__Z8time_ffti10yesno_type.213:
 ..B4.29:
         movq      %rbx, 8(%rsp)
         testq     %rbx, %rbx
         je        ..B4.32
-..___tag_value__Z8time_ffti10yesno_type.217:
+..___tag_value__Z8time_ffti10yesno_type.214:
 ..B4.30:
-        movq      48(%rsp), %rax
+        movq      72(%rsp), %rax
         movslq    %eax, %rdi
         shlq      $3, %rdi
         movl      $1, 16(%rsp)
         movl      %eax, 8(%rbx)
-..___tag_value__Z8time_ffti10yesno_type.218:
+..___tag_value__Z8time_ffti10yesno_type.215:
         call      _Znam@PLT
-..___tag_value__Z8time_ffti10yesno_type.220:
+..___tag_value__Z8time_ffti10yesno_type.217:
 ..B4.31:
         movq      %rax, (%rbx)
         xorl      %eax, %eax
@@ -1655,27 +1654,27 @@ _Z8time_ffti10yesno_type:
         movl      $-1, 12(%rbx)
         movq      8(%rsp), %rax
         jmp       ..B4.33
-..___tag_value__Z8time_ffti10yesno_type.222:
+..___tag_value__Z8time_ffti10yesno_type.219:
 ..B4.32:
         xorl      %eax, %eax
-..___tag_value__Z8time_ffti10yesno_type.223:
+..___tag_value__Z8time_ffti10yesno_type.220:
 ..B4.33:
         movq      %rax, stat_nr(%rip)
         testl     %r15d, %r15d
         jne       ..B4.40
-..___tag_value__Z8time_ffti10yesno_type.224:
+..___tag_value__Z8time_ffti10yesno_type.221:
 ..B4.34:
-        movq      48(%rsp), %rax
+        movq      72(%rsp), %rax
         xorl      %ebx, %ebx
         movq      %r12, %rcx
         testq     %rax, %rax
         jle       ..B4.44
-..___tag_value__Z8time_ffti10yesno_type.225:
+..___tag_value__Z8time_ffti10yesno_type.222:
 ..B4.35:
         movq      (%rsp), %rax
         testq     %rax, %rax
         jle       ..B4.44
-..___tag_value__Z8time_ffti10yesno_type.226:
+..___tag_value__Z8time_ffti10yesno_type.223:
 ..B4.36:
         pushq     $2
         popq      %rax
@@ -1690,11 +1689,11 @@ _Z8time_ffti10yesno_type:
         movaps    .L_2il0floatpacket.664(%rip), %xmm5
         movsd     .L_2il0floatpacket.665(%rip), %xmm4
         movsd     .L_2il0floatpacket.666(%rip), %xmm3
-..___tag_value__Z8time_ffti10yesno_type.227:
+..___tag_value__Z8time_ffti10yesno_type.224:
 ..B4.37:
         cmpl      $8, %r14d
-        jl        ..B4.137
-..___tag_value__Z8time_ffti10yesno_type.228:
+        jl        ..B4.143
+..___tag_value__Z8time_ffti10yesno_type.225:
 ..B4.38:
         movq      %rbx, %rsi
         xorl      %ebp, %ebp
@@ -1707,7 +1706,7 @@ _Z8time_ffti10yesno_type:
         movdqa    %xmm8, %xmm2
         unpcklpd  %xmm0, %xmm0
         movl      %edx, %eax
-..___tag_value__Z8time_ffti10yesno_type.229:
+..___tag_value__Z8time_ffti10yesno_type.226:
 ..B4.39:
         cvtdq2pd  %xmm2, %xmm11
         movaps    %xmm1, %xmm10
@@ -1774,83 +1773,74 @@ _Z8time_ffti10yesno_type:
         movsd     %xmm13, 112(%rcx,%rsi,8)
         movhpd    %xmm13, 120(%rcx,%rsi,8)
         jb        ..B4.39
-        jmp       ..B4.132
-..___tag_value__Z8time_ffti10yesno_type.230:
+        jmp       ..B4.138
+..___tag_value__Z8time_ffti10yesno_type.227:
 ..B4.40:
         movq      (%rsp), %rax
         testq     %rax, %rax
         jle       ..B4.44
-..___tag_value__Z8time_ffti10yesno_type.231:
+..___tag_value__Z8time_ffti10yesno_type.228:
 ..B4.41:
         cmpl      $8, %r14d
-        jl        ..B4.145
-..___tag_value__Z8time_ffti10yesno_type.232:
+        jl        ..B4.151
+..___tag_value__Z8time_ffti10yesno_type.229:
 ..B4.42:
-        movl      %r14d, %ebx
+        movl      %r14d, %ecx
         xorl      %eax, %eax
-        xorl      %ecx, %ecx
-        andl      $-8, %ebx
+        andl      $-8, %ecx
         pxor      %xmm0, %xmm0
-..___tag_value__Z8time_ffti10yesno_type.233:
+..___tag_value__Z8time_ffti10yesno_type.230:
 ..B4.43:
         lea       (%rax,%rax), %edx
         addl      $8, %eax
         movslq    %edx, %rdx
-        cmpl      %ebx, %eax
-        movq      %rcx, (%r12,%rdx,8)
-        movhpd    %xmm0, 8(%r12,%rdx,8)
-        movq      %rcx, 16(%r12,%rdx,8)
-        movhpd    %xmm0, 24(%r12,%rdx,8)
-        movq      %rcx, 32(%r12,%rdx,8)
-        movhpd    %xmm0, 40(%r12,%rdx,8)
-        movq      %rcx, 48(%r12,%rdx,8)
-        movhpd    %xmm0, 56(%r12,%rdx,8)
-        movq      %rcx, 64(%r12,%rdx,8)
-        movhpd    %xmm0, 72(%r12,%rdx,8)
-        movq      %rcx, 80(%r12,%rdx,8)
-        movhpd    %xmm0, 88(%r12,%rdx,8)
-        movq      %rcx, 96(%r12,%rdx,8)
-        movhpd    %xmm0, 104(%r12,%rdx,8)
-        movq      %rcx, 112(%r12,%rdx,8)
-        movhpd    %xmm0, 120(%r12,%rdx,8)
+        cmpl      %ecx, %eax
+        movaps    %xmm0, (%r12,%rdx,8)
+        movaps    %xmm0, 16(%r12,%rdx,8)
+        movaps    %xmm0, 32(%r12,%rdx,8)
+        movaps    %xmm0, 48(%r12,%rdx,8)
+        movaps    %xmm0, 64(%r12,%rdx,8)
+        movaps    %xmm0, 80(%r12,%rdx,8)
+        movaps    %xmm0, 96(%r12,%rdx,8)
+        movaps    %xmm0, 112(%r12,%rdx,8)
         jb        ..B4.43
-        jmp       ..B4.141
-..___tag_value__Z8time_ffti10yesno_type.234:
+        jmp       ..B4.147
+..___tag_value__Z8time_ffti10yesno_type.231:
 ..B4.44:
         movl      %r14d, %esi
-        lea       24(%rsp), %rdi
-..___tag_value__Z8time_ffti10yesno_type.235:
+        lea       48(%rsp), %rdi
+..___tag_value__Z8time_ffti10yesno_type.232:
         call      _ZN7fft_mklC1Ei@PLT
-..___tag_value__Z8time_ffti10yesno_type.237:
+..___tag_value__Z8time_ffti10yesno_type.234:
 ..B4.45:
         xorl      %ebp, %ebp
-        movq      48(%rsp), %rax
+        movq      72(%rsp), %rax
         xorl      %ebx, %ebx
         testq     %rax, %rax
         jle       ..B4.51
-..___tag_value__Z8time_ffti10yesno_type.239:
+..___tag_value__Z8time_ffti10yesno_type.236:
 ..B4.47:
         testl     %r15d, %r15d
         lea       (%r12,%rbx), %rsi
         cmovne    %r12, %rsi
         rdtsc     
-        movl      %eax, 8(%rsp)
+        movl      %eax, 32(%rsp)
         xorl      %eax, %eax
-        movq      32(%rsp), %rdi
-        movl      %edx, 12(%rsp)
-..___tag_value__Z8time_ffti10yesno_type.240:
+        movq      56(%rsp), %rdi
+        movl      %edx, 36(%rsp)
+..___tag_value__Z8time_ffti10yesno_type.237:
         call      DftiComputeForward@PLT
-..___tag_value__Z8time_ffti10yesno_type.242:
+..___tag_value__Z8time_ffti10yesno_type.239:
 ..B4.48:
         rdtsc     
         movq      stat_mkl(%rip), %rsi
-        movl      8(%rsp), %r8d
-        movl      12(%rsp), %r9d
+        movl      32(%rsp), %r8d
+        movl      36(%rsp), %r9d
         movslq    16(%rsi), %rcx
         movslq    8(%rsi), %rdi
         cmpq      %rdi, %rcx
-        jge       ..B4.150
-..___tag_value__Z8time_ffti10yesno_type.244:
+        jge       ..B4.156
+..___tag_value__Z8time_ffti10yesno_type.241:
 ..B4.49:
         subl      %r9d, %edx
         incq      %rbp
@@ -1864,24 +1854,24 @@ _Z8time_ffti10yesno_type:
         addsd     %xmm1, %xmm2
         movsd     %xmm2, (%rdi,%rcx,8)
         incl      16(%rsi)
-        addq      40(%rsp), %rbx
+        addq      64(%rsp), %rbx
         movl      $-1, 12(%rsi)
-        cmpq      48(%rsp), %rbp
+        cmpq      72(%rsp), %rbp
         jl        ..B4.47
-..___tag_value__Z8time_ffti10yesno_type.245:
+..___tag_value__Z8time_ffti10yesno_type.242:
 ..B4.51:
         movl      %r14d, %esi
-        lea       56(%rsp), %rdi
-..___tag_value__Z8time_ffti10yesno_type.246:
+        lea       8(%rsp), %rdi
+..___tag_value__Z8time_ffti10yesno_type.243:
         call      _ZN8fft_fftwC1Ei@PLT
-..___tag_value__Z8time_ffti10yesno_type.248:
+..___tag_value__Z8time_ffti10yesno_type.245:
 ..B4.52:
         xorl      %r14d, %r14d
-        movq      48(%rsp), %rax
+        movq      72(%rsp), %rax
         xorl      %ebp, %ebp
         testq     %rax, %rax
         jle       ..B4.63
-..___tag_value__Z8time_ffti10yesno_type.250:
+..___tag_value__Z8time_ffti10yesno_type.247:
 ..B4.54:
         testl     %r15d, %r15d
         lea       (%r12,%rbp), %rbx
@@ -1892,48 +1882,66 @@ _Z8time_ffti10yesno_type:
         addq      %rbx, %rcx
         andq      $-16, %rcx
         rdtsc     
-        movl      %edx, 12(%rsp)
+        movl      %edx, 36(%rsp)
         cmpq      %rbx, %rcx
-        movl      %eax, 8(%rsp)
-        jne       ..B4.113
-..___tag_value__Z8time_ffti10yesno_type.251:
+        movl      %eax, 32(%rsp)
+        jne       ..B4.119
+..___tag_value__Z8time_ffti10yesno_type.248:
 ..B4.55:
         movq      %rbx, %rsi
         movq      %rbx, %rdx
-        movq      64(%rsp), %rdi
-..___tag_value__Z8time_ffti10yesno_type.252:
+        movq      16(%rsp), %rdi
+..___tag_value__Z8time_ffti10yesno_type.249:
         call      fftw_execute_dft@PLT
-..___tag_value__Z8time_ffti10yesno_type.254:
+..___tag_value__Z8time_ffti10yesno_type.251:
 ..B4.56:
-        movl      56(%rsp), %edx
-        xorl      %ecx, %ecx
-        lea       (%rdx,%rdx), %eax
+        movl      8(%rsp), %esi
+        lea       (%rsi,%rsi), %eax
         testl     %eax, %eax
         jle       ..B4.60
-..___tag_value__Z8time_ffti10yesno_type.256:
+..___tag_value__Z8time_ffti10yesno_type.253:
+..B4.57:
+        movslq    %esi, %rcx
+        addq      %rcx, %rcx
+        cmpq      $8, %rcx
+        jl        ..B4.103
+..___tag_value__Z8time_ffti10yesno_type.254:
 ..B4.58:
-        cvtsi2sd  %edx, %xmm0
-        movsd     (%rbx), %xmm1
-        incq      %rcx
-        divsd     %xmm0, %xmm1
-        movsd     %xmm1, (%rbx)
-        addq      $8, %rbx
-        movl      56(%rsp), %edx
-        movslq    %edx, %rax
-        addq      %rax, %rax
-        cmpq      %rax, %rcx
-        jl        ..B4.58
-..___tag_value__Z8time_ffti10yesno_type.257:
+        cvtsi2sd  %esi, %xmm0
+        movl      %ecx, %eax
+        xorl      %edx, %edx
+        andl      $-8, %eax
+        movslq    %eax, %rax
+        unpcklpd  %xmm0, %xmm0
+..___tag_value__Z8time_ffti10yesno_type.255:
+..B4.59:
+        movaps    (%rbx,%rdx,8), %xmm1
+        movaps    16(%rbx,%rdx,8), %xmm2
+        movaps    32(%rbx,%rdx,8), %xmm3
+        movaps    48(%rbx,%rdx,8), %xmm4
+        divpd     %xmm0, %xmm1
+        divpd     %xmm0, %xmm2
+        divpd     %xmm0, %xmm3
+        divpd     %xmm0, %xmm4
+        movaps    %xmm1, (%rbx,%rdx,8)
+        movaps    %xmm2, 16(%rbx,%rdx,8)
+        movaps    %xmm3, 32(%rbx,%rdx,8)
+        movaps    %xmm4, 48(%rbx,%rdx,8)
+        addq      $8, %rdx
+        cmpq      %rax, %rdx
+        jb        ..B4.59
+        jmp       ..B4.104
+..___tag_value__Z8time_ffti10yesno_type.256:
 ..B4.60:
         rdtsc     
         movq      stat_fftw(%rip), %r8
-        movl      8(%rsp), %ebx
-        movl      12(%rsp), %esi
+        movl      32(%rsp), %ebx
+        movl      36(%rsp), %esi
         movslq    16(%r8), %rdi
         movslq    8(%r8), %rcx
         cmpq      %rcx, %rdi
-        jge       ..B4.103
-..___tag_value__Z8time_ffti10yesno_type.258:
+        jge       ..B4.109
+..___tag_value__Z8time_ffti10yesno_type.257:
 ..B4.61:
         subl      %esi, %edx
         incq      %r14
@@ -1947,61 +1955,61 @@ _Z8time_ffti10yesno_type:
         addsd     %xmm1, %xmm2
         movsd     %xmm2, (%rcx,%rdi,8)
         incl      16(%r8)
-        addq      40(%rsp), %rbp
+        addq      64(%rsp), %rbp
         movl      $-1, 12(%r8)
-        cmpq      48(%rsp), %r14
+        cmpq      72(%rsp), %r14
         jl        ..B4.54
-..___tag_value__Z8time_ffti10yesno_type.259:
+..___tag_value__Z8time_ffti10yesno_type.258:
 ..B4.63:
         cmpl      $1, %r13d
         jne       ..B4.66
-..___tag_value__Z8time_ffti10yesno_type.260:
+..___tag_value__Z8time_ffti10yesno_type.259:
 ..B4.64:
         movq      stat_nr(%rip), %rcx
         movslq    16(%rcx), %rdx
         movslq    8(%rcx), %rax
         cmpq      %rax, %rdx
         jge       ..B4.76
-..___tag_value__Z8time_ffti10yesno_type.261:
+..___tag_value__Z8time_ffti10yesno_type.260:
 ..B4.65:
         movq      (%rcx), %rax
         movq      $0, (%rax,%rdx,8)
         incl      16(%rcx)
         movl      $-1, 12(%rcx)
         jmp       ..B4.72
-..___tag_value__Z8time_ffti10yesno_type.262:
+..___tag_value__Z8time_ffti10yesno_type.261:
 ..B4.66:
         testl     %r13d, %r13d
         jne       ..B4.72
-..___tag_value__Z8time_ffti10yesno_type.263:
+..___tag_value__Z8time_ffti10yesno_type.262:
 ..B4.67:
         xorl      %ebp, %ebp
-        movq      48(%rsp), %rax
+        movq      72(%rsp), %rax
         xorl      %ebx, %ebx
         testq     %rax, %rax
         jle       ..B4.72
-..___tag_value__Z8time_ffti10yesno_type.264:
+..___tag_value__Z8time_ffti10yesno_type.263:
 ..B4.69:
         testl     %r15d, %r15d
         lea       (%r12,%rbx), %rdi
         cmovne    %r12, %rdi
         rdtsc     
         movq      (%rsp), %rsi
-        movl      %edx, 12(%rsp)
-        movl      %eax, 8(%rsp)
-..___tag_value__Z8time_ffti10yesno_type.265:
+        movl      %edx, 36(%rsp)
+        movl      %eax, 32(%rsp)
+..___tag_value__Z8time_ffti10yesno_type.264:
         call      _Z5nrfwdPdm@PLT
-..___tag_value__Z8time_ffti10yesno_type.267:
+..___tag_value__Z8time_ffti10yesno_type.266:
 ..B4.70:
         rdtsc     
         movq      stat_nr(%rip), %r9
-        movl      8(%rsp), %esi
-        movl      12(%rsp), %edi
+        movl      32(%rsp), %esi
+        movl      36(%rsp), %edi
         movslq    16(%r9), %r8
         movslq    8(%r9), %rcx
         cmpq      %rcx, %r8
         jge       ..B4.92
-..___tag_value__Z8time_ffti10yesno_type.269:
+..___tag_value__Z8time_ffti10yesno_type.268:
 ..B4.71:
         subl      %edi, %edx
         incq      %rbp
@@ -2015,233 +2023,253 @@ _Z8time_ffti10yesno_type:
         addsd     %xmm1, %xmm2
         movsd     %xmm2, (%rcx,%r8,8)
         incl      16(%r9)
-        addq      40(%rsp), %rbx
+        addq      64(%rsp), %rbx
         movl      $-1, 12(%r9)
-        cmpq      48(%rsp), %rbp
+        cmpq      72(%rsp), %rbp
         jl        ..B4.69
-..___tag_value__Z8time_ffti10yesno_type.270:
+..___tag_value__Z8time_ffti10yesno_type.269:
 ..B4.72:
         movq      %r12, %rdi
-..___tag_value__Z8time_ffti10yesno_type.271:
-        call      MKL_free@PLT
-..___tag_value__Z8time_ffti10yesno_type.273:
+        call      _mm_free@PLT
+..___tag_value__Z8time_ffti10yesno_type.270:
 ..B4.73:
-        lea       56(%rsp), %rdi
-..___tag_value__Z8time_ffti10yesno_type.275:
+        lea       8(%rsp), %rdi
+..___tag_value__Z8time_ffti10yesno_type.271:
         call      _ZN8fft_fftwD1Ev@PLT
-..___tag_value__Z8time_ffti10yesno_type.277:
+..___tag_value__Z8time_ffti10yesno_type.273:
 ..B4.74:
-        lea       24(%rsp), %rdi
-..___tag_value__Z8time_ffti10yesno_type.279:
+        lea       48(%rsp), %rdi
+..___tag_value__Z8time_ffti10yesno_type.275:
         call      _ZN7fft_mklD1Ev@PLT
-..___tag_value__Z8time_ffti10yesno_type.281:
+..___tag_value__Z8time_ffti10yesno_type.277:
 ..B4.75:
         addq      $88, %rsp
-..___tag_value__Z8time_ffti10yesno_type.283:
+..___tag_value__Z8time_ffti10yesno_type.279:
         popq      %rbp
-..___tag_value__Z8time_ffti10yesno_type.286:
+..___tag_value__Z8time_ffti10yesno_type.282:
         popq      %rbx
-..___tag_value__Z8time_ffti10yesno_type.288:
+..___tag_value__Z8time_ffti10yesno_type.284:
         popq      %r15
-..___tag_value__Z8time_ffti10yesno_type.290:
+..___tag_value__Z8time_ffti10yesno_type.286:
         popq      %r14
-..___tag_value__Z8time_ffti10yesno_type.292:
+..___tag_value__Z8time_ffti10yesno_type.288:
         popq      %r13
-..___tag_value__Z8time_ffti10yesno_type.294:
+..___tag_value__Z8time_ffti10yesno_type.290:
         popq      %r12
-..___tag_value__Z8time_ffti10yesno_type.296:
+..___tag_value__Z8time_ffti10yesno_type.292:
         ret       
-..___tag_value__Z8time_ffti10yesno_type.297:
+..___tag_value__Z8time_ffti10yesno_type.293:
 ..B4.76:
         lea       .L_2__STRING.0(%rip), %rsi
         movq      _ZSt4cout@GOTPCREL(%rip), %rdi
-..___tag_value__Z8time_ffti10yesno_type.305:
+..___tag_value__Z8time_ffti10yesno_type.301:
         call      _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
-..___tag_value__Z8time_ffti10yesno_type.307:
+..___tag_value__Z8time_ffti10yesno_type.303:
 ..B4.77:
         movq      %rax, %rdi
         lea       .L_2__STRING.1(%rip), %rsi
-..___tag_value__Z8time_ffti10yesno_type.309:
+..___tag_value__Z8time_ffti10yesno_type.305:
         call      _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
-..___tag_value__Z8time_ffti10yesno_type.311:
+..___tag_value__Z8time_ffti10yesno_type.307:
 ..B4.78:
         movq      _ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_@GOTPCREL(%rip), %rbx
         movq      %rax, %rdi
         movq      %rbx, %rsi
-..___tag_value__Z8time_ffti10yesno_type.313:
+..___tag_value__Z8time_ffti10yesno_type.309:
         call      _ZNSolsEPFRSoS_E@PLT
-..___tag_value__Z8time_ffti10yesno_type.315:
+..___tag_value__Z8time_ffti10yesno_type.311:
 ..B4.79:
         movq      %rax, %rdi
         lea       .L_2__STRING.2(%rip), %rsi
-..___tag_value__Z8time_ffti10yesno_type.317:
+..___tag_value__Z8time_ffti10yesno_type.313:
         call      _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
-..___tag_value__Z8time_ffti10yesno_type.319:
+..___tag_value__Z8time_ffti10yesno_type.315:
 ..B4.80:
         movq      %rax, %rdi
         lea       .L_2__STRING.3(%rip), %rsi
-..___tag_value__Z8time_ffti10yesno_type.321:
+..___tag_value__Z8time_ffti10yesno_type.317:
         call      _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
-..___tag_value__Z8time_ffti10yesno_type.323:
+..___tag_value__Z8time_ffti10yesno_type.319:
 ..B4.81:
         movq      %rax, %rdi
         movq      %rbx, %rsi
-..___tag_value__Z8time_ffti10yesno_type.325:
+..___tag_value__Z8time_ffti10yesno_type.321:
         call      _ZNSolsEPFRSoS_E@PLT
-..___tag_value__Z8time_ffti10yesno_type.327:
+..___tag_value__Z8time_ffti10yesno_type.323:
 ..B4.82:
         movq      %rax, %rdi
         lea       .L_2__STRING.4(%rip), %rsi
-..___tag_value__Z8time_ffti10yesno_type.329:
+..___tag_value__Z8time_ffti10yesno_type.325:
         call      _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
-..___tag_value__Z8time_ffti10yesno_type.331:
+..___tag_value__Z8time_ffti10yesno_type.327:
 ..B4.83:
         movq      %rax, %rdi
         movl      $31, %esi
-..___tag_value__Z8time_ffti10yesno_type.333:
+..___tag_value__Z8time_ffti10yesno_type.329:
         call      _ZNSolsEi@PLT
-..___tag_value__Z8time_ffti10yesno_type.335:
+..___tag_value__Z8time_ffti10yesno_type.331:
 ..B4.84:
         movq      %rax, %rdi
         movq      %rbx, %rsi
-..___tag_value__Z8time_ffti10yesno_type.337:
+..___tag_value__Z8time_ffti10yesno_type.333:
         call      _ZNSolsEPFRSoS_E@PLT
-..___tag_value__Z8time_ffti10yesno_type.339:
+..___tag_value__Z8time_ffti10yesno_type.335:
 ..B4.85:
         int       $5
-..___tag_value__Z8time_ffti10yesno_type.341:
+..___tag_value__Z8time_ffti10yesno_type.337:
 ..___tag_value__Z8time_ffti10yesno_type.150:
 ..B4.86:
         movq      %rax, (%rsp)
-..___tag_value__Z8time_ffti10yesno_type.342:
+..___tag_value__Z8time_ffti10yesno_type.338:
 ..B4.87:
-        lea       56(%rsp), %rdi
-..___tag_value__Z8time_ffti10yesno_type.343:
+        lea       8(%rsp), %rdi
+..___tag_value__Z8time_ffti10yesno_type.339:
         call      _ZN8fft_fftwD1Ev@PLT
-..___tag_value__Z8time_ffti10yesno_type.345:
+..___tag_value__Z8time_ffti10yesno_type.341:
 ..B4.89:
-        lea       24(%rsp), %rdi
-..___tag_value__Z8time_ffti10yesno_type.347:
+        lea       48(%rsp), %rdi
+..___tag_value__Z8time_ffti10yesno_type.343:
         call      _ZN7fft_mklD1Ev@PLT
-..___tag_value__Z8time_ffti10yesno_type.349:
+..___tag_value__Z8time_ffti10yesno_type.345:
 ..B4.90:
         xorl      %eax, %eax
         movq      (%rsp), %rdi
-..___tag_value__Z8time_ffti10yesno_type.351:
+..___tag_value__Z8time_ffti10yesno_type.347:
         call      _Unwind_Resume@PLT
-..___tag_value__Z8time_ffti10yesno_type.353:
+..___tag_value__Z8time_ffti10yesno_type.349:
 ..B4.92:
         lea       .L_2__STRING.0(%rip), %rsi
         movq      _ZSt4cout@GOTPCREL(%rip), %rdi
-..___tag_value__Z8time_ffti10yesno_type.355:
+..___tag_value__Z8time_ffti10yesno_type.351:
         call      _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
-..___tag_value__Z8time_ffti10yesno_type.357:
+..___tag_value__Z8time_ffti10yesno_type.353:
 ..B4.93:
         movq      %rax, %rdi
         lea       .L_2__STRING.1(%rip), %rsi
-..___tag_value__Z8time_ffti10yesno_type.359:
+..___tag_value__Z8time_ffti10yesno_type.355:
         call      _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
-..___tag_value__Z8time_ffti10yesno_type.361:
+..___tag_value__Z8time_ffti10yesno_type.357:
 ..B4.94:
         movq      _ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_@GOTPCREL(%rip), %rbx
         movq      %rax, %rdi
         movq      %rbx, %rsi
-..___tag_value__Z8time_ffti10yesno_type.363:
+..___tag_value__Z8time_ffti10yesno_type.359:
         call      _ZNSolsEPFRSoS_E@PLT
-..___tag_value__Z8time_ffti10yesno_type.365:
+..___tag_value__Z8time_ffti10yesno_type.361:
 ..B4.95:
         movq      %rax, %rdi
         lea       .L_2__STRING.2(%rip), %rsi
-..___tag_value__Z8time_ffti10yesno_type.367:
+..___tag_value__Z8time_ffti10yesno_type.363:
         call      _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
-..___tag_value__Z8time_ffti10yesno_type.369:
+..___tag_value__Z8time_ffti10yesno_type.365:
 ..B4.96:
         movq      %rax, %rdi
         lea       .L_2__STRING.3(%rip), %rsi
-..___tag_value__Z8time_ffti10yesno_type.371:
+..___tag_value__Z8time_ffti10yesno_type.367:
         call      _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
-..___tag_value__Z8time_ffti10yesno_type.373:
+..___tag_value__Z8time_ffti10yesno_type.369:
 ..B4.97:
         movq      %rax, %rdi
         movq      %rbx, %rsi
-..___tag_value__Z8time_ffti10yesno_type.375:
+..___tag_value__Z8time_ffti10yesno_type.371:
         call      _ZNSolsEPFRSoS_E@PLT
-..___tag_value__Z8time_ffti10yesno_type.377:
+..___tag_value__Z8time_ffti10yesno_type.373:
 ..B4.98:
         movq      %rax, %rdi
         lea       .L_2__STRING.4(%rip), %rsi
-..___tag_value__Z8time_ffti10yesno_type.379:
+..___tag_value__Z8time_ffti10yesno_type.375:
         call      _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
-..___tag_value__Z8time_ffti10yesno_type.381:
+..___tag_value__Z8time_ffti10yesno_type.377:
 ..B4.99:
         movq      %rax, %rdi
         movl      $31, %esi
-..___tag_value__Z8time_ffti10yesno_type.383:
+..___tag_value__Z8time_ffti10yesno_type.379:
         call      _ZNSolsEi@PLT
-..___tag_value__Z8time_ffti10yesno_type.385:
+..___tag_value__Z8time_ffti10yesno_type.381:
 ..B4.100:
         movq      %rax, %rdi
         movq      %rbx, %rsi
-..___tag_value__Z8time_ffti10yesno_type.387:
+..___tag_value__Z8time_ffti10yesno_type.383:
         call      _ZNSolsEPFRSoS_E@PLT
-..___tag_value__Z8time_ffti10yesno_type.389:
+..___tag_value__Z8time_ffti10yesno_type.385:
         jmp       ..B4.85
-..___tag_value__Z8time_ffti10yesno_type.390:
+..___tag_value__Z8time_ffti10yesno_type.386:
 ..___tag_value__Z8time_ffti10yesno_type.149:
 ..B4.102:
         movq      %rax, (%rsp)
         jmp       ..B4.89
-..___tag_value__Z8time_ffti10yesno_type.391:
+..___tag_value__Z8time_ffti10yesno_type.387:
 ..B4.103:
+        xorl      %eax, %eax
+..___tag_value__Z8time_ffti10yesno_type.388:
+..B4.104:
+        cmpq      %rcx, %rax
+        lea       (%rbx,%rax,8), %rdx
+        jae       ..B4.60
+..___tag_value__Z8time_ffti10yesno_type.389:
+..B4.105:
+        cvtsi2sd  %esi, %xmm1
+..___tag_value__Z8time_ffti10yesno_type.390:
+..B4.106:
+        movsd     (%rdx), %xmm0
+        incq      %rax
+        divsd     %xmm1, %xmm0
+        movsd     %xmm0, (%rdx)
+        addq      $8, %rdx
+        cmpq      %rcx, %rax
+        jb        ..B4.106
+        jmp       ..B4.60
+..___tag_value__Z8time_ffti10yesno_type.391:
+..B4.109:
         lea       .L_2__STRING.0(%rip), %rsi
         movq      _ZSt4cout@GOTPCREL(%rip), %rdi
 ..___tag_value__Z8time_ffti10yesno_type.392:
         call      _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
 ..___tag_value__Z8time_ffti10yesno_type.394:
-..B4.104:
+..B4.110:
         movq      %rax, %rdi
         lea       .L_2__STRING.1(%rip), %rsi
 ..___tag_value__Z8time_ffti10yesno_type.396:
         call      _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
 ..___tag_value__Z8time_ffti10yesno_type.398:
-..B4.105:
+..B4.111:
         movq      _ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_@GOTPCREL(%rip), %rbx
         movq      %rax, %rdi
         movq      %rbx, %rsi
 ..___tag_value__Z8time_ffti10yesno_type.400:
         call      _ZNSolsEPFRSoS_E@PLT
 ..___tag_value__Z8time_ffti10yesno_type.402:
-..B4.106:
+..B4.112:
         movq      %rax, %rdi
         lea       .L_2__STRING.2(%rip), %rsi
 ..___tag_value__Z8time_ffti10yesno_type.404:
         call      _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
 ..___tag_value__Z8time_ffti10yesno_type.406:
-..B4.107:
+..B4.113:
         movq      %rax, %rdi
         lea       .L_2__STRING.3(%rip), %rsi
 ..___tag_value__Z8time_ffti10yesno_type.408:
         call      _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
 ..___tag_value__Z8time_ffti10yesno_type.410:
-..B4.108:
+..B4.114:
         movq      %rax, %rdi
         movq      %rbx, %rsi
 ..___tag_value__Z8time_ffti10yesno_type.412:
         call      _ZNSolsEPFRSoS_E@PLT
 ..___tag_value__Z8time_ffti10yesno_type.414:
-..B4.109:
+..B4.115:
         movq      %rax, %rdi
         lea       .L_2__STRING.4(%rip), %rsi
 ..___tag_value__Z8time_ffti10yesno_type.416:
         call      _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
 ..___tag_value__Z8time_ffti10yesno_type.418:
-..B4.110:
+..B4.116:
         movq      %rax, %rdi
         movl      $31, %esi
 ..___tag_value__Z8time_ffti10yesno_type.420:
         call      _ZNSolsEi@PLT
 ..___tag_value__Z8time_ffti10yesno_type.422:
-..B4.111:
+..B4.117:
         movq      %rax, %rdi
         movq      %rbx, %rsi
 ..___tag_value__Z8time_ffti10yesno_type.424:
@@ -2249,56 +2277,56 @@ _Z8time_ffti10yesno_type:
 ..___tag_value__Z8time_ffti10yesno_type.426:
         jmp       ..B4.85
 ..___tag_value__Z8time_ffti10yesno_type.427:
-..B4.113:
+..B4.119:
         lea       .L_2__STRING.0(%rip), %rsi
         movq      _ZSt4cout@GOTPCREL(%rip), %rdi
 ..___tag_value__Z8time_ffti10yesno_type.428:
         call      _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
 ..___tag_value__Z8time_ffti10yesno_type.430:
-..B4.114:
+..B4.120:
         movq      %rax, %rdi
         lea       .L_2__STRING.11(%rip), %rsi
 ..___tag_value__Z8time_ffti10yesno_type.432:
         call      _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
 ..___tag_value__Z8time_ffti10yesno_type.434:
-..B4.115:
+..B4.121:
         movq      _ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_@GOTPCREL(%rip), %rbx
         movq      %rax, %rdi
         movq      %rbx, %rsi
 ..___tag_value__Z8time_ffti10yesno_type.436:
         call      _ZNSolsEPFRSoS_E@PLT
 ..___tag_value__Z8time_ffti10yesno_type.438:
-..B4.116:
+..B4.122:
         movq      %rax, %rdi
         lea       .L_2__STRING.2(%rip), %rsi
 ..___tag_value__Z8time_ffti10yesno_type.440:
         call      _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
 ..___tag_value__Z8time_ffti10yesno_type.442:
-..B4.117:
+..B4.123:
         movq      %rax, %rdi
         lea       .L_2__STRING.12(%rip), %rsi
 ..___tag_value__Z8time_ffti10yesno_type.444:
         call      _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
 ..___tag_value__Z8time_ffti10yesno_type.446:
-..B4.118:
+..B4.124:
         movq      %rax, %rdi
         movq      %rbx, %rsi
 ..___tag_value__Z8time_ffti10yesno_type.448:
         call      _ZNSolsEPFRSoS_E@PLT
 ..___tag_value__Z8time_ffti10yesno_type.450:
-..B4.119:
+..B4.125:
         movq      %rax, %rdi
         lea       .L_2__STRING.4(%rip), %rsi
 ..___tag_value__Z8time_ffti10yesno_type.452:
         call      _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
 ..___tag_value__Z8time_ffti10yesno_type.454:
-..B4.120:
+..B4.126:
         movq      %rax, %rdi
         movl      $20, %esi
 ..___tag_value__Z8time_ffti10yesno_type.456:
         call      _ZNSolsEi@PLT
 ..___tag_value__Z8time_ffti10yesno_type.458:
-..B4.121:
+..B4.127:
         movq      %rax, %rdi
         movq      %rbx, %rsi
 ..___tag_value__Z8time_ffti10yesno_type.460:
@@ -2307,36 +2335,36 @@ _Z8time_ffti10yesno_type:
         jmp       ..B4.85
 ..___tag_value__Z8time_ffti10yesno_type.463:
 ..___tag_value__Z8time_ffti10yesno_type.147:
-..B4.123:
+..B4.129:
         movq      %rax, (%rsp)
 ..___tag_value__Z8time_ffti10yesno_type.464:
-..B4.124:
+..B4.130:
         cmpl      $0, 16(%rsp)
         je        ..B4.90
 ..___tag_value__Z8time_ffti10yesno_type.465:
-..B4.125:
+..B4.131:
         movq      8(%rsp), %rdi
         call      _ZdlPv@PLT
         jmp       ..B4.90
 ..___tag_value__Z8time_ffti10yesno_type.466:
 ..___tag_value__Z8time_ffti10yesno_type.148:
-..B4.127:
+..B4.133:
         movq      %rax, (%rsp)
 ..___tag_value__Z8time_ffti10yesno_type.467:
-..B4.128:
+..B4.134:
         cmpl      $0, 16(%rsp)
         je        ..B4.90
 ..___tag_value__Z8time_ffti10yesno_type.468:
-..B4.129:
+..B4.135:
         movq      8(%rsp), %rdi
         call      _ZdlPv@PLT
         jmp       ..B4.90
 ..___tag_value__Z8time_ffti10yesno_type.469:
-..B4.132:
+..B4.138:
         cmpl      %r14d, %eax
-        jae       ..B4.135
+        jae       ..B4.141
 ..___tag_value__Z8time_ffti10yesno_type.470:
-..B4.133:
+..B4.139:
         movq      %rbx, %rbp
         imulq     %rbx, %rbp
         cvtsi2sdq %rbx, %xmm12
@@ -2344,7 +2372,7 @@ _Z8time_ffti10yesno_type:
         addsd     %xmm6, %xmm12
         addsd     %xmm6, %xmm11
 ..___tag_value__Z8time_ffti10yesno_type.471:
-..B4.134:
+..B4.140:
         cvtsi2sd  %eax, %xmm2
         movaps    %xmm12, %xmm0
         movaps    %xmm4, %xmm1
@@ -2359,109 +2387,109 @@ _Z8time_ffti10yesno_type:
         divsd     %xmm2, %xmm10
         movsd     %xmm1, (%rcx,%rbp,8)
         movsd     %xmm10, 8(%rcx,%rbp,8)
-        jb        ..B4.134
+        jb        ..B4.140
 ..___tag_value__Z8time_ffti10yesno_type.472:
-..B4.135:
+..B4.141:
         incq      %rbx
-        addq      40(%rsp), %rcx
-        cmpq      48(%rsp), %rbx
+        addq      64(%rsp), %rcx
+        cmpq      72(%rsp), %rbx
         jb        ..B4.37
         jmp       ..B4.44
 ..___tag_value__Z8time_ffti10yesno_type.473:
-..B4.137:
+..B4.143:
         xorl      %eax, %eax
-        jmp       ..B4.132
+        jmp       ..B4.138
 ..___tag_value__Z8time_ffti10yesno_type.474:
-..B4.141:
-        cmpl      %r14d, %ebx
+..B4.147:
+        cmpl      %r14d, %ecx
         jae       ..B4.44
 ..___tag_value__Z8time_ffti10yesno_type.475:
-..B4.142:
+..B4.148:
         xorl      %edx, %edx
 ..___tag_value__Z8time_ffti10yesno_type.476:
-..B4.143:
-        lea       (%rbx,%rbx), %eax
-        incl      %ebx
+..B4.149:
+        lea       (%rcx,%rcx), %eax
+        incl      %ecx
         movslq    %eax, %rax
-        cmpl      %r14d, %ebx
+        cmpl      %r14d, %ecx
         movq      %rdx, 8(%r12,%rax,8)
         movq      %rdx, (%r12,%rax,8)
-        jb        ..B4.143
+        jb        ..B4.149
         jmp       ..B4.44
 ..___tag_value__Z8time_ffti10yesno_type.477:
-..B4.145:
-        xorl      %ebx, %ebx
-        jmp       ..B4.141
+..B4.151:
+        xorl      %ecx, %ecx
+        jmp       ..B4.147
 ..___tag_value__Z8time_ffti10yesno_type.478:
 ..___tag_value__Z8time_ffti10yesno_type.146:
-..B4.146:
+..B4.152:
         movq      %rax, (%rsp)
 ..___tag_value__Z8time_ffti10yesno_type.479:
-..B4.147:
+..B4.153:
         cmpl      $0, 16(%rsp)
         je        ..B4.90
 ..___tag_value__Z8time_ffti10yesno_type.480:
-..B4.148:
+..B4.154:
         movq      8(%rsp), %rdi
         call      _ZdlPv@PLT
         jmp       ..B4.90
 ..___tag_value__Z8time_ffti10yesno_type.481:
-..B4.150:
+..B4.156:
         lea       .L_2__STRING.0(%rip), %rsi
         movq      _ZSt4cout@GOTPCREL(%rip), %rdi
 ..___tag_value__Z8time_ffti10yesno_type.482:
         call      _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
 ..___tag_value__Z8time_ffti10yesno_type.484:
-..B4.151:
+..B4.157:
         movq      %rax, %rdi
         lea       .L_2__STRING.1(%rip), %rsi
 ..___tag_value__Z8time_ffti10yesno_type.486:
         call      _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
 ..___tag_value__Z8time_ffti10yesno_type.488:
-..B4.152:
+..B4.158:
         movq      _ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_@GOTPCREL(%rip), %rbx
         movq      %rax, %rdi
         movq      %rbx, %rsi
 ..___tag_value__Z8time_ffti10yesno_type.490:
         call      _ZNSolsEPFRSoS_E@PLT
 ..___tag_value__Z8time_ffti10yesno_type.492:
-..B4.153:
+..B4.159:
         movq      %rax, %rdi
         lea       .L_2__STRING.2(%rip), %rsi
 ..___tag_value__Z8time_ffti10yesno_type.494:
         call      _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
 ..___tag_value__Z8time_ffti10yesno_type.496:
-..B4.154:
+..B4.160:
         movq      %rax, %rdi
         lea       .L_2__STRING.3(%rip), %rsi
 ..___tag_value__Z8time_ffti10yesno_type.498:
         call      _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
 ..___tag_value__Z8time_ffti10yesno_type.500:
-..B4.155:
+..B4.161:
         movq      %rax, %rdi
         movq      %rbx, %rsi
 ..___tag_value__Z8time_ffti10yesno_type.502:
         call      _ZNSolsEPFRSoS_E@PLT
 ..___tag_value__Z8time_ffti10yesno_type.504:
-..B4.156:
+..B4.162:
         movq      %rax, %rdi
         lea       .L_2__STRING.4(%rip), %rsi
 ..___tag_value__Z8time_ffti10yesno_type.506:
         call      _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
 ..___tag_value__Z8time_ffti10yesno_type.508:
-..B4.157:
+..B4.163:
         movq      %rax, %rdi
         movl      $31, %esi
 ..___tag_value__Z8time_ffti10yesno_type.510:
         call      _ZNSolsEi@PLT
 ..___tag_value__Z8time_ffti10yesno_type.512:
-..B4.158:
+..B4.164:
         movq      %rax, %rdi
         movq      %rbx, %rsi
 ..___tag_value__Z8time_ffti10yesno_type.514:
         call      _ZNSolsEPFRSoS_E@PLT
 ..___tag_value__Z8time_ffti10yesno_type.516:
-..B4.159:
+..B4.165:
         int       $5
         .align    16,0x90
 ..___tag_value__Z8time_ffti10yesno_type.518:
@@ -2477,52 +2505,48 @@ _Z8time_ffti10yesno_type$$LSDA:
 	.byte	1
 	.uleb128	..___tag_value__Z8time_ffti10yesno_type.520 - ..___tag_value__Z8time_ffti10yesno_type.519
 ..___tag_value__Z8time_ffti10yesno_type.519:
-	.uleb128	..___tag_value__Z8time_ffti10yesno_type.171 - ..___tag_value__Z8time_ffti10yesno_type.152
-	.uleb128	..___tag_value__Z8time_ffti10yesno_type.173 - ..___tag_value__Z8time_ffti10yesno_type.171
-	.byte	0
-	.byte	0
-	.uleb128	..___tag_value__Z8time_ffti10yesno_type.180 - ..___tag_value__Z8time_ffti10yesno_type.152
-	.uleb128	..___tag_value__Z8time_ffti10yesno_type.188 - ..___tag_value__Z8time_ffti10yesno_type.180
+	.uleb128	..___tag_value__Z8time_ffti10yesno_type.177 - ..___tag_value__Z8time_ffti10yesno_type.152
+	.uleb128	..___tag_value__Z8time_ffti10yesno_type.185 - ..___tag_value__Z8time_ffti10yesno_type.177
 	.uleb128	..___tag_value__Z8time_ffti10yesno_type.146 - ..___tag_value__Z8time_ffti10yesno_type.152
 	.byte	0
-	.uleb128	..___tag_value__Z8time_ffti10yesno_type.196 - ..___tag_value__Z8time_ffti10yesno_type.152
-	.uleb128	..___tag_value__Z8time_ffti10yesno_type.204 - ..___tag_value__Z8time_ffti10yesno_type.196
+	.uleb128	..___tag_value__Z8time_ffti10yesno_type.193 - ..___tag_value__Z8time_ffti10yesno_type.152
+	.uleb128	..___tag_value__Z8time_ffti10yesno_type.201 - ..___tag_value__Z8time_ffti10yesno_type.193
 	.uleb128	..___tag_value__Z8time_ffti10yesno_type.147 - ..___tag_value__Z8time_ffti10yesno_type.152
 	.byte	0
-	.uleb128	..___tag_value__Z8time_ffti10yesno_type.212 - ..___tag_value__Z8time_ffti10yesno_type.152
-	.uleb128	..___tag_value__Z8time_ffti10yesno_type.220 - ..___tag_value__Z8time_ffti10yesno_type.212
+	.uleb128	..___tag_value__Z8time_ffti10yesno_type.209 - ..___tag_value__Z8time_ffti10yesno_type.152
+	.uleb128	..___tag_value__Z8time_ffti10yesno_type.217 - ..___tag_value__Z8time_ffti10yesno_type.209
 	.uleb128	..___tag_value__Z8time_ffti10yesno_type.148 - ..___tag_value__Z8time_ffti10yesno_type.152
 	.byte	0
-	.uleb128	..___tag_value__Z8time_ffti10yesno_type.235 - ..___tag_value__Z8time_ffti10yesno_type.152
-	.uleb128	..___tag_value__Z8time_ffti10yesno_type.237 - ..___tag_value__Z8time_ffti10yesno_type.235
+	.uleb128	..___tag_value__Z8time_ffti10yesno_type.232 - ..___tag_value__Z8time_ffti10yesno_type.152
+	.uleb128	..___tag_value__Z8time_ffti10yesno_type.234 - ..___tag_value__Z8time_ffti10yesno_type.232
 	.byte	0
 	.byte	0
-	.uleb128	..___tag_value__Z8time_ffti10yesno_type.240 - ..___tag_value__Z8time_ffti10yesno_type.152
-	.uleb128	..___tag_value__Z8time_ffti10yesno_type.248 - ..___tag_value__Z8time_ffti10yesno_type.240
+	.uleb128	..___tag_value__Z8time_ffti10yesno_type.237 - ..___tag_value__Z8time_ffti10yesno_type.152
+	.uleb128	..___tag_value__Z8time_ffti10yesno_type.245 - ..___tag_value__Z8time_ffti10yesno_type.237
 	.uleb128	..___tag_value__Z8time_ffti10yesno_type.149 - ..___tag_value__Z8time_ffti10yesno_type.152
 	.byte	0
-	.uleb128	..___tag_value__Z8time_ffti10yesno_type.252 - ..___tag_value__Z8time_ffti10yesno_type.152
-	.uleb128	..___tag_value__Z8time_ffti10yesno_type.273 - ..___tag_value__Z8time_ffti10yesno_type.252
+	.uleb128	..___tag_value__Z8time_ffti10yesno_type.249 - ..___tag_value__Z8time_ffti10yesno_type.152
+	.uleb128	..___tag_value__Z8time_ffti10yesno_type.266 - ..___tag_value__Z8time_ffti10yesno_type.249
 	.uleb128	..___tag_value__Z8time_ffti10yesno_type.150 - ..___tag_value__Z8time_ffti10yesno_type.152
+	.byte	0
+	.uleb128	..___tag_value__Z8time_ffti10yesno_type.271 - ..___tag_value__Z8time_ffti10yesno_type.152
+	.uleb128	..___tag_value__Z8time_ffti10yesno_type.273 - ..___tag_value__Z8time_ffti10yesno_type.271
+	.uleb128	..___tag_value__Z8time_ffti10yesno_type.149 - ..___tag_value__Z8time_ffti10yesno_type.152
 	.byte	0
 	.uleb128	..___tag_value__Z8time_ffti10yesno_type.275 - ..___tag_value__Z8time_ffti10yesno_type.152
 	.uleb128	..___tag_value__Z8time_ffti10yesno_type.277 - ..___tag_value__Z8time_ffti10yesno_type.275
-	.uleb128	..___tag_value__Z8time_ffti10yesno_type.149 - ..___tag_value__Z8time_ffti10yesno_type.152
-	.byte	0
-	.uleb128	..___tag_value__Z8time_ffti10yesno_type.279 - ..___tag_value__Z8time_ffti10yesno_type.152
-	.uleb128	..___tag_value__Z8time_ffti10yesno_type.281 - ..___tag_value__Z8time_ffti10yesno_type.279
 	.byte	0
 	.byte	0
-	.uleb128	..___tag_value__Z8time_ffti10yesno_type.305 - ..___tag_value__Z8time_ffti10yesno_type.152
-	.uleb128	..___tag_value__Z8time_ffti10yesno_type.339 - ..___tag_value__Z8time_ffti10yesno_type.305
+	.uleb128	..___tag_value__Z8time_ffti10yesno_type.301 - ..___tag_value__Z8time_ffti10yesno_type.152
+	.uleb128	..___tag_value__Z8time_ffti10yesno_type.335 - ..___tag_value__Z8time_ffti10yesno_type.301
 	.uleb128	..___tag_value__Z8time_ffti10yesno_type.150 - ..___tag_value__Z8time_ffti10yesno_type.152
 	.byte	0
+	.uleb128	..___tag_value__Z8time_ffti10yesno_type.347 - ..___tag_value__Z8time_ffti10yesno_type.152
+	.uleb128	..___tag_value__Z8time_ffti10yesno_type.349 - ..___tag_value__Z8time_ffti10yesno_type.347
+	.byte	0
+	.byte	0
 	.uleb128	..___tag_value__Z8time_ffti10yesno_type.351 - ..___tag_value__Z8time_ffti10yesno_type.152
-	.uleb128	..___tag_value__Z8time_ffti10yesno_type.353 - ..___tag_value__Z8time_ffti10yesno_type.351
-	.byte	0
-	.byte	0
-	.uleb128	..___tag_value__Z8time_ffti10yesno_type.355 - ..___tag_value__Z8time_ffti10yesno_type.152
-	.uleb128	..___tag_value__Z8time_ffti10yesno_type.462 - ..___tag_value__Z8time_ffti10yesno_type.355
+	.uleb128	..___tag_value__Z8time_ffti10yesno_type.462 - ..___tag_value__Z8time_ffti10yesno_type.351
 	.uleb128	..___tag_value__Z8time_ffti10yesno_type.150 - ..___tag_value__Z8time_ffti10yesno_type.152
 	.byte	0
 	.uleb128	..___tag_value__Z8time_ffti10yesno_type.482 - ..___tag_value__Z8time_ffti10yesno_type.152
@@ -3191,22 +3215,22 @@ __init_0:
 	.byte 0x04
 	.4byte ..___tag_value__Z8time_ffti10yesno_type.166-..___tag_value__Z8time_ffti10yesno_type.164
 	.4byte 0x0401900e
-	.4byte ..___tag_value__Z8time_ffti10yesno_type.283-..___tag_value__Z8time_ffti10yesno_type.166
+	.4byte ..___tag_value__Z8time_ffti10yesno_type.279-..___tag_value__Z8time_ffti10yesno_type.166
 	.4byte 0x04c6380e
-	.4byte ..___tag_value__Z8time_ffti10yesno_type.286-..___tag_value__Z8time_ffti10yesno_type.283
+	.4byte ..___tag_value__Z8time_ffti10yesno_type.282-..___tag_value__Z8time_ffti10yesno_type.279
 	.4byte 0x04c3300e
-	.4byte ..___tag_value__Z8time_ffti10yesno_type.288-..___tag_value__Z8time_ffti10yesno_type.286
+	.4byte ..___tag_value__Z8time_ffti10yesno_type.284-..___tag_value__Z8time_ffti10yesno_type.282
 	.4byte 0x04cf280e
-	.4byte ..___tag_value__Z8time_ffti10yesno_type.290-..___tag_value__Z8time_ffti10yesno_type.288
+	.4byte ..___tag_value__Z8time_ffti10yesno_type.286-..___tag_value__Z8time_ffti10yesno_type.284
 	.4byte 0x04ce200e
-	.4byte ..___tag_value__Z8time_ffti10yesno_type.292-..___tag_value__Z8time_ffti10yesno_type.290
+	.4byte ..___tag_value__Z8time_ffti10yesno_type.288-..___tag_value__Z8time_ffti10yesno_type.286
 	.4byte 0x04cd180e
-	.4byte ..___tag_value__Z8time_ffti10yesno_type.294-..___tag_value__Z8time_ffti10yesno_type.292
+	.4byte ..___tag_value__Z8time_ffti10yesno_type.290-..___tag_value__Z8time_ffti10yesno_type.288
 	.4byte 0x04cc100e
-	.4byte ..___tag_value__Z8time_ffti10yesno_type.296-..___tag_value__Z8time_ffti10yesno_type.294
+	.4byte ..___tag_value__Z8time_ffti10yesno_type.292-..___tag_value__Z8time_ffti10yesno_type.290
 	.2byte 0x080e
 	.byte 0x04
-	.4byte ..___tag_value__Z8time_ffti10yesno_type.297-..___tag_value__Z8time_ffti10yesno_type.296
+	.4byte ..___tag_value__Z8time_ffti10yesno_type.293-..___tag_value__Z8time_ffti10yesno_type.292
 	.8byte 0x8c0786068301900e
 	.8byte 0x00058f048e038d02
 	.byte 0x00

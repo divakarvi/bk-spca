@@ -2,7 +2,6 @@
 #include "../utils/TimeStamp.hh"
 #include "latency_utils.hh"
 #include "array_walk.hh"
-#include <mkl.h>
 #include <cstdio>
 #include <cstdlib>
 
@@ -42,7 +41,7 @@ void time_chain(){
 	 */
 	long int *list;
 	long int n = 1000*1000*1000;
-	list = (long int*)MKL_malloc(n*sizeof(long int), 64);
+	list = (long int*)_mm_malloc(n*sizeof(long int), 64);
 	for(long int i=0; i < n; i++)
 		list[i] = rand();
 
@@ -65,7 +64,7 @@ void time_chain(){
 	double prob = probNoR(n, count);
 	printf("\ttheor prob of 0 repeats =  %f\n\n", prob);
 
-	MKL_free(list);
+	_mm_free(list);
 }
 
 int main(){

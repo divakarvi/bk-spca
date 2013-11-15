@@ -3,7 +3,6 @@
 #include "../utils/StatVector.hh"
 #include "../utils/Table.hh"
 #include "transpose.hh"
-#include <mkl.h>
 
 enum transpose_enum {EASY, BLOCK, BLOCKX, RECURSIVE, POW2};
 
@@ -56,8 +55,8 @@ void table1(){
 	int m = 20000;
 	int n = 30000;
 	long nbytes = 1l*m*n*8;
-	double *a = (double *)MKL_malloc(nbytes, 64);
-	double *b = (double *)MKL_malloc(nbytes, 64);
+	double *a = (double *)_mm_malloc(nbytes, 64);
+	double *b = (double *)_mm_malloc(nbytes, 64);
 
 	for(int i=0; i < m*n; i++)
 		a[i] = i;
@@ -85,8 +84,8 @@ void table1(){
 	sprintf(banner, "B = %d, m = %d, n = %d \n", B, m, n);
 	tbl.print(banner);
 	
-	MKL_free(a);
-	MKL_free(b);
+	_mm_free(a);
+	_mm_free(b);
 
 	unlink_cout();
 }
@@ -109,8 +108,8 @@ void table2(){
 		
 
 	long nbytes = 1l*m*n*8;
-	double *a = (double *)MKL_malloc(nbytes, 64);
-	double *b = (double *)MKL_malloc(nbytes, 64);
+	double *a = (double *)_mm_malloc(nbytes, 64);
+	double *b = (double *)_mm_malloc(nbytes, 64);
 
 	for(int i=0; i < m*n; i++)
 		a[i] = i;
@@ -140,8 +139,8 @@ void table2(){
 	sprintf(banner, "B = %d, m = %d, n = %d \n", B, m, n);
 	tbl.print(banner);
 
-	MKL_free(a);
-	MKL_free(b);
+	_mm_free(a);
+	_mm_free(b);
 
 	unlink_cout();
 }

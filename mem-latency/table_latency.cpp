@@ -2,7 +2,6 @@
 #include "../utils/StatVector.hh"
 #include "../utils/Table.hh"
 #include "latency.hh"
-#include <mkl.h>
 #include <cstdio>
 #include <fstream>
 #include <iostream>
@@ -14,12 +13,12 @@ void measure_latency(int n, StatVector& stats){
 	const int ntrials = NTRIALS;
 	assrt(stats.getSize() >= ntrials);
 	stats.flush();
-	int *npages = (int *)MKL_malloc(1l*4096*n, 4096);
+	int *npages = (int *)_mm_malloc(1l*4096*n, 4096);
 	for(int i=0; i < ntrials; i++){
 		double cycles = latency(n, npages);
 		stats.insert(cycles);
 	}
-	MKL_free(npages);
+	_mm_free(npages);
 }
 
 int main(){

@@ -3,7 +3,6 @@
 #include "../utils/StatVector.hh"
 #include "../mem-latency/latency.hh"
 #include <iostream>
-#include <mkl.h>
 #include <omp.h>
 
 double measure_latency(int n, int *npages){
@@ -17,7 +16,7 @@ double measure_latency(int n, int *npages){
 }
 
 void nearfar(int n, double cycles[2]){
-	int *npages = (int *)MKL_malloc(1l*n*4096, 4096);
+	int *npages = (int *)_mm_malloc(1l*n*4096, 4096);
 #pragma omp parallel    \
 	num_threads(2)	\
 	shared(cycles, n, npages)
@@ -30,7 +29,7 @@ void nearfar(int n, double cycles[2]){
 #pragma omp critical
 		cycles[tid] = measure_latency(n, npages); 
 	}
-	MKL_free(npages);
+	_mm_free(npages);
 }
 
 int main(){

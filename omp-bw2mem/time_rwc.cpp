@@ -3,7 +3,6 @@
 #include "../utils/StatVector.hh"
 #include "../utils/Table.hh"
 #include "readwrcopy.hh"
-#include <mkl.h>
 
 
 enum rwc_flag_enum {RWC_READ, RWC_WRITE, RWC_COPY};
@@ -15,7 +14,7 @@ double time(enum rwc_flag_enum flag, int nthreads){
 	const int count = 20;
 	const long len = 2l*1000*1000*1000; //16GB array
 	long nbytes = len*sizeof(double);
-	double *list = (double *)MKL_malloc(nbytes, 64);
+	double *list = (double *)_mm_malloc(nbytes, 64);
 	init_manycore_cheap(list, len, nthreads);
 
 	StatVector stats(count);
@@ -37,7 +36,7 @@ double time(enum rwc_flag_enum flag, int nthreads){
 		stats.insert(cycles);
 	}
 
-	MKL_free(list);
+	_mm_free(list);
 	return 1.0*nbytes/stats.median();
 }
 

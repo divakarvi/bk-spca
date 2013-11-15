@@ -3,7 +3,6 @@
 #include "../utils/StatVector.hh"
 #include "../utils/Table.hh"
 #include "fft_thrd.hh"
-#include <mkl.h>
 #include <cmath>
 /*
  * returns num of cycles per fft of size n using nth threads
@@ -12,7 +11,7 @@
 double time(int n, int nth){
 	long nbytes = 16l*1000*1000*1000;
 	long count = nbytes/(16*n);
-	double *v = (double *)MKL_malloc(nbytes, 64);
+	double *v = (double *)_mm_malloc(nbytes, 64);
 
 	fft_thrd fft(n, count, nth);
 	fft.numa_init(v);
@@ -29,7 +28,7 @@ double time(int n, int nth){
 		clk.toc();
 	}
 
-	MKL_free(v);
+	_mm_free(v);
 	double ans = stats.median()/count/(n*log(1.0*n)/log(2.0));
 	return ans;
 }
