@@ -4,6 +4,8 @@
 #include "../utils/Table.hh"
 #include "fft_thrd.hh"
 #include <cmath>
+#include <omp.h>
+
 /*
  * returns num of cycles per fft of size n using nth threads
  * num cycles normalized by n*lg(n)
@@ -34,6 +36,7 @@ double time(int n, int nth){
 }
 
 int main(){
+	kmp_set_defaults("KMP_AFFINITY=compact");
 	const char* rows[3] = {"64", "1024", "8192"};
 	int n[3] = {64, 1024, 8192};
 	const char* cols[5] = {"1", "2", "4", "8", "12"};

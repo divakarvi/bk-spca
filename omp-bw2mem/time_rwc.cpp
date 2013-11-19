@@ -3,7 +3,7 @@
 #include "../utils/StatVector.hh"
 #include "../utils/Table.hh"
 #include "readwrcopy.hh"
-
+#include <omp.h>
 
 enum rwc_flag_enum {RWC_READ, RWC_WRITE, RWC_COPY};
 
@@ -41,6 +41,8 @@ double time(enum rwc_flag_enum flag, int nthreads){
 }
 
 int main(){
+	kmp_set_defaults("KMP_AFFINITY=compact");
+
 	const char *rows[12] = {"1", "2", "3", "4", "5", "6",
 			      "7", "8", "9", "10", "11", "12"};
 	const char *cols[3] = {"read", "write", "copy"};
