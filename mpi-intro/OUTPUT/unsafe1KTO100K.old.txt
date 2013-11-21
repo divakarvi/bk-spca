@@ -1,0 +1,12 @@
+number of bytes xchgd: 1000
+               cycles: 7.78548e+06
+
+number of bytes xchgd: 2000
+               cycles: 32575
+
+number of bytes xchgd: 3000
+               cycles: 19216
+
+number of bytes xchgd: 4000
+               cycles: 19883
+
