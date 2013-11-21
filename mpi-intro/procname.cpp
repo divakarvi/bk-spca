@@ -1,16 +1,23 @@
-#include <iostream>
+#include "../utils/utils.hh"
 #include <mpi.h>
 #include <iostream>
-using namespace std;
 
 int main(int argc, char **argv){
-  MPI_Init(NULL, NULL);
-  int numprocs, rank;
-  MPI_Comm_size(MPI_COMM_WORLD, &numprocs);
-  MPI_Comm_rank(MPI_COMM_WORLD, &rank);
-  char procname[200];
-  int procnamelen;
-  MPI_Get_processor_name(procname, &procnamelen);
-  cout<<"proc name = "<<procname<<" rank = "<<rank<<endl;
-  MPI_Finalize();
+	MPI_Init(NULL, NULL);
+	int nprocs, rank;
+	MPI_Comm_size(MPI_COMM_WORLD, &nprocs);
+	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+
+	char procname[200];
+	int procnamelen;
+	MPI_Get_processor_name(procname, &procnamelen);
+
+	verify_dir("DBG");
+	char fname[200];
+	sprintf(fname, "DBG/out%d.txt", rank);
+	link_cout(fname);
+	std::cout<<"proc name = "<<procname<<" rank = "<<rank<<std::endl;
+	unlink_cout();
+
+	MPI_Finalize();
 }
