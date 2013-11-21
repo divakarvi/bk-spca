@@ -24,7 +24,7 @@ else:
     file.write('#$ -N '+jobname+'\n');
     numcores = int(numofnodes)*12;
     numcores = str(numcores);
-    file.write('#$ -pe 12way '+numcores+' \n');
+    file.write('#$ -pe 1way '+numcores+' \n');
     file.write('#$ -l h_rt='+hours+':00:00 \n');
     file.write('#$ -q normal \n')
     file.write('#$ -j y \n');
@@ -32,7 +32,7 @@ else:
     file.write('#$ -cwd \n');
     currentdir = os.getcwd();
     file.write('cd '+currentdir+'\n');
-    file.write('mpirun -np '+numofnodes+' -bynode '+newexecname+' '+arglist+' > '+currentdir+'/'+jobname+'.txt\n');
+    file.write('ibrun -np '+numofnodes+' '+newexecname+' '+arglist+' > '+currentdir+'/'+jobname+'.txt\n');
     file.write('rm core*\n');
     file.close();
     os.execvp('qsub',['qsub',jobname+'.pbs']);
