@@ -11,13 +11,8 @@ int main(int argc, char **argv){
 	char procname[200];
 	int procnamelen;
 	MPI_Get_processor_name(procname, &procnamelen);
-
-	verify_dir("DBG");
-	char fname[200];
-	sprintf(fname, "DBG/out%d.txt", rank);
-	link_cout(fname);
+	
 	std::cout<<"proc name = "<<procname<<" rank = "<<rank<<std::endl;
-	unlink_cout();
 
 	MPI_Finalize();
 }
