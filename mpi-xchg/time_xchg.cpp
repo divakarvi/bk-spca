@@ -48,7 +48,7 @@ void time(struct time_args_struct args, enum exchange_type flag,
 						   sendbuf, recvbuf, n);
 			break;
 		case NONBLCK:
-			exchange_blocking(rank, nprocs, 
+			exchange_nonblocking(rank, nprocs, 
 						   sendbuf, recvbuf, n);
 			break;
 		case PSTNT:
@@ -69,11 +69,13 @@ void make_table(int rank, int nprocs){
 			1000*1000*100};
 	const char *cols[7] = {"800", "8 KB", "80 KB", "800 KB",
 			       "8 MB", "80 MB", "800 MB"};
-	const char *rows[12] = {"blck,min", "blck,mid", "blck,max", "blck,bw"
-				"nblk,min", "nblk,mid", "nblk,max","nblk,bw",
-				"pstt,min", "pstt,mid", "pstt,max","pstt,nw"};
+	const char *rows[14] = {"blck,min", "blk,median", "blck,max", "blck,bw",
+				"  ",
+				"nblk,min", "nblk,median", "nblk,max","nblk,bw",
+				"  ",
+				"pstt,min", "pstt,median","pstt,max","pstt,bw"};
 
-	double data[12*7];
+	double data[14*7];
 
 	for(int i=0; i < 7; i++){
 		time_args_struct args;
@@ -84,26 +86,30 @@ void make_table(int rank, int nprocs){
 		StatVector stats(args.count);
 		
 		time(args, BLCK, stats);
-		data[12*i] = stats.min();
-		data[12*i+1] = stats.median();
-		data[12*i+2] = stats.max();
-		data[12*i+3] = 16.0*args.n/stats.median();
+		data[14*i] = stats.min();
+		data[14*i+1] = stats.median();
+		data[14*i+2] = stats.max();
+		data[14*i+3] = 16.0*args.n/stats.median();
+
+		data[14*i+4] = 0;
 
 		time(args, NONBLCK, stats);
-		data[12*i+4] = stats.min();
-		data[12*i+5] = stats.median();
-		data[12*i+6] = stats.max();
-		data[12*i+7] = 16.0*args.n/stats.median();
+		data[14*i+5] = stats.min();
+		data[14*i+6] = stats.median();
+		data[14*i+7] = stats.max();
+		data[14*i+8] = 16.0*args.n/stats.median();
+		
+		data[14*i+9] = 0;
 		
 		time(args, PSTNT, stats);
-		data[12*i+8] = stats.min();
-		data[12*i+9] = stats.median();
-		data[12*i+10] = stats.max();
-		data[12*i+11] = 16.0*args.n/stats.median();
+		data[14*i+10] = stats.min();
+		data[14*i+11] = stats.median();
+		data[14*i+12] = stats.max();
+		data[14*i+13] = 16.0*args.n/stats.median();
 	}
 
 	Table tbl;
-	tbl.dim(12, 7);
+	tbl.dim(14, 7);
 	tbl.rows(rows);
 	tbl.cols(cols);
 	tbl.data(data);
