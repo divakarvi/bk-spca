@@ -1,7 +1,7 @@
 include ../makevars.mk
 CFLAGSXX := -fno-inline-functions $(MPIINC)
 LIBS := $(MPILIBS)
-MODS := ../utils ../mpi-intro
+MODS := ../utils ../mpi-init
 
 ######
 .PHONY: $(MODS)
@@ -18,4 +18,4 @@ test_cycle.o: test_cycle.cpp
 
 test_cycle.exe: test_cycle.o cycle.o 			\
 		../utils ../utils/utils.o		\
-		../mpi-intro ../mpi-intro/mpi_utils.o
+		../mpi-init ../mpi-init/mpi_init.o

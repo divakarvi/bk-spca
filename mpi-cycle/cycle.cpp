@@ -1,4 +1,5 @@
 #include "../utils/utils.hh"
+#include "../mpi-init/mpi_init.hh"
 #include "cycle.hh"
 #include <mpi.h>
 
@@ -7,6 +8,7 @@
 
 Cycle::Cycle(int rank, int nprocs, int bsize)
 {
+	assrt(gl_mpi_onoff == MPION);
 	assrt(bsize > 0);
 	bufsize = bsize;
 	
@@ -36,12 +38,12 @@ Cycle::Cycle(int rank, int nprocs, int bsize)
 }
 
 Cycle::~Cycle(){
-	
+	assrt(gl_mpi_onoff == MPION);
 #ifdef USEMPIALLOCMEM
-	//MPI_Free_mem(sendbufl);
-	//MPI_Free_mem(recvbufl);
-	//MPI_Free_mem(sendbufr);
-	//MPI_Free_mem(recvbufr);
+	MPI_Free_mem(sendbufl);
+	MPI_Free_mem(recvbufl);
+	MPI_Free_mem(sendbufr);
+	MPI_Free_mem(recvbufr);
 #else
 	delete[] sendbufl;
 	delete[] sendbufr;

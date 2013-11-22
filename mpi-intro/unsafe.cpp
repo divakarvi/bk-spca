@@ -1,6 +1,6 @@
 #include "../utils/TimeStamp.hh"
 #include "../utils/utils.hh"
-#include "mpi_utils.hh"
+#include "../mpi-init/mpi_init.hh"
 #include <mpi.h>
 #include <iostream>
 #include <fstream>
@@ -83,5 +83,5 @@ int main(){
 
 	generate_output(rank, nprocs);
 
-	MPI_Finalize();
+	mpi_finalize();
 }

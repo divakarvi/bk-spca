@@ -1,15 +1,14 @@
 #include "../utils/utils.hh"
-#include "../mpi-intro/mpi_utils.hh"
+#include "../mpi-init/mpi_init.hh"
 #include "exchange.hh"
-#include <cstdlib>
 
 enum exchange_type {BLCK, NONBLCK, PSTNT};
 
 /*
- * exchange 100 doubles 11 times and print result
+ * exchange 8 doubles 11 times and print result
  */
 void test(int rank, int nprocs, enum exchange_type flag){
-	const int bufsize = 100;
+	const int bufsize = 8;
 	double sendbuf[bufsize];
 	double recvbuf[bufsize];
 	for(int i=0; i < bufsize; i++){
@@ -17,13 +16,10 @@ void test(int rank, int nprocs, enum exchange_type flag){
 		recvbuf[i] = -1;
 	}
 	
-	for(int i=0; i < bufsize; i++)
-		sendbuf[i] = rank + rand()*1.0/RAND_MAX;
-
 	char mesg[200];
 	const char *xtype[3] = {"blocking", "non blocking", "persistent"};
 	sprintf(mesg, "%s exchg: sendbuf on rank %d", xtype[flag], rank);
-	array_show(sendbuf, 100, mesg);
+	array_show(sendbuf, bufsize, mesg);
 
 
 	switch(flag){
@@ -61,7 +57,7 @@ void test(int rank, int nprocs, enum exchange_type flag){
 	}
 	
 	std::cout<<std::endl;
-	array_show(sendbuf, 100, mesg);
+	array_show(sendbuf, bufsize, mesg);
 }
 
 int main(){
@@ -80,5 +76,5 @@ int main(){
 
 	unlink_cout();
 
-	MPI_Finalize();
+	mpi_finalize();
 }

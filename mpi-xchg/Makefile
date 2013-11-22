@@ -1,7 +1,7 @@
 include ../makevars.mk
 CFLAGSXX := $(MPIINC)
 LIBS := $(MPILIBS)
-MODS := ../utils ../mpi-intro
+MODS := ../utils ../mpi-init
 
 ######
 .PHONY: $(MODS)
@@ -18,11 +18,11 @@ test_xchg.o: test_xchg.cpp
 
 test_xchg.exe: test_xchg.o exchange.o 				\
 	       ../utils ../utils/utils.o			\
-	       ../mpi-intro ../mpi-intro/mpi_utils.o
+	       ../mpi-init ../mpi-init/mpi_init.o
 
 time_xchg.o: time_xchg.cpp
 -include time_xchg.d
 
 time_xchg.exe: time_xchg.o exchange.o 				\
 	       ../utils ../utils/utils.o ../utils/Table.o 	\
-	       ../mpi-intro ../mpi-intro/mpi_utils.o
+	       ../mpi-init ../mpi-init/mpi_init.o

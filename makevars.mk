@@ -17,7 +17,7 @@ DVMPIINC := `$$HOME/openmpi-1.6.3/bin/mpiCC -showme:compile`
 DVMPILIBS:= `$$HOME/openmpi-1.6.3/bin/mpiCC -showme:link`
 ifeq ($(DV),on)
     export DV
-    $(info USING dv build of OpenMPI)
+    $(info USING DV BUILD OF OPENMPI)
     MPIINC   := $(DVMPIINC)
     MPILIBS  := $(DVMPILIBS)
 endif

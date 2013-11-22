@@ -1,4 +1,5 @@
 #include "../utils/utils.hh"
+#include "../mpi-init/mpi_init.hh"
 #include "exchange.hh"
 #include <mpi.h>
 
@@ -37,6 +38,7 @@ void exchange_nonblocking(int rank, int nprocs,
 
 Exchg::Exchg(int rank, int nprocs, int bsize){
 	assrt(nprocs==2);
+	assrt(gl_mpi_onoff == MPION);
 	bufsize = bsize;
 	MPI_Alloc_mem(bufsize*8, MPI_INFO_NULL, &sendbuf);
 	MPI_Alloc_mem(bufsize*8, MPI_INFO_NULL, &recvbuf);
@@ -56,6 +58,7 @@ Exchg::Exchg(int rank, int nprocs, int bsize){
 }
 
 Exchg::~Exchg(){
+	assrt(gl_mpi_onoff == MPION);
 	MPI_Free_mem(sendbuf);
 	MPI_Free_mem(recvbuf);
 	MPI_Request_free(&req1);

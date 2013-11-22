@@ -2,7 +2,7 @@
 #include "../utils/Table.hh"
 #include "../utils/TimeStamp.hh"
 #include "../utils/StatVector.hh"
-#include "../mpi-intro/mpi_utils.hh"
+#include "../mpi-init/mpi_init.hh"
 #include "exchange.hh"
 #include <cstdlib>
 
@@ -130,5 +130,5 @@ int main(){
 
 	unlink_cout();
 	
-	MPI_Finalize();
+	mpi_finalize();
 }
