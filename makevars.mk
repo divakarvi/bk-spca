@@ -14,9 +14,15 @@ FFTWLIB  :=  -L $$FFTW_LINK -lfftw3
 MPILIBS  := `mpiCC -showme:link`
 
 DVMPIINC := `$$HOME/openmpi-1.6.3/bin/mpiCC -showme:compile`
-MPIINC   := $(DVMPIINC)
 DVMPILIBS:= `$$HOME/openmpi-1.6.3/bin/mpiCC -showme:link`
-MPILIBS  := $(DVMPILIBS)
+ifeq ($(DV),on)
+    export DV
+    $(info USING dv build of OpenMPI)
+    MPIINC   := $(DVMPIINC)
+    MPILIBS  := $(DVMPILIBS)
+endif
+
+
 #########
 .SUFFIXES:
 .SUFFIXES: .cpp .o .exe .s .d

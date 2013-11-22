@@ -4,18 +4,11 @@
 
 class Cycle{
 private:
-	double *sendbufl, *sendbufr;
+	double *sendbufl;
+	double *sendbufr;
 	double *recvbufl, *recvbufr;
 	int bufsize;
 	MPI_Request reqlist[4];
-	/*
-	 * sreq1, sreq2, rreq1, rreq2 are references to entries of
-	 * reqlist[]
-	 */
-	MPI_Request &sreq1;
-	MPI_Request &sreq2;
-	MPI_Request &rreq1;
-	MPI_Request &rreq2;
 public:
 	Cycle(int rank, int nprocs, int bufsize);
 	~Cycle();

@@ -38,8 +38,8 @@ void exchange_nonblocking(int rank, int nprocs,
 Exchg::Exchg(int rank, int nprocs, int bsize){
 	assrt(nprocs==2);
 	bufsize = bsize;
-	MPI_Alloc_mem(bufsize*8, MPI_INFO_NULL, (void *)(&sendbuf));
-	MPI_Alloc_mem(bufsize*8, MPI_INFO_NULL, (void *)(&recvbuf));
+	MPI_Alloc_mem(bufsize*8, MPI_INFO_NULL, &sendbuf);
+	MPI_Alloc_mem(bufsize*8, MPI_INFO_NULL, &recvbuf);
 	int tag = 0;
 	if(rank==0){
 		MPI_Send_init(sendbuf, bufsize, MPI_DOUBLE, nprocs-1, tag, 
