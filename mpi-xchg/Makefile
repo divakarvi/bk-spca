@@ -1,6 +1,6 @@
 include ../makevars.mk
-CFLAGSXX := $(DVMPIINC)
-LIBS := $(DVMPILIBS)
+CFLAGSXX := $(MPIINC)
+LIBS := $(MPILIBS)
 MODS := ../utils ../mpi-intro
 
 ######

@@ -2,7 +2,6 @@
 CPP 	 := icpc
 CFLAGS 	 := -O3 -prec-div -no-ftz -restrict -Wshadow -MMD -MP
 
-DVMPIINC := `$$HOME/openmpi-1.6.3/bin/mpiCC -showme:compile`
 MPIINC 	 := `mpiCC -showme:compile`
 FFTWINC  := -I $$FFTW_INC
 MKLINC 	 := -I $$MKL_INC
@@ -13,7 +12,11 @@ MKLTHRD  := -L$$MKL_LINK -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core \
 	    -lpthread -lm
 FFTWLIB  :=  -L $$FFTW_LINK -lfftw3
 MPILIBS  := `mpiCC -showme:link`
+
+DVMPIINC := `$$HOME/openmpi-1.6.3/bin/mpiCC -showme:compile`
+MPIINC   := $(DVMPIINC)
 DVMPILIBS:= `$$HOME/openmpi-1.6.3/bin/mpiCC -showme:link`
+MPILIBS  := $(DVMPILIBS)
 #########
 .SUFFIXES:
 .SUFFIXES: .cpp .o .exe .s .d
