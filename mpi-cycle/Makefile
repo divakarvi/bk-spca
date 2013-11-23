@@ -16,6 +16,13 @@ cycle.o: cycle.cpp
 test_cycle.o: test_cycle.cpp
 -include test_cycle.d
 
-test_cycle.exe: test_cycle.o cycle.o 			\
-		../utils ../utils/utils.o		\
+test_cycle.exe: test_cycle.o cycle.o 				\
+		../utils ../utils/utils.o			\
+		../mpi-init ../mpi-init/mpi_init.o
+
+time_cycle.o: time_cycle.cpp
+-include time_cycle.d
+
+time_cycle.exe: time_cycle.o cycle.o				\
+		../utils ../utils/utils.o ../utils/Table.o	\
 		../mpi-init ../mpi-init/mpi_init.o
