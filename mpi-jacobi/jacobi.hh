@@ -11,26 +11,23 @@ private:
 	 * a and b are both dim1 x dim2
 	 * each  iteration updates b[] using a[]
 	 */
-	double *a;
-	double *b;
+	double *a, *b;
 	/*
-	 * left = leftmost column supplementing a[] matrix
+	 * al = leftmost column supplementing a[] matrix
 	 * right = rightmost column supplementing a[] matrix
 	 * with the edges the dim at every node is dim1 x (dim2 + 2)
 	 */
-	double *left;
-	double *right;
+	double *al, *ar;
 	/*
-	 * lleft = rightmost column of matrix to the left
-	 * rright = leftmost column of matrix to the right
+	 * ll = rightmost column of matrix to the left
+	 * rr = leftmost column of matrix to the right
 	 */
-	double *lleft;
-	double *rright;
+	double *ll, *rr;
 	/*
-	 * bleft = leftmost column supplementing b[] matrix
-	 * bright = rightmost column supplementing b[] matrix
+	 * bl = leftmost column supplementing b[] matrix
+	 * br = rightmost column supplementing b[] matrix
 	 */
-	double *bleft, *bright;
+	double *bl, *br;
 	/*
 	 * lrank = rank of MPI process to the left
 	 * rrank = rank of MPI process to the right
@@ -53,7 +50,7 @@ public:
 	 * dim2 divisible by nthreads ---> used to partition columns
 	 * (not needed?)
 	 */
-	Jacobi2D(int d1, int d2, int rank, int nprocs, int nth);
+	Jacobi2D(int rank, int nprocs, int d1, int d2, int nth);
 	~Jacobi2D();
 	/*
 	 * initialize to chessboard pattern of +/- 1
@@ -61,22 +58,22 @@ public:
 	void initializepp();
 	void postsendrecv();
 	/*
-	 * b[] updated using a[], left, right
+	 * b[] updated using a[], al, ar
 	 */
 	void updateinteriorpp();
 	void wait();
 	/*
-	 * bleft, bright updated using left, right, lleft, rright,
+	 * bl, br updated using al, ar, ll, rr,
 	 * and first and last columns of a[]
 	 */
 	void updateboundary();
 	/*
-	 * copy a[], left, right to b[], bleft, bright
+	 * copy a[], al, ar to b[], bl, br
 	 */
 	void copypp();
-	double& operator()(int i, int j){return a[i+j*dim1];}
-	double& l(int i){return left[i];}
-	double& r(int i){return right[i];}
+	double* geta(){return a;}
+	double* getal(){return al;}
+	double* getar(){return ar;}
 };
 
 #endif
