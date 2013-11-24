@@ -14,3 +14,13 @@ void mpi_finalize(){
 	MPI_Finalize();
 	gl_mpi_onoff = MPIOFF;
 }
+
+void BlockDivide(long n, int P, long *fst){
+	long  Q = n/P;
+	long  R = n-Q*P;
+	fst[0] = 0;
+	for(int p=0; p < R; p++)
+		fst[p+1] = fst[p] + (Q+1);
+	for(int p=R; p < P; p++)
+		fst[p+1] = fst[p]+Q;
+}

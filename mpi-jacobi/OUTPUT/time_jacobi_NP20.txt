@@ -1,0 +1,10 @@
+             dim1 = 100000
+             dim2 = 10000
+            nitns = 100
+ cycles/entry/itn = 8.30908
+
+             dim1 = 100000
+             dim2 = 10000
+            nitns = 1000
+ cycles/entry/itn = 8.51414
+

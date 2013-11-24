@@ -16,4 +16,15 @@ void mpi_initialize(int& rank, int& nprocs);
  * sets gl_mpi_onoff to MPIOFF
  */
 void mpi_finalize();
+
+/*
+ * n = number of items to be divided
+ * P = nprocs
+ * fst[] = array of length P+1 
+ *
+ * 0 =fst[0] <= ... <= fst[P] = n at output
+ * the block owned by p is fst[p] <= i < fst[p+1]
+ * blocks are nearly even
+ */
+void BlockDivide(long n, int P, long *fst);
 #endif

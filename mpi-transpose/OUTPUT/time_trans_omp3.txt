@@ -1,0 +1,10 @@
+                  nprocs = 10
+                    rank = 9
+                nthreads = 12
+                       M = 50000
+                       N = 50000
+        bw (bytes/cycle) = 0.891797
+ frac of cycles in scopy = 0.164143
+   frac of cycles in mpi = 0.696095
+ frac of cycles in rcopy = 0.139486
+
