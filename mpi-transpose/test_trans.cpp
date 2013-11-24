@@ -1,11 +1,16 @@
 #include "../utils/utils.hh"
 #include "../mpi-init/mpi_init.hh"
 #include "trans.hh"
+#include "fast_trans.hh"
 
 void test1(int rank, int nprocs, int M, int N){
 	assrt(M < 1000);
-	
+
+#ifndef FTRANS	
 	Transpose trans(rank, nprocs, M, N);
+#else
+	FastTrans trans(rank, nprocs, M, N);
+#endif
 	double *localMN;
 	double *localNM;
 	localMN = new double[(trans.ffstN(rank+1)-trans.ffstN(rank))*M];
@@ -51,8 +56,13 @@ void test1(int rank, int nprocs, int M, int N){
 }
 
 void test2(int rank, int nprocs, long M, long N){
+#ifndef FTRANS
 	Transpose transmn(rank, nprocs, M, N);
 	Transpose transnm(rank, nprocs, N, M);
+#else
+	FastTrans transmn(rank, nprocs, M, N);
+	FastTrans transnm(rank, nprocs, N, M);
+#endif
 	double *localMN;
 	double *localNM;
 	double *localMNX;
@@ -85,6 +95,13 @@ void test2(int rank, int nprocs, long M, long N){
 }
 
 int main(){
+
+#ifdef FTRANS
+#ifndef OMPCPY
+	assrt(0 == 1);
+#endif
+#endif
+	
 	int rank, nprocs;
 	mpi_initialize(rank, nprocs);
 	

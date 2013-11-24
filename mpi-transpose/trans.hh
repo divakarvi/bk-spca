@@ -28,18 +28,10 @@ public:
 	void transpose(double *localMN, double *localNM);
 };
 
-struct trans_timer_struct {
-	double scopy;
-	double mpi;
-	double rcopy;
-};
 /*
- * struct to save cycles used by send copy, mpi, recv copy
+ * helper functions defined in trans.cpp
+ * usedin trans.cpp as well as fast_trans.cpp
  */
-extern struct trans_timer_struct trans_timer;
-/*
- * zeros all entries of trans_cycles
- */
-void zero_trans_timer();
-
+void transposewlda(double *in, int lda, long nrows, long ncols, double *out);
+void copywlda(double *in, int nrows, int ncols, double *out, int lda);
 #endif

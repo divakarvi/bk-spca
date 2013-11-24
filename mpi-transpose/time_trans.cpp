@@ -2,7 +2,9 @@
 #include "../utils/TimeStamp.hh"
 #include "../utils/StatVector.hh"
 #include "../mpi-init/mpi_init.hh"
+#include "timer.hh"
 #include "trans.hh"
+#include "fast_trans.hh"
 #include <fstream>
 
 struct trans_stat_struct{
@@ -13,14 +15,19 @@ struct trans_stat_struct{
 };
 
 struct trans_stat_struct time_trans(int rank, int nprocs, int M, int N){
-	int count = 100;
+	int count = 20;
 	StatVector stats(count);
 	StatVector stats_scopy(count), stats_mpi(count), stats_rcopy(count);
 
 	double *localMN;
 	double *localNM;
+#ifndef FTRANS
 	Transpose transmn(rank, nprocs, M, N);
 	Transpose transnm(rank, nprocs, N, M);
+#else
+	FastTrans transmn(rank, nprocs, M, N);
+	FastTrans transnm(rank, nprocs, N, M);
+#endif
 	int localm = transmn.ffstM(rank+1)-transmn.ffstM(rank);
 	int localn = transmn.ffstN(rank+1)-transmn.ffstN(rank);
 	localMN = new double[M*localn];
@@ -68,24 +75,28 @@ void generate_output(int rank, int nprocs){
 	int M = 50000;
 	int N = 5000*nprocs;
 
-	int NP3 = nprocs/3;
-		
 	verify_dir("OUTPUT");
 	std::ofstream ofile;
 	char fname[200];
-	if(rank % NP3 == 0){
+	if(rank == 0){
 #ifdef OMPCPY
-		sprintf(fname, "OUTPUT/time_trans_omp%d.txt", rank/NP3);
+
+#ifndef FTRANS
+		sprintf(fname, "OUTPUT/time_trans_omp.txt");
 #else
-		sprintf(fname, "OUTPUT/time_trans%d.txt", rank/NP3);
+		sprintf(fname, "OUTPUT/time_trans_fast.txt");
 #endif
-		ofile.open(fname, std::ios::app);
+
+#else
+		sprintf(fname, "OUTPUT/time_trans.txt");
+#endif
 	}
 
 	struct trans_stat_struct tstat;
 	tstat = time_trans(rank, nprocs, M, N);
 
-	if(rank%NP3 == 0){
+	if(rank == 0){
+		ofile.open(fname, std::ios::app);
 		ofile<<"                  nprocs = "<<nprocs<<std::endl;
 		ofile<<"                    rank = "<<rank<<std::endl;
 #ifdef OMPCPY
@@ -106,6 +117,13 @@ void generate_output(int rank, int nprocs){
 }
 
 int main(){
+
+#ifdef FTRANS
+#ifndef OMPCPY
+	assrt(0 == 1);
+#endif
+#endif
+
 	int rank, nprocs;
 	mpi_initialize(rank, nprocs);
 

@@ -1,17 +1,10 @@
 #include "../utils/utils.hh"
 #include "../utils/TimeStamp.hh"
 #include "../mpi-init/mpi_init.hh"
+#include "timer.hh"
 #include "trans.hh"
 #include <mpi.h>
 #include <omp.h>
-
-struct trans_timer_struct trans_timer;
-
-void zero_trans_timer(){
-	trans_timer.scopy = 0;
-	trans_timer.mpi = 0;
-	trans_timer.rcopy = 0;
-}
 
 Transpose::Transpose(int rank, int nprocs, long Mi, long Ni)
 	:p(rank), P(nprocs), M(Mi), N(Ni)

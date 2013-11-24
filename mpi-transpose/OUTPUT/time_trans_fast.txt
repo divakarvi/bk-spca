@@ -1,0 +1,60 @@
+                  nprocs = 10
+                    rank = 0
+                nthreads = 12
+                       M = 50000
+                       N = 50000
+        bw (bytes/cycle) = 0.948743
+ frac of cycles in scopy = 0.17553
+   frac of cycles in mpi = 23.7674
+ frac of cycles in rcopy = 0.152639
+
+                  nprocs = 10
+                    rank = 0
+                nthreads = 12
+                       M = 50000
+                       N = 50000
+        bw (bytes/cycle) = 0.992801
+ frac of cycles in scopy = 0.18612
+   frac of cycles in mpi = 0.050715
+ frac of cycles in rcopy = 0.164643
+
+                  nprocs = 10
+                    rank = 0
+                nthreads = 12
+                       M = 50000
+                       N = 50000
+        bw (bytes/cycle) = 0.939854
+ frac of cycles in scopy = 0.173213
+   frac of cycles in mpi = 7.02086e-05
+ frac of cycles in rcopy = 0.148991
+
+                  nprocs = 10
+                    rank = 0
+                nthreads = 12
+                       M = 50000
+                       N = 50000
+        bw (bytes/cycle) = 0.990561
+ frac of cycles in scopy = 0.179991
+   frac of cycles in mpi = 0.615053
+ frac of cycles in rcopy = 0.155724
+
+                  nprocs = 10
+                    rank = 0
+                nthreads = 12
+                       M = 50000
+                       N = 50000
+        bw (bytes/cycle) = 0.961946
+ frac of cycles in scopy = 0.178801
+   frac of cycles in mpi = 2.5874e-06
+ frac of cycles in rcopy = 0.162441
+
+                  nprocs = 10
+                    rank = 0
+                nthreads = 12
+                       M = 50000
+                       N = 50000
+        bw (bytes/cycle) = 0.763232
+ frac of cycles in scopy = 0.141647
+   frac of cycles in mpi = 0.0414739
+ frac of cycles in rcopy = 0.123168
+
