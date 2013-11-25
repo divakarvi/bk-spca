@@ -1,5 +1,7 @@
+#include "../utils/utils.hh"
 #include "mpi_init.hh"
 #include <mpi.h>
+#include <cstdio>
 
 enum gl_mpi_onoff_enum gl_mpi_onoff = MPIOFF;
 
@@ -24,3 +26,4 @@ void BlockDivide(long n, int P, long *fst){
 	for(int p=R; p < P; p++)
 		fst[p+1] = fst[p]+Q;
 }
+

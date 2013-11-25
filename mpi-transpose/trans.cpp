@@ -42,11 +42,9 @@ Transpose::~Transpose(){
 	delete[] fstN;
 	delete[] sreqlist;
 	delete[] rreqlist;
-	if(fstN[p+1]*M>fstN[p]*M)
-		delete[] sendbuf;
+	delete[] sendbuf;
 	//MPI_Free_mem(sendbuf);
-	if(fstM[p+1]*N>fstM[p]*N)
-		delete[] recvbuf;
+	delete[] recvbuf;
 	//MPI_Free_mem(recvbuf);
 }
 
@@ -121,10 +119,8 @@ void Transpose::postrecv(){
 }
 
 void Transpose::wait(){
-	for(long q=0; q < P; q++)
-		MPI_Wait(sreqlist+q, MPI_STATUS_IGNORE);
-	for(long q=0; q < P; q++)
-		MPI_Wait(rreqlist+q, MPI_STATUS_IGNORE);
+	MPI_Waitall(P, sreqlist, MPI_STATUSES_IGNORE);
+	MPI_Waitall(P, rreqlist, MPI_STATUSES_IGNORE);
 }
 
 #ifdef OMPCPY

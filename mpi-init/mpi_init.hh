@@ -27,4 +27,12 @@ void mpi_finalize();
  * blocks are nearly even
  */
 void BlockDivide(long n, int P, long *fst);
+
+/*
+ * fname is opened in write mode and assoc with stdout.
+ * this function is used to redirect printfs() in OpenMPI source
+ * to a file. 
+ * the name of the file is typically rank dependent. 
+ */
+FILE *fre_stdout(const char *fname);
 #endif

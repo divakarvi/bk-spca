@@ -54,12 +54,8 @@ FastTrans::~FastTrans(){
 	delete[] fstN;
 	delete[] sreqlist;
 	delete[] rreqlist;
-	if(fstN[p+1]*M>fstN[p]*M)
-		delete[] sendbuf;
-
-	if(fstM[p+1]*N>fstM[p]*N)
-		delete[] recvbuf;
-
+	delete[] sendbuf;
+	delete[] recvbuf;
 	delete[] sendorder;
 	delete[] recvorder;
 }
@@ -92,7 +88,10 @@ void FastTrans::postsend(int q){
 	MPI_Isend(sendbuf+sbufindex, count, MPI_DOUBLE,
 		  q, tag, MPI_COMM_WORLD, sreqlist+q);
 
-	//trans_timer.mpi += clk.toc();
+	double cycles = clk.toc();
+	trans_timer.mpi_send_post += cycles;
+	trans_timer.mpi += cycles;
+       
 }
 
 void FastTrans::postrecv(int q){
@@ -107,10 +106,10 @@ void FastTrans::postrecv(int q){
 	MPI_Irecv(recvbuf+rbufindex, count, MPI_DOUBLE, 
 		  q, tag, MPI_COMM_WORLD, rreqlist+q);
 	
-	trans_timer.mpi += clk.toc();
+	double cycles = clk.toc();
+	trans_timer.mpi_recv_post += cycles;
+	trans_timer.mpi += cycles;
 }
-
-
 
 void FastTrans::wait(int q){
 	TimeStamp clk;
@@ -118,7 +117,9 @@ void FastTrans::wait(int q){
 
 	MPI_Wait(rreqlist+q, MPI_STATUS_IGNORE);
 	
-	//trans_timer.mpi += clk.toc();
+	double cycles = clk.toc();
+	trans_timer.mpi_recv_wait += cycles;
+	trans_timer.mpi += cycles;
 }
 
 void FastTrans::wait(){
@@ -127,7 +128,9 @@ void FastTrans::wait(){
 
 	MPI_Waitall(P, sreqlist, MPI_STATUSES_IGNORE);
 	
-	//trans_timer.mpi += clk.toc();
+	double cycles = clk.toc();
+	trans_timer.mpi_send_wait += cycles;
+	trans_timer.mpi += cycles;
 }
 
 void FastTrans::copyFROMrecvbuf(int q, double *localNM){

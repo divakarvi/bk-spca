@@ -6,12 +6,24 @@
 #include "trans.hh"
 #include "fast_trans.hh"
 #include <fstream>
+#include <cstdio>
+
+struct trans_stat_cycles_struct{ /*cycles per byte */
+	double mpi;
+	double send_post;
+	double recv_post;
+	double send_wait;
+	double recv_wait;
+	double scopy;
+	double rcopy;
+};
 
 struct trans_stat_struct{
-  double bw; 
-  double frac_scopy;
-  double frac_mpi;
-  double frac_rcopy;
+	double frac_scopy;
+	double frac_mpi;
+	double frac_rcopy;
+	double bw; 
+	struct trans_stat_cycles_struct cycles;
 };
 
 struct trans_stat_struct time_trans(int rank, int nprocs, int M, int N){
@@ -55,16 +67,25 @@ struct trans_stat_struct time_trans(int rank, int nprocs, int M, int N){
 	
 	delete[] localMN;
 	delete[] localNM;
-	
-	double frac_scopy = stats_scopy.median()/stats.median();
-	double frac_mpi = stats_mpi.median()/stats.median();
-	double frac_rcopy = stats_rcopy.median()/stats.median();
-	double bw = (M*localn+localm*N)*8.0*2.0/stats.median();
+
 	struct trans_stat_struct ans;
-	ans.bw = bw;
-	ans.frac_scopy = frac_scopy;
-	ans.frac_mpi = frac_mpi;
-	ans.frac_rcopy = frac_rcopy;
+	ans.frac_scopy = stats_scopy.median()/stats.median();
+	ans.frac_mpi = stats_mpi.median()/stats.median();
+	ans.frac_rcopy = stats_rcopy.median()/stats.median();
+	ans.bw = (M*localn+localm*N)*8.0*2.0/stats.median();
+	
+	/*
+	 * only the last transpose is counted here
+	 */
+	double nbytes = (M*localn + localm*N)*8.0*2.0;
+	ans.cycles.scopy = trans_timer.scopy/nbytes;
+	ans.cycles.mpi = trans_timer.mpi/nbytes;
+	ans.cycles.send_post = trans_timer.mpi_send_post/nbytes;
+	ans.cycles.recv_post = trans_timer.mpi_recv_post/nbytes;
+	ans.cycles.recv_wait = trans_timer.mpi_recv_wait/nbytes;
+	ans.cycles.send_wait = trans_timer.mpi_send_wait/nbytes;
+	ans.cycles.rcopy = trans_timer.rcopy/nbytes;
+
 
 	return ans;
 }
@@ -111,13 +132,27 @@ void generate_output(int rank, int nprocs){
 		     <<std::endl;
 		ofile<<" frac of cycles in rcopy = "<<tstat.frac_rcopy
 		     <<std::endl;
+		ofile<<"--------------------------"<<std::endl;
+		ofile<<"cycles/byte in send copy = "<<tstat.cycles.scopy
+		     <<std::endl;
+		ofile<<"cycles/byte in recv copy = "<<tstat.cycles.rcopy
+		     <<std::endl;
+		ofile<<"      cycles/byte in mpi = "<<tstat.cycles.mpi
+		     <<std::endl;
+		ofile<<"cycles/byte in send post = "<<tstat.cycles.send_post
+		     <<std::endl;
+		ofile<<"cycles/byte in recv post = "<<tstat.cycles.recv_post
+		     <<std::endl;
+		ofile<<"cycles/byte in send wait = "<<tstat.cycles.send_wait
+		     <<std::endl;
+		ofile<<"cycles/byte in recv wait = "<<tstat.cycles.recv_wait
+		     <<std::endl;
 		ofile<<std::endl;
 		ofile.close();
 	}
 }
 
 int main(){
-
 #ifdef FTRANS
 #ifndef OMPCPY
 	assrt(0 == 1);
