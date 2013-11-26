@@ -118,11 +118,19 @@ void verify_dir(const char *dir){
 static std::streambuf *sbuf_backup;
 static std::ofstream ofile;
 static int linkcout_state = 0;
-void link_cout(const char *fname){
+void link_cout(const char *fname, enum link_cout_flag_enum flag){
 	assrt(linkcout_state == 0);
 	linkcout_state = 1;
+	
+	switch(flag){
+	case LC_NOAPP:
+		ofile.open(fname);
+		break;
+	case LC_APP:
+		ofile.open(fname, ios::app);
+		break;
+	}
 
-	ofile.open(fname);
 	assrt(ofile.good());
 	sbuf_backup = cout.rdbuf();
 	std::cout.rdbuf(ofile.rdbuf());

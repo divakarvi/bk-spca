@@ -83,10 +83,14 @@ void solve2x2(double *restrict A, double *restrict rhs, double *restrict x);
   */
 void verify_dir(const char *dir);
 
+
+enum link_cout_flag_enum {LC_APP, LC_NOAPP}; 
 /*
- * open file fname and link its stream to that of cout
+ * Open file fname and link its stream to that of cout
+ * flag = LC_APP then file opened for appending
+ * flag = LC_NOAPP then file opened for writing
  */
-void link_cout(const char *fname);
+void link_cout(const char *fname, enum link_cout_flag_enum flag = LC_NOAPP);
 
 /*
  * close file opened with link2cout and restore cout stream
