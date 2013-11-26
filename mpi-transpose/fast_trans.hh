@@ -13,7 +13,7 @@ private:
 	double *sendbuf, *recvbuf;
 	MPI_Request *sreqlist, *rreqlist;
 	int *sendorder;
-	int *recvorder;
+	int *rcvd_list;
 public:
 	FastTrans(int rank, int nprocs, long Mi, long Ni);
 	~FastTrans();
@@ -22,7 +22,6 @@ public:
 	void copyTOsendbuf(int q, double *localMN);
 	void postsend(int q);
 	void postrecv(int q);
-	void wait(int q); /* wait on recv from q */
 	void wait(); /* wait on all sends */
 	void copyFROMrecvbuf(int q, double *localNM);
 	void transpose(double *localMN, double *localNM);

@@ -27,25 +27,26 @@ FastTrans::FastTrans(int rank, int nprocs, long Mi, long Ni)
 	rreqlist = new MPI_Request[P];
 
 	sendorder = new int[P];
-	recvorder = new int[P];
+	rcvd_list = new int[P];
 	
 	sendorder[0] = 0;
-	recvorder[0] = 0;
 	for(int i=1; i < P/2 + P%2; i++){
 		sendorder[2*(i-1)+1] = i;
 		sendorder[2*(i-1)+2] = P-i;
-		
-		recvorder[2*(i-1)+1] = P-i;
-		recvorder[2*(i-1)+2] = i;
 	}
-	if(P%2 == 0){
+	if(P%2 == 0)
 		sendorder[P-1] = P/2;
-		recvorder[P-1] = P/2;
-	}
 	
-	for(int i=0; i < P; i++){
+	for(int i=0; i < P; i++)
 		sendorder[i] = (sendorder[i]+p)%P;
-		recvorder[i] = (recvorder[i]+p)%P;
+	
+	/*
+	 * reverse sendorder
+	 */
+	for(int i=0, j=P-1; i < j; i++, j--){
+		int tmp = sendorder[i];
+		sendorder[i] = sendorder[j];
+		sendorder[j] = tmp;
 	}
 }
 
@@ -57,7 +58,7 @@ FastTrans::~FastTrans(){
 	delete[] sendbuf;
 	delete[] recvbuf;
 	delete[] sendorder;
-	delete[] recvorder;
+	delete[] rcvd_list;
 }
 
 void FastTrans::copyTOsendbuf(int q, double *localMN){
@@ -111,17 +112,6 @@ void FastTrans::postrecv(int q){
 	trans_timer.mpi += cycles;
 }
 
-void FastTrans::wait(int q){
-	TimeStamp clk;
-	clk.tic();
-
-	MPI_Wait(rreqlist+q, MPI_STATUS_IGNORE);
-	
-	double cycles = clk.toc();
-	trans_timer.mpi_recv_wait += cycles;
-	trans_timer.mpi += cycles;
-}
-
 void FastTrans::wait(){
 	TimeStamp clk;
 	clk.tic();
@@ -149,19 +139,47 @@ void FastTrans::copyFROMrecvbuf(int q, double *localNM){
 }
 
 void FastTrans::transpose(double *localMN, double *localNM){
+	for(int q=0; q < P; q++)
+		postrecv(q);
+
+	int nrcvd = 0;
 	for(int i=0; i < P; i++){
 		int q = sendorder[i];
 		copyTOsendbuf(q, localMN);
 		postsend(q);
-		q = recvorder[i];
-		postrecv(q);
-	}
-
-	for(int i=0; i < P; i++){		
-		int q = recvorder[i];
-		wait(q);
-		copyFROMrecvbuf(q, localNM);
+		int flag;
+		MPI_Testany(P, rreqlist, &q, &flag, 
+			    MPI_STATUS_IGNORE);
+		if(flag != 0){
+			rcvd_list[nrcvd] = q;
+			nrcvd++;
+		}
 	}
 	
+	int ncpyd = 0;
+	while(nrcvd < P){
+		if(ncpyd < nrcvd){
+			int q = rcvd_list[ncpyd];
+			copyFROMrecvbuf(q, localNM);
+			ncpyd++;
+		}
+		
+		int q;
+		int flag;
+		MPI_Testany(P, rreqlist, &q, &flag, MPI_STATUS_IGNORE);
+		if(flag != 0){
+			rcvd_list[nrcvd] = q;
+			nrcvd++;
+		}
+	}
+
+	assrt(nrcvd == P);
+	
+	while(ncpyd < P){
+		int q = rcvd_list[ncpyd];
+		copyFROMrecvbuf(q, localNM);
+		ncpyd++;
+	}
+
 	wait(); /* verify sending is finished */
 }

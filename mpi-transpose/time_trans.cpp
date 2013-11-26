@@ -47,6 +47,7 @@ struct trans_stat_struct time_trans(int rank, int nprocs, int M, int N){
 	
 	transmn.transpose(localMN, localNM);//numa awareness
 	transnm.transpose(localNM, localMN);
+	fflush(stdout);
 
 	for(long i=0; i < M*localn; i++)
 		localMN[i] = rand()*1.0/RAND_MAX-0.5;
@@ -58,7 +59,8 @@ struct trans_stat_struct time_trans(int rank, int nprocs, int M, int N){
 
 		transmn.transpose(localMN, localNM);
 		transnm.transpose(localNM, localMN);
-		
+		fflush(stdout);
+
 		stats.insert(clk.toc());
 		stats_scopy.insert(trans_timer.scopy);
 		stats_mpi.insert(trans_timer.mpi);
