@@ -29,7 +29,7 @@ private:
 	 */
 	void leftrightinit();
 	void initialize(int col1, int col2);
-	void updateinterior(int col1, int col2);
+	void update(int col1, int col2);
 	void copy(int col1, int col2);
 public:
 	/*
@@ -44,11 +44,11 @@ public:
 	 */
 	void initializepp();
 	void postsendrecv();
+	void wait();
 	/*
 	 * b[] updated using a[]
 	 */
-	void updateinteriorpp();
-	void wait();
+	void updatepp();
 	/*
 	 * copy a[] to b[]
 	 */

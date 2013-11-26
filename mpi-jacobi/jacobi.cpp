@@ -80,7 +80,7 @@ void Jacobi2D::wait(){
 	MPI_Waitall(4, reqlist, MPI_STATUSES_IGNORE);
 }
 
-void Jacobi2D::updateinterior(int col1, int col2){
+void Jacobi2D::update(int col1, int col2){
 	for(int j=col1+1; j < col2+1; j++)
 		for(int i=0; i < dim1; i++){
 			int iup = (i+dim1-1)%dim1;
@@ -92,7 +92,7 @@ void Jacobi2D::updateinterior(int col1, int col2){
 		}
 }
 
-void Jacobi2D::updateinteriorpp(){
+void Jacobi2D::updatepp(){
 #pragma omp parallel				\
 	num_threads(nthreads)			\
 	default(shared)				
@@ -100,7 +100,7 @@ void Jacobi2D::updateinteriorpp(){
 		int tid = omp_get_thread_num();
 		int col1 = tid*dim2/nthreads;
 		int col2 = (tid+1)*dim2/nthreads;
-		updateinterior(col1, col2);
+		update(col1, col2);
 	}
 }
 

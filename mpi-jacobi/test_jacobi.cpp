@@ -12,7 +12,7 @@ void test_jacobi(int rank, int nprocs){
 	for(int i=0; i < 1000; i++){
 		jacobi.postsendrecv();
 		jacobi.wait();
-		jacobi.updateinteriorpp();
+		jacobi.updatepp();
 		jacobi.copypp();
 	}
 

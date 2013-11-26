@@ -16,9 +16,8 @@ double time_jacobi(int rank, int nprocs,
 	clk.tic();
 	for(int i=0; i < nitns; i++){
 		jacobi.postsendrecv();
-		jacobi.updateinteriorpp();
 		jacobi.wait();
-		jacobi.updateboundary();
+		jacobi.updatepp();
 		jacobi.copypp();
 	}
 	return clk.toc();
@@ -30,16 +29,16 @@ int main(){
 	
 	int dim1 = 100*1000;
 	int dim2 = 10*1000;
-	int nitns = 1000;
+	int nitns = 100;
 
 	double cycles = time_jacobi(rank, nprocs, dim1, dim2, nitns);
 
 	cycles = cycles/(1.0*dim1*(dim2+2))/(1.0*nitns);
 	
 	if(rank == 0){
-		verify_dir("DBG");
+		verify_dir("OUTPUT");
 		char fname[200];
-		sprintf(fname, "DBG/time_jacobi_NP%d.txt", nprocs);
+		sprintf(fname, "OUTPUT/time_jacobi_NP%d.txt", nprocs);
 		std::ofstream ofile(fname, std::ios::app);
 		
 		ofile<<"             dim1 = "<<dim1<<std::endl;
