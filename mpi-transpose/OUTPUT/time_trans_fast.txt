@@ -70,3 +70,45 @@ cycles/byte in recv post = 3.18926e-05
 cycles/byte in send wait = 1.10768e-05
 cycles/byte in recv wait = 0
 
+/*
+ * send order not reversed below, worse b/w
+ */
+                  nprocs = 50
+                    rank = 0
+                nthreads = 12
+                       M = 50000
+                       N = 250000
+        bw (bytes/cycle) = 1.15753
+ frac of cycles in scopy = 0.217987
+   frac of cycles in mpi = 0.0124361
+ frac of cycles in rcopy = 0.193522
+--------------------------
+cycles/byte in send copy = 0.188065
+cycles/byte in recv copy = 0.169008
+      cycles/byte in mpi = 0.0107722
+cycles/byte in send post = 0.0107457
+cycles/byte in recv post = 2.0932e-05
+cycles/byte in send wait = 5.53e-06
+cycles/byte in recv wait = 0
+
+/*
+ * send order not reversed below, better b/w
+ */
+                  nprocs = 100
+                    rank = 0
+                nthreads = 12
+                       M = 50000
+                       N = 500000
+        bw (bytes/cycle) = 1.11413
+ frac of cycles in scopy = 0.191937
+   frac of cycles in mpi = 0.00679229
+ frac of cycles in rcopy = 0.195827
+--------------------------
+cycles/byte in send copy = 0.171944
+cycles/byte in recv copy = 0.176342
+      cycles/byte in mpi = 0.00935981
+cycles/byte in send post = 0.00577378
+cycles/byte in recv post = 2.37345e-05
+cycles/byte in send wait = 0.0035623
+cycles/byte in recv wait = 0
+

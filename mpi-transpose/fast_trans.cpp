@@ -43,11 +43,11 @@ FastTrans::FastTrans(int rank, int nprocs, long Mi, long Ni)
 	/*
 	 * reverse sendorder
 	 */
-	for(int i=0, j=P-1; i < j; i++, j--){
-		int tmp = sendorder[i];
-		sendorder[i] = sendorder[j];
-		sendorder[j] = tmp;
-	}
+	//       for(int i=0, j=P-1; i < j; i++, j--){
+	//     int tmp = sendorder[i];
+	//     sendorder[i] = sendorder[j];
+	//     sendorder[j] = tmp;
+	//}
 }
 
 FastTrans::~FastTrans(){
