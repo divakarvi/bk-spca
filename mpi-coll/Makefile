@@ -36,10 +36,20 @@ test_all2all.o: test_all2all.cpp
 time_all2all.o: time_all2all.cpp
 -include time_all2all.d
 
-test_all2all.exe: test_all2all.o all2all.o				\
+test_all2all.exe: test_all2all.o all2all.o			\
 		 ../utils ../utils/utils.o			\
 		 ../mpi-init ../mpi-init/mpi_init.o
 
-time_all2all.exe: time_all2all.o all2all.o			 	\
-		 ../utils ../utils/utils.o ../utils/Table.o	\
+time_all2all.exe: time_all2all.o all2all.o		 	\
+		 ../utils ../utils/utils.o 			\
+		 ../mpi-init ../mpi-init/mpi_init.o
+
+reduce.o: reduce.cpp
+-include reduce.d
+
+time_reduce.o: time_reduce.cpp
+-include time_reduce.d
+
+time_reduce.exe: time_reduce.o reduce.o		 	\
+		 ../utils ../utils/utils.o 			\
 		 ../mpi-init ../mpi-init/mpi_init.o

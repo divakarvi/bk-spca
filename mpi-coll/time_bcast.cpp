@@ -34,7 +34,9 @@ double time_bcast(int rank, int nprocs, int n, enum bcast_flag_enum flag){
 	return stats.median();
 }
 
-
+/*
+ * table comes out looking too heavy, but leave this as it is
+ */
 void make_table(int rank, int nprocs, 
 		const char* banner, enum bcast_flag_enum flag){
 	const char* rows[4] = {"1", "1e2", "1e5", "1e6"};
