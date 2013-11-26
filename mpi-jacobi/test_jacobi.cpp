@@ -11,9 +11,8 @@ void test_jacobi(int rank, int nprocs){
 	jacobi.initializepp();
 	for(int i=0; i < 1000; i++){
 		jacobi.postsendrecv();
-		jacobi.updateinteriorpp();
 		jacobi.wait();
-		jacobi.updateboundary();
+		jacobi.updateinteriorpp();
 		jacobi.copypp();
 	}
 
@@ -22,9 +21,7 @@ void test_jacobi(int rank, int nprocs){
 	sprintf(fname, "DBG/test_jacobi%d.txt", rank);
 	link_cout(fname);
 
-	array_show(jacobi.getal(), dim1, "left column");
 	array_show(jacobi.geta(), dim1*dim2, "interior points");
-	array_show(jacobi.getar(), dim1, "right column");
 
 	unlink_cout();
 }
