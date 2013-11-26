@@ -3,255 +3,34 @@
                 nthreads = 12
                        M = 50000
                        N = 50000
-        bw (bytes/cycle) = 0.948743
- frac of cycles in scopy = 0.17553
-   frac of cycles in mpi = 23.7674
- frac of cycles in rcopy = 0.152639
-
-                  nprocs = 10
-                    rank = 0
-                nthreads = 12
-                       M = 50000
-                       N = 50000
-        bw (bytes/cycle) = 0.992801
- frac of cycles in scopy = 0.18612
-   frac of cycles in mpi = 0.050715
- frac of cycles in rcopy = 0.164643
-
-                  nprocs = 10
-                    rank = 0
-                nthreads = 12
-                       M = 50000
-                       N = 50000
-        bw (bytes/cycle) = 0.939854
- frac of cycles in scopy = 0.173213
-   frac of cycles in mpi = 7.02086e-05
- frac of cycles in rcopy = 0.148991
-
-                  nprocs = 10
-                    rank = 0
-                nthreads = 12
-                       M = 50000
-                       N = 50000
-        bw (bytes/cycle) = 0.990561
- frac of cycles in scopy = 0.179991
-   frac of cycles in mpi = 0.615053
- frac of cycles in rcopy = 0.155724
-
-                  nprocs = 10
-                    rank = 0
-                nthreads = 12
-                       M = 50000
-                       N = 50000
-        bw (bytes/cycle) = 0.961946
- frac of cycles in scopy = 0.178801
-   frac of cycles in mpi = 2.5874e-06
- frac of cycles in rcopy = 0.162441
-
-                  nprocs = 10
-                    rank = 0
-                nthreads = 12
-                       M = 50000
-                       N = 50000
-        bw (bytes/cycle) = 0.763232
- frac of cycles in scopy = 0.141647
-   frac of cycles in mpi = 0.0414739
- frac of cycles in rcopy = 0.123168
-
-                  nprocs = 10
-                    rank = 0
-                nthreads = 12
-                       M = 50000
-                       N = 50000
-        bw (bytes/cycle) = 1.00473
- frac of cycles in scopy = 0.18569
-   frac of cycles in mpi = 0.651835
- frac of cycles in rcopy = 0.162127
-      cycles/byte in mpi = 0.625979
-cycles/byte in send post = 8.59687e-05
-cycles/byte in recv post = 0.053979
-cycles/byte in send wait = 1.265e-05
-cycles/byte in recv wait = 0.571901
-cycles/byte in send copy = 0.188952
-cycles/byte in recv copy = 0.174125
-
-                  nprocs = 10
-                    rank = 0
-                nthreads = 12
-                       M = 50000
-                       N = 50000
-        bw (bytes/cycle) = 0.922881
- frac of cycles in scopy = 0.171762
-   frac of cycles in mpi = 0.682255
- frac of cycles in rcopy = 0.145861
+        bw (bytes/cycle) = 1.3941
+ frac of cycles in scopy = 0.269691
+   frac of cycles in mpi = 0.0572384
+ frac of cycles in rcopy = 0.238585
 --------------------------
-cycles/byte in send copy = 0.186243
-cycles/byte in recv copy = 0.158159
-      cycles/byte in mpi = 0.737727
-cycles/byte in send post = 7.14639e-05
-cycles/byte in recv post = 0.0494827
-cycles/byte in send wait = 1.97975e-06
-cycles/byte in recv wait = 0.68817
-
-                  nprocs = 10
-                    rank = 0
-                nthreads = 12
-                       M = 50000
-                       N = 50000
-        bw (bytes/cycle) = 0.962737
- frac of cycles in scopy = 0.182796
-   frac of cycles in mpi = 0.640352
- frac of cycles in rcopy = 0.176521
---------------------------
-cycles/byte in send copy = 0.190143
-cycles/byte in recv copy = 0.182748
-      cycles/byte in mpi = 0.662643
-cycles/byte in send post = 7.12151e-05
-cycles/byte in recv post = 0.049158
-cycles/byte in send wait = 0.00488519
-cycles/byte in recv wait = 0.608529
-
-                  nprocs = 10
-                    rank = 0
-                nthreads = 12
-                       M = 50000
-                       N = 50000
-        bw (bytes/cycle) = 1.00582
- frac of cycles in scopy = 0.179669
-   frac of cycles in mpi = 0.656046
- frac of cycles in rcopy = 0.164815
---------------------------
-cycles/byte in send copy = 0.179034
-cycles/byte in recv copy = 0.163831
-      cycles/byte in mpi = 0.694838
-cycles/byte in send post = 0.0509265
-cycles/byte in recv post = 1.3204e-05
-cycles/byte in send wait = 0.042117
-cycles/byte in recv wait = 0.601782
-
-                  nprocs = 10
-                    rank = 0
-                nthreads = 12
-                       M = 50000
-                       N = 50000
-        bw (bytes/cycle) = 1.00832
- frac of cycles in scopy = 0.182759
-   frac of cycles in mpi = 0.649536
- frac of cycles in rcopy = 0.169699
---------------------------
-cycles/byte in send copy = 0.182806
-cycles/byte in recv copy = 0.168439
-      cycles/byte in mpi = 0.628972
-cycles/byte in send post = 0.000103101
-cycles/byte in recv post = 0.062867
-cycles/byte in send wait = 2.92825e-06
-cycles/byte in recv wait = 0.565999
-
-                  nprocs = 10
-                    rank = 0
-                nthreads = 12
-                       M = 50000
-                       N = 50000
-        bw (bytes/cycle) = 0.98088
- frac of cycles in scopy = 0.178282
-   frac of cycles in mpi = 0.0497463
- frac of cycles in rcopy = 0.166449
---------------------------
-cycles/byte in send copy = 0.181757
-cycles/byte in recv copy = 0.168418
-      cycles/byte in mpi = 0.050716
-cycles/byte in send post = 0.000119328
-cycles/byte in recv post = 0.0505939
-cycles/byte in send wait = 2.78325e-06
+cycles/byte in send copy = 0.193551
+cycles/byte in recv copy = 0.171139
+      cycles/byte in mpi = 0.0393395
+cycles/byte in send post = 0.0393334
+cycles/byte in recv post = 4.28063e-06
+cycles/byte in send wait = 1.76238e-06
 cycles/byte in recv wait = 0
-
-                  nprocs = 10
-                    rank = 0
-                nthreads = 12
-                       M = 50000
-                       N = 50000
-        bw (bytes/cycle) = 0.987882
- frac of cycles in scopy = 0.181195
-   frac of cycles in mpi = 0.658345
- frac of cycles in rcopy = 0.161371
---------------------------
-cycles/byte in send copy = 0.183418
-cycles/byte in recv copy = 0.162409
-      cycles/byte in mpi = 0.675235
-cycles/byte in send post = 0.000113393
-cycles/byte in recv post = 0.0479123
-cycles/byte in send wait = 2.91412e-06
-cycles/byte in recv wait = 0.627207
-
-                  nprocs = 10
-                    rank = 0
-                nthreads = 12
-                       M = 50000
-                       N = 50000
-        bw (bytes/cycle) = 0.996945
- frac of cycles in scopy = 0.184042
-   frac of cycles in mpi = 0.618371
- frac of cycles in rcopy = 0.198697
---------------------------
-cycles/byte in send copy = 0.188065
-cycles/byte in recv copy = 0.199073
-      cycles/byte in mpi = 0.627628
-cycles/byte in send post = 6.95891e-05
-cycles/byte in recv post = 0.0405676
-cycles/byte in send wait = 5.25075e-06
-cycles/byte in recv wait = 0.586986
-
-                  nprocs = 10
-                    rank = 0
-                nthreads = 12
-                       M = 50000
-                       N = 50000
-        bw (bytes/cycle) = 0.98984
- frac of cycles in scopy = 0.179665
-   frac of cycles in mpi = 0.655467
- frac of cycles in rcopy = 0.163453
---------------------------
-cycles/byte in send copy = 0.180586
-cycles/byte in recv copy = 0.16499
-      cycles/byte in mpi = 0.66714
-cycles/byte in send post = 9.98934e-05
-cycles/byte in recv post = 0.0396454
-cycles/byte in send wait = 2.88125e-06
-cycles/byte in recv wait = 0.627392
-
-                  nprocs = 10
-                    rank = 0
-                nthreads = 12
-                       M = 50000
-                       N = 50000
-        bw (bytes/cycle) = 0.963807
- frac of cycles in scopy = 0.176652
-   frac of cycles in mpi = 0.655079
- frac of cycles in rcopy = 0.164453
---------------------------
-cycles/byte in send copy = 0.187558
-cycles/byte in recv copy = 0.168312
-      cycles/byte in mpi = 0.681674
-cycles/byte in send post = 0.000104588
-cycles/byte in recv post = 0.0599198
-cycles/byte in send wait = 3.01513e-06
-cycles/byte in recv wait = 0.621646
 
                   nprocs = 20
                     rank = 0
                 nthreads = 12
                        M = 50000
                        N = 100000
-        bw (bytes/cycle) = 0.842358
- frac of cycles in scopy = 0.160782
-   frac of cycles in mpi = 0.70716
- frac of cycles in rcopy = 0.133263
+        bw (bytes/cycle) = 1.14362
+ frac of cycles in scopy = 0.22779
+   frac of cycles in mpi = 0.0346844
+ frac of cycles in rcopy = 0.201073
 --------------------------
-cycles/byte in send copy = 0.193062
-cycles/byte in recv copy = 0.158394
-      cycles/byte in mpi = 0.842967
-cycles/byte in send post = 0.00015481
-cycles/byte in recv post = 0.0203737
-cycles/byte in send wait = 0.00557688
-cycles/byte in recv wait = 0.816862
+cycles/byte in send copy = 0.197229
+cycles/byte in recv copy = 0.176088
+      cycles/byte in mpi = 0.0309163
+cycles/byte in send post = 0.0309023
+cycles/byte in recv post = 9.91075e-06
+cycles/byte in send wait = 4.05225e-06
+cycles/byte in recv wait = 0
 
