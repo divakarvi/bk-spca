@@ -23,6 +23,11 @@ FastTrans::FastTrans(int rank, int nprocs, long Mi, long Ni)
 	assrt(nrows > 0);
 	recvbuf = new double[nrows*N];
 
+	/*
+	 * transpose() relies on requests getting set to MPI_REQUEST_NULL
+	 * after MPI_Testany()
+	 * therefore persistent recvs are not feasible with current design
+	 */
 	sreqlist = new MPI_Request[P];
 	rreqlist = new MPI_Request[P];
 
@@ -43,11 +48,11 @@ FastTrans::FastTrans(int rank, int nprocs, long Mi, long Ni)
 	/*
 	 * reverse sendorder
 	 */
-	//       for(int i=0, j=P-1; i < j; i++, j--){
-	//     int tmp = sendorder[i];
-	//     sendorder[i] = sendorder[j];
-	//     sendorder[j] = tmp;
-	//}
+	       for(int i=0, j=P-1; i < j; i++, j--){
+		       int tmp = sendorder[i];
+		       sendorder[i] = sendorder[j];
+		       sendorder[j] = tmp;
+	       }
 }
 
 FastTrans::~FastTrans(){
@@ -138,6 +143,10 @@ void FastTrans::copyFROMrecvbuf(int q, double *localNM){
 	trans_timer.rcopy += clk.toc();
 }
 
+/*
+ * MPI_Testany() here relies on requests getting set to MPI_REQUEST_NULL
+ * therefore persistent recvs are not feasible in this design
+ */
 void FastTrans::transpose(double *localMN, double *localNM){
 	for(int q=0; q < P; q++)
 		postrecv(q);
