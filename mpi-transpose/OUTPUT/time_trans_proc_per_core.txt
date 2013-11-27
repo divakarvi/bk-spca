@@ -1,0 +1,34 @@
+                  nprocs = 600
+                    rank = 0
+                       M = 50000
+                       N = 250000
+        bw (bytes/cycle) = 0.526959
+ frac of cycles in scopy = 0.0747657
+   frac of cycles in mpi = 0.865477
+ frac of cycles in rcopy = 0.07014
+--------------------------
+cycles/byte in send copy = 0
+cycles/byte in recv copy = 0
+      cycles/byte in mpi = 0
+cycles/byte in send post = 0
+cycles/byte in recv post = 0
+cycles/byte in send wait = 0
+cycles/byte in recv wait = 0
+
+                  nprocs = 1200
+                    rank = 0
+                       M = 50000
+                       N = 500000
+        bw (bytes/cycle) = 0.267981
+ frac of cycles in scopy = 0.0383471
+   frac of cycles in mpi = 0.93094
+ frac of cycles in rcopy = 0.0386001
+--------------------------
+cycles/byte in send copy = 0
+cycles/byte in recv copy = 0
+      cycles/byte in mpi = 0
+cycles/byte in send post = 0
+cycles/byte in recv post = 0
+cycles/byte in send wait = 0
+cycles/byte in recv wait = 0
+
