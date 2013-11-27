@@ -25,3 +25,7 @@ calc_latency.o: calc_latency.cpp
 time_serial.exe: time_serial.o serial.o dummy.o
 
 calc_latency.exe: calc_latency.o serial.o dummy.o
+
+test_lustre.exe: test_lustre.o lustre.o ../mpi-init ../mpi-init/mpi_init.o
+
+time_lustre.exe: time_lustre.o lustre.o ../mpi-init ../mpi-init/mpi_init.o
