@@ -2,8 +2,13 @@
 #include <cstdio>
 
 const int N=1000*1000*125;
-
+/*
+ * cat /proc/meminfo before and after this program to check disk cache
+ */
 void write2file(){
+	/*
+	 * v = 1 GB array
+	 */
 	double *v = new double[N];
 	for(int i=0; i < N; i++)
 		v[i] = rand()*1.0/RAND_MAX;
@@ -22,7 +27,7 @@ void write2file(){
 		fwrite(v, N, sizeof(double), fptr);
 	fclose(fptr);
 	sprintf(cmd, "rm %s", fname);
-	//system(cmd);//page cache shrinks back only if file is removed
+	//system(cmd);/* page cache shrinks back only if file is removed */
 	delete[] v;
 }
 
