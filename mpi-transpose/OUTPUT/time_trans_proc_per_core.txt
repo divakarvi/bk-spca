@@ -32,3 +32,37 @@ cycles/byte in recv post = 0
 cycles/byte in send wait = 0
 cycles/byte in recv wait = 0
 
+                  nprocs = 120
+                    rank = 0
+                       M = 50000
+                       N = 50000
+        bw (bytes/cycle) = 0.698886
+ frac of cycles in scopy = 0.11176
+   frac of cycles in mpi = 0.73145
+ frac of cycles in rcopy = 0.156934
+--------------------------
+cycles/byte in send copy = 0
+cycles/byte in recv copy = 0
+      cycles/byte in mpi = 0
+cycles/byte in send post = 0
+cycles/byte in recv post = 0
+cycles/byte in send wait = 0
+cycles/byte in recv wait = 0
+
+                  nprocs = 240
+                    rank = 0
+                       M = 50000
+                       N = 100000
+        bw (bytes/cycle) = 0.599542
+ frac of cycles in scopy = 0.0846642
+   frac of cycles in mpi = 0.83197
+ frac of cycles in rcopy = 0.0842839
+--------------------------
+cycles/byte in send copy = 0
+cycles/byte in recv copy = 0
+      cycles/byte in mpi = 0
+cycles/byte in send post = 0
+cycles/byte in recv post = 0
+cycles/byte in send wait = 0
+cycles/byte in recv wait = 0
+
