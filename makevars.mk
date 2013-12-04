@@ -27,13 +27,13 @@ endif
 .SUFFIXES:
 .SUFFIXES: .cpp .o .exe .s .d
 %.o: %.cpp
-	$(CPP) $(CFLAGS) $(CFLAGSXX) -c $<
+	$(CPP) $(MMIC) $(CFLAGS) $(CFLAGSXX) -c $<
 %.s: %.cpp 
-	$(CPP) $(CFLAGS) -fno-verbose-asm $(CFLAGSXX) -S $< 
+	$(CPP) $(MMIC) $(CFLAGS) -fno-verbose-asm $(CFLAGSXX) -S $< 
 %.o: %.s 
-	$(CPP) $(CFLAGS) $(CFLAGSXX) -c $< 
+	$(CPP) $(MMIC) $(CFLAGS) $(CFLAGSXX) -c $< 
 %.exe: %.o 
-	$(CPP) -o $@ $(filter %.o,$^) $(LIBS) 
+	$(CPP) $(MMIC) -o $@ $(filter %.o,$^) $(LIBS) 
 
 ########
 .PHONY: clean cleanx cleanxx
