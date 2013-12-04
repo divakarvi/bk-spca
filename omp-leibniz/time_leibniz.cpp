@@ -1,9 +1,12 @@
 #include "../utils/utils.hh"
 #include "../utils/TimeStamp.hh"
 #include "../utils/Table.hh"
+#include "../nthreads.hh"
 #include "leibniz.hh"
+#include <omp.h>
 #include <fstream>
 #include <cstdio>
+#include <cstdlib>
 
 struct leib_struct{
 	double pi;
@@ -55,8 +58,13 @@ int main(){
 			       "for", "forchunk", "parallelfor",
 			       "section"};
 	const char* cols[2] = {"pi", "cycles/term"};
+#ifdef __MIC__
+	const int nthreads = atoi(getenv("MIC_OMP_NUM_THREADS"));
+#else
+	const int nthreads = atoi(getenv("OMP_NUM_THREADS"));
+#endif
+	std::cout<<"num of threads = "<<nthreads<<std::endl;
 
-	const int nthreads = 12;
 	const long n = 1l*1000*1000*1000*10;
 	double data[14];
 	struct leib_struct ans;

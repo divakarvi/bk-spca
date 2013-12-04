@@ -12,6 +12,7 @@ double parallel(long int n, int nthreads){
 	{
 		double sum=0;
 		int offset = omp_get_thread_num();
+#pragma vector always
 		for(long int i=offset; i < n; i=i+nthreads)
 			sum += 4.0/(2*i+1);
 #pragma  omp critical
@@ -26,6 +27,7 @@ double parallel(long int n, int nthreads){
 void partialsum(int offset, long int n, int nthreads, 
 		double & ans){
 	double sum = 0;
+#pragma vector always
 	for(long int i=offset; i < n; i=i+nthreads)
 		sum += 4.0/(2*i+1);
 #pragma  omp critical

@@ -12,6 +12,7 @@ double ompfor(long int n,  int nthreads){
 		double sum=0;
 #pragma omp for					\
 	schedule(static)
+#pragma vector always
 		for(long int i=0; i < n; i = i+2)
 			{
 				sum += 4.0/(2*i+1);
@@ -34,11 +35,11 @@ double ompforchunk(long int n,  int nthreads, int chunk){
 		double sum = 0;
 #pragma omp for					\
 	schedule(static, chunk)
-		for(long int i=0; i < n; i = i+2)
-			{
-				sum += 4.0/(2*i+1);
-				sum -= 4.0/(2*i+3);
-			}
+#pragma vector always
+		for(long int i=0; i < n; i = i+2){
+			sum += 4.0/(2*i+1);
+			sum -= 4.0/(2*i+3);
+		}
 #pragma omp critical
 		ans += sum;
 	}
@@ -56,6 +57,7 @@ double parallelfor(long int n, int nthreads){
 	default(none)				\
 	shared(n)				\
 	reduction(+:ans)
+#pragma vector always
 	for(long int i=0; i < n; i = i+2)
 		{
 			ans += 4.0/(2*i+1);
