@@ -3,6 +3,7 @@ using namespace std;
 
 double sum_onecore(double *list, long n){
 	double ans = 0;
+#pragma vector always
 	for(long i=0; i < n; i++)
 		ans += list[i];
 	return ans;
@@ -52,6 +53,7 @@ double sum_manycore(double *list, long len, int nthreads){
 }
 
 void write_onecore(double *list, long n){
+#pragma vector always nontemporal
 	for(long i=0; i < n; i++)
 		list[i] = i;
 }
@@ -70,6 +72,7 @@ void write_manycore(double *list, long len, int nthreads){
 }
 
 void copy_onecore(double *list, long n){
+#pragma vector always nontemporal
 	for(long i=0; i < n/2; i++)
 		list[i] = list[n/2+i];
 }

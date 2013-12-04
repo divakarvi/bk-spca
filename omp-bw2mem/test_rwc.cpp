@@ -26,6 +26,6 @@ void test_wc(){
 	array_show(list, len, "after copy_manycore()");
 }
 int main(){
-	//test_sum();
+	test_sum();
 	test_wc();
 }
