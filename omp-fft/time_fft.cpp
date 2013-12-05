@@ -12,7 +12,12 @@
  */
 double time(int n, int nth){
 	long nbytes = 16l*1000*1000*1000;
+#ifdef __MIC__
+	nbytes /= 16;
+#endif
 	long count = nbytes/(16*n);
+	std::cout<<"      n = "<<n<<std::endl;
+	std::cout<<" nbytes = "<<nbytes<<std::endl;
 	double *v = (double *)_mm_malloc(nbytes, 64);
 
 	fft_thrd fft(n, count, nth);
@@ -39,26 +44,33 @@ int main(){
 	kmp_set_defaults("KMP_AFFINITY=compact");
 	const char* rows[3] = {"64", "1024", "8192"};
 	int n[3] = {64, 1024, 8192};
-	const char* cols[5] = {"1", "2", "4", "8", "12"};
-	int nth[5] = {1, 2, 4, 8, 12};
-	double data[15];
+	
+	#ifdef __MIC__
+	assrt(getenv("MIC_OMP_NUM_THREADS") != NULL);
+	const int nthreads = atoi(getenv("MIC_OMP_NUM_THREADS"));
+#else
+	assrt(getenv("OMP_NUM_THREADS") != NULL);
+	const int nthreads = atoi(getenv("OMP_NUM_THREADS"));
+#endif
+	const char* cols[1] = {"max threads"};
+	int nth[1] = {nthreads};
+	double data[3];
 
 	for(int i=0; i < 3; i++)
-		for(int j=0; j < 5; j++)
+		for(int j=0; j < 1; j++)
 			data[i+j*3] = time(n[i], nth[j]);
 	
 	verify_dir("DBG");
 	link_cout("DBG/time_fft.txt");
 
 	Table tbl;
-	tbl.dim(3, 5);
+	tbl.dim(3, 1);
 	tbl.rows(rows);
 	tbl.cols(cols);
 	tbl.data(data);
 	tbl.print("\tnumber of cycles per fft\n"
-		  "\t1 to 12 threads\n"
 		  "\tnmlzd by nlgn\n"
-		  "\t16GB data");
+		  "\t1/16GB data");
 
 	unlink_cout();
 }

@@ -2,9 +2,10 @@
 #define __OMPTRANS22OCT2013__
 
 /*
- * Block size must be set manually here
+ * Block size must be set manually here if const int
+ * not if extern int
  */
-const int B = 125;
+extern int B;
 void easytrans(double *restrict a, double *restrict b, int ldb,
 	       int m, int n);
 /*
