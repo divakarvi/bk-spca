@@ -2,8 +2,7 @@
 #define __OMPTRANS22OCT2013__
 
 /*
- * Block size must be set manually here if const int
- * not if extern int
+ * Block size (change B to gl_B later)
  */
 extern int B;
 void easytrans(double *restrict a, double *restrict b, int ldb,

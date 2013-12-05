@@ -3,23 +3,34 @@
 #include <cstdlib>
 
 void test1(){
+	B = 2; /* B is a global */
+	int nthreads = 5;
+
+	assrt(10%B == 0);
+	assrt(20%(nthreads*B) == 0);
+
 	double a[200], b[200];
 	for(int i=0; i < 200; i++)
 		a[i] = i;
-	int nthreads = 5;
-	assrt(10%B == 0);
-	assrt(20%(nthreads*B) == 0);
+
+
 	blocktrans(a, b, 10, 20, nthreads);
 
 	array_out(b, 20, 10);
 }
 
 void test2(int nthreads){
+	B = 25;
 	int m = B*nthreads*10;
 	int n = B*nthreads*15;
+#ifdef __MIC__
+	assrt(3l*8*m*n <= 7l*1000*1000*1000);
+#endif
 	double *a = new double[m*n];
 	double *b = new double[m*n];
 	double *aa = new double[m*n];
+#pragma omp parallel for			\
+	num_threads(nthreads)
 	for(int i=0; i < m*n; i++)
 		a[i] = rand()*1.0/RAND_MAX-0.5;
 
@@ -40,6 +51,14 @@ void test2(int nthreads){
 
 int main(){
 	//test1();
-	for(int i=1; i < 12; i++)
-		test2(i);
+
+#ifdef __MIC__
+	assrt(getenv("MIC_OMP_NUM_THREADS") != NULL);
+	const int nthreads = atoi(getenv("MIC_OMP_NUM_THREADS"));
+#else
+	assrt(getenv("OMP_NUM_THREADS") != NULL);
+	const int nthreads = atoi(getenv("OMP_NUM_THREADS"));
+#endif
+	for(int i=1; i <= 4; i++)
+		test2(i*nthreads/4);
 }

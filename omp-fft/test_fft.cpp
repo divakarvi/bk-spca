@@ -2,6 +2,7 @@
 #include "fft_thrd.hh"
 #include <iostream>
 #include <cmath>
+#include <cstdlib>
 
 void test(int n, long count, int nth){
 	long len = 2l*n*count;
@@ -30,5 +31,14 @@ void test(int n, long count, int nth){
 }
 
 int main(){
-	test(10, 24, 4);
+
+#ifdef __MIC__
+	assrt(getenv("MIC_OMP_NUM_THREADS") != NULL);
+	const int nthreads = atoi(getenv("MIC_OMP_NUM_THREADS"));
+#else
+	assrt(getenv("OMP_NUM_THREADS") != NULL);
+	const int nthreads = atoi(getenv("OMP_NUM_THREADS"));
+#endif
+
+	test(10, 24, nthreads);
 }

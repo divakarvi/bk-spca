@@ -33,6 +33,8 @@ void nearfar(int n, double cycles[2]){
 }
 
 int main(){
+	kmp_set_defaults("KMP_AFFINITY=scatter");
+	
 	const char *rows[4] = {"4", "20", "50", "100"};
 	int n[4] = {4, 20, 50, 100};
 	const char *cols[2] = {"0", "1"}; //tid

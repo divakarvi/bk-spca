@@ -45,7 +45,7 @@ int main(){
 	const char* rows[3] = {"64", "1024", "8192"};
 	int n[3] = {64, 1024, 8192};
 	
-	#ifdef __MIC__
+#ifdef __MIC__
 	assrt(getenv("MIC_OMP_NUM_THREADS") != NULL);
 	const int nthreads = atoi(getenv("MIC_OMP_NUM_THREADS"));
 #else

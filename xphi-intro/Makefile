@@ -2,7 +2,7 @@ include ../makevars.mk
 CFLAGSXX := -fno-inline-functions -openmp $(MKLINC)
 LIBS := -openmp $(MKLLIBS) 
 MODS := ../utils
-MMIC := -mmic
+MMIC := 
 export MMIC
 
 hello.o: hello.cpp
@@ -22,10 +22,22 @@ time_rwc:
 	make --directory=../omp-bw2mem time_rwc.exe
 	mv ../omp-bw2mem/time_rwc.exe time_rwc.exe
 
+test_trans:
+	make --directory=../omp-transpose test_trans.exe
+	mv ../omp-transpose/test_trans.exe test_trans.exe
+
 time_trans:
 	make --directory=../omp-transpose time_trans.exe
 	mv ../omp-transpose/time_trans.exe time_trans.exe
 
+test_fft:
+	make --directory=../omp-fft test_fft.exe
+	mv ../omp-fft/test_fft.exe test_fft.exe
+
 time_fft:
 	make --directory=../omp-fft time_fft.exe
 	mv ../omp-fft/time_fft.exe time_fft.exe
+
+latency:
+	make --directory=../omp-latency latency.exe
+	mv ../omp-latency/latency.exe latency.exe
