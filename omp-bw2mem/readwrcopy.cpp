@@ -1,13 +1,4 @@
 #include <omp.h>
-using namespace std;
-
-double sum_onecore(double *list, long n){
-	double ans = 0;
-#pragma vector always
-	for(long i=0; i < n; i++)
-		ans += list[i];
-	return ans;
-}
 
 void init_manycore(double *list, long len, int nthreads){
 #pragma omp parallel for			\
@@ -32,6 +23,14 @@ void init_manycore_cheap(double *list, long len, int nthreads){
 	shared(list, len, nthreads)
 	for(long i=0; i < len; i++)
 		list[i] = i/7.0;
+}
+
+double sum_onecore(double *list, long n){
+	double ans = 0;
+#pragma vector always
+	for(long i=0; i < n; i++)
+		ans += list[i];
+	return ans;
 }
 
 double sum_manycore(double *list, long len, int nthreads){
