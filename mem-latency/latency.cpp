@@ -7,8 +7,8 @@ extern void dummy(int *a, int n);
 
 void cache_flush(void *ptr, int nbytes){
 #ifdef MEMWALK
-	int *a = new int[1000*1000*1000];
-	dummy(a, 1000*1000*1000);
+	int *a = new int[1000*1000*100];
+	dummy(a, 1000*1000*100);
 	delete[] a;
 #else
 	for(int i=0; i < nbytes; i++)

@@ -2,7 +2,7 @@ include ../makevars.mk
 CFLAGSXX := -fno-inline-functions -openmp $(MKLINC)
 LIBS := -openmp $(MKLLIBS) 
 MODS := ../utils
-MMIC := 
+MMIC := -mmic
 export MMIC
 
 hello.o: hello.cpp
