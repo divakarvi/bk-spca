@@ -1,0 +1,41 @@
+set nitns = 100
+         nprocs         dim1          dim2    cycles/entry/itn
+              4       100000         12000             7.32567
+             20       100000         12000             8.04353
+             50       100000         12000             8.53365
+            100       100000         12000             8.58287
+
+set KMP_AFFINITY=compact
+         nprocs         dim1          dim2    cycles/entry/itn
+              4       100000         12000             6.90472
+             20       100000         12000             7.06659
+             50       100000         12000             6.79505
+            100       100000         12000             6.30485
+
+use *restrict pointers
+         nprocs         dim1          dim2    cycles/entry/itn
+              4       100000         12000             6.32657
+             20       100000         12000             6.24338
+             50       100000         12000             7.01989
+            100       100000         12000             6.33358
+
+add #pragma vector always nontemporal
+         nprocs         dim1          dim2    cycles/entry/itn
+              4       100000         12000             6.49886
+             20       100000         12000             7.68708
+             50       100000         12000             6.53438
+            100       100000         12000             6.42007
+
+use blocking (B=50) & no #pragma ...
+         nprocs         dim1          dim2    cycles/entry/itn
+              4       100000         12000             4.49838
+             20       100000         12000             5.24529
+             50       100000         12000             5.96180
+            100       100000         12000             5.96588
+
+use blocking (B=100) & no #pragma ...
+         nprocs         dim1          dim2    cycles/entry/itn
+              4       100000         12000             4.42487
+             20       100000         12000             5.50610
+             50       100000         12000             5.88633
+            100       100000         12000             5.50412
