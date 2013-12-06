@@ -1,7 +1,6 @@
 #include "../utils/utils.hh"
 #include "../utils/TimeStamp.hh"
 #include "../utils/Table.hh"
-#include "../nthreads.hh"
 #include "leibniz.hh"
 #include <omp.h>
 #include <fstream>
