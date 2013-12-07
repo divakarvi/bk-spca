@@ -4,9 +4,14 @@
 #include <iostream>
 #include <omp.h>
 
+/*
+ * a = 4.0^(1.0/3.0)
+ */
+__declspec(target(mic)) const double gl_scl = 1.5874010519681994;
+
 __declspec(target(mic))
 double mic_sum(double *v, long len){
-	printf(" mic pointer v = %p \n", v);
+	printf("     mic pointer v = %p \n", v);
 	double sum = 0;
 	
 #pragma omp parallel for			\
@@ -20,13 +25,14 @@ double mic_sum(double *v, long len){
 __declspec(target(mic))
 void hostmic_scale(double *v, long len){
 	printf("host/mic pointer v = %p \n", v);
+
 #pragma omp parallel for
 	for(long i=0; i < len; i++)
-		v[i] *= 2.0;
+		v[i] *= gl_scl;
 	
 #pragma omp parallel
 #pragma omp master
-	std::cout<<"num of threads = "<<omp_get_num_threads()<<std::endl;
+	printf("    num of threads = %d\n",omp_get_num_threads());
 }
 
 void mic_init(){
@@ -42,29 +48,32 @@ void mic_init(){
 }
 
 int main(){
-	//mic_init();
+	mic_init();
 	
-	long n = 1l*1000*1000*100;
+	long n = 1l*1000*1000*800;
 	long nbytes = n*8;
+	printf("            nbytes = %ld\n",nbytes);
 	double* v = (double *)_mm_malloc(nbytes, 64);
 	
 #pragma omp parallel for
-	for(long i=0; i < n; i += 2){
+	for(long i=0; i < n; i+=2){
 		v[i] = 1.0/(2*i+1);
 		v[i+1] = - 1.0/(2*i+3);
 	}
 
-	printf("host pointer v = %p \n", v);
+	printf("    host pointer v = %p \n", v);
 
 #pragma offload target(mic:0)					\
 	in(v:length(n) align(64) alloc_if(1) free_if(0))
+	{}
 
-#pragma offload target(mic:0) nocopy(v)
+#pragma offload target(mic:0) nocopy(v:length(n) alloc_if(0) free_if(0))
 	hostmic_scale(v, n);
 
 #pragma offload target(mic:0)					\
 	out(v:length(n) align(64) alloc_if(0) free_if(0))
-
+	hostmic_scale(v, n);
+	
 	hostmic_scale(v, n);
 	
 	double sum;
@@ -72,7 +81,7 @@ int main(){
 	in(v:length(n) align(64) alloc_if(0) free_if(1))
 	sum = mic_sum(v, n);
 
-	printf("           sum = %f\n", sum);
+	printf("               sum = %f\n", sum);
 
 	_mm_free(v);
 }
