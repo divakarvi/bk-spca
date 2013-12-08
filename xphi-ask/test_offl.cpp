@@ -23,10 +23,9 @@ double mic_sum(double *v, long len){
 }
 
 double find_sum(double x){
-       long nbytes = 1l*7000*1000*1000;
+       long nbytes = 1l*4000*1000*1000;
        double *v = (double *)_mm_malloc(nbytes, 64);
        long len = nbytes/8;
-       printf("nbytes \t= %.0f MB\n", nbytes/1e6);
 
 #pragma omp parallel for
        for(long i=0; i < len; i+=2){
@@ -37,6 +36,7 @@ double find_sum(double x){
        double sum;
 #pragma offload target(mic:0)					\
 	inout(v:length(len) align(64) alloc_if(1) free_if(1))	\
+	in(len)							\
 	out(sum)
        sum = mic_sum(v, len);
        
@@ -48,8 +48,8 @@ double find_sum(double x){
 int main(){
 	mic_init();
 
-	int niters = 20;
-	for(int i=1; i <= 20; i++){
+	int niters = 1000;
+	for(int i=1; i <= niters; i++){
 		double sum = find_sum(i*1.0);
 		printf("%d*PI/4\t= %f\n", i, sum); 
 	}
