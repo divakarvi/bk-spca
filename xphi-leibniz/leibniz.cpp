@@ -46,7 +46,7 @@ void leibniz2(){
 	double* v = (double *)_mm_malloc(nbytes, 64);
 	leibniz_init(v, n);
 	
-	double sum;
+	double sum; 
 #pragma offload target(mic:0)					\
 	in(v:length(n) align(64) alloc_if(1) free_if(1))	
 	{
@@ -90,6 +90,6 @@ void leibniz3(){
 
 int main(){
 	//leibniz1();
-	//leibniz2();
-	leibniz3();
+	leibniz2();
+	//leibniz3();
 }
