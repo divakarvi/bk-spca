@@ -16,7 +16,7 @@ double mic_sum(double *v, long len){
 	reduction(+:sum)
 	for(long i=0; i < len; i++)
 		sum += v[i];
-	
+
 	return sum;
 }
 
