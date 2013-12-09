@@ -12,7 +12,7 @@ void xfer_in(double *v, long n, int nmic){
 #pragma offload target(mic:mc)					\
 	in(v[shft:len]:align(64) alloc_if(0) free_if(0))	\
 	signal(1)
-		dummyx(v+shft, len);
+		dummy(v+shft, len);
 		
 	}
 
@@ -32,7 +32,7 @@ void xfer_out(double *v, long n, int nmic){
 #pragma offload target(mic:mc)					\
 	out(v[shft:len]:align(64) alloc_if(0) free_if(0))	\
 	signal(1)
-		dummyx(v+shft, len);
+		dummy(v+shft, len);
 	}
 
 	for(int mc=0; mc < nmic; mc++){
@@ -51,7 +51,7 @@ void xfer_inout(double *v, long n, int nmic){
 #pragma offload target(mic:mc)					\
 	inout(v[shft:len]:align(64) alloc_if(0) free_if(0))	\
 	signal(1)
-		dummyx(v+shft, len);
+		dummy(v+shft, len);
 	}
 
 	for(int mc=0; mc < nmic; mc++){
