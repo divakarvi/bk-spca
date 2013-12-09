@@ -54,15 +54,12 @@ double time_xfer(int nmic, enum offl_xfer_enum flag){
 		stats.insert(cycles);
 	}
 	
-	std::cout<<"flag = "<<flag<<std::endl;
-	std::cout<<"nmic = "<<nmic<<std::endl;
-	double sum = 0;
-#pragma omp parallel for			\
-	reduction(+:sum)	
-	for(long i=0; i < n; i++)
-		sum += v[i];
-	std::cout<<"v avg = "<<sum/n<<std::endl;
-
+	/*
+	 * print avg of entries of v[] here to test
+	 */
+	std::cout<<"   flag = "<<flag<<std::endl;
+	std::cout<<"   nmic = "<<nmic<<std::endl;
+	
 	for(int mc=0; mc < nmic; mc++){
 		long shft = fst[mc];
 		long len = fst[mc+1] - fst[mc];
@@ -78,10 +75,10 @@ double time_xfer(int nmic, enum offl_xfer_enum flag){
 
 int main(){
 	const char* rows[3] = {"IN", "OUT", "INOUT"};
-	const char* cols[8] = {"cycles-1mic", "bw-1mic", 
-			       "cycles-2mic", "bw-2mic", 
-			       "cycles-3mic", "bw-3mic", 
-			       "cycles-4mic", "bw-4mic"};
+	const char* cols[8] = {"cycs/byte-1mic", "bytes/cyc-1mic", 
+			       "cycs/byte-2mic", "bytes/cyc-2mic", 
+			       "cycs/byte-3mic", "bytes/cyc-3mic", 
+			       "cycs/byte-4mic", "bytes/cyc-4mic"};
 
 	int nmic;
 	mic_init(nmic);
@@ -104,7 +101,7 @@ int main(){
 	tbl.rows(rows);
 	tbl.cols(cols);
 	tbl.data(data);
-	tbl.print("latency/bw  for offload xfers");
+	tbl.print("bw for offload xfers");
 	unlink_cout();
 	
 }
