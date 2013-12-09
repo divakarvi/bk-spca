@@ -103,7 +103,7 @@ void leibniz4(){
 #pragma offload target(mic:mc)						\
 	in(v[shft:len]:align(64))					\
 	out(sum[mc:1])							\
-	signal(1+mc)
+	signal(1)
 		{
 			hostmic_scale(v+shft, len);
 			hostmic_scale(v+shft, len);
@@ -113,7 +113,7 @@ void leibniz4(){
 	}
 
 	for(int mc=0; mc < nmic; mc++){
-#pragma offload_wait target(mic:mc)  wait(1+mc)
+#pragma offload_wait target(mic:mc)  wait(1)
 	}
 
 	double ans = 0;
