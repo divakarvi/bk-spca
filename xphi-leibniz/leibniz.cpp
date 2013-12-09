@@ -96,12 +96,25 @@ void leibniz4(){
 	leibniz_init(v, n);
 
 	double sum[nmic];
-	
+
+	/*
+	 * alloc mem on mic devices
+	 */
+	for(int mc=0; mc < nmic; mc++){
+		long shft = mc*n/nmic;
+		long len = (mc+1)*n/nmic - mc*n/nmic;
+#pragma offload_transfer target(mic:mc)				\
+	nocopy(v[shft:len]:align(64) alloc_if(1) free_if(0))
+	}
+
+	/*
+	 * offload scale and sum of mic devices
+	 */
 	for(int mc=0; mc < nmic; mc++){ 
 		long shft = mc*n/nmic;
 		long len = (mc+1)*n/nmic - mc*n/nmic;
 #pragma offload target(mic:mc)						\
-	in(v[shft:len]:align(64))					\
+	in(v[shft:len]:alloc_if(0) free_if(0))				\
 	out(sum[mc:1])							\
 	signal(1)
 		{
@@ -112,8 +125,21 @@ void leibniz4(){
 		}
 	}
 
+	/*
+	 * wait for mics to get back
+	 */
 	for(int mc=0; mc < nmic; mc++){
 #pragma offload_wait target(mic:mc)  wait(1)
+	}
+
+	/*
+	 * free mem on mic devices
+	 */
+	for(int mc=0; mc < nmic; mc++){
+		long shft = mc*n/nmic;
+		long len = (mc+1)*n/nmic - mc*n/nmic;
+#pragma offload_transfer target(mic:mc)				\
+	nocopy(v[shft:len]:align(64) alloc_if(0) free_if(1))
 	}
 
 	double ans = 0;
