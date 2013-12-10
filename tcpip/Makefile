@@ -8,7 +8,7 @@ server.exe: server.o
 client: client.exe
 	echo 'client done'
 client.o: sockets.cpp	
-	g++ -c -O3 -DCLIENT -o $@ $<
+	g++ -c -O3 -DCLIENT -Wno-unused-result -o $@ $<
 client.exe: client.o
 	g++ -o $@ $^
 
