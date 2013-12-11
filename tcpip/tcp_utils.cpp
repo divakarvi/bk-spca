@@ -85,7 +85,7 @@ int connect2server(const char *server, const char *portnum){
 	hint.ai_socktype = SOCK_STREAM;
 	struct addrinfo *llist;
 	int rval = getaddrinfo(server, portnum, &hint, &llist);
-	assrt(rval == 0);
+	assrt(rval == -EAI_NONAME);
 
 	int sock2server = socket(llist->ai_family, 
 				 llist->ai_socktype,

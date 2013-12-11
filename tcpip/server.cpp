@@ -25,10 +25,14 @@ void partialsum_server(int sock2client, int blocksize){
 }
 
 void server(int blocksize){
+	std::cout<<"server: binding to port "<<PORTNUM<<std::endl;
 	int sock2port= bind2port(PORTNUM);
 	while(1){
+		std::cout<<"server: accepting clients"<<std::endl;
 		int sock2client = connect2client(sock2port);
+		std::cout<<"server: connected to client"<<std::endl;
 		partialsum_server(sock2client, blocksize); 
+		std::cout<<"server: client connection terminated"<<std::endl;
 	}
 }
 
@@ -38,6 +42,7 @@ int main(){
 	std::cout<<"input blksz : ";
 	int blocksize;
 	std::cin>>blocksize;
+	std::cout<<std::endl;
 	
 	server(blocksize);
 }

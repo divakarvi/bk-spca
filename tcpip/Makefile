@@ -1,11 +1,12 @@
-CFLAGS := -O3 -Drestrict=__restrict__ -Wno-unused-result -Wshadow -MMD -MP
+CFLAGS := -O3 -Drestrict=__restrict__  -Wshadow -MMD -MP
+CFLAGSXX := #-Wno-unused-result
 #############
 .SUFFIXES: 
 .SUFFIXES: .cpp .o .exe .c .d
 %.exe:%.o
 	g++ -o $@ $^
 %.o:%.cpp
-	g++ $(CFLAGS) -c $<
+	g++ $(CFLAGS) $(CFLAGSXX) -c $<
 
 ##############
 ipaddr.o: ipaddr.cpp
