@@ -1,10 +1,10 @@
-CFLAGS := -O3 -Wno-unused-result -Wshadow -MMD -MP
+CFLAGS := -O3 -Drestrict=__restrict__ -Wno-unused-result -Wshadow -MMD -MP
 #############
 .SUFFIXES: 
 .SUFFIXES: .cpp .o .exe .c .d
-%.exe: %.o
+%.exe:%.o
 	g++ -o $@ $^
-.o: .cpp
+%.o:%.cpp
 	g++ $(CFLAGS) -c $<
 
 ##############
@@ -13,13 +13,13 @@ ipaddr.o: ipaddr.cpp
 
 ipaddr.exe: ipaddr.o
 
+tcp_utils.o: tcp_utils.cpp
+-include tcp_utils.d
 
-server: server.exe
-	echo 'server done'
-server.o: sockets.cpp	
-	g++ -c -O3 -DSERVER -o $@ $<
-server.exe: server.o
-	g++ -o $@ $^
+server.o: server.cpp
+-include server.d
+
+server.exe: server.o tcp_utils.o
 
 client: client.exe
 	echo 'client done'

@@ -1,3 +1,4 @@
+#include "../utils/utils.hh"
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -14,7 +15,8 @@ struct addrinfo *saddrlist(const char *inaddr){
 	hint.ai_family = AF_UNSPEC;
 	hint.ai_socktype = SOCK_STREAM;
 	struct addrinfo *llist;
-	getaddrinfo(inaddr, NULL, &hint, &llist);
+	int rval = getaddrinfo(inaddr, NULL, &hint, &llist);
+	assrt(rval == 0);
 	return llist;
 }
 
