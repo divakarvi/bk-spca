@@ -100,6 +100,7 @@ int connect2server(const char *server, const char *portnum){
 
 int bind2port(const char* portnum){
 	struct addrinfo hint;
+	memset(&hint, 0, sizeof(hint));
 	hint.ai_family = AF_UNSPEC;
 	hint.ai_socktype = SOCK_STREAM;
 	hint.ai_flags = AI_PASSIVE;
