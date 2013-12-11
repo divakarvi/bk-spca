@@ -1,3 +1,19 @@
+CFLAGS := -O3 -Wno-unused-result -Wshadow -MMD -MP
+#############
+.SUFFIXES: 
+.SUFFIXES: .cpp .o .exe .c .d
+%.exe: %.o
+	g++ -o $@ $^
+.o: .cpp
+	g++ $(CFLAGS) -c $<
+
+##############
+ipaddr.o: ipaddr.cpp
+-include ipaddr.d
+
+ipaddr.exe: ipaddr.o
+
+
 server: server.exe
 	echo 'server done'
 server.o: sockets.cpp	
