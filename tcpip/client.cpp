@@ -84,6 +84,7 @@ void client(const char *server, int blocksize, int n){
 	std::cout<<"client: connecting to server "<<server<<std::endl;
 	int sock2server = connect2server(server, PORTNUM);
 
+	std::cout<<"client: transmitting series to server "<<std::endl;
 	TimeStamp clk;
 	clk.tic();
 	partialsum_client(sock2server, series, n, blocksize, psum,

@@ -1,0 +1,22 @@
+HP-a6400z
+series size(n) = 100000
+       blksize = 1000
+            pi = 3.14158
+         error = 1e-05
+   nsend/block = 1
+   nrecv/block = 5
+ send ms/block = 0.06104 ms
+ recv ms/block = 38.6821 ms
+     bandwidth = 345.511 kbps
+----------------------------------------------------------------------
+HP-a6400z
+series size(n) = 1e+06
+       blksize = 1000
+            pi = 3.14159
+         error = 1e-06
+   nsend/block = 1
+   nrecv/block = 5
+ send ms/block = 0.061845 ms
+ recv ms/block = 39.1545 ms
+     bandwidth = 376.197 kbps
+----------------------------------------------------------------------
