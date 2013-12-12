@@ -1,6 +1,7 @@
 #include "../utils/utils.hh"
 #include "../xphi-init/mic_init.hh"
 #include "mmult.hh"
+#include <mkl.h>
 
 void test_host(long dim){
 	double *a = new double[dim*dim];
@@ -14,6 +15,10 @@ void test_host(long dim){
 	mmult(a, b, c, dim);
 
 	array_show(c, dim*dim, "product matrix");
+
+	delete[] a;
+	delete[] b;
+	delete[] c;
 }
 
 
@@ -33,6 +38,10 @@ void test_offload(long dim){
 	mmult(a, b, c, dim);
 
 	array_show(c, dim*dim, "product matrix");
+
+	delete[] a;
+	delete[] b;
+	delete[] c;
 }
 
 
@@ -44,10 +53,15 @@ void test_auto(long dim){
 #pragma omp parallel for
 	for(long i=0; i < dim*dim; i++)
 		a[i] = b[i] = c[i] = 1;
-
-	mmult_auto(a, b, c, dim);
+	mkl_mic_enable();
+	mmult(a, b, c, dim);
+	mkl_mic_disable();
 
 	array_show(c, dim*dim, "product matrix");
+
+	delete[] a;
+	delete[] b;
+	delete[] c;
 }
 
 int main(){

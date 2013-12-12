@@ -14,16 +14,3 @@ void mmult(double *a, double *b, double *c, int dim){
 	      c, &dim);
 }
 
-
-void mmult_auto(double *a, double *b, double *c, int dim){
-	char transa[3] = "N";
-	char transb[3] = "N";
-	
-	double alpha = 1;
-	mkl_mic_enable();
-	dgemm(transa, transb, &dim, &dim, &dim, &alpha,
-	      a, &dim, b, &dim,
-	      &alpha,
-	      c, &dim);
-	mkl_mic_disable();
-}

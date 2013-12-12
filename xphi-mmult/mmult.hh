@@ -11,10 +11,4 @@
  */
 __declspec(target(mic))
 void mmult(double *a, double *b, double *c, int dim);
-
-
-/*
- * dgemm() call offloaded using mkl's automatic offload
- */
-void mmult_auto(double *a, double *b, double *c, int dim);
 #endif
