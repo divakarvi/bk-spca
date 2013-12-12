@@ -11,6 +11,25 @@
 #include <cstring>
 
 const char* PORTNUM = "28537";
+struct cgw_info_struct gl_cgwin;
+int gl_init_cgwin = 0;
+
+void init_cgwin(int N, double cpughz){
+	assrt(N > 0);
+	gl_init_cgwin = 1;
+	gl_cgwin.clk.tic();
+	gl_cgwin.t = new double[N];
+	gl_cgwin.cgw = new int[N];
+	gl_cgwin.indx = 0;
+	gl_cgwin.max_indx = N;
+	gl_cgwin.CPUGHZ = cpughz;
+}
+
+void exit_cgwin(){
+	gl_init_cgwin = 0;
+	delete[] gl_cgwin.t;
+	delete[] gl_cgwin.cgw;
+}
 
 int block_send(int sockfd, void *buf, int len){
 	int total_sent = 0;
@@ -85,7 +104,7 @@ int connect2server(const char *server, const char *portnum){
 	hint.ai_socktype = SOCK_STREAM;
 	struct addrinfo *llist;
 	int rval = getaddrinfo(server, portnum, &hint, &llist);
-	assrt(rval == -EAI_NONAME);
+	assrt(rval == 0);
 
 	int sock2server = socket(llist->ai_family, 
 				 llist->ai_socktype,

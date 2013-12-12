@@ -1,5 +1,5 @@
 CFLAGS := -O3 -Drestrict=__restrict__  -Wshadow -MMD -MP
-CFLAGSXX := #-Wno-unused-result
+CFLAGSXX := -Wno-unused-result
 #############
 .SUFFIXES: 
 .SUFFIXES: .cpp .o .exe .c .d
@@ -22,19 +22,10 @@ server.o: server.cpp
 
 server.exe: server.o tcp_utils.o
 
-client: client.exe
-	echo 'client done'
-client.o: sockets.cpp	
-	g++ -c -O3 -DCLIENT -Wno-unused-result -o $@ $<
-client.exe: client.o
-	g++ -o $@ $^
+client.o: client.cpp
+-include client.d
 
-sockets: sockets.exe
-	echo 'sockets done'
-sockets.o: sockets.cpp	
-	g++ -c -O3 -o $@ $<
-sockets.exe: sockets.o
-	g++ -o $@ $^
+client.exe: client.o tcp_utils.o
 
 ##########
 clean:

@@ -6,12 +6,6 @@
 extern const char* PORTNUM;
 
 /*
- *        sockfd = socket file descriptor
- * buf[0..len-1] = bytes to be sent
- */
-int block_send(int sockfd, void *buf, int len);
-
-/*
  * cgw[] as a function of t[] is stored in this struct
  * block_send_cgwin is chiefly responsible for accumulating that function
  */
@@ -23,6 +17,17 @@ struct cgw_info_struct{
 	int max_indx;
 	double CPUGHZ; /* used to convert cycles to ms */
 };
+
+extern struct cgw_info_struct gl_cgwin;
+extern int gl_init_cgwin;
+void init_cgwin(int N, double cpughz);
+void exit_cgwin();
+
+/*
+ *        sockfd = socket file descriptor
+ * buf[0..len-1] = bytes to be sent
+ */
+int block_send(int sockfd, void *buf, int len);
 
 int block_send_cgw(int sockfd, void *buf, int len,
 		   struct cgw_info_struct cgwin);
