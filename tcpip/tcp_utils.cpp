@@ -45,7 +45,7 @@ int block_send(int sockfd, void *buf, int len){
 }
 
 int block_send_cgw(int sockfd, void *buf, int len,
-		   struct cgw_info_struct cgwin){
+		   struct cgw_info_struct &cgwin){
 	/*
 	 * sending is broken down into sub-blocks to accumulate
 	 * better time series for congestion window

@@ -1,0 +1,48 @@
+HP-a6400z
+blocks broken up to collect cgwin time series
+series size(n) = 2e+06
+       blksize = 1000
+            pi = 3.14159
+         error = 5e-07
+   nsend/block = 6
+   nrecv/block = 5
+ send ms/block = 0.0859839 ms
+ recv ms/block = 70.3136 ms
+     bandwidth = 209.732 kbps
+----------------------------------------------------------------------
+HP-a6400z
+blocks broken up to collect cgwin time series
+series size(n) = 5000
+       blksize = 1000
+            pi = 3.14139
+         error = 0.0002
+   nsend/block = 6
+   nrecv/block = 5
+ send ms/block = 0.139674 ms
+ recv ms/block = 80.3802 ms
+     bandwidth = 186.376 kbps
+----------------------------------------------------------------------
+HP-a6400z
+blocks broken up to collect cgwin time series
+series size(n) = 5000
+       blksize = 1000
+            pi = 3.14139
+         error = 0.0002
+   nsend/block = 6
+   nrecv/block = 4
+ send ms/block = 0.0790072 ms
+ recv ms/block = 78.3333 ms
+     bandwidth = 179.813 kbps
+----------------------------------------------------------------------
+HP-a6400z
+blocks broken up to collect cgwin time series
+series size(n) = 2e+06
+       blksize = 1000
+            pi = 3.14159
+         error = 5e-07
+   nsend/block = 6
+   nrecv/block = 5
+ send ms/block = 0.0865056 ms
+ recv ms/block = 70.6617 ms
+     bandwidth = 201.352 kbps
+----------------------------------------------------------------------

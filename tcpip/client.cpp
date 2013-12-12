@@ -135,6 +135,15 @@ void client(const char *server, int blocksize, int n){
 	delete[] psum;
 }
 
+void output_cgwin(double *t, int *cgwin, int len){
+	std::cout<<"client: output cgwin info to OUTPUT/cgwin.dat"<<std::endl;
+	FILE *fptr;
+	fptr = fopen("OUTPUT/cgwin.dat", "w");
+	for(int i=0; i < len; i++)
+		fprintf(fptr, "\t%8.3e \t\t %d \n", t[i], cgwin[i]);
+	fclose(fptr);
+}
+
 int main(int argc, char **argv){
 	std::cout<<"client: CPUGHZ of HP a6400z = 1.8 "<<std::endl;
 	std::cout<<"client: CPUGHZ of HP Z200   = 3.4 "<<std::endl;
@@ -153,7 +162,7 @@ int main(int argc, char **argv){
 	std::cout<<std::endl;
 	if(tmp == 1){
 		gl_client_flag = CGWIN_ON;
-		std::cout<<"client: setting cgwin time series"
+		std::cout<<"client: setting cgwin time series "
 			"to max of 10^6 entries"<<std::endl;
 		init_cgwin(1000*1000, cpughz);
 	}
@@ -177,6 +186,9 @@ int main(int argc, char **argv){
 	n = n*blocksize; /* number of terms in series */
 
 	client(argv[1], blocksize, n); 
-	
+
+	if(gl_client_flag == CGWIN_ON)
+		output_cgwin(gl_cgwin.t, gl_cgwin.cgw, gl_cgwin.indx);
+
 	exit_cgwin();
 }
