@@ -87,6 +87,7 @@ void leibniz3(){
 	mic_exit();
 }
 
+
 void leibniz4(){
 	int nmic;
 	mic_init(nmic);
@@ -150,6 +151,7 @@ void leibniz4(){
 	_mm_free(v);
 	mic_exit();
 }
+
 
 int main(){
 	//leibniz1();

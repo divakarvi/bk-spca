@@ -12,7 +12,6 @@ void mic_init(int &nmic){
 	gl_host_nthreads = atoi(s);
 	omp_set_num_threads(gl_host_nthreads);
 
-
 	nmic = _Offload_number_of_devices();
 	s = getenv("MIC_OMP_NUM_THREADS");
 	assrt(s != NULL);

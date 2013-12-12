@@ -1,4 +1,6 @@
 include ../makevars.mk
+CFLAGSXX := -openmp
+LIBS := -openmp
 MODS := ../utils ../xphi-init
 
 ###########
@@ -15,5 +17,5 @@ leibniz.o: leibniz.cpp
 leibniz.s: leibniz.cpp
 -include leibniz.d
 
-leibniz.exe: leibniz.o leibniz_init.o 		\
+leibniz.exe: leibniz.o leibniz_init.o 			\
 	      ../xphi-init ../xphi-init/mic_init.o
