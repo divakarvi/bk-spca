@@ -1,5 +1,5 @@
 CFLAGS := -O3 -Drestrict=__restrict__  -Wshadow -MMD -MP
-CFLAGSXX := -Wno-unused-result
+CFLAGSXX := #-Wno-unused-result
 #############
 .SUFFIXES: 
 .SUFFIXES: .cpp .o .exe .c .d
