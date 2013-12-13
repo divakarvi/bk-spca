@@ -13,8 +13,6 @@ _Z3fmaPdS_S_:
 	
         vfmadd231pd %zmm1{cdab}, %zmm0, %zmm2
 
-	vmovapd %zmm0, (%rdi)
-	vmovapd %zmm1, (%rsi)
         vmovapd %zmm2, (%rdx)
         ret       
 

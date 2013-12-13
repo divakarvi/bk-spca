@@ -11,7 +11,8 @@ _Z3fmaPdS_S_:
         vmovapd (%rsi), %zmm1
 	vmovapd (%rdx), %zmm2
 	
-        vfmadd231pd %zmm1, %zmm0, %zmm2
+	vmovapd %zmm1{badc}, %zmm1
+        vfmadd231pd %zmm1{cdab}, %zmm0, %zmm2
 
         vmovapd %zmm2, (%rdx)
         ret       
