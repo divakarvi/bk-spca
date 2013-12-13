@@ -1,6 +1,3 @@
-	.file "tfma.cpp"
-	.text
-..TXTST0:
 .align    16,0x90
 .globl _Z3fmaPdS_S_
 _Z3fmaPdS_S_:

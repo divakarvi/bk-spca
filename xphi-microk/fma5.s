@@ -7,8 +7,9 @@ _Z3fmaPdS_S_:
         vmovapd (%rdi), %zmm0
         vmovapd (%rsi), %zmm1
 	vmovapd (%rdx), %zmm2
-	
-        vfmadd231pd %zmm1{badc}, %zmm0, %zmm2
+
+	vpermf32x4 $78, %zmm1, %zmm1
+        vfmadd231pd %zmm1{cdab}, %zmm0, %zmm2
 
         vmovapd %zmm2, (%rdx)
         ret       
