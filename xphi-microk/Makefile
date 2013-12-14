@@ -26,3 +26,14 @@ test_asm.exe: test_asm.o 			\
 	      asm8x36x8.o			\
 	      asm8x48x8.o			\
 	      ../utils  ../utils/utils.o
+
+time_asm.o: time_asm.cpp
+-include time_asm.d
+
+time_asm.exe: time_asm.o 					\
+	      asm8x1x8.o 					\
+	      asm8x12x8.o					\
+	      asm8x24x8.o					\
+	      asm8x36x8.o					\
+	      asm8x48x8.o					\
+	      ../utils  ../utils/utils.o ../utils/Table.o
