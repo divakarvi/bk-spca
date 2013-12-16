@@ -1,0 +1,8 @@
+export PATH=$PATH:$HOME/bin:.
+export EDITOR=nano
+export PYTHONSTARTUP=$HOME/.pythonrc
+export OMP_NUM_THREADS=244
+export MIC_OMP_NUM_THREADS=244
+export KMP_AFFINITY=compact
+export MIC_KMP_AFFINITY=compact
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/apps/intel/13/composer_xe_2013.2.146/mkl/lib/mic
