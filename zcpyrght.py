@@ -27,6 +27,17 @@ def gplnotice(fname):
     assert not os.path.isdir(tmp)
 
     f1 = open(fname, 'r')
+    l1 = f1.readline()
+    l2 = f1.readline()
+    l3 = f1.readline()
+    s = 'Divakar'
+    if s in l1 or s in l2 or s in l3:
+        f1.close()
+        print(fname + ' already copyrighted')
+        return
+    f1.close()
+    f1 = open(fname, 'r')
+
     f2 = open(tmp, 'w')
     
     f2.write(prefix)
@@ -51,7 +62,7 @@ def verify(exlist, s):
     """
     assert isinstance(s, str)
     for ss in exlist:
-        if ss in s:
+        if s.find(ss)==0:
             return False
 
     return True
@@ -63,12 +74,15 @@ def recurse():
         if '.git' in dirr:
             continue
         if not verify(skipdir, dirr):
+            print('SKIPPING '+dirr)
             continue
         for fname in flist:
             if not verify(skipfile, fname):
+                print('SKIPPING '+fname)
                 continue
-            if '.h' in fname or '.c' in fname or '.hh' in fname or \
-                    '.cpp' in fname or '.cu' in fname:
+            if '.h'==fname[-2:] or '.c'==fname[-2:] or \
+                    '.hh'==fname[-3:] or '.cpp'==fname[-4:] \
+                    or '.cu'==fname[-3:]:
                 fullname = os.path.join(dirr, fname)
                 gplnotice(fullname)
             
