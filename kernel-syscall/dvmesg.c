@@ -19,6 +19,8 @@
 #include <stdlib.h>
 #include "dvmesg.h"
 
+#define __NR_set_dvflag 314
+
 int main(int argc, char **argv){
 	if(argc==1){
 		printf("100<=flag<200: pty_open() \n");
