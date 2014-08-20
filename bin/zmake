@@ -1,0 +1,45 @@
+#! /usr/bin/env python
+from __future__ import print_function
+from __future__ import absolute_import
+import os, sys
+
+def find_root():
+    dir = os.path.abspath('.')
+    assert dir[0] == '/'
+    relpath = str()
+    
+    while dir.find('/',1) != -1: #check there is a / after dir[0]
+        (dir, tmp) = os.path.split(dir)
+        relpath = tmp+'/'+relpath
+        if os.path.isfile(dir+'/root.mk'):
+            root = dir
+            relpath = relpath[:-1] #remove trailing /
+            return (root, relpath)
+    
+    print('zmake cannot find root.mk')
+    print('zmake must be run in subdir of root (but not at root)')
+    sys.exit(-1)
+
+def copy_rules(root, relpath):
+    fi = open(root+'/rules.mk')
+    
+    if os.path.isfile('rules.mk'):
+        ans = raw_input('Delete exisiting rules.mk? Say yes or no: ')
+        if(ans != 'yes'):
+            sys.exit(-1)
+    
+    fo = open('rules.mk', 'w')
+    for l in fi:
+        print(l)
+        if l[:-1].find('ROOT') != -1:
+            l = l[:-1] + '/' + relpath + '\n'
+        fo.write(l)
+        
+    fi.close()
+    fo.close()
+
+if __name__ == '__main__':
+    (root, relpath) = find_root()
+    print(root, relpath)
+    copy_rules(root, relpath)
+

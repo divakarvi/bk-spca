@@ -4,13 +4,8 @@ CFLAGS 	 := -O3 -prec-div -no-ftz -restrict -Wshadow -MMD -MP
 
 MPIINC 	 := `mpiCC -showme:compile`
 FFTWINC  := -I $$FFTW_INC
-#MKLINC 	 := -I $$MKL_INC
 MKLINC := -mkl
 
-#MKLLIBS  := -L$$MKL_LINK -lmkl_intel_lp64 -lmkl_sequential -lmkl_core 	\
-#	    -lpthread
-#MKLTHRD  := -L$$MKL_LINK -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core \
-#	    -lpthread -lm
 MKLLIBS := -mkl=sequential
 MKLTHRD := -mkl=parallel
 FFTWLIB  :=  -L $$FFTW_LINK -lfftw3
