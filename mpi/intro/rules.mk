@@ -1,5 +1,5 @@
 #########
-DIR := $(ROOT)
+DIR := $(ROOT)/mpi/intro
 
 #########
 MPIINC 	 := `mpiCC -showme:compile`
@@ -16,7 +16,7 @@ endif
 #########
 CPP 	 := icpc
 CFLAGS 	 := -O3 -prec-div -no-ftz -restrict -Wshadow -MMD -MP
-CFLAGSXX := 
+CFLAGSXX := $(MPIINC)
 
 #########
 .SUFFIXES:
@@ -29,3 +29,5 @@ $(DIR)/%.o: $(DIR)/%.s
 	$(CPP) $(CFLAGS) $(CFLAGSXX) $(EXTRNL) -o $@ -c $< 
 
 #########
+$(DIR)/procname.o: $(DIR)/procname.cpp
+-include $(DIR)/procname.d

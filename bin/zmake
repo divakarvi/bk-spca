@@ -30,16 +30,41 @@ def copy_rules(root, relpath):
     
     fo = open('rules.mk', 'w')
     for l in fi:
-        print(l)
         if l[:-1].find('ROOT') != -1:
             l = l[:-1] + '/' + relpath + '\n'
+            print(l[:-1])
         fo.write(l)
         
     fi.close()
     fo.close()
+    print('copied rules.mk from root\n')
+
+def copy_make(root, relpath):
+    fi = open(root+'/Makefile')
+    
+    if os.path.isfile('Makefile'):
+        ans = raw_input('Delete exisiting Makefile? Say yes or no: ')
+        if(ans != 'yes'):
+            sys.exit(-1)
+    
+    fo = open('Makefile', 'w')
+    for l in fi:
+        if l[:-1].find('include root.mk') != -1:
+            lvls = relpath.count('/') + 1 #number of levels to go up to root.mk
+            l = str()
+            for i in range(lvls):
+                l = l + '../'
+            l = 'include '+ l + 'root.mk'
+            l = l + '\n' + 'DIR := $(ROOT)/' + relpath + '\n'
+            print(l[:-1])
+        fo.write(l)
+
+    fi.close()
+    fo.close()
+    print('copied Makefile from root')
 
 if __name__ == '__main__':
     (root, relpath) = find_root()
-    print(root, relpath)
+    print('ROOT = ', root, '\nrel path = ', relpath,'\n')
     copy_rules(root, relpath)
-
+    copy_make(root, relpath)

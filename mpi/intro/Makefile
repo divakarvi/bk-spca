@@ -1,4 +1,5 @@
-include root.mk
+include ../../root.mk
+DIR := $(ROOT)/mpi/intro
 
 #########
 MKLLIBS := -mkl=sequential
@@ -14,7 +15,7 @@ endif
 
 #########
 CPP  := icpc
-LIBS := 
+LIBS := $(MPILIBS)
 
 #########
 .SUFFIXES:
@@ -35,3 +36,7 @@ cleanxx:
 	rm *.o; rm *.exe; rm pbs*.*; rm *.d; rm DBG/outP*;
 
 ########
+
+procname.exe: $(DIR)/procname.o
+
+include $(DIR)/rules.mk
