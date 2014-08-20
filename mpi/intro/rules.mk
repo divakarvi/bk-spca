@@ -1,17 +1,12 @@
 #########
+SDIR := $(DIR)
 DIR := $(ROOT)/mpi/intro
 
 #########
 MPIINC 	 := `mpiCC -showme:compile`
 FFTWINC  := -I $$FFTW_INC
 MKLINC := -mkl
-
-
 DVMPIINC := `$$HOME/openmpi-1.6.3/bin/mpiCC -showme:compile`
-ifeq ($(DV),on) #DV to be set or unset externally
-    $(info USING DV BUILD OF OPENMPI)
-    MPIINC   := $(DVMPIINC)
-endif
 
 #########
 CPP 	 := icpc
@@ -31,3 +26,6 @@ $(DIR)/%.o: $(DIR)/%.s
 #########
 $(DIR)/procname.o: $(DIR)/procname.cpp
 -include $(DIR)/procname.d
+
+#########
+DIR := $(SDIR)

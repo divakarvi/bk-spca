@@ -1,4 +1,5 @@
-include root.mk
+include ../../root.mk
+DIR := $(ROOT)/mpi/init
 
 #########
 MKLLIBS := -mkl=sequential
@@ -9,7 +10,7 @@ DVMPILIBS:= `$$HOME/openmpi-1.6.3/bin/mpiCC -showme:link`
 
 #########
 CPP  := icpc
-LIBS := 
+LIBS := $(MPILIBS)
 
 #########
 .SUFFIXES:
@@ -33,3 +34,5 @@ cleanxx:
 	rm *.o; rm *.exe; rm pbs*.*; rm *.d; rm DBG/outP*;
 
 ########
+include rules.mk
+mpi_init.o: $(DIR)/mpi_init.o

@@ -13,7 +13,7 @@
  * GNU General Public License for more details.
  */
 
-#include "../utils/utils.hh"
+#include "../../utils/utils.hh"
 #include "mpi_init.hh"
 #include <mpi.h>
 #include <cstdio>
@@ -42,3 +42,11 @@ void BlockDivide(long n, int P, long *fst){
 		fst[p+1] = fst[p]+Q;
 }
 
+
+void mpi_print_name(int rank){
+	char procname[200];
+	int procnamelen;
+	MPI_Get_processor_name(procname, &procnamelen);
+	std::cout<<"proc name = "<<procname<<" rank = "<<rank<<std::endl;
+	MPI_Barrier(MPI_COMM_WORLD);
+}

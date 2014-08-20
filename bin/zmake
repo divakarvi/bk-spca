@@ -20,17 +20,17 @@ def find_root():
     print('zmake must be run in subdir of root (but not at root)')
     sys.exit(-1)
 
-def copy_rules(root, relpath):
+def copy_rules(root, relpath): #copy rules.mk from root
     fi = open(root+'/rules.mk')
     
     if os.path.isfile('rules.mk'):
-        ans = raw_input('Delete exisiting rules.mk? Say yes or no: ')
+        ans = raw_input('Delete existing rules.mk? Say yes or no: ')
         if(ans != 'yes'):
             sys.exit(-1)
     
     fo = open('rules.mk', 'w')
     for l in fi:
-        if l[:-1].find('ROOT') != -1:
+        if l[:-1].find('DIR := $(ROOT)') != -1:
             l = l[:-1] + '/' + relpath + '\n'
             print(l[:-1])
         fo.write(l)
@@ -39,11 +39,11 @@ def copy_rules(root, relpath):
     fo.close()
     print('copied rules.mk from root\n')
 
-def copy_make(root, relpath):
+def copy_make(root, relpath): #copy makefile from root
     fi = open(root+'/Makefile')
     
     if os.path.isfile('Makefile'):
-        ans = raw_input('Delete exisiting Makefile? Say yes or no: ')
+        ans = raw_input('Delete existing Makefile? Say yes or no: ')
         if(ans != 'yes'):
             sys.exit(-1)
     

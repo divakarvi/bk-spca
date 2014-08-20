@@ -1,6 +1,6 @@
 #########
 SDIR := $(DIR)
-DIR := $(ROOT)
+DIR := $(ROOT)/mpi/init
 
 #########
 MPIINC 	 := `mpiCC -showme:compile`
@@ -11,7 +11,7 @@ DVMPIINC := `$$HOME/openmpi-1.6.3/bin/mpiCC -showme:compile`
 #########
 CPP 	 := icpc
 CFLAGS 	 := -O3 -prec-div -no-ftz -restrict -Wshadow -MMD -MP
-CFLAGSXX := 
+CFLAGSXX := $(MPIINC) 
 
 #########
 $(DIR)/%.o: $(DIR)/%.cpp
@@ -22,6 +22,7 @@ $(DIR)/%.o: $(DIR)/%.s
 	$(CPP) $(CFLAGS) $(CFLAGSXX) $(EXTRNL) -o $@ -c $< 
 
 #########
+$(DIR)/mpi_init.o: $(DIR)/mpi_init.cpp
 
 #########
 DIR := $(SDIR)

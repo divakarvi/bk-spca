@@ -14,7 +14,7 @@
  */
 
 #ifndef __MPIINIT21NOV2013__
-#define __MPIINITS21NOV2013__
+#define __MPIINIT21NOV2013__
 
 enum gl_mpi_onoff_enum {MPION, MPIOFF};
 extern enum gl_mpi_onoff_enum gl_mpi_onoff;
@@ -42,4 +42,9 @@ void mpi_finalize();
  * blocks are nearly even
  */
 void BlockDivide(long n, int P, long *fst);
+
+/*
+ * print name of node and rank on std::cout
+ */
+void mpi_print_name(int rank);
 #endif
