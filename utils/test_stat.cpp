@@ -14,6 +14,7 @@
  */
 
 #include "StatVector.hh"
+#include <iostream>
 
 //n=number of items to be inserted
 //all numbers inserted are from 0 to 255
@@ -23,10 +24,10 @@ void runstatv(int n){
 	for(int i=1; i <= n; i++){
 		v.insert(i*pm%256);
 	}
-	cout<<"median = "<<v.median()<<endl;
-	cout<<"mean = "<<v.mean()<<endl;
-	cout<<"max = "<<v.max()<<endl;
-	cout<<"min = "<<v.min()<<endl;
+	std::cout<<"median = "<<v.median()<<std::endl;
+	std::cout<<"mean = "<<v.mean()<<std::endl;
+	std::cout<<"max = "<<v.max()<<std::endl;
+	std::cout<<"min = "<<v.min()<<std::endl;
 }
 
 int main(){
