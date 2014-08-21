@@ -1,0 +1,8 @@
+TACC: Starting up job 2123481
+TACC: Setting up parallel environment for OpenMPI mpirun.
+TACC: Setup complete. Running job script.
+TACC: starting parallel tasks...
+proc name = c341-314.ls4.tacc.utexas.edu rank = 1
+proc name = c341-306.ls4.tacc.utexas.edu rank = 0
+TACC: Shutting down parallel environment.
+TACC: Shutdown complete. Exiting.

@@ -1,28 +1,45 @@
-include ../makevars.mk
-CFLAGSXX := $(MPIINC)
-LIBS := $(MPILIBS)
-MODS := ../utils ../mpi-init
+include ../../root.mk
+DIR := $(ROOT)/mpi/exchange
 
-######
-.PHONY: $(MODS)
+#########
+MKLLIBS := -mkl=sequential
+MKLTHRD := -mkl=parallel
+FFTWLIB :=  -L $$FFTW_LINK -lfftw3
+MPILIBS := `mpiCC -showme:link`
+DVMPILIBS:= `$$HOME/openmpi-1.6.3/bin/mpiCC -showme:link`
 
-$(MODS):
-	make --directory=$@ all
+#########
+CPP  := icpc
+LIBS := $(MPILIBS) 
 
-######
-exchange.o: exchange.cpp
--include exchange.d
+#########
+.SUFFIXES:
+.SUFFIXES: .cpp .o .exe .s .d
+%.s: %.cpp
+%.o: %.cpp
+%.exe: %.cpp
+%.o: %.s
+%.exe: %.s
+%.exe: %.o
+%.exe: 
+	$(CPP) $(EXTRNL) -o $@ $(filter %.o,$^) $(LIBS)
 
-test_xchg.o: test_xchg.cpp
--include test_xchg.d
+########
+.PHONY: clean cleanx cleanxx
+clean:
+	rm *.o; rm *.exe; rm a.out;
+cleanx:
+	rm pbs*.*; 
+cleanxx:
+	rm *.o; rm *.exe; rm pbs*.*; rm *.d; rm DBG/outP*;
 
-test_xchg.exe: test_xchg.o exchange.o 				\
-	       ../utils ../utils/utils.o			\
-	       ../mpi-init ../mpi-init/mpi_init.o
-
-time_xchg.o: time_xchg.cpp
--include time_xchg.d
-
-time_xchg.exe: time_xchg.o exchange.o 				\
-	       ../utils ../utils/utils.o ../utils/Table.o 	\
-	       ../mpi-init ../mpi-init/mpi_init.o
+########
+include rules.mk
+include $(ROOT)/utils/rules.mk
+include $(ROOT)/mpi/init/rules.mk
+test_xchg.exe: $(DIR)/test_xchg.o $(DIR)/exchange.o 			\
+	       $(ROOT)/utils $(ROOT)/utils/utils.o			\
+	       $(ROOT)/mpi/init/mpi_init.o
+time_xchg.exe: $(DIR)/time_xchg.o $(DIR)/exchange.o 			\
+	       $(ROOT)/utils/utils.o $(ROOT)/utils/Table.o		\
+	       $(ROOT)/mpi/init/mpi_init.o
