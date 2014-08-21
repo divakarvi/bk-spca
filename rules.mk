@@ -1,6 +1,6 @@
 #########
-SDIR := $(DIR)
-DIR := $(ROOT)
+saved := $(d)
+d := $(r)
 
 #########
 MPIINC 	 := `mpiCC -showme:compile`
@@ -10,18 +10,19 @@ DVMPIINC := `$$HOME/openmpi-1.6.3/bin/mpiCC -showme:compile`
 
 #########
 CPP 	 := icpc
-CFLAGS 	 := -O3 -prec-div -no-ftz -restrict -Wshadow -MMD -MP
-CFLAGSXX := 
+$(d)CFLAGS := -O3 -prec-div -no-ftz -restrict -Wshadow -MMD -MP
+CFLAGSXX :=
+$(d)CFLAGS := $($(d)CFLAGS) $(CFLAGSXX)
 
 #########
-$(DIR)/%.o: $(DIR)/%.cpp
-	$(CPP) $(CFLAGS) $(CFLAGSXX) $(EXTRNL) -o $@ -c $<
-$(DIR)/%.s: $(DIR)/%.cpp 
-	$(CPP) $(CFLAGS) -fno-verbose-asm $(CFLAGSXX) $(EXTRNL) -o $@ -S $< 
-$(DIR)/%.o: $(DIR)/%.s 
-	$(CPP) $(CFLAGS) $(CFLAGSXX) $(EXTRNL) -o $@ -c $< 
+$(d)/%.o: $(d)/%.cpp
+	$(CPP) $($(d)CFLAGS) $($(d)EXTRNL) -o $@ -c $<
+$(d)/%.s: $(d)/%.cpp 
+	$(CPP) $($(d)CFLAGS) -fno-verbose-asm  $($(d)EXTRNL) -o $@ -S $< 
+$(d)/%.o: $(d)/%.s 
+	$(CPP) $($(d)CFLAGS) $($(d)EXTRNL) -o $@ -c $< 
 
 #########
 
 #########
-DIR := $(SDIR)
+d := $(saved)

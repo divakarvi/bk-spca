@@ -24,13 +24,19 @@ def copy_rules(root, relpath): #copy rules.mk from root
     fi = open(root+'/rules.mk')
     
     if os.path.isfile('rules.mk'):
-        ans = raw_input('Delete existing rules.mk? Say yes or no: ')
+        ans = raw_input('Move existing rules.mk? Say yes or no: ')
         if(ans != 'yes'):
             sys.exit(-1)
+        else:
+            fname = 'rules.mk.mk'
+            while os.path.isfile(fname):
+                fname = fname + '.mk'
+            os.system('mv rules.mk ' + fname)
+
     
     fo = open('rules.mk', 'w')
     for l in fi:
-        if l[:-1].find('DIR := $(ROOT)') != -1:
+        if l[:-1].find('d := $(r)') != -1:
             l = l[:-1] + '/' + relpath + '\n'
             print(l[:-1])
         fo.write(l)
@@ -43,9 +49,14 @@ def copy_make(root, relpath): #copy makefile from root
     fi = open(root+'/Makefile')
     
     if os.path.isfile('Makefile'):
-        ans = raw_input('Delete existing Makefile? Say yes or no: ')
+        ans = raw_input('Move existing Makefile? Say yes or no: ')
         if(ans != 'yes'):
             sys.exit(-1)
+        else:
+            fname = 'Makefile.mk'
+            while os.path.isfile(fname):
+                fname = fname + '.mk'
+            os.system('mv Makefile ' + fname)
     
     fo = open('Makefile', 'w')
     for l in fi:
@@ -54,8 +65,10 @@ def copy_make(root, relpath): #copy makefile from root
             l = str()
             for i in range(lvls):
                 l = l + '../'
-            l = 'include '+ l + 'root.mk'
-            l = l + '\n' + 'DIR := $(ROOT)/' + relpath + '\n'
+            l = 'include '+ l + 'root.mk' + '\n'
+            print(l[:-1])
+        elif l[:-1].find('d := $(r)') != -1:
+            l = 'd := $(r)/' + relpath + '\n'
             print(l[:-1])
         fo.write(l)
 
