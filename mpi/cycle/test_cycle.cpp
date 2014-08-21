@@ -13,8 +13,8 @@
  * GNU General Public License for more details.
  */
 
-#include "../utils/utils.hh"
-#include "../mpi-init/mpi_init.hh"
+#include "../../utils/utils.hh"
+#include "../init/mpi_init.hh"
 #include "cycle.hh"
 
 /*

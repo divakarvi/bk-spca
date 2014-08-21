@@ -13,11 +13,11 @@
  * GNU General Public License for more details.
  */
 
-#include "../utils/utils.hh"
-#include "../utils/TimeStamp.hh"
-#include "../utils/StatVector.hh"
-#include "../utils/Table.hh"
-#include "../mpi-init/mpi_init.hh"
+#include "../../utils/utils.hh"
+#include "../../utils/TimeStamp.hh"
+#include "../../utils/StatVector.hh"
+#include "../../utils/Table.hh"
+#include "../init/mpi_init.hh"
 #include "cycle.hh"
 
 /*
@@ -52,6 +52,7 @@ double time(int rank, int nprocs, int n){
 int main(){
 	int rank, nprocs;
 	mpi_initialize(rank, nprocs);
+	mpi_print_name(rank);
 
 	const char *rows[6] = {"1e3", "1e4", "1e5", 
 			       "1e6", "1e7", "1e8"};
