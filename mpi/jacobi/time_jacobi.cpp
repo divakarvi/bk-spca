@@ -13,9 +13,9 @@
  * GNU General Public License for more details.
  */
 
-#include "../utils/utils.hh"
-#include "../utils/TimeStamp.hh"
-#include "../mpi-init/mpi_init.hh"
+#include "../../utils/utils.hh"
+#include "../../utils/TimeStamp.hh"
+#include "../init/mpi_init.hh"
 #include "jacobi.hh"
 #include <fstream>
 
@@ -41,7 +41,9 @@ double time_jacobi(int rank, int nprocs,
 int main(){
 	int rank, nprocs;
 	mpi_initialize(rank, nprocs);
-	
+	mpi_print_name(rank);
+
+
 	int dim1 = 100*1000;
 	int dim2 = 10*1000;
 	int nitns = 100;
@@ -51,9 +53,9 @@ int main(){
 	cycles = cycles/(1.0*dim1*(dim2+2))/(1.0*nitns);
 	
 	if(rank == 0){
-		verify_dir("OUTPUT");
+		verify_dir("output");
 		char fname[200];
-		sprintf(fname, "OUTPUT/time_jacobi_NP%d.txt", nprocs);
+		sprintf(fname, "output/time_jacobi_NP%d.txt", nprocs);
 		std::ofstream ofile(fname, std::ios::app);
 		
 		ofile<<"             dim1 = "<<dim1<<std::endl;
