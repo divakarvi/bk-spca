@@ -13,8 +13,8 @@
  * GNU General Public License for more details.
  */
 
-#include "../utils/utils.hh"
-#include "../utils/TimeStamp.hh"
+#include "../../utils/utils.hh"
+#include "../../utils/TimeStamp.hh"
 #include "bcast.hh"
 #include <mpi.h>
 

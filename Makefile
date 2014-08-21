@@ -14,6 +14,7 @@ LIBS :=
 #########
 .SUFFIXES:
 .SUFFIXES: .cpp .o .exe .s .d
+%: %.cpp
 %.s: %.cpp
 %.o: %.cpp
 %.exe: %.cpp

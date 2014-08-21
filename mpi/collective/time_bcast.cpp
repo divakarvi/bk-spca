@@ -13,10 +13,10 @@
  * GNU General Public License for more details.
  */
 
-#include "../utils/utils.hh"
-#include "../utils/Table.hh"
-#include "../utils/StatVector.hh"
-#include "../mpi-init/mpi_init.hh"
+#include "../../utils/utils.hh"
+#include "../../utils/Table.hh"
+#include "../../utils/StatVector.hh"
+#include "../init/mpi_init.hh"
 #include "bcast.hh"
 
 enum bcast_flag_enum {BCAST_MPI, BCAST_SR};
@@ -59,8 +59,8 @@ void make_table(int rank, int nprocs,
 	const char* cols[3] = {"nprocs", "bw", "cycles"};
 	double data[12];
 
-	verify_dir("OUTPUT");
-	link_cout("OUTPUT/bcast.txt", LC_APP);
+	verify_dir("output");
+	link_cout("output/bcast.txt", LC_APP);
 		
 	for(int  i=0; i < 4; i++){
 		int n = nlist[i];
@@ -85,6 +85,7 @@ void make_table(int rank, int nprocs,
 int main(){
 	int rank, nprocs;
 	mpi_initialize(rank, nprocs);
+	mpi_print_name(rank);
 
 	make_table(rank, nprocs, "mpi bcast", BCAST_MPI);
 	make_table(rank, nprocs, "send/recv bcast", BCAST_SR);
