@@ -1,5 +1,5 @@
 include ../../root.mk
-d := $(r)/mpi/intro
+D := $(R)/mpi/intro
 
 #########
 MKLLIBS := -mkl=sequential
@@ -10,7 +10,7 @@ DVMPILIBS:= `$$HOME/openmpi-1.6.3/bin/mpiCC -showme:link`
 
 #########
 CPP  := icpc
-$(d)LIBS := $(MPILIBS)
+LIBS := $(MPILIBS)
 
 #########
 .SUFFIXES:
@@ -23,7 +23,7 @@ $(d)LIBS := $(MPILIBS)
 %.exe: %.s
 %.exe: %.o
 %.exe: 
-	$(CPP) $($(d)EXTRNLL) -o $@ $(filter %.o,$^) $($(d)LIBS)
+	$(CPP) $(EXTRNLL) -o $@ $(filter %.o,$^) $(LIBS)
 
 ########
 .PHONY: clean cleanx cleanxx
@@ -35,5 +35,5 @@ cleanxx:
 	rm *.o; rm *.exe; rm pbs*.*; rm *.d; rm DBG/outP*;
 
 ########
-include $(d)/rules.mk
-procname.exe: $(d)/procname.o
+include $(D)/rules.mk
+procname.exe: $(D)/procname.o

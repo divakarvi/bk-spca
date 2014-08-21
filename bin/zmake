@@ -36,7 +36,7 @@ def copy_rules(root, relpath): #copy rules.mk from root
     
     fo = open('rules.mk', 'w')
     for l in fi:
-        if l[:-1].find('d := $(r)') != -1:
+        if l[:-1].find('D := $(R)') != -1:
             l = l[:-1] + '/' + relpath + '\n'
             print(l[:-1])
         fo.write(l)
@@ -67,8 +67,8 @@ def copy_make(root, relpath): #copy makefile from root
                 l = l + '../'
             l = 'include '+ l + 'root.mk' + '\n'
             print(l[:-1])
-        elif l[:-1].find('d := $(r)') != -1:
-            l = 'd := $(r)/' + relpath + '\n'
+        elif l[:-1].find('D := $(R)') != -1:
+            l = 'D := $(R)/' + relpath + '\n'
             print(l[:-1])
         fo.write(l)
 
