@@ -1,32 +1,31 @@
 #########
-SDIR := $(DIR)
-DIR := $(ROOT)/mpi/cycle
+saved := $(D)
+D := $(R)/mpi/cycle
 
 #########
-MPIINC 	 := `mpiCC -showme:compile`
-FFTWINC  := -I $$FFTW_INC
-MKLINC := -mkl
-DVMPIINC := `$$HOME/openmpi-1.6.3/bin/mpiCC -showme:compile`
+$(D)CFLAGS := $(CFLAGS) $(MPIINC)
 
 #########
-CPP 	 := icpc
-CFLAGS 	 := -O3 -prec-div -no-ftz -restrict -Wshadow -MMD -MP
-CFLAGSXX := $(MPIINC)
+$(D)/%.o: $(D)/%.cpp
+	$(eval TMPTMP = $(CPP) $($(@D)CFLAGS) $($(@D)EXTRNL) -o $@ -c $<)
+	@echo $(subst $(R)/, , $(TMPTMP))
+	@ $(TMPTMP)
+$(D)/%.s: $(D)/%.cpp 
+	$(eval TMPTMP = $(CPP) $($(@D)CFLAGS) -fno-verbose-asm  \
+	$($(@D)EXTRNL) -o $@ -S $<)
+	@echo $(subst $(R)/, , $(TMPTMP))
+	@ $(TMPTMP)
+$(D)/%.o: $(D)/%.s 
+	$(CPP) $($(@D)CFLAGS) $($(@D)EXTRNL) -o $@ -c $< 
+	@echo $(subst $(R)/, , $(TMPTMP))
+	@ $(TMPTMP)
 
 #########
-$(DIR)/%.o: $(DIR)/%.cpp
-	$(CPP) $(CFLAGS) $(CFLAGSXX) $(EXTRNL) -o $@ -c $<
-$(DIR)/%.s: $(DIR)/%.cpp 
-	$(CPP) $(CFLAGS) -fno-verbose-asm $(CFLAGSXX) $(EXTRNL) -o $@ -S $< 
-$(DIR)/%.o: $(DIR)/%.s 
-	$(CPP) $(CFLAGS) $(CFLAGSXX) $(EXTRNL) -o $@ -c $< 
-
+$(D)/cycle.o: $(D)/cycle.cpp
+-include $(D)/cycle.d
+$(D)/test_cycle.o: $(D)/test_cycle.cpp
+-include $(D)/test_cycle.d
+$(D)/time_cycle.o: $(D)/time_cycle.cpp
+-include $(D)/time_cycle.d
 #########
-$(DIR)/cycle.o: $(DIR)/cycle.cpp
--include $(DIR)/cycle.d
-$(DIR)/test_cycle.o: $(DIR)/test_cycle.cpp
--include $(DIR)/test_cycle.d
-$(DIR)/time_cycle.o: $(DIR)/time_cycle.cpp
--include $(DIR)/time_cycle.d
-#########
-DIR := $(SDIR)
+D := $(saved)

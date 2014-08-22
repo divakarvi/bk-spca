@@ -1,33 +1,32 @@
 #########
-SDIR := $(DIR)
-DIR := $(ROOT)/mpi/jacobi
+saved := $(D)
+D := $(R)/mpi/jacobi
 
 #########
-MPIINC 	 := `mpiCC -showme:compile`
-FFTWINC  := -I $$FFTW_INC
-MKLINC := -mkl
-DVMPIINC := `$$HOME/openmpi-1.6.3/bin/mpiCC -showme:compile`
+$(D)CFLAGS := $(CFLAGS) -openmp -fno-inline-functions $(MPIINC) 
 
 #########
-CPP 	 := icpc
-CFLAGS 	 := -O3 -prec-div -no-ftz -restrict -Wshadow -MMD -MP
-CFLAGSXX := -openmp -fno-inline-functions $(MPIINC)
+$(D)/%.o: $(D)/%.cpp
+	$(eval TMPTMP = $(CPP) $($(@D)CFLAGS) $($(@D)EXTRNL) -o $@ -c $<)
+	@echo $(subst $(R)/, , $(TMPTMP))
+	@ $(TMPTMP)
+$(D)/%.s: $(D)/%.cpp 
+	$(eval TMPTMP = $(CPP) $($(@D)CFLAGS) -fno-verbose-asm  \
+	$($(@D)EXTRNL) -o $@ -S $<)
+	@echo $(subst $(R)/, , $(TMPTMP))
+	@ $(TMPTMP)
+$(D)/%.o: $(D)/%.s 
+	$(CPP) $($(@D)CFLAGS) $($(@D)EXTRNL) -o $@ -c $< 
+	@echo $(subst $(R)/, , $(TMPTMP))
+	@ $(TMPTMP)
 
 #########
-$(DIR)/%.o: $(DIR)/%.cpp
-	$(CPP) $(CFLAGS) $(CFLAGSXX) $(EXTRNL) -o $@ -c $<
-$(DIR)/%.s: $(DIR)/%.cpp 
-	$(CPP) $(CFLAGS) -fno-verbose-asm $(CFLAGSXX) $(EXTRNL) -o $@ -S $< 
-$(DIR)/%.o: $(DIR)/%.s 
-	$(CPP) $(CFLAGS) $(CFLAGSXX) $(EXTRNL) -o $@ -c $< 
+$(D)/jacobi.o: $(D)/jacobi.cpp
+-include $(D)/jacobi.d
+$(D)/test_jacobi.o: $(D)/test_jacobi.cpp
+-include $(D)/test_jacobi.d
+$(D)/time_jacobi.o: $(D)/time_jacobi.cpp
+-include $(D)/time_jacobi.d
 
 #########
-$(DIR)/jacobi.o: $(DIR)/jacobi.cpp
--include $(DIR)/jacobi.d
-$(DIR)/test_jacobi.o: $(DIR)/test_jacobi.cpp
--include $(DIR)/test_jacobi.d
-$(DIR)/time_jacobi.o: $(DIR)/time_jacobi.cpp
--include $(DIR)/time_jacobi.d
-
-#########
-DIR := $(SDIR)
+D := $(saved)

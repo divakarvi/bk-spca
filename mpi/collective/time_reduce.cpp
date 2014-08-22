@@ -13,10 +13,10 @@
  * GNU General Public License for more details.
  */
 
-#include "../utils/utils.hh"
-#include "../utils/Table.hh"
-#include "../utils/StatVector.hh"
-#include "../mpi-init/mpi_init.hh"
+#include "../../utils/utils.hh"
+#include "../../utils/Table.hh"
+#include "../../utils/StatVector.hh"
+#include "../init/mpi_init.hh"
 #include "reduce.hh"
 #include <iostream>
 #include <fstream>
