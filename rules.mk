@@ -3,24 +3,22 @@ saved := $(D)
 D := $(R)
 
 #########
-MPIINC 	 := `mpiCC -showme:compile`
-FFTWINC  := -I $$FFTW_INC
-MKLINC := -mkl
-DVMPIINC := `$$HOME/openmpi-1.6.3/bin/mpiCC -showme:compile`
-
-#########
-CPP 	 := icpc
-$(D)CFLAGS := -O3 -prec-div -no-ftz -restrict -Wshadow -MMD -MP
-CFLAGSXX :=
-$(D)CFLAGS := $($(D)CFLAGS) $(CFLAGSXX)
+$(D)CFLAGS := $(CFLAGS) 
 
 #########
 $(D)/%.o: $(D)/%.cpp
-	$(CPP) $($(@D)CFLAGS) $($(@D)EXTRNL) -o $@ -c $<
+	$(eval TMPTMP = $(CPP) $($(@D)CFLAGS) $($(@D)EXTRNL) -o $@ -c $<)
+	@echo $(subst $(R)/, , $(TMPTMP))
+	@ $(TMPTMP)
 $(D)/%.s: $(D)/%.cpp 
-	$(CPP) $($(@D)CFLAGS) -fno-verbose-asm  $($(@D)EXTRNL) -o $@ -S $< 
+	$(eval TMPTMP = $(CPP) $($(@D)CFLAGS) -fno-verbose-asm  \
+	$($(@D)EXTRNL) -o $@ -S $<)
+	@echo $(subst $(R)/, , $(TMPTMP))
+	@ $(TMPTMP)
 $(D)/%.o: $(D)/%.s 
 	$(CPP) $($(@D)CFLAGS) $($(@D)EXTRNL) -o $@ -c $< 
+	@echo $(subst $(R)/, , $(TMPTMP))
+	@ $(TMPTMP)
 
 #########
 

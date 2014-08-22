@@ -1,38 +1,37 @@
 #########
-SDIR := $(DIR)
-DIR := $(ROOT)/utils
+saved := $(D)
+D := $(R)/utils
 
 #########
-MPIINC 	 := `mpiCC -showme:compile`
-FFTWINC  := -I $$FFTW_INC
-MKLINC := -mkl
-DVMPIINC := `$$HOME/openmpi-1.6.3/bin/mpiCC -showme:compile`
+$(D)CFLAGS := $(CFLAGS) -fPIC
 
 #########
-CPP 	 := icpc
-CFLAGS 	 := -O3 -prec-div -no-ftz -restrict -Wshadow -MMD -MP
-CFLAGSXX := -fPIC
+$(D)/%.o: $(D)/%.cpp
+	$(eval TMPTMP = $(CPP) $($(@D)CFLAGS) $($(@D)EXTRNL) -o $@ -c $<)
+	@echo $(subst $(R)/, , $(TMPTMP))
+	@ $(TMPTMP)
+$(D)/%.s: $(D)/%.cpp 
+	$(eval TMPTMP = $(CPP) $($(@D)CFLAGS) -fno-verbose-asm  \
+	$($(@D)EXTRNL) -o $@ -S $<)
+	@echo $(subst $(R)/, , $(TMPTMP))
+	@ $(TMPTMP)
+$(D)/%.o: $(D)/%.s 
+	$(CPP) $($(@D)CFLAGS) $($(@D)EXTRNL) -o $@ -c $< 
+	@echo $(subst $(R)/, , $(TMPTMP))
+	@ $(TMPTMP)
 
 #########
-$(DIR)/%.o: $(DIR)/%.cpp
-	$(CPP) $(CFLAGS) $(CFLAGSXX) $(EXTRNL) -o $@ -c $<
-$(DIR)/%.s: $(DIR)/%.cpp 
-	$(CPP) $(CFLAGS) -fno-verbose-asm $(CFLAGSXX) $(EXTRNL) -o $@ -S $< 
-$(DIR)/%.o: $(DIR)/%.s 
-	$(CPP) $(CFLAGS) $(CFLAGSXX) $(EXTRNL) -o $@ -c $< 
+$(D)/utils.o: $(D)/utils.cpp
+-include $(D)/utils.d
+
+$(D)/Table.o: $(D)/Table.cpp
+-include $(D)/Table.d
+
+$(D)/test_stat.o: $(D)/test_stat.cpp
+-include $(D)/test_stat.d
+
+$(D)/test_table.o: $(D)/test_table.cpp
+-include $(D)/test_table.d
 
 #########
-$(DIR)/utils.o: $(DIR)/utils.cpp
--include $(DIR)/utils.d
-
-$(DIR)/Table.o: $(DIR)/Table.cpp
--include $(DIR)/Table.d
-
-$(DIR)/test_stat.o: $(DIR)/test_stat.cpp
--include $(DIR)/test_stat.d
-
-$(DIR)/test_table.o: $(DIR)/test_table.cpp
--include $(DIR)/test_table.d
-
-#########
-DIR := $(SDIR)
+D := $(saved)

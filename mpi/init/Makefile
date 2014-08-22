@@ -1,5 +1,5 @@
 include ../../root.mk
-DIR := $(ROOT)/mpi/init
+D := $(R)/mpi/init
 
 #########
 MKLLIBS := -mkl=sequential
@@ -15,6 +15,7 @@ LIBS := $(MPILIBS)
 #########
 .SUFFIXES:
 .SUFFIXES: .cpp .o .exe .s .d
+%: %.cpp
 %.s: %.cpp
 %.o: %.cpp
 %.exe: %.cpp
@@ -22,7 +23,7 @@ LIBS := $(MPILIBS)
 %.exe: %.s
 %.exe: %.o
 %.exe: 
-	$(CPP) $(EXTRNL) -o $@ $(filter %.o,$^) $(LIBS)
+	$(CPP) $(EXTRNLL) -o $@ $(filter %.o,$^) $(LIBS)
 
 ########
 .PHONY: clean cleanx cleanxx
@@ -35,4 +36,4 @@ cleanxx:
 
 ########
 include rules.mk
-mpi_init.o: $(DIR)/mpi_init.o
+mpi_init.o: $(D)/mpi_init.o
