@@ -13,10 +13,10 @@
  * GNU General Public License for more details.
  */
 
-#include "../utils/utils.hh"
-#include "../utils/TimeStamp.hh"
-#include "../utils/StatVector.hh"
-#include "../mpi-init/mpi_init.hh"
+#include "../../utils/utils.hh"
+#include "../../utils/TimeStamp.hh"
+#include "../../utils/StatVector.hh"
+#include "../init/mpi_init.hh"
 #include "lustre.hh"
 #include <mpi.h>
 #include <cstdlib>
@@ -123,9 +123,9 @@ void lustre_bw(int rank, int nprocs,
 	std::ofstream ofile;
 	if(rank==0){
 		if(!bigflag)
-			ofile.open("OUTPUT/diskio-mpi.txt",std::ios::app);
+			ofile.open("output/diskio-mpi.txt",std::ios::app);
 		else
-			ofile.open("OUTPUT/diskio-mpi-4Gstripe.txt",
+			ofile.open("output/diskio-mpi-4Gstripe.txt",
 				   std::ios::app);
 		long posn = ofile.tellp();
 		if(posn<=0){ 

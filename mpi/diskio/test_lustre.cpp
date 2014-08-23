@@ -13,8 +13,8 @@
  * GNU General Public License for more details.
  */
 
-#include "../utils/TimeStamp.hh"
-#include "../mpi-init/mpi_init.hh"
+#include "../../utils/TimeStamp.hh"
+#include "../init/mpi_init.hh"
 #include "lustre.hh"
 #include <mpi.h>
 #include <cstdio>

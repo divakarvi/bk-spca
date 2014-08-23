@@ -13,9 +13,9 @@
  * GNU General Public License for more details.
  */
 
-#include "../utils/utils.hh"
-#include "../utils/TimeStamp.hh"
-#include "../utils/StatVector.hh"
+#include "../../utils/utils.hh"
+#include "../../utils/TimeStamp.hh"
+#include "../../utils/StatVector.hh"
 #include "serial.hh"
 #include <iostream>
 #include <fstream>
@@ -76,7 +76,7 @@ void calc_latency(){
 	fscanf(unm, "%s", machine);
 	pclose(unm);
 	char fname[200];
-	sprintf(fname, "OUTPUT/diskio-latency-%s.txt", machine);
+	sprintf(fname, "output/diskio-latency-%s.txt", machine);
 	ofile.open(fname, std::ios::app);
 	long posn = ofile.tellp();
 	if(posn<=0){

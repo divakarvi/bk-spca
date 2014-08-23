@@ -13,9 +13,9 @@
  * GNU General Public License for more details.
  */
 
-#include "../utils/utils.hh"
-#include "../utils/TimeStamp.hh"
-#include "../utils/StatVector.hh"
+#include "../../utils/utils.hh"
+#include "../../utils/TimeStamp.hh"
+#include "../../utils/StatVector.hh"
 #include "serial.hh"
 #include <iostream>
 #include <fstream>
@@ -115,11 +115,11 @@ void bw_readwrite(){
 		pclose(unm);
 		char fname[200];
 		if(flag==0){
-			sprintf(fname, "OUTPUT/diskio-easy-%s.txt", machine);
+			sprintf(fname, "output/diskio-easy-%s.txt", machine);
 			ofile.open(fname, std::ios::app);
 		}
 		else{
-			sprintf(fname, "OUTPUT/diskio-direct-%s.txt", machine);
+			sprintf(fname, "output/diskio-direct-%s.txt", machine);
 			ofile.open(fname, std::ios::app);
 		}
 		long posn = ofile.tellp();
@@ -152,7 +152,7 @@ void bw_readwrite(){
 	sprintf(cmd, "ls -l %s", dir);
 	system(cmd);
 	sprintf(cmd, "lfs getstripe %s/direct.dat", dir);
-	system(cmd);//will work only on lutre file system
+	system(cmd);//will work only on lustre file system
 }
 
 int main(){
