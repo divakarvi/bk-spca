@@ -13,10 +13,10 @@
  * GNU General Public License for more details.
  */
 
-#include "../utils/utils.hh"
-#include "../utils/TimeStamp.hh"
-#include "../utils/StatVector.hh"
-#include "../mpi-init/mpi_init.hh"
+#include "../../utils/utils.hh"
+#include "../../utils/TimeStamp.hh"
+#include "../../utils/StatVector.hh"
+#include "../init/mpi_init.hh"
 #include "timer.hh"
 #include "trans.hh"
 #include "fast_trans.hh"
@@ -113,20 +113,20 @@ void generate_output(int rank, int nprocs){
 	int M = 50000;
 	int N = 5000*nprocs;
 
-	verify_dir("OUTPUT");
+	verify_dir("output");
 	std::ofstream ofile;
 	char fname[200];
 	if(rank == 0){
 #ifdef OMPCPY
 
 #ifndef FTRANS
-		sprintf(fname, "OUTPUT/time_trans_omp.txt");
+		sprintf(fname, "output/time_trans_omp.txt");
 #else
-		sprintf(fname, "OUTPUT/time_trans_fast.txt");
+		sprintf(fname, "output/time_trans_fast.txt");
 #endif
 
 #else
-		sprintf(fname, "OUTPUT/time_trans.txt");
+		sprintf(fname, "output/time_trans.txt");
 #endif
 	}
 
