@@ -112,3 +112,21 @@ cycles/byte in recv post = 2.37345e-05
 cycles/byte in send wait = 0.0035623
 cycles/byte in recv wait = 0
 
+                  nprocs = 10
+                    rank = 0
+                nthreads = 12
+                       M = 50000
+                       N = 50000
+        bw (bytes/cycle) = 1.22317
+ frac of cycles in scopy = 0.233808
+   frac of cycles in mpi = 0.0566586
+ frac of cycles in rcopy = 0.207588
+--------------------------
+cycles/byte in send copy = 0.191504
+cycles/byte in recv copy = 0.17077
+      cycles/byte in mpi = 0.0464428
+cycles/byte in send post = 0.0464322
+cycles/byte in recv post = 7.276e-06
+cycles/byte in send wait = 3.35313e-06
+cycles/byte in recv wait = 0
+
