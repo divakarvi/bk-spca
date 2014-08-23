@@ -3,7 +3,7 @@ saved := $(D)
 D := $(R)/mpi/diskio
 
 #########
-$(D)CFLAGS := $(CFLAGS) -fno-inline-functions -openmp $(MPIINC)
+$(D)CFLAGS := $(CFLAGS) -fno-inline-functions -openmp -DCOLLECTIVE $(MPIINC)
 
 #########
 $(D)/%.o: $(D)/%.cpp

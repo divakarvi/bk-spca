@@ -36,6 +36,9 @@ private:
 	long totalsize;
 	long localsize;
 public:
+	/*
+	 * sizei = total size of file in doubles
+	 */
 	LustreFile(int ranki, int nprocsi,
 		   const char *diri, const char *fnamei, long sizei);
 	long getlocalsize() {return localsize;}

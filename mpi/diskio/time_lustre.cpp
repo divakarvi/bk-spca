@@ -131,7 +131,7 @@ void lustre_bw(int rank, int nprocs,
 		if(posn<=0){ 
 			char s[200];
 			sprintf(s, " nprocs\tstripes\t"
-				"localn\t\twrite bw\t"
+				"localn(doubles)\twrite bw\t"
 				"read bw (GB/s) (med/hgh)");
 			ofile<<s<<std::endl;
 		}

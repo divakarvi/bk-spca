@@ -36,12 +36,21 @@ void write_mpi(void *data, long len,
 	int maxcount = 2000*1000*1000;
 	while(len > 0){
 		int count = (len<maxcount)?len:maxcount;
+#ifdef COLLECTIVE
+		MPI_File_write_at_all(ofile,
+				  offset,
+				  data,
+				  count,
+				  MPI_BYTE,
+				  MPI_STATUS_IGNORE);
+#else
 		MPI_File_write_at(ofile,
 				  offset,
 				  data,
 				  count,
 				  MPI_BYTE,
 				  MPI_STATUS_IGNORE);
+#endif
 		offset += count;
 		data = ((char *)data+count);
 		len -= count;
@@ -69,12 +78,21 @@ void read_mpi(void *data, long len,
 	int maxcount = 2000*1000*1000;
 	while(len > 0){
 		int count = (len<maxcount)?len:maxcount;
+#ifdef COLLECTIVE
+		MPI_File_read_at_all(ifile,
+				     offset,
+				     data,
+				     count,
+				     MPI_BYTE,
+				     MPI_STATUS_IGNORE);
+#else
 		MPI_File_read_at(ifile,
 				 offset,
 				 data,
 				 count,
 				 MPI_BYTE,
 				 MPI_STATUS_IGNORE);
+#endif
 		offset += count;
 		data = ((char *)data+count);
 		len -= count;
