@@ -1,6 +1,10 @@
 include ../../root.mk
 D := $(R)/mpi/intro
 
+ifeq ($(MPION), yes)
+	CPP := $(MPICC)
+endif
+
 #########
 LIBS := $(MPILIBS)
 

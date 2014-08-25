@@ -16,7 +16,14 @@ MKLTHRD := -mkl=parallel
 FFTWLIB :=  -L $$FFTW_LINK -lfftw3
 MPILIBS := `mpiCC -showme:link`
 DVMPILIBS:= `$$HOME/openmpi-1.6.3/bin/mpiCC -showme:link`
-
+MPION = yes
+ifeq ($(MPION), yes)
+	MPILIBS := 
+	MPIINC := 
+	DVMPILIBS :=
+	DVMPIINC :=
+	MPICC := mpic++
+endif
 #########
 .SUFFIXES:
 .SUFFIXES: .cpp .o .exe .s .d
@@ -33,6 +40,8 @@ DVMPILIBS:= `$$HOME/openmpi-1.6.3/bin/mpiCC -showme:link`
 clean:
 	rm *.o; rm *.exe; rm a.out;
 cleanx:
-	rm pbs*.*; 
+	rm pbs*.*; rm slurm*.out;
 cleanxx:
-	rm *.o; rm *.exe; rm pbs*.*; rm *.d; rm DBG/outP*;
+	rm *.o; rm *.exe; rm pbs*.*; rm *.d; rm DBG/outP*; rm *.out
+########
+ 
