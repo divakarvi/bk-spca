@@ -1,4 +1,4 @@
-R := /home1/00013/tg456871/git/Programs/bk-spca
+R := $(shell echo $$HOME)/git/Programs/bk-spca
 
 #########
 CPP  := icpc
@@ -6,14 +6,14 @@ CFLAGS := -O3 -prec-div -no-ftz -restrict -Wshadow -MMD -MP
 
 #########
 MPIINC 	 := `mpiCC -showme:compile`
-FFTWINC  := -I $$FFTW_INC
+FFTWINC  := -I $(shell echo $$FFTW_INC)
 MKLINC := -mkl
 DVMPIINC := `$$HOME/openmpi-1.6.3/bin/mpiCC -showme:compile`
 
 #########
 MKLLIBS := -mkl=sequential
 MKLTHRD := -mkl=parallel
-FFTWLIB :=  -L $$FFTW_LINK -lfftw3
+FFTWLIB :=  -L $(shell echo $$FFTW_LINK -lfftw3)
 MPILIBS := `mpiCC -showme:link`
 DVMPILIBS:= `$$HOME/openmpi-1.6.3/bin/mpiCC -showme:link`
 MPION = yes
@@ -22,7 +22,7 @@ ifeq ($(MPION), yes)
 	MPIINC := 
 	DVMPILIBS :=
 	DVMPIINC :=
-	MPICC := mpic++
+	MPICC := mpicxx
 endif
 #########
 .SUFFIXES:
