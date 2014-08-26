@@ -1,19 +1,22 @@
-include ../../root.mk
-D := $(R)/mpi/intro
-
-ifeq ($(MPION), yes)
-	CPP := $(MPICC)
-endif
-
-#########
+include ../makevars.mk
+CFLAGSXX := $(MPIINC)
 LIBS := $(MPILIBS)
+MODS := ../../utils ../init
 
-#########
-%.exe: 
-	$(eval TMPTMP = $(CPP) $(EXTRNLL) -o $@ $(filter %.o,$^) $(LIBS))
-	@echo $(subst $(R)/, , $(TMPTMP))
-	@ $(TMPTMP)
+######
+.PHONY: $(MODS)
 
-########
-include $(D)/rules.mk
-procname.exe: $(D)/procname.o
+$(MODS):
+	make --directory=$@ all
+
+######
+procname.o: procname.cpp
+-include procname.d
+unsafe.o: unsafe.cpp
+-include unsafe.d
+
+######
+procname.exe: procname.o 
+unsafe.exe: unsafe.o 					\
+	   ../../utils ../../utils/utils.o			\
+	   ../init ../init/mpi_init.o

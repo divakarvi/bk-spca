@@ -1,17 +1,18 @@
-include ../root.mk
-D := $(R)/utils
+include ../makevars.mk
+CFLAGS := $(CFLAGS) -fPIC
 
 #########
-LIBS := 
+all: utils.o Table.o
+
+utils.o: utils.cpp
+-include utils.d
+Table.o: Table.cpp
+-include Table.d
+test_stat.o: test_stat.cpp
+-include test_stat.d
+test_table.o: test_table.cpp
+-include test_table.d
 
 #########
-%.exe: 
-	$(eval TMPTMP = $(CPP) $(EXTRNLL) -o $@ $(filter %.o,$^) $(LIBS))
-	@echo $(subst $(R)/, , $(TMPTMP))
-	@ $(TMPTMP)
-
-########
-include rules.mk
-utils.o: $(D)/utils.o
-test_stat.exe: $(D)/test_stat.o
-test_table.exe: $(D)/test_table.o $(D)/Table.o
+test_stat.exe: test_stat.o
+test_table.exe: test_table.o Table.o

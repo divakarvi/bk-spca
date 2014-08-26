@@ -1,15 +1,4 @@
-include ../../root.mk
-D := $(R)/mpi/init
+include ../makevars.mk
 
-#########
-LIBS := 
-
-#########
-%.exe: 
-	$(eval TMPTMP = $(CPP) $(EXTRNLL) -o $@ $(filter %.o,$^) $(LIBS))
-	@echo $(subst $(R)/, , $(TMPTMP))
-	@ $(TMPTMP)
-
-########
-include rules.mk
-mpi_init.o: $(D)/mpi_init.o
+all: mpi_init.o
+mpi_init.o: mpi_init.cpp

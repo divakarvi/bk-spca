@@ -10,6 +10,12 @@ MKLTHRD := -mkl=parallel
 FFTWLIB  :=  -L $$FFTW_LINK -lfftw3
 
 #########
+MPI := MVAPICH2
+CPP := mpicxx
+#CPP := mpiCC
+#CPP := $$HOME/openmpi-1.6.3/bin/mpiCC
+
+#########
 .SUFFIXES:
 .SUFFIXES: .cpp .o .exe .s .d
 %.o: %.cpp
