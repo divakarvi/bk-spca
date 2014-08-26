@@ -19,7 +19,7 @@
 #include <iostream>
 #include <fstream>
 #include <iomanip>
-
+#include <cstdlib>
 
 void write_easy(double *v, long len, const char *fname){
 	std::ofstream ofile(fname);

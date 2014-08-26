@@ -5,9 +5,8 @@ MODS := ../../utils ../init
 
 ######
 .PHONY: $(MODS)
-
 $(MODS):
-	make --directory=$@ all
+	make --directory=$@ obj
 
 ######
 procname.o: procname.cpp

@@ -1,22 +1,23 @@
-include ../../root.mk
-D := $(R)/mpi/exchange
+include ../makevars.mk
+MODS := ../../utils ../mpi-init
 
-#########
-LIBS := $(MPILIBS)
+######
+.PHONY: $(MODS)
+$(MODS):
+	make --directory=$@ obj
 
-#########
-%.exe: 
-	$(eval TMPTMP = $(CPP) $(EXTRNLL) -o $@ $(filter %.o,$^) $(LIBS))
-	@echo $(subst $(R)/, , $(TMPTMP))
-	@ $(TMPTMP)
+######
+exchange.o: exchange.cpp
+-include exchange.d
+test_xchg.o: test_xchg.cpp
+-include test_xchg.d
+time_xchg.o: time_xchg.cpp
+-include time_xchg.d
 
-########
-include rules.mk
-include $(R)/utils/rules.mk
-include $(R)/mpi/init/rules.mk
-test_xchg.exe: $(D)/test_xchg.o $(D)/exchange.o 			\
-	       $(R)/utils $(R)/utils/utils.o				\
-	       $(R)/mpi/init/mpi_init.o
-time_xchg.exe: $(D)/time_xchg.o $(D)/exchange.o 			\
-	       $(R)/utils/utils.o $(R)/utils/Table.o			\
-	       $(R)/mpi/init/mpi_init.o
+######
+test_xchg.exe: test_xchg.o exchange.o 					\
+	       ../../utils ../../utils/utils.o				\
+	       ../init ../init/mpi_init.o
+time_xchg.exe: time_xchg.o exchange.o 					\
+	       ../../utils ../../utils/utils.o ../../utils/Table.o 	\
+	       ../init ../init/mpi_init.o

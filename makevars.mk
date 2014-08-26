@@ -19,7 +19,7 @@ FFTWLIB  :=  -L $$FFTW_LINK -lfftw3
 %.o: %.s 
 	$(CPP) $(EXTRNL) $(CFLAGS) -c $< 
 %.exe: %.o 
-	$(CPP) $(EXTRNL) -o $@ $(filter %.o,$^) $(LIBS) 
+	$(CPP) $(EXTRNL) $(LFLAGS) -o $@ $(filter %.o,$^) $(LIBS) 
 
 ########
 .PHONY: clean cleanx cleanxx

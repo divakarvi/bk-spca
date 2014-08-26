@@ -15,6 +15,8 @@
 
 #include "lustre.hh"
 #include <mpi.h>
+#include <cstring>
+#include <cstdlib>
 
 void write_mpi(void *data, long len, 
 	       char *fname, long disp){

@@ -17,6 +17,7 @@
 #include "../init/mpi_init.hh"
 #include "trans.hh"
 #include "fast_trans.hh"
+#include <cstdlib>
 
 void test1(int rank, int nprocs, int M, int N){
 	assrt(M < 1000);

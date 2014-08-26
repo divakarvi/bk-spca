@@ -1,22 +1,32 @@
-include ../../root.mk
-D := $(R)/mpi/diskio
+include ../makevars.mk
+MODS := ../init
 
-#########
-LIBS := -openmp $(MPILIBS)
+######
+.PHONY: $(MODS)
+$(MODS):
+	make --directory=$@ obj
 
-#########
-%.exe: 
-	$(eval TMPTMP = $(CPP) $(EXTRNLL) -o $@ $(filter %.o,$^) $(LIBS))
-	@echo $(subst $(R)/, , $(TMPTMP))
-	@ $(TMPTMP)
+######
+serial.o: CPP := icpc
+serial.o: serial.cpp
+-include serial.d
+time_serial.o: CPP := icpc
+time_serial.o: time_serial.cpp
+-include time_serial.d
+calc_latency.o: CPP := icpc
+calc_latency.o: calc_latency.cpp
+-include calc_latency.d
+test_lustre.o: test_lustre.cpp
+-include test_lustre.d
+time_lustre.o: time_lustre.cpp
+-include time_lustre.d
 
-########
-include rules.mk
-include $(R)/mpi/init/rules.mk
-
+######
 pagecache.exe: pagecache.cpp
 	g++ -O3 -o $@ $<
-time_serial.exe: $(D)/time_serial.o $(D)/serial.o $(D)/dummy.o
-calc_latency.exe: $(D)/calc_latency.o $(D)/serial.o $(D)/dummy.o
-test_lustre.exe: $(D)/test_lustre.o $(D)/lustre.o $(R)/mpi/init/mpi_init.o
-time_lustre.exe: $(D)/time_lustre.o $(D)/lustre.o $(R)/mpi/init/mpi_init.o
+time_serial.exe: CPP := icpc
+time_serial.exe: time_serial.o serial.o dummy.o
+calc_latency.exe: CPP := icpc
+calc_latency.exe: calc_latency.o serial.o dummy.o
+test_lustre.exe: test_lustre.o lustre.o ../init ../init/mpi_init.o
+time_lustre.exe: time_lustre.o lustre.o ../init ../init/mpi_init.o

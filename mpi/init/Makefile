@@ -1,4 +1,4 @@
 include ../makevars.mk
-
-all: mpi_init.o
+.PHONY:obj
+obj: mpi_init.o
 mpi_init.o: mpi_init.cpp

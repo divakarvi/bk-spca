@@ -20,6 +20,7 @@
 #include <iostream>
 #include <fstream>
 #include <iomanip>
+#include <cstdlib>
 
 #define GEN_OUTPUT
 const double CPUGHZ=3.33;//1.8 or 3.33 or 3.40

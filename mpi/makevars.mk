@@ -1,6 +1,7 @@
 #########
 CPP 	 := icpc
 CFLAGS 	 := -O3 -prec-div -no-ftz -restrict -Wshadow -MMD -MP
+CFLAGS   := $(CFLAGS) -fno-inline-functions
 FFTWINC  := -I $$FFTW_INC
 MKLINC := -mkl
 
@@ -10,10 +11,14 @@ MKLTHRD := -mkl=parallel
 FFTWLIB  :=  -L $$FFTW_LINK -lfftw3
 
 #########
-MPI := MVAPICH2
-CPP := mpicxx
-#CPP := mpiCC
-#CPP := $$HOME/openmpi-1.6.3/bin/mpiCC
+MPI := MVAPICH
+ifeq ($(MPI), MVAPICH)
+	CPP := mpicxx
+else ifeq ($(MPI), OMPI)
+	CPP := mpiCC
+else ifeq ($(MPI), DV)
+	CPP := $$HOME/openmpi-1.6.3/bin/mpiCC
+endif
 
 #########
 .SUFFIXES:
@@ -25,7 +30,7 @@ CPP := mpicxx
 %.o: %.s 
 	$(CPP) $(EXTRNL) $(CFLAGS) -c $< 
 %.exe: %.o 
-	$(CPP) $(EXTRNL) -o $@ $(filter %.o,$^) $(LIBS) 
+	$(CPP) $(EXTRNL) $(LFLAGS) -o $@ $(filter %.o,$^) $(LIBS) 
 
 ########
 .PHONY: clean cleanx cleanxx

@@ -1,22 +1,30 @@
-include ../../root.mk
-D := $(R)/mpi/transpose
+include ../makevars.mk
+CFLAGS := $(CFLAGS) -DOMPCPY -DFTRANS -openmp
+LFLAGS := $(LFLAGS) -openmp
+MODS := ../../utils ../init
 
-#########
-LIBS := $(MPILIBS) -openmp
+######
+.PHONY: $(MODS)
 
-#########
-%.exe: 
-	$(eval TMPTMP = $(CPP) $(EXTRNLL) -o $@ $(filter %.o,$^) $(LIBS))
-	@echo $(subst $(R)/, , $(TMPTMP))
-	@ $(TMPTMP)
+$(MODS):
+	make --directory=$@ obj
 
-########
-include rules.mk
-include $(R)/utils/rules.mk
-include $(R)/mpi/init/rules.mk
-test_trans.exe: $(D)/test_trans.o $(D)/trans.o $(D)/fast_trans.o $(D)/timer.o\
-		$(R)/utils/utils.o					     \
-		$(R)/mpi/init/mpi_init.o
-time_trans.exe: $(D)/time_trans.o $(D)/trans.o $(D)/fast_trans.o $(D)/timer.o\
-		$(R)/utils/utils.o					     \
-		$(R)/mpi/init/mpi_init.o
+######
+timer.o: timer.cpp
+-include timer.d
+trans.o: trans.cpp
+-include trans.d
+test_trans.o: test_trans.cpp
+-include test_trans.d
+time_trans.o: time_trans.cpp
+-include time_trans.d
+fast_trans.o: fast_trans.cpp
+-include fast_trans.d
+
+######
+test_trans.exe: test_trans.o trans.o fast_trans.o timer.o	\
+		../../utils ../../utils/utils.o			\
+		../init ../init/mpi_init.o
+time_trans.exe: time_trans.o trans.o fast_trans.o timer.o	\
+		../../utils ../../utils/utils.o			\
+		../init ../init/mpi_init.o
