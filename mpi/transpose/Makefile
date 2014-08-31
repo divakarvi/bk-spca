@@ -7,7 +7,9 @@ MODS := ../../utils ../init
 .PHONY: $(MODS)
 
 $(MODS):
+	@echo -e '\n'
 	make --directory=$@ obj
+	@echo -e '\n'
 
 ######
 timer.o: timer.cpp

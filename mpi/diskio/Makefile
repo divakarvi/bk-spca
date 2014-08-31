@@ -4,7 +4,9 @@ MODS := ../init
 ######
 .PHONY: $(MODS)
 $(MODS):
+	@echo -e '\n'
 	make --directory=$@ obj
+	@echo -e '\n'
 
 ######
 serial.o: CPP := icpc

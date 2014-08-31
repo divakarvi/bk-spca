@@ -22,7 +22,7 @@
 double time_jacobi(int rank, int nprocs, 
 		   int dim1, int dim2,
 		   int nitns){
-	int nth = 12;
+	int nth = get_nthreads();
 	
 	Jacobi2D jacobi(rank, nprocs, dim1, dim2, nth);
 	jacobi.initializepp();
@@ -53,9 +53,9 @@ int main(){
 	cycles = cycles/(1.0*dim1*(dim2+2))/(1.0*nitns);
 	
 	if(rank == 0){
-		verify_dir("output");
+		verify_dir("output-stamp");
 		char fname[200];
-		sprintf(fname, "output/time_jacobi_NP%d.txt", nprocs);
+		sprintf(fname, "output-stamp/time_jacobi_NP%d.txt", nprocs);
 		std::ofstream ofile(fname, std::ios::app);
 		
 		ofile<<"             dim1 = "<<dim1<<std::endl;

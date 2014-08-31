@@ -108,4 +108,9 @@ void box_file(const char* fname, const char* mesg);
  */
 void print_proc_status(const char* mesg);
 
+
+/*
+ * read shell variable OMP_NUM_THREADS
+ */
+int get_nthreads();
 #endif

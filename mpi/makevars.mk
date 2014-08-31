@@ -20,6 +20,7 @@ else ifeq ($(MPI), DV)
 	CPP := $$HOME/openmpi-1.6.3/bin/mpiCC
 endif
 
+$(info MPI set to $(MPI))
 #########
 .SUFFIXES:
 .SUFFIXES: .cpp .o .exe .s .d

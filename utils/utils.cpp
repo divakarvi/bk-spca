@@ -205,3 +205,11 @@ void print_proc_status(const char* mesg){
 	sprintf(fname, "/proc/%d/status", pid);
 	box_file(fname, mesg);
 }
+
+int get_nthreads(){
+	if(getenv("OMP_NUM_THREADS")==NULL){
+		printf("OMP_NUM_THREADS not defined");
+		exit(-1);
+	}
+	return atoi(getenv("OMP_NUM_THREADS"));
+}

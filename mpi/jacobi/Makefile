@@ -6,7 +6,9 @@ MODS := ../../utils ../mpi-init
 ######
 .PHONY: $(MODS)
 $(MODS):
+	@echo -e '\n'
 	make --directory=$@ obj
+	@echo -e '\n'
 
 ######
 jacobi.o: jacobi.cpp

@@ -22,6 +22,7 @@ void exchange_blocking(int rank, int nprocs,
 			 double* sendbuf, double* recvbuf, 
 			 int n){
 	int tag = 0;
+	assrt(nprocs == 2);
 	if(rank==0){
 		MPI_Send(sendbuf, n, MPI_DOUBLE, nprocs-1, tag,
 			 MPI_COMM_WORLD);
