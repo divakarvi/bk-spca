@@ -9,3 +9,8 @@
             nitns = 100
  cycles/entry/itn = 37.4324
 
+             dim1 = 100000
+             dim2 = 10000
+            nitns = 100
+ cycles/entry/itn = 5.67301
+

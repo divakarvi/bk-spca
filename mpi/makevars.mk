@@ -11,11 +11,12 @@ MKLTHRD := -mkl=parallel
 FFTWLIB  :=  -L $$FFTW_LINK -lfftw3
 
 #########
-MPI := MVAPICH
+MPI := OMPI
 ifeq ($(MPI), MVAPICH)
 	CPP := mpicxx
-else ifeq ($(MPI), OMPI)
-	CPP := mpiCC
+else ifeq ($(MPI), OMPI) #CPP := mpiCC
+	CFLAGS := $(CFLAGS) `mpiCC -showme:compile` 
+	LFLAGS := $(CFLAGS) `mpiCC -showme:link`
 else ifeq ($(MPI), DV)
 	CPP := $$HOME/openmpi-1.6.3/bin/mpiCC
 endif
