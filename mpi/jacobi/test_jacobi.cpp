@@ -19,8 +19,8 @@
 
 void test_jacobi(int rank, int nprocs){
 	int dim1 = 10;
-	int dim2 =  30;
-	int nth = 11;
+	int dim2 =  36;
+	int nth = 12;
 	
 	Jacobi2D jacobi(rank, nprocs, dim1, dim2, nth);
 	jacobi.initializepp();

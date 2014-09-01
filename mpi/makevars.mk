@@ -11,7 +11,7 @@ MKLTHRD := -mkl=parallel
 FFTWLIB  :=  -L $$FFTW_LINK -lfftw3
 
 #########
-MPI := OMPI
+MPI := MVAPICH
 ifeq ($(MPI), MVAPICH)
 	CPP := mpicxx
 else ifeq ($(MPI), OMPI) #CPP := mpiCC
