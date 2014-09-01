@@ -3,3 +3,9 @@
             nitns = 100
  cycles/entry/itn = 8.2519
 
+[mvapich2 does badly!]
+             dim1 = 100000
+             dim2 = 10000
+            nitns = 100
+ cycles/entry/itn = 37.4324
+

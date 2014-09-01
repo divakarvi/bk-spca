@@ -1,12 +1,14 @@
 #!/usr/bin/env python
 import os
-l = os.listdir('.')
-for x in l:
-    if(os.path.isdir(x) and x[0] != 'z'):
-        print '\n\n'
-        print 'in directory: ', x
-        os.chdir(x)
+root = os.path.abspath('.')
+print root
+for path, dnames, fnames in os.walk('.'):
+    if path.find('git') == -1 and fnames.count('Makefile') > 0:
+        os.chdir(path)
+        print 'in ' + path
         os.system('make cleanxx')
-        print 'exit from directory: ', x
-        os.chdir('..')
+        os.chdir(root)
+
+
+
         

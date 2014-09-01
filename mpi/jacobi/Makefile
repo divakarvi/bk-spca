@@ -1,7 +1,7 @@
 include ../makevars.mk
 CFLAGS := $(CFLAGS) -openmp
 LFLAGS := $(LFLAGS) -openmp
-MODS := ../../utils ../mpi-init
+MODS := ../../utils ../init
 
 ######
 .PHONY: $(MODS)
