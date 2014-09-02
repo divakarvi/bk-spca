@@ -12,6 +12,7 @@ FFTWLIB  :=  -L $$FFTW_LINK -lfftw3
 
 #########
 MPI := MVAPICH
+$(info MPI set to $(MPI))
 ifeq ($(MPI), MVAPICH)
 	CPP := mpicxx
 else ifeq ($(MPI), OMPI) #CPP := mpiCC
@@ -20,7 +21,7 @@ else ifeq ($(MPI), OMPI) #CPP := mpiCC
 else ifeq ($(MPI), DV)
 	CPP := $$HOME/openmpi-1.6.3/bin/mpiCC
 endif
-$(info MPI set to $(MPI))
+$(info $(shell which mpicxx))
 
 #########
 .SUFFIXES:
