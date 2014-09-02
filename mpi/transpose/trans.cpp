@@ -21,9 +21,11 @@
 #include <mpi.h>
 #include <omp.h>
 
+int NTHREADS = -100;
 Transpose::Transpose(int rank, int nprocs, long Mi, long Ni)
 	:p(rank), P(nprocs), M(Mi), N(Ni)
 {    
+	NTHREADS = dv_omp_nthreads();
 	fstM = new long[P+1];
 	fstN = new long[P+1];
 	BlockDivide(M, P, fstM);

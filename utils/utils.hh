@@ -112,5 +112,5 @@ void print_proc_status(const char* mesg);
 /*
  * read shell variable OMP_NUM_THREADS
  */
-int get_nthreads();
+int dv_omp_nthreads();
 #endif

@@ -206,7 +206,7 @@ void print_proc_status(const char* mesg){
 	box_file(fname, mesg);
 }
 
-int get_nthreads(){
+int dv_omp_nthreads(){
 	if(getenv("OMP_NUM_THREADS")==NULL){
 		printf("OMP_NUM_THREADS not defined");
 		exit(-1);

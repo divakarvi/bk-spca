@@ -130,3 +130,97 @@ cycles/byte in recv post = 7.276e-06
 cycles/byte in send wait = 3.35313e-06
 cycles/byte in recv wait = 0
 
+                  nprocs = 10
+                    rank = 0
+                nthreads = 12
+                       M = 50000
+                       N = 50000
+        bw (bytes/cycle) = 1.29542
+ frac of cycles in scopy = 0.250226
+   frac of cycles in mpi = 0.0569846
+ frac of cycles in rcopy = 0.219742
+--------------------------
+cycles/byte in send copy = 0.193162
+cycles/byte in recv copy = 0.169249
+      cycles/byte in mpi = 0.0425389
+cycles/byte in send post = 0.0425227
+cycles/byte in recv post = 7.093e-06
+cycles/byte in send wait = 9.047e-06
+cycles/byte in recv wait = 0
+
+[run A in tr10_nodelist]
+                  nprocs = 10
+                    rank = 0
+                nthreads = 12
+                       M = 50000
+                       N = 50000
+        bw (bytes/cycle) = 1.25588
+ frac of cycles in scopy = 0.240489
+   frac of cycles in mpi = 0.056567
+ frac of cycles in rcopy = 0.212894
+--------------------------
+cycles/byte in send copy = 0.191092
+cycles/byte in recv copy = 0.169393
+      cycles/byte in mpi = 0.0424301
+cycles/byte in send post = 0.0424203
+cycles/byte in recv post = 6.66187e-06
+cycles/byte in send wait = 3.11438e-06
+cycles/byte in recv wait = 0
+
+[run A in tr100_nodelist]
+                  nprocs = 100
+                    rank = 0
+                nthreads = 12
+                       M = 50000
+                       N = 500000
+        bw (bytes/cycle) = 1.07307
+ frac of cycles in scopy = 0.192892
+   frac of cycles in mpi = 0.0056142
+ frac of cycles in rcopy = 0.183562
+--------------------------
+cycles/byte in send copy = 0.179677
+cycles/byte in recv copy = 0.17106
+      cycles/byte in mpi = 0.00520176
+cycles/byte in send post = 0.00513123
+cycles/byte in recv post = 6.15924e-05
+cycles/byte in send wait = 8.93813e-06
+cycles/byte in recv wait = 0
+
+[run B in tr10_nodelist]
+                  nprocs = 10
+                    rank = 0
+                nthreads = 12
+                       M = 50000
+                       N = 50000
+        bw (bytes/cycle) = 1.26134
+ frac of cycles in scopy = 0.24077
+   frac of cycles in mpi = 0.0572829
+ frac of cycles in rcopy = 0.214107
+--------------------------
+cycles/byte in send copy = 0.19118
+cycles/byte in recv copy = 0.169279
+      cycles/byte in mpi = 0.0454668
+cycles/byte in send post = 0.0454484
+cycles/byte in recv post = 7.22825e-06
+cycles/byte in send wait = 1.11391e-05
+cycles/byte in recv wait = 0
+
+[run B in tr100_nodelist]
+                  nprocs = 100
+                    rank = 0
+                nthreads = 12
+                       M = 50000
+                       N = 500000
+        bw (bytes/cycle) = 1.06717
+ frac of cycles in scopy = 0.192411
+   frac of cycles in mpi = 0.00585251
+ frac of cycles in rcopy = 0.18471
+--------------------------
+cycles/byte in send copy = 0.180021
+cycles/byte in recv copy = 0.173199
+      cycles/byte in mpi = 0.00520377
+cycles/byte in send post = 0.00516105
+cycles/byte in recv post = 3.338e-05
+cycles/byte in send wait = 9.3425e-06
+cycles/byte in recv wait = 0
+

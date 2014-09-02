@@ -25,6 +25,7 @@
 FastTrans::FastTrans(int rank, int nprocs, long Mi, long Ni)
 	:p(rank), P(nprocs), M(Mi), N(Ni)
 {    
+	NTHREADS = dv_omp_nthreads();
 	fstM = new long[P+1];
 	fstN = new long[P+1];
 	BlockDivide(M, P, fstM);
@@ -63,11 +64,11 @@ FastTrans::FastTrans(int rank, int nprocs, long Mi, long Ni)
 	/*
 	 * reverse sendorder
 	 */
-	       for(int i=0, j=P-1; i < j; i++, j--){
-		       int tmp = sendorder[i];
-		       sendorder[i] = sendorder[j];
-		       sendorder[j] = tmp;
-	       }
+	for(int i=0, j=P-1; i < j; i++, j--){
+		int tmp = sendorder[i];
+		sendorder[i] = sendorder[j];
+		sendorder[j] = tmp;
+	}
 }
 
 FastTrans::~FastTrans(){

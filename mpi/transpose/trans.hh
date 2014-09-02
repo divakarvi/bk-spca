@@ -17,8 +17,7 @@
 #define __Transpose24NOV2013__
 #include <mpi.h>
 
-const int NTHREADS = 12;
-
+extern int NTHREADS; /* initlzd using dv_omp_nthreads() in constructor */
 class Transpose{
 private:
 	int p; //process rank

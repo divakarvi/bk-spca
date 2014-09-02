@@ -178,6 +178,7 @@ int main(){
 
 	int rank, nprocs;
 	mpi_initialize(rank, nprocs);
+	mpi_print_name(rank);
 
 	generate_output(rank, nprocs);
 	

@@ -22,7 +22,7 @@
 double time_jacobi(int rank, int nprocs, 
 		   int dim1, int dim2,
 		   int nitns){
-	int nth = get_nthreads();
+	int nth = dv_omp_nthreads();
 	
 	Jacobi2D jacobi(rank, nprocs, dim1, dim2, nth);
 	jacobi.initializepp();

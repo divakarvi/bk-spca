@@ -1,0 +1,23 @@
+[run A]
+proc name = c341-210.ls4.tacc.utexas.edu rank = 1
+proc name = c341-108.ls4.tacc.utexas.edu rank = 0
+proc name = c341-216.ls4.tacc.utexas.edu rank = 4
+proc name = c341-211.ls4.tacc.utexas.edu rank = 8
+proc name = c341-204.ls4.tacc.utexas.edu rank = 6
+proc name = c341-201.ls4.tacc.utexas.edu rank = 9
+proc name = c341-105.ls4.tacc.utexas.edu rank = 3
+proc name = c341-301.ls4.tacc.utexas.edu rank = 7
+proc name = c341-316.ls4.tacc.utexas.edu rank = 2
+proc name = c341-212.ls4.tacc.utexas.edu rank = 5
+
+[run B]
+proc name = c341-303.ls4.tacc.utexas.edu rank = 0
+proc name = c341-314.ls4.tacc.utexas.edu rank = 2
+proc name = c341-310.ls4.tacc.utexas.edu rank = 8
+proc name = c341-113.ls4.tacc.utexas.edu rank = 6
+proc name = c341-112.ls4.tacc.utexas.edu rank = 3
+proc name = c341-205.ls4.tacc.utexas.edu rank = 1
+proc name = c340-105.ls4.tacc.utexas.edu rank = 7
+proc name = c341-306.ls4.tacc.utexas.edu rank = 9
+proc name = c341-101.ls4.tacc.utexas.edu rank = 4
+proc name = c341-209.ls4.tacc.utexas.edu rank = 5
