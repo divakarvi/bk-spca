@@ -82,7 +82,7 @@ void time_all2all(int rank, int nprocs){
 	char ostring[200];
 	std::ofstream ofile;
 	if(rank==0){
-		ofile.open("OUTPUT/all2all.txt", std::ios::app);
+		ofile.open("output/all2all.txt", std::ios::app);
 		long int posn = ofile.tellp();
 		if(posn<=0){
 			ofile<<"num of trials = "

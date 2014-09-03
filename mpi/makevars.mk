@@ -14,15 +14,17 @@ FFTWLIB  :=  -L $$FFTW_LINK -lfftw3
 MPI := OMPI
 $(info MPI set to $(MPI))
 ifeq ($(MPI), MVAPICH)
-	CPP := mpicxx
+    CPP := mpicxx
 else ifeq ($(MPI), OMPI) #CPP := mpiCC
-	CFLAGS := $(CFLAGS) `mpiCC -showme:compile` 
-	LIBS := $(LIBS) `mpiCC -showme:link`
+    CFLAGS := $(CFLAGS) `mpiCC -showme:compile` 
+    LIBS := $(LIBS) `mpiCC -showme:link`
 else ifeq ($(MPI), DV)
-	CFLAGS := $(CFLAGS) `$$HOME/openmpi-1.6.3/bin/mpiCC -showme:compile` 
-	LIBS := $(LIBS) `$$HOME/openmpi-1.6.3/bin/mpiCC -showme:link`
+    CFLAGS := $(CFLAGS) `$$HOME/openmpi-1.6.3/bin/mpiCC -showme:compile` 
+    LIBS := $(LIBS) `$$HOME/openmpi-1.6.3/bin/mpiCC -showme:link`
 endif
-$(info mpicxx = $(shell which mpicxx))
+ifeq ($(MPI), MVAPICH)
+    $(info mpicxx = $(shell which mpicxx))
+endif
 
 #########
 .SUFFIXES:

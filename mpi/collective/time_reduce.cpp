@@ -50,7 +50,7 @@ void time_reduce(int rank, int nprocs){
 	char ostring[200];
 	std::ofstream ofile;
 	if(rank==0){
-		ofile.open("OUTPUT/reduce.txt", std::ios_base::app);
+		ofile.open("output/reduce.txt", std::ios_base::app);
 		long posn = ofile.tellp();
 		if(posn<=0){
 			ofile<<"num of trials = "<<500<<std::endl;
