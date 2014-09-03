@@ -24,6 +24,7 @@
 #include <netdb.h>
 #include <arpa/inet.h>
 #include <cstring>
+#include <iostream>
 
 const char* PORTNUM = "28537";
 struct cgw_info_struct gl_cgwin;
