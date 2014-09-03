@@ -1,0 +1,22 @@
+login2.ls4.tacc.utexas.edu
+series size(n) = 1e+06
+       blksize = 1000
+            pi = 3.14159
+         error = 1e-06
+   nsend/block = 1
+   nrecv/block = 1
+ send ms/block = 0.00955515 ms
+ recv ms/block = 0.337186 ms
+     bandwidth = 50283 kbps
+----------------------------------------------------------------------
+login2.ls4.tacc.utexas.edu
+series size(n) = 1e+07
+       blksize = 1000
+            pi = 3.14159
+         error = 1e-07
+   nsend/block = 1
+   nrecv/block = 1
+ send ms/block = 0.0117455 ms
+ recv ms/block = 0.249038 ms
+     bandwidth = 55067.1 kbps
+----------------------------------------------------------------------
