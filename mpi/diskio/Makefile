@@ -1,5 +1,6 @@
 include ../makevars.mk
 MODS := ../init
+CFLAGS := $(CFLAGS) #-DCOLLECTIVE
 
 ######
 .PHONY: $(MODS)

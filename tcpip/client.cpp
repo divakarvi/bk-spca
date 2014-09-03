@@ -116,7 +116,7 @@ void client(const char *server, int blocksize, int n){
 	char cmd[200];
 	char str[200];
 	cmd2str("date '+%m_%d_%y_h%H'", str);
-	sprintf(fname,"OUTPUT/tcpip_%s.txt", str);
+	sprintf(fname,"output/tcpip_%s.txt", str);
 	sprintf(cmd, "uname -n >> %s", fname);
 	system(cmd);
 	std::cout<<"client: output sent to "<<fname<<std::endl;
@@ -151,9 +151,9 @@ void client(const char *server, int blocksize, int n){
 }
 
 void output_cgwin(double *t, int *cgwin, int len){
-	std::cout<<"client: output cgwin info to OUTPUT/cgwin.dat"<<std::endl;
+	std::cout<<"client: output cgwin info to output/cgwin.dat"<<std::endl;
 	FILE *fptr;
-	fptr = fopen("OUTPUT/cgwin.dat", "w");
+	fptr = fopen("output/cgwin.dat", "w");
 	for(int i=0; i < len; i++)
 		fprintf(fptr, "\t%8.3e \t\t %d \n", t[i], cgwin[i]);
 	fclose(fptr);
