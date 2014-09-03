@@ -159,7 +159,12 @@ void output_cgwin(double *t, int *cgwin, int len){
 	fclose(fptr);
 }
 
-int main(int argc, char **argv){
+int main(){
+	char server[200];
+	std::cout<<"client: cut and past server address: ";
+	std::cin>>server;
+	std::cout<<"client: will connect to "<<server<<std::endl;
+
 	std::cout<<"client: CPUGHZ of HP a6400z = 1.8 "<<std::endl;
 	std::cout<<"client: CPUGHZ of HP Z200   = 3.4 "<<std::endl;
 	std::cout<<"client: CPUGHZ of screms    = 2.6 "<<std::endl;
@@ -200,7 +205,7 @@ int main(int argc, char **argv){
 	assrt(n > 0);
 	n = n*blocksize; /* number of terms in series */
 
-	client(argv[1], blocksize, n); 
+	client(server, blocksize, n); 
 
 	if(gl_client_flag == CGWIN_ON)
 		output_cgwin(gl_cgwin.t, gl_cgwin.cgw, gl_cgwin.indx);

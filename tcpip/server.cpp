@@ -18,6 +18,7 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/socket.h>
+#include <cstdlib>
 #include <iostream>
 
 void partialsum_server(int sock2client, int blocksize){
@@ -52,9 +53,10 @@ void server(int blocksize){
 }
 
 int main(){
-	std::cout<<"      blksz = "
+	system("uname -a");
+	std::cout<<"server: blksz = "
 		"number of doubles sent/rcvd in single exchange"<<std::endl;
-	std::cout<<"input blksz : ";
+	std::cout<<"server: input blksz : ";
 	int blocksize;
 	std::cin>>blocksize;
 	std::cout<<std::endl;
