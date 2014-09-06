@@ -1,12 +1,10 @@
 include ../makevars.mk
-CFLAGSXX := -fno-inline-functions -fno-verbose-asm -openmp
-LIBS := -openmp
-MODS := ../utils
+MODS := ../../utils
 
 ###############
 .PHONY: $(MODS)
 $(MODS):
-	make --directory=$@ all
+	make --directory=$@ obj
 
 ##############
 leibniz.o: leibniz.cpp
@@ -26,4 +24,4 @@ time_leibniz.o: time_leibniz.cpp
 
 
 time_leibniz.exe: time_leibniz.o leibniz.o parallel.o ompfor.o section.o\
-		  ../utils ../utils/utils.o ../utils/Table.o
+		  ../../utils ../../utils/utils.o ../../utils/Table.o
