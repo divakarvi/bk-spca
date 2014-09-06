@@ -13,7 +13,7 @@
  * GNU General Public License for more details.
  */
 
-#include "../utils/Table.hh"
+#include "../../utils/Table.hh"
 #include "critical.hh"
 #include <omp.h>
 #include <iostream>
