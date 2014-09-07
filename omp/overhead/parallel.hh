@@ -15,7 +15,7 @@
 
 #ifndef __parallel16Oct2013__
 #define __parallel16Oct2013__
-#include "../utils/StatVector.hh"
+#include "../../utils/StatVector.hh"
 
 /*
  * nthreads = num of threads

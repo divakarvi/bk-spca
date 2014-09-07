@@ -13,8 +13,8 @@
  * GNU General Public License for more details.
  */
 
-#include "../utils/TimeStamp.hh"
-#include "../utils/StatVector.hh"
+#include "../../utils/TimeStamp.hh"
+#include "../../utils/StatVector.hh"
 #include "parallel.hh"
 #include <omp.h>
 

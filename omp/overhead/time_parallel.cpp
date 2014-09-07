@@ -13,9 +13,9 @@
  * GNU General Public License for more details.
  */
 
-#include "../utils/utils.hh"
-#include "../utils/TimeStamp.hh"
-#include "../utils/StatVector.hh"
+#include "../../utils/utils.hh"
+#include "../../utils/TimeStamp.hh"
+#include "../../utils/StatVector.hh"
 #include "parallel.hh"
 #include <omp.h>
 #include <fstream>
