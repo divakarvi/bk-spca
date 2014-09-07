@@ -13,10 +13,10 @@
  * GNU General Public License for more details.
  */
 
-#include "../utils/utils.hh"
-#include "../utils/Table.hh"
-#include "../utils/StatVector.hh"
-#include "../mem-latency/latency.hh"
+#include "../../utils/utils.hh"
+#include "../../utils/Table.hh"
+#include "../../utils/StatVector.hh"
+#include "../../mem/latency/latency.hh"
 #include <iostream>
 #include <omp.h>
 
