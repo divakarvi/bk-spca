@@ -13,8 +13,8 @@
  * GNU General Public License for more details.
  */
 
-#include "../utils/TimeStamp.hh"
-#include "../pyplot/pyhist.hh"
+#include "../../utils/TimeStamp.hh"
+#include "../../pyplot/pyhist.hh"
 #include "fft_mkl.hh"
 
 /*

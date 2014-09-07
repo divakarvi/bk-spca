@@ -13,11 +13,11 @@
  * GNU General Public License for more details.
  */
 
-#include "../utils/utils.hh"
-#include "../utils/StatVector.hh"
-#include "../utils/TimeStamp.hh"
-#include "../utils/Table.hh"
-#include "../pyplot/pyplot.hh"
+#include "../../utils/utils.hh"
+#include "../../utils/StatVector.hh"
+#include "../../utils/TimeStamp.hh"
+#include "../../utils/Table.hh"
+#include "../../pyplot/pyplot.hh"
 #include "fft_mkl.hh"
 #include "fft_fftw.hh"
 #include "nr.hh"
@@ -174,10 +174,10 @@ int main(){
 	verify_dir("DBG/");
 #ifdef FWD
 	const char *s1 = "(fwd fft)";
-	const char *fname = "DBG/time_fft_fwd.dat";
+	const char *fname = "DBG/time_fft_fwd.txt";
 #else
 	const char *s1 = "(bwd fft)";
-	const char *fname = "DBG/time_fft_bwd.dat";
+	const char *fname = "DBG/time_fft_bwd.txt";
 #endif
 	link_cout(fname);
 	char banner[200];

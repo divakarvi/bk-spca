@@ -13,8 +13,8 @@
  * GNU General Public License for more details.
  */
 
-#include "../utils/utils.hh"
-#include "../linking-fft/fft_mkl.hh"
+#include "../../utils/utils.hh"
+#include "../../linking/fft/fft_mkl.hh"
 #include "fft_thrd.hh"
 #include <omp.h>
 

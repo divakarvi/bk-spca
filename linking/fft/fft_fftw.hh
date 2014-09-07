@@ -15,7 +15,7 @@
 
 #ifndef __fftw2Sept2013__
 #define __fftw2Sept2013__
-#include "../utils/utils.hh"
+#include "../../utils/utils.hh"
 #include <fftw3.h>
 
 class fft_fftw{

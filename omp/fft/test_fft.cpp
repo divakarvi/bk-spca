@@ -13,7 +13,7 @@
  * GNU General Public License for more details.
  */
 
-#include "../utils/utils.hh"
+#include "../../utils/utils.hh"
 #include "fft_thrd.hh"
 #include <iostream>
 #include <cmath>
