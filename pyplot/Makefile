@@ -9,8 +9,8 @@ $(MODS):
 	make --directory=$@ obj
 
 ######
-.PHONY: all
-all: pyplot.o pyhist.o
+.PHONY: obj
+obj: pyplot.o pyhist.o
 pyplot.o: pyplot.cpp
 -include pyplot.d
 pyhist.o: pyhist.cpp

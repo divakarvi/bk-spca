@@ -13,7 +13,7 @@
  * GNU General Public License for more details.
  */
 
-#include "../pyplot/pyhist.hh"
+#include "../../pyplot/pyhist.hh"
 #include "latency.hh"
 
 int main(){

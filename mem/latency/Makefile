@@ -1,11 +1,11 @@
 include ../makevars.mk
 CFLAGS := $(CFLAGS) #-DMEMWALK
-MODS := ../utils ../pyplot
+MODS := ../../utils ../../pyplot
 
 #######
 .PHONY: $(MODS)
 $(MODS):
-	$(MAKE) --directory=$@ obj
+	make --directory=$@ obj
 
 #######
 obj: latency.o latency_utils.o dummy.o
@@ -27,7 +27,7 @@ hist_latency.o: hist_latency.cpp
 ######
 time_walk.exe: time_walk.o array_walk.o latency_utils.o 
 table_latency.exe: table_latency.o latency.o dummy.o latency_utils.o	\
-		   ../utils ../utils/utils.o ../utils/Table.o
+		   ../../utils ../../utils/utils.o ../../utils/Table.o
 hist_latency.exe: hist_latency.o latency.o dummy.o latency_utils.o	\
-		   ../utils ../utils/utils.o 				\
-		   ../pyplot ../pyplot/pyhist.o
+		   ../../utils ../../utils/utils.o 			\
+		   ../../pyplot ../../pyplot/pyhist.o
