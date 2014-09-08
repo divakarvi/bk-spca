@@ -6,12 +6,12 @@ export MMIC
 MODS := ../utils ../xphi-init
 
 
-##########
+######
 .PHONY: $(MODS)
 $(MODS):
 	make --directory=$@ all
 
-#########
+######
 mmult.o: mmult.cpp
 -include mmult.d
 

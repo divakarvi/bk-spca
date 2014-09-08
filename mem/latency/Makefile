@@ -2,12 +2,12 @@ include ../makevars.mk
 CFLAGS := $(CFLAGS) #-DMEMWALK
 MODS := ../../utils ../../pyplot
 
-#######
+######
 .PHONY: $(MODS)
 $(MODS):
 	make --directory=$@ objl
 
-#######
+######
 objl: latency.o latency_utils.o dummy.o
 latency_utils.o: latency_utils.cpp
 -include latency_utils.d

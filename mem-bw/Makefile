@@ -3,13 +3,13 @@ CFLAGSXX := -fno-inline-functions
 LIBS := 
 MODS := ../utils
 
-########################################
+######
 .PHONY: $(MODS)
 $(MODS):
 	make --directory=$@ all
 
 
-########################################
+######
 sumcopy.o: sumcopy.cpp
 -include sumcopy.d
 

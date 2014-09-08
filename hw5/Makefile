@@ -3,12 +3,12 @@ CFLAGSXX := -openmp
 LIBS := -openmp
 MODS := ../utils
 
-#########
+######
 .PHONY: $(MODS)
 $(MODS):
 	make --directory=$@ all
 
-#########
+######
 transpose.o: transpose.cpp
 -include transpose.d
 

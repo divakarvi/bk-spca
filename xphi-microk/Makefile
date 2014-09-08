@@ -5,11 +5,11 @@ MMIC := -mmic
 export MMIC
 MODS := ../utils
 
-########
+######
 .PHONY: $(MODS)
 $(MODS):
 	make --directory=$@ all
-#########
+######
 
 test_instn.o: test_instn.cpp
 -include test_instn.d

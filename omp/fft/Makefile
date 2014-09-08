@@ -3,12 +3,12 @@ CFLAGS := $(CFLAGS) $(MKLINC)
 LIBS := $(LIBS) $(MKLLIBS)
 MODS := ../../utils ../../linking/fft
 
-#############
+######
 .PHONY: $(MODS)
 $(MODS):
 	make --directory=$@ objl
 
-#############
+######
 fft_thrd.o: fft_thrd.cpp
 -include fft_thrd.d
 test_fft.o: test_fft.cpp

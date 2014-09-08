@@ -1,13 +1,13 @@
 include ../makevars.mk
 CFLAGSXX := $(MKLINC)
 
-##################
+######
 MODS := ../utils ../linking-aitken ../linking-fft
 .PHONY: $(MODS)
 $(MODS):
 	make --directory=$@ all
 
-##################
+######
 libxmath.so: $(MODS)
 	icpc -shared -o $@ ../utils/utils.o			\
 			   ../linking-aitken/aitken.o 		\

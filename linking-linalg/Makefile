@@ -2,12 +2,12 @@ include ../makevars.mk
 CFLAGSXX := $(MKLINC)
 LIBS := $(MKLLIBS)
 
-##############
+######
 .PHONY: ../utils all
 ../utils:
 	make --directory=$@ all
 
-##############
+######
 all: lusolve.o
 
 lusolve.o: lusolve.cpp

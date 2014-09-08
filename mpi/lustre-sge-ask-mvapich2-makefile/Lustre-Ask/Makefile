@@ -3,7 +3,7 @@ DFLAGS = -g -DDEBUG -openmp
 OFLAGS = -O3 -prec-div -no-ftz -DNDEBUG -openmp 
 CFLAGS = $(OFLAGS)
 
-##########
+######
 .SUFFIXES: .cpp .c .o .exe
 .PHONY: clean cleanx all
 
@@ -15,7 +15,7 @@ CFLAGS = $(OFLAGS)
 	$(CPP)  -openmp -o $@ $^ 
 
 
-##########
+######
 all: diskio-mpi
 
 diskio-mpi: diskio-mpi.exe
@@ -24,7 +24,7 @@ diskio-mpi.o: diskio-mpi.cpp
 diskio-mpi.exe: diskio-mpi.o
 
 
-##########
+######
 clean:
 	rm *.exe; rm *.o;
 

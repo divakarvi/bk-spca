@@ -4,12 +4,12 @@ LIBS := -openmp
 MODS := ../utils ../xphi-init
 
 
-##########
+######
 .PHONY: $(MODS)
 $(MODS):
 	make --directory=$@ all
 
-#########
+######
 dummy.o: dummy.cpp
 -include dummy.d
 

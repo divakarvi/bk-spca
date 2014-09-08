@@ -1,4 +1,5 @@
 import os
+import re
 pwd = os.path.abspath('.')
 for path, dlist, flist in os.walk(pwd, topdown=True):
     if dlist.count('.git') > 0:
@@ -8,7 +9,7 @@ for path, dlist, flist in os.walk(pwd, topdown=True):
         fi = open(fname,'r')
         fo = open('tmppp', 'w')
         for l in fi:
-            ll = l.replace('obj', 'objl')
+            ll = re.sub('####*', '######', l)
             fo.write(ll)
         fo.close()
         fi.close()

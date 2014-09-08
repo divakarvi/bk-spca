@@ -3,7 +3,7 @@ LIBS :=
 CFLAGSXX := -fno-inline-functions 
 MODS := ../utils ../proc-microk
 
-#########################
+######
 .PHONY: $(MODS)
 $(MODS):
 	make --directory=$@ all

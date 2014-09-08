@@ -3,7 +3,7 @@ DFLAGS = -g -DDEBUG -openmp
 OFLAGS = -O3 -prec-div -no-ftz -DNDEBUG -openmp 
 CFLAGS = $(OFLAGS)
 
-##########
+######
 .SUFFIXES: .cpp .c .o .exe
 .PHONY: clean cleanx all
 
@@ -15,7 +15,7 @@ CFLAGS = $(OFLAGS)
 	$(CPP)  -openmp  -o $@ $^ 
 
 
-##########
+######
 all: procname
 
 procname: procname.exe
@@ -23,6 +23,6 @@ procname: procname.exe
 procname.o: procname.cpp
 procname.exe: procname.o
 
-##########
+######
 clean:
 	rm *.exe; rm *.o;
