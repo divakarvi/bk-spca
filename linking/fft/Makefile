@@ -6,11 +6,11 @@ MODS := ../../utils ../../pyplot
 ######
 .PHONY: $(MODS)
 $(MODS):
-	make --directory=$@ obj
+	make --directory=$@ objl
 
 ######
-.PHONY: obj
-obj: fft_mkl.o fft_fftw.o nr.o
+.PHONY: objl
+objl: fft_mkl.o fft_fftw.o nr.o
 fft_mkl.o: fft_mkl.cpp
 -include fft_mkl.d
 fft_fftw.o: fft_fftw.cpp

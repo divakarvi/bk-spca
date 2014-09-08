@@ -8,7 +8,7 @@ MODS := ../../utils ../init
 
 $(MODS):
 	@echo -e '\n'
-	make --directory=$@ obj
+	make --directory=$@ objl
 	@echo -e '\n'
 
 ######

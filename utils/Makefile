@@ -2,8 +2,8 @@ include ../makevars.mk
 CFLAGS := $(CFLAGS) -fPIC
 
 #########
-.PHONY: obj
-obj: utils.o Table.o
+.PHONY: objl
+objl: utils.o Table.o
 
 utils.o: utils.cpp
 -include utils.d

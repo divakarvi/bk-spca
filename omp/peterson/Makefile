@@ -5,7 +5,7 @@ MODS := ../../utils
 .PHONY: $(MODS)
 
 $(MODS):
-	make --directory=$@ obj
+	make --directory=$@ objl
 
 ######
 printstuff.o: printstuff.cpp

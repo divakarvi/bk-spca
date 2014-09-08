@@ -6,7 +6,7 @@ MODS := ../../utils ../../linking/fft
 #############
 .PHONY: $(MODS)
 $(MODS):
-	make --directory=$@ obj
+	make --directory=$@ objl
 
 #############
 fft_thrd.o: fft_thrd.cpp

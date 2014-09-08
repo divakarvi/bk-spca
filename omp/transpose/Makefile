@@ -4,7 +4,7 @@ MODS := ../../utils
 ######
 .PHONY: $(MODS)
 $(MODS):
-	make --directory=$@ obj
+	make --directory=$@ objl
 
 ######
 transpose.o: transpose.cpp

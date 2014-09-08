@@ -5,10 +5,10 @@ MODS := ../../utils ../../pyplot
 #######
 .PHONY: $(MODS)
 $(MODS):
-	make --directory=$@ obj
+	make --directory=$@ objl
 
 #######
-obj: latency.o latency_utils.o dummy.o
+objl: latency.o latency_utils.o dummy.o
 latency_utils.o: latency_utils.cpp
 -include latency_utils.d
 array_walk.o: array_walk.cpp

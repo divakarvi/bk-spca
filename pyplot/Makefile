@@ -6,11 +6,11 @@ MODS := ../utils
 ######
 .PHONY: $(MODS)
 $(MODS):
-	make --directory=$@ obj
+	make --directory=$@ objl
 
 ######
-.PHONY: obj
-obj: pyplot.o pyhist.o
+.PHONY: objl
+objl: pyplot.o pyhist.o
 pyplot.o: pyplot.cpp
 -include pyplot.d
 pyhist.o: pyhist.cpp
