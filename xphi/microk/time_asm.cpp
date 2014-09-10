@@ -13,10 +13,10 @@
  * GNU General Public License for more details.
  */
 
-#include "../utils/utils.hh"
-#include "../utils/TimeStamp.hh"
-#include "../utils/Table.hh"
-#include "../xphi-init/mic_init.hh"
+#include "../../utils/utils.hh"
+#include "../../utils/TimeStamp.hh"
+#include "../../utils/Table.hh"
+#include "../init/mic_init.hh"
 #include "asm_mult.hh"
 #include <omp.h>
 #include <iostream>
