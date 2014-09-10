@@ -24,5 +24,8 @@ time_mic.o: time_mic.cpp
 test_mult.exe: test_mult.o mmult.o					\
 	       ../init ../init/mic_init.o				\
 	       ../../utils ../../utils/utils.o
+time_mult.exe: time_mult.o mmult.o					\
+	       ../init ../init/mic_init.o				\
+	       ../../utils ../../utils/utils.o ../../utils/Table.o
 time_mic.exe: time_mic.o mmult.o					\
 	       ../../utils ../../utils/utils.o ../../utils/Table.o
