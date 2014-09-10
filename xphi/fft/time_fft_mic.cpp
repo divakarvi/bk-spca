@@ -59,7 +59,7 @@ int main(){
 	v = (double *)_mm_malloc(16l*N, 64);
 	double fac = 1.0;
 #ifdef __MIC__
-	fac = 2.7/1.1;
+	fac = MIC_CYCLE_FACTOR;
 #endif
 	for(int i=0; i < 4; i++){
 		std::cout<<i<<std::endl;

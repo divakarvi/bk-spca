@@ -1,0 +1,7 @@
+#! /usr/bin/env python
+import os
+f = os.popen('showq -u', 'r')
+for line in f:
+    ln = line.split()
+    if len(ln) > 2 and ln[2] == 'tg456871':
+        print line

@@ -1,0 +1,31 @@
+#! /usr/bin/env python
+import sys
+import os
+import shutil
+inlist = sys.argv
+if((len(inlist)<2)or(inlist[1] != '-j')):
+    print 'Usage: '+inlist[0]+' -j jobname execname arglist'
+else:
+    jobname = 'pbs_'+inlist[2]
+    execname = inlist[3]
+    newexecname = 'pbs_'+inlist[2]+'_'+inlist[3];
+    shutil.copy2(execname, newexecname);
+    if(len(inlist)< 5):
+        args = ''
+    else:
+        args = inlist[5:]
+    arglist = ''
+    for x in args:
+        arglist = arglist+' '+x
+    file = open(jobname+'.pbs','w')
+    file.write('#! /bin/bash \n')
+    file.write('#SBATCH -J '+jobname+'\n')
+    file.write('#SBATCH -n 1 \n');
+    file.write('#SBATCH -N 1 \n');
+    file.write('#SBATCH -t 1:00:00 \n');
+    file.write('#SBATCH -p development \n')
+    currentdir = os.getcwd();
+    file.write(newexecname+' '+arglist+' > '+currentdir+'/'+jobname+'.txt\n')
+    file.write('rm core*\n');
+    file.close()
+    os.execvp('sbatch',['sbatch',jobname+'.pbs'])

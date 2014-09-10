@@ -13,8 +13,8 @@
  * GNU General Public License for more details.
  */
 
-#include "../utils/utils.hh"
-#include "../xphi-init/mic_init.hh"
+#include "../../utils/utils.hh"
+#include "../init/mic_init.hh"
 #include "mmult.hh"
 #include <mkl.h>
 
