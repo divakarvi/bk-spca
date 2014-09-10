@@ -13,10 +13,10 @@
  * GNU General Public License for more details.
  */
 
-#include "../utils/utils.hh"
-#include "../utils/TimeStamp.hh"
-#include "../utils/StatVector.hh"
-#include "../utils/Table.hh"
+#include "../../utils/utils.hh"
+#include "../../utils/TimeStamp.hh"
+#include "../../utils/StatVector.hh"
+#include "../../utils/Table.hh"
 #include "fft.hh"
 #include <omp.h>
 #include <cmath>
@@ -58,11 +58,15 @@ int main(){
 	const char* cols[2] = {"nlg2n nmlzd", "cycs/byte"};
 	double data[8];
 
+	double fac = 1.0;
+#ifdef __MIC__
+	fac = 2.7/1.1;
+#endif
 	for(int i=0; i < 4; i++){
 		std::cout<<i<<std::endl;
 		double cycles = time_fft(n[i], count[i]);
-		data[i] = cycles/(count[i]*n[i]*log(n[i]*1.0)/log(2.0))*2.7/1.1;
-		data[i+4] = cycles/(16.0*n[i]*count[i])*2.7/1.1;
+		data[i] = cycles/(count[i]*n[i]*log(n[i]*1.0)/log(2.0))*fac;
+		data[i+4] = cycles/(16.0*n[i]*count[i])*fac;
 	}
 
 	verify_dir("DBG");

@@ -13,10 +13,10 @@
  * GNU General Public License for more details.
  */
 
-#include "../utils/utils.hh"
-#include "../utils/TimeStamp.hh"
-#include "../utils/StatVector.hh"
-#include "../utils/Table.hh"
+#include "../../utils/utils.hh"
+#include "../../utils/TimeStamp.hh"
+#include "../../utils/StatVector.hh"
+#include "../../utils/Table.hh"
 #include "fft.hh"
 #include <omp.h>
 #include <cmath>
@@ -29,7 +29,6 @@ double *v;
 double time_fft(int n, long count){
 	int stat_count = 3;
 	long nbytes = 8l*2*n*count;
-	//double *v = (double *)_mm_malloc(nbytes, 64);
 	
 	FFT fft(n, count);
 
@@ -46,7 +45,6 @@ double time_fft(int n, long count){
 		stats.insert(cycles);
 	}
 
-	//_mm_free(v);
 	return stats.median();
 }
 
@@ -59,12 +57,15 @@ int main(){
 	double data[8];
 
 	v = (double *)_mm_malloc(16l*N, 64);
-
+	double fac = 1.0;
+#ifdef __MIC__
+	fac = 2.7/1.1;
+#endif
 	for(int i=0; i < 4; i++){
 		std::cout<<i<<std::endl;
 		double cycles = time_fft(n[i], count[i]);
-		data[i] = cycles/(count[i]*n[i]*log(n[i]*1.0)/log(2.0))*2.7/1.1;
-		data[i+4] = cycles/(16.0*n[i]*count[i])*2.7/1.1;
+		data[i] = cycles/(count[i]*n[i]*log(n[i]*1.0)/log(2.0))*fac;
+		data[i+4] = cycles/(16.0*n[i]*count[i])*fac;
 	}
 
 	verify_dir("DBG");

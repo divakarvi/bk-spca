@@ -1,14 +1,17 @@
 #!/usr/bin/env python
 import os
-root = os.path.abspath('.')
+curdir = os.path.abspath('.')
+root = os.getenv('HOME')
+assert root != None
+root = root + '/git/Programs/bk-spca/'
 print root
 for path, dnames, fnames in os.walk('.'):
-    if path.find('git') == -1 and fnames.count('Makefile') > 0:
+    if path.find('.git') == -1 and fnames.count('Makefile') > 0:
         os.chdir(path)
         print 'in ' + path
         os.system('make cleanx')
         os.chdir(root)
-
+os.chdir(curdir)
 
 
         
