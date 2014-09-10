@@ -13,8 +13,8 @@
  * GNU General Public License for more details.
  */
 
-#include "../utils/utils.hh"
-#include "../xphi-init/mic_init.hh"
+#include "../../utils/utils.hh"
+#include "../init/mic_init.hh"
 #include "leibniz_init.hh"
 #include <offload.h>
 #include <cstdio>
@@ -169,8 +169,8 @@ void leibniz4(){
 
 
 int main(){
-	//leibniz1();
+	leibniz1();
 	//leibniz2();
 	//leibniz3();
-	leibniz4();
+	//leibniz4();
 }

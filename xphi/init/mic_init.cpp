@@ -13,7 +13,7 @@
  * GNU General Public License for more details.
  */
 
-#include "../utils/utils.hh"
+#include "../../utils/utils.hh"
 #include "mic_init.hh"
 #include <offload.h>
 #include <omp.h>
