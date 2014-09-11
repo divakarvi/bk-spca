@@ -87,7 +87,7 @@ int main(){
 		}
 
 	verify_dir("DBG");
-	link_cout("DBG/time_mult.txt");
+	//link_cout("DBG/time_mult.txt");
 
 	Table tbl;
 	tbl.dim(3,3);
@@ -96,5 +96,5 @@ int main(){
 	tbl.data(data);
 	tbl.print("flops/cycle for multiplying square matrices");
 
-	unlink_cout();
+	//unlink_cout();
 }

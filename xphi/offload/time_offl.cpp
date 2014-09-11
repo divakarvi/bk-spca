@@ -96,13 +96,13 @@ int main(){
 
 	
 	verify_dir("DBG");
-	link_cout("DBG/time_offl.txt");
+	//link_cout("DBG/time_offl.txt");
 	Table tbl;
 	tbl.dim(3, 2*nmic);
 	tbl.rows(rows);
 	tbl.cols(cols);
 	tbl.data(data);
 	tbl.print("bw for offload xfers");
-	unlink_cout();
+	//unlink_cout();
 	
 }
