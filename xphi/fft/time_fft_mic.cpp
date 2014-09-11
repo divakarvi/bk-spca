@@ -17,6 +17,7 @@
 #include "../../utils/TimeStamp.hh"
 #include "../../utils/StatVector.hh"
 #include "../../utils/Table.hh"
+#include "../init/mic_init.hh"
 #include "fft.hh"
 #include <omp.h>
 #include <cmath>
