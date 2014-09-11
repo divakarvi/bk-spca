@@ -6,7 +6,9 @@ MODS := ../../utils ../../pyplot
 ######
 .PHONY: $(MODS)
 $(MODS):
+	@echo
 	make --directory=$@ objl
+	@echo
 
 ######
 .PHONY: objl

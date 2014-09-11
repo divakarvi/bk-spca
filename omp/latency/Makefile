@@ -5,7 +5,9 @@ MODS := ../../utils ../../mem/latency
 .PHONY: $(MODS)
 
 $(MODS):
+	@echo
 	make --directory=$@ objl
+	@echo
 
 ######
 latency.o: latency.cpp

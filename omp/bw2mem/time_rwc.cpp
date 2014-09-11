@@ -66,13 +66,8 @@ double time(enum rwc_flag_enum flag, int nthreads){
 int main(){
 	kmp_set_defaults("KMP_AFFINITY=compact");
 
-#ifdef __MIC__
-	assrt(getenv("MIC_OMP_NUM_THREADS") != NULL);
-	const int nthreads = atoi(getenv("MIC_OMP_NUM_THREADS"));
-#else
 	assrt(getenv("OMP_NUM_THREADS") != NULL);
 	const int nthreads = atoi(getenv("OMP_NUM_THREADS"));
-#endif
 
 	int nth[4] = {nthreads/4, nthreads/2, 
 			     3*nthreads/4, nthreads};

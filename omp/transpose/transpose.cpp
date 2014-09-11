@@ -32,7 +32,6 @@ void easytrans(double *restrict a, double *restrict b, int ldb,
 void blocktransx(double *restrict a, double *restrict b, 
 		 int ldb, int m, int n){
 	assrt(m%B == 0 && n%B == 0);
-#pragma vector always //nontemporal
 	for(int i=0; i < m; i+=B)
 		for(int j=0; j < n; j+=B)
 			for(int ii=0; ii < B; ii++)

@@ -141,6 +141,8 @@ void leibniz4(){
 		}
 	}
 
+	printf("              nmic = %d\n", nmic);
+
 	/*
 	 * wait for mics to get back
 	 */
@@ -169,8 +171,8 @@ void leibniz4(){
 
 
 int main(){
-	leibniz1();
+	//leibniz1();
 	//leibniz2();
 	//leibniz3();
-	//leibniz4();
+	leibniz4();
 }

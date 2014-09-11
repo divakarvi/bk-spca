@@ -5,7 +5,9 @@ MODS := ../../utils ../../pyplot
 ######
 .PHONY: $(MODS)
 $(MODS):
+	@echo
 	make --directory=$@ objl
+	@echo
 
 ######
 objl: latency.o latency_utils.o dummy.o

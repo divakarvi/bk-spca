@@ -70,13 +70,8 @@ struct rval_struct time(int nthreads){
 int main(){
 	kmp_set_defaults("KMP_AFFINITY=compact");
 
-#ifdef __MIC__
-	assrt(getenv("MIC_OMP_NUM_THREADS") != NULL);
-	const int nthreads = atoi(getenv("MIC_OMP_NUM_THREADS"));
-#else
 	assrt(getenv("OMP_NUM_THREADS") != NULL);
 	const int nthreads = atoi(getenv("OMP_NUM_THREADS"));
-#endif	
 
 	/*
 	 * B <= 80 with 244 threads

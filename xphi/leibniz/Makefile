@@ -4,7 +4,9 @@ MODS := ../../utils ../init
 ######
 .PHONY: $(MODS)
 $(MODS):
+	@echo
 	make --directory=$@ objl
+	@echo
 
 ######
 leibniz_init.o: leibniz_init.cpp

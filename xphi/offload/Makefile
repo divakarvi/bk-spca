@@ -5,7 +5,9 @@ MODS := ../../utils ../init
 ######
 .PHONY: $(MODS)
 $(MODS):
+	@echo
 	make --directory=$@ objl
+	@echo
 
 ######
 dummy.o: dummy.cpp

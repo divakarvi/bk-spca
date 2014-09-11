@@ -4,7 +4,9 @@ MODS := ../../utils
 ######
 .PHONY: $(MODS)
 $(MODS):
+	@echo
 	make --directory=$@ objl
+	@echo
 
 ######
 transpose.o: transpose.cpp

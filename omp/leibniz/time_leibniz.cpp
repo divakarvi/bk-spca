@@ -72,11 +72,8 @@ int main(){
 			       "for", "forchunk", "parallelfor",
 			       "section"};
 	const char* cols[2] = {"pi", "cycles/term"};
-#ifdef __MIC__
-	const int nthreads = atoi(getenv("MIC_OMP_NUM_THREADS"));
-#else
 	const int nthreads = atoi(getenv("OMP_NUM_THREADS"));
-#endif
+
 	std::cout<<"num of threads = "<<nthreads<<std::endl;
 
 	const long n = 1l*1000*1000*1000*10;
