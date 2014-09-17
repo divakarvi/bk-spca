@@ -18,13 +18,13 @@
 #include <omp.h>
 
 /*
- * a = 4.0^(1.0/3.0)
+ * gl_scl = 4.0^(1.0/3.0)
  */
 __declspec(target(mic)) const double gl_scl = 1.5874010519681994;
 
 __declspec(target(mic))
-double mic_sum(double *v, long len){
-	printf("     mic pointer v = %p \n", v);
+double hostmic_sum(double *v, long len){
+	printf("sum:host/mic pointer v = %p \n", v);
 	double sum = 0;
 	
 #pragma omp parallel for			\
@@ -37,7 +37,7 @@ double mic_sum(double *v, long len){
 
 __declspec(target(mic))
 void hostmic_scale(double *v, long len){
-	printf("host/mic pointer v = %p \n", v);
+	printf("scale:host/mic pointer v = %p \n", v);
 
 #pragma omp parallel for
 	for(long i=0; i < len; i++)

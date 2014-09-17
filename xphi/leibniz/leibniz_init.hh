@@ -19,7 +19,7 @@
 /*
  * returns sum of v[0...len-1]
  */
-__declspec(target(mic)) double mic_sum(double *v, long len);
+__declspec(target(mic)) double hostmic_sum(double *v, long len);
 
 /*
  * multiplies each entry of v[0...len-1] by 4^(1/3)

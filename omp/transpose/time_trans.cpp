@@ -92,7 +92,7 @@ int main(){
 	verify_dir("DBG");
 	char fname[200];
 	sprintf(fname, "DBG/time_trans.txt");
-	//link_cout(fname);
+	link_cout(fname);
 
 	Table tbl;
 	tbl.dim(3, 2);
@@ -103,5 +103,5 @@ int main(){
 	sprintf(banner, "bw of matrix trans, nthreads = %d", nthreads);
 	tbl.print(banner);
 
-	//unlink_cout();
+	unlink_cout();
 }
