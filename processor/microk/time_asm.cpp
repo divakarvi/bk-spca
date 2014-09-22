@@ -13,9 +13,9 @@
  * GNU General Public License for more details.
  */
 
-#include "../utils/utils.hh"
-#include "../utils/Table.hh"
-#include "../utils/TimeStamp.hh"
+#include "../../utils/utils.hh"
+#include "../../utils/Table.hh"
+#include "../../utils/TimeStamp.hh"
 #include "asm4xnx4.hh"
 #include <cstdio>
 #include <cstdlib>

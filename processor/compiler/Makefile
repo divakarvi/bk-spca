@@ -1,39 +1,45 @@
-include ../makevars.mk
-CFLAGSXX := -fno-inline-functions $(MKLINC)
-LIBS := $(MKLLIBS)
+include ../../makevars.mk
+CFLAGS := $(CFLAGS) -fno-inline-functions $(MKLINC)
+LIBS := $(LIBS) $(MKLLIBS)
 
-.PHONY: ../utils
-../utils: 
-	make --directory=$@ all
+######
+.PHONY: ../../utils
+../../utils: 
+	@echo
+	make --directory=$@ objl
+	@echo
 
+######
 -include leibniz.d
 leibniz.o: leibniz.cpp
 leibniz.exe: leibniz.o
 leibniz.s: leibniz.cpp
 
+######
 -include fusion.d
 fusion.o: fusion.cpp
-fusion.exe: fusion.o ../utils ../utils/Table.o 
+fusion.exe: fusion.o ../../utils ../../utils/Table.o 
 fusion.s: fusion.cpp
 
+######
 -include unrolljam.d
 unrolljam.o: unrolljam.cpp
-unrolljam.exe: unrolljam.o ../utils ../utils/Table.o
+unrolljam.exe: unrolljam.o ../../utils ../../utils/Table.o
 unrolljam.s: unrolljam.cpp
 
+######
 -include xchg-mult.d
 xchg-mult.o: xchg-mult.cpp
-
 -include time-xchg.d
 time-xchg.o: time-xchg.cpp
 time-xchg.exe: time-xchg.o xchg-mult.o 			\
-		../utils 					\
-		../utils/Table.o 				\
-		../utils/utils.o 
+		../../utils 					\
+		../../utils/Table.o 				\
+		../../utils/utils.o 
 
-
+######
 -include cpp-mult.d
 #-fno-inline-functions not used here
 cpp-mult.o: cpp-mult.cpp
 	$(CPP) $(CFLAGS) $(MKLINC) -c $<
-cpp-mult.exe: cpp-mult.o ../utils ../utils/utils.o
+cpp-mult.exe: cpp-mult.o ../../utils ../../utils/utils.o

@@ -13,8 +13,8 @@
  * GNU General Public License for more details.
  */
 
-#include "../utils/utils.hh"
-#include "../utils/Table.hh"
+#include "../../utils/utils.hh"
+#include "../../utils/Table.hh"
 
 void sincos(double x, int n, double& c, double& s){
 	c = s = 0;

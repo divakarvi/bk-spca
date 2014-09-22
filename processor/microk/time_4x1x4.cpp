@@ -13,7 +13,7 @@
  * GNU General Public License for more details.
  */
 
-#include "../utils/TimeStamp.hh"
+#include "../../utils/TimeStamp.hh"
 #include <iostream>
 
 extern void multxmm4x1x4(double *a, double *b, double *c);

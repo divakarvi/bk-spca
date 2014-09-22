@@ -13,8 +13,8 @@
  * GNU General Public License for more details.
  */
 
-#include "../utils/utils.hh"
-#include "../utils/Table.hh"
+#include "../../utils/utils.hh"
+#include "../../utils/Table.hh"
 #include <cmath>
 
 //sine table for theta = (pi/(2*n))*i

@@ -15,7 +15,7 @@
 
 #ifndef __MYMATRIX__
 #define __MYMATRIX__
-#include "../utils/Vector.hh"
+#include "../../utils/Vector.hh"
 #include <assert.h>
 #include <iostream>
 #include <fstream>

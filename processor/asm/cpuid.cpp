@@ -13,7 +13,6 @@
  * GNU General Public License for more details.
  */
 
-#include "../utils/TimeStamp.hh"
 #include <iostream>
 #include <cstdlib>
 #include <cstdio>
@@ -163,9 +162,9 @@ void cpuidHT(){//check hyper threading
 }
 
 int main(){
-	//cpuid01h();
-	//cpuid02h();
-	//cpuid04h();
-	//cpuid0Ah();
+	cpuid01h();
+	cpuid02h();
+	cpuid04h();
+	cpuid0Ah();
 	cpuidHT();
 }

@@ -13,7 +13,7 @@
  * GNU General Public License for more details.
  */
 
-#include "../proc-peak/easyxmm.hh"
+#include "../peak/easyxmm.hh"
 
 //mult 4x1 and 1x4 to get 4x4
 //c = c+a*b (interpret as matrices)
