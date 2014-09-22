@@ -13,27 +13,21 @@
  * GNU General Public License for more details.
  */
 
-#include "Aitken.hh"
-#include "../utils/Vector.hh"
-#include <cstdlib>
-
-//partials sums of 4(1-1/3+1/5-1/7+1/9-...)
-void leibniz(Vector& seq){
-  int len = seq.getSize();
-  for(int i=0; i < len; i++)
-    if(i==0)
-      seq(i) = 4.0;
-    else if(i%2==1)
-      seq(i) = seq(i-1) - 4.0/(2.0*i+1);
-    else
-      seq(i) = seq(i-1) + 4.0/(2.0*i+1);
-}
-
+extern "C"{
+#include "../aitken/aitken.h"
+};
+#include "../../utils/utils.hh"
+#include "../fft/fft_mkl.hh"
 
 int main(){
-  Vector seq(13);
-  leibniz(seq);
-  int printflag = 1;
-  double ans = AitkenE(seq, printflag);
-  printf("extrapolated pi = %.10f \n", ans);
+	double x[6] = {1, 2*2, 3*3, 4*4, 5*5, 6*6};
+	double y[4];
+
+	aitken(x, y, 6);
+	array_show(x, 6, "sequence");
+	array_show(y, 4, "its aitken transform");
+
+	fft_mkl fft(3);
+	fft.fwd(x);
+	array_show(x, 6, "its complex fft");
 }

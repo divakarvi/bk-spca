@@ -1,10 +1,10 @@
 leibnizFinC.exe: leibnizFinC.o aitkenf.o
-	icc -o leibnizFinC.exe leibnizFinC.o aitkenf.o -lifcore 
+	icc -o $@ $^ -lifcore 
 
 leibnizFinC.o: leibnizFinC.c
 	icc -O3 -c $<
 
 leibnizFinCPP.exe: leibnizFinCPP.o aitkenf.o
-	icpc -o $@ $^ $(MKLLIBS) -lifcore
+	icpc -o $@ $^ -lifcore
 
 leibnizFinCPP.o: leibnizFinCPP.cpp

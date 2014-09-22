@@ -15,7 +15,7 @@
 
 #ifndef __AitkenAugust09DVjli__
 #define __AitkenAugust09DVjli__
-#include "../utils/Vector.hh"
+#include "../../utils/Vector.hh"
 
 /* 
  * applies Aitken transformation to seq1 to produce seq2.

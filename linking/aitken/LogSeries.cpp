@@ -14,7 +14,7 @@
  */
 
 #include "Aitken.hh"
-#include "../utils/Vector.hh"
+#include "../../utils/Vector.hh"
 #include <cstdlib>
 #include <cmath>
 

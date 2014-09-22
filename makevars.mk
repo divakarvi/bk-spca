@@ -30,4 +30,5 @@ cleanx:
 	rm pbs*.*; 
 
 cleanxx:
-	rm *.o; rm *.exe; rm pbs*.*; rm *.d; rm DBG/outP*; rm slurm*.out;
+	rm *.o; rm *.a; rm *.so;  rm *.exe; rm pbs*.*; rm *.d; 	\
+	rm DBG/outP*; rm slurm*.out;

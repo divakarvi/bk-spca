@@ -13,7 +13,6 @@
  * GNU General Public License for more details.
  */
 
-#include "../utils/utils.hh"
 #include "lusolve.hh"
 #include <mkl.h>
 #include <cmath>

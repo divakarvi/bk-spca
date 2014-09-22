@@ -13,7 +13,7 @@
  * GNU General Public License for more details.
  */
 
-#include "../utils/Vector.hh"
+#include "../../utils/Vector.hh"
 #include "Aitken.hh"
 #include <cassert>
 #include <cstdlib>
