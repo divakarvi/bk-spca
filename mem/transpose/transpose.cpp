@@ -13,7 +13,7 @@
  * GNU General Public License for more details.
  */
 
-#include "../utils/utils.hh"
+#include "../../utils/utils.hh"
 #include "transpose.hh"
 
 void easytrans(double *restrict a, double *restrict b, int m, int n){

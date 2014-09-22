@@ -13,8 +13,8 @@
  * GNU General Public License for more details.
  */
 
-#include "../utils/utils.hh"
-#include "../proc-microk/asm4xnx4.hh"
+#include "../../utils/utils.hh"
+#include "../../proc/microk/asm4xnx4.hh"
 #include "blockmult.hh"
 using namespace std;
 

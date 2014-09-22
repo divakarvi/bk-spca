@@ -13,11 +13,11 @@
  * GNU General Public License for more details.
  */
 
-#include "../utils/utils.hh"
-#include "../utils/TimeStamp.hh"
-#include "../utils/StatVector.hh"
-#include "../utils/Table.hh"
-#include "../proc-microk/asm4xnx4.hh"
+#include "../../utils/utils.hh"
+#include "../../utils/TimeStamp.hh"
+#include "../../utils/StatVector.hh"
+#include "../../utils/Table.hh"
+#include "../../proc/microk/asm4xnx4.hh"
 #include "blockmult.hh"
 
 enum cacheflag {L2cache, L3cache};

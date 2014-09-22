@@ -13,7 +13,7 @@
  * GNU General Public License for more details.
  */
 
-#include "../utils/utils.hh"
+#include "../../utils/utils.hh"
 #include "test_utils.hh"
 #include "blockmult.hh"
 #include <cstdlib>

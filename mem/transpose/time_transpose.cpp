@@ -13,10 +13,10 @@
  * GNU General Public License for more details.
  */
 
-#include "../utils/utils.hh"
-#include "../utils/TimeStamp.hh"
-#include "../utils/StatVector.hh"
-#include "../utils/Table.hh"
+#include "../../utils/utils.hh"
+#include "../../utils/TimeStamp.hh"
+#include "../../utils/StatVector.hh"
+#include "../../utils/Table.hh"
 #include "transpose.hh"
 
 enum transpose_enum {EASY, BLOCK, BLOCKX, RECURSIVE, POW2};
