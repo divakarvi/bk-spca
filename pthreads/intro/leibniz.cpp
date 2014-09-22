@@ -13,7 +13,7 @@
  * GNU General Public License for more details.
  */
 
-#include "../utils/utils.hh"
+#include "../../utils/utils.hh"
 #include <unistd.h>
 #include <pthread.h>
 #include <cstdio>
@@ -67,6 +67,6 @@ double leibsum(int nterms){
 }
 
 int main(){
-	double ans = leibsum(100);
+	double ans = leibsum(1000*1000);
 	printf("leibniz partial sum = %f \n", ans);
 }

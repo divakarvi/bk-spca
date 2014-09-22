@@ -16,9 +16,9 @@
 #include <unistd.h>
 #include <pthread.h>
 #include <iostream>
-#include "../utils/utils.hh"
-#include "../utils/StatVector.hh"
-#include "../utils/TimeStamp.hh"
+#include "../../utils/utils.hh"
+#include "../../utils/StatVector.hh"
+#include "../../utils/TimeStamp.hh"
 
 void *addone(void *arg){
 	long *p = (long *)(arg);

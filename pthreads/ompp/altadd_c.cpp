@@ -13,9 +13,9 @@
  * GNU General Public License for more details.
  */
 
-#include "../utils/utils.hh"
-#include "../utils/TimeStamp.hh"
-#include "../kernel-syscall/dvmesg.h"
+#include "../../utils/utils.hh"
+#include "../../utils/TimeStamp.hh"
+#include "../../kernel-linux/syscall/dvmesg.h"
 #include <unistd.h>
 #include <pthread.h>
 #include <iostream>
