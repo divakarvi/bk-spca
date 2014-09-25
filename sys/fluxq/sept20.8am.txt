@@ -1,0 +1,15 @@
+
+Total jobs:  2038
+
+2038 active jobs      8878 of 14868 processors in use by local jobs (59.71%)
+                       656 of 1042 nodes active      (62.96%)
+
+                       number of jobs =  2031.0
+           number of single core jobs =  1719.0
+         fraction of single core jobs =  0.846381093058
+           number of single node jobs =  1922.0
+         fraction of single node jobs =  0.946331856228
+             number of 100+ core jobs =  15.0
+fraction of procs in single core jobs =  0.193777477173
+fraction of procs in single node jobs =  0.406605794161
+ fraction of procs in < 100 core jobs =  0.778604441438
