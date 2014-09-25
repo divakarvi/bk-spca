@@ -1,0 +1,14 @@
+                               Device Count: 1
+                                Device Name: Tesla K20m
+                          Clock rate in GHz: 0.7055
+                      Major revision number: 3
+                      Minor revision number: 5
+                        Global memory in GB: 5.03271
+            Shared memory per SM (in bytes): 49152
+                 Number of registers per SM: 65536
+               Max number of threads per SM: 2048
+                 Number of threads per warp: 32
+        Maximum number of threads per block: 1024
+         Maximum of each dimension of block: 1024 x 1024 x 64
+          Maximum of each dimension of grid: 2147483647 x 65535 x 65535
+                                    Overlap: enabled

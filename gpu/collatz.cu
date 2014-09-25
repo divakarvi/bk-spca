@@ -24,9 +24,9 @@
 #include <cassert>
 #include <cstdlib>
 using namespace std;
-#include <dvhstmem.hh>
-#include <hstTimer.hh>
-#include <dvTimer.hh>
+#include "dvhstmem.hh"
+#include "hstTimer.hh"
+#include "dvTimer.hh"
 
 //list size must equal NUMTHREADS*32*NUMBLOCKS
 //NUMTHREADS must be a multiple of 32

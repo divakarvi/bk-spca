@@ -10,7 +10,7 @@ copy.exe: copy.cu
 add.exe: add.cu
 	nvcc --ptxas-options=-v -arch=sm_20  -DNUMTHREADS=384 add.cu -o add.exe
 leibniz.exe: leibniz.cu
-	nvcc --ptxas-options=-v -arch=sm_20  leibniz.cu -o leibniz.exe
+	nvcc --ptxas-options=-v -arch=sm_20 -keep leibniz.cu -o leibniz.exe
 capability.exe: capability.cu 
 	nvcc --ptxas-options=-v -arch=sm_20  capability.cu -o capability.exe
 clean:
