@@ -1,6 +1,6 @@
 #include "../../utils/utils.hh"
-#include "../utils/const.hh"
-#include "mmult.hh"
+#include "cumult.hh"
+#include <cstdlib>
 
 void multq(double *A, double *B, double *C, int N){
 	for(int i=0; i < N; i++)
@@ -9,24 +9,23 @@ void multq(double *A, double *B, double *C, int N){
 				C[i+j*N] += A[i+k*N]*B[k+j*N];
 }
 
-void test_mult(int N, enum mmult_enum flag){
-	assrt(N%SQRTT==0);
-	
+void test_cumult(int N){
 	double *A = new double[N*N];
 	double *B = new double[N*N];
 	double *C = new double[N*N];
 	double *CC = new double[N*N];
 
 	for(int i=0; i < N*N; i++){
-		A[i] = 1.0*rand()/RAND_MAX-0.5;
-		B[i] = 1.0*rand()/RAND_MAX-0.5;
-		C[i] = 1.0*rand()/RAND_MAX-0.5;
+		A[i] = 1.0; //1.0*rand()/RAND_MAX-0.5;
+		B[i] = 1.0; //1.0*rand()/RAND_MAX-0.5;
+		C[i] = 0.0; //1.0*rand()/RAND_MAX-0.5;
 		CC[i] = C[i];
 	}
 
-	mmult(A, B, C, N, flag);
+	CuMult cumult(N);
+	cumult.mult(A, B, C);
 	multq(A, B, CC, N);
-
+	
 	array_diff(CC, C, N*N);
 	std::cout<<"error = "<<array_max(CC, N*N)<<std::endl;
 	
@@ -37,6 +36,5 @@ void test_mult(int N, enum mmult_enum flag){
 }
 
 int main(){
-	//test_mult(SQRTT*23, GMEM_MULT);
-	test_mult(SQRTT*23, SMEM_MULT);
+	test_cumult(1000);
 }
