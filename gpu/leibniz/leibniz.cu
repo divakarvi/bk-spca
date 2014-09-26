@@ -4,7 +4,7 @@
 
 
 __global__ void 
-__launch_bounds__(THinBLK, BLKinSM)
+__launch_bounds__(THinBLK, BLKinMP)
 leibniz(long int n, double *result){
 	int tid = threadIdx.x+blockIdx.x*blockDim.x;
 	double ans=0;
@@ -18,7 +18,7 @@ leibniz(long int n, double *result){
 
 //result and lock must be initialized to zero.
 __global__ void 
-__launch_bounds__(THinBLK, BLKinSM)
+__launch_bounds__(THinBLK, BLKinMP)
 leibniztotal(long int n, double* result, int* lock){
 	int tid = threadIdx.x+blockIdx.x*blockDim.x;
 	double ans=0;
@@ -31,7 +31,7 @@ leibniztotal(long int n, double* result, int* lock){
 }
 
 __global__ void 
-__launch_bounds__(THinBLK, BLKinSM)
+__launch_bounds__(THinBLK, BLKinMP)
 leibnizfloat(int n, float *result){
 	int tid = threadIdx.x+blockIdx.x*blockDim.x;
 	float ans=0;

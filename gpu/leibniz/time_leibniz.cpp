@@ -9,11 +9,11 @@
 
 enum leib_enum {LEIB, LEIB_TOTAL};
 
-double time_leibniz(long n, int NBLKS, enum leib_enum flag){
+double time_leibniz(long n, int NBLK, enum leib_enum flag){
 	int dhmemsize;
 	switch(flag){
 	case LEIB:
-		dhmemsize = THinBLK*NBLKS;
+		dhmemsize = THinBLK*NBLK;
 		break;
 	case LEIB_TOTAL:
 		dhmemsize = 1;
@@ -31,11 +31,11 @@ double time_leibniz(long n, int NBLKS, enum leib_enum flag){
 	double ans;
 	switch(flag){
 	case LEIB:
-		leibniz<<<NBLKS, THinBLK>>>(n, dresult);
+		leibniz<<<NBLK, THinBLK>>>(n, dresult);
 		
 		dhmem.device2host();
 		ans = 0;
-		for(int i=0; i < NBLKS*THinBLK; i++)
+		for(int i=0; i < NBLK*THinBLK; i++)
 			ans += result[i];
 		break;
 	case LEIB_TOTAL:
@@ -47,7 +47,7 @@ double time_leibniz(long n, int NBLKS, enum leib_enum flag){
 		*hlock = 0;
 		dhmemi.host2device();
 
-		leibniztotal<<<NBLKS,THinBLK>>>(n, dresult, dlock);
+		leibniztotal<<<NBLK,THinBLK>>>(n, dresult, dlock);
 		
 		dhmem.device2host();
 		ans = *result;
@@ -65,7 +65,7 @@ int main(){
 	double blk_fac[6] = {0.125, 0.25, 0.5, 1.0, 10.0, 100.0};
 	int NBLK_arr[6];
 	for(int i=0; i < 6; i++)
-		NBLK_arr[i] = round(BLKinSM*NSM*blk_fac[i]);
+		NBLK_arr[i] = round(BLKinMP*NMP*blk_fac[i]);
 
 	enum leib_enum flag[2] = {LEIB, LEIB_TOTAL};
 
@@ -88,7 +88,8 @@ int main(){
 	table.rows((const char **)rows);
 	table.cols(cols);
 	table.data(data);
-	link_cout("output/time_leibniz.txt");
+	verify_dir("DBG");
+	link_cout("DBG/time_leibniz.txt");
 	table.print("Number of SandyB cycles/term for summing Leibniz");
 	unlink_cout();
 }

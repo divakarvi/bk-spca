@@ -3,11 +3,11 @@
 #include "../utils/const.hh"
 /*
  * n = number of terms of Leibniz to be summed
- * result[] = array of dim THinBLK*NBLKS
+ * result[] = array of dim THinBLK*NBLK
  * each thread returns its sum in result[tid]
  */
 __global__ void 
-__launch_bounds__(THinBLK, BLKinSM)
+__launch_bounds__(THinBLK, BLKinMP)
 leibniz(long int n, double *result);
 
 /*
@@ -17,14 +17,14 @@ leibniz(long int n, double *result);
  * result[0] = sum at exit
  */
 __global__ void 
-__launch_bounds__(THinBLK, BLKinSM)
+__launch_bounds__(THinBLK, BLKinMP)
 leibniztotal(long int n, double* result, int* lock);
 
 /*
  * single precision version of leibniz()
  */
 __global__ void 
-__launch_bounds__(THinBLK, BLKinSM)
+__launch_bounds__(THinBLK, BLKinMP)
 leibnizfloat(int n, float *result);
 
 #endif 

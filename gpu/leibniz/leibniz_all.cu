@@ -22,7 +22,7 @@
 
 
 __global__ void 
-__launch_bounds__(THinBLK, BLKinSM)
+__launch_bounds__(THinBLK, BLKinMP)
 leibniz(long int n, double *result){
 	int tid = threadIdx.x+blockIdx.x*blockDim.x;
 	double ans=0;
@@ -67,7 +67,7 @@ __device__ void atomicAddDouble(double value,
 
 //result and lock must be initialized to zero.
 __global__ void 
-__launch_bounds__(THinBLK, BLKinSM)
+__launch_bounds__(THinBLK, BLKinMP)
 leibniztotal(long int n, double* result, int* lock){
 	int tid = threadIdx.x+blockIdx.x*blockDim.x;
 	double ans=0;
@@ -81,7 +81,7 @@ leibniztotal(long int n, double* result, int* lock){
 
 
 __global__ void 
-__launch_bounds__(THinBLK, BLKinSM)
+__launch_bounds__(THinBLK, BLKinMP)
 leibnizfloat(int n, float *result){
 	int tid = threadIdx.x+blockIdx.x*blockDim.x;
 	float ans=0;
@@ -94,10 +94,10 @@ leibnizfloat(int n, float *result){
 }
 
 void run_leibniz(long int n){
-	int NBLKS = NSM*BLKinSM;
+	int NBLK = NMP*BLKinMP;
 		
 	double *dresult, *result;
-	dhstmem<double> dhmem(THinBLK*NBLKS);
+	dhstmem<double> dhmem(THinBLK*NBLK);
 	dresult = dhmem.device();
 	result = dhmem.host();
 	
@@ -106,27 +106,27 @@ void run_leibniz(long int n){
 	
 	hstTimer nvclk;
 	nvclk.tic();  
-	leibniz<<<NBLKS, THinBLK>>>(n, dresult);
+	leibniz<<<NBLK, THinBLK>>>(n, dresult);
 #ifdef DEBUG
 	printf("CUDA: %s\n", cudaGetErrorString(cudaGetLastError()));
 #endif
 	double telapsed = nvclk.toc(); 
 	dhmem.device2host();
 	double ans=0;
-	for(int i=0; i < NBLKS*THinBLK; i++)
+	for(int i=0; i < NBLK*THinBLK; i++)
 		ans += result[i];
 	std::cout.width(30);
 	std::cout<<"leibniz partial sum = "<<ans<<std::endl;
 	std::cout.width(30);
 	std::cout<<"THinBLK = "<<THinBLK<<std::endl;
 	std::cout.width(30);
-	std::cout<<"NBLKS = "<<NBLKS<<std::endl;
+	std::cout<<"NBLK = "<<NBLK<<std::endl;
 	std::cout.width(30);
 	std::cout<<"Time elapsed = "<<telapsed<<" milliseconds"<<std::endl<<std::endl;
 }
 
 void run_leibniztotal(long int n){
-	int NBLKS = NSM*BLKinSM;
+	int NBLK = NMP*BLKinMP;
 	
 	double *dresult, *result;
 	dhstmem<double> dhmem(1);
@@ -146,7 +146,7 @@ void run_leibniztotal(long int n){
 
 	hstTimer nvclk;
 	nvclk.tic();  
-	leibniztotal<<<NBLKS,THinBLK>>>(n, dresult, dlock);
+	leibniztotal<<<NBLK,THinBLK>>>(n, dresult, dlock);
 #ifdef DEBUG
 	printf("CUDA: %s\n", cudaGetErrorString(cudaGetLastError()));
 #endif
@@ -158,14 +158,14 @@ void run_leibniztotal(long int n){
 	std::cout.width(30);
 	std::cout<<"THinBLK = "<<THinBLK<<std::endl;
 	std::cout.width(30);
-	std::cout<<"NBLKS = "<<NBLKS<<std::endl<<std::endl;
+	std::cout<<"NBLK = "<<NBLK<<std::endl<<std::endl;
 }
 
 void run_leibnizfloat(int n){
-	int NBLKS = NSM*BLKinSM;
+	int NBLK = NMP*BLKinMP;
 	
 	float *dresult, *result;
-	dhstmem<float> dhmem(THinBLK*NBLKS);
+	dhstmem<float> dhmem(THinBLK*NBLK);
 	dresult = dhmem.device();
 	result = dhmem.host();
 
@@ -175,7 +175,7 @@ void run_leibnizfloat(int n){
 
 	hstTimer nvclk;
 	nvclk.tic();  
-	leibnizfloat<<<NBLKS, THinBLK>>>(n, dresult);
+	leibnizfloat<<<NBLK, THinBLK>>>(n, dresult);
 #ifdef DEBUG
 	printf("CUDA: %s\n", cudaGetErrorString(cudaGetLastError()));
 #endif
@@ -184,7 +184,7 @@ void run_leibnizfloat(int n){
 
 	dhmem.device2host();
 	float ans=0;
-	for(int i=0; i < NBLKS*THinBLK; i++)
+	for(int i=0; i < NBLK*THinBLK; i++)
 		ans += result[i];
 
 	std::cout.width(30);
@@ -192,7 +192,7 @@ void run_leibnizfloat(int n){
 	std::cout.width(30);
 	std::cout<<"THinBLK = "<<THinBLK<<std::endl;
 	std::cout.width(30);
-	std::cout<<"NBLKS = "<<NBLKS<<std::endl;
+	std::cout<<"NBLK = "<<NBLK<<std::endl;
 	std::cout.width(30);
 	std::cout<<"Time elapsed = "<<telapsed<<" milliseconds"
 		 <<std::endl<<std::endl;
