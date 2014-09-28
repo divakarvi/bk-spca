@@ -4,6 +4,7 @@
                       Major revision number: 3
                       Minor revision number: 5
                         Global memory in GB: 5.03271
+                  Total L2 cache (in bytes): 1310720
             Shared memory per SM (in bytes): 49152
                  Number of registers per SM: 65536
                Max number of threads per SM: 2048

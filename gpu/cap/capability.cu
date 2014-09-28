@@ -36,6 +36,9 @@ int main(){
 		cout<<"Global memory in GB: "
 		    <<prop.totalGlobalMem*1.0/1000/1000/1000<<endl;
 		cout.width(45);
+		cout<<"Total L2 cache (in bytes): "
+		    <<prop.l2CacheSize<<endl;
+		cout.width(45);
 		cout<<"Shared memory per SM (in bytes): "
 		    <<prop.sharedMemPerBlock<<endl;
 		cout.width(45);

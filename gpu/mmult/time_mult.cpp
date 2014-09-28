@@ -4,6 +4,7 @@
 #include "../../utils/Table.hh"
 #include "../utils/const.hh"
 #include "mmult.hh"
+#include "cuda_runtime.h"
 #include <cstdio>
 
 double time_mult(int N, enum mmult_enum flag){
@@ -35,6 +36,10 @@ double time_mult(int N, enum mmult_enum flag){
 }
 
 int main(){
+	cudaError_t code;
+	cudaDeviceSetCacheConfig(cudaFuncCachePreferShared);
+	assrt(code==cudaSuccess);
+
 	const char *rows[] = {"1600", "3200", "4000"};
 	const char *cols[] = {"GMEM", "SMEM"};
 	double data[6];

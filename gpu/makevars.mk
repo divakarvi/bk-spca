@@ -2,7 +2,7 @@ CPP := nvcc
 CFLAGS := -O3 -prec-div=true -ftz=false -Drestrict="__restrict__" 
 ARCH := sm_35
 CFLAGS := $(CFLAGS) -arch=$(ARCH)
-CFLAGS := $(CFLAGS) #-Xcompiler=-MMD,-MP #does not work, nvcc uses lot of tmps
+CFLAGS := $(CFLAGS) #-Xcompiler=-MMD,-MP #does not work, nvcc uses lots of tmps
 CFLAGS := $(CFLAGS) -Xptxas=-v
 
 

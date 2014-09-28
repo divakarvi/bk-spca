@@ -3,6 +3,7 @@
 #include "../utils/hstTimer.hh"
 #include "cumult.hh"
 #include <cublas_v2.h>
+#include <cuda_runtime.h>
 
 CuMult::CuMult(int Ni)
 	:N(Ni), memA(N*N), memB(N*N), memC(N*N){
@@ -11,6 +12,9 @@ CuMult::CuMult(int Ni)
 	code = cublasCreate(&h);
 	assrt(code == CUBLAS_STATUS_SUCCESS);
 
+	cudaError_t ccode;
+	ccode = cudaDeviceSetCacheConfig(cudaFuncCachePreferShared);
+	assrt(ccode==cudaSuccess);
 }
 
 CuMult::~CuMult(){
