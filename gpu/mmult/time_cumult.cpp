@@ -54,7 +54,7 @@ int main(){
 	table.cols(cols);
 	table.data(data);
 	verify_dir("DBG");
-	link_cout("DBG/time_mult.txt");
+	link_cout("DBG/time_cumult.txt");
 	table.print("matrix mult using cublas");
 	unlink_cout();
 }
