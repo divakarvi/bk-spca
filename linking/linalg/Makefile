@@ -8,7 +8,7 @@ LIBS := $(LIBS) $(MKLLIBS)
 	make --directory=$@ objl
 
 ######
-all: lusolve.o
+objl: lusolve.o
 lusolve.o: lusolve.cpp
 -include lusolve.d
 test_lusolve.o: test_lusolve.cpp
