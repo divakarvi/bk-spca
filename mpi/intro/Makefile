@@ -1,6 +1,5 @@
 include ../makevars.mk
 CFLAGSXX := $(MPIINC)
-LIBS := $(MPILIBS)
 MODS := ../../utils ../init
 
 ######
