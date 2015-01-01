@@ -57,6 +57,10 @@ void time_parallel(int nthreads, std::ofstream& ofile){
 int main(){
 	verify_dir("DBG");
 	std::ofstream ofile("DBG/time_parallel.txt");
+	kmp_set_defaults("KMP_AFFINITY=compact");//compact or scatter
+	for(int nthrd = 1; nthrd <= 12; nthrd++)
+		time_parallel(nthrd, ofile);
+	kmp_set_defaults("KMP_AFFINITY=scatter");//compact or scatter
 	for(int nthrd = 1; nthrd <= 12; nthrd++)
 		time_parallel(nthrd, ofile);
 	
