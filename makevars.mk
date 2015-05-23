@@ -1,6 +1,6 @@
 #########
-CPP 	 := icpc
-CFLAGS 	 := -O3 -prec-div -no-ftz -restrict -Wshadow -MMD -MP
+CPP 	 := g++
+CFLAGS 	 := -O3  -Drestrict=__restrict__ -Wshadow -MMD -MP
 FFTWINC  := -I $$FFTW_INC
 MKLINC := -mkl
 
@@ -24,11 +24,12 @@ FFTWLIB  :=  -L $$FFTW_LINK -lfftw3
 ########
 .PHONY: clean cleanx cleanxx
 clean:
-	rm *.o; rm *.exe; rm a.out;
+	rm *.o 2>/dev/null; rm *.exe 2>/dev/null; rm a.out 2>/dev/null;
 
 cleanx:
-	rm pbs*.*; 
+	rm pbs*.* 2>/dev/null; 
 
 cleanxx:
-	rm *.o; rm *.a; rm *.so;  rm *.exe; rm pbs*.*; rm *.d; 	\
-	rm DBG/outP*; rm slurm*.out;
+	rm *.o 2>/dev/null; rm *.a 2>/dev/null; rm *.so 2>/dev/null;  \
+	rm *.exe 2>/dev/null; rm pbs*.* 2>/dev/null; rm *.d 2>/dev/null; \
+	rm DBG/outP* 2>/dev/null; rm slurm*.out 2>/dev/null;

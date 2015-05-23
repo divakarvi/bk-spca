@@ -1,10 +1,10 @@
 leibnizFinC.exe: leibnizFinC.o aitkenf.o
-	icc -o $@ $^ -lifcore 
+	gcc -o $@ $^ -lgfortran 
 
 leibnizFinC.o: leibnizFinC.c
-	icc -O3 -c $<
+	gcc -O3 -c $<
 
 leibnizFinCPP.exe: leibnizFinCPP.o aitkenf.o
-	icpc -o $@ $^ -lifcore
+	g++ -o $@ $^ -lgfortran
 
 leibnizFinCPP.o: leibnizFinCPP.cpp
