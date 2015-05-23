@@ -26,10 +26,11 @@ LIBS := -openmp
 ########
 .PHONY: clean cleanx cleanxx
 clean:
-	rm *.o; rm *.exe; rm a.out;
+	rm -f *.o; rm -f *.exe; rm -f a.out;
 
 cleanx:
-	rm pbs*.*; 
+	rm -f pbs*.*; 
 
 cleanxx:
-	rm *.o; rm *.exe; rm pbs*.*; rm *.d; rm DBG/outP*; rm slurm*.out;
+	rm -f *.o; rm -f *.exe; rm -f pbs*.*; rm -f *.d; rm -f DBG/outP*; \
+	rm -f slurm*.out;
