@@ -31,4 +31,5 @@ CFLAGS := $(CFLAGS) -Xptxas=-v
 ######
 .PHONY: clean cleanx cleanxx
 clean cleanx cleanxx:
-	rm *.o; rm *.exe; rm a.out; rm *.cubin; rm *.ptx; rm *.fatbin; 
+	rm -f *.o; rm -f *.exe; rm -f a.out; rm -f *.cubin; rm -f *.ptx; \
+	rm -f *.fatbin; 

@@ -24,12 +24,11 @@ FFTWLIB  :=  -L $$FFTW_LINK -lfftw3
 ########
 .PHONY: clean cleanx cleanxx
 clean:
-	rm *.o 2>/dev/null; rm *.exe 2>/dev/null; rm a.out 2>/dev/null;
+	rm -f *.o; rm -f *.exe; rm -f a.out;
 
 cleanx:
-	rm pbs*.* 2>/dev/null; 
+	rm -f pbs*.*; 
 
 cleanxx:
-	rm *.o 2>/dev/null; rm *.a 2>/dev/null; rm *.so 2>/dev/null;  \
-	rm *.exe 2>/dev/null; rm pbs*.* 2>/dev/null; rm *.d 2>/dev/null; \
-	rm DBG/outP* 2>/dev/null; rm slurm*.out 2>/dev/null;
+	rm -f *.o; rm -f *.exe; rm -f pbs*.*; rm -f *.d; rm -f DBG/outP*; \
+	rm -f slurm*.out;
