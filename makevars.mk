@@ -1,13 +1,13 @@
 #########
 CPP 	 := g++
 CFLAGS 	 := -O3  -Drestrict=__restrict__ -Wshadow -MMD -MP
-FFTWINC  := -I $$FFTW_INC
-MKLINC := -mkl
+FFTWINC  := 
+MKLINC := 
 
 #########
-MKLLIBS := -mkl=sequential
-MKLTHRD := -mkl=parallel
-FFTWLIB  :=  -L $$FFTW_LINK -lfftw3
+MKLLIBS := -lblas -llapack
+MKLTHRD := -lblas -llapack
+FFTWLIB  :=  
 
 #########
 .SUFFIXES:

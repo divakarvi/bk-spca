@@ -14,11 +14,11 @@
  */
 
 #include "lusolve.hh"
-#include <mkl.h>
+#include <cblas.h>
 #include <cmath>
 #include <iostream>
 
-/*
+
 extern "C" void dgetrf_(int *, int *, 
 		       double *, int *, 
 		       int *,
@@ -29,7 +29,6 @@ extern "C" void dgetrs_(char *, int *, int *,
 		       int *,
 		       double *, int *,
 		       int *);
-*/
 
 LU_Solve::LU_Solve(double *a, int dimi)
 	:dim(dimi)
