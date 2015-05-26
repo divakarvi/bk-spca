@@ -2,7 +2,7 @@
 import numpy as np
 from scipy import fftpack
 from scipy import linalg
-from StringIO import StringIO
+from io import StringIO
 import sys
 
 def read(fname):
@@ -22,9 +22,9 @@ def verify(v, vf):
     vf = vf[:,0] + j*vf[:,1]
     vff = fftpack.fft(v)/n
     rerror = linalg.norm(vf-vff)/linalg.norm(vff);
-    print '\n\n\tpython verify'
-    print '\tn = ', n
-    print '\trel error  = ', rerror
+    print('\n\n\tpython verify')
+    print('\tn = ', n)
+    print('\trel error  = ', rerror)
     
 
 if(__name__ == "__main__"):
