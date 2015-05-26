@@ -7,7 +7,7 @@ MKLINC :=
 #########
 MKLLIBS := -lblas -llapack
 MKLTHRD := -lblas -llapack
-FFTWLIB  :=  
+FFTWLIB  := -lfftw3 
 
 #########
 .SUFFIXES:

@@ -15,7 +15,7 @@ test_lib.o: test_lib.cpp
 
 ######
 libxmath.so: $(MODS)
-	icpc -shared -o $@ ../../utils/utils.o			\
+	g++ -shared -o $@ ../../utils/utils.o			\
 			   ../aitken/aitken.o 		\
 			   ../fft/fft_mkl.o	
 libxmath.a: $(MODS)
