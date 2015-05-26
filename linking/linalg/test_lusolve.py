@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 import numpy as np
 from scipy import linalg
-from StringIO import StringIO
+from io import StringIO
 import sys
 
 def read(fname):
@@ -19,7 +19,7 @@ def verify(Af, bf, xf):
     x = read(xf)
     xx = linalg.solve(A, b)
     error = linalg.norm(x-xx)/linalg.norm(xx)
-    print 'relative error = ', error
+    print('relative error = ', error)
 
 def test1():
     Af = StringIO('1 2 3 \n 3 2 1 \n 1 -1 2')
