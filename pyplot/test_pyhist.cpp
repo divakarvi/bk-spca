@@ -12,19 +12,22 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-
-#include "../utils/Random.hh"
 #include "pyhist.hh"
+#include <cstdlib>
 
 int main(){
 	const int count = 1000*100;
 	double x[count];
-	Random rng;
 	for(int i=0; i < count; i++)
-		x[i] = rng.randn();
+		x[i] = rand()*1.0/RAND_MAX - 0.5;
 
 	PyHist hist("nml");
 	hist.hist(x, count);
 	hist.bins(100);
+	hist.title("histogram of random numbers");
+	const char *cmd = 
+		"plt.xlabel('pycmd ok')"
+		"\n";
+        hist.pycmd(cmd);
 	hist.show();
 }

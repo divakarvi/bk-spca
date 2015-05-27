@@ -14,6 +14,7 @@
  */
 
 #include "fft_fftw.hh"
+#include <mm_malloc.h>
 
 fft_fftw::fft_fftw(int nin)
   :n(nin)

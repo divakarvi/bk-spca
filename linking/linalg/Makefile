@@ -1,6 +1,6 @@
 include ../../makevars.mk
-CFLAGS := $(CFLAGS) $(MKLINC)
-LIBS := $(LIBS) $(MKLLIBS)
+CFLAGS := $(CFLAGS) 
+LIBS := $(LIBS) $(LALIBS)
 
 ######
 .PHONY: ../../utils objl

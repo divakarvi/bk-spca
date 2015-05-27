@@ -12,14 +12,14 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-
-#include <iostream>
-#include <iomanip>
-#include <cmath>
 #include "../utils/utils.hh"
 #include "../utils/StatVector.hh"
 #include "../utils/TimeStamp.hh"
 #include "pyplot.hh"
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+
 
 
 void test1(){
@@ -55,15 +55,19 @@ void test1(){
 	plt.xticks(xticks, 6);
 	plt.yticks(yticks, 5);
 	//plt.ticksize("20");
+	const char *cmd = 
+		"plt.xlabel('OK')"
+		"\n";
+	plt.pycmd(cmd);
 
 	plt.show();
 	plt.savescript();
 }
 
 void makeplot(double *x, double *y, int n, const char *name){
-	PyPlot plt(name);
+	PyPlot plt(name, PLTOFF);
 	plt.plot(x, y, n);
-	plt.output();
+	plt.show();
 }
 
 /*
@@ -77,6 +81,8 @@ void timeplot(int n){
 	StatVector stats(n);
 	TimeStamp clk;
 	for(int i=1; i <= n; i++){
+		printf("\r%d", i);
+		fflush(stdout);
 		char name[30];
 		sprintf(name, "sin%d", i);
 		for(int j=0; j < n*10; j++){
@@ -91,7 +97,7 @@ void timeplot(int n){
 	char banner[200];
 	sprintf(banner, "cycle stats for %d plots", n);
 	stats.print(banner);
-	system("rm FIGS/sin*.eps");
+	system("rm FIGS/sin*.pdf");
 }
 
 int main(){

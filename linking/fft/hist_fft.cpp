@@ -15,7 +15,8 @@
 
 #include "../../utils/TimeStamp.hh"
 #include "../../pyplot/pyhist.hh"
-#include "fft_mkl.hh"
+#include "fft_fftw.hh"
+#include <mm_malloc.h>
 
 /*
  * n = size of fft
@@ -23,7 +24,7 @@
  * cyc_list[i] = number of cycles used by i-th fft
  */
 void cyclelist(int n, int count, double cyc_list[]){
-	fft_mkl fft(n);
+	fft_fftw fft(n);
 	long bytes = 1l*(2*n)*count*sizeof(double);
 	double *space = (double *)_mm_malloc(bytes, 64);
 	for(int i=0; i < count; i++){
@@ -85,7 +86,7 @@ void makehist(int n, int count, int bins,
 
 		char name[100];
 		sprintf(name, "fftxx%d", i);
-		PyHist hist(name, PIPE_OFF);
+		PyHist hist(name, PLTON);
 		hist.hist(cyc_list, wcount);
 		hist.bins(bins);
 	
@@ -94,7 +95,7 @@ void makehist(int n, int count, int bins,
 		hist.title(title);
 		
 		hist.show();
-		hist.savescript();
+		//hist.savescript();
 	}
 	delete[] cyc_list;
 } 
@@ -106,8 +107,7 @@ int main(){
 	 * fft dimension
 	 */
 	int n = 1024;
-	int count = 1000*1000;
+	int count = 1000*100;
 	int bins = 1500;
 	makehist(n, count, bins, window_begin, window_end, 1);
-
 }

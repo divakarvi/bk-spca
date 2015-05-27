@@ -21,7 +21,10 @@ const double PI = 3.1415926535897932384e+00;
         } \
     } while(0)  
 
-
+/*    
+ * return number of cpus on system
+ */
+int num_cpu();
 
  /*
   * v[i] = fabs(v[i]) for i=0...n-1
@@ -82,6 +85,13 @@ void solve2x2(double *restrict A, double *restrict rhs, double *restrict x);
   * if not create it
   */
 void verify_dir(const char *dir);
+
+/*
+ * const char *dir = name of directory
+ * const char *pfx = file name prefix
+ * removes all files in directory starting with prefix
+ */
+void mop_dir(const char* dir, const char *pfx);
 
 
 enum link_cout_flag_enum {LC_APP, LC_NOAPP}; 

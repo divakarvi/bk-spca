@@ -1,12 +1,10 @@
 #########
 CPP 	 := g++
 CFLAGS 	 := -O3  -Drestrict=__restrict__ -Wshadow -MMD -MP
-FFTWINC  := 
-MKLINC := 
 
 #########
-MKLLIBS := -lblas -llapack
-MKLTHRD := -lblas -llapack
+LALIBS := -lblas -llapack
+LATHRD := -lblas -llapack
 FFTWLIB  := -lfftw3 
 
 #########

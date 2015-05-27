@@ -18,16 +18,16 @@
 #include "../../utils/TimeStamp.hh"
 #include "../../utils/Table.hh"
 #include "../../pyplot/pyplot.hh"
-#include "fft_mkl.hh"
 #include "fft_fftw.hh"
 #include "nr.hh"
+#include <mm_malloc.h>
 #include <iostream>
 
 #define FWD
 
 enum yesno_type {YES, NO};
 
-static StatVector *stat_mkl = NULL, *stat_fftw = NULL, *stat_nr = NULL;
+static StatVector *stat_fftw = NULL, *stat_nr = NULL;
 
 /*
  * no cache effects if march_on == YES
@@ -47,17 +47,13 @@ void time_fft(int n, enum yesno_type march_on){
 	/*
 	 * determine count of ffts so that 10 GB of data is accessed
 	 */
-	long bytes = 10l*1000*1000*1000;
+	long bytes = 2l*1000*1000*1000;
 	double *space = (double *)_mm_malloc(bytes, 64);
 	long count = bytes/(1l*2*n*sizeof(double));
 
 	/*
 	 * allocate stat objects
 	 */
-	if(stat_mkl != NULL)
-		delete stat_mkl;
-	stat_mkl = new StatVector(count);
-
 	if(stat_fftw != NULL)
 		delete stat_fftw;
 	stat_fftw = new StatVector(count);
@@ -85,22 +81,6 @@ void time_fft(int n, enum yesno_type march_on){
 	}
 	
 	TimeStamp clk;
-	/*
-	 * collect mkl stat
-	 */
-	fft_mkl mkl(n);
-	for(long i = 0; i < count; i++){
-		double *v = (march_on == YES) ? space + i*(2*n) : space;
-		clk.tic();
-#ifdef FWD
-		mkl.fwd(v);
-#else
-		mkl.bwd(v);
-#endif
-		double cycles = clk.toc();
-		stat_mkl->insert(cycles);
-	}
-
 	/*
 	 * collect fftw stat
 	 */
@@ -147,24 +127,23 @@ void make_table(enum yesno_type march_onoff, const char* banner){
 	int n[ntrials] = {32, 64, 80, 
 			  8*3*7, 192, 1024, 
 			  1024*128, 1024*1024};
-	double data[3*ntrials];
+	double data[2*ntrials];
 	for(int i=0; i < ntrials; i++){
 		double nmlz = n[i]*log(1.0*n[i])/log(2.0);
 		time_fft(n[i], march_onoff);
-		data[i] = stat_mkl->median()/nmlz;
-		data[i+ntrials] = stat_fftw->median()/nmlz;
-		data[i+2*ntrials] = stat_nr->median()/nmlz;
+		data[i+0*ntrials] = stat_fftw->median()/nmlz;
+		data[i+1*ntrials] = stat_nr->median()/nmlz;
 	}
 	
 	Table table;
-	table.dim(ntrials, 3);
+	table.dim(ntrials, 2);
 	const char *rows[ntrials] = {
 		"32", "64", "80", 
 		"8*3*7", "192", "1024", 
 		"1024*128", "1024*1024"
 	};
 	table.rows(rows);
-	const char* cols[] = {"mkl", "fftw", "n recipes"};
+	const char* cols[] = {"fftw", "n recipes"};
 	table.cols(cols);
 	table.data(data);
 	table.print(banner);

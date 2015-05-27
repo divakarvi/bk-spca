@@ -1,6 +1,4 @@
 include ../makevars.mk
-CFLAGS := $(CFLAGS) $(MKLINC)
-LIBS := $(LIBS) $(MKLLIBS)
 MODS := ../utils
 
 ######

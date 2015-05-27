@@ -14,30 +14,21 @@
  */
 
 #include "../../utils/utils.hh"
-#include "fft_mkl.hh"
 #include "fft_fftw.hh"
 #include "nr.hh"
+#include <mm_malloc.h>
 #include <unistd.h>
 #include <iostream>
 #include <cstdlib>
 
-enum mkl_align_flag {MKL_ALIGN, MKL_NOALIGN};
 
 /*
  * does a single fwd+bwd fft of size n and checks it agains python
- * to test fftw replace fft_mkl fft_fftw and verify flag == MKL_ALIGN
  */
-void test_mkl(int n, enum mkl_align_flag flag){
-	double *space = (double *)_mm_malloc((4*n+2)*sizeof(double), 16);
+void test_fftw(int n){
+	double *space = (double *)_mm_malloc((4*n+2)*sizeof(double), 64);
 	double *v;
-	switch(flag){
-	case MKL_ALIGN:
-		v = space;
-		break;
-	case MKL_NOALIGN:
-		v = space+1;
-		break;
-	}
+	v = space;
 	double *w = v + 2*n;
 	
 	for(int i=0; i < n; i++){
@@ -47,7 +38,7 @@ void test_mkl(int n, enum mkl_align_flag flag){
 
 	verify_dir("DBG/");
 	array_out(v, 2, n, "DBG/v.dat");
-	fft_mkl fft(n);
+	fft_fftw fft(n);
 	fft.fwd(v);
 	array_out(v, 2, n, "DBG/vf.dat");
 	system("test_fft.py DBG/v.dat DBG/vf.dat");
@@ -55,7 +46,7 @@ void test_mkl(int n, enum mkl_align_flag flag){
 	fft.bwd(v);
 	array_diff(v, w, 2*n);
 	double rerror = array_max(v, 2*n)/array_max(w, 2*n);
-	std::cout<<"\n\tfwd+bwd error in complex mkl 1D fft"<<std::endl;
+	std::cout<<"\n\tfwd+bwd error in complex fftw 1D fft"<<std::endl;
 	std::cout<<"\tn = "<<n<<std::endl;
 	std::cout<<"\trel error = "<<rerror<<std::endl;
 
@@ -63,7 +54,7 @@ void test_mkl(int n, enum mkl_align_flag flag){
 }
 
 void test_nr(int n){
-	double *space = new double[4*n];
+	double *space = (double *)_mm_malloc(4*n*sizeof(double), 64);
 	
 	double *v = space;
 	double *w = space + 2*n;
@@ -72,25 +63,25 @@ void test_nr(int n){
 		w[2*i+1] = v[2*i+1] = rand()*1.0/RAND_MAX - 0.5;
 	}
 
-	fft_mkl fft(n);
+	fft_fftw fft(n);
 	nrbwd(v, n);
 	fft.bwd(w);
 	
 	array_diff(v, w, 2*n);
-	std::cout<<"\n\tNR error relative to MKL"<<std::endl;
+	std::cout<<"\n\tNR error relative to FFTW"<<std::endl;
 	std::cout<<"\tn = "<<n<<std::endl;
 	std::cout<<"\trel error = "<<array_max(v, 2*n)/array_max(w,2*n)
 		 <<std::endl;
 
-	delete[] space;
+	_mm_free(space);
 }
 
 
 int main(){
-	test_mkl(10, MKL_NOALIGN);
-	test_mkl(128, MKL_ALIGN);
-	test_mkl(1024*12, MKL_NOALIGN);
-	test_mkl(8, MKL_ALIGN);
+	test_fftw(10);
+	test_fftw(128);
+	test_fftw(1024*12);
+	test_fftw(8);
 
 	test_nr(8);
 	test_nr(256);

@@ -22,12 +22,8 @@ PyHist::PyHist(const char* namei, enum pipe_type pipe){
 	pipe_state = pipe;
 	verify_dir("FIGS/");
 	chdir("FIGS/");
-	if(pipe_state == PIPE_ON){
-		pypipe = popen("python", "w");
-		assrt(pypipe != NULL);
-	}
-	else
-		pypipe = NULL;
+	pypipe = popen("python", "w");
+	assrt(pypipe != NULL);
 	chdir("..");
 	
 	assrt(strlen(namei)<25);
@@ -41,6 +37,19 @@ PyHist::PyHist(const char* namei, enum pipe_type pipe){
 	cmdnum = 0;
 
 	savedata = 0;	
+
+	sprintf(cmdstr, "import matplotlib as mpl\n");
+	issue_command(cmdstr);
+	sprintf(cmdstr, "mpl.rcParams['font.size'] = 18\n");
+	issue_command(cmdstr);
+
+	/*
+	 * change backend if PLTOFF
+	 */
+	if(pipe_state == PLTOFF){
+		sprintf(cmdstr, "mpl.use('PDF', warn = True)\n");
+		issue_command(cmdstr);
+	}
 
 	sprintf(cmdstr, "from matplotlib import pyplot as plt\n");
 	issue_command(cmdstr);
@@ -58,10 +67,8 @@ PyHist::PyHist(const char* namei, enum pipe_type pipe){
 PyHist::~PyHist(){
 	sprintf(cmdstr, "plt.close()\n");
 	issue_command(cmdstr);
-	if(pipe_state==PIPE_ON){
-		int rval = pclose(pypipe);
-		assrt(rval != -1);
-	}
+	int rval = pclose(pypipe);
+	assrt(rval != -1);
 	
 	//pipe must be closed (as above) before data is removed
 	if(savedata==0){
@@ -75,11 +82,12 @@ PyHist::~PyHist(){
 
 void PyHist::issue_command(const char *cstr){
 	assrt(cmdnum < MAX_NUM_PYPLT_CMDS);
-	strcpy(cmd[cmdnum], cmdstr);
-	if(pipe_state==PIPE_ON)
-		fprintf(pypipe, "%s", cmd[cmdnum++]);
-	else
-		cmdnum++;
+	int len = strlen(cstr);
+	assrt(len < MAX_CMD_PYPLT_LEN-1);
+	assrt(cstr[len-1] == '\n');
+	
+	strcpy(cmd[cmdnum], cstr);
+	fprintf(pypipe, "%s", cmd[cmdnum++]);
 }
 
 void PyHist::prep_data(double *x, int n){
@@ -111,19 +119,27 @@ void PyHist::title(const char* s){
 	issue_command(cmdstr);
 }
 
+void PyHist::pycmd(const char* s){
+	assrt(state = 2);
+	int len = strlen(s);
+	assrt(len < MAX_CMD_PYPLT_LEN-1);
+	assrt(s[len-1] == '\n');
+	issue_command(s);
+}
+
 void PyHist::show(){
 	assrt(state == 2);
 	state = 3;
-	sprintf(cmdstr, "plt.show() \n");
-	issue_command(cmdstr);
+	if(pipe_state == PLTON){
+		sprintf(cmdstr, "plt.show() \n");
+		issue_command(cmdstr);
+	}
+	else{
+		sprintf(cmdstr, "plt.savefig('%s.pdf') \n",name);
+		issue_command(cmdstr);
+	}
 }
 
-void PyHist::output(){
-	assrt(state == 2);
-	state = 3;
-	sprintf(cmdstr, "plt.savefig('%s.eps') \n",name);
-	issue_command(cmdstr);
-}
 
 void PyHist::savescript(){
 	assrt(state==3);
