@@ -110,12 +110,11 @@ public:
 	void pycmd(const char *s);
 
 	/*
-	 * functions for showing/output
-	 * PLTON then plot
-	 * PLTOFF then pdf
+	 * function for showing/output
+	 * PLTON then show plot
+	 * PLTOFF then save pdf
 	 */
 	void show();
-	void output();
 	/*
 	 * save python script in FIGS/
 	 */
