@@ -1,5 +1,5 @@
 include ../../makevars.mk
-CFLAGSXX :=  -fno-inline-functions
+CFLAGS :=  $(CFLAGS) -fno-inline-functions
 LIBS := 
 
 ######

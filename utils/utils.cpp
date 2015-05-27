@@ -19,12 +19,20 @@
 #include <cstdio>
 #include <iostream>
 #include <iomanip>
+#include <cstring>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <dirent.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <errno.h>
 using namespace std;
+
+int num_cpu(){
+	int nth = sysconf( _SC_NPROCESSORS_ONLN );
+	assrt(nth > 0);
+	return nth;
+}
 
 void array_abs(double *v, int n){
 	for(int i=0; i < n; i++)
@@ -38,7 +46,6 @@ double array_max(double *v, int n){
 			ans = fabs(v[i]);
 	return ans;
 }
-
 
 void array_diff(double *restrict v, double *restrict w, int n){
 	for(int i=0; i < n; i++)
@@ -128,6 +135,39 @@ void verify_dir(const char *dir){
 		stat(dir, &sb);
 	}
 	assrt(S_ISDIR(sb.st_mode));
+}
+
+void mop_dir(const char* dir, const char *pfx){
+	DIR* dstm;
+	dstm = opendir(dir);
+	
+	FILE *file;
+	char fname[200];
+	sprintf(fname, "%s/tmp.txt", dir);
+	file = fopen(fname, "w");
+	assrt(file != NULL);
+
+	struct dirent *dent;
+	while((dent = readdir(dstm)) != NULL){
+		const char *s = strstr(dent->d_name, pfx);
+		if(s == dent->d_name)
+			fprintf(file, "%s\n", dent->d_name);
+	}
+
+	closedir(dstm);
+	fclose(file);
+	
+	file = fopen(fname, "r");
+	assrt(file != NULL);
+	char s[200];
+	while(fscanf(file, "%s", s) == 1){
+		sprintf(fname, "%s/%s", dir, s);
+		assrt(remove(fname)  == 0);
+	}
+	fclose(file);
+
+	sprintf(fname, "%s/tmp.txt", dir);
+	remove(fname);
 }
 
 static std::streambuf *sbuf_backup;

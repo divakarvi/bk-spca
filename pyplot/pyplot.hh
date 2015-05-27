@@ -18,10 +18,10 @@
 #include <cstdio>
 #include <unistd.h>
 
-enum pipe_type {PIPE_OFF, PIPE_ON};
+enum pipe_type {PLTOFF, PLTON};
 
 const int MAX_NUM_PYPLT_CMDS = 400;
-const int MAX_CMD_PYPLT_LEN=300;
+const int MAX_CMD_PYPLT_LEN=3000;
 
 class PyPlot{
 private:
@@ -37,7 +37,7 @@ private:
 	 */
 	enum pipe_type pipe_state;
 	/*
-	 * figure will be saved in FIGS/"name.eps"
+	 * figure will be saved in FIGS/"name.pdf"
 	 * if asked to do so, data & script will be saved in FIGS/name_*
 	 * normally data is saved in FIGS/name_* and deleted
 	 */
@@ -73,12 +73,13 @@ private:
 public:
 	/*
 	 * name must be less than 25 chars
-	 * pipe == PIPE_OFF then no pipe is opened to python
+	 * pipe == PLTOFF then mpl.backend is set to PDF
 	 */
-	PyPlot(const char *namei, enum pipe_type pipe=PIPE_ON);
+	PyPlot(const char *namei, enum pipe_type pipe=PLTON);//state:0
 	~PyPlot();
 	/*
 	 * functions for drawing lines and setting their properties
+	 * state: 0-->1 or 1-->1
 	 */
 	void plot(double *x, double *y, int n);
 	void plot(double *y, int n);
@@ -102,16 +103,22 @@ public:
 	void yticks(double *ticks, int n);
 	void ticksize(const char *s);
 	/*
-	 * functions for showing/output
+	 * issues command to python pipe verbatim
+	 * last char of s must be '\n'
+	 * python syntax inside s
+	 * ax and l are always available as current axis and current line
 	 */
-	void show();
+	void pycmd(const char *s);
+
 	/*
-	 * eps output
+	 * function for showing/output
+	 * PLTON then plot
+	 * PLTOFF then save to pdf
 	 */
-	void output();
+	void show();//state: 1--->2
 	/*
 	 * save python script in FIGS/
 	 */
-	void savescript();
+	void savescript();//state: 2--->2
 };
 #endif

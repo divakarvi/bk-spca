@@ -32,16 +32,22 @@ private:
 public:
 	/*
 	 * name must be less than 25 chars
-	 * pipe == PIPE_OFF then no pipe is opened to python
+	 * pipe == PLTOFF then mpl.backend is PDF
 	 */
-	PyHist(const char *namei, enum pipe_type pipe=PIPE_ON);
+	PyHist(const char *namei, enum pipe_type pipe=PLTON);//state: 0
 	~PyHist();
-	void hist(double *x, int n);
-	void bins(int b);
-	void title(const char* s);
-	void show();
-	void output(); /* eps output */
-	void savescript();
+	void hist(double *x, int n);//state: 0 ---> 1
+	void bins(int b); //state: 1 ---> 2
+	void title(const char* s); //state: 2 ---> 2
+	/*
+	 * issues command to python pipe verbatim
+	 * last char of s must be '\n'
+	 * for python syntax inside s, ax and l are always available as
+	 * current axis and current line
+	 */
+	void pycmd(const char *s); //state: 2 ---> 2
+	void show(); //state: 2 ---> 3
+	void savescript(); // state: 3 ---> 3
 };
 
 #endif
