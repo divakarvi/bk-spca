@@ -23,7 +23,7 @@
 #include "nr.hh"
 #include <iostream>
 
-#define FWD
+#define BWD
 
 enum yesno_type {YES, NO};
 
