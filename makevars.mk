@@ -1,13 +1,23 @@
 #########
 CPP 	 := icpc
 CFLAGS 	 := -O3 -prec-div -no-ftz -restrict -Wshadow -MMD -MP
-FFTWINC  := -I $$FFTW_INC
+ifndef FFTW_INC
+   $(info ******** FFTW_INC not defined *********)
+endif
+FFTWINC := $(FFTW_INC)
 MKLINC := -mkl
 
 #########
 MKLLIBS := -mkl=sequential
 MKLTHRD := -mkl=parallel
-FFTWLIB  :=  -L $$FFTW_LINK -lfftw3
+ifndef FFTW_LINK
+   $(info FFTW_LINK not defined)
+endif
+FFTWLIBS := $(FFTW_LINK)
+
+ifneq (,$(findstring FFTW_LINK,$(FFTWLIB)))
+    $(info ********** FFTWLIB not set ***********)
+endif
 
 #########
 .SUFFIXES:
