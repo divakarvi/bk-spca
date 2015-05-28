@@ -1,6 +1,6 @@
 include ../../makevars.mk
-CFLAGS := $(CFLAGS) -fPIC 
-LIBS := $(LIBS) $(LALIBS) $(FFTWLIB)
+CFLAGS := $(CFLAGS) -fPIC $(FFTWINC)
+LIBS := $(LIBS) $(LALIBS) $(FFTWLIBS)
 MODS := ../../utils ../../pyplot 
 
 ######

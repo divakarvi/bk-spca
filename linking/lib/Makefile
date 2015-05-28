@@ -27,6 +27,6 @@ libxmath.a: $(MODS)
 #link against shared lib
 #to link against static, rm .so file
 test_lib.exe: test_lib.o
-	g++ -o $@ $^ $ -L$$PWD -lxmath -lfftw3
-	echo $$LD_LIBRARY_PATH
+	g++ -o $@ $^ $ -L$(PWD) -lxmath $(FFTWLIBS)
+	echo $(LD_LIBRARY_PATH)
 	echo "check LD_LIBRARY_PATH and *source* libpath.sh if necessary"

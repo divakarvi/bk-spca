@@ -23,7 +23,7 @@
 #include <mm_malloc.h>
 #include <iostream>
 
-#define FWD
+#define BWD
 
 enum yesno_type {YES, NO};
 
@@ -45,9 +45,9 @@ void time_fft(int n, enum yesno_type march_on){
 	}
 	
 	/*
-	 * determine count of ffts so that 10 GB of data is accessed
+	 * determine count of ffts so that 4 GB of data is accessed
 	 */
-	long bytes = 2l*1000*1000*1000;
+	long bytes = 4l*1000*1000*1000;
 	double *space = (double *)_mm_malloc(bytes, 64);
 	long count = bytes/(1l*2*n*sizeof(double));
 

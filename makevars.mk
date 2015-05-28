@@ -1,11 +1,19 @@
 #########
 CPP 	 := g++
 CFLAGS 	 := -O3  -Drestrict=__restrict__ -Wshadow -MMD -MP
+ifndef FFTW_INC 
+    $(info ******** FFTW_INC is not set ***********)
+endif
+FFTWINC := $(FFTW_INC) 
 
 #########
 LALIBS := -lblas -llapack
 LATHRD := -lblas -llapack
-FFTWLIB  := -lfftw3 
+ifndef FFTW_LINK
+    $(info ******* FFTW_LINK is not set ***********)
+endif
+FFTWLIBS := $(FFTW_LINK)
+
 
 #########
 .SUFFIXES:
