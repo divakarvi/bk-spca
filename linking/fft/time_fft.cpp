@@ -149,12 +149,15 @@ void make_table(enum yesno_type march_onoff, const char* banner){
 			  1024*128, 1024*1024};
 	double data[3*ntrials];
 	for(int i=0; i < ntrials; i++){
+		printf("\r n = %d", n[i]);
+		fflush(stdout);
 		double nmlz = n[i]*log(1.0*n[i])/log(2.0);
 		time_fft(n[i], march_onoff);
 		data[i] = stat_mkl->median()/nmlz;
 		data[i+ntrials] = stat_fftw->median()/nmlz;
 		data[i+2*ntrials] = stat_nr->median()/nmlz;
 	}
+	printf("\n");
 	
 	Table table;
 	table.dim(ntrials, 3);
