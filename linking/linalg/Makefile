@@ -1,5 +1,5 @@
 include ../../makevars.mk
-CFLAGS := $(CFLAGS) $(MKLINC)
+CFLAGS := $(CFLAGS) -fPIC $(MKLINC)
 LIBS := $(LIBS) $(MKLLIBS)
 
 ######
