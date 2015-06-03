@@ -26,5 +26,11 @@ int main(){
 	PyHist hist("nml");
 	hist.hist(x, count);
 	hist.bins(100);
+	hist.title("histogram of random numbers");
+	const char *cmd = 
+		"plt.xlabel('pycmd ok')"
+		"\n";
+        hist.pycmd(cmd);
+
 	hist.show();
 }

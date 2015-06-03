@@ -30,7 +30,7 @@ void cyclelist(int n, int count, double cyc_list[]){
 		double *v = space + i*(2*n);
 		for(int j=0; j < n; j++){ //"random" and cheap
 			v[2*j] = 1.0/(1.0 + i +j);
-			v[2*j+1] = 1.0/(1.0+i*j);
+			v[2*j+1] = 1.0/(1.0 + i*j);
 		}
 	}
 
@@ -85,7 +85,7 @@ void makehist(int n, int count, int bins,
 
 		char name[100];
 		sprintf(name, "fftxx%d", i);
-		PyHist hist(name, PIPE_OFF);
+		PyHist hist(name, PLTON);
 		hist.hist(cyc_list, wcount);
 		hist.bins(bins);
 	
@@ -94,7 +94,7 @@ void makehist(int n, int count, int bins,
 		hist.title(title);
 		
 		hist.show();
-		hist.savescript();
+		//hist.savescript();
 	}
 	delete[] cyc_list;
 } 
