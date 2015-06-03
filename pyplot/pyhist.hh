@@ -34,9 +34,9 @@ public:
 	 * name must be less than 25 chars
 	 * pipe == PLTOFF then mpl.backend is PDF
 	 */
-	PyHist(const char *namei, enum pipe_type pipe=PLTON);
+	PyHist(const char *namei, enum pipe_type pipe=PLTON);//state: 0
 	~PyHist();
-	void hist(double *x, int n);//state 0 ---> 1
+	void hist(double *x, int n);//state: 0 ---> 1
 	void bins(int b); //state: 1 ---> 2
 	void title(const char* s); //state: 2 ---> 2
 	/*

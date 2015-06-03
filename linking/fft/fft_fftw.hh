@@ -32,13 +32,13 @@ public:
 	 * bwd: f fourier---> phys in-place
 	 */
 	void fwd(double *f){
-		assrt((long)f%16 == 0);
+		assrt((long)f%32 == 0);
 		fftw_execute_dft(pf, (fftw_complex *)f, (fftw_complex *)f);
 		for(int i=0; i < 2*n; i++)
 			f[i] /= n;
 	}
 	void bwd(double *f){
-		assrt((long)f%16 == 0);
+		assrt((long)f%32 == 0);
 		fftw_execute_dft(pb, (fftw_complex *)f, (fftw_complex *)f);
 	}
 };
