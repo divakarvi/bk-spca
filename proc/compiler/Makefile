@@ -1,6 +1,6 @@
 include ../../makevars.mk
 CFLAGS := $(CFLAGS) -fno-inline-functions $(MKLINC)
-LIBS := $(LIBS) $(MKLLIBS)
+LIBS := $(LIBS) $(LALIBS)
 
 ######
 .PHONY: ../../utils

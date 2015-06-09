@@ -10,15 +10,15 @@ add.exe: add.o
 
 ######
 addtwo.o: addtwo.s
-	icc -c $<
+	gcc -c $<
 addtwo.exe: addtwo.o
-	icc -o $@ $<
+	gcc -o $@ $<
 
 ######
 addmany.o: addmany.s
-	icc -c $<
+	gcc -c $<
 addmany.exe: addmany.o
-	icc -o $@ $<
+	gcc -o $@ $<
 
 ######
 -include cpuid.d

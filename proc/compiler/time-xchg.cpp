@@ -13,12 +13,13 @@
  * GNU General Public License for more details.
  */
 
+#include <iostream>
+#include <mm_malloc.h>
 #include "../../utils/TimeStamp.hh"
 #include "../../utils/StatVector.hh"
 #include "../../utils/Table.hh"
 #include "../../utils/utils.hh"
-#include <iostream>
-#include <mkl.h>
+
 
 #undef INCACHE
 
@@ -30,6 +31,12 @@ extern void multIJK(double *restrict a, double *restrict b,
 		    double *restrict c, int dim);
 extern void multIJKX(double *restrict a, double *restrict b, 
 		    double *restrict c, int dim);
+extern "C" void dgemm_(const char *, const char *, const int *, const int *, 
+		       const int *, const double *, const double *, 
+		       const int *, const double *, 
+		       const int *,
+		       const double *, double *, 
+		       const int *);
 
 enum mmult_enum {ijk, ijkx, IJK, IJKX, BLAS};
 
@@ -39,7 +46,7 @@ enum mmult_enum {ijk, ijkx, IJK, IJKX, BLAS};
  * returns number of flops per cycle in matrix mult
  */
 double time(int dim, enum mmult_enum flag){
-	long nbytes = 1l*1000*1000*1000; //1 GB of memory
+	long nbytes = 1l*1000*1000*1000/10; //1 GB of memory
 	static int call_num = 0;
 	if(call_num == 0){
 		std::cout<<
@@ -89,7 +96,7 @@ double time(int dim, enum mmult_enum flag){
 			char trans[3] = "N ";
 			double alpha = 1;
 			double beta = 1;
-			dgemm(trans, trans,
+			dgemm_(trans, trans,
 			       &dim, &dim, &dim, &alpha,
 			       a, &dim, b, &dim, &beta, c, &dim);
 			break;
@@ -111,10 +118,10 @@ double time(int dim, enum mmult_enum flag){
 
 
 int main(){
-	int dim[4] = {100, 1000, 2000, 6000};
-	const char* rows[4] = {"100", "1000", "2000", "6000"};
+	int dim[4] = {100, 200, 1000, 2000};
+	const char* rows[4] = {"100", "200", "1000", "2000"};
 	enum mmult_enum flags[5] = {ijk, ijkx, IJK, IJKX, BLAS};
-	const char* cols[5] = {"ijk", "ijkx", "IJK", "IJKX", "MKL BLAS"};
+	const char* cols[5] = {"ijk", "ijkx", "IJK", "IJKX", "BLAS"};
 	double flpscyc[20];
 
 	for(int j = 0; j < 5; j++)
