@@ -1,8 +1,11 @@
 #########
 CPP 	 := icpc
-CFLAGS 	 := -O3 -prec-div -no-ftz -restrict -Wshadow -MMD -MP
+CFLAGS 	 := -xhost -O3 -prec-div -no-ftz -restrict -Wshadow -MMD -MP
 ifndef FFTW_INC
    $(info ******** FFTW_INC not defined *********)
+endif
+ifdef EXTRNL
+   CFLAGS := -O3 -prec-div -no-ftz -restrict -Wshadow -MMD -MP
 endif
 FFTWINC := $(FFTW_INC)
 MKLINC := -mkl
@@ -11,7 +14,7 @@ MKLINC := -mkl
 MKLLIBS := -mkl=sequential
 MKLTHRD := -mkl=parallel
 ifndef FFTW_LINK
-   $(info FFTW_LINK not defined)
+   $(info **********  FFTW_LINK not defined ********)
 endif
 FFTWLIBS := $(FFTW_LINK)
 
