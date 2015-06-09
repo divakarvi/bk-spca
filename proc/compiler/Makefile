@@ -1,5 +1,5 @@
 include ../../makevars.mk
-CFLAGS := $(CFLAGS) -fno-inline-functions $(MKLINC)
+CFLAGS := $(CFLAGS) -fno-inline-functions 
 LIBS := $(LIBS) $(LALIBS)
 
 ######
@@ -16,23 +16,23 @@ leibniz.exe: leibniz.o
 leibniz.s: leibniz.cpp
 
 ######
--include fusion.d
-fusion.o: fusion.cpp
-fusion.exe: fusion.o ../../utils ../../utils/Table.o 
-fusion.s: fusion.cpp
+-include sincos.d
+sincos.o: sincos.cpp
+sincos.exe: sincos.o ../../utils ../../utils/Table.o 
+sincos.s: sincos.cpp
 
 ######
--include unrolljam.d
-unrolljam.o: unrolljam.cpp
-unrolljam.exe: unrolljam.o ../../utils ../../utils/Table.o
-unrolljam.s: unrolljam.cpp
+-include sinetable.d
+sinetable.o: sinetable.cpp
+sinetable.exe: sinetable.o ../../utils ../../utils/Table.o
+sinetable.s: sinetable.cpp
 
 ######
--include xchg-mult.d
-xchg-mult.o: xchg-mult.cpp
--include time-xchg.d
-time-xchg.o: time-xchg.cpp
-time-xchg.exe: time-xchg.o xchg-mult.o 			\
+-include mult.d
+mult.o: mult.cpp
+-include time-mult.d
+time-mult.o: time-mult.cpp
+time-mult.exe: time-mult.o mult.o 			\
 		../../utils 					\
 		../../utils/Table.o 				\
 		../../utils/utils.o 
@@ -41,5 +41,5 @@ time-xchg.exe: time-xchg.o xchg-mult.o 			\
 -include cpp-mult.d
 #-fno-inline-functions not used here
 cpp-mult.o: cpp-mult.cpp
-	$(CPP) $(CFLAGS) $(MKLINC) -c $<
+	$(CPP) $(CFLAGS) -c $<
 cpp-mult.exe: cpp-mult.o ../../utils ../../utils/utils.o
