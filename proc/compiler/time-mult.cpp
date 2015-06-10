@@ -135,9 +135,9 @@ int main(){
 
 	verify_dir("DBG");
 #ifndef INCACHE
-	const char* fname = "DBG/xchg-mult.txt";
+	const char* fname = "DBG/mult.txt";
 #else
-	const char* fname = "DBG/xchg-mult-in-cache.txt";
+	const char* fname = "DBG/mult-in-cache.txt";
 #endif
 	link_cout(fname);
 	table.print("flops per cycle (mult of sq matrices)");
