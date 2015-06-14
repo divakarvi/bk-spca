@@ -1,0 +1,16 @@
+
+
+		dim = 100
+	 flops/cycle = 0.606133
+
+
+		dim = 1000
+	 flops/cycle = 0.185598
+
+
+		dim = 2000
+	 flops/cycle = 0.146763
+
+
+		dim = 600
+	 flops/cycle = 0.233598
