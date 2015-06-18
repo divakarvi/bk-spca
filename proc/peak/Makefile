@@ -1,5 +1,5 @@
 include ../../makevars.mk
-$(CFLAGS) := $(CFLAGS) -fno-inline-functions
+CFLAGS := $(CFLAGS) -fno-inline-functions
 
 test_easy.exe: test_easy.o
 test_easy.o: test_easy.cpp

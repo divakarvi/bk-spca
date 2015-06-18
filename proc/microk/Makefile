@@ -1,4 +1,5 @@
 include ../../makevars.mk
+CFLAGS := $(CFLAGS) -fno-inline-functions
 
 ######
 .PHONY: ../../utils
