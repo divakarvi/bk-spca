@@ -13,7 +13,9 @@
  * GNU General Public License for more details.
  */
 
-void dummy(int *a, int n){
+double dummy(int *a, int n){
+	double s = 0;
 	for(int i=0; i < n; i++)
-		a[i] = 0;
+		s += a[i];
+	return s;
 }

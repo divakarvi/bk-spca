@@ -19,12 +19,18 @@
 #include "latency.hh"
 
 extern void dummy(int *a, int n);
+int *global;
+int fst = 0;
 
 void cache_flush(void *ptr, int nbytes){
+	if (fst == 0){
+		global = new int[1000*1000*100];
+		for(int i = 0; i < 1000*1000*100; i++)
+			global[i] = 0.0;
+		fst = -1;
+	}
 #ifdef MEMWALK
-	int *a = new int[1000*1000*100];
-	dummy(a, 1000*1000*100);
-	delete[] a;
+	dummy(global, 1000*1000*100);
 #else
 	for(int i=0; i < nbytes; i++)
 		_mm_clflush((char *)ptr+i);
