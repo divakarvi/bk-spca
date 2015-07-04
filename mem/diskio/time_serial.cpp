@@ -12,7 +12,6 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-
 #include "../../utils/utils.hh"
 #include "../../utils/TimeStamp.hh"
 #include "../../utils/StatVector.hh"
@@ -23,7 +22,7 @@
 #include <cstdlib>
 
 #define GEN_OUTPUT
-const double CPUGHZ=3.33;//1.8 or 3.33 or 3.40
+const double CPUGHZ=3.6;//i3-4350
 
 void v_init(double *v, long len){
 	for(long i=0; i < len; i++){
@@ -66,6 +65,7 @@ void time_diskio(const char *dir, long n, struct BW_RW& bw, int flag){
 		write_direct(v, n, fname);
 	cycles = clk.toc();
 	bw.bw_write = fac*n/cycles*CPUGHZ;
+
 	clk.tic();
 	if(flag==0)
 		read_easy(w, n, fname);
@@ -136,7 +136,7 @@ void bw_readwrite(){
 #ifdef GEN_OUTPUT
 			std::ostream &ofref(ofile);
 #else 
-			std::ostream &ofref(cout);
+			std::ostream &ofref(std::cout);
 #endif
 			ofref<<std::endl
 			     <<"FLUSH_COUNT = "<<FLUSH_COUNT
@@ -153,7 +153,7 @@ void bw_readwrite(){
 	sprintf(cmd, "ls -l %s", dir);
 	system(cmd);
 	sprintf(cmd, "lfs getstripe %s/direct.dat", dir);
-	system(cmd);//will work only on lustre file system
+	//system(cmd);//will work only on lustre file system
 }
 
 int main(){

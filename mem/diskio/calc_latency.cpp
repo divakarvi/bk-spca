@@ -22,7 +22,7 @@
 #include <iomanip>
 
 #define GEN_OUTPUT
-const double CPUGHZ=3.33;//1.8 or 3.33 or 3.40
+const double CPUGHZ=3.6;//1.8 or 3.33 or 3.40 or 3.6
 
 void calc_latency(){
 	int nfiles=100; 

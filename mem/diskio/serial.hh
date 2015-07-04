@@ -16,7 +16,7 @@
 #ifndef __SERIALDIO27NOV2013__
 #define __SERIALDIO27NOV2013__
 
-#undef DCACHE_FLUSH
+#define DCACHE_FLUSH
 #ifndef DCACHE_FLUSH
 #define FLUSH_COUNT 1
 #else

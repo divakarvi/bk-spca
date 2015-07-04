@@ -13,6 +13,7 @@
  * GNU General Public License for more details.
  */
 
+#include "../../utils/utils.hh"
 #include "../../utils/TimeStamp.hh"
 #include "serial.hh"
 #include <cstdio>
