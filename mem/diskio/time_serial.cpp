@@ -22,7 +22,7 @@
 #include <cstdlib>
 
 #define GEN_OUTPUT
-const double CPUGHZ=3.6;//i3-4350
+const double CPUGHZ=2.2;//i3-4350
 
 void v_init(double *v, long len){
 	for(long i=0; i < len; i++){
@@ -157,5 +157,6 @@ void bw_readwrite(){
 }
 
 int main(){
+        printf("CPUGHZ = %f\n", CPUGHZ);
 	bw_readwrite();
 }
