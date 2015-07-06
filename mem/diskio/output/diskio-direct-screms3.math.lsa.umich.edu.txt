@@ -1,0 +1,10 @@
+	n		write b/w		read b/w (GB/s)
+
+FLUSH_COUNT = 10
+	250		0.0701879		0.316553
+
+FLUSH_COUNT = 10
+	5e+06		0.653921		4.08542
+
+FLUSH_COUNT = 10
+	1.25e+09		0.162725		0.146885
