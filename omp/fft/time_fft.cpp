@@ -26,7 +26,7 @@
  * num cycles normalized by n*lg(n)
  */
 double time(int n, int nth){
-	long nbytes = 16l*1000*1000*1000/4;
+	long nbytes = 16l*1000*1000*1000;
 #ifdef __MIC__
 	nbytes /= 16;
 #endif
