@@ -20,6 +20,7 @@
 #include "../../utils/StatVector.hh"
 #include "../../utils/TimeStamp.hh"
 
+
 void *addone(void *arg){
 	long *p = (long *)(arg);
 	*p += 1;
@@ -42,7 +43,7 @@ void addone2list(long *list, int nthreads){
 }
 
 int main(){
-	int nthreads = 6;
+	int nthreads = num_cpu();
 	long *list = new long[nthreads];
 	for(int i=0; i < nthreads; i++)
 		list[i] = 0;

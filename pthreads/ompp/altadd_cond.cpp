@@ -24,8 +24,8 @@ using namespace std;
 
 #undef DV_KERNEL_MESG
 
-const int nthreads=4;
-const int nprocs=4;
+const int nthreads=2;
+const int nprocs=2;
 
 void (*fnlist[nthreads])(void *);
 void *arglist[nthreads];
@@ -133,6 +133,7 @@ void altadd12(long *list, int count){
 }
 
 int main(){
+	assrt(nprocs == num_cpu());
 	long list[nthreads]={0};
 	int count = (nthreads<=nprocs)?1000*1000*25:1000*1000;
 #ifdef DV_KERNEL_MESG

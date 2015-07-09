@@ -1,5 +1,0 @@
-nprocs = 4
-nthreads = 8
-count = 1000
-average per parallel region = 14771.8
-

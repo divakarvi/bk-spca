@@ -30,8 +30,8 @@ using namespace std;
 #define TIEBREAK 1
 #endif
 
-const int nthreads = 8;
-const int nprocs = 4;
+const int nthreads = 2;
+const int nprocs = 2;
 
 
 void (*fnlist[nthreads-1])(void *);
@@ -151,6 +151,7 @@ void manager(long *list, int count){
 }
 
 int main(){
+	assrt(nprocs == num_cpu());
 	long list[nthreads];
 	for(int i=0; i < nthreads; i++)
 		list[i] = 0;

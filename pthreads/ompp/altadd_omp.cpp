@@ -25,8 +25,8 @@ using namespace std;
 
 #undef DV_KERNEL_MESG
 
-const int nthreads = 4;
-const int nprocs = 4;
+int nthreads = num_cpu();
+int nprocs = num_cpu();
 
 
 
@@ -62,7 +62,9 @@ void ompmaster(long *list, int nthreads, int count){
 }
 
 int main(){
-	long list[nthreads]={0};
+	long list[nthreads];
+	for(int i=0; i < nthreads; i++)
+		list[i] = 0;
 	int count = (nthreads<=nprocs)?1000*1000*100:1000*100; 
 
 #ifdef DV_KERNEL_MESG
