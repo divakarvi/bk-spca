@@ -67,34 +67,36 @@ int main(){
 	kmp_set_defaults("KMP_AFFINITY=compact");
 
 	assrt(getenv("OMP_NUM_THREADS") != NULL);
-	const int nthreads = atoi(getenv("OMP_NUM_THREADS"));
+	const int nthreads = num_cpu();
 
-	int nth[4] = {nthreads/4, nthreads/2, 
-			     3*nthreads/4, nthreads};
-	char rows[4][100];
-	char *rrows[4];
-	for(int i=0; i < 4; i++){
-		sprintf(rows[i], "%d", (i+1)*nthreads/4);
+	int nth[2] = {1, nthreads};
+	char rows[2][100];
+	char *rrows[2];
+	for(int i=0; i < 2; i++){
+		sprintf(rows[i], "%d", nth[i]);
 		rrows[i] = rows[i];
 	}
 	const char *cols[3] = {"read", "write", "copy"};
-	double data[12];
+	double data[6];
 
-	for(int i=0; i < 4; i++){
+	for(int i=0; i < 2; i++){
 		std::cout<<i<<std::endl;
 		data[i] = time(RWC_READ, nth[i]);
-		data[i+4] = time(RWC_WRITE, nth[i]);
-		data[i+8] = time(RWC_COPY, nth[i]);
+		data[i+2] = time(RWC_WRITE, nth[i]);
+		data[i+4] = time(RWC_COPY, nth[i]);
+
 	}
 
 	verify_dir("DBG");
 	link_cout("DBG/time_rwc.txt");
 	Table tbl;
-	tbl.dim(4, 3);
+	tbl.dim(2, 3);
 	tbl.rows((const char**)rrows);
 	tbl.cols(cols);
 	tbl.data(data);
-	tbl.print("b/w to mem in bytes per cycle, 1 to 12 threads,"
-		  " 1.6/16GB data");
+	char banner[200];
+	sprintf(banner, "b/w to mem in bytes per cycle, 1/%d threads,"
+		" 1.6/16GB data", nthreads);
+	tbl.print();
 	unlink_cout();
 }

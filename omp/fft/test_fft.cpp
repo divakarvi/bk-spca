@@ -51,8 +51,7 @@ int main(){
 	assrt(getenv("MIC_OMP_NUM_THREADS") != NULL);
 	const int nthreads = atoi(getenv("MIC_OMP_NUM_THREADS"));
 #else
-	assrt(getenv("OMP_NUM_THREADS") != NULL);
-	const int nthreads = atoi(getenv("OMP_NUM_THREADS"));
+	const int nthreads = num_cpu();
 #endif
 
 	test(10, 24, nthreads);

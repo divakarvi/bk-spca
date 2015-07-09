@@ -75,5 +75,5 @@ int main(){
 	const int nthreads = atoi(getenv("OMP_NUM_THREADS"));
 #endif
 	for(int i=1; i <= 4; i++)
-		test2(i*nthreads/4);
+		test2(i*nthreads);
 }

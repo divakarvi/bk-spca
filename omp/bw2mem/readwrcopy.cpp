@@ -13,6 +13,7 @@
  * GNU General Public License for more details.
  */
 
+#include <cstdio>
 #include <omp.h>
 
 void init_manycore(double *list, long len, int nthreads){
@@ -54,7 +55,7 @@ double sum_manycore(double *list, long len, int nthreads){
 #pragma omp parallel				\
 	num_threads(nthreads)			\
 	default(none)				\
-	shared(ans, list, len)
+	shared(ans, list, len, nthreads)
 	{
 		int tid = omp_get_thread_num();
 		long first = len*tid/nthreads;
@@ -76,7 +77,7 @@ void write_manycore(double *list, long len, int nthreads){
 #pragma omp parallel				\
 	num_threads(nthreads)			\
 	default(none)				\
-	shared(list, len)
+	shared(list, len, nthreads)
 	{
 		int tid = omp_get_thread_num();
 		long first = len*tid/nthreads;
@@ -95,7 +96,7 @@ void copy_manycore(double *list, long len, int nthreads){
 #pragma omp parallel				\
 	num_threads(nthreads)			\
 	default(none)				\
-	shared(list, len)
+	shared(list, len, nthreads)
 	{
 		int tid = omp_get_thread_num();
 		long first = len*tid/nthreads;
