@@ -28,7 +28,7 @@ enum rwc_flag_enum {RWC_READ, RWC_WRITE, RWC_COPY};
 double time(enum rwc_flag_enum flag, int nthreads){
 	const int count = 20;
 #ifndef __MIC__
-	const long len = 2l*1000*1000*1000; //16GB array
+	const long len = 2l*1000*1000*1000/10; //16GB array
 #else
 	const long len = 1l*1000*1000*200; //1.6GB array
 #endif
@@ -66,7 +66,6 @@ double time(enum rwc_flag_enum flag, int nthreads){
 int main(){
 	kmp_set_defaults("KMP_AFFINITY=compact");
 
-	assrt(getenv("OMP_NUM_THREADS") != NULL);
 	const int nthreads = num_cpu();
 
 	int nth[2] = {1, nthreads};
