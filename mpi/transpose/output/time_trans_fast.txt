@@ -224,3 +224,60 @@ cycles/byte in recv post = 3.338e-05
 cycles/byte in send wait = 9.3425e-06
 cycles/byte in recv wait = 0
 
+**************************************************
+******************** Stampede ********************
+**************************************************
+                  nprocs = 10
+                    rank = 0
+                nthreads = 16
+                       M = 50000
+                       N = 50000
+        bw (bytes/cycle) = 1.03605
+ frac of cycles in scopy = 0.695793
+   frac of cycles in mpi = 0.0405354
+ frac of cycles in rcopy = 0.240564
+--------------------------
+cycles/byte in send copy = 0.671388
+cycles/byte in recv copy = 0.232054
+      cycles/byte in mpi = 0.0392753
+cycles/byte in send post = 0.039254
+cycles/byte in recv post = 8.07037e-06
+cycles/byte in send wait = 1.32555e-05
+cycles/byte in recv wait = 0
+
+                  nprocs = 16
+                    rank = 0
+                nthreads = 16
+                       M = 50000
+                       N = 80000
+        bw (bytes/cycle) = 0.996039
+ frac of cycles in scopy = 0.720009
+   frac of cycles in mpi = 0.0240722
+ frac of cycles in rcopy = 0.236982
+--------------------------
+cycles/byte in send copy = 0.719986
+cycles/byte in recv copy = 0.240144
+      cycles/byte in mpi = 0.0241165
+cycles/byte in send post = 0.0241065
+cycles/byte in recv post = 3.79575e-06
+cycles/byte in send wait = 6.25425e-06
+cycles/byte in recv wait = 0
+
+                  nprocs = 100
+                    rank = 0
+                nthreads = 16
+                       M = 50000
+                       N = 500000
+        bw (bytes/cycle) = 1.07958
+ frac of cycles in scopy = 0.706586
+   frac of cycles in mpi = 0.00494962
+ frac of cycles in rcopy = 0.280593
+--------------------------
+cycles/byte in send copy = 0.654535
+cycles/byte in recv copy = 0.259655
+      cycles/byte in mpi = 0.00460559
+cycles/byte in send post = 0.00457372
+cycles/byte in recv post = 2.44575e-05
+cycles/byte in send wait = 7.4085e-06
+cycles/byte in recv wait = 0
+

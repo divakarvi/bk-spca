@@ -66,7 +66,6 @@ double time(enum rwc_flag_enum flag, int nthreads){
 int main(){
 	kmp_set_defaults("KMP_AFFINITY=compact");
 
-	assrt(getenv("OMP_NUM_THREADS") != NULL);
 	const int nthreads = num_cpu();
 
 	int nth[2] = {1, nthreads};
