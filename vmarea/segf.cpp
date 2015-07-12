@@ -31,9 +31,6 @@ void ff0(long *a0, long *list, long n){
 void f0(long *list, long n){
 	long a0[1000];
 	printf("a0 (in f0)= %p\n", a0);
-	for(int i=0; i < 1000; i++)
-		a0[i] = 0;
-	asm volatile("cpuid"::"a"(0x01):"ebx", "ecx","edx");
 	printf("pid (in f0) = %d\n", getpid());
 	ff0(a0, list, n);
 }
