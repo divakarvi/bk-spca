@@ -22,7 +22,7 @@ extern void dummy(void *a);
  */
 
 int main(){
-	const long N = 1l*1000*1000*1000;
+	const long N = 1l*1000*1000;
 	printf("attempting to alloc %f bytes on the stack\n",
 	       1.0*sizeof(long)*N);
 
