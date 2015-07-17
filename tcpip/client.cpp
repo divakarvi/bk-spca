@@ -176,7 +176,8 @@ int main(){
 	std::cout<<std::endl;
 	
 	int tmp;
-	std::cout<<"client: input 1 to keep track of cgwin"<<std::endl;
+	std::cout<<"client: input 1 to keep track of cgwin, 0 otherwise"
+		 <<std::endl;
 	std::cout<<"client: keep track of cgwin? ";
 	std::cin>>tmp;
 	std::cout<<std::endl;

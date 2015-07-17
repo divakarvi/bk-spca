@@ -77,7 +77,7 @@ int main(){
 	print_ipaddr(myname);
 	print_ipaddr("stampede.tacc.utexas.edu");
 	print_ipaddr("lonestar.tacc.utexas.edu");
-	print_ipaddr("www.sagemath.org");
+	print_ipaddr("www.python.org");
 	print_ipaddr("www.ft.com");
 	print_ipaddr("www.nytimes.com");
 	print_ipaddr("www.economist.com");
