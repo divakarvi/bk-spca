@@ -1,0 +1,38 @@
+#!/usr/bin/env python
+import os
+
+if __name__ == '__main__':
+    import textwrap
+    description = textwrap.dedent('''\
+    ----------
+    issue command "make clean[x][xx]" either in current directory or recursively
+    ----------
+    ''')
+    import argparse
+    parser = argparse.ArgumentParser(
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        description=description,
+        prefix_chars = '+')
+
+    parser.add_argument('+r', action='store_true', 
+                        help='recurse into directory')
+    parser.add_argument('+x', action='store_true', 
+                        help='make cleanx')
+    parser.add_argument('+xx', action='store_true', 
+                        help='make cleanxx')
+    args = parser.parse_args()
+    cmd = 'make clean'
+    if args.x:
+        cmd = 'make cleanx'
+    if args.xx:
+        cmd = 'make cleanxx'
+
+    if args.r:
+        parent = os.path.abspath('.')
+        for dirr, dlist, flist in os.walk(parent):
+            if 'Makefile' in flist or 'makefile' in flist:
+                os.chdir(dirr)
+                print('----------',dirr,'---------')
+                os.system(cmd)
+    else:
+        os.system(cmd)
