@@ -1,6 +1,6 @@
-The copyright of all the documents and source files in the working directory
-as well as git commits in this project belongs to Divakar Viswanath with the 
-following exceptions:
+The copyright of most the documents and source files in the working
+directory as well as git commits in this project belongs to Divakar
+Viswanath.  The following with some of the exceptions:
 
 1. Intel MKL header files included for pedagogical purposes.
 
@@ -9,10 +9,9 @@ following exceptions:
 
 3. linking-easy/kozen.c
 
-4. everything in the lonestar/
-
-5. alexonlinux.cpp in pthreads/. This file is in the git repo from an old
+4. alexonlinux.cpp in pthreads/. This file is in the git repo from an old
    commit but not in the working directory. It was downloaded from 
    www.alexonlinux.com.
 
-October 2013
+
+March 2016
