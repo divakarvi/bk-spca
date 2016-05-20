@@ -2,10 +2,9 @@
 #include "leibniz.hh"
 #include <omp.h>
 
-double ompfor(long int n,  int nthreads){
+double ompfor(long int n){
 	double ans=0;
 #pragma omp parallel				\
-	num_threads(nthreads)			\
 	default(none)				\
 	shared(n, ans)				
 	{
@@ -24,10 +23,9 @@ double ompfor(long int n,  int nthreads){
 }
 
 
-double ompforchunk(long int n,  int nthreads, int chunk){
+double ompforchunk(long int n, int chunk){
 	double ans=0;
 #pragma omp parallel				\
-	num_threads(nthreads)			\
 	default(none)				\
 	shared(n, ans, chunk)		   
 	{

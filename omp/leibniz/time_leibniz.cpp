@@ -31,13 +31,13 @@ struct leib_struct time_leibniz(long int n, int nthreads, enum leib_enum flag){
 		ans.pi = parallel(n, nthreads);
 		break;
 	case FOR:
-		ans.pi = ompfor(n, nthreads);
+		ans.pi = ompfor(n);
 		break;
 	case FORCHUNK:
-		ans.pi = ompforchunk(n, nthreads, chunk);
+		ans.pi = ompforchunk(n, chunk);
 		break;
 	case PLLFOR:
-		ans.pi = ompfor(n, nthreads);
+		ans.pi = parallelfor(n, nthreads);
 		break;
 	case SCTN:
 		ans.pi = section(n);

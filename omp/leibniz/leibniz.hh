@@ -22,13 +22,13 @@ double parallelX(long int n, int nthreads);
 /*
  * omp for construct for leibniz partial sum
  */
-double ompfor(long int n,  int nthreads);
+double ompfor(long int n);
 
 /*
  * omp for 
  * static scheduling in chunks
  */
-double ompforchunk(long int n,  int nthreads, int chunk);
+double ompforchunk(long int n,  int chunk);
 
 /*
  * combine parallel and for into single construct
