@@ -9,8 +9,7 @@ double ompfor(long int n){
 	shared(n, ans)				
 	{
 		double sum=0;
-#pragma omp for					\
-	schedule(static)
+#pragma omp for
 		for(long int i=0; i < n; i = i+2)
 			{
 				sum += 4.0/(2*i+1);
