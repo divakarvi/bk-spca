@@ -1,0 +1,10 @@
+MATLAB:
+131 seconds
+4.7178e+11
+
+Python:
+136 seconds
+4.9077817e+11 cycles
+
+C/C++:
+cycles consumed: 1.088106e+10
