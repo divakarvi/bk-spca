@@ -56,3 +56,4 @@ void Cycle::copy_r2s(){
 		sendbufl[i] = recvbufr[i];
 	}
 }
+

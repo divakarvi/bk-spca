@@ -19,3 +19,4 @@ int main(){
 	_mm_free(pages);
 	delete[] cycles;
 }
+

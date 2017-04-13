@@ -41,3 +41,4 @@ int main(){
 
 	test(10, 24, nthreads);
 }
+

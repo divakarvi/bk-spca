@@ -35,3 +35,4 @@ void mpi_print_name(int rank){
 	std::cout<<"proc name = "<<procname<<" rank = "<<rank<<std::endl;
 	MPI_Barrier(MPI_COMM_WORLD);
 }
+

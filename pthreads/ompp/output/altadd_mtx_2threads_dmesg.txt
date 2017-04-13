@@ -78,3 +78,4 @@
 [ 3049.607230] futex_wait:  futex_wait_setup could not lock hash bucket  EWOULDLOCK  pid = 2934  smp = 3
 [ 3049.607231] sys_futex: FUTEX_WAIT, pid = 2935, smp = 0
 [ 3049.607232] sys_futex: FUTEX_WAKE, pid = 2934, smp = 3
+

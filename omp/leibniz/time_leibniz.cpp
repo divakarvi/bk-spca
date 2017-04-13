@@ -82,3 +82,4 @@ int main(){
 	tbl.print(banner);
 	unlink_cout();
 }
+

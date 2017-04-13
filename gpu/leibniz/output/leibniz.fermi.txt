@@ -154,3 +154,4 @@ ptxas info    : Used 20 registers, 48 bytes cmem[0]
                Time elapsed = 161.108 milliseconds
             Cycles per term = 0.087209
        Warp cycles per term = 58.6045
+

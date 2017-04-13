@@ -11,3 +11,4 @@ enum mmult_enum {GMEM_MULT, SMEM_MULT};
 double mmult(double *A, double *B, double *C, int N, 
 	   enum mmult_enum flag = SMEM_MULT);
 #endif
+

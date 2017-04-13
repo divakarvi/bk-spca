@@ -828,3 +828,4 @@
 [ 1872.630298] 
 [ 1872.630301] in context_switch(), calling switch_to(), pid = 2650, smp = 0
 [ 1872.630303] futex_wait:  unqueue_me() returned 0  futex_q woken by the waking thread  returning 0  pid = 2645  smp = 0
+

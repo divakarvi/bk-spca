@@ -14,3 +14,4 @@ int main(){
 	double y[5] = {6, 7, 8, 9, 10};
 	std::cout<<"6 + ... + 10 = "<<sum(y, 5)<<std::endl;
 }
+

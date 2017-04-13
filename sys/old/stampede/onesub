@@ -32,3 +32,4 @@ else:
     file.write('rm core*\n');
     file.close()
     os.execvp('sbatch',['sbatch',jobname+'.pbs'])
+

@@ -49,3 +49,4 @@ double test_write(long count){
 int main(){
 	test_write(1000l*1000*1000*20);
 }
+

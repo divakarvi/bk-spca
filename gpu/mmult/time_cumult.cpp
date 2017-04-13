@@ -58,3 +58,4 @@ int main(){
 	table.print("matrix mult using cublas");
 	unlink_cout();
 }
+

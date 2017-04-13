@@ -65,3 +65,4 @@ void Table::print(const char* banner){
 	}
 	delete[] rdata;
 }
+

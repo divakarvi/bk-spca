@@ -12,3 +12,4 @@ leibnizf.o: leibnizf.f
 
 logseriesf.o: logseriesf.f
 	ifort -c logseriesf.f
+

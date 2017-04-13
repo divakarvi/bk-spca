@@ -25,3 +25,4 @@ test_pyplot.exe: test_pyplot.o pyplot.o 		\
 	         ../utils ../utils/utils.o
 test_pyhist.exe: test_pyhist.o pyhist.o 		\
 	         ../utils ../utils/utils.o
+

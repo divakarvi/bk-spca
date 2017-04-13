@@ -55,3 +55,4 @@ int main(){
 	double ans = leibsum(1000*1000);
 	printf("leibniz partial sum = %f \n", ans);
 }
+

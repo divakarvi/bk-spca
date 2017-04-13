@@ -24,3 +24,4 @@ export LD_LIBRARY_PATH=$HOME/openmpi-1.6.3/lib:$LD_LIBRARY_PATH
 #export PS1='\u@\h \[\033[1;33m\]\w\[\033[0m\]$(parse_git_branch)$ '
  
 
+

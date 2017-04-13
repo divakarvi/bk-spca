@@ -8,3 +8,4 @@
      ef9:	66 0f 59 c1          	mulpd  %xmm1,%xmm0
      efd:	66 0f 58 d8          	addpd  %xmm0,%xmm3
      f01:	0f 29 9f 40 06 00 00 	movaps %xmm3,0x640(%rdi)
+

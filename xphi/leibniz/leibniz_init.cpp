@@ -40,3 +40,4 @@ void leibniz_init(double *v, long len){
 		v[i+1] = - 1.0/(2*i+3);
 	}
 }
+

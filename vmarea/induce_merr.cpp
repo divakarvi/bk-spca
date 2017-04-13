@@ -19,3 +19,4 @@ int main(){
 	scanf("%ld", &n);
 	run1(n);
 }
+

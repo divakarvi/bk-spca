@@ -19,3 +19,4 @@ Table: matrix mult using global mem vs shared mem: GF/s
 |          4000|       47.6124|       126.902|
 |              |              |              |
 ---------------------------------------------
+

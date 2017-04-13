@@ -121,3 +121,4 @@ void Jacobi2D::copypp(){
 		this->copy(col1, col2);
 	}
 }
+

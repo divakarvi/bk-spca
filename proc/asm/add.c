@@ -7,3 +7,4 @@ int main(){
 	z = 3;
 	printf("The sum of %d and %d is %d \n", x, y, z);
 }
+

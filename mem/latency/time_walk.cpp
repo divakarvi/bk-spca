@@ -72,3 +72,4 @@ int main(){
 	time_stride(STRIDE16);
 	time_chain();
 }
+

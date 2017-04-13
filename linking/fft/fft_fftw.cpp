@@ -14,3 +14,4 @@ fft_fftw::~fft_fftw(){
 	fftw_destroy_plan(pf);
 	fftw_destroy_plan(pb);
 }
+

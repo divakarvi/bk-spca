@@ -43,3 +43,4 @@ time-mult.exe: time-mult.o mult.o 			\
 cpp-mult.o: cpp-mult.cpp
 	$(CPP) $(CFLAGS) $(MKLINC) -c $<
 cpp-mult.exe: cpp-mult.o ../../utils ../../utils/utils.o
+

@@ -34,3 +34,4 @@ else:
     file.write('rm core*\n');
     file.close()
     os.execvp('qsub',['qsub',jobname+'.pbs'])
+

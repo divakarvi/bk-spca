@@ -30,3 +30,4 @@ __global__
 __launch_bounds__(THinBLK, BLKinMP)
 void copy(double *list, int n, double *copy);
 #endif
+

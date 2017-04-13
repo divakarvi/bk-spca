@@ -175,3 +175,4 @@ int main(){
 	make_table(NO, banner);
 	unlink_cout();
 }
+

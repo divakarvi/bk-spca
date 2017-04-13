@@ -16,3 +16,4 @@ int main(){
 	fft.fwd(x);
 	array_show(x, 6, "its complex fft");
 }
+

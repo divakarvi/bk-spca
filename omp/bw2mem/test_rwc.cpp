@@ -30,3 +30,4 @@ int main(){
 	test_sum();
 	test_wc();
 }
+

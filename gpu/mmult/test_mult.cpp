@@ -41,3 +41,4 @@ int main(){
 	//test_mult(SQRTT*23, GMEM_MULT);
 	test_mult(SQRTT*23, SMEM_MULT);
 }
+

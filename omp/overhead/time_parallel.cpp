@@ -49,3 +49,4 @@ int main(){
 	time_parallel(nthreads, ofile);
 	
 }
+

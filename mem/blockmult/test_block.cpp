@@ -219,3 +219,4 @@ int main(){
 	rerr = testblock();
 	printf("\t rel error in 6000x6000x6000 = %.2e\n", rerr);
 }
+

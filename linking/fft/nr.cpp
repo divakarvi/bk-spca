@@ -57,3 +57,4 @@ void nrfwd(double *f, unsigned long n){
 void nrbwd(double *f, unsigned long n){
 	four1(f-1, n, 1);
 }
+

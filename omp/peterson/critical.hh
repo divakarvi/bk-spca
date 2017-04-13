@@ -28,3 +28,4 @@ void enter_criticalx(int tid,
 		     volatile int& yield, 
 		     volatile int interested[2]);
 #endif
+

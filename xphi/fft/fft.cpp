@@ -18,3 +18,4 @@ __declspec(target(mic))
 FFT::~FFT(){
 	DftiFreeDescriptor(&handle);
 }
+

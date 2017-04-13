@@ -65,3 +65,4 @@ int main(){
 	tbl.print("value of variable after 2 threads add to it n times");
 	unlink_cout();
 }
+

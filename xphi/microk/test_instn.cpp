@@ -15,3 +15,4 @@ void test_fma(){
 int main(){
 	test_fma();
 }
+

@@ -22,3 +22,4 @@ test_sumcopy.exe: test_sumcopy.o sumcopy.o
 time_sumcopy.exe: time_sumcopy.o sumcopy.o				\
 		  ../../utils ../../utils/utils.o ../../utils/Table.o
 
+

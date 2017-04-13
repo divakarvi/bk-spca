@@ -30,3 +30,4 @@ test_trans.exe: test_trans.o trans.o fast_trans.o timer.o	\
 time_trans.exe: time_trans.o trans.o fast_trans.o timer.o	\
 		../../utils ../../utils/utils.o			\
 		../init ../init/mpi_init.o
+

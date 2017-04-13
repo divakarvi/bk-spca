@@ -36,3 +36,4 @@ void f2(){
 	printf("in f2: ");
 	sum_arr(a1, 1000*1000);
 }
+

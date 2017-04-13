@@ -22,3 +22,4 @@ void Aitken(Vector& seq);
  */
 double AitkenE(const Vector& seq, int printflag=0);
 #endif
+

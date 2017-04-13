@@ -28,3 +28,4 @@ time_parallel.exe: time_parallel.o parallelA.o parallelB.o dummy.o	\
 		   ../../utils ../../utils/utils.o
 calc_overhead.exe: calc_overhead.o barrier.o ompfor.o dummy.o	\
 		   ../../utils ../../utils/utils.o ../../utils/Table.o
+

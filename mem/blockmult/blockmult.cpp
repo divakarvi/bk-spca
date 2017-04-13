@@ -112,3 +112,4 @@ void blockmult(double *A, double *B, double *C,
 						  CC, ldC, scratch);
 			}
 }
+

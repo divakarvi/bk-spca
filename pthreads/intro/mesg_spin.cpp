@@ -42,3 +42,4 @@ void fork_pthreads_spinlock(){
 	pthread_join(thread2, &result);
 	pthread_join(thread3, &result);
 }
+

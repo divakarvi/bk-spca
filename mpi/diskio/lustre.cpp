@@ -135,3 +135,4 @@ void LustreFile::read(double *v){
 	sprintf(fnamex, "%s/%s", dir, fname);
 	read_mpi((void *)v, 8l*localsize, fnamex, disp);
 }
+

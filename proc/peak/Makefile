@@ -30,3 +30,4 @@ peak_loadnstore.exe: peak_loadnstore.o
 peak_loadnstore.o: peak_loadnstore.cpp
 peak_loadnstore.s: peak_loadnstore.cpp
 -include peak_loadnstore.d
+

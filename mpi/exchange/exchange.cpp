@@ -75,3 +75,4 @@ void Exchg::wait(){
 	MPI_Wait(&req1, MPI_STATUS_IGNORE);
 	MPI_Wait(&req2, MPI_STATUS_IGNORE);
 }
+

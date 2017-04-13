@@ -146,3 +146,4 @@ int main(){
         printf("CPUGHZ = %f\n", CPUGHZ);
 	bw_readwrite();
 }
+

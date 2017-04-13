@@ -89,3 +89,4 @@ void copy_manycore(double *list, long len, int nthreads){
 		copy_onecore(list+first, next-first);
 	}
 }
+

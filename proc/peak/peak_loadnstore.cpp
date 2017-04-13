@@ -283,3 +283,4 @@ int main(){
 	printf("\t\tUNROLLED 8 times\n");
 	printf("\tcycles per iteration = %.2f\n\n", cycles/nitns);
 }
+

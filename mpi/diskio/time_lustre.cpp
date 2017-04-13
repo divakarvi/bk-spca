@@ -160,3 +160,4 @@ int main(){
 
 	mpi_finalize();
 }
+

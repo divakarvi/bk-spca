@@ -16,3 +16,4 @@ void parallelA(int nthreads, StatVector& stats);
  */
 void parallelB(int nthreads, StatVector& stats);
 #endif
+

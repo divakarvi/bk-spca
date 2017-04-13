@@ -41,3 +41,4 @@ void fork_pthreads_mutex(){
 	pthread_join(thread2, &result);
 	pthread_join(thread3, &result);
 }
+

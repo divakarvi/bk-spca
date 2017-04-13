@@ -958,3 +958,4 @@
             MCA notifier: parameter "notifier_command_priority" (current value: <10>, data source: default value)
                           Priority of this component
             MCA notifier: parameter "notifier_syslog_priority" (current value: <0>, data source: default value)
+

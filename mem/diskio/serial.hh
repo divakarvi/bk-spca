@@ -58,3 +58,4 @@ double latency2disk(const char *dir, int filenum, long posn,
 void latency2disk_finalize(const char *dir, int nfiles);
 
 #endif
+

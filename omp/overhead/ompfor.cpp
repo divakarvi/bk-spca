@@ -105,3 +105,4 @@ double ompfordynamic_overhead(int nthreads, long int countinner,
 	double cppcycles = cppfor(countinner, countouter);
 	return (ompcycles-cppcycles/nthreads)/countouter;
 }
+

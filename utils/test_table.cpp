@@ -17,3 +17,4 @@ int main(){
 	table.data(data);
 	table.print("animals and continents");
 }
+

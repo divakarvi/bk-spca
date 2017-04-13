@@ -96,3 +96,4 @@ int main(){
 	makehist(n, count, bins, window_begin, window_end, 1);
 
 }
+

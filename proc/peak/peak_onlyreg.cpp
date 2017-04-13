@@ -248,3 +248,4 @@ int main(){
 	printf("\t\tdest of mul reused as source by TWO adds\n");
 	printf("\tcycles per iteration = %.2f\n", cycles/nitns);
 }
+

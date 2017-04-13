@@ -28,3 +28,4 @@ void write_manycore(double *list, long len, int nthreads);
  */
 double copy_manycore(double *list, long len, int nthreads);
 #endif
+

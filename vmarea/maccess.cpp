@@ -5,3 +5,4 @@ void maccess(long *a, long n){
 		a[i] = i;
 	a[n-1] = n-1;
 } 
+

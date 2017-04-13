@@ -24,3 +24,4 @@ test_fft.exe: test_fft.o fft_thrd.o					\
 time_fft.exe: time_fft.o fft_thrd.o 					\
 	      ../../utils ../../utils/utils.o ../../utils/Table.o	\
 	      ../../linking/fft ../../linking/fft/fft_mkl.o
+

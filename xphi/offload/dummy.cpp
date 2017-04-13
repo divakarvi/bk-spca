@@ -11,3 +11,4 @@ __declspec(target(mic)) void dummy(double *v, long len){
 
 __declspec(target(mic)) void dummyx(double *v, long len){
 }
+

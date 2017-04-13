@@ -14,3 +14,4 @@ fft_mkl::fft_mkl(int nin)
 fft_mkl::~fft_mkl(){
 	DftiFreeDescriptor(&handle);
 }
+

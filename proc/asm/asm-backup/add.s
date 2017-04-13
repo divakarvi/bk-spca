@@ -46,3 +46,4 @@ main:
 .LEFDE1:
 	.ident	"GCC: (GNU) 4.1.2 20080704 (Red Hat 4.1.2-48)"
 	.section	.note.GNU-stack,"",@progbits
+

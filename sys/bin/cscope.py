@@ -21,3 +21,4 @@ if __name__ == '__main__':
     cmd = 'cscope -b -q'
     print(cmd)
     os.system(cmd)
+

@@ -45,3 +45,4 @@ int main(){
 		printseq_(seq1, &farg);
 	}
 }
+

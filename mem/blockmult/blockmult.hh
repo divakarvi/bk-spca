@@ -47,3 +47,4 @@ void blockmult(double *A, double *B, double *C,
 	       int l, int m, int n,
 	       double *scratch);
 #endif
+

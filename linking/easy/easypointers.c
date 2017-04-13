@@ -8,3 +8,4 @@ int main(){
 	*a = 35+list[1];
 	printf("%p %p %d\n", &x, list, x); 
 }
+

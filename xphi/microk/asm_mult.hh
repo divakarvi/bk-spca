@@ -40,3 +40,4 @@ void asm8x36x8(double *a, double *b, double *c);
 void asm8x48x8(double *a, double *b, double *c);
 
 #endif
+

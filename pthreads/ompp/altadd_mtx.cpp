@@ -143,3 +143,4 @@ int main(){
 	for(int i=0; i < nthreads; i++)
 		cout<<list[i]<<endl;
 }
+

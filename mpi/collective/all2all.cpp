@@ -55,3 +55,4 @@ double all2all(int rank, int nprocs, MPI_Request* reqlist){
 void all2all_finalize(MPI_Request *reqlist){
 	delete[] reqlist;
 }
+

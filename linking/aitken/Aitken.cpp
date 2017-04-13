@@ -41,3 +41,4 @@ double AitkenE(const Vector& seq, int printflag){
 	int ind = v.getSize()-1; //can be 0 or 1
 	return v(ind);
 }
+

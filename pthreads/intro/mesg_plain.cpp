@@ -35,3 +35,4 @@ void fork_pthreads(){
 	pthread_join(thread2, &result);
 	pthread_join(thread3, &result);
 }
+

@@ -28,3 +28,4 @@ Table: memory bw in bytes/cycle, stride = 1
 |  COPYCONSTSTR|       3.72212|
 |              |              |
 ------------------------------
+

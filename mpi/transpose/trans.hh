@@ -34,3 +34,4 @@ public:
 void transposewlda(double *in, int lda, long nrows, long ncols, double *out);
 void copywlda(double *in, int nrows, int ncols, double *out, int lda);
 #endif
+

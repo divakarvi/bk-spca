@@ -17,3 +17,4 @@ int main(){
 	scanf("%d", &n);
 	hanoi(0, 1, n);
 }
+

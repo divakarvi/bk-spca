@@ -9,3 +9,4 @@
  */
 double latency(int n, int *npages);
 #endif
+

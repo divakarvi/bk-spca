@@ -23,3 +23,4 @@ test_xchg.exe: test_xchg.o exchange.o 					\
 time_xchg.exe: time_xchg.o exchange.o 					\
 	       ../../utils ../../utils/utils.o ../../utils/Table.o 	\
 	       ../init ../init/mpi_init.o
+

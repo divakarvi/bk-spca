@@ -153,3 +153,4 @@ int main(){
 	printf("\t\tUNROLLED 4 times\n");
 	printf("\tcycles per iteration = %.2f\n\n", cycles/nitns);
 }
+

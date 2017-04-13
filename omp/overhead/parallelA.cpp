@@ -17,3 +17,4 @@ void parallelA(int nthreads, StatVector& stats){
 	double cycles = clk.toc();
 	stats.insert(cycles);
 }
+

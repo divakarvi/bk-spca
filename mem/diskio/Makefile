@@ -22,3 +22,4 @@ calc_latency.o: calc_latency.cpp
 pagecache.exe: pagecache.o
 time_serial.exe: time_serial.o serial.o dummy.o
 calc_latency.exe: calc_latency.o serial.o dummy.o
+

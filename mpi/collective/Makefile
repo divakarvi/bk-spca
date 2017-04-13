@@ -44,3 +44,4 @@ time_all2all.exe: time_all2all.o all2all.o		 		\
 time_reduce.exe: time_reduce.o reduce.o		 			\
 		 ../../utils ../../utils/utils.o 			\
 		 ../init ../init/mpi_init.o
+

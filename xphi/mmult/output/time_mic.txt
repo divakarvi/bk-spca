@@ -19,3 +19,4 @@ Table: flops/cycle for mult square matrices [host cycles]
 |         12000|       318.165|
 |              |              |
 ------------------------------
+

@@ -20,3 +20,4 @@ void blocktransx(double *restrict a, double *restrict b,
 void blocktrans(double *restrict a, double *restrict b,
 		int m, int n, int nthreads);
 #endif
+

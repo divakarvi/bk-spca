@@ -27,3 +27,4 @@ __device__ void atomicAddDouble(double value,
 		}
 	}
 }
+

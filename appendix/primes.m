@@ -23,3 +23,4 @@ CPUGHZ = 3.6;
 cycles = secs * CPUGHZ * 1e9;
 cycles
 sum(p)
+

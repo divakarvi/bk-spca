@@ -48,3 +48,4 @@ double latency(int n, int *npages){
 	
 	return cycles/(64*n);
 }
+

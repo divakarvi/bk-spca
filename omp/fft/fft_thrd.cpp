@@ -69,3 +69,4 @@ void fft_thrd::numa_init(double *v){
 				v[2*j + i*(2*n)] = v[2*j+1 + i*(2*n)] = 0;
 	}
 }
+

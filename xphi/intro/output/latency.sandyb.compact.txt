@@ -23,3 +23,4 @@ Table: latency to mem in cycles, n pages, thread 0 vs thread 1
 |           100|       219.214|       217.614|
 |              |              |              |
 ---------------------------------------------
+

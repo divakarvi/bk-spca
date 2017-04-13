@@ -19,3 +19,4 @@ leibniz.s: leibniz.cpp
 ######
 leibniz.exe: leibniz.o leibniz_init.o 			\
 	      ../init ../init/mic_init.o
+

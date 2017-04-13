@@ -32,3 +32,4 @@ void testall(){
 int main(){
 	testall();
 }
+

@@ -25,3 +25,4 @@ double chain_walk(long int *list, long int n, int count){
 	}
 	return x;
 }
+

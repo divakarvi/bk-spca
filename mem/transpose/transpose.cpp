@@ -87,3 +87,4 @@ void pow2trans(double *restrict a, double *restrict b, int n){
 	oneblock(a+i*B+j*B*n, b+j*B+i*B*n, n, n);
 }
 
+

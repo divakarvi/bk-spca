@@ -41,3 +41,4 @@ int main(){
 	else
 		printseq(seq1, 1);
 }
+

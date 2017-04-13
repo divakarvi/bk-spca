@@ -259,3 +259,4 @@ MKL_LONG DftiCreateDescriptor_d_md(DFTI_DESCRIPTOR_HANDLE *,
 #endif /* __cplusplus */
 
 #endif /* _MKL_DFTI_H_ */
+

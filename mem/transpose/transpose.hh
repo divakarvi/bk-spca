@@ -34,3 +34,4 @@ void recursivetrans(double *restrict a, double *restrict b,
 void pow2trans(double *restrict a, double *restrict b, int n);
 
 #endif
+

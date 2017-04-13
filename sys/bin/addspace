@@ -1,0 +1,14 @@
+#!/usr/bin/env python
+import os
+
+parent = os.path.abspath('.')
+for dirr, dlist, flist in os.walk(parent):
+    for fn in flist:
+        fname = os.path.join(dirr, fn)
+        if r'.git' in fname:
+            continue
+        else:
+            f = open(fname, 'a')
+            f.write('\n')
+            f.close()
+

@@ -7,3 +7,4 @@
 void addx(int *restrict ptr, int *restrict list, int n);
 void vaddx(volatile int *restrict ptr, int *restrict list, int n);
 #endif
+

@@ -67,3 +67,4 @@ int main(){
 	cout<<"partial sum = "<<partial_sum<<endl;
 	cout<<"cycles per term in series = "<<intvl/n<<endl;
 }
+

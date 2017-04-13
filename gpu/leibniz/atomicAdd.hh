@@ -14,3 +14,4 @@ __device__ void atomicAddDoubleDeadLock(double value,
 __device__ void atomicAddDouble(double value, 
 				volatile double *result, volatile int *lock);
 #endif
+

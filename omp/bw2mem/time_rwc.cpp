@@ -84,3 +84,4 @@ int main(){
 	tbl.print();
 	unlink_cout();
 }
+

@@ -25,3 +25,4 @@ int stride16(int *a);
  */
 double chain_walk(long int *List, long int n, int count);
 #endif
+

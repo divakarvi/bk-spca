@@ -8,3 +8,4 @@ void copy(double *list, int n, double *copy){
 	for(int i=tid; i < n; i = i + stride)
 		copy[i] = list[i]; 
 }
+

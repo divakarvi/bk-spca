@@ -9,3 +9,4 @@ double reducemin_tree(int rank, int nprocs,
 		      double *scratch, int bufsize);
 
 #endif
+

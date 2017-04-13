@@ -193,3 +193,4 @@ void FastTrans::transpose(double *localMN, double *localNM){
 
 	wait(); /* verify sending is finished */
 }
+

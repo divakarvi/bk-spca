@@ -53,3 +53,4 @@ double barrier_overhead(int nthreads, long int count){
 	double nb = nobarrier(nthreads, count);
 	return (b-nb)/count;
 }
+

@@ -22,3 +22,4 @@ int main(){
   double ans = AitkenE(seq, printflag);
   printf("extrapolated pi = %.10f \n", ans);
 }
+

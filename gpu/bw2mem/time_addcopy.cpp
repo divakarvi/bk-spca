@@ -138,3 +138,4 @@ int main(){
 	table.print("Bandwidth in GB/s");
 	unlink_cout();
 }
+

@@ -31,3 +31,4 @@ test_lib.exe: test_lib.o
 	@echo LD_LIBRARY_PATH:
 	@echo $(LD_LIBRARY_PATH)
 	@echo "check LD_LIBRARY_PATH and *source* libpath.sh if necessary"
+

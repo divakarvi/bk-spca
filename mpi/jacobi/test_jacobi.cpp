@@ -40,3 +40,4 @@ int main(){
 	test_jacobi(rank, nprocs);
 	mpi_finalize();
 }
+

@@ -32,3 +32,4 @@ else:
     file.write(newexecname+' '+arglist+' > '+currentdir+'/'+jobname+'.txt\n')
     file.close()
     os.execvp('qsub',['qsub',jobname+'.pbs'])
+

@@ -11,3 +11,4 @@ double bcast(int rank, int nprocs, double *buffer, int bufsize);
  */
 double bcast_srecv(int rank, int nprocs, double *buffer, int bufsize);
 #endif
+

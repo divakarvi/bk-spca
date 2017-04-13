@@ -17,3 +17,4 @@ int main(){
 	printf("b[0][7] \t= %f \n", b[0][7]); 
 	printf("c[7]    \t= %f \n", c[7]); 
 }
+

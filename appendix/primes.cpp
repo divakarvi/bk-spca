@@ -34,3 +34,4 @@ int main(){
 	printf("cycles consumed: %e\n", cycles);
 	delete []p;
 }
+

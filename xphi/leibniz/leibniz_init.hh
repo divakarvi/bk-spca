@@ -17,3 +17,4 @@ __declspec(target(mic)) void hostmic_scale(double *v, long len);
  */
 void leibniz_init(double *v, long len);
 #endif
+

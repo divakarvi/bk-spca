@@ -20,3 +20,4 @@ void transpose200x4(double *bb, int ldbb, double *b);
 void easymult(double *restrict a, double *restrict b, double *restrict c,
 	      int m, int n, int p);
 #endif
+

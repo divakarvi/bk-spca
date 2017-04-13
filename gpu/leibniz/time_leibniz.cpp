@@ -93,3 +93,4 @@ int main(){
 	table.print("Number of SandyB cycles/term for summing Leibniz");
 	unlink_cout();
 }
+

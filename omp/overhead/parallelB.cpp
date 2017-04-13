@@ -18,3 +18,4 @@ void parallelB(int nthreads, StatVector& stats){
 	stats.insert(cycles);
 }
 
+

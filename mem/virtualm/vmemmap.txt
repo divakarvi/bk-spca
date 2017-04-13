@@ -6,3 +6,4 @@
 &global = 0x604730
       f = 0x400ad0
    main = 0x400a00
+

@@ -8,3 +8,4 @@ leibnizFinCPP.exe: leibnizFinCPP.o aitkenf.o
 	icpc -o $@ $^ -lifcore
 
 leibnizFinCPP.o: leibnizFinCPP.cpp
+

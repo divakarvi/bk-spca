@@ -4667,3 +4667,4 @@ if ARG is omitted or nil."
 (provide 'markdown-mode)
 
 ;;; markdown-mode.el ends here
+

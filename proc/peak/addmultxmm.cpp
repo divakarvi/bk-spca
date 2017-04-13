@@ -77,3 +77,4 @@ int main(){
 	printf("\t\ttotal number of registers used = 9\n");
 	printf("\tnumber of cycles per iteration = %.2f\n\n", cycles/nitns);
 }
+

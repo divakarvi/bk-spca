@@ -20,3 +20,4 @@ time_lustre.o: time_lustre.cpp
 ######
 test_lustre.exe: test_lustre.o lustre.o ../init ../init/mpi_init.o
 time_lustre.exe: time_lustre.o lustre.o ../init ../init/mpi_init.o
+

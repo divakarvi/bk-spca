@@ -31,3 +31,4 @@ Table: Number of SandyB cycles/term for summing Leibniz
 |          2600|      0.118408|      0.878012|
 |              |              |              |
 ---------------------------------------------
+

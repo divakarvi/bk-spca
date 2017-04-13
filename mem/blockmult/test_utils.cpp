@@ -30,3 +30,4 @@ void easymult(double *restrict a, double *restrict b, double *restrict c,
 			for(int k=0; k < p; k++)
 				c[i+k*ldc] += a[i+j*lda]*b[j+k*ldb];
 }
+

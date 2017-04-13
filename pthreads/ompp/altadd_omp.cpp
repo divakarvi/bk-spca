@@ -78,3 +78,4 @@ int main(){
 		cout<<list[i]<<endl;
 
 }
+

@@ -27,3 +27,4 @@ int main(){
 	vaddx(&x, list, len);
 	array_show(list, len, "added 5 using vaddx [volatile]");
 }
+

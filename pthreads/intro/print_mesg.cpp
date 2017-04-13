@@ -11,3 +11,4 @@ int main(){
 	printf("****** forking with spinlocks ******\n");
 	fork_pthreads_spinlock();
 }
+

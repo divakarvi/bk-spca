@@ -71,3 +71,4 @@ double reducemin_tree(int rank, int nprocs,
 	double cycles = clk.toc();
 	return cycles;
 }
+

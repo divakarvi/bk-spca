@@ -26,3 +26,4 @@ if(__name__ == "__main__"):
     hist(x, 0, 200, bins = 60)
     #hist(x, 0, 1000, bins = 400)
 
+

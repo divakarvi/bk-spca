@@ -34,3 +34,4 @@ int main(){
 	table.print("sines and cosines");
 	
 }
+

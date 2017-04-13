@@ -37,3 +37,4 @@ altadd_spin.o: altadd_spin.cpp
 	g++ -O3 -fno-inline-functions -c -Drestrict='__restrict__' $< 
 altadd_spin.s: altadd_spin.cpp
 	g++ -S -fno-verbose-asm -fno-inline-functions -Drestrict='__restrict__' $<
+

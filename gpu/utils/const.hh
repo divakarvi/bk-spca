@@ -11,3 +11,4 @@ const int MAXTHMP = 2048;
 const int GPUCLKMHZ = 706; 
 
 #endif
+

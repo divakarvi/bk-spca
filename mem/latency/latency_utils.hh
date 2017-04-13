@@ -29,3 +29,4 @@ void random_perm(int *list, int n);
  */
 void random_cycle(int *list, int n);
 #endif
+

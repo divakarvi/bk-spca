@@ -57,3 +57,4 @@ int main(){
 	table.print("sine of i*pi/20, i=0...20");
 }
 
+

@@ -38,3 +38,4 @@ void test_cumult(int N){
 int main(){
 	test_cumult(1000);
 }
+

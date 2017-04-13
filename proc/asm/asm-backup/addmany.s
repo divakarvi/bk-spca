@@ -21,3 +21,4 @@ main:
 	call	printf
 	addq	$32, %rsp
 	ret
+

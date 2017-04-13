@@ -2165,3 +2165,4 @@
 [ 3506.784724] in context_switch(), calling switch_to(), pid = 3020, smp = 1
 [ 3506.784727] futex_wait:  unqueue_me() returned 0  futex_q woken by the waking thread  returning 0  pid = 3013  smp = 1
 [ 3506.784727] sys_futex: FUTEX_WAKE, pid = 3013, smp = 1
+

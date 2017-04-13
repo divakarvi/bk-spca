@@ -35,3 +35,4 @@ void write2file(){
 int main(){
 	write2file();
 }
+

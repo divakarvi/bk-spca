@@ -48,3 +48,4 @@ double parallelX(long int n, int nthreads){
 	}
 	return ans; 
 }
+

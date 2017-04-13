@@ -31,3 +31,4 @@ void copyconststride(double *restrict a, double *restrict b, long int n){
 		b[i] = a[i];
 }
 
+

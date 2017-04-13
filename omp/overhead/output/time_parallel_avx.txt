@@ -88,3 +88,4 @@ worst 20:
 609673
 503863
 fraction of trials greater than 10% of median = 0.171738
+

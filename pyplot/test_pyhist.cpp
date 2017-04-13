@@ -19,3 +19,4 @@ int main(){
 
 	hist.show();
 }
+

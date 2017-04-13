@@ -25,3 +25,4 @@ void enter_criticalx(int tid,
 	int other = 1 - tid;
 	while((yield==tid) && (interested[other]==1));
 }
+

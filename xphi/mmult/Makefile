@@ -28,3 +28,4 @@ test_mult.exe: test_mult.o mmult.o					\
 time_mult.exe: time_mult.o mmult.o					\
 	       ../init ../init/mic_init.o				\
 	       ../../utils ../../utils/utils.o ../../utils/Table.o
+

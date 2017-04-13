@@ -18,3 +18,4 @@ void runstatv(int n){
 int main(){
 	runstatv(100000);
 }
+

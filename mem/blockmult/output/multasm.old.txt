@@ -12,3 +12,4 @@ flops per cycle 3000x200x3000 = 3.18717
 x = 250262
 flops per cycle = 3.19418
 C[1] = 22522.8
+

@@ -14,3 +14,4 @@ void mmult(double *a, double *b, double *c, int dim){
 	      c, &dim);
 }
 
+

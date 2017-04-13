@@ -33,3 +33,4 @@ table_latency.exe: table_latency.o latency.o dummy.o latency_utils.o	\
 hist_latency.exe: hist_latency.o latency.o dummy.o latency_utils.o	\
 		   ../../utils ../../utils/utils.o 			\
 		   ../../pyplot ../../pyplot/pyhist.o
+

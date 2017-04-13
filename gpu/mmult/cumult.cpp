@@ -59,3 +59,4 @@ double CuMult::mult(double *A, double *B, double *C){
 	
 	return tms;
 }
+

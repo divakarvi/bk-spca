@@ -26,3 +26,4 @@ void test1(int n, long count){
 int main(){
 	test1(12, 10000);
 }
+

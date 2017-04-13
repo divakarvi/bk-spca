@@ -83,3 +83,4 @@ int main(){
 	std::cout<<"CPUGHZ = "<<CPUGHZ<<std::endl;
 	calc_latency();
 }
+

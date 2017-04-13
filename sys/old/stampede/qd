@@ -14,3 +14,4 @@ f.close()
 cmd = 'scancel ' + jid
 print(cmd)
 os.system(cmd)
+

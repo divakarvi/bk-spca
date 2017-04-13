@@ -71,3 +71,4 @@ void random_cycle(int *list, int n){
 
 	delete[] tmp;
 }
+

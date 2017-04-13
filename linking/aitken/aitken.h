@@ -20,3 +20,4 @@ void aitken(const double *seq1, double *seq2, int len);
 double aitkenExtrapolate(double *seq1, double* seq2, int len);
 
 #endif
+

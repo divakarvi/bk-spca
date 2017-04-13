@@ -24,3 +24,4 @@ test_volatile.exe: test_volatile.o volatile.o
 printstuff.exe: printstuff.o
 test_critical.exe: test_critical.o critical.o			\
 		   ../../utils ../../utils/utils.o ../../utils/Table.o
+

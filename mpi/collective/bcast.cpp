@@ -34,3 +34,4 @@ double bcast_srecv(int rank, int nprocs, double *buffer, int bufsize){
 	double cycles = clk.toc();
 	return cycles;
 }
+

@@ -65,3 +65,4 @@ int main(){
 	table.print("matrix mult using global mem vs shared mem: GF/s");
 	unlink_cout();
 }
+

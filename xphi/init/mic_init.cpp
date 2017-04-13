@@ -24,3 +24,4 @@ void mic_exit(){
 	gl_host_nthreads = -1;
 	gl_mic_nthreads = -1;
 }
+

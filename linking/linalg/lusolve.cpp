@@ -47,3 +47,4 @@ void LU_Solve::solve(double *v){
 	dgetrs_(trans, &dim, &nrhs, A, &lda, ipiv, v, &ldv, 
 		&info);//LAPACK call
 }
+

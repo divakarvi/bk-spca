@@ -7,3 +7,4 @@ x = genfromtxt('latency_x.dat', dtype='float')
 h, b, p = plt.hist(x, bins = 150)
 plt.title('latency to dram, each measurement used one page', fontsize=20) 
 plt.savefig('latency.eps') 
+

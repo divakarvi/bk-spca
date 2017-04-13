@@ -26,3 +26,4 @@ double aitkenExtrapolate(double *seq1, double* seq2,
 	}
 	return (len%2==0)?seq1[1]:seq1[0];
 }
+

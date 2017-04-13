@@ -17,3 +17,4 @@ int main(){
 
 	dummy(a);
 }
+

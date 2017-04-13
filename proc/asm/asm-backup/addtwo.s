@@ -13,3 +13,4 @@ main:
 	xorl	%eax, %eax
 	call	printf
 	ret
+
