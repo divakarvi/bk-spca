@@ -5,11 +5,14 @@
 
 The complete text of this book is available in html at [this link][bk]. The html is published under a Creative Commons license. The copyright remains with the publisher. The html has a few blemishes. For example, occasionally when the same source is split between multiple listings, the line numbering is not continued between the listings as it should be. The html does not have an index, although it is searchable. For a more correct and complete version, see the printed book.
 
+1. [amazon.com](amazon.com)
+2. [bn.com](bn.com)
+
 This README document provides context for the source code in this GIT repository, with links to the html text as well as sources in the repository.
 
 # [Preface][bk.preface]
 
-What makes computer programs fast or slow? To answer this question, we have to go behind the abstractions of programing languages and look at how a computer really works. This book examines and explains a variety of scientific programming models (programming models relevant to scientists) with an emphasis on how programming constructs map to different parts of the computer's architecture. Two themes emerge: program speed and program modularity. Most books on computer programming are written at the same level of abstraction as the programming language they utilize or explain. This book starts from the premise that to understand programming speed, we have to get under the hood and understand how a computer works. The approach is to begin with specific programs and move up to general principles gradually. 
+What makes computer programs fast or slow? To answer this question, we have to go behind the abstractions of programing languages and look at how a computer really works. This book examines and explains a variety of scientific programming models (programming models relevant to scientists) with an emphasis on how programming constructs map to different parts of the computer's architecture. Two themes emerge: program speed and program modularity. Most books on computer programming are written at the same level of abstraction as the programming language they utilize or explain. In contrast, this book starts from the premise that to understand programming speed, we have to get under the hood and understand how a computer works. The approach is to begin with specific programs and move up to general principles gradually. 
 
 The book digs into linkers, compilers, operating systems, and computer architecture to understand how the different parts of the computer interact with programs. It begins with a review of C/C++ and explanations of how libraries, linkers, and Makefiles work. Programming models covered include Pthreads, OpenMP, MPI, TCP/IP, and CUDA. The emphasis on how computers work leads the reader into computer architecture and occasionally into the operating system kernel. The operating system studied is Linux, the preferred platform for scientific computing. Linux is also open source, which allows readers to peer into its inner workings. A brief appendix provides a useful table of machines used to time programs.
 
@@ -413,7 +416,7 @@ In this section, we make our first attempts at measuring the access time to DRAM
 
 Our earlier attempts to measure latency to DRAM memory failed because we did not account for the overhead of creating and accessing page table entries. The more careful program in this section breaks instruction-level parallelism, ensures that none of the cache lines accessed is from L1, L2, or L3 cache, and accesses all of the 256 cache lines within four pages of memory (so that TLB misses are not a factor).
 
-[latency_utils.hh][latency_utils.cpp]
+[latency_utils.hh][latency_utils.hh]
 
 [latency_utils.cpp][latency_utils.cpp]
 
@@ -477,7 +480,7 @@ A single array cannot exceed the available DRAM, although it is desirable to wor
 
 [serial.cpp][serial.cpp]
 
-### [4.4][bk.4.4] Page tables and vitual memory
+### [4.4][bk.4.4] Page tables and virtual memory
 
 In this section, we make our first foray into the operating system kernel. [83]  The cost of a single write to memory by an instruction such as movq %rax, (%rsi) brings in many layers of complexity. It could be a cache hit or a cache miss. If the DRAM memory is accessed, the cost of the access depends on preceding and following memory accesses. It depends on the manner in which the memory controllers operate the DRAM devices. It depends on the parallelism in the instruction stream. It depends on the pressure on dispatch ports in the instruction pipeline among other factors. On top of the layers of complexity engineered into hardware, the operating system introduces yet more complexity.
 
@@ -492,7 +495,11 @@ Much of virtual address space is an unclaimed wilderness. Figure 4.8 is an incom
 Program speed is influenced by the paging system in several ways. If a memory word is found in L1 cache and its virtual address is found in TLB, the latency of the memory access would be just 4 cycles. However, if there is a TLB miss, the latency can go up to several hundred cycles. If there is a page fault, the latency of a single memory access can go up to millions, even billions, of cycles.
 
 
+# [5][bk.5] Threads and Shared Memory
 
+Programming with threads is a paradigm of great range and utility that encompasses everything from cell phones to web servers to supercomputers.
+
+# [5.1][bk.5.1] Introduction to OpenMP
 
 
 
