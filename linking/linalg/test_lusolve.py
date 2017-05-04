@@ -9,10 +9,10 @@ def read(fname):
 
 def verify(Af, bf, xf):
     """
-    Af = name of file with A matrix (must be square)
-    bf = name of file with vector b (same dim as A)
-    xf = name of file with computed soln of Ax = b
-    verify() computes the solution using sp.linalg and prints the error
+    Af: name of file with A matrix (must be square).
+    bf: name of file with vector b (same dim as A).
+    xf: name of file with computed soln of Ax = b.
+    verify() computes solution using sp.linalg and verifies error in xf.
     """
     A = read(Af)
     b = read(bf)

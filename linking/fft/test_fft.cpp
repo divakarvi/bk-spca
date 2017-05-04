@@ -9,8 +9,8 @@
 enum mkl_align_flag {MKL_ALIGN, MKL_NOALIGN};
 
 /*
- * does a single fwd+bwd fft of size n and checks it agains python
- * to test fftw replace fft_mkl fft_fftw and verify flag == MKL_ALIGN
+ * does a single fwd+bwd fft of size n and checks it agains python.
+ * to test fftw replace fft_mkl with fft_fftw and set flag to MKL_ALIGN.
  */
 void test_mkl(int n, enum mkl_align_flag flag){
 	double *space = (double *)_mm_malloc((4*n+2)*sizeof(double), 64);

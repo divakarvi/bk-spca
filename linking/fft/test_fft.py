@@ -10,8 +10,8 @@ def read(fname):
 
 def verify(v, vf):
     """
-    v = name of file with data for complex vector v
-    vf = name of file with data for complex vector vf
+     v: name of file with data for complex vector v.
+    vf: name of file with data for complex vector vf.
     checks if vf is the fft of v
     """
     v = read(v).T

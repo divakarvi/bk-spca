@@ -4,7 +4,7 @@
 #include <cmath>
 
 
-//n terms of Taylor series (x - x^2/2 + x^3/3 -...)
+//returns partial sum of n terms of Taylor series (x - x^2/2 + x^3/3 -...)
 double partialSum(double x, int n){
     double sum = 0;
     double prod = 1;
@@ -16,7 +16,7 @@ double partialSum(double x, int n){
     return sum;
 }
 
-//extrapolate using first n partial sums
+//returns extrapolated value of first n partial sums of log(1+x)
 double extrapolateSum(double x, int n){
     double sum = 0;
     double prod = 1;
