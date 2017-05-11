@@ -3,7 +3,7 @@
 #### MIT Press, 2017
 #### ISBN 9780262036290 
 
-The complete text of this book is available in html at [this link][bk]. The html is published under a Creative Commons license. The copyright remains with the publisher. The html has a few blemishes. For example, occasionally when the same source is split between multiple listings, the line numbering is not continued between the listings as it should be. The html does not have an index, although it is searchable. For a more correct and complete version, see the printed book.
+The complete text of this book is available in html at [this link][bk]. The html is published under a Creative Commons license. The copyright remains with the publisher. The html has a few blemishes. For example, occasionally when the same source is split between multiple listings, the line numbering is not continued between the listings as it should be. The html does not have an index, although it is searchable. For a more correct and complete version, see the printed book:
 
 1. [amazon.com](amazon.com)
 2. [bn.com](bn.com)
@@ -145,7 +145,7 @@ We look at multidimensional arrays in C/C++ briefly and then at the distinction 
 [array_2d.c][array_2d.c]
 
 #### [2.2.2][bk.2.2.2] BLAS and LAPACK
-BLAS and LAPACK functions typically have long argument lists.
+BLAS and LAPACK functions, to which we now turn, typically have long argument lists.
 
 [mkl_blas.h][mkl_blas.h]
 
@@ -499,7 +499,24 @@ Program speed is influenced by the paging system in several ways. If a memory wo
 
 Programming with threads is a paradigm of great range and utility that encompasses everything from cell phones to web servers to supercomputers.
 
-# [5.1][bk.5.1] Introduction to OpenMP
+### [5.1][bk.5.1] Introduction to OpenMP
+#### [5.1.1][bk.5.1.1] OpenMP syntax
+#### [5.1.2][bk.5.1.2] Shared variables and OpenMP's memory model
+#### [5.1.3][bk.5.1.3] Overheads of OpenMP constructs
+### [5.2][bk.5.2] Optimizing OpenMP programs
+#### [5.2.1][bk.5.2.1] Near memory and far memory
+#### [5.2.2][bk.5.2.2] Bandwidth to DRAM memory
+#### [5.2.3][bk.5.2.3] Matrix transpose
+#### [5.2.4][bk.5.2.4] Fast Fourier transform
+### [5.3][bk.5.3] Introduction to Pthreads
+#### [5.3.1][bk.5.3.1] Pthreads
+#### [5.3.2][bk.5.3.2] Overhead of thread creation
+#### [5.3.3][bk.5.3.3] Parallel regions using Pthreads
+### [5.4][bk.5.4] Program memory
+#### [5.4.1][bk.5.4.1] An easy system call
+#### [5.4.2][bk.5.4.2] Stacks
+#### [5.4.3][bk.5.4.3] Segmentation faults and memory errors
+
 
 
 
@@ -665,3 +682,28 @@ Programming with threads is a paradigm of great range and utility that encompass
 [serial.cpp]: https://github.com/divakarvi/bk-spca/blob/master/mem/diskio/serial.cpp
 [calc_latency.cpp]: https://github.com/divakarvi/bk-spca/blob/master/mem/diskio/calc_latency.cpp
 [vmemmap.c]: https://github.com/divakarvi/bk-spca/blob/master/mem/virtualm/vmemmap.c
+
+[bk.5]: https://divakarvi.github.io/bk-spca/spca.html#toc-Chapter-5
+[bk.5.1]: https://divakarvi.github.io/bk-spca/spca.html#toc-Section-5.1
+[bk.5.1.1]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-5.1.1
+[bk.5.1.2]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-5.1.2
+[bk.5.1.3]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-5.1.3
+[bk.5.2]: https://divakarvi.github.io/bk-spca/spca.html#toc-Section-5.2
+[bk.5.2.1]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-5.2.1
+[bk.5.2.2]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-5.2.2
+[bk.5.2.3]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-5.2.3
+[bk.5.2.4]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-5.2.4
+[bk.5.3]: https://divakarvi.github.io/bk-spca/spca.html#toc-Section-5.3
+[bk.5.3.1]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-5.3.1
+[bk.5.3.2]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-5.3.2
+[bk.5.3.3]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-5.3.3
+[bk.5.4]: https://divakarvi.github.io/bk-spca/spca.html#toc-Section-5.4
+[bk.5.4.1]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-5.4.
+[bk.5.4.2]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-5.4.2
+[bk.5.4.3]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-5.4.3
+
+[omp.leibniz.hh]: https://github.com/divakarvi/bk-spca/blob/master/omp/leibniz/leibniz.hh
+[omp.leibniz.cpp]: https://github.com/divakarvi/bk-spca/blob/master/omp/leibniz/leibniz.cpp
+[ompfor.cpp]: https://github.com/divakarvi/bk-spca/blob/master/omp/leibniz/ompfor.cpp
+[parallel.cpp]: https://github.com/divakarvi/bk-spca/blob/master/omp/leibniz/parallel.cpp
+[section.cpp]: https://github.com/divakarvi/bk-spca/blob/master/omp/leibniz/section.cpp
