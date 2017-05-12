@@ -12,7 +12,7 @@ This README document provides context for the source code in this GIT repository
 
 # [Preface][bk.preface]
 
-What makes computer programs fast or slow? To answer this question, we have to go behind the abstractions of programing languages and look at how a computer really works. This book examines and explains a variety of scientific programming models (programming models relevant to scientists) with an emphasis on how programming constructs map to different parts of the computer's architecture. Two themes emerge: program speed and program modularity. Most books on computer programming are written at the same level of abstraction as the programming language they utilize or explain. In contrast, this book starts from the premise that to understand programming speed, we have to get under the hood and understand how a computer works. The approach is to begin with specific programs and move up to general principles gradually. 
+What makes computer programs fast or slow? To answer this question, we have to go behind the abstractions of programming languages and look at how a computer really works. This book examines and explains a variety of scientific programming models (programming models relevant to scientists) with an emphasis on how programming constructs map to different parts of the computer's architecture. Two themes emerge: program speed and program modularity. Most books on computer programming are written at the same level of abstraction as the programming language they utilize or explain. In contrast, this book starts from the premise that to understand programming speed, we have to get under the hood and understand how a computer works. The approach is to begin with specific programs and move up to general principles gradually. 
 
 The book digs into linkers, compilers, operating systems, and computer architecture to understand how the different parts of the computer interact with programs. It begins with a review of C/C++ and explanations of how libraries, linkers, and Makefiles work. Programming models covered include Pthreads, OpenMP, MPI, TCP/IP, and CUDA. The emphasis on how computers work leads the reader into computer architecture and occasionally into the operating system kernel. The operating system studied is Linux, the preferred platform for scientific computing. Linux is also open source, which allows readers to peer into its inner workings. A brief appendix provides a useful table of machines used to time programs.
 
@@ -558,7 +558,7 @@ Table 5.3 lists the read, write, and copy bandwidths for two different computers
 
 #### [5.2.3][bk.5.2.3] Matrix transpose
 
- On both the 12-core SSE2 machine and the 16-core AVX machine, the bandwidth realized in transposing is nearly 80% of the bandwidth for copying. Getting to 80% of the best possible in a matrix transpose is quite good.
+The bandwidth realized in transposing is nearly 80% of the bandwidth for copying. Getting to 80% of the best possible in a matrix transpose is quite good.
 
 [transpose.hh][transpose.hh]
 
@@ -580,7 +580,7 @@ The Pthread interface for creating and running threads is supported by the Linux
 
 #### [5.3.1][bk.5.3.1] Pthreads
 
-The only sign that print_message() may have something to do with Pthreads occurs in its first line. It is declared to be a function that takes a single argument of type void * and returns a single value also of type void *.
+The only sign that print_message() (defined in mesg-plain.cpp) may have something to do with Pthreads occurs in its first line. It is declared to be a function that takes a single argument of type void * and returns a single value also of type void *.
 
 [mesg.hh][mesg.hh]
 
@@ -621,8 +621,11 @@ Programs rely on operating systems in many more ways than most programmers reali
 
 The operating system kernel offers its services to user programs through system calls. There are system calls for dealing with every single part of the computing system. There are system calls related to the file system, networks, memory management, and process creation and scheduling. Every printf() or malloc() begins life in the C library but finds its way into the operating system kernel through a system call.
 
-[linux.kernel.patch][linux.kernel.patch]
+[linux.kernel.patch.11][linux.kernel.patch.11]
 (defines a new system call to control printing of messages).
+
+[linux.kernel.patch.22][linux.kernel.patch.22]
+(more modifications to print messages)
 
 [dvmesg.h][dvmesg.h]
 
@@ -630,15 +633,15 @@ The operating system kernel offers its services to user programs through system 
 
 [syscall.c][syscall.c]
 
-[time_syscall.c][time_syscall.c]
+[time_syscall.cpp][time_syscall.cpp]
 
 #### [5.4.2][bk.5.4.2] Stacks
 
 Stacks are useful for maintaining the state of running processes. This application is so important that the stack is hardwired into the x86 instruction set as well as most other instruction sets.
 
-In Linux, every process gets a kernel mode stack, in addition to its user mode stack. The user mode stack occupies a high region in the user area, and the kernel mode stack is in the kernel area of virtual memory.
-
 [hanoi.cpp][hanoi.cpp]
+
+In Linux, every process gets a kernel mode stack, in addition to its user mode stack. The user mode stack occupies a high region in the user area, and the kernel mode stack is in the kernel area of virtual memory.
 
 
 #### [5.4.3][bk.5.4.3] Segmentation faults and memory errors
@@ -872,7 +875,8 @@ The use of pointers exposes the programmer to errors that corrupt memory. Memory
 [altadd_mtx.cpp]: https://github.com/divakarvi/bk-spca/blob/master/pthreads/ompp/altadd_mtx.cpp
 [altadd_spin.cpp]: https://github.com/divakarvi/bk-spca/blob/master/pthreads/ompp/altadd_spin.cpp
 [altadd_cond.cpp]: https://github.com/divakarvi/bk-spca/blob/master/pthreads/ompp/altadd_cond.cpp
-[linux.kernel.patch]: https://github.com/divakarvi/bk-spca/blob/master/kernel-linux/patches/dv.22.patch
+[linux.kernel.patch.11]: https://github.com/divakarvi/bk-spca/blob/master/kernel-linux/patches/dv.11.patch
+[linux.kernel.patch.22]: https://github.com/divakarvi/bk-spca/blob/master/kernel-linux/patches/dv.22.patch
 [dvmesg.h]: https://github.com/divakarvi/bk-spca/blob/master/kernel-linux/syscall/dvmesg.h
 [dvmesg.c]: https://github.com/divakarvi/bk-spca/blob/master/kernel-linux/syscall/dvmesg.c
 [syscall.c]: https://github.com/divakarvi/bk-spca/blob/master/kernel-linux/syscall/syscall.c
