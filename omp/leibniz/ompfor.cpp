@@ -2,6 +2,24 @@
 #include "leibniz.hh"
 #include <omp.h>
 
+double parallelfor(long int n, int nthreads){
+	double ans=0;
+#pragma omp parallel for			\
+	num_threads(nthreads)			\
+	schedule(static)			\
+	default(none)				\
+	shared(n)				\
+	reduction(+:ans)
+	for(long int i=0; i < n; i = i+2)
+		{
+			ans += 4.0/(2*i+1);
+			ans -= 4.0/(2*i+3);
+		}
+	return ans;
+}
+
+
+
 double ompfor(long int n){
 	double ans=0;
 #pragma omp parallel				\
@@ -41,22 +59,4 @@ double ompforchunk(long int n, int chunk){
 	return ans;
 }
 
-
-
-
-double parallelfor(long int n, int nthreads){
-	double ans=0;
-#pragma omp parallel for			\
-	num_threads(nthreads)			\
-	schedule(static)			\
-	default(none)				\
-	shared(n)				\
-	reduction(+:ans)
-	for(long int i=0; i < n; i = i+2)
-		{
-			ans += 4.0/(2*i+1);
-			ans -= 4.0/(2*i+3);
-		}
-	return ans;
-}
 
