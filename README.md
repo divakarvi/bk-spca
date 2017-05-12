@@ -500,24 +500,164 @@ Program speed is influenced by the paging system in several ways. If a memory wo
 Programming with threads is a paradigm of great range and utility that encompasses everything from cell phones to web servers to supercomputers.
 
 ### [5.1][bk.5.1] Introduction to OpenMP
+
+OpenMP programs look much like sequential programs, and the syntax is easy to learn. The simplicity is mostly illusory, however. Whenever concurrent programs share memory, as OpenMP programs do, the programming model inevitably becomes very subtle.
+
 #### [5.1.1][bk.5.1.1] OpenMP syntax
+
+OpenMP syntax is beguilingly simple.
+
+[leibniz.hh][omp.leibniz.hh]
+
+[leibniz.cpp][omp.leibniz.cpp]
+
+[ompfor.cpp][ompfor.cpp]
+
+[parallel.cpp][parallel.cpp]
+
+[section.cpp][section.cpp]
+
 #### [5.1.2][bk.5.1.2] Shared variables and OpenMP's memory model
+
+Implicit flushes are a vital part of OpenMP's memory model.
+
+[printstuff.cpp][printstuff.cpp]
+
 #### [5.1.3][bk.5.1.3] Overheads of OpenMP constructs
+
+The parallel, barrier, and for constructs introduce overheads. Work may need to be assigned to threads, threads may need to be created and destroyed, or synchronization and serialization may need to be implemented using system calls to the operating system kernel. These activities consume cycles. If the parallelized task is too small, the benefits of parallelization will be overwhelmed by the overheads. Effective programming requires knowledge of the overheads of OpenMP constructs.
+
+[parallel.hh][parallel.hh]
+
+[parallelA.cpp][parallelA.cpp]
+
+[overhead.hh][overhead.hh]
+
+[barrier.cpp][barrier.cpp]
+
+[ompfor.cpp][ovhd.ompfor.cpp]
+
 ### [5.2][bk.5.2] Optimizing OpenMP programs
+
+It is commonly believed that a program running on 16 cores is 16 times faster than a program that runs on 1 core, ignoring communication costs. This belief is completely mistaken. Bandwidth to memory does not scale linearly with the number of cores. Although linear speedup is often claimed in scientific computing research, such claims are a consequence of the program not going out of cache, a surprisingly common occurrence. Algorithms that use memory in a nontrivial manner and achieve linear speedup are rare.
+
 #### [5.2.1][bk.5.2.1] Near memory and far memory
+
+It is advantageous if a page frame that is mostly used by a thread resides in near memory. If page frames are in far memory, the speed of the program can degrade by more than a factor of two.
+
+[latency.cpp][omp.latency.cpp]
+
 #### [5.2.2][bk.5.2.2] Bandwidth to DRAM memory
+
+Table 5.3 lists the read, write, and copy bandwidths for two different computers. In neither case do we get anything close to linear speedup for reading and copying.
+
+[readwrcopy.hh][readwrcopy.hh]
+
+[readwrcopy.cpp][readwrcopy.cpp]
+
+
 #### [5.2.3][bk.5.2.3] Matrix transpose
+
+ On both the 12-core SSE2 machine and the 16-core AVX machine, the bandwidth realized in transposing is nearly 80% of the bandwidth for copying. Getting to 80% of the best possible in a matrix transpose is quite good.
+
+[transpose.hh][transpose.hh]
+
+[transpose.cpp][transpose.cpp]
+
 #### [5.2.4][bk.5.2.4] Fast Fourier transform
+
+Hiding the cost of memory accesses and making efficient use of processor resources are essential for optimized FFT routines The FFT speedups are quite good and reach 75% of linear speedup.
+
+[fft_thrd.hh][fft_thrd.hh]
+
+[fft_thrd.cpp][fft_thrd.cpp]
+
 ### [5.3][bk.5.3] Introduction to Pthreads
+
+OpenMP is a limited programming model. It applies mainly to those situations where the data is static and the access patterns are regular. Pthreads are a more powerful programming model.
+
+The Pthread interface for creating and running threads is supported by the Linux kernel. In Linux, each thread is a separate process. Thread creation is the same as process creation. The distinguishing feature of a group of threads is that they all use the same page tables.
+
 #### [5.3.1][bk.5.3.1] Pthreads
+
+The only sign that print_message() may have something to do with Pthreads occurs in its first line. It is declared to be a function that takes a single argument of type void * and returns a single value also of type void *.
+
+[mesg.hh][mesg.hh]
+
+[mesg_plain.cpp][mesg_plain.cpp]
+
+[mesg_mutex.cpp][mesg_mutex.cpp]
+
+[mesg_spin.cpp][mesg_spin.cpp]
+
+[leibniz.cpp][pthreads.leibniz.cpp]
+
 #### [5.3.2][bk.5.3.2] Overhead of thread creation
+
+The typical cost of creating and destroying Pthreads appears to be somewhat less than 10**5 cycles. That number is not unreasonable given that each process descriptor used by the kernel is nearly 6 KB. The cost of creating threads will vary from system to system, but the numbers are qualitatively the same on many different systems. The cost of creating a thread per core may be expected to be higher on computers with multiple processor packages.
+
+[thrd_create_ovhd.cpp][thrd_create_ovhd.cpp]
+
 #### [5.3.3][bk.5.3.3] Parallel regions using Pthreads
+
+Open MP type parallel regions are implemented using Pthreads. The first implementation is plain C, except for creating and launching Pthreads. The second and third implementations use spinlocks and mutexes, respectively. The final implementation uses conditional variables.  The C implementation highlights the role of cache coherence, which is essential and fundamental to multithreaded programming. Propagating writes from cache to cache can cause significant overhead. The C implementation also introduces memory fences.
+
+[altadd_omp.cpp][altadd_omp.cpp]
+
+[altadd_c.cpp][altadd_c.cpp]
+
+[altadd_mtx.cpp][altadd_mtx.cpp]
+
+[altadd_spin.cpp][altadd_spin.cpp]
+
+[altadd_cond.cpp][altadd_cond.cpp]
+
+
 ### [5.4][bk.5.4] Program memory
+
+Programs rely on operating systems in many more ways than most programmers realize. When we try to understand program speed or some other characteristic in depth, we are inevitably led inside the operating system kernel. The little forays we make into the Linux kernel will help us understand segmentation faults, memory errors, and thread creation.
+
 #### [5.4.1][bk.5.4.1] An easy system call
+
+The operating system kernel offers its services to user programs through system calls. There are system calls for dealing with every single part of the computing system. There are system calls related to the file system, networks, memory management, and process creation and scheduling. Every printf() or malloc() begins life in the C library but finds its way into the operating system kernel through a system call.
+
+[linux.kernel.patch][linux.kernel.patch]
+(defines a new system call to control printing of messages).
+
+[dvmesg.h][dvmesg.h]
+
+[dvmesg.c][dvmesg.c]
+
+[syscall.c][syscall.c]
+
+[time_syscall.c][time_syscall.c]
+
 #### [5.4.2][bk.5.4.2] Stacks
+
+Stacks are useful for maintaining the state of running processes. This application is so important that the stack is hardwired into the x86 instruction set as well as most other instruction sets.
+
+In Linux, every process gets a kernel mode stack, in addition to its user mode stack. The user mode stack occupies a high region in the user area, and the kernel mode stack is in the kernel area of virtual memory.
+
+[hanoi.cpp][hanoi.cpp]
+
+
 #### [5.4.3][bk.5.4.3] Segmentation faults and memory errors
 
+The use of pointers exposes the programmer to errors that corrupt memory. Memory errors can befuddle even expert programmers. An erroneous program with memory errors may work on some systems but crash on others. The point where the program crashes can be far away from the point where the error occurs. The program may work for some inputs but not for others. In multithreaded programs, memory errors may be triggered by race conditions that are hard to reproduce, making debugging difficult. In this section, we take a detailed look at segmentation faults and memory errors.
 
+[stacksize.cpp][stacksize.cpp]
+
+[segf.hh][segf.hh]
+
+[segf.cpp][segf.cpp]
+
+[induce_segf.cpp][induce_segf.cpp]
+
+[maccess.hh][maccess.hh]
+
+[maccess.cpp][maccess.cpp]
+
+[induce_merr.cpp][induce_merr.cpp]
 
 
 
@@ -707,3 +847,42 @@ Programming with threads is a paradigm of great range and utility that encompass
 [ompfor.cpp]: https://github.com/divakarvi/bk-spca/blob/master/omp/leibniz/ompfor.cpp
 [parallel.cpp]: https://github.com/divakarvi/bk-spca/blob/master/omp/leibniz/parallel.cpp
 [section.cpp]: https://github.com/divakarvi/bk-spca/blob/master/omp/leibniz/section.cpp
+[printstuff.cpp]: https://github.com/divakarvi/bk-spca/blob/master/omp/leibniz/printstuff.cpp
+[parallel.hh]: https://github.com/divakarvi/bk-spca/blob/master/omp/overhead/parallel.hh
+[parallelA.cpp]: https://github.com/divakarvi/bk-spca/blob/master/omp/overhead/parallelA.cpp
+[overhead.hh]: https://github.com/divakarvi/bk-spca/blob/master/omp/overhead/overhead.hh
+[barrier.cpp]: https://github.com/divakarvi/bk-spca/blob/master/omp/overhead/barrier.cpp
+[ovhd.ompfor.cpp]: https://github.com/divakarvi/bk-spca/blob/master/omp/overhead/ompfor.cpp
+[omp.latency.cpp]: https://github.com/divakarvi/bk-spca/blob/master/omp/latency/latency.cpp
+[readwrcopy.hh]: https://github.com/divakarvi/bk-spca/blob/master/omp/bw2mem/readwrcopy.hh
+[readwrcopy.cpp]: https://github.com/divakarvi/bk-spca/blob/master/omp/bw2mem/readwrcopy.cpp
+[transpose.hh]: https://github.com/divakarvi/bk-spca/blob/master/omp/transpose/transpose.hh
+[transpose.cpp]: https://github.com/divakarvi/bk-spca/blob/master/omp/transpose/transpose.cpp
+[fft_thrd.hh]: https://github.com/divakarvi/bk-spca/blob/master/omp/fft/fft_thrd.hh
+[fft_thrd.cpp]: https://github.com/divakarvi/bk-spca/blob/master/omp/fft/fft_thrd.cpp
+[mesg.hh]: https://github.com/divakarvi/bk-spca/blob/master/pthreads/intro/mesg.hh
+[mesg_plain.cpp]: https://github.com/divakarvi/bk-spca/blob/master/pthreads/intro/mesg_plain.cpp
+[mesg_mutex.cpp]: https://github.com/divakarvi/bk-spca/blob/master/pthreads/intro/mesg_mutex.cpp
+[mesg_spin.cpp]: https://github.com/divakarvi/bk-spca/blob/master/pthreads/intro/mesg_spin.cpp
+[print_mesg.cpp]: https://github.com/divakarvi/bk-spca/blob/master/pthreads/intro/print_mesg.cpp
+[pthreads.leibniz.cpp]: https://github.com/divakarvi/bk-spca/blob/master/pthreads/intro/leibniz.cpp
+[thrd_create_ovhd.cpp]: https://github.com/divakarvi/bk-spca/blob/master/pthreads/overhead/thrd_create_ovhd.cpp
+[altadd_omp.cpp]: https://github.com/divakarvi/bk-spca/blob/master/pthreads/ompp/altadd_omp.cpp
+[altadd_c.cpp]: https://github.com/divakarvi/bk-spca/blob/master/pthreads/ompp/altadd_c.cpp
+[altadd_mtx.cpp]: https://github.com/divakarvi/bk-spca/blob/master/pthreads/ompp/altadd_mtx.cpp
+[altadd_spin.cpp]: https://github.com/divakarvi/bk-spca/blob/master/pthreads/ompp/altadd_spin.cpp
+[altadd_cond.cpp]: https://github.com/divakarvi/bk-spca/blob/master/pthreads/ompp/altadd_cond.cpp
+[linux.kernel.patch]: https://github.com/divakarvi/bk-spca/blob/master/kernel-linux/patches/dv.22.patch
+[dvmesg.h]: https://github.com/divakarvi/bk-spca/blob/master/kernel-linux/syscall/dvmesg.h
+[dvmesg.c]: https://github.com/divakarvi/bk-spca/blob/master/kernel-linux/syscall/dvmesg.c
+[syscall.c]: https://github.com/divakarvi/bk-spca/blob/master/kernel-linux/syscall/syscall.c
+[time_syscall.cpp]: https://github.com/divakarvi/bk-spca/blob/master/kernel-linux/syscall/time_syscall.cpp
+[hanoi.cpp]: https://github.com/divakarvi/bk-spca/blob/master/vmarea/hanoi.cpp
+[stacksize.cpp]: https://github.com/divakarvi/bk-spca/blob/master/vmarea/stacksize.cpp
+[segf.hh]: https://github.com/divakarvi/bk-spca/blob/master/vmarea/segf.hh
+[segf.cpp]: https://github.com/divakarvi/bk-spca/blob/master/vmarea/segf.cpp
+[induce_segf.cpp]: https://github.com/divakarvi/bk-spca/blob/master/vmarea/induce_segf.cpp
+[maccess.hh]: https://github.com/divakarvi/bk-spca/blob/master/vmarea/maccess.hh
+[maccess.cpp]: https://github.com/divakarvi/bk-spca/blob/master/vmarea/maccess.cpp
+[induce_merr.cpp]: https://github.com/divakarvi/bk-spca/blob/master/vmarea/induce_merr.cpp
+
