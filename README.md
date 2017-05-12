@@ -12,9 +12,9 @@ This README document provides context for the source code in this GIT repository
 
 # [Preface][bk.preface]
 
-What makes computer programs fast or slow? To answer this question, we have to go behind the abstractions of programming languages and look at how a computer really works. This book examines and explains a variety of scientific programming models (programming models relevant to scientists) with an emphasis on how programming constructs map to different parts of the computer's architecture. Two themes emerge: program speed and program modularity. Most books on computer programming are written at the same level of abstraction as the programming language they utilize or explain. In contrast, this book starts from the premise that to understand programming speed, we have to get under the hood and understand how a computer works. The approach is to begin with specific programs and move up to general principles gradually. 
+What makes computer programs fast or slow? To answer this question, we have to go behind the abstractions of programming languages and look at how a computer really works. This book examines and explains a variety of scientific programming models (programming models relevant to scientists) with an emphasis on how programming constructs map to different parts of the computer's architecture. Two themes emerge: program speed and program modularity. Most books on computer programming are written at the same level of abstraction as the programming language they utilize or explain. In contrast, this book starts from the premise that to understand program speed, we have to get under the hood and understand how a computer works. The approach is to begin with specific programs and move up to general principles gradually. 
 
-The book digs into linkers, compilers, operating systems, and computer architecture to understand how the different parts of the computer interact with programs. It begins with a review of C/C++ and explanations of how libraries, linkers, and Makefiles work. Programming models covered include Pthreads, OpenMP, MPI, TCP/IP, and CUDA. The emphasis on how computers work leads the reader into computer architecture and occasionally into the operating system kernel. The operating system studied is Linux, the preferred platform for scientific computing. Linux is also open source, which allows readers to peer into its inner workings. A brief appendix provides a useful table of machines used to time programs.
+The book digs into linkers, compilers, operating systems, and computer architecture to understand how the different parts of the computer interact with programs. It begins with a review of C/C++ and explanations of how libraries, linkers, and Makefiles work. Programming models covered include Pthreads, OpenMP, MPI, TCP/IP, and CUDA. The emphasis on how computers work leads the reader into computer architecture and occasionally into the operating system kernel. The operating system studied is Linux, the preferred platform for scientific computing. Linux is also open source, which allows users to peer into its inner workings. A brief appendix provides a useful table of machines used to time programs.
 
 # [1][bk.1] C/C++ Review
 
@@ -436,7 +436,7 @@ The most predictable and common pattern of memory access is to access a long lin
 
 [sumcopy.cpp][sumcopy.cpp]
 
-#### [4.2.2][bk.4.2.2] Matrix Transpose
+#### [4.2.2][bk.4.2.2] Matrix transpose
 
 The example we study here is out-of-place matrix transpose. It is always best to access data sequentially with unit stride, but when a matrix is transposed to another matrix stored in the same column-major format, there is no way to access both matrices with unit stride. In many problems of this type, it is useful to break up the data into blocks.
 
@@ -566,7 +566,7 @@ The bandwidth realized in transposing is nearly 80% of the bandwidth for copying
 
 #### [5.2.4][bk.5.2.4] Fast Fourier transform
 
-Hiding the cost of memory accesses and making efficient use of processor resources are essential for optimized FFT routines The FFT speedups are quite good and reach 75% of linear speedup.
+The FFT speedups are quite good and reach 75% of linear speedup.
 
 [fft_thrd.hh][fft_thrd.hh]
 
@@ -580,7 +580,7 @@ The Pthread interface for creating and running threads is supported by the Linux
 
 #### [5.3.1][bk.5.3.1] Pthreads
 
-The only sign that print_message() (defined in mesg-plain.cpp) may have something to do with Pthreads occurs in its first line. It is declared to be a function that takes a single argument of type void * and returns a single value also of type void *.
+Pthreads are initiated using functions that take a single argument of type void * and return a single value also of type void *.
 
 [mesg.hh][mesg.hh]
 
@@ -600,7 +600,7 @@ The typical cost of creating and destroying Pthreads appears to be somewhat less
 
 #### [5.3.3][bk.5.3.3] Parallel regions using Pthreads
 
-Open MP type parallel regions are implemented using Pthreads. The first implementation is plain C, except for creating and launching Pthreads. The second and third implementations use spinlocks and mutexes, respectively. The final implementation uses conditional variables.  The C implementation highlights the role of cache coherence, which is essential and fundamental to multithreaded programming. Propagating writes from cache to cache can cause significant overhead. The C implementation also introduces memory fences.
+Open MP type parallel regions are implemented using Pthreads in this section. The first implementation is plain C, except for creating and launching Pthreads. The second and third implementations use spinlocks and mutexes, respectively. The final implementation uses conditional variables.  The C implementation highlights the role of cache coherence, which is essential and fundamental to multithreaded programming. Propagating writes from cache to cache can cause significant overhead. The C implementation also introduces memory fences.
 
 [altadd_omp.cpp][altadd_omp.cpp]
 
@@ -615,7 +615,7 @@ Open MP type parallel regions are implemented using Pthreads. The first implemen
 
 ### [5.4][bk.5.4] Program memory
 
-Programs rely on operating systems in many more ways than most programmers realize. When we try to understand program speed or some other characteristic in depth, we are inevitably led inside the operating system kernel. The little forays we make into the Linux kernel will help us understand segmentation faults, memory errors, and thread creation.
+Programs rely on operating systems in many more ways than most programmers realize. The little forays we make into the Linux kernel will help us understand segmentation faults, memory errors, and thread creation.
 
 #### [5.4.1][bk.5.4.1] An easy system call
 
