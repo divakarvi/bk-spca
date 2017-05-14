@@ -11,6 +11,8 @@ The complete text of this book is available in html at [this link][bk]. The html
 This README document provides context for the source code in this GIT repository, with links to the html text as well as sources in the repository.
 
 * [Preface](#Preface)
+* [C/C++ Review](#C/C++-Review)
+* [C/C++: Libraries and Makefiles](#C/C++:-Libraries-and-Makefiles)
 
 # [Preface][bk.preface]
 
