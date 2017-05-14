@@ -10,17 +10,17 @@ The complete text of this book is available in html at [this link][bk]. The html
 
 This README document provides context for the source code in this GIT repository, with links to the html text as well as sources in the repository.
 
-* [Preface](#Preface)
-* [C/C++ Review](#C/C++-Review)
-* [C/C++: Libraries and Makefiles](#C/C++:-Libraries-and-Makefiles)
+* [Preface](#preface)
+* [C/C++ Review](#chapter1)
+* [C/C++: Libraries and Makefiles](#chapter2)
 
-# [Preface][bk.preface]
+# <a name="preface"></a>[Preface][bk.preface]
 
 What makes computer programs fast or slow? To answer this question, we have to go behind the abstractions of programming languages and look at how a computer really works. This book examines and explains a variety of scientific programming models (programming models relevant to scientists) with an emphasis on how programming constructs map to different parts of the computer's architecture. Two themes emerge: program speed and program modularity. Most books on computer programming are written at the same level of abstraction as the programming language they utilize or explain. In contrast, this book starts from the premise that to understand program speed, we have to get under the hood and understand how a computer works. The approach is to begin with specific programs and move up to general principles gradually. 
 
 The book digs into linkers, compilers, operating systems, and computer architecture to understand how the different parts of the computer interact with programs. It begins with a review of C/C++ and explanations of how libraries, linkers, and Makefiles work. Programming models covered include Pthreads, OpenMP, MPI, TCP/IP, and CUDA. The emphasis on how computers work leads the reader into computer architecture and occasionally into the operating system kernel. The operating system studied is Linux, the preferred platform for scientific computing. Linux is also open source, which allows users to peer into its inner workings. A brief appendix provides a useful table of machines used to time programs.
 
-# [1][bk.1] C/C++ Review
+# [1][bk.1] <a name="chapter1"></a> C/C++ Review
 
 The review of C/C++ in this chapter attempts to bring out certain features that people often do not learn from a single course or two.
 
@@ -114,7 +114,7 @@ The syntax is deliberately Fortran 77 and not the newer varieties. When the need
 
 [logseriesf.f][logseriesf.f]
 
-# [2][bk.2] C/C++: Libraries and Makefiles
+# [2][bk.2] <a name="chapter2"></a> C/C++: Libraries and Makefiles
 
 There are two powerful ideas for bringing greater modularity into C/C++ programs, and both of them will be introduced in this chapter. The first idea is to combine object files into libraries, and the second idea is to organize program sources into a source tree.
 
