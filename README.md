@@ -13,6 +13,11 @@ This README document provides context for the source code in this GIT repository
 * [Preface](#preface)
 * [C/C++ Review](#chapter1)
 * [C/C++: Libraries and Makefiles](#chapter2)
+* [The Processor](#chapter3)
+* [Memory](#chapter4)
+* [Threads and Shared Memory](#chapter5)
+
+
 
 # <a name="preface"></a>[Preface][bk.preface]
 
@@ -265,7 +270,7 @@ What is the fastest possible speed of an FFT implementation? The many system fea
 
 [time_fft.cpp][time_fft.cpp]
 
-# [3][bk.3] The Processor
+# [3][bk.3] <a name="chapter3"></a> The Processor
 
 Even for many simple programs, the compilers of today do not generate optimal code or anything like it. Good, or nearly optimal, programs for modern platforms can be written only with a knowledge of the nuances of the computer’s hardware. With that in mind, this chapter, indeed the rest of this book, will introduce programming models in close concert with computer architecture.
 
@@ -386,7 +391,7 @@ In this section, we write programs that multiply matrices of dimensions 4 ×�
 [asm4x200x4.s][asm4x200x4.s]
 
 
-# [4][bk.4] Memory
+# [4][bk.4] <a name="chapter4"></a> Memory
 
 In modern computers, including supercomputers, desktops, laptops, and all kinds of mobile devices, memory invariably refers to DRAM. Although file systems reside on hard disk or some other storage medium, when a program is running, much of the data that is handled is from DRAM.
 
@@ -499,7 +504,7 @@ Much of virtual address space is an unclaimed wilderness. Figure 4.8 is an incom
 Program speed is influenced by the paging system in several ways. If a memory word is found in L1 cache and its virtual address is found in TLB, the latency of the memory access would be just 4 cycles. However, if there is a TLB miss, the latency can go up to several hundred cycles. If there is a page fault, the latency of a single memory access can go up to millions, even billions, of cycles.
 
 
-# [5][bk.5] Threads and Shared Memory
+# [5][bk.5] <a name="chapter5"></a> Threads and Shared Memory
 
 Programming with threads is a paradigm of great range and utility that encompasses everything from cell phones to web servers to supercomputers.
 
