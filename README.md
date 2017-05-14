@@ -10,6 +10,8 @@ The complete text of this book is available in html at [this link][bk]. The html
 
 This README document provides context for the source code in this GIT repository, with links to the html text as well as sources in the repository.
 
+* [Preface](#Preface)
+
 # [Preface][bk.preface]
 
 What makes computer programs fast or slow? To answer this question, we have to go behind the abstractions of programming languages and look at how a computer really works. This book examines and explains a variety of scientific programming models (programming models relevant to scientists) with an emphasis on how programming constructs map to different parts of the computer's architecture. Two themes emerge: program speed and program modularity. Most books on computer programming are written at the same level of abstraction as the programming language they utilize or explain. In contrast, this book starts from the premise that to understand program speed, we have to get under the hood and understand how a computer works. The approach is to begin with specific programs and move up to general principles gradually. 
@@ -74,7 +76,7 @@ The C++ language is something of a compromise to provide the facilities of high-
 
 #### [1.3.1][bk.1.3.1] The Vector class
 
-We begin with a general type of class, namely, the Vector class. This class helps us review a few of the features of C++ and is used to implement the Aitken iteration later. In a later chapter, we criticize the use of this class and show it to be slow.
+We begin with a general type of class, namely, the Vector class. This class helps us review a few of the features of C++ and is used to implement the Aitken iteration later. In a later chapter, we criticize the use of this class and show it to be slow. Except for this class, our classes are narrowly defined and follow the "one class, one task" principle.
 
 [Vector.hh][Vector.hh] illustrates some of the following:
 
