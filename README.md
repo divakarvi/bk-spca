@@ -671,6 +671,142 @@ The use of pointers exposes the programmer to errors that corrupt memory. Memory
 
 [induce_merr.cpp][induce_merr.cpp]
 
+# [6][bk.6] <a name="chapter6"></a>Special Topic: Networks and Message Passing
+
+The principal framework for programming high-performance networks is Message Passing Interface (MPI). MPI is a library that allows processes running concurrently on different nodes to communicate by sending and receiving messages.
+
+The Internet is a different kind of a network from the high-performance clusters targeted by MPI. The Internet’s relevance to emerging areas of science is unquestionable. The huge volumes of investment that are and will flow into the Internet will imply that it is integrated more and more deeply into science and scientific computing. Conversely, one should not forget that the World Wide Web was invented by a physicist.
+
+### [6.1][bk.6.1] MPI: Getting started
+
+MPICH, MVAPICH2, and Open MPI are the three major MPI implementations. The details of compilation, linking, and running vary between these implementations as well as between different sites. However, the general picture is the same.
+
+#### [6.1.1][bk.6.1.1] Initializing MPI
+
+MPI calls itself a fully featured library---with some justice. It has a lot of features. We will use only a thin sliver of MPI.
+
+[procname.cpp][procname.cpp]
+
+[mpi_init.hh][mpi_init.hh]
+
+[mpi_init.cpp][mpi_init.cpp]
+
+#### [6.1.2][bk.6.1.2] Unsafe communication in MPI
+
+MPI syntax allows a process to use either blocking or nonblocking function calls to send and receive. A blocking send or receive waits until the operation is complete. Blocking communication is more vulnerable to deadlocks.
+
+[unsafe.cpp][unsafe.cpp]
+
+### [6.2][bk.6.2] High-performance network architecture
+
+A network connects many computers together. Each computer is an independent entity. Thus, every communication between two computers requires coordination. The coordination is much looser in the vast and decentralized Internet than it is in high-performance networks used in scientific computing.
+
+#### [6.2.1][bk.6.2.1] Fat-tree network
+
+In many high-performance clusters, nodes are networked using fat-trees.  A defining property of fat-trees is that the number of links between levels is roughly a constant.
+
+#### [6.2.2][bk.6.2.2] Infiniband network architecture
+
+In packet switched networks, such as Infiniband or the Ethernet, data in DRAM memory is converted to a sequence of packets by the source. The packets are transmitted across the network. The packets are reassembled at the destination and stored once again in DRAM memory. The change in data format is fundamental to packet switched networks.
+
+### [6.3][bk.6.3] MPI examples
+
+In this section, we get more deeply into MPI syntax. Our account of MPI syntax is not extensive. However, every bit of syntax introduced is related to computer architecture. The discussion of Infiniband network architecture in the previous section will help us learn MPI with a double focus on syntax and its effectiveness.
+
+#### [6.3.1][bk.6.3.1] Variants of MPI send and receive
+
+Function calls that send and receive messages are the heart of the MPI library. An MPI user who masters sending and receive messages, but not much more, can get by quite well.
+
+[exchange.hh]: https://github.com/divakarvi/bk-spca/blob/master/mpi/exchange/exchange.hh
+
+[exchange.cpp]: https://github.com/divakarvi/bk-spca/blob/master/mpi/exchange/exchange.cpp
+
+[cycle.hh]: https://github.com/divakarvi/bk-spca/blob/master/mpi/cycle/cycle.hh
+
+[cycle.cpp]: https://github.com/divakarvi/bk-spca/blob/master/mpi/cycle/cycle.hh
+
+#### [6.3.2][bk.6.3.2] Jacobi iteration
+
+The Jacobi iteration is a technique for solving linear systems that arise when certain partial differential equations are discretized. Jacobi is an iterative method.
+
+[jacobi.hh]: https://github.com/divakarvi/bk-spca/blob/master/mpi/jacobi/jacobi.hh
+
+[jacobi.cpp]: https://github.com/divakarvi/bk-spca/blob/master/mpi/jacobi/jacobi.cpp
+
+#### [6.3.3][bk.6.3.3] Matrix transpose
+
+In this section, we implement the transposition of large matrices stored on several host computers connected by QDR Infiniband network. The number of host computers ranges from 10 to 100
+
+[trans.hh][trans.hh]
+
+[trans.cpp][trans.cpp]
+
+[fast_trans.hh][fast_trans.hh]
+
+[fast_trans.cpp][fast_trans.cpp]
+
+#### [6.3.4][bk.6.3.4] Collective communication
+
+The MPI library provides several function calls for collective communication. A collective function call must be made by all processes in a group. The result of collective calls such as Bcast, Scatter, Gather, and Alltoall is data transfer involving all the processes.
+
+[bcast.hh][bcast.hh]
+
+[bcast.cpp][bcast.cpp]
+
+[all2all.hh][all2all.hh]
+
+[all2all.cpp][all2all.cpp]
+
+[reduce.hh][reduce.hh]
+
+[reduce.cpp][reduce.cpp]
+
+#### [6.3.5][bk.6.3.5] Parallel I/O in MPI
+
+In parallel I/O, a number of MPI processes simultaneously write to or read from the same file. Typical file systems lock a file when it is being accessed by one process, which precludes other processes from accessing it. Parallel I/O is possible only if the file system allows it.
+
+[lustre.hh][lustre.hh]
+
+[lustre.cpp][lustre.cpp]
+
+### [6.4][bk.6.4] The Internet
+
+The main function of the Internet, as it exists today, is to connect people. There is no doubt that the Internet is one of the most successful technologies. The Internet is not the result of a single act of invention. Even now its design is evolving to accommodate new uses and technologies.
+
+#### [6.4.1][bk.6.4.1] IP addresses
+
+The IP address is crucial to the architecture of the Internet. Data leaves the source computer in the form of TCP/IP packets. The TCP/IP packets hop from router to router until they end up at the destination.
+
+[ipaddr.cpp][ipaddr.cpp]
+
+
+#### [6.4.2][bk.6.4.2] Send and receive
+
+Every network interface comes down to sending and receiving data.
+
+[tcp_utils.hh][tcp_utils.hh]
+
+[tcp_utils.cpp][tcp_utils.cpp]
+
+#### [6.4.3][bk.6.4.3] Server
+
+The server described here receives a sequence of double-precision numbers from its client and sends back their partial sums.
+
+[server.cpp][server.cpp]
+
+#### [6.4.4][bk.6.4.4] Client
+
+The client mirrors the server in some ways but differs in others. The client begins by establishing a connection with the server.
+
+[client.cpp][client.cpp]
+
+#### [6.4.5][bk.6.4.5] Internet latency
+
+All measurements were performed by running the server at the Texas Advanced Computing Center (TACC) and the client at the University of Michigan (UM). The median time for send + recv was close to 55 milliseconds in several trials. Understanding why the latency is 55 milliseconds is a fascinating problem.
+
+#### [6.4.6][bk.6.4.6] Internet bandwidth
+
+The realized bandwidth is determined to a great extent by TCP’s congestion control algorithm. TCP implements both flow control and congestion control. In flow control, the sender keeps track of the available room in the receiver’s buffer. The sender slows down if there is too little room in the receiver’s buffer. The sender continually adjusts its speed to avoid overwhelming (or starving) the receiver with packets.
 
 
 [bk]: https://divakarvi.github.io/bk-spca/spca.html
@@ -899,3 +1035,51 @@ The use of pointers exposes the programmer to errors that corrupt memory. Memory
 [maccess.cpp]: https://github.com/divakarvi/bk-spca/blob/master/vmarea/maccess.cpp
 [induce_merr.cpp]: https://github.com/divakarvi/bk-spca/blob/master/vmarea/induce_merr.cpp
 
+[bk.6]: https://divakarvi.github.io/bk-spca/spca.html#toc-Chapter-6
+[bk.6.1]: https://divakarvi.github.io/bk-spca/spca.html#toc-Section-6.1
+[bk.6.1.1]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-6.1.1
+[bk.6.1.2]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-6.1.2
+[bk.6.2]: https://divakarvi.github.io/bk-spca/spca.html#toc-Section-6.2
+[bk.6.2.1]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-6.2.1
+[bk.6.2.2]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-6.2.2
+[bk.6.3]: https://divakarvi.github.io/bk-spca/spca.html#toc-Section-6.3
+[bk.6.3.1]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-6.3.1
+[bk.6.3.2]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-6.3.2
+[bk.6.3.3]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-6.3.3
+[bk.6.3.4]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-6.3.4
+[bk.6.3.5]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-6.3.5
+[bk.6.4]: https://divakarvi.github.io/bk-spca/spca.html#toc-Section-6.4
+[bk.6.4.1]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-6.4.1
+[bk.6.4.2]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-6.4.2
+[bk.6.4.3]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-6.4.3
+[bk.6.4.4]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-6.4.4
+[bk.6.4.5]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-6.4.5
+[bk.6.4.6]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-6.4.6
+
+[mpi_init.hh]: https://github.com/divakarvi/bk-spca/blob/master/mpi/init/mpi_init.hh
+[mpi_init.cpp]: https://github.com/divakarvi/bk-spca/blob/master/mpi/init/mpi_init.cpp
+[procname.cpp]: https://github.com/divakarvi/bk-spca/blob/master/mpi/intro/procname.cpp
+[unsafe.cpp]: https://github.com/divakarvi/bk-spca/blob/master/mpi/intro/unsafe.cpp
+[exchange.hh]: https://github.com/divakarvi/bk-spca/blob/master/mpi/exchange/exchange.hh
+[exchange.cpp]: https://github.com/divakarvi/bk-spca/blob/master/mpi/exchange/exchange.cpp
+[cycle.hh]: https://github.com/divakarvi/bk-spca/blob/master/mpi/cycle/cycle.hh
+[cycle.cpp]: https://github.com/divakarvi/bk-spca/blob/master/mpi/cycle/cycle.cpp
+[jacobi.hh]: https://github.com/divakarvi/bk-spca/blob/master/mpi/jacobi/jacobi.hh
+[jacobi.cpp]: https://github.com/divakarvi/bk-spca/blob/master/mpi/jacobi/jacobi.cpp
+[trans.hh]: https://github.com/divakarvi/bk-spca/blob/master/mpi/transpose/trans.hh
+[trans.cpp]: https://github.com/divakarvi/bk-spca/blob/master/mpi/transpose/trans.cpp
+[fast_trans.hh]: https://github.com/divakarvi/bk-spca/blob/master/mpi/transpose/fast_trans.hh
+[fast_trans.cpp]: https://github.com/divakarvi/bk-spca/blob/master/mpi/transpose/fast_trans.cpp
+[bcast.hh]: https://github.com/divakarvi/bk-spca/blob/master/mpi/collective/bcast.hh
+[bcast.cpp]: https://github.com/divakarvi/bk-spca/blob/master/mpi/collective/bcast.cpp
+[all2all.hh]: https://github.com/divakarvi/bk-spca/blob/master/mpi/collective/all2all.hh
+[all2all.cpp]: https://github.com/divakarvi/bk-spca/blob/master/mpi/collective/all2all.cpp
+[reduce.hh]: https://github.com/divakarvi/bk-spca/blob/master/mpi/collective/reduce.hh
+[reduce.cpp]: https://github.com/divakarvi/bk-spca/blob/master/mpi/collective/reduce.hh
+[lustre.hh]: https://github.com/divakarvi/bk-spca/blob/master/mpi/diskio/lustre.hh
+[lustre.cpp]: https://github.com/divakarvi/bk-spca/blob/master/mpi/diskio/lustre.cpp
+[ipaddr.cpp]: https://github.com/divakarvi/bk-spca/blob/master/tcpip/ipaddr.cpp
+[tcp_utils.hh]: https://github.com/divakarvi/bk-spca/blob/master/tcpip/tcp_utils.hh
+[tcp_utils.cpp]: https://github.com/divakarvi/bk-spca/blob/master/tcpip/tcp_utils.cpp
+[server.cpp]: https://github.com/divakarvi/bk-spca/blob/master/tcpip/server.cpp
+[client.cpp]: https://github.com/divakarvi/bk-spca/blob/master/tcpip/client.cpp
