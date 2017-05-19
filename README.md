@@ -16,7 +16,7 @@ This README document provides context for the source code in this GIT repository
 * [The Processor](#chapter3)
 * [Memory](#chapter4)
 * [Threads and Shared Memory](#chapter5)
-
+* [Special Topic: Networks and Message Passing](#chapter6)
 
 
 # <a name="preface"></a>[Preface][bk.preface]
