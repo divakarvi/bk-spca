@@ -808,6 +808,92 @@ All measurements were performed by running the server at the Texas Advanced Comp
 
 The realized bandwidth is determined to a great extent by TCP’s congestion control algorithm. TCP implements both flow control and congestion control. In flow control, the sender keeps track of the available room in the receiver’s buffer. The sender slows down if there is too little room in the receiver’s buffer. The sender continually adjusts its speed to avoid overwhelming (or starving) the receiver with packets.
 
+# [7][bk.7] Special Topic: The Xeon Phi Coprocessor
+
+The Intel Many Integrated Cores (MIC) or Xeon Phi coprocessor supplements the processor nodes and increases floating point throughput.
+
+### [7.1][bk.7.1] Xeon Phi architecture
+
+In this section, we give an overview of the Xeon Phi’s architecture in three steps. The first step is to calculate the peak floating point bandwidth of the Phi. The second step is to introduce the thread picker. Finally, we reuse Open MP programs to measure the Phi's latency and bandwidth to memory.
+
+#### [7.1.1][bk.7.1.1] Peak floating point bandwidth
+
+The peak bandwidth is approached by dense matrix multiplication and LU factorization. However, the peak floating point bandwidth is an irrelevant theoretical number for almost every other application, and even the FFT realizes only 15% of the peak, as we will see later.
+
+#### [7.1.2][bk.7.1.2] A simple Phi program
+
+From here onward, we use Phi device and MIC device interchangeably. We begin by explaining why the right number of threads on a MIC/Phi device is typically four times the number of cores.
+
+[hello.cpp][hello.cpp]
+
+#### [7.1.3][bk.7.1.3] Xeon Phi memory system
+
+Latency and bandwidth to memory are measured by making slight changes to earlier programs.
+
+[Makefile][mic.intro.Makefile]
+
+### [7.2][bk.7.2] Offload
+
+In offload mode, the master thread of the main program is assumed to be on the host. However, the program holds several segments that are meant to be outsourced to the Phi devices.
+
+Note: offloading may become irrelevant in newer generations of the Phi.
+
+#### [7.2.1][bk.7.2.1] Initializing to use the MIC device
+
+In all the offloading programs, it is assumed that mic_init() is called at the beginning.
+
+[mic_init.hh][mic_init.hh]
+
+[mic_init.cpp][mic_init.cpp]
+
+#### [7.2.2][bk.7.2.2] The target(mic) declaration specification
+
+The icpc compiler has the ability to compile a function written in C/C++ to produce assembly for both the host computer and MIC device.
+
+[leibniz_init.hh][mic.leibniz_init.hh]
+
+[leibniz_init.cpp][mic.leibniz_init.cpp]
+
+[leibniz.cpp][mic.leibniz.cpp]
+
+
+#### [7.2.4][bk.7.2.4] Offload bandwidth
+
+The PCIe bus, which connects the host with the MIC devices, has low bandwidth. Its bandwidth is more than an order of magnitude less than the bandwidth to memory of the MIC devices or even the host. Data transfer between the host and the Xeon Phi coprocessors imposes serious limits on the advantages as well as utility of the coprocessor model.
+
+[offl.hh][offl.hh]
+
+[offl.cpp][offl.cpp]
+
+[time_offl.cpp][time_offl.cpp]
+
+# [7.3][bk.7.3] Two examples: FFT and matrix multiplication
+
+We look at the FFT, the Phi's instruction pipeline, a microkernel in assembly for matrix multiplication, and the MKL library.
+
+### [7.3.1][bk.7.3.1] FFT
+
+The FFT is a good basis for comparing the Phi against its AVX host. It is one of the most frequently employed scientific algorithms. Unlike in the LINPACK benchmark employed to rate supercomputers, the cost of memory accesses cannot be completely hidden.
+
+[fft.hh][mic.fft.hh]
+
+[fft.cpp][mic.fft.cpp]
+
+[time_fft_mic.cpp][mic.time_fft_mic.cpp]
+
+### [7.3.2][bk.7.3.2] Matrix multiplication
+
+Algorithms that are capable of approaching the theoretical peak are not many. These algorithms must involve a great number of arithmetic operations relative to the data they access. In addition, their structure must permit hiding the cost of multiple accesses of the same data item. Dense numerical linear algebra is the main source of such algorithms.
+
+[asm8x1x8.s][asm8x1x8.s]
+
+[asm8x48x8.s][asm8x48x8.s]
+
+[time_asm.cpp][time_asm.cpp]
+
+[mmult.hh][mmult.hh]
+
+[mmult.cpp][mmult.cpp]
 
 [bk]: https://divakarvi.github.io/bk-spca/spca.html
 [bk.preface]: https://divakarvi.github.io/bk-spca/spca.html#toc-Chapter--1
@@ -1083,3 +1169,37 @@ The realized bandwidth is determined to a great extent by TCP’s congestion con
 [tcp_utils.cpp]: https://github.com/divakarvi/bk-spca/blob/master/tcpip/tcp_utils.cpp
 [server.cpp]: https://github.com/divakarvi/bk-spca/blob/master/tcpip/server.cpp
 [client.cpp]: https://github.com/divakarvi/bk-spca/blob/master/tcpip/client.cpp
+
+[bk.7]: https://divakarvi.github.io/bk-spca/spca.html#toc-Chapter-7
+[bk.7.1]: https://divakarvi.github.io/bk-spca/spca.html#toc-Section-7.1
+[bk.7.1.1]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-7.1.1
+[bk.7.1.2]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-7.1.2
+[bk.7.1.3]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-7.1.3
+[bk.7.2]: https://divakarvi.github.io/bk-spca/spca.html#toc-Section-7.2
+[bk.7.2.1]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-7.2.1
+[bk.7.2.2]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-7.2.2
+[bk.7.2.3]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-7.2.3
+[bk.7.2.4]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-7.2.4
+[bk.7.3]: https://divakarvi.github.io/bk-spca/spca.html#toc-Section-7.3
+[bk.7.3.1]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-7.3.1
+[bk.7.3.2]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-7.3.2
+
+[hello.cpp]: https://github.com/divakarvi/bk-spca/tree/master/xphi/intro
+[mic.intro.Makefile]: https://github.com/divakarvi/bk-spca/blob/master/xphi/intro/Makefile
+[mic_init.hh]: https://github.com/divakarvi/bk-spca/blob/master/xphi/init/mic_init.hh
+[mic_init.cpp]: https://github.com/divakarvi/bk-spca/blob/master/xphi/init/mic_init.cpp
+[mic.leibniz_init.hh]: https://github.com/divakarvi/bk-spca/blob/master/xphi/leibniz/leibniz_init.hh
+[mic.leibniz_init.cpp]: https://github.com/divakarvi/bk-spca/blob/master/xphi/leibniz/leibniz_init.cpp
+[mic.leibniz.cpp]: https://github.com/divakarvi/bk-spca/blob/master/xphi/leibniz/leibniz.cpp
+[offl.hh]: https://github.com/divakarvi/bk-spca/blob/master/xphi/offload/offl.hh
+[offl.cpp]: https://github.com/divakarvi/bk-spca/blob/master/xphi/offload/offl.cpp
+[time_offl.cpp]: https://github.com/divakarvi/bk-spca/blob/master/xphi/offload/time_offl.cpp
+[mic.fft.hh]: https://github.com/divakarvi/bk-spca/blob/master/xphi/fft/fft.hh
+[mic.fft.cpp]: https://github.com/divakarvi/bk-spca/blob/master/xphi/fft/fft.cpp
+[time_fft_mic.cpp]: https://github.com/divakarvi/bk-spca/blob/master/xphi/fft/time_fft_mic.cpp
+[asm8x1x8.s]: https://github.com/divakarvi/bk-spca/blob/master/xphi/microk/asm8x1x8.s
+[asm8x48x8.s]: https://github.com/divakarvi/bk-spca/blob/master/xphi/microk/asm8x48x8.s
+[time_asm.cpp]: https://github.com/divakarvi/bk-spca/blob/master/xphi/microk/time_asm.cpp
+[mmult.hh]: https://github.com/divakarvi/bk-spca/blob/master/xphi/mmult/mmult.hh
+[mmult.cpp]: https://github.com/divakarvi/bk-spca/blob/master/xphi/mmult/mmult.cpp
+
