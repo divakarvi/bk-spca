@@ -17,6 +17,7 @@ This README document provides context for the source code in this GIT repository
 * [Memory](#chapter4)
 * [Threads and Shared Memory](#chapter5)
 * [Special Topic: Networks and Message Passing](#chapter6)
+* [Special Topic: The Xeon Phi Coprocessor](#chapter7)
 
 
 # <a name="preface"></a>[Preface][bk.preface]
@@ -808,7 +809,7 @@ All measurements were performed by running the server at the Texas Advanced Comp
 
 The realized bandwidth is determined to a great extent by TCP’s congestion control algorithm. TCP implements both flow control and congestion control. In flow control, the sender keeps track of the available room in the receiver’s buffer. The sender slows down if there is too little room in the receiver’s buffer. The sender continually adjusts its speed to avoid overwhelming (or starving) the receiver with packets.
 
-# [7][bk.7] Special Topic: The Xeon Phi Coprocessor
+# [7][bk.7] <a name="chapter7"></a> Special Topic: The Xeon Phi Coprocessor
 
 The Intel Many Integrated Cores (MIC) or Xeon Phi coprocessor supplements the processor nodes and increases floating point throughput.
 
@@ -879,7 +880,7 @@ The FFT is a good basis for comparing the Phi against its AVX host. It is one of
 
 [fft.cpp][mic.fft.cpp]
 
-[time_fft_mic.cpp][mic.time_fft_mic.cpp]
+[time_fft_mic.cpp][time_fft_mic.cpp]
 
 ### [7.3.2][bk.7.3.2] Matrix multiplication
 
@@ -1184,7 +1185,7 @@ Algorithms that are capable of approaching the theoretical peak are not many. Th
 [bk.7.3.1]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-7.3.1
 [bk.7.3.2]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-7.3.2
 
-[hello.cpp]: https://github.com/divakarvi/bk-spca/tree/master/xphi/intro
+[hello.cpp]: https://github.com/divakarvi/bk-spca/tree/master/xphi/intro/hello.cpp
 [mic.intro.Makefile]: https://github.com/divakarvi/bk-spca/blob/master/xphi/intro/Makefile
 [mic_init.hh]: https://github.com/divakarvi/bk-spca/blob/master/xphi/init/mic_init.hh
 [mic_init.cpp]: https://github.com/divakarvi/bk-spca/blob/master/xphi/init/mic_init.cpp
