@@ -22,7 +22,7 @@ This README document provides context for the source code in this GIT repository
 
 # <a name="preface"></a>[Preface][bk.preface]
 
-What makes computer programs fast or slow? To answer this question, we have to go behind the abstractions of programming languages and look at how a computer really works. This book examines and explains a variety of scientific programming models (programming models relevant to scientists) with an emphasis on how programming constructs map to different parts of the computer's architecture. Two themes emerge: program speed and program modularity. Most books on computer programming are written at the same level of abstraction as the programming language they utilize or explain. In contrast, this book starts from the premise that to understand program speed, we have to get under the hood and understand how a computer works. The approach is to begin with specific programs and move up to general principles gradually. 
+What makes computer programs fast or slow? To answer this question, we have to go behind the abstractions of programming languages and look at how a computer really works. This book examines and explains a variety of scientific programming models (programming models relevant to scientists) with an emphasis on how programming constructs map to different parts of the computer's architecture. Two themes emerge: program speed and program modularity. Most books on computer programming are written at the same level of abstraction as the programming language they utilize or explain. In this book, the premise is to "get under the hood," andthe approach is to begin with specific programs and move up to general principles gradually. 
 
 The book digs into linkers, compilers, operating systems, and computer architecture to understand how the different parts of the computer interact with programs. It begins with a review of C/C++ and explanations of how libraries, linkers, and Makefiles work. Programming models covered include Pthreads, OpenMP, MPI, TCP/IP, and CUDA. The emphasis on how computers work leads the reader into computer architecture and occasionally into the operating system kernel. The operating system studied is Linux, the preferred platform for scientific computing. Linux is also open source, which allows users to peer into its inner workings. A brief appendix provides a useful table of machines used to time programs.
 
@@ -1204,3 +1204,57 @@ Algorithms that are capable of approaching the theoretical peak are not many. Th
 [mmult.hh]: https://github.com/divakarvi/bk-spca/blob/master/xphi/mmult/mmult.hh
 [mmult.cpp]: https://github.com/divakarvi/bk-spca/blob/master/xphi/mmult/mmult.cpp
 
+[bk.8]: https://divakarvi.github.io/bk-spca/spca.html#toc-Chapter-8
+[bk.8.1]: https://divakarvi.github.io/bk-spca/spca.html#toc-Section-8.1
+[bk.8.1.1]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-8.1.1
+[bk.8.1.2]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-8.1.2
+[bk.8.1.3]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-8.1.3
+[bk.8.1.4]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-8.1.4
+[bk.8.2]: https://divakarvi.github.io/bk-spca/spca.html#toc-Section-8.2
+[bk.8.2.1]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-8.2.1
+[bk.8.2.2]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-8.2.2
+[bk.8.3]: https://divakarvi.github.io/bk-spca/spca.html#toc-Section-8.3
+[bk.8.3.1]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-8.3.1
+[bk.8.3.2]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-8.3.2
+
+[capability.cu]: https://github.com/divakarvi/bk-spca/blob/master/gpu/cap/capability.cu
+[dhstmem.hh]: https://github.com/divakarvi/bk-spca/blob/master/gpu/utils/dhstmem.hh
+[hstTimer.hh]: https://github.com/divakarvi/bk-spca/blob/master/gpu/utils/hstTimer.hh
+[const.hh]: https://github.com/divakarvi/bk-spca/blob/master/gpu/utils/const.hh
+[cu.leibniz.hh]: https://github.com/divakarvi/bk-spca/blob/master/gpu/leibniz/leibniz.hh
+[leibniz.cu]: https://github.com/divakarvi/bk-spca/blob/master/gpu/leibniz/leibniz.cu
+[atomicAdd.hh]: https://github.com/divakarvi/bk-spca/blob/master/gpu/leibniz/atomicAdd.hh
+[atomicAdd.cu]: https://github.com/divakarvi/bk-spca/blob/master/gpu/leibniz/atomicAdd.cu
+[leibniz_all.cu]: https://github.com/divakarvi/bk-spca/blob/master/gpu/leibniz/leibniz_all.cu
+[addcopy.hh]: https://github.com/divakarvi/bk-spca/blob/master/gpu/bw2mem/addcopy.hh
+[add.cu]: https://github.com/divakarvi/bk-spca/blob/master/gpu/bw2mem/add.cu
+[copy.cu]: https://github.com/divakarvi/bk-spca/blob/master/gpu/bw2mem/copy.cu
+[mmult.hh]: https://github.com/divakarvi/bk-spca/blob/master/gpu/mmult/mmult.hh
+[mmult.cu]: https://github.com/divakarvi/bk-spca/blob/master/gpu/mmult/mmult.cu
+[cumult.hh]: https://github.com/divakarvi/bk-spca/blob/master/gpu/mmult/cumult.hh
+[cumult.cu]: https://github.com/divakarvi/bk-spca/blob/master/gpu/mmult/cumult.cu
+
+
+[bk.9]: https://divakarvi.github.io/bk-spca/spca.html#toc-Chapter-9
+[bk.9.1]: https://divakarvi.github.io/bk-spca/spca.html#toc-Section-9.1
+[bk.9.2]: https://divakarvi.github.io/bk-spca/spca.html#toc-Section-9.2
+[bk.9.3]: https://divakarvi.github.io/bk-spca/spca.html#toc-Section-9.3
+[bk.9.4]: https://divakarvi.github.io/bk-spca/spca.html#toc-Section-9.4
+[bk.9.5]: https://divakarvi.github.io/bk-spca/spca.html#toc-Section-9.5
+[bk.9.6]: https://divakarvi.github.io/bk-spca/spca.html#toc-Section-9.6
+
+[pyplot.hh]: https://github.com/divakarvi/bk-spca/blob/master/pyplot/pyplot.hh
+[pyplot.cpp]: https://github.com/divakarvi/bk-spca/blob/master/pyplot/pyplot.cpp
+[pyhist.hh]: https://github.com/divakarvi/bk-spca/blob/master/pyplot/pyhist.hh
+[pyhist.cpp]: https://github.com/divakarvi/bk-spca/blob/master/pyplot/pyhist.cpp
+[test_pyplot.cpp]: https://github.com/divakarvi/bk-spca/blob/master/pyplot/test_pyplot.cpp
+[test_pyhist.cpp]: https://github.com/divakarvi/bk-spca/blob/master/pyplot/test_pyhist.cpp
+[StatVector.hh]: https://github.com/divakarvi/bk-spca/blob/master/utils/StatVector.hh
+[test_stat.cpp]: https://github.com/divakarvi/bk-spca/blob/master/utils/test_stat.cpp
+[Table.hh]: https://github.com/divakarvi/bk-spca/blob/master/utils/Table.hh
+[Table.cpp]: https://github.com/divakarvi/bk-spca/blob/master/utils/Table.cpp
+[test_table.cpp]: https://github.com/divakarvi/bk-spca/blob/master/utils/test_table.cpp
+[primes.cpp]: https://github.com/divakarvi/bk-spca/blob/master/appendix/primes.cpp
+[primes.py]: https://github.com/divakarvi/bk-spca/blob/master/appendix/primes.py
+[primes.m]: https://github.com/divakarvi/bk-spca/blob/master/appendix/primes.m
+[cscope.py]: https://github.com/divakarvi/bk-spca/blob/master/appendix/cscope.py
