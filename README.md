@@ -5,8 +5,8 @@
 
 The complete text of this book is available in html at [this link][bk]. The html is published under a Creative Commons license. The copyright remains with the publisher. The html has a few blemishes. For example, occasionally when the same source is split between multiple listings, the line numbering is not continued between the listings as it should be. The html does not have an index, although it is searchable. For a more correct and complete version, see the printed book:
 
-1. [amazon.com](amazon.com)
-2. [bn.com](bn.com)
+1. [amazon.com](https://www.amazon.com/Scientific-Programming-Architecture-Engineering-Computation/dp/0262036290/ref=sr_1_1?s=books&ie=UTF8&qid=1497440910&sr=1-1)
+2. [bn.com](https://www.barnesandnoble.com/w/scientific-programming-and-computer-architecture-divakar-viswanath/1125986348?ean=9780262036290)
 
 This README document provides context for the source code in this GIT repository, with links to the html text as well as sources in the repository.
 
@@ -18,11 +18,12 @@ This README document provides context for the source code in this GIT repository
 * [Threads and Shared Memory](#chapter5)
 * [Special Topic: Networks and Message Passing](#chapter6)
 * [Special Topic: The Xeon Phi Coprocessor](#chapter7)
-
+* [Special Topic: Graphics Coprocessor](#chapter8)
+* [Appendix: Machines used, Plotting, Python, GIT, Cscope, and gcc](#chapter9)
 
 # <a name="preface"></a>[Preface][bk.preface]
 
-What makes computer programs fast or slow? To answer this question, we have to go behind the abstractions of programming languages and look at how a computer really works. This book examines and explains a variety of scientific programming models (programming models relevant to scientists) with an emphasis on how programming constructs map to different parts of the computer's architecture. Two themes emerge: program speed and program modularity. Most books on computer programming are written at the same level of abstraction as the programming language they utilize or explain. In this book, the premise is to "get under the hood," andthe approach is to begin with specific programs and move up to general principles gradually. 
+What makes computer programs fast or slow? To answer this question, we have to go behind the abstractions of programming languages and look at how a computer really works. This book examines and explains a variety of scientific programming models (programming models relevant to scientists) with an emphasis on how programming constructs map to different parts of the computer's architecture. Two themes emerge: program speed and program modularity.  In this book, the premise is to "get under the hood," and the discussion is tied to specific programs. 
 
 The book digs into linkers, compilers, operating systems, and computer architecture to understand how the different parts of the computer interact with programs. It begins with a review of C/C++ and explanations of how libraries, linkers, and Makefiles work. Programming models covered include Pthreads, OpenMP, MPI, TCP/IP, and CUDA. The emphasis on how computers work leads the reader into computer architecture and occasionally into the operating system kernel. The operating system studied is Linux, the preferred platform for scientific computing. Linux is also open source, which allows users to peer into its inner workings. A brief appendix provides a useful table of machines used to time programs.
 
@@ -895,6 +896,149 @@ Algorithms that are capable of approaching the theoretical peak are not many. Th
 [mmult.hh][mmult.hh]
 
 [mmult.cpp][mmult.cpp]
+
+# [8][bk.8] <a name="chapter8"></a> Special Topic: Graphics Coprocessor
+
+The graphics libraries provide a number of functions for rendering, shading, texture manipulation, and similar tasks. Graphics devices accelerate the execution of such library functions. In 2007, NVIDIA introduced the Compute Unified Device Architecture (CUDA) framework. CUDA added software layers to the device drivers and the GNU C/C++ compiler to greatly simplify the task of programming graphics coprocessors for scientific use.
+
+### [8.1][bk.8.1] Graphics coprocessor architecture
+
+Basic knowledge of registers, warps, and thread blocks is essential for CUDA programming.
+
+#### [8.1.1][bk.8.1.1] Graphics processor capability
+
+NVIDIA graphics processors come in a great variety. The number of devices that are CUDA enabled and are of compute capability anywhere from 1.0 to 3.5 is more than 100. The first task is to find out exactly which graphics processor is available and what its capability is.
+
+[capability.cu][capability.cu]
+
+
+#### [8.1.2][bk.8.1.2] Host and device memory
+
+To set up any computation on the graphics device, data must be transferred from host to device memory. To retrieve the result of a computation on the graphics device, data must be transferred in the other direction from device to host memory.
+
+[dhstmem.hh][dhstmem.hh}
+
+#### [8.1.3][bk.8.1.3] Timing CUDA kernels
+
+The simplest programs have much to teach us as long as we time them carefully. Therefore, we begin by looking at mechanisms to time kernels that run on the graphics coprocessor.
+
+[hstTimer.hh][hstTimer.hh]
+
+#### [8.1.4][bk.8.1.4] Warps and thread blocks
+
+The K20’s design is so different from that of conventional processors that to program it we need to understand a few things about its architecture. The heart of the microarchitecture is the streaming multiprocessor, and there are 13 of these in Kepler. 
+
+### [8.2][bk.8.2] Introduction to CUDA
+
+The first program for summing the Leibniz series is perhaps not so much harder to code than the corresponding OpenMP program, which runs on the Phi or any x86 machine. However, the second program, in which the entire sum is found on the K20, is easily 100 times harder to code.
+
+#### [8.2.1][bk.8.2.1] Summing the Leibniz series
+
+Threads are grouped into warps and warps into thread blocks. Thread blocks are arranged in a grid. The hierarchical grouping of threads can never be forgotten in writing CUDA programs.
+
+[const.hh][const.hh]
+
+[leibniz.hh][cu.leibniz.hh]
+
+[leibniz.cu][leibniz.cu]
+
+[atomicAdd.hh][atomicAdd.hh]
+
+[atomicAdd.cu][atomicAdd.cu]
+
+[leibniz_all.cu][leibniz_all.cu]
+
+
+#### [8.2.2][bk.8.2.2] CUDA compilation
+
+The improvements made by NVIDIA from Tesla to Fermi to Kepler instruction set architectures appear quite substantial. The freedom to make such substantial changes while still being able to run older executables on newer devices is a consequence of just-in-time compilation of PTX embedded in the executables.
+
+### [8.3][bk.8.3] Two examples
+
+In this section, we look at two more examples to better understand the CUDA programming model and the speed of the K20 graphics device.
+
+#### [8.3.1][bk.8.3.1] Bandwidth to memory
+
+Blocking memory accesses is the right thing to do on x86 processors. On the K20 and other graphics devices, blocking will lose more than 90% of the bandwidth. Partly because instructions are executed warp by warp, memory accesses must be interleaved.
+
+[addcopy.hh][addcopy.hh]
+
+[add.cu][add.cu]
+
+[copy.cu][copy.cu]
+
+
+#### [8.3.2][bk.8.3.2] Matrix multiplication
+
+To approach peak bandwidth, there is no choice but to optimize for the instruction pipeline. We do not consider such optimization here,  although the basic principles of optimizing for the instruction pipeline do not change drastically from what is described in chapter 3.
+
+Accesses of shared memory are considerably faster than global memory accesses.
+
+[mmult.hh][mmult.hh]
+
+[mmult.cu][mmult.cu]
+
+[cumult.hh][cumult.hh]
+
+[cumult.cu][cumult.cu]
+
+# [9][bk.9] <a name="chapter9"></a> Machines Used, Plotting, Python, GIT, Cscope, and gcc
+
+In this appendix, we give a list of machines used in this book as well as several pointers for downloading and using the program code.
+
+### [9.1][bk.9.1] Machines used
+
+A table of machines we used to time programs is presented.
+
+### [9.2][bk.9.2] Plotting in C/C++ and other preliminaries
+
+In this section, we describe C++ classes for plotting, gathering statistics, and making tables. These classes are used throughout the book. However, in almost every instance, the code showing how these facilities are invoked is suppressed.
+
+[pyplot.hh][pyplot.hh]
+
+[pyplot.cpp][pyplot.cpp]
+
+[pyhist.hh][pyhist.hh]
+
+[pyhist.cpp][pyhist.cpp]
+
+[test_pyplot.cpp][test_pyplot.cpp]
+
+[test_pyhist.cpp][test_pyhist.cpp]
+
+[StatVector.hh][StatVector.hh]
+
+[test_stat.cpp][test_stat.cpp]
+
+[Table.hh][Table.hh]
+
+[Table.cpp][Table.cpp]
+
+[test_table.cpp][test_table.cpp]
+
+### [9.3][bk.9.3] C/C++ versus Python versus MATLAB
+
+How much faster C/C++ can be relative to interpreted languages such as Python and MATLAB is often not understood.
+
+[primes.cpp][primes.cpp]
+
+[primes.py][primes.py]
+
+[primes.m][primes.m]
+
+### [9.4][bk.9.4] GIT
+
+The git utility is a tool for managing sources. Although there are many facilities in GIT, GIT can be grasped easily by paying attention to its internal design.
+
+### [9.5][bk.9.5] Cscope
+
+The cscope utility is invaluable for browsing source code.
+
+[cscope.py][cscope.py]
+
+### [9.6][bkk.9.6] Compiling with gcc/g++
+
+The Makefiles in this GIT repository use Intel compilers for the most part. The switch to gcc/g++ is not too complicated
 
 [bk]: https://divakarvi.github.io/bk-spca/spca.html
 [bk.preface]: https://divakarvi.github.io/bk-spca/spca.html#toc-Chapter--1
