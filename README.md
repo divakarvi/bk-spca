@@ -23,7 +23,7 @@ This README document provides context for the source code in this GIT repository
 
 # <a name="preface"></a>[Preface][bk.preface]
 
-What makes computer programs fast or slow? To answer this question, we have to go behind the abstractions of programming languages and look at how a computer really works. This book examines and explains a variety of scientific programming models (programming models relevant to scientists) with an emphasis on how programming constructs map to different parts of the computer's architecture. Two themes emerge: program speed and program modularity.  In this book, the premise is to "get under the hood," and the discussion is tied to specific programs. 
+What makes computer programs fast or slow? To answer this question, we have to get behind the abstractions of programming languages and look at how a computer really works. This book examines and explains a variety of scientific programming models (programming models relevant to scientists) with an emphasis on how programming constructs map to different parts of the computer's architecture. Two themes emerge: program speed and program modularity.  In this book, the premise is to "get under the hood," and the discussion is tied to specific programs. 
 
 The book digs into linkers, compilers, operating systems, and computer architecture to understand how the different parts of the computer interact with programs. It begins with a review of C/C++ and explanations of how libraries, linkers, and Makefiles work. Programming models covered include Pthreads, OpenMP, MPI, TCP/IP, and CUDA. The emphasis on how computers work leads the reader into computer architecture and occasionally into the operating system kernel. The operating system studied is Linux, the preferred platform for scientific computing. Linux is also open source, which allows users to peer into its inner workings. A brief appendix provides a useful table of machines used to time programs.
 
@@ -982,15 +982,15 @@ Accesses of shared memory are considerably faster than global memory accesses.
 
 [cumult.cu][cumult.cu]
 
-# [9][bk.9] <a name="chapter9"></a> Machines Used, Plotting, Python, GIT, Cscope, and gcc
+# [A][bk.9] <a name="chapter9"></a> Machines Used, Plotting, Python, GIT, Cscope, and gcc
 
 In this appendix, we give a list of machines used in this book as well as several pointers for downloading and using the program code.
 
-### [9.1][bk.9.1] Machines used
+### [A.1][bk.9.1] Machines used
 
 A table of machines we used to time programs is presented.
 
-### [9.2][bk.9.2] Plotting in C/C++ and other preliminaries
+### [A.2][bk.9.2] Plotting in C/C++ and other preliminaries
 
 In this section, we describe C++ classes for plotting, gathering statistics, and making tables. These classes are used throughout the book. However, in almost every instance, the code showing how these facilities are invoked is suppressed.
 
@@ -1016,7 +1016,7 @@ In this section, we describe C++ classes for plotting, gathering statistics, and
 
 [test_table.cpp][test_table.cpp]
 
-### [9.3][bk.9.3] C/C++ versus Python versus MATLAB
+### [A.3][bk.9.3] C/C++ versus Python versus MATLAB
 
 How much faster C/C++ can be relative to interpreted languages such as Python and MATLAB is often not understood.
 
@@ -1026,17 +1026,17 @@ How much faster C/C++ can be relative to interpreted languages such as Python an
 
 [primes.m][primes.m]
 
-### [9.4][bk.9.4] GIT
+### [A.4][bk.9.4] GIT
 
 The git utility is a tool for managing sources. Although there are many facilities in GIT, GIT can be grasped easily by paying attention to its internal design.
 
-### [9.5][bk.9.5] Cscope
+### [A.5][bk.9.5] Cscope
 
 The cscope utility is invaluable for browsing source code.
 
 [cscope.py][cscope.py]
 
-### [9.6][bkk.9.6] Compiling with gcc/g++
+### [A.6][bk.9.6] Compiling with gcc/g++
 
 The Makefiles in this GIT repository use Intel compilers for the most part. The switch to gcc/g++ is not too complicated
 
