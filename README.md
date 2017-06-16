@@ -980,7 +980,7 @@ Accesses of shared memory are considerably faster than global memory accesses.
 
 [cumult.hh][cumult.hh]
 
-[cumult.cu][cumult.cu]
+[cumult.cpp][cumult.cpp]
 
 # [A][bk.9] <a name="chapter9"></a> Machines Used, Plotting, Python, GIT, Cscope, and gcc
 
