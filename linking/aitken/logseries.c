@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <math.h>
 
-//returns sum of n terms of Taylor series (x - x^2/2 + x^3/3 -...).
+//Returns sum of n terms of Taylor series (x - x^2/2 + x^3/3 -...).
 double partialSum(double x, int n){
 	double sum, prod, sign;
 	int i;
@@ -20,7 +20,7 @@ double partialSum(double x, int n){
 /*
  * x: partial sums of log(1+x) are evaluated at x.
  * n: number of partial sums evaluated.
- * returns extrapolated value of sums.
+ * Returns extrapolated value of sums.
  */
 double extrapolateSum(double x, int n){
 	double *seq1, *seq2, sum, prod, sign;

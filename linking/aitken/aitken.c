@@ -1,6 +1,9 @@
 #include "aitken.h"
 #include <assert.h>
 
+/*
+ * aitken.h
+ */
 void aitken(const double* seq1, double* seq2, int len){
 	int i;
 	double a, b, c;
@@ -13,6 +16,9 @@ void aitken(const double* seq1, double* seq2, int len){
 	}
 }
 
+/*
+ * aitken.h
+ */
 double aitkenExtrapolate(double *seq1, double* seq2,
 			 int len){
 	int n, i, j;
