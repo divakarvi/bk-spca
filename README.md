@@ -974,9 +974,9 @@ To approach peak bandwidth, there is no choice but to optimize for the instructi
 
 Accesses of shared memory are considerably faster than global memory accesses.
 
-[mmult.hh][mmult.hh]
+[mmult.hh][cu.mmult.hh]
 
-[mmult.cu][mmult.cu]
+[mmult.cpp][cu.mmult.cpp]
 
 [cumult.hh][cumult.hh]
 
@@ -1373,10 +1373,10 @@ The Makefiles in this GIT repository use Intel compilers for the most part. The 
 [addcopy.hh]: https://github.com/divakarvi/bk-spca/blob/master/gpu/bw2mem/addcopy.hh
 [add.cu]: https://github.com/divakarvi/bk-spca/blob/master/gpu/bw2mem/add.cu
 [copy.cu]: https://github.com/divakarvi/bk-spca/blob/master/gpu/bw2mem/copy.cu
-[mmult.hh]: https://github.com/divakarvi/bk-spca/blob/master/gpu/mmult/mmult.hh
-[mmult.cu]: https://github.com/divakarvi/bk-spca/blob/master/gpu/mmult/mmult.cu
+[cu.mmult.hh]: https://github.com/divakarvi/bk-spca/blob/master/gpu/mmult/mmult.hh
+[cu.mmult.cpp]: https://github.com/divakarvi/bk-spca/blob/master/gpu/mmult/mmult.cpp
 [cumult.hh]: https://github.com/divakarvi/bk-spca/blob/master/gpu/mmult/cumult.hh
-[cumult.cu]: https://github.com/divakarvi/bk-spca/blob/master/gpu/mmult/cumult.cu
+[cumult.cpp]: https://github.com/divakarvi/bk-spca/blob/master/gpu/mmult/cumult.cpp
 
 
 [bk.9]: https://divakarvi.github.io/bk-spca/spca.html#toc-Chapter-9
