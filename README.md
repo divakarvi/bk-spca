@@ -986,15 +986,15 @@ Accesses of shared memory are considerably faster than global memory accesses.
 
 In this appendix, we give a list of machines used in this book as well as several pointers for downloading and using the program code.
 
-### [A.1][bk.9.1] Machines used
-
-A table of machines we used to time programs is presented.
-
 [dot.emacs][dot.emacs]
 
 [dot.bashrc][dot.bashrc]
 
 [cln][cln] (program to run "make clean" recursively, "cln +h" for help)
+
+### [A.1][bk.9.1] Machines used
+
+A table of machines we used to time programs is presented.
 
 ### [A.2][bk.9.2] Plotting in C/C++ and other preliminaries
 
