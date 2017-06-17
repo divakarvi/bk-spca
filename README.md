@@ -990,6 +990,12 @@ In this appendix, we give a list of machines used in this book as well as severa
 
 A table of machines we used to time programs is presented.
 
+[dot.emacs][dot.emacs]
+
+[dot.bashrc][dot.bashrc]
+
+[cln][cln] (program to run "make clean" recursively, "cln +h" for help)
+
 ### [A.2][bk.9.2] Plotting in C/C++ and other preliminaries
 
 In this section, we describe C++ classes for plotting, gathering statistics, and making tables. These classes are used throughout the book. However, in almost every instance, the code showing how these facilities are invoked is suppressed.
@@ -1387,6 +1393,9 @@ The Makefiles in this GIT repository use Intel compilers for the most part. The 
 [bk.9.5]: https://divakarvi.github.io/bk-spca/spca.html#toc-Section-9.5
 [bk.9.6]: https://divakarvi.github.io/bk-spca/spca.html#toc-Section-9.6
 
+[dot.emacs]: https://github.com/divakarvi/bk-spca/blob/master/sys/emacs/dot.emacs
+[dot.bashrc]: https://github.com/divakarvi/bk-spca/blob/master/sys/dot.bashrc
+[cln]: https://github.com/divakarvi/bk-spca/blob/master/sys/bin/cln
 [pyplot.hh]: https://github.com/divakarvi/bk-spca/blob/master/pyplot/pyplot.hh
 [pyplot.cpp]: https://github.com/divakarvi/bk-spca/blob/master/pyplot/pyplot.cpp
 [pyhist.hh]: https://github.com/divakarvi/bk-spca/blob/master/pyplot/pyhist.hh
