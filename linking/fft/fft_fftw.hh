@@ -1,5 +1,5 @@
-#ifndef __fftw2Sept2013__
-#define __fftw2Sept2013__
+#ifndef fftw2Sept2013
+#define fftw2Sept2013
 #include "../../utils/utils.hh"
 #include <fftw3.h>
 

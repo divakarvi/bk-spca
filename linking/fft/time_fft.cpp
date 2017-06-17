@@ -15,11 +15,11 @@ enum yesno_type {YES, NO};
 static StatVector *stat_mkl = NULL, *stat_fftw = NULL, *stat_nr = NULL;
 
 /*
- * no cache effects if march_on == YES
+ * No cache effects if march_on == YES.
  */
 void time_fft(int n, enum yesno_type march_on){
 	/*
-	 * check if n is a power of 2
+	 * Check if n is a power of 2.
 	 */
 	int nn = n;
 	enum yesno_type pow2 = YES;
@@ -30,14 +30,14 @@ void time_fft(int n, enum yesno_type march_on){
 	}
 	
 	/*
-	 * determine count of ffts so that 10 GB of data is accessed
+	 * Determine count of ffts so that 10 GB of data is accessed.
 	 */
 	long bytes = 10l*1000*1000*1000;
 	double *space = (double *)_mm_malloc(bytes, 64);
 	long count = bytes/(1l*2*n*sizeof(double));
 
 	/*
-	 * allocate stat objects
+	 * Allocate stat objects.
 	 */
 	if(stat_mkl != NULL)
 		delete stat_mkl;
@@ -53,12 +53,12 @@ void time_fft(int n, enum yesno_type march_on){
 
 
 	/*
-	 * initialize data
+	 * Initialize data.
 	 */
 	if(march_on == YES)
 		for(long i = 0; i < count; i++){
 			double *v = space + i*(2*n);
-			for(int j = 0; j < n; j++){//"random" and cheap
+			for(int j = 0; j < n; j++){//"Random" and cheap.
 				v[2*j] = 7.0/(8.0+i+j);
 				v[2*j+1] = 77/(8.0+i*i+j);
 			}
@@ -71,7 +71,7 @@ void time_fft(int n, enum yesno_type march_on){
 	
 	TimeStamp clk;
 	/*
-	 * collect mkl stat
+	 * Collect mkl stat.
 	 */
 	fft_mkl mkl(n);
 	for(long i = 0; i < count; i++){
@@ -87,7 +87,7 @@ void time_fft(int n, enum yesno_type march_on){
 	}
 
 	/*
-	 * collect fftw stat
+	 * Collect fftw stat.
 	 */
 	fft_fftw fftw(n);
 	for(long i = 0; i < count; i++){
@@ -103,7 +103,7 @@ void time_fft(int n, enum yesno_type march_on){
 	}
 
 	/*
-	 * collect nr data
+	 * Collect nr data.
 	 */
 	switch(pow2){
 	case NO:

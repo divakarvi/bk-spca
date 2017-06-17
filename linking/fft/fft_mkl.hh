@@ -1,5 +1,5 @@
-#ifndef __fft_mkl02Sept2013__
-#define __fft_mkl02Sept2013__
+#ifndef fft_mkl02Sept2013
+#define fft_mkl02Sept2013
 #include <mkl_dfti.h>
 
 class fft_mkl{

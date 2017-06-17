@@ -5,7 +5,7 @@
 /*
  *           n: size of fft
  *       count: num of ffts
- * cyc_list[i]: number of cycles used by i-th fft
+ * cyc_list[i]: number of cycles used by i-th fft (output)
  */
 void cyclelist(int n, int count, double cyc_list[]){
 	fft_mkl fft(n);
@@ -31,8 +31,8 @@ void cyclelist(int n, int count, double cyc_list[]){
 }
 
 /*
- * move all entries of cyc_list[] within window to the front of the list.
- * return count of number of entries within window.
+ * Move all entries of cyc_list[] within window to the front of the array.
+ * Return count of number of entries within window.
  */
 int window(double *cyc_list, int len, 
 	   double window_begin, double window_end){

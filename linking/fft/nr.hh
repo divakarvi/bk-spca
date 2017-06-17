@@ -1,5 +1,5 @@
-#ifndef __nr02Sept2013__
-#define __nr02Sept2013__
+#ifndef nr02Sept2013
+#define nr02Sept2013
 void nrbwd(double *f, unsigned long n);
 void nrfwd(double *f, unsigned long n);
 #endif
