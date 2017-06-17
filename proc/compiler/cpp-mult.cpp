@@ -1,9 +1,9 @@
 #include "../../utils/utils.hh"
 #include "../../utils/Vector.hh"
-#include "Matrix.hh"
 #include "../../utils/TimeStamp.hh"
 #include "../../utils/StatVector.hh"
 #include "../../utils/Table.hh"
+#include "Matrix.hh"
 #include <iostream>
 
 void multijk(Matrix& A, Matrix& B, Matrix& C){

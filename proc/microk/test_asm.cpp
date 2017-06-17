@@ -3,8 +3,8 @@
 #include <cstdio>
 #include <cstdlib>
 /*
- * skewing is a permutation of order 3
- * skew twice to reverse skewing
+ * Skewing is a permutation of order 3.
+ * Skew twice to reverse skewing.
  */
 void skew2x2(double *c, int m, int n){
 	int ldc = m;
@@ -72,7 +72,7 @@ void test4xnx4(int n){
 		assrt(0 == 1);
 	}
 	/*
-	 * unskew by skewing twice
+	 * Unskew by skewing twice.
 	 */
 	skew2x2(c, 4, 4);
 	skew2x2(c, 4, 4);

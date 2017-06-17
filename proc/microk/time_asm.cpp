@@ -6,8 +6,8 @@
 #include <cstdlib>
 
 /*
- * returns average number of cycles for asm4xnx4
- * n = 1, 4, 20, 40, 100, 200
+ * Returns average number of cycles for asm4xnx4.
+ * n = 1, 4, 20, 40, 100, 200.
  */
 double time(int n){
 	__declspec(align(16)) double a[4*n];

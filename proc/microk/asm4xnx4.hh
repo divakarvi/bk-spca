@@ -1,10 +1,10 @@
-#ifndef __asm4xnx4_1Oct2013__
-#define __asm4xnx4_1Oct2013__
+#ifndef asm4xnx4_1Oct2013
+#define asm4xnx4_1Oct2013
 
 /*
- * a = column major format
- * b = row major format
- * c = skewed format (see test_asm.cpp)
+ * a: in column major format
+ * b: in row major format
+ * c: in skewed format (see test_asm.cpp)
  */
 extern "C"{
 	void asm4x1x4(double *a, double *b, double *c);

@@ -3,7 +3,7 @@
 #include <cstdio>
 
 /*
- * inspect assembly to verify correctness
+ * Inspect assembly to verify correctness.
  */
 
 void peak_dest2source(long int nitns){

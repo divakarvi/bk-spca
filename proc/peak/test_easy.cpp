@@ -2,9 +2,7 @@
 #include <cstdio>
 
 /*
- * the assembly of runmacro() must be inspected to ensure code is correct.
- * it is legal for the compiler to reuse xmm0 and xmm1 to store temp
- * data in-between the four macro calls here
+ * Inspect assembly to verify correctness.
  */
 void xmmtest(){
 	__declspec(align(16)) double a[2]={1,2};

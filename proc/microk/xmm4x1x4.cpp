@@ -1,7 +1,7 @@
 #include "../peak/easyxmm.hh"
 
-//mult 4x1 and 1x4 to get 4x4
-//c = c+a*b (interpret as matrices)
+//Multiply 4x1 and 1x4 to get 4x4.
+//c = c+a*b (interpret as matrices).
 void multxmm4x1x4(double *a, double *b, double *c){
 	//[1]
 	loadxmm(c, "%xmm4");
@@ -55,7 +55,7 @@ void multxmm4x1x4(double *a, double *b, double *c){
 }
 
 
-//iterate above while keeping c out of loop
+//Iterate above while keeping c out of loop.
 void multxmm4x1x4R(double *a, double *b, double *c){
 	//[1]
 	loadxmm(c, "%xmm4");

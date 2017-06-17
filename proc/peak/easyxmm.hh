@@ -1,18 +1,16 @@
-#ifndef __EASYXMM01OCT2013__
-#define __EASYXMM01OCT2013__
+#ifndef EASYXMM01OCT2013
+#define EASYXMM01OCT2013
 
 /*
- * 1. these macros provide an easy means to use the xmm registers.
- * 2. they can easily lead to incorrect code when used within loops.
- * 3. it is natural to use these macros to subject the xmm registers
- *    to a sequence of arithmetic operations. 
- *    the compiler may use xmm registers to store temp data in-between
- *    macros.
- *    that is especially likely to happen when the macros are used inside
- *    for or while loops.
- * 4. when these macros are used the ASSEMBLY MUST BE INSPECTED TO ensure
- *    that the compiler generated code does not reuse xmm registers for
- *    temp data.
+ * 1. These macros provide an easy means to use the xmm registers.
+ * 2. However, they can easily lead to incorrect code when used within loops.
+ * 3. These macros to subject the xmm registers to a sequence of 
+ *    arithmetic operations. The compiler may use xmm registers to store 
+ *    temp data in-between macros, especially likely to happen when the 
+ *    macros are used inside for or while loops.
+ * 4. Therefore, when these macros are used the ASSEMBLY MUST BE INSPECTED 
+ *    to ensure that the compiler generated code does not reuse xmm 
+ *    registers for temp data.
  */
 
 //R must be "%xmmi" 0<=i<=15 (pxor instead of xorps works too)

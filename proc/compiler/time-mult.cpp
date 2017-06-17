@@ -48,7 +48,7 @@ double time(int dim, enum mmult_enum flag){
 	double *c = space + 2*nbytes/8;
 	
 	/*
-	 * not random but cheap
+	 * Not random but cheap.
 	 */
 	for(long i=0; i < nbytes/8; i++)
 		space[i] = 1.0/(i+2.0);

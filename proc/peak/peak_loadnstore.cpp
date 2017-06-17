@@ -3,7 +3,7 @@
 #include <cstdio>
 
 /*
- * inspect assembly to verify correctness
+ * Inspect assembly to verify correctness.
  */
 
 void loadmuladdstore(double *a, long int nitns){
