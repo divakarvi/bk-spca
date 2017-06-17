@@ -1,9 +1,10 @@
 #include "latency_utils.hh"
 #include <cstdlib>
 
+//latency_utils.hh
 int countrepeats(long int *list, long int n, int count){
 	/*
-	 * llist[i] = index accessed through list[] in i-th access
+	 * llist[i] = index accessed through list[] in i-th access.
 	 */
 	
 	long int *llist = (long int *)
@@ -17,7 +18,7 @@ int countrepeats(long int *list, long int n, int count){
 	}
 
 	/*
-	 * if access j hits same index as access i, it is a repeat
+	 * If access j hits same index as access i, it is a repeat.
 	 */
 	long int repeats = 0;
 	for(int  i=1; i < count; i++){
@@ -31,14 +32,8 @@ int countrepeats(long int *list, long int n, int count){
 	return repeats;
 }
 
-/*
- * when every access generates a random number in [0..n)
- * i-th access does not repeat with probability (n-i)/n
- * conditioned on none of the earlier accesses being repeats
- * n = size of array
- * count = number of accesses
- * return probability of no repeat access
- */
+//latency_utils.hh
+//Birthday Problem probability.
 double probNoR(long int n, int count){
 	double p = 1.0;
 	n = n/8;
@@ -47,6 +42,7 @@ double probNoR(long int n, int count){
 	return p;
 }
 
+//latency_utils.hh
 /*
  * list[i] = i initiallly
  * list[i] exchanged with j, i <= j  < n, j "random"
@@ -62,6 +58,7 @@ void random_perm(int *list, int n){
 	}
 }
 
+//latency_utils.hh
 void random_cycle(int *list, int n){
 	int *tmp = new int[n];
 	

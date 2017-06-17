@@ -37,7 +37,7 @@ void time_stride(enum strideflag_enum flag){
 
 void time_chain(){
 	/*
-	 * 10^9 random entries
+	 * 10^9 random entries.
 	 */
 	long int *list;
 	long int n = 1000*1000*1000;

@@ -138,8 +138,6 @@ void bw_readwrite(){
 	}
 	sprintf(cmd, "ls -l %s", dir);
 	system(cmd);
-	sprintf(cmd, "lfs getstripe %s/direct.dat", dir);
-	//system(cmd);//will work only on lustre file system
 }
 
 int main(){

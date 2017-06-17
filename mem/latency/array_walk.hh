@@ -1,25 +1,25 @@
-#ifndef __ARRAYWALK3OCT2013__
-#define __ARRAYWALK3OCT2013__
+#ifndef ARRAYWALK3OCT2013
+#define ARRAYWALK3OCT2013
 /*
- * a = int array of 10**9 entries 
- * returns sum of 10**9 entries
+ * a[]: int array of 10**9 entries 
+ * Returns sum of 10**9 entries.
  */
 int unitstride(int *a);
 
 /*
- * a = int array of 10**9 entries
- * only entries with index%16 == 0 are accessed and added
- * cache line assumed to be 64 bytes
- * only one access per cache line
+ * a[]: int array of 10**9 entries.
+ * Only entries with index%16 == 0 are accessed and added.
+ * Cache line assumed to be 64 bytes.
+ * Only one access per cache line.
  */
 int stride16(int *a);
 
 /*
- * List = int array of size n
- * count = number of accesses
- * returns sum of entries accessed
+ * List[]: int array of size n
+ * count: number of accesses
+ * Returns sum of entries accessed.
  * index = List[index]%n and index = index - index%8 ensure
- * 1. only first word in cache line is accessed (List must be 64 byte aligned)
+ * 1. Only first word in cache line is accessed (List must be 64 byte aligned).
  * 2. If List[...] is initialized appropriately and count is not too large
  *    each cache line is accessed just once.
  */

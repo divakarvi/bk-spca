@@ -16,8 +16,9 @@ void cache_flush(void *ptr, int nbytes){
 #endif
 }
 
+//latency.hh
 /*
- * single measurement of latency using n pages
+ * Single measurement of latency using n pages.
  */
 double latency(int n, int *npages){
 	assrt((long)npages%4096 == 0);

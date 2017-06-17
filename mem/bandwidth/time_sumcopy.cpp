@@ -25,7 +25,7 @@ enum sumcopy_enum {SUM, SUMSTR, SUMCONSTSTR, COPY, COPYCONSTSTR};
 
 
 /*
- * returns memory bandwidth as bytes per cycle
+ * Returns memory bandwidth as bytes per cycle.
  */
 
 double time(double *a, double *b, int n, enum sumcopy_enum flag){

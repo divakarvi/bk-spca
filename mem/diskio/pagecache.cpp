@@ -3,8 +3,8 @@
 
 const int N=1000*1000*125;
 /*
- * cat /proc/meminfo before and after this program to check disk cache
- * use the command "echo 1 > /proc/sys/vm/drop_caches" to clear disk cache
+ * "cat /proc/meminfo" before and after this program to check disk cache.
+ * Use the command "echo 1 > /proc/sys/vm/drop_caches" to clear disk cache.
  */
 void write2file(){
 	/*

@@ -1,4 +1,4 @@
-;basic customizations
+;;;;;;;;;;;;;;;;; basic customizations ;;;;;;;;;;;;;;;;;;
 ;window height
 (add-to-list 'default-frame-alist '(height . 26))
 ;window width 
@@ -10,7 +10,10 @@
 ;turn off tool-bar
 (tool-bar-mode -1) 
 ;the mark-ring is perfectly useless
-(setq mark-ring-max 0) 
+(setq mark-ring-max 0)
+;turn off startup message 
+(setq inhibit-startup-message t)
+(setq inhibit-startup-echo-area-message t)
 ;(global-unset-key [down-mouse-1]) ;stop marking during mouse click
 ;cut-and-paste between emacs and other apps
 (setq x-select-enable-clipboard t)
@@ -18,14 +21,19 @@
 (require 'dired) 
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control) . nil)))
 (setq mouse-wheel-progressive-speed nil)
+(put 'upcase-region 'disabled nil)
+(put 'erase-buffer 'disabled nil)
+(put 'downcase-region 'disabled nil)
+
+;;;;;;;;;;;;;;;;; key bindings ;;;;;;;;;;;;;;;;;;;;;;;
 ;bind M-g to goto-line
 (global-set-key "\M-g" 'goto-line)
 ;bind M-i to imenu
 (global-set-key "\M-i" 'imenu)
-;bind [f1] to file begin
-(global-set-key [f1] "\M-<") 
-;bind [f2] to file end
-(global-set-key [f2] "\M->")
+;bind [home] to file begin
+(global-set-key [home] "\M-<") 
+;bind [end] to file end
+(global-set-key [end] "\M->")
 ;bind [f3] to begin keyboard macro 
 (global-set-key [f3] 'start-kbd-macro)
 ;bind [f4] to end keyboard macro
@@ -40,7 +48,8 @@
   (kill-whole-line)
   (move-end-of-line 1))
 (global-set-key "\C-b" 'backward-kill-line)
-;;;;;;;;;;;;;;;;;;;;;;;;;no git;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;; no git ;;;;;;;;;;;;;;;;;;;;;;;;;
 ;-ng switch disables version control, useful over sshfs
 ;ng = no git
 ;"emacs -ng" to open emacs git/vc awareness disabled
@@ -219,7 +228,7 @@
   (setq buffer-display-table (make-display-table))
   (aset buffer-display-table ?\^M []))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;dv-hide-dos2unix;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;dv-dos2unix;;;;;;;;;;;;;;;;;;;;
 ;;from sudeepdino008 on stackoverflow.com
 (defun dv-dos2unix ()
   "Replace DOS eolns CR LF with Unix eolns CR"
@@ -239,30 +248,31 @@
 )
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;c-mode gnu indentation with 8 space indentation
+
+;;;;;;;;;;;;;;;;;;;; c-mode gnu indentation with 8 space indentation ;;;;;;;
 (setq c-default-style "gnu")
 (setq-default c-basic-offset 8)
 
-;;auto-mode-alist
-(setq auto-mode-alist
-     (append '(("\\.mak" . makefile-mode)("\\.m$" . octave-mode))
-	      auto-mode-alist))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;markdown mode
+;;;;;;;;;;;;;;;;;;;; auto-mode-alist ;;;;;;;;;;;;;;;;;;;;
+;make files
+(add-to-list 'auto-mode-alist '("\\.mak" . makefile-mode))
+;matlab 
+(add-to-list 'auto-mode-alist '("\\.m$" . octave-mode))
+;git commit
+(add-to-list 'auto-mode-alist '("COMMIT_EDITMSG" . shell-script-mode))
+
+;;;;;;;;;;;;;;;;;;;; markdown mode ;;;;;;;;;;;;;;;;;;;;
 (autoload 'markdown-mode "~/local/emacs-modes/markdown-mode"
    "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;maple mode
+;;;;;;;;;;;;;;;;;;;; maple mode ;;;;;;;;;;;;;;;;;;;;
 (load-file "~/local/emacs-modes/maplev.el")
 (setq auto-mode-alist (cons `("\\.mpl\\'" . maplev-mode) auto-mode-alist))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;CUDA mode
+;;;;;;;;;;;;;;;;;;;; CUDA mode ;;;;;;;;;;;;;;;;;;;;
 (load-file "~/local/emacs-modes/cuda-mode.el")
 (setq auto-mode-alist (cons `("\\.cu\\'" . cuda-mode) auto-mode-alist))
 
@@ -272,8 +282,7 @@
   (condition-case nil (imenu-add-to-menubar "iMenu") (error nil)))
 (add-hook 'font-lock-mode-hook 'try-to-add-imenu)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;tabbar
+;;;;;;;;;;;;;;;;;;;; tabbar ;;;;;;;;;;;;;;;;;;;;
 (load-file "~/local/emacs-modes/tabbar.el")
 (require 'tabbar)
 (tabbar-mode)
@@ -296,25 +305,8 @@
 (global-set-key (kbd "C-,") 'tabbar-backward)
 (global-set-key (kbd "C-.") 'tabbar-forward) 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; cscope within  emacs
-(require 'xcscope)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(inhibit-startup-screen t))
-(custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- )
-(put 'upcase-region 'disabled nil)
-(put 'erase-buffer 'disabled nil)
+;;;;;;;;;;;;;;;;;;;; cscope within  emacs ;;;;;;;;;;;;;;;;;;;;
+; (require 'xcscope)
 
-(put 'downcase-region 'disabled nil)
 

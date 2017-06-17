@@ -7,7 +7,7 @@
 enum transpose_enum {EASY, BLOCK, BLOCKX, RECURSIVE, POW2};
 
 /*
- * returns b/w in bytes per cycle
+ * Returns b/w in bytes per cycle.
  */
 double  time(double *a, double *b, int m, int n, enum transpose_enum flag){
 	const  int count = 10;
@@ -49,7 +49,7 @@ double  time(double *a, double *b, int m, int n, enum transpose_enum flag){
 }
 
 /*
- * table with m = 20000 and n = 30000
+ * Table with m = 20000 and n = 30000.
  */
 void table1(){
 	int m = 20000;
@@ -91,14 +91,14 @@ void table1(){
 }
 
 /*
- * table with m = n = 2^14
+ * Table with m = n = 2^14.
  */
 void table2(){
 	const int m = 1024*16;
 	const int n = 1024*16;
 
 	/*
-	 * check B is a power of 2
+	 * Check B is a power of 2.
 	 */
 	int BB = B;
 	while(BB > 1){

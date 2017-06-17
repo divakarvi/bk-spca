@@ -7,6 +7,7 @@
 #include <iomanip>
 #include <cstdlib>
 
+//serial.hh
 void write_easy(double *v, long len, const char *fname){
 	std::ofstream ofile(fname);
 	ofile<<std::scientific;
@@ -16,12 +17,14 @@ void write_easy(double *v, long len, const char *fname){
 	ofile.close();
 }
 
+//serial.hh
 void read_easy(double *v, long len, const char *fname){
 	std::ifstream ifile(fname);
 	for(long i=0; i < len; i++)
 		ifile>>v[i];
 }
 
+//serial.hh
 void write_direct(double *v, long len, const char *fname){
 	FILE *fptr;
 	fptr = fopen(fname, "w");
@@ -35,6 +38,7 @@ void write_direct(double *v, long len, const char *fname){
 
 extern void dummy(void *);
 
+//serial.hh
 void read_direct(double *v, long len, const char *fname){
 	FILE *fptr;
 	fptr = fopen(fname, "r");
@@ -48,6 +52,7 @@ void read_direct(double *v, long len, const char *fname){
 	fclose(fptr);
 }
 
+//serial.hh
 void latency2disk_init(const char *dir, long fszby8, int nfiles){
 	double *list = new double[fszby8];
 	for(long i=0; i < fszby8; i++)
@@ -63,6 +68,7 @@ void latency2disk_init(const char *dir, long fszby8, int nfiles){
 	delete[] list;
 }
 
+//serial.hh
 double latency2disk(const char *dir, int filenum, long posn,
 		    struct disk_latency& lat){
 	char fname[200];
@@ -88,6 +94,7 @@ double latency2disk(const char *dir, int filenum, long posn,
 	return x;
 }
 
+//serial.hh
 void latency2disk_finalize(const char *dir, int nfiles){
 	for(int i=0; i < nfiles;i++){
 		char cmd[200];
