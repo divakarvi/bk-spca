@@ -1,12 +1,12 @@
-#ifndef __PYPLOT19JULY2013__
-#define __PYPLOT19JULY2013__
+#ifndef PYPLOT19JULY2013
+#define PYPLOT19JULY2013
 #include <cstdio>
 #include <unistd.h>
 
 enum pipe_type {PLTOFF, PLTON};
 
 const int MAX_NUM_PYPLT_CMDS = 400;
-const int MAX_CMD_PYPLT_LEN=3000;
+const int MAX_CMD_PYPLT_LEN = 3000;
 
 class PyPlot{
 private:
@@ -22,27 +22,27 @@ private:
 	 */
 	enum pipe_type pipe_state;
 	/*
-	 * figure will be saved in FIGS/"name.pdf"
-	 * if asked to do so, data & script will be saved in FIGS/name_*
-	 * normally data is saved in FIGS/name_* and deleted
+	 * Figure will be saved in FIGS/"name.pdf."
+	 * If asked to do so, data & script will be saved in FIGS/name_*.
+	 * Normally, data is saved in FIGS/name_* and deleted.
 	 */
 	char name[30];
 	/*
-	 * array of commands issued to python
-	 * at most MAX_NUM commands are allowd
+	 * Array of commands issued to python.
+	 * At most MAX_NUM commands are allowd.
 	 */
 	char *cmd[MAX_NUM_PYPLT_CMDS];
 	char cmdstr[MAX_CMD_PYPLT_LEN];
 	/*
 	 * cmdnum = 0 initially
 	 *        = index of current/next command
-	 * incremented after cmd is issued
+	 * Incremented after cmd is issued.
 	 */
 	int cmdnum;
 	/*
 	 * linenum = index of current line
-	 * appended to name_ to save data for Python
-	 * all saved data is removed unless specified otherwise
+	 * Appended to name_ to save data for Python.
+	 * All saved data is removed unless specified otherwise.
 	 */
 	int linenum;
 	/*
@@ -57,8 +57,8 @@ private:
 	void issue_command(const char *cstr);
 public:
 	/*
-	 * name must be less than 25 chars
-	 * pipe == PLTOFF then mpl.backend is set to PDF
+	 * name must be less than 25 chars.
+	 * pipe == PLTOFF then mpl.backend is set to PDF.
 	 */
 	PyPlot(const char *namei, enum pipe_type pipe=PLTON);//state:0
 	~PyPlot();
@@ -88,21 +88,21 @@ public:
 	void yticks(double *ticks, int n);
 	void ticksize(const char *s);
 	/*
-	 * issues command to python pipe verbatim
-	 * last char of s must be '\n'
-	 * python syntax inside s
-	 * ax and l are always available as current axis and current line
+	 * Issues command to python pipe verbatim.
+	 * Last char of s must be '\n'.
+	 * For Python syntax inside string s, ax and l are always 
+         * available as current axis and current line.
 	 */
 	void pycmd(const char *s);
 
 	/*
-	 * function for showing/output
-	 * PLTON then plot
-	 * PLTOFF then save to pdf
+	 * Function for showing/output.
+	 * PLTON then plot.
+	 * PLTOFF then save to pdf.
 	 */
 	void show();//state: 1--->2
 	/*
-	 * save python script in FIGS/
+	 * save python script in FIGS/.
 	 */
 	void savescript();//state: 2--->2
 };

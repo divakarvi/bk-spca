@@ -3,6 +3,7 @@
 #include <cstring>
 #include <cstdlib>
 
+//pyhist.hh
 PyHist::PyHist(const char* namei, enum pipe_type pipe){
 	pipe_state = pipe;
 	verify_dir("FIGS/");
@@ -29,7 +30,7 @@ PyHist::PyHist(const char* namei, enum pipe_type pipe){
 	issue_command(cmdstr);
 
 	/*
-	 * change backend if PLTOFF
+	 * Change backend if PLTOFF.
 	 */
 	if(pipe_state == PLTOFF){
 		sprintf(cmdstr, "mpl.use('PDF', warn = True)\n");

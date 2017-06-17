@@ -57,9 +57,9 @@ void makeplot(double *x, double *y, int n, const char *name){
 }
 
 /*
- * make n plots and time them
- * plot k is called sink
- * it is a plot of sin(kx) vs. x
+ * Make n plots and time them.
+ * plot k is called sink.
+ * It is a plot of sin(kx) vs. x
  */
 void timeplot(int n){
 	double x[n*10];
