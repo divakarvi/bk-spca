@@ -1,5 +1,5 @@
-#ifndef __StatVector27June2013__
-#define __StatVector27June2013__
+#ifndef StatVector27June2013
+#define StatVector27June2013
 #include <algorithm>
 #include <iostream>
 #include <iomanip>

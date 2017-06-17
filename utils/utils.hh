@@ -1,5 +1,5 @@
-#ifndef __dvutils25June2013__
-#define __dvutils25June2013__
+#ifndef dvutils25June2013
+#define dvutils25June2013
 #include <cstdio>
 #include <iostream>
 #include <fstream>
@@ -22,94 +22,94 @@ const double PI = 3.1415926535897932384e+00;
     } while(0)  
 
 /*    
- * return number of cpus on system
+ * Returns number of cpus on system.
  */
 int num_cpu();
 
  /*
-  * v[i] = fabs(v[i]) for i=0...n-1
+  * v[i] = fabs(v[i]) for i=0...n-1.
   */
 void array_abs(double *v, int n);
 
 /*
- * returns max of abs values of v[0..n-1]
+ * Returns max of abs values of v[0..n-1].
  */
 double array_max(double *v, int n);
 
  /*
-  * display n entries of v on stdout
+  * Display n entries of v on stdout.
   */
 void array_show(double *v, int n, const char* mesg);
 
 /*
- * v = v - w
+ * v = v - w.
  */
 void array_diff(double *restrict v, double *restrict w, int n);
 
  /*
-  * copy w = v
+  * Copy: w = v.
   */
  void array_copy(double *restrict v, double *restrict w, int n);
 
 /*
- * v[]   = array to be output (column major)
- * m     = num of rows
- * n     = num of cols 
- * fname = name of file for output
+ * v[]   : array to be output (column major)
+ * m     : num of rows
+ * n     : num of cols 
+ * fname : name of file for output
  *         (uses stdout if fname == NULL)
  */
 void array_out(double *v, int m, int n, const char *fname = NULL);
 
  /*
-  * same as above except for lda
-  * i,j th entry = v[i+j*lda]
+  * Same as above except for lda.
+  * i,j th entry : v[i+j*lda]
   * uses stdout if fname == NULL
   */
 void array_out(double *v, int m, int n, int lda, const char *fname = NULL);
 
 /*
- * counterpart of array_out()
- * size = number of entries of v
+ * Counterpart of array_out().
+ * size: number of entries of v
  */
 void array_in(double *v, int size,  const char* fname);
 
 /*
- * A = 4 doubles in column major format
- * rhs = 2 doubles
- * x = soln of Ax=rhs
+ *   A: 4 doubles in column major format
+ * rhs: 2 doubles
+ *   x: soln of Ax=rhs (output)
  */
 void solve2x2(double *restrict A, double *restrict rhs, double *restrict x);
 
  /*
-  * verify if the directory exists
-  * if not create it
+  * Verify if the directory exists.
+  * If not create it.
   */
 void verify_dir(const char *dir);
 
 /*
- * const char *dir = name of directory
- * const char *pfx = file name prefix
- * removes all files in directory starting with prefix
+ * const char *dir: name of directory
+ * const char *pfx: file name prefix
+ * Removes all files in directory starting with prefix.
  */
 void mop_dir(const char* dir, const char *pfx);
 
 
 enum link_cout_flag_enum {LC_APP, LC_NOAPP}; 
 /*
- * Open file fname and link its stream to that of cout
- * flag = LC_APP then file opened for appending
- * flag = LC_NOAPP then file opened for writing
+ * Open file fname and link its stream to that of cout.
+ * flag = LC_APP then file opened for appending.
+ * flag = LC_NOAPP then file opened for writing.
  */
 void link_cout(const char *fname, enum link_cout_flag_enum flag = LC_NOAPP);
 
 /*
- * close file opened with link2cout and restore cout stream
+ * Close file opened with link2cout and restore cout stream.
  */
 void unlink_cout();
 
 /*
- * prints the file to cout (omitting unprintable characters)
- * the contents of the file are put inside a box
+ * Prints the file to cout (omitting unprintable characters).
+ * The contents of the file are put inside a box.
  */
 void box_file(const char* fname, const char* mesg);
 
@@ -120,7 +120,7 @@ void print_proc_status(const char* mesg);
 
 
 /*
- * read shell variable OMP_NUM_THREADS
+ * Read shell variable OMP_NUM_THREADS.
  */
 int dv_omp_nthreads();
 #endif

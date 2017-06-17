@@ -1,5 +1,5 @@
-#ifndef __Table04Sept2013__
-#define __Table04Sept2013__
+#ifndef Table04Sept2013
+#define Table04Sept2013
 #include "utils.hh"
 
 class Table{

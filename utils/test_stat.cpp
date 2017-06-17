@@ -2,7 +2,7 @@
 #include <iostream>
 
 //n=number of items to be inserted
-//all numbers inserted are from 0 to 255
+//All numbers inserted are from 0 to 255.
 void runstatv(int n){
 	long int pm = 32452843;
 	StatVector v(n);

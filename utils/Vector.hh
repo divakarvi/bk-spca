@@ -1,5 +1,5 @@
-#ifndef __MYVECTOR__
-#define __MYVECTOR__
+#ifndef xxMYVECTORxx
+#define xxMYVECTORxx
 #include <cassert>
 #include <cmath>
 #include <iostream>
@@ -8,7 +8,7 @@
 #include <cstring>
 
 using namespace std;
-#ifndef __dvutils25June2013__
+#ifndef dvutils25June2013
 const double PI = 3.1415926535897932384e+00;
 #endif
 
@@ -18,14 +18,14 @@ private:
 	double *data;
 	int owner;
 public:
-	//empty constructor
+	//Empty constructor.
 	Vector(){
 		size = 0;
 		data = NULL;
 		owner = 0;
 	}
 	
-	//only constructor to allocate space for data
+	//Only constructor to allocate space for data.
 	Vector(long int  n){
 		size = n;
 		data = (double *)malloc(sizeof(double)*n);
@@ -33,7 +33,7 @@ public:
 	}
   
   
-	//*this becomes shadow of Vector v (copy constructor)
+	//*this becomes shadow of Vector v (copy constructor).
 	Vector(const Vector& v){
 		size = v.size;
 		data = v.data;
@@ -41,14 +41,14 @@ public:
 	} 
 	
 	
-	//destructor, finds out if *this is a shadow or owns space
+	//Destructor, finds out if *this is a shadow or owns space.
 	~Vector(){
 		if(owner!=0)
 			free(data);
 	}
 	
 
-	//make *this shadow dataptr
+	//Make *this shadow dataptr.
 	void shadow(double *dataptr, long int len){
 		assert(!owner);
 		size = len;
@@ -56,7 +56,7 @@ public:
 		owner = 0;
 	}
 	
-	//makes *this shadow v
+	//Makes *this shadow v.
 	void shadow(const Vector& v){
 		assert(!owner);
 		size = v.size;
@@ -64,7 +64,7 @@ public:
 		owner = 0;
 	}
 	
-	//makes *this shadow v(i:i+len-1)
+	//Makes *this shadow v(i:i+len-1).
 	void shadow(const Vector& v,  long int i,  long int len){ 
 		assert(!owner);
 		assert(i+len<=v.size);
@@ -73,31 +73,31 @@ public:
 		owner = 0;
 	}
   
-	//returns length of (*this)
+	//Returns length of (*this).
 	long int getSize() const{
 		return size;
 	}
 
 
-	//use with care! better yet: don't use this class.
+	//Use with care! better yet: don't use this class.
 	double * getRawData() const{
 		return data;
 	}
  
 
-	//returns (*this)(i)
+	//Returns (*this)(i).
 	double& operator()(long int i){
 		assert(i < size);
 		return(data[i]);
 	}
   
-	//returns (*this)(i)
+	//Returns (*this)(i).
 	const double& operator()(long int i) const{
 		assert(i<size);
 		return(data[i]);
 	}
 		
-	//(*this)(i) = v(i) for all i
+	//(*this)(i) = v(i) for all i.
 	Vector& operator=(const Vector& v){
 		assert(size==v.size);
 		assert(((data<v.data)&&((data+size-1)<v.data))||
@@ -109,47 +109,47 @@ public:
 		return(*this);
 	}
 
-	//*this(i) = *this(i) + v(i)
+	//*this(i) = *this(i) + v(i).
 	void add(const Vector& v){
 		assert(size == v.size);
 		for(long int i=0; i < size; i++)
 			data[i] += (v.data)[i];
 	}
 
-	//*this(i) = *this(i) - v(i)
+	//*this(i) = *this(i) - v(i).
 	void sub(const Vector& v){
 		assert(size == v.size);
 		for(long int i=0; i < size; i++)
 			data[i] -= (v.data)[i];
 	}
 
-	//*this(i) = *this(i) .* v(i)
+	//*this(i) = *this(i) .* v(i).
 	void mul(const Vector& v){
 		assert(size == v.size);
 		for(long int i=0; i < size; i++)
 			data[i] *= (v.data)[i];
 	}
 
-	//*this(i) = *this(i) ./ v(i)
+	//*this(i) = *this(i) ./ v(i).
 	void div(const Vector& v){
 		assert(size == v.size);
 		for(long int i=0; i < size; i++)
 			data[i] /= (v.data)[i];
 	}
 
-	//*this(i) *= x 
+	//*this(i) *= x. 
 	void scale(const double x){
 		for(long int i=0; i < size; i++)
 			data[i] *= x;
 	}
 	
-	//*this(i) +=  x
+	//*this(i) +=  x.
 	void add_constant(const double x){
 		for(long int i=0; i < size; i++)
 			data[i] += x;
 	}
 
-	//returns inf-norm of *this
+	//Returns inf-norm of *this.
 	double norm() const{
 		double ans = 0;
 		for(long int i=0; i < size; i++)
@@ -158,7 +158,7 @@ public:
 		return ans;
 	}
 
-	//output vector to file fname
+	//Output vector to file fname.
 	void output(const char* fname, int digits=18)const{
 		ofstream ofile(fname);
 		assert(!ofile.fail());
@@ -170,7 +170,7 @@ public:
 		ofile.close();
 	}
 
-	//input vector from file fname
+	//Input vector from file fname.
 	void input(const char* fname){
 		ifstream ifile(fname);
 		assert(!ifile.fail());
