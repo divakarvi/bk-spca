@@ -5,7 +5,7 @@ extern "C" void printseq_(double* seq, int * len);
 extern "C" double aitkenextrapolate_(double* seq1, double* seq2, int * len);
 
 
-//seq[0..len-1]: filled with partials sums of 4(1-1/3+1/5-1/7+1/9-...)
+//seq[0..len-1]: filled with partials sums of 4(1-1/3+1/5-1/7+1/9-...).
 void leibniz(double* seq, int len){
 	int i;
 	for(i=0; i < len; i++)

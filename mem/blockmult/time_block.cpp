@@ -11,8 +11,8 @@ enum cacheflag {L2cache, L3cache};
  * L1 cache = 32 KB = 4000 doubles (or more assumed).
  * L2 cache = 260 KB = 32500 doubles.
  * L3 cache = 12.6 MB  = 1.5 million doubles.
- * a[]: 800*15  = 12000 doubles streamed from L2 cache (flag == L2cache).
- * a[]: 800*150 = 120000 doubles streamed from L3 cache (flag == L3cache).
+ * a[]: 800*15  = 12000 doubles streamed from L2 cache (if flag == L2cache).
+ * a[]: 800*150 = 120000 doubles streamed from L3 cache (if flag == L3cache).
  * b[]: 800 doubles is assumed to be in L1 cache.
  * Returns avg cycles for a mult.
  */

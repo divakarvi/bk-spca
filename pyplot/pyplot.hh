@@ -34,13 +34,13 @@ private:
 	char *cmd[MAX_NUM_PYPLT_CMDS];
 	char cmdstr[MAX_CMD_PYPLT_LEN];
 	/*
-	 * cmdnum: 0 initially
-	 *         index of current/next command
+	 * cmdnum: 0 initially,
+	 *         index of current/next command.
 	 * Incremented after cmd is issued.
 	 */
 	int cmdnum;
 	/*
-	 * linenum: index of current line
+	 * linenum: index of current line.
 	 * Appended to name_ when saving data for Python.
 	 * All saved data is removed unless specified otherwise.
 	 */

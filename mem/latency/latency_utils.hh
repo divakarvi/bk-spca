@@ -5,7 +5,7 @@
  * List[]: int array of size n (permutation of 0..n-1).
  * count: number of accesses.
  * Initially, index is 0.
- * There after index = List[index]%n.
+ * Thereafter index = List[index]%n.
  * Returns number of repeats in *count* chained accesses.
  */
 int countrepeats(long int *List, long int n, int count);

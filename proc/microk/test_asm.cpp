@@ -75,7 +75,7 @@ void test4xnx4(int n){
 		assrt(0 == 1);
 	}
 	/*
-	 * Unskew by skewing twice.
+	 * Unskews by skewing twice more.
 	 */
 	skew2x2(c, 4, 4);
 	skew2x2(c, 4, 4);

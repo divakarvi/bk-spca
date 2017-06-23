@@ -17,7 +17,7 @@ void Aitken(Vector& seq);
 /*
  * Extrapolates seq using repeated Aitken transformations.
  * Returns extrapolated value. 
- * If printflag=1, the sequence is printed after each iteration.
+ * If printflag==1, the sequence is printed after each iteration.
  */
 double AitkenE(const Vector& seq, int printflag=0);
 #endif

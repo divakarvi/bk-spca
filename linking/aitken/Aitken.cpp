@@ -3,9 +3,7 @@
 #include <cassert>
 #include <cstdlib>
 
-/*
- * Aitken.hh
- */
+//Aitken.hh.
 void Aitken(Vector& seq1){
 	int len = seq1.getSize();
 	for(int i=0; i < len-2; i++){
@@ -24,9 +22,7 @@ void printseq(const Vector& v){
 		printf("%-.10f\n",v(i));
 }
 
-/*
- * Aitken.hh
- */
+//Aitken.hh.
 double AitkenE(const Vector& seq, int printflag){
 	int len = seq.getSize();
 	Vector myseq(len);

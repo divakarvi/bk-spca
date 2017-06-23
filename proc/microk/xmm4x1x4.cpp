@@ -55,7 +55,7 @@ void multxmm4x1x4(double *a, double *b, double *c){
 }
 
 
-//Iterates above 10**9 times while keeping c[] out of loop.
+//Iterates function above 10**9 times while keeping c[] out of loop.
 void multxmm4x1x4R(double *a, double *b, double *c){
 	//[1]
 	loadxmm(c, "%xmm4");

@@ -30,14 +30,14 @@ void time_fft(int n, enum yesno_type march_on){
 	}
 	
 	/*
-	 * Determine count of ffts so that 10 GB of data is accessed.
+	 * Determines count of ffts so that 10 GB of data is accessed.
 	 */
 	long bytes = 10l*1000*1000*1000;
 	double *space = (double *)_mm_malloc(bytes, 64);
 	long count = bytes/(1l*2*n*sizeof(double));
 
 	/*
-	 * Allocate stat objects.
+	 * Allocates stat objects.
 	 */
 	if(stat_mkl != NULL)
 		delete stat_mkl;
@@ -53,7 +53,7 @@ void time_fft(int n, enum yesno_type march_on){
 
 
 	/*
-	 * Initialize data.
+	 * Initializes data.
 	 */
 	if(march_on == YES)
 		for(long i = 0; i < count; i++){
@@ -71,7 +71,7 @@ void time_fft(int n, enum yesno_type march_on){
 	
 	TimeStamp clk;
 	/*
-	 * Collect mkl stat.
+	 * Collects mkl stat.
 	 */
 	fft_mkl mkl(n);
 	for(long i = 0; i < count; i++){
@@ -87,7 +87,7 @@ void time_fft(int n, enum yesno_type march_on){
 	}
 
 	/*
-	 * Collect fftw stat.
+	 * Collects fftw stat.
 	 */
 	fft_fftw fftw(n);
 	for(long i = 0; i < count; i++){
@@ -103,7 +103,7 @@ void time_fft(int n, enum yesno_type march_on){
 	}
 
 	/*
-	 * Collect nr data.
+	 * Collects nr data.
 	 */
 	switch(pow2){
 	case NO:
