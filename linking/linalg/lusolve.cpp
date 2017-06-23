@@ -35,7 +35,7 @@ void LU_Solve::factorize(){
 	int n = dim;
 	int lda = dim;
 	int info;
-	dgetrf_(&m, &n, A, &lda, ipiv, &info); //LAPACK call
+	dgetrf_(&m, &n, A, &lda, ipiv, &info); //LAPACK call.
 }
 
 void LU_Solve::solve(double *v){
@@ -45,6 +45,6 @@ void LU_Solve::solve(double *v){
 	int ldv  = dim;
 	int info;
 	dgetrs_(trans, &dim, &nrhs, A, &lda, ipiv, v, &ldv, 
-		&info);//LAPACK call
+		&info);//LAPACK call.
 }
 

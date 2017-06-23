@@ -12,6 +12,14 @@ using namespace std;
 const double PI = 3.1415926535897932384e+00;
 #endif
 
+/*
+ * This class is used to introduce C++ features.
+ * It is used to show how the use or misuse of C++ abstraction features
+ * can become problematic. 
+ * Do not use this class. 
+ * For those who insist on an abstract Vector class, there are better options.
+ */
+
 class Vector{
 private:
 	long int size;
@@ -48,7 +56,7 @@ public:
 	}
 	
 
-	//Make *this shadow dataptr.
+	//Makes *this shadow dataptr.
 	void shadow(double *dataptr, long int len){
 		assert(!owner);
 		size = len;
@@ -158,7 +166,7 @@ public:
 		return ans;
 	}
 
-	//Output vector to file fname.
+	//Outputs vector to file fname.
 	void output(const char* fname, int digits=18)const{
 		ofstream ofile(fname);
 		assert(!ofile.fail());
@@ -170,7 +178,7 @@ public:
 		ofile.close();
 	}
 
-	//Input vector from file fname.
+	//Inputs vector from file fname.
 	void input(const char* fname){
 		ifstream ifile(fname);
 		assert(!ifile.fail());

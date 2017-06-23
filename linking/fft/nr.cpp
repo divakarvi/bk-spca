@@ -1,7 +1,7 @@
 #include "nr.hh"
 #include <cmath>
 
-//From Numerical Recipes in C, 2nd edition, p. 507
+//From Numerical Recipes in C, 2nd edition, p. 507.
 #define SWAP(a,b) tempr=(a);(a)=(b);(b)=tempr
 static void four1(double data[], unsigned long nn, int isign){
 	unsigned long n, mmax, m, j, istep, i;

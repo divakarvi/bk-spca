@@ -10,61 +10,61 @@ const int MAX_CMD_PYPLT_LEN = 3000;
 
 class PyPlot{
 private:
-	FILE *pypipe; //pipe to Python
+	FILE *pypipe; //pipe to Python.
 	/*
-	 * state = 0 (no line drawn)
-         *       = 1 (line drawn, but figure not saved/shown)
-         *       = 2 (figure saved/shown, should possibly save script and exit)
+	 * state = 0 (no line drawn).
+         *       = 1 (line drawn, but figure not saved/shown).
+         *       = 2 (figure saved/shown, should possibly save script and exit).
 	 */
 	int state;
 	/*
-	 * if nonzero no pipe is opened to python
+	 * If nonzero no pipe is opened to python.
 	 */
 	enum pipe_type pipe_state;
 	/*
 	 * Figure will be saved in FIGS/"name.pdf."
-	 * If asked to do so, data & script will be saved in FIGS/name_*.
+	 * If asked to do so, data & script will be saved in FIGS/name_*.*.
 	 * Normally, data is saved in FIGS/name_* and deleted.
 	 */
 	char name[30];
 	/*
 	 * Array of commands issued to python.
-	 * At most MAX_NUM commands are allowd.
+	 * At most MAX_NUM commands are allowed.
 	 */
 	char *cmd[MAX_NUM_PYPLT_CMDS];
 	char cmdstr[MAX_CMD_PYPLT_LEN];
 	/*
-	 * cmdnum = 0 initially
-	 *        = index of current/next command
+	 * cmdnum: 0 initially
+	 *         index of current/next command
 	 * Incremented after cmd is issued.
 	 */
 	int cmdnum;
 	/*
-	 * linenum = index of current line
-	 * Appended to name_ to save data for Python.
+	 * linenum: index of current line
+	 * Appended to name_ when saving data for Python.
 	 * All saved data is removed unless specified otherwise.
 	 */
 	int linenum;
 	/*
-	 * savedata = 0 then line data is removed by destructor
-	 *          = 1 then line data is not removed from FIGS/name_*
+	 * savedata: 0 then line data is removed by destructor,
+	 *           1 then line data is not removed from FIGS/name_*.*.
 	 */
 	int savedata;
 	/*
-	 * called by plot(), semilogx/y, loglog
+	 * Called by plot(), semilogx/y, loglog.
 	 */
 	void prep_line(double *x, double *y, int n);
 	void issue_command(const char *cstr);
 public:
 	/*
-	 * name must be less than 25 chars.
-	 * pipe == PLTOFF then mpl.backend is set to PDF.
+	 * namei[]: must be less than 25 chars.
+	 * pipe: PLTOFF then mpl.backend is set to PDF.
 	 */
 	PyPlot(const char *namei, enum pipe_type pipe=PLTON);//state:0
 	~PyPlot();
 	/*
-	 * functions for drawing lines and setting their properties
-	 * state: 0-->1 or 1-->1
+	 * Functions that draw lines and set their properties.
+	 * state: 0-->1 or 1-->1.
 	 */
 	void plot(double *x, double *y, int n);
 	void plot(double *y, int n);
@@ -79,7 +79,7 @@ public:
 	void markercolor(const char* s);
 	void markersize(const char* s);
 	/*
-	 * functions for specifying axes and their properties
+	 * Functions that specify axes and their properties.
 	 */
 	void axis(); //"tight"
 	void axis(double x0, double x1, double y0, double y1);
@@ -96,13 +96,13 @@ public:
 	void pycmd(const char *s);
 
 	/*
-	 * Function for showing/output.
+	 * Shows plot or outputs python script in FIGS/ for showing plot.
 	 * PLTON then plot.
 	 * PLTOFF then save to pdf.
 	 */
 	void show();//state: 1--->2
 	/*
-	 * save python script in FIGS/.
+	 * Saves python script in FIGS/.
 	 */
 	void savescript();//state: 2--->2
 };

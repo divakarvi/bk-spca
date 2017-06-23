@@ -2,15 +2,15 @@
 #define TESTBLKUTILS8OCT2013
 
 /*
- * c = mxn, column major order.
+ * c[]: mxn, column major order.
  * m, n divisible by 2.
  * Each 2x2 subblock is skewed.
  */
 void skew2x2(double *c, int m, int n);
 
 /*
- * bb is a 200x4 matrix in column major order with ldbb.
- * bb is packed in row major format into b.
+ * bb[]: 200x4 matrix in column major order with ldbb.
+ * b[]: bb[] packed in row major format.
  */
 void transpose200x4(double *bb, int ldbb, double *b);
 

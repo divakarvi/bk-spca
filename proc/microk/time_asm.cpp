@@ -6,7 +6,7 @@
 #include <cstdlib>
 
 /*
- * Returns average number of cycles for asm4xnx4.
+ * Returns average number of cycles for asm4xnx4().
  * n = 1, 4, 20, 40, 100, 200.
  */
 double time(int n){

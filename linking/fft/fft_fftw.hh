@@ -9,12 +9,12 @@ private:
 	fftw_plan pf;
 	fftw_plan pb;
 public:
-	fft_fftw(int nin); //nin: length of Fourier transform
+	fft_fftw(int nin); //nin: length of Fourier transform.
 	~fft_fftw();
 	/*
-	 *   f: 2*n doubles (n complex numbers)
-	 * fwd: f phys ---> fourier in-place
-	 * bwd: f fourier---> phys in-place
+	 *   f: 2*n doubles (n complex numbers).
+	 * fwd: f phys ---> fourier in-place.
+	 * bwd: f fourier---> phys in-place.
 	 */
 	void fwd(double *f){
 		assrt((long)f%32 == 0);

@@ -4,7 +4,7 @@
 /*
  * 1. These macros provide an easy means to use the xmm registers.
  * 2. However, they can easily lead to incorrect code when used within loops.
- * 3. These macros to subject the xmm registers to a sequence of 
+ * 3. These macros subject the xmm registers to a sequence of 
  *    arithmetic operations. The compiler may use xmm registers to store 
  *    temp data in-between macros, especially likely to happen when the 
  *    macros are used inside for or while loops.

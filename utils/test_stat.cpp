@@ -1,10 +1,10 @@
 #include "StatVector.hh"
 #include <iostream>
 
-//n=number of items to be inserted
+//n: number of items to be inserted.
 //All numbers inserted are from 0 to 255.
 void runstatv(int n){
-	long int pm = 32452843;
+	long int pm = 32452843;//Prime number.
 	StatVector v(n);
 	for(int i=1; i <= n; i++){
 		v.insert(i*pm%256);

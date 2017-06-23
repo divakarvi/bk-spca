@@ -2,7 +2,7 @@
 #include "../../utils/Table.hh"
 #include <cmath>
 
-//Sine table for theta = (pi/(2*n))*i, where i=0,...,n.
+//stab[]: returns sin(theta) for theta = (pi/(2*n))*i, where i=0,...,n.
 //Thus, stab[0..n] must be of size n+1
 void sinetable(int n, double *restrict stab){
 	double dx = 3.14159265358979323846/(2*n);

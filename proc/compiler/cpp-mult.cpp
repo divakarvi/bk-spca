@@ -22,7 +22,7 @@ void timecppmult(int dim, int count){
 	TimeStamp clk;
 	StatVector stats(count);
 
-	for(int i=0; i < dim*dim*count; i++){//fast and not random
+	for(int i=0; i < dim*dim*count; i++){//Fast but not random initlzn.
 		a(i) = 1/(i+1);
 		b(i) = 2*i/(4*i+1);
 		c(i) = 0;

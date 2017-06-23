@@ -14,20 +14,20 @@
 
 using namespace std;
 
-//utils.hh
+//utils.hh.
 int num_cpu(){
 	int nth = sysconf( _SC_NPROCESSORS_ONLN );
 	assrt(nth > 0);
 	return nth;
 }
 
-//utils.hh
+//utils.hh.
 void array_abs(double *v, int n){
 	for(int i=0; i < n; i++)
 		v[i] = fabs(v[i]);
 }
 
-//utils.hh
+//utils.hh.
 double array_max(double *v, int n){
 	double ans = 0;
 	for(int i=0; i < n; i++)
@@ -36,19 +36,19 @@ double array_max(double *v, int n){
 	return ans;
 }
 
-//utils.hh
+//utils.hh.
 void array_diff(double *restrict v, double *restrict w, int n){
 	for(int i=0; i < n; i++)
 		v[i] -= w[i];
 }
 
-//utils.hh
+//utils.hh.
 void array_copy(double *restrict v, double *restrict w, int n){
 	for(int i=0; i < n; i++)
 		w[i] = v[i];
 }
 
-//utils.hh
+//utils.hh.
 void array_out(double *v, int m, int n, const char* fname){
 	FILE *fp;
 	if(fname == NULL)
@@ -68,7 +68,7 @@ void array_out(double *v, int m, int n, const char* fname){
 	}
 }
 
-//utils.hh
+//utils.hh.
 void array_out(double *v, int m, int n, int lda, const char *fname){
 	FILE *fp;
 	if(fname == NULL)
@@ -88,7 +88,7 @@ void array_out(double *v, int m, int n, int lda, const char *fname){
 	}
 }
 
-//utils.hh
+//utils.hh.
 void array_show(double *v, int n, const char* mesg){
 	cout<<"\t\t\t\t"<<mesg<<endl;
 	cout<<scientific<<setprecision(15);
@@ -97,7 +97,7 @@ void array_show(double *v, int n, const char* mesg){
 	cout<<endl;
 }
 
-//utils.hh
+//utils.hh.
 void array_in(double *v, int size,  const char* fname){
 	std::ifstream ifile(fname);
 	assrt(ifile.is_open());
@@ -106,13 +106,13 @@ void array_in(double *v, int size,  const char* fname){
 	ifile.close();
 }
 
-//utils.hh
+//utils.hh.
 void array_flush(double *v, int size){
 	for(long int i=0; i < size; i++)
 		_mm_clflush(v + i);
 }
 
-//utils.hh
+//utils.hh.
 void solve2x2(double *restrict A, double *restrict rhs, double *restrict x){
   double a = A[0];
   double b = A[2];
@@ -124,7 +124,7 @@ void solve2x2(double *restrict A, double *restrict rhs, double *restrict x){
 
 }
 
-//utils.hh
+//utils.hh.
 void verify_dir(const char *dir){
 	struct stat sb;
 	int rval = stat(dir, &sb);
@@ -135,7 +135,7 @@ void verify_dir(const char *dir){
 	assrt(S_ISDIR(sb.st_mode));
 }
 
-//utils.hh
+//utils.hh.
 void mop_dir(const char* dir, const char *pfx){
 	DIR* dstm;
 	dstm = opendir(dir);
@@ -173,7 +173,7 @@ static std::streambuf *sbuf_backup;
 static std::ofstream ofile;
 static int linkcout_state = 0;
 
-//utils.hh
+//utils.hh.
 void link_cout(const char *fname, enum link_cout_flag_enum flag){
 	assrt(linkcout_state == 0);
 	linkcout_state = 1;
@@ -193,7 +193,7 @@ void link_cout(const char *fname, enum link_cout_flag_enum flag){
 	assrt(cout.good());
 }
 
-//utils.hh
+//utils.hh.
 void unlink_cout(){
 	assrt(linkcout_state == 1);
 	linkcout_state = 0;
@@ -202,7 +202,7 @@ void unlink_cout(){
 	ofile.close();
 }
 
-//utils.hh
+//utils.hh.
 void box_file(const char* fname, const char*mesg){
 	FILE *file;
 		file = fopen(fname, "r");
@@ -244,7 +244,7 @@ void box_file(const char* fname, const char*mesg){
 	    <<endl;
 }
 
-//utils.hh
+//utils.hh.
 void print_proc_status(const char* mesg){
 	int pid = getpid();
 	char fname[200];
@@ -252,7 +252,7 @@ void print_proc_status(const char* mesg){
 	box_file(fname, mesg);
 }
 
-//utils.hh
+//utils.hh.
 int dv_omp_nthreads(){
 	if(getenv("OMP_NUM_THREADS")==NULL){
 		printf("OMP_NUM_THREADS not defined");

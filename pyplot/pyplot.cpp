@@ -3,7 +3,7 @@
 #include <cstring>
 #include <cstdlib>
 
-//pyplot.hh
+//pyplot.hh.
 PyPlot::PyPlot(const char* namei, enum pipe_type pipe){
 	pipe_state = pipe;
 	verify_dir("FIGS");
@@ -32,7 +32,7 @@ PyPlot::PyPlot(const char* namei, enum pipe_type pipe){
 	issue_command(cmdstr);
 
 	/*
-	 * Change backend if PLTOFF.
+	 * Changes backend if PLTOFF.
 	 */
 	if(pipe_state == PLTOFF){
 		sprintf(cmdstr, "mpl.use('PDF', warn = True)\n");

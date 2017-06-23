@@ -3,7 +3,7 @@
 #include <cstring>
 #include <cstdlib>
 
-//pyhist.hh
+//pyhist.hh.
 PyHist::PyHist(const char* namei, enum pipe_type pipe){
 	pipe_state = pipe;
 	verify_dir("FIGS/");
@@ -30,7 +30,7 @@ PyHist::PyHist(const char* namei, enum pipe_type pipe){
 	issue_command(cmdstr);
 
 	/*
-	 * Change backend if PLTOFF.
+	 * Changes backend if PLTOFF.
 	 */
 	if(pipe_state == PLTOFF){
 		sprintf(cmdstr, "mpl.use('PDF', warn = True)\n");
@@ -56,7 +56,7 @@ PyHist::~PyHist(){
 	int rval = pclose(pypipe);
 	assrt(rval != -1);
 	
-	//pipe must be closed (as above) before data is removed
+	//pipe must be closed (as above) before data is removed.
 	if(savedata==0){
 		sprintf(cmdstr, "rm FIGS/%s_*", name);
 		system(cmdstr);

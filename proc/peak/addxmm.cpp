@@ -4,11 +4,11 @@
 
 /*
  * Inspect assembly of addreg() and add3reg() to ensure the compiled code 
- * is as expected
+ * is as expected.
  */
 
 // a[0,1] += nitns*b[0,1].
-//(expect 3 clock ticks per iteration.)
+//(Expect 3 clock ticks per iteration.)
 void addreg(double *a, double *b, long int nitns){
   long int  i;
   loadxmm(a, "%xmm0");
@@ -19,7 +19,7 @@ void addreg(double *a, double *b, long int nitns){
 }
 
 // a[0..5] += nitns*b[0..5].
-//(expect 3 clock ticks per iteration.)
+//(Expect 3 clock ticks per iteration.)
 void add3reg(double *a, double *b, long int nitns){
 	long int  i;
 	loadxmm(a, "%xmm0");

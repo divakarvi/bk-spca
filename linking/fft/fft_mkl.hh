@@ -7,12 +7,12 @@ private:
 	int n;
 	DFTI_DESCRIPTOR_HANDLE handle;
 public:
-	fft_mkl(int nin); //nin: length of Fourier transform
+	fft_mkl(int nin); //nin: length of Fourier transform.
 	~fft_mkl();
 	/*
-	 *   f: 2*n double (n complex numbers) 
-	 * fwd: f phys ---> fourier in-place
-	 * bwd: f fourier---> phys in-place
+	 *   f: 2*n double (n complex numbers). 
+	 * fwd: f phys ---> fourier in-place.
+	 * bwd: f fourier---> phys in-place.
 	 */
 	void fwd(double *f){
 		DftiComputeForward(handle, f);

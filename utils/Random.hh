@@ -11,14 +11,14 @@ public:
 	Random(unsigned int seed = 0){
 		int status = vslNewStream(&stream, VSL_BRNG_MCG59, seed);
 	}
-	// Returns normally distributed random variable of variance sigma.
+	//Returns normally distributed random variable of variance sigma.
 	double randn(double sigma = 1.0){
 		double val;
 		int status = vdRngGaussian(VSL_RNG_METHOD_GAUSSIAN_ICDF,
 					   stream, 1, &val, 0, sigma);//mean=0
 		return val;
 	}
-	// Returns variable uniformly distributed in [a,b].
+	//Returns variable uniformly distributed in [a,b].
 	double rand(double a = 0.0, double b = 1.0){
 		double val;
 		int status = vdRngUniform(VSL_RNG_METHOD_UNIFORM_STD,

@@ -4,8 +4,6 @@
 extern void multxmm4x1x4(double *a, double *b, double *c);
 extern void multxmm4x1x4R(double *a, double *b, double *c);
 
-
-
 int main(){
 	__declspec(align(16)) double a[4] = {0};
 	__declspec(align(16)) double b[4] = {0};

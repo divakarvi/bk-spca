@@ -12,7 +12,7 @@ void skew2x2(double *c, int m, int n){
 		}
 }
 
-//here b is in packed format
+//Here b[] is in packed format.
 void transpose200x4(double *bb, int ldbb, double *b){
 	for(int i=0; i < 200; i++)
 		for(int j=0; j < 4; j++){

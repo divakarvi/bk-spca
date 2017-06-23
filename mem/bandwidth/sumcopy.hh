@@ -12,7 +12,7 @@ double sum(double *restrict a, long int n);
 double sumstride(double *restrict a, long int n, int stride);
 
 /*
- * Return a[0] + a[STR] + a[2*STR]... where STR is const
+ * Return a[0] + a[STR] + a[2*STR]..., where STR is const.
  */
 double sumconststride(double *restrict a, long int n);
 
@@ -22,7 +22,7 @@ double sumconststride(double *restrict a, long int n);
 void copy(double *restrict a, double *restrict b, long int n);
 
 /*
- * b[i] = a[i] for i = 0, STR, 2*STR, ... where STR is const.
+ * b[i] = a[i] for i = 0, STR, 2*STR, ..., where STR is const.
  */
 void copyconststride(double *restrict a, double *restrict b, long int n);
 

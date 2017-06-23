@@ -19,9 +19,9 @@ extern void multIJKX(double *restrict a, double *restrict b,
 enum mmult_enum {ijk, ijkx, IJK, IJKX, BLAS};
 
 /*
- * dim = dimension of square matrices multiplied
- * flag =  multiplication function used
- * returns number of flops per cycle in matrix mult
+ * dim: dimension of square matrices multiplied.
+ * flag:  code for multiplication function used.
+ * Returns number of flops per cycle in matrix mult.
  */
 double time(int dim, enum mmult_enum flag){
 	long nbytes = 1l*1000*1000*1000; //1 GB of memory

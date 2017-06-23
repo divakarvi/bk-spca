@@ -9,13 +9,13 @@ private:
 	const char* (*rowlist);
 	const char* (*collist);
 	double *datarr;
-	int m, n; //dim of data
+	int m, n; //Dimension of table.
 public:
 	Table():state(0){
 		width = 15;
 	};
 	/*
-	 * change column width from default of 15
+	 * Changes column width from default of 15 chars.
 	 */
 	void set_width(int w){
 		assrt(state == 0);
@@ -41,7 +41,7 @@ public:
 	}
 	
 	/*
-	 * templates might be a good idea here
+	 * Templates would be a good idea here.
 	 */
 	void data(double *datai){
 		assrt(state == 3);

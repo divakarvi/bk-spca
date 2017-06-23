@@ -1,7 +1,7 @@
 #include "latency_utils.hh"
 #include <cstdlib>
 
-//latency_utils.hh
+//latency_utils.hh.
 int countrepeats(long int *list, long int n, int count){
 	/*
 	 * llist[i] = index accessed through list[] in i-th access.
@@ -32,7 +32,7 @@ int countrepeats(long int *list, long int n, int count){
 	return repeats;
 }
 
-//latency_utils.hh
+//latency_utils.hh.
 //Birthday Problem probability.
 double probNoR(long int n, int count){
 	double p = 1.0;
@@ -42,7 +42,7 @@ double probNoR(long int n, int count){
 	return p;
 }
 
-//latency_utils.hh
+//latency_utils.hh.
 /*
  * list[i] = i initiallly
  * list[i] exchanged with j, i <= j  < n, j "random"
@@ -58,7 +58,7 @@ void random_perm(int *list, int n){
 	}
 }
 
-//latency_utils.hh
+//latency_utils.hh.
 void random_cycle(int *list, int n){
 	int *tmp = new int[n];
 	
@@ -68,4 +68,3 @@ void random_cycle(int *list, int n){
 
 	delete[] tmp;
 }
-

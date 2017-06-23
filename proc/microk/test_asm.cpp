@@ -3,8 +3,11 @@
 #include <cstdio>
 #include <cstdlib>
 /*
+ * Skews 2x2 blocks of c[].
+ * |a b| ---> |a c|
+ * |c d|      |d b|
  * Skewing is a permutation of order 3.
- * Skew twice to reverse skewing.
+ * Skew twice more to reverse skewing.
  */
 void skew2x2(double *c, int m, int n){
 	int ldc = m;

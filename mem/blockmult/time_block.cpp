@@ -8,13 +8,13 @@
 enum cacheflag {L2cache, L3cache};
 
 /*
- * L1 cache = 32 KB = 4000 doubles
- * L2 cache = 260 KB = 32500 doubles
- * L3 cache = 12.6 MB  = 1.5 million doubles
- * a = 800*15  = 12000 doubles streamed from L2 cache (flag == L2cache)
- * a = 800*150 = 120000 doubles streamed from L3 cache (flag == L3cache)
- * b = 800 doubles is assumed to be in L1 cache
- * returns avg cycles for a mult
+ * L1 cache = 32 KB = 4000 doubles (or more assumed).
+ * L2 cache = 260 KB = 32500 doubles.
+ * L3 cache = 12.6 MB  = 1.5 million doubles.
+ * a[]: 800*15  = 12000 doubles streamed from L2 cache (flag == L2cache).
+ * a[]: 800*150 = 120000 doubles streamed from L3 cache (flag == L3cache).
+ * b[]: 800 doubles is assumed to be in L1 cache.
+ * Returns avg cycles for a mult.
  */
 double time4x200x4(enum cacheflag flag){
 	int N;
@@ -49,9 +49,9 @@ double time4x200x4(enum cacheflag flag){
 }
 
 /*
- * a = 120000 or 12000 doubles (stream from L3 or L2)
- * b = 2400 doubles
- * return avg cycles
+ * a[]: 120000 or 12000 doubles (stream from L3 or L2).
+ * b[]: 2400 doubles.
+ * Returns avg cycles.
  */
 double time4x200x12(enum cacheflag flag){
 	int N;
@@ -87,9 +87,9 @@ double time4x200x12(enum cacheflag flag){
 }
 
 /*
- * a = 120000 doubles in L3 cache
- * b = 200*12*1000 = 2,400,000 doubles loaded to L1 cache from memory
- * C = 600*12*2000 = 600*12 matrix with large ldC
+ * a[]: 120000 doubles in L3 cache.
+ * b[]: 200*12*1000 = 2,400,000 doubles loaded to L1 cache from memory.
+ * C[]: 600*12*2000 = 600*12 matrix with large ldC.
  */
 double time600x200x12(){
 	__declspec(align(16)) double a[600*200];
@@ -133,7 +133,7 @@ double time600x200x12(){
 }
 
 /*
- * time while evicting A and C from cache
+ * Times without evicting A[] and C[] from cache.
  */
 double time600x200x3000(){
 	int ldA = 6000;
@@ -173,7 +173,7 @@ double time600x200x3000(){
 }
 
 /*
- * time with large ldB
+ * Times with large ldB.
  */
 double time3000x200x3000(){
 	int ldA = 3000;
@@ -215,7 +215,7 @@ double time3000x200x3000(){
 }
  
 /*
- * time 9000x9000x9000
+ * Times 9000x9000x9000.
  */
 double timeblock(){
 	const int l = 9000;

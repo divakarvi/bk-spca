@@ -1,7 +1,7 @@
 #include "../../utils/utils.hh"
 #include "transpose.hh"
 
-//transpose.hh
+//transpose.hh.
 void easytrans(double *restrict a, double *restrict b, int m, int n){
 	for(int i=0; i < m; i++)
 		for(int j=0; j < n; j++)
@@ -14,7 +14,7 @@ static void oneblock(double *restrict a, double *restrict b, int lda, int ldb){
 			b[j+i*ldb] = a[i+j*lda];
 }
 
-//transpose.hh
+//transpose.hh.
 void blocktrans(double *restrict a, double *restrict b, int m, int n){
 	assrt((m%B==0)&&(n%B==0));
 	for(int i=0; i < m; i+=B)
@@ -22,7 +22,7 @@ void blocktrans(double *restrict a, double *restrict b, int m, int n){
 			oneblock(a+i+j*m, b+j+i*n, m, n);
 }
 
-//transpose.hh
+//transpose.hh.
 void blocktransx(double *restrict a, double *restrict b, int m, int n){
 	assrt((m%B==0)&&(n%B==0));
 	for(int i=0; i < m; i+=B)
@@ -51,15 +51,15 @@ void recursivetrans(double *restrict a, double *restrict b,
 	}
 }
 
-//transpose.hh
+//transpose.hh.
 void recursivetrans(double *restrict a, double *restrict b, int m, int n){
 	assrt(m%B == 0 && n%B == 0);
 	assrt(m >= B && n >= B);
 	recursivetrans(a, b, m, n, m, n);
 }
 
-//transpose.hh
-//m and n must equal a power of 2 times B (blk size)
+//transpose.hh.
+//n must equal a power of 2 times B (blk size)
 void pow2trans(double *restrict a, double *restrict b, int n){
 	int n1 = n/B;//n1 assumed to be power of 2
 	int i=0, j=0;

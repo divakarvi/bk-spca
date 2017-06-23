@@ -53,7 +53,7 @@ public:
 			free(data);
 	}
 	
-	//Make *this a shadow of dataptr.
+	//Makes *this a shadow of dataptr.
 	void shadow(double *dataptr, int m, int n){
 		assert(!owner);
 		size1 = m;
@@ -121,7 +121,7 @@ public:
 		return data[j*lda+i];
 	}
 	
-	//Returns reference ot (i,j)th entry of *this.
+	//Returns reference to (i,j)th entry of *this.
 	const double& operator()(int i, int j)const{
 		assert(i<size1);
 		assert(j<size2);
@@ -129,7 +129,7 @@ public:
 		
 	}
 	
-	//*this(i,j) is set to M(i,j) for all (i,j).
+	//Sets *this(i,j) to M(i,j) for all (i,j).
 	Matrix& operator=(const Matrix& M){
 		assert((size1==M.size1)&&(size2==M.size2));
 		for(int j=0; j < size2; j++)
@@ -139,7 +139,7 @@ public:
   }
 
   
-	//Transpose square matrix.
+	//Transposes square matrix.
 	void transpose(){
 		assert(getm()==getn());
 		for(int i=0; i < getm(); i++)
@@ -198,7 +198,7 @@ public:
 	}
 
 
-	//Output matrix to file fname.
+	//Outputs matrix to file fname.
 	void output(const char *fname, int digits=18)const{
 		ofstream ofile(fname);
 		assert(!ofile.fail());
@@ -213,7 +213,7 @@ public:
 		ofile.close();
 	}
 
-	//Input matrix from file fname.
+	//Inputs matrix from file fname.
 	void input(const char *fname){
 		ifstream ifile(fname);
 		assert(!ifile.fail());

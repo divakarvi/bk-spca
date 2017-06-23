@@ -5,6 +5,7 @@ const int N=1000*1000*125;
 /*
  * "cat /proc/meminfo" before and after this program to check disk cache.
  * Use the command "echo 1 > /proc/sys/vm/drop_caches" to clear disk cache.
+ * Command ought to be hardwired here?
  */
 void write2file(){
 	/*

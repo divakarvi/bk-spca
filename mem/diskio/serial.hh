@@ -8,23 +8,23 @@
 #define FLUSH_COUNT 10
 #endif
 /*
- * Write v[0..len-1] to fname using ofstream and 16 digit precision.
+ * Writes v[0..len-1] to fname using ofstream and 16 digit precision.
  */
 void write_easy(double *v, long len, const char *fname);
 
 /*
- * Read v[0..len-1] from fname using ifstream.
+ * Reads v[0..len-1] from fname using ifstream.
  */
 void read_easy(double *v, long len, const char *fname);
 
 /*
- * Write v[0..len-1] to fname using fwrite().
+ * Writes v[0..len-1] to fname using fwrite().
  * Writes FLUSH_COUNT times if DCACHE_FLUSH is on.
  */
 void write_direct(double *v, long len, const char *fname);
 
 /*
- * Read v[0..len-1] from fname using fread().
+ * Reads v[0..len-1] from fname using fread().
  * Rereads FLUSH_COUNT times if DCACHE_FLUSH is enabled.
  * Calls dummy() to ensure compiler does not optimize away all but last call.
  */
@@ -46,7 +46,7 @@ struct disk_latency{
 /*
  * Accesses dir/file[i].dat with i = filenum.
  * File accessed at position posn.
- * lat contains open/seek/read/close cycles.
+ * lat: struct returning open/seek/read/close cycles.
  * Returns number read.
  */
 double latency2disk(const char *dir, int filenum, long posn,

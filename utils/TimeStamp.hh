@@ -9,10 +9,10 @@ private:
 	unsigned int a2, d2;
 public:
 	TimeStamp(){};
-	void tic(){//does not use cpuid
+	void tic(){//Does not serialize.
 		asm volatile("rdtsc" : "=a" (a1), "=d" (d1));
 	}
-	double toc(){//does not use cpuid
+	double toc(){//Does not serialize.
 		asm volatile("rdtsc" : "=a" (a2), "=d" (d2));
 		return convert(a1, d1, a2, d2);
 	}

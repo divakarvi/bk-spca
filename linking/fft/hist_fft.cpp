@@ -3,9 +3,9 @@
 #include "fft_mkl.hh"
 
 /*
- *           n: size of fft
- *       count: num of ffts
- * cyc_list[i]: number of cycles used by i-th fft (output)
+ *           n: size of fft.
+ *       count: num of ffts.
+ * cyc_list[i]: number of cycles used by i-th fft (output).
  */
 void cyclelist(int n, int count, double cyc_list[]){
 	fft_mkl fft(n);
@@ -37,7 +37,7 @@ void cyclelist(int n, int count, double cyc_list[]){
 int window(double *cyc_list, int len, 
 	   double window_begin, double window_end){
 	/*
-	 * first pos in cyc_list[] beyond windowed entries
+	 * First pos in cyc_list[] beyond windowed entries.
 	 */
 	int current = 0;
 	for(int i=0; i < len; i++){
@@ -53,10 +53,10 @@ int window(double *cyc_list, int len,
 }
 
 /*
- *                n: size of fft
- *            count: number of ffts timed
- *             bins: number of bins for histogram
- * window_begin/end: fft times are windowed using these parameters
+ *                n: size of fft.
+ *            count: number of ffts timed.
+ *             bins: number of bins for histogram.
+ * window_begin/end: fft times are windowed using these parameters.
  */
 void makehist(int n, int count, int bins,
 	      double* window_begin, double* window_end, int window_len)
@@ -88,7 +88,7 @@ int main(){
 	double window_begin[] = {18000};
 	double window_end[] = {50000};
 	/*
-	 * fft dimension
+	 * n: fft dimension.
 	 */
 	int n = 1024;
 	int count = 1000*1000;

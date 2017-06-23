@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 
-//Partials sums of 4(1-1/3+1/5-1/7+1/9-...).
+//Returns sum of 4(1-1/3+1/5-1/7+1/9-...).
 double leibniz(long int n){
 	long int i;
 	double ans;

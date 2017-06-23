@@ -5,7 +5,7 @@
 #include <cstdio>
 
 /*
- * returns relative error
+ * Returns relative error.
  */
 double test4x200x12(){
 	__declspec(align(16)) double a[800];
@@ -40,7 +40,7 @@ double test4x200x12(){
 }
 
 /*
- * returns relative error
+ * Returns relative error.
  */
 double test600x200x12(){
 	__declspec(align(16)) double a[600*200];
@@ -60,7 +60,7 @@ double test600x200x12(){
 		C[i] = cc[i] =  rand()*1.0/RAND_MAX-0.5;
 
 	/*
-	 * pack aa into a
+	 * Packs aa[] into a[].
 	 */
 	for(int i=0; i < 600; i++)
 		for(int j=0; j < 200; j++){
@@ -76,7 +76,7 @@ double test600x200x12(){
 
 	easymult(aa, bb, cc, 600, 200, 12);
 
-	//unskew C
+	//Unskews C[].
 	skew2x2(C, 600, 12);
 	skew2x2(C, 600, 12);
 
@@ -85,7 +85,7 @@ double test600x200x12(){
 	return rerr;
 }
 /*
- * returns relative error
+ * Returns relative error.
  */
 double test600x200x3000(){
 	__declspec(align(16)) double A[600*200];
@@ -104,7 +104,7 @@ double test600x200x3000(){
 		C[i] = CC[i] = rand()*1.0/RAND_MAX-0.5;
 
 	/*
-	 * pack bb into b
+	 * Packs bb[] into b[].
 	 */
 	for(int i=0; i < 750; i++)
 		transpose200x4(bb+i*800,200,b+i*800);
@@ -125,7 +125,7 @@ double test600x200x3000(){
 }
 
 /*
- * returns rel error
+ * Returns rel error.
  */
 double test3000x200x3000(){
 	__declspec(align(16)) double A[3000*200];
@@ -161,7 +161,7 @@ double test3000x200x3000(){
 }
 
 /*
- * returns rel err for 6000x6000x6000 mult
+ * Returns rel err for 6000x6000x6000 mult.
  */
 double testblock(){
 	const int l = 6000;
