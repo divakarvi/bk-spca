@@ -23,7 +23,7 @@ This README document provides context for the source code in this GIT repository
 
 # <a name="preface"></a>[Preface][bk.preface]
 
-What makes computer programs fast or slow? To answer this question, we have to get behind the abstractions of programming languages and look at how a computer really works. This book examines and explains a variety of scientific programming models (programming models relevant to scientists) with an emphasis on how programming constructs map to different parts of the computer's architecture. Two themes emerge: program speed and program modularity.  In this book, the premise is to "get under the hood," and the discussion is tied to specific programs. 
+What makes computer programs fast or slow? To answer this question, we have to get behind the abstractions of programming languages and look at how a computer really works. This book examines and explains a variety of scientific programming models (programming models relevant to scientists) with an emphasis on how programming constructs map to different parts of the computer's architecture. Two themes emerge: program speed and program modularity.  Throughout the book, the premise is to "get under the hood," and the discussion is tied to specific programs. 
 
 The book digs into linkers, compilers, operating systems, and computer architecture to understand how the different parts of the computer interact with programs. It begins with a review of C/C++ and explanations of how libraries, linkers, and Makefiles work. Programming models covered include Pthreads, OpenMP, MPI, TCP/IP, and CUDA. The emphasis on how computers work leads the reader into computer architecture and occasionally into the operating system kernel. The operating system studied is Linux, the preferred platform for scientific computing. Linux is also open source, which allows users to peer into its inner workings. A brief appendix provides a useful table of machines used to time programs.
 
@@ -493,7 +493,7 @@ A single array cannot exceed the available DRAM, although it is desirable to wor
 
 ### [4.4][bk.4.4] Page tables and virtual memory
 
-In this section, we make our first foray into the operating system kernel. [83]  The cost of a single write to memory by an instruction such as movq %rax, (%rsi) brings in many layers of complexity. It could be a cache hit or a cache miss. If the DRAM memory is accessed, the cost of the access depends on preceding and following memory accesses. It depends on the manner in which the memory controllers operate the DRAM devices. It depends on the parallelism in the instruction stream. It depends on the pressure on dispatch ports in the instruction pipeline among other factors. On top of the layers of complexity engineered into hardware, the operating system introduces yet more complexity.
+In this section, we make our first foray into the operating system kernel. The cost of a single write to memory by an instruction such as movq %rax, (%rsi) brings in many layers of complexity. It could be a cache hit or a cache miss. If the DRAM memory is accessed, the cost of the access depends on preceding and following memory accesses. It depends on the manner in which the memory controllers operate the DRAM devices. It depends on the parallelism in the instruction stream. It depends on the pressure on dispatch ports in the instruction pipeline among other factors. On top of the layers of complexity engineered into hardware, the operating system introduces yet more complexity.
 
 #### [4.4.1][bk.4.4.1] Partitioning the virtual address space
 
