@@ -3,6 +3,7 @@
 #include <cstdio>
 #include <cstring>
 
+//mesg.hh.
 void *print_message(void *arg){
 	char *s = (char *)arg;
 	char ss[400];
@@ -20,7 +21,7 @@ void *print_message(void *arg){
 	return NULL;
 }
 
-
+//mesg.hh.
 void fork_pthreads(){
 	pthread_t thread1, thread2, thread3;
 	char s[600];

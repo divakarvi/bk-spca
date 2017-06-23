@@ -5,6 +5,7 @@
 
 pthread_spinlock_t spinlock;
 
+//mesg.hh.
 void *print_message_spinlock(void *arg){
 	char *s = (char *)arg;
 	char ss[400];
@@ -24,6 +25,7 @@ void *print_message_spinlock(void *arg){
 	return NULL;
 }
 
+//mesg.hh.
 void fork_pthreads_spinlock(){
 	pthread_spin_init(&spinlock, PTHREAD_PROCESS_PRIVATE);
 	pthread_t thread1, thread2, thread3;

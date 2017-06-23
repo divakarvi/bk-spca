@@ -5,6 +5,7 @@
 
 pthread_mutex_t mutex=PTHREAD_MUTEX_INITIALIZER;
 
+//mesg.hh.
 void *print_message_mutex(void *arg){
 	char *s = (char *)arg;
 	char ss[400];
@@ -24,6 +25,7 @@ void *print_message_mutex(void *arg){
 	return NULL;
 }
 
+//mesg.hh.
 void fork_pthreads_mutex(){
 	pthread_t thread1, thread2, thread3;
 	char s[600];
