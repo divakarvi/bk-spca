@@ -9,7 +9,7 @@ double measure_latency(int n, int *npages){
 	int count = 100;
 	StatVector stats(count);
 	for(int i=0; i < count; i++){
-		double cycles = latency(n, npages); /* call extern function */
+		double cycles = latency(n, npages); //Calls extern function.
 		stats.insert(cycles);
 	}
 	return stats.median();
@@ -37,7 +37,7 @@ int main(){
 	
 	const char *rows[4] = {"4", "20", "50", "100"};
 	int n[4] = {4, 20, 50, 100};
-	const char *cols[2] = {"0", "1"}; //tid
+	const char *cols[2] = {"0", "1"}; //tid.
 	double data[8];
 
 	double cycles[2];

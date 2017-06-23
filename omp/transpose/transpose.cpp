@@ -3,10 +3,11 @@
 #include "transpose.hh"
 
 /*
- * block size
+ * Block size.
  */
 int B;
 
+//transpose.hh.
 void easytrans(double *restrict a, double *restrict b, int ldb,
 	       int m, int n){
 	for(int i=0; i < m; i++)
@@ -14,6 +15,7 @@ void easytrans(double *restrict a, double *restrict b, int ldb,
 			b[j+i*ldb] = a[i+j*m];
 }
 
+//transpose.hh.
 void blocktransx(double *restrict a, double *restrict b, 
 		 int ldb, int m, int n){
 	assrt(m%B == 0 && n%B == 0);
@@ -24,6 +26,7 @@ void blocktransx(double *restrict a, double *restrict b,
 					b[j+jj+(i+ii)*ldb] = a[i+ii+(j+jj)*m];
 }
 
+//transpose.hh.
 void blocktrans(double *restrict a, double *restrict b,
 		int m, int n, int nthreads){
 	assrt(m%B == 0);

@@ -11,14 +11,14 @@ struct rval_struct{
 };
 
 /*
- * transpose m x m matrix and return m and bw (as bytes/cycle)
+ * Transposes m x m matrix and returns struct with m and bw (bytes/cycle).
  */
 struct rval_struct time(int nthreads){
 	/*
-	 * 12.8 GB is too big for lonestar
+	 * 12.8 GB is too big for lonestar.
 	 */
-	//int m = 100*100*4;//8*1.6 = 12.8 GB matrix
-	int m = 100*100*2;//8*0.4 = 12.8/4 = 3.2 GB matrix
+	//int m = 100*100*4;//8*1.6 = 12.8 GB matrix.
+	int m = 100*100*2;//8*0.4 = 12.8/4 = 3.2 GB matrix.
 	m = m/(B*nthreads)*B*nthreads;
 	std::cout<<"       B = "<<B<<std::endl;
 	std::cout<<"nthreads = "<<nthreads<<std::endl;
@@ -28,7 +28,7 @@ struct rval_struct time(int nthreads){
 	double *a = (double *)_mm_malloc(1l*m*n*sizeof(double), 64);
 	double *b = (double *)_mm_malloc(1l*m*n*sizeof(double), 64);
 
-	blocktrans(a, b, m, n, nthreads);//numa awareness
+	blocktrans(a, b, m, n, nthreads);//numa before initialization.
 	for(int i=0; i < m*n; i++)
 		b[i] = a[i] = 0;
 
@@ -59,7 +59,7 @@ int main(){
 	const int nthreads = atoi(getenv("OMP_NUM_THREADS"));
 
 	/*
-	 * B <= 80 with 244 threads
+	 * B <= 80 with 244 threads.
 	 */
 	const char *rows[3] = {"25", "50", "75"};
 	int BB[3] = {25, 50, 75};

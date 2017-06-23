@@ -3,7 +3,7 @@
 #include <cstdlib>
 
 void test1(){
-	B = 2; /* B is a global */
+	B = 2; /* B is a global. */
 	int nthreads = 5;
 
 	assrt(10%B == 0);

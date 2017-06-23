@@ -16,7 +16,7 @@ int main(){
 	int count = countouter;
 	int nthreads = num_cpu();
 	printf("nthreads = %d\n", nthreads);
-	kmp_set_defaults("KMP_AFFINITY=compact");//compact or scatter
+	kmp_set_defaults("KMP_AFFINITY=compact");//compact or scatter.
 
 	for(int i=0; i <2; i++){
 		int nth;

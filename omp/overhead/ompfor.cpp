@@ -12,7 +12,7 @@ double ompfor(int nthreads, int countinner, long int countouter){
 	shared(countinner, countouter, cycles)
 	{
 		TimeStamp clk;
-/* barrier to protect clock */
+/* barrier to protect clock. */
 #pragma omp barrier
 #pragma omp master
 		clk.tic();
@@ -38,6 +38,7 @@ double cppfor(int countinner, long int countouter){
 	return cycles;
 }
 
+//overhead.hh
 double ompfor_overhead(int nthreads, int countinner, long int countouter){
 	double ompcycles = ompfor(nthreads, countinner, countouter);
 	double cppcycles = cppfor(countinner, countouter);
@@ -55,7 +56,7 @@ double ompfornowait(int nthreads, int countinner, long int countouter){
 	shared(countinner, countouter, cycles)
 	{
 		TimeStamp clk;
-/* barrier to protect clk */
+/* barrier to protect clk. */
 #pragma omp barrier
 #pragma omp master
 		clk.tic();
@@ -70,6 +71,7 @@ double ompfornowait(int nthreads, int countinner, long int countouter){
 	return cycles;
 }
 
+//overhead.hh
 double ompfornowait_overhead(int nthreads, long int countinner, 
 			     long int countouter){
 	double ompcycles = ompfornowait(nthreads, countinner, countouter);

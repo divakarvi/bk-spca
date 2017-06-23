@@ -12,13 +12,13 @@ double barrier(int nthreads, int count){
 	shared(count, cycles) 
 	{
 		TimeStamp clk;
-/* barrier to protect clk */
+/* barrier to protect clk. */
 #pragma omp barrier 
 #pragma omp master
 		clk.tic();
 		for(int i=0; i < count; i++){
 			dummy();
-/* barrier inside for loop, this one is timed */
+/* barrier inside for loop, this one is timed. */
 #pragma omp barrier    
 		}
 #pragma omp master
@@ -35,7 +35,7 @@ double nobarrier(int nthreads, int count){
 	shared(count, cycles) 
 	{
 		TimeStamp clk;
-/* barrier to protect clk */
+/* barrier to protect clk. */
 #pragma omp barrier
 #pragma omp master
 		clk.tic();
@@ -48,6 +48,7 @@ double nobarrier(int nthreads, int count){
 	return cycles;
 }
 
+//overhead.hh.
 double barrier_overhead(int nthreads, long int count){
 	double b = barrier(nthreads, count);
 	double nb = nobarrier(nthreads, count);

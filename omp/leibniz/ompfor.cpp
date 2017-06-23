@@ -2,6 +2,7 @@
 #include "leibniz.hh"
 #include <omp.h>
 
+//leibniz.hh.
 double parallelfor(long int n, int nthreads){
 	double ans=0;
 #pragma omp parallel for			\
@@ -18,8 +19,7 @@ double parallelfor(long int n, int nthreads){
 	return ans;
 }
 
-
-
+//leibniz.hh.
 double ompfor(long int n){
 	double ans=0;
 #pragma omp parallel				\
@@ -39,7 +39,7 @@ double ompfor(long int n){
 	return ans;
 }
 
-
+//leibniz.hh.
 double ompforchunk(long int n, int chunk){
 	double ans=0;
 #pragma omp parallel				\

@@ -7,8 +7,8 @@
 #include <omp.h>
 
 /*
- * returns num of cycles per fft of size n using nth threads
- * num cycles normalized by n*lg(n)
+ * Returns num of cycles per fft of size n using nth threads.
+ * Num of cycles normalized by n*lg(n).
  */
 double time(int n, int nth){
 	long nbytes = 16l*1000*1000*1000;

@@ -23,7 +23,7 @@ void time_parallel(int nthreads, std::ofstream& ofile){
 		ofile<<stats(i)<<std::endl;
 	
 	/*
-	 * stats data is sorted here
+	 * stats.print() sorts as well.
 	 */
 	stats.print();
    
@@ -43,9 +43,9 @@ int main(){
 	verify_dir("DBG");
 	std::ofstream ofile("DBG/time_parallel.txt");
 	int nthreads = num_cpu();
-	kmp_set_defaults("KMP_AFFINITY=compact");//compact or scatter
+	kmp_set_defaults("KMP_AFFINITY=compact");//compact or scatter.
 	time_parallel(nthreads, ofile);
-	kmp_set_defaults("KMP_AFFINITY=scatter");//compact or scatter
+	kmp_set_defaults("KMP_AFFINITY=scatter");//compact or scatter.
 	time_parallel(nthreads, ofile);
 	
 }

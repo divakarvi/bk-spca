@@ -2,6 +2,7 @@
 #include "leibniz.hh"
 #include <omp.h>
 
+//leibniz.hh.
 double parallel(long int n, int nthreads){
 	assrt(nthreads%2==0);
 	double ans=0;
@@ -23,6 +24,7 @@ double parallel(long int n, int nthreads){
 	return ans; 
 }
 
+//leibniz.hh.
 void partialsum(int offset, long int n, int nthreads, 
 		double & ans){
 	double sum = 0;
@@ -35,6 +37,7 @@ void partialsum(int offset, long int n, int nthreads,
 		ans -= sum;
 }
 
+//leibniz.hh.
 double parallelX(long int n, int nthreads){
 	assrt(nthreads%2==0);
 	double ans=0;
