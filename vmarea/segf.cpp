@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <asm/unistd.h>
 
-
+//segf.hh.
 void ff0(long *a0, long *list, long n){
 	for(int i=0; i < 1000; i++)
 		a0[i] = 0;
@@ -13,6 +13,7 @@ void ff0(long *a0, long *list, long n){
 	sum_arr(a0, 1000);
 }
 
+//segf.hh.
 void f0(long *list, long n){
 	long a0[1000];
 	printf("a0 (in f0)= %p\n", a0);
@@ -20,6 +21,7 @@ void f0(long *list, long n){
 	ff0(a0, list, n);
 }
 
+//segf.hh.
 void f1(long *list, long n){
 	long a1[1000*1000];
 	for(int i=0; i < 1000*1000; i++)
@@ -29,6 +31,7 @@ void f1(long *list, long n){
 	sum_arr(a1, 1000*1000);
 }
 
+//segf.hh.
 void f2(){
 	long a1[1000*1000];
 	for(int i=0; i < 1000*1000; i++)

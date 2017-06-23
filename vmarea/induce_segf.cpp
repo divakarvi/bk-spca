@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <asm/unistd.h>
 
+//segf.hh.
 void sum_arr(long *p, long len){
 	long ans=0;
 	for(long i=0; i < len; i++)
@@ -11,8 +12,9 @@ void sum_arr(long *p, long len){
 }
 
 /*
- * a0 defined by f0() assumed to be within 40K bytes of vm area end 
- * upward from stack locn, beyond stack_end
+ * list[i] goes up to 5000 whereas a0[] in f0() has only 1000 entries.
+ * a0[list[i]]=list[i]*list[i] in ff0() called by f0().
+ * The effect is to go past vm_end and trigger a seg fault.
  */
 void run1(){
 	long *list = new long[5000];
@@ -23,10 +25,12 @@ void run1(){
 }
 
 /*
- * there is no assumption about vm area here
- * upward from stack locn, within stack_end 
- * overwrite saved %rsi
- * saved %rsi is for f0() to return to f1()
+ * f1() defines a1[] with 10**6 entries on the stack. 
+ * f1() then calls f0().
+ * f0() defines a0[0..999] and calls ff0().
+ * ff0() does a0[list[i]] = list[i]*list[i].
+ * All accesses within vm_area this time.
+ * However, ff0() overwrites %rsi saved by f0() to return to f1().
  */
 void run2(){
 	long *list = new long[2000];
@@ -37,9 +41,16 @@ void run2(){
 }
 
 /*
- * there is no assumption about vm area here
- * upward from stack locn, within stack_end, skip past saved %rsi
- * saved %rsi is for f0() to return to f1()
+ * f1() defines a1[] to have 10**6 entries, intlzd to zero.
+ * f1() then calls f0().
+ * f0() defines a0[0..999], intlzd to zero.
+ * f0() then calls ff0().
+ * ff0() does a0[list[i]] = list[i]*list[i].
+ * All accesses within vm_area because of room created by a1[].
+ * Spacing in list[] entries ensures %rsi is not overwritten.
+ * However, ff0() modifies entries of a1[].
+ * ff0() prints a1[] sum to be \sum_{i=0}^{1999}(i+10000)^2.
+ * No memory error this time.
  */
 void run3(){
 	long *list = new long[2000];
@@ -50,9 +61,7 @@ void run3(){
 }
 
 /*
- * downward from a0 defined by f0() on stack
- * overwrites %rsi saved on stack
- * saved %rsi is for ff0() to return to f0()
+ * Overwrites %rsi saved by ff0() to return to f0().
  */
 void run4(){
 	long *list = new long[2000];
@@ -63,10 +72,10 @@ void run4(){
 }
 
 /*
- * downward from a0 defined by f0() on stack
- * goes beyond stack_begin of vm area
- * does not overwrite saved %rsi
- * saved %rsi is for ff0() to return f0()
+ * Same setting as in run4().
+ * Spacing ensures %rsi saved by ff0() to return to f0() is not overwritten.
+ * However, the a0[] accesses go past vm_begin.
+ * No memory error, however.
  */
 void run5(){
 	long *list = new long[200000];
@@ -77,7 +86,8 @@ void run5(){
 }
 
 /*
- * same as above but stack_begin is not crossed if called after run5()
+ * Same as run5(), but vm_begin is not crossed.
+ * That is becuase the call to f2() expands the stack.
  */
 void run6(){
 	long *list = new long[2000];
@@ -90,16 +100,20 @@ void run6(){
 
 
 int main(){
-	printf("run1(): upward from st ptr, beyond stack_end\n");
-	printf("run2(): upward from st ptr, within stack_end\n");
-	printf("run3(): upward from st ptr,"
-	       " within stack_end avoiding saved %%rsi\n");
-	printf("run4(): downward from st ptr,"
-	       " within stack_begin, overwrite %%rsi\n");
-	printf("run5(): downward from st ptr, beyond stack_begin,"
-	       " does not overwrite %%rsi\n");
-	printf("run6(): downward from st ptr,"
-	       " within stack_begin, no %%rsi overwrite\n");
+	printf("\nStack grows downward from a high address.\n\n");
+	printf("If [stack_begin, stack_end] is the vm area, \n");
+	printf("then stack starts near stack_end grows "
+	       "towards stack_begin.\n\n");
+	printf("run1(): goes beyond stack_end, seg faults.\n");
+	printf("run2(): within stack_end, but overwrites return addr.\n");
+	printf("run3(): within stack_end and jumps over return addr."
+	       " No memory error reported.\n");
+	printf("run4(): toward and within stack_begin, "
+	       "but overwrites return addr.\n");
+	printf("run5(): toward and beyond stack_begin,"
+	       " does not overwrite %%rsi, no memory error reported.\n");
+	printf("run6(): toward stack_begin, no %%rsi overwrite, "
+	       "stack_begin not crossed because of prior call.\n");
 	
 	int i;
 	printf("run = ");

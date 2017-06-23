@@ -2,8 +2,7 @@
 extern void dummy(void *a);
 
 /*
- * this program may be used to check the size of the stack
- * below it checks if the stack is 8 GB
+ * Checks if the stack is 8 MB or more.
  */
 
 int main(){
