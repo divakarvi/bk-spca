@@ -18,14 +18,14 @@ void cmd2str(const char*cmd, char *s){
 }
 
 /*
- * transmit series[0..n-1]
- * recv     psum[0..n-1] (partial sums of above)
- * transmission in blocks of size blocksize
- * assumes n divisible by blocksize
- * stat_ns --> number of sends per block
- * star_nr --> number of recvs per block
- * stat_ts --> cycles per block sent
- * stat_tr --> cycles per block rcvd
+ * Sends series[0..n-1].
+ * Receives psum[0..n-1] (partial sums of above).
+ * Transmission in blocks of size blocksize.
+ * Assumes n divisible by blocksize.
+ * stat_ns --> number of sends per block.
+ * star_nr --> number of recvs per block.
+ * stat_ts --> cycles per block sent.
+ * stat_tr --> cycles per block rcvd.
  */
 void partialsum_client(int sock2server, 
 		       double *series, int n,
@@ -94,7 +94,7 @@ void client(const char *server, int blocksize, int n){
 		 <<std::endl;
 
 	/*
-	 * output information about partial sum service
+	 * Outputs information about partial sum service.
 	 */
 	double CPUGHZ = gl_cgwin.CPUGHZ;
 	char fname[200];
@@ -189,7 +189,7 @@ int main(){
 	std::cin>>n;
 	std::cout<<std::endl;
 	assrt(n > 0);
-	n = n*blocksize; /* number of terms in series */
+	n = n*blocksize; //Number of terms in series.
 
 	client(server, blocksize, n); 
 

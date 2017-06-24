@@ -15,6 +15,7 @@ const char* PORTNUM = "28537";
 struct cgw_info_struct gl_cgwin;
 int gl_init_cgwin = 0;
 
+//tcp_utils.hh.
 void init_cgwin(int N, double cpughz){
 	assrt(N > 0);
 	gl_init_cgwin = 1;
@@ -26,12 +27,14 @@ void init_cgwin(int N, double cpughz){
 	gl_cgwin.CPUGHZ = cpughz;
 }
 
+//tcp_utils.hh.
 void exit_cgwin(){
 	gl_init_cgwin = 0;
 	delete[] gl_cgwin.t;
 	delete[] gl_cgwin.cgw;
 }
 
+//tcp_utils.hh.
 int block_send(int sockfd, void *buf, int len){
 	int total_sent = 0;
 	int num_sends=0;
@@ -45,11 +48,12 @@ int block_send(int sockfd, void *buf, int len){
 	return num_sends;
 }
 
+//tcp_utils.hh.
 int block_send_cgw(int sockfd, void *buf, int len,
 		   struct cgw_info_struct &cgwin){
 	/*
-	 * sending is broken down into sub-blocks to accumulate
-	 * better time series for congestion window
+	 * Sending is broken down into sub-blocks to accumulate
+	 * better time series for congestion window.
 	 */
 	const int sub_blk = 1500;
 	struct tcp_info info;
@@ -67,13 +71,13 @@ int block_send_cgw(int sockfd, void *buf, int len,
 		getsockopt(sockfd, SOL_TCP, TCP_INFO, 
 			   &info, (socklen_t *)&tisize);
 		/*
-		 * tcp_info --> congestion window
+		 * tcp_info --> congestion window.
 		 */
 		cgwin.cgw[cgwin.indx] = info.tcpi_snd_cwnd;
 		cgwin.t[cgwin.indx] = cgwin.clk.toc()/cgwin.CPUGHZ*1e-6;
 		cgwin.indx++;
 		/*
-		 * restart time series when full
+		 * Restarts time series when full.
 		 */
 		if(cgwin.indx >= cgwin.max_indx)
 			cgwin.indx = 0;
@@ -81,6 +85,7 @@ int block_send_cgw(int sockfd, void *buf, int len,
 	return num_sends;
 }
 
+//tcp_utils.hh.
 int block_recv(int sockfd, void *buf, int len){
 	int total_recv = 0;
 	int num_recv = 0;
@@ -98,6 +103,7 @@ int block_recv(int sockfd, void *buf, int len){
 	return num_recv;
 }
 
+//tcp_utils.hh.
 int connect2server(const char *server, const char *portnum){
 	struct addrinfo hint;
 	memset(&hint, 0, sizeof(hint));
@@ -118,6 +124,7 @@ int connect2server(const char *server, const char *portnum){
 	return sock2server;
 }
 
+//tcp_utils.hh.
 int bind2port(const char* portnum){
 	struct addrinfo hint;
 	memset(&hint, 0, sizeof(hint));
@@ -141,14 +148,15 @@ int bind2port(const char* portnum){
 	int yes = 1;
 	setsockopt(sock2port, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(int));
 	/*
-	 * causes seg fault occasionally
-	 * may be socket needs to be closed first
+	 * Causes seg fault occasionally, so commented out.
+	 * May be socket needs to be closed first
 	 */
 	/*freeaddrinfo(llist);*/
 	
 	return sock2port;
 }
 
+//tcp_utils.hh.
 int connect2client(int sock2port){
 	int sock2client;
 	sock2client = accept(sock2port, NULL, NULL);
