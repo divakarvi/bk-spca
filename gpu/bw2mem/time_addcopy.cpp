@@ -13,7 +13,7 @@ static const int count = 25;
 enum add_enum {ADD_BLOCK, ADD_STRIDE};
 
 /*
- * return median in milliseconds
+ * Returns median in milliseconds.
  */
 double time_add(int n, enum add_enum flag){
 	int NBLK = round(blockfac*BLKinMP*NMP);
@@ -49,7 +49,7 @@ double time_add(int n, enum add_enum flag){
 	}
 
 	/*
-	 * a little verification
+	 * A little verification here.
 	 */
 	dhresult.device2host();
 	double ans=0;
@@ -90,7 +90,7 @@ double time_copy(int n){
 	}
 	
 	/*
-	 * verification
+	 * Verification.
 	 */
 	dhlist.device2host();
 	dhcopy.device2host();

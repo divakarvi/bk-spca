@@ -1,6 +1,7 @@
-#ifndef __dhstmem24sept2014__
-#define __dhstmem24sept2014__
+#ifndef dhstmem24sept2014
+#define dhstmem24sept2014
 #include <cstdio>
+
 template<class ttype> class dhstmem{
 private:
 	ttype *devicemem;

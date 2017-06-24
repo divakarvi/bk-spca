@@ -1,5 +1,5 @@
-#ifndef __const24sept2014__
-#define __const24sept2014__
+#ifndef const24sept2014
+#define const24sept2014
 
 const int NWARP = 32;
 const int THinBLK = 1024;

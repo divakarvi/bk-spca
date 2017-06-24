@@ -20,8 +20,8 @@ leibniz(long int n, double *result){
 }
 
 
-//result and lock must be pointers to global memory 
-//*result and *lock must be initialized to zero
+//result and lock must be pointers to global memory. 
+//*result and *lock must be initialized to zero.
 __device__ void atomicAddDoubleDeadLock(double value, 
 					volatile double *result, 
 					volatile int *lock){
@@ -33,8 +33,8 @@ __device__ void atomicAddDoubleDeadLock(double value,
 }
 
 
-//result and lock must be pointers to global memory 
-//*result and *lock must be initialized to zero
+//result and lock must be pointers to global memory. 
+//*result and *lock must be initialized to zero.
 __device__ void atomicAddDouble(double value, 
 				volatile double *result, volatile int *lock){
 	for(int i=0; i < NWARP; i++){

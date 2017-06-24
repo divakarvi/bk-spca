@@ -1,15 +1,15 @@
-#ifndef __atomicAdd25Sept2014__
-#define __atomicAdd25Sept2014__
+#ifndef atomicAdd25Sept2014
+#define atomicAdd25Sept2014
 /*
- * adds value to result[0], with mutual exclusion between thread
- * deadlocks
+ * Adds value to result[0], with mutual exclusion between threads.
+ * Deadlocks.
  */
 __device__ void atomicAddDoubleDeadLock(double value, 
 					volatile double *result, 
 					volatile int *lock);
 /*
- * adds value to result[0], with mutual exclusion between threads
- * does not deadlock
+ * Adds value to result[0], with mutual exclusion between threads.
+ * Does not deadlock.
  */
 __device__ void atomicAddDouble(double value, 
 				volatile double *result, volatile int *lock);

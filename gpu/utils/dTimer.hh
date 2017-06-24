@@ -1,11 +1,11 @@
-#ifndef __dTimer24sept2014__
-#define __dTimer24sept2014__
+#ifndef dTimer24sept2014
+#define dTimer24sept2014
 
 
 /*
- * this seems to read the special register %clock
- * that is a 32 bit register that wraps around!
- * so this timer is mostly useless
+ * Seems to read the special register %clock.
+ * That is a 32 bit register that wraps around!
+ * So this timer is mostly useless.
  */
 class dTimer{
 private:

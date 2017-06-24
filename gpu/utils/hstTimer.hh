@@ -1,5 +1,5 @@
-#ifndef __hstTimer24sept2014__
-#define __hstTimer24sept2014__
+#ifndef hstTimer24sept2014
+#define hstTimer24sept2014
 
 class hstTimer{
 private:
@@ -17,7 +17,7 @@ public:
 		cudaEventRecord(start, 0);
 	}
 	/*
-	 * returns time in milliseconds
+	 * Returns time in milliseconds.
 	 */
 	float toc(){
 		float time;

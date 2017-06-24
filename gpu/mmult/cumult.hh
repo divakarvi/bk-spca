@@ -1,5 +1,5 @@
-#ifndef __cumult26sept2014__
-#define __cumult26sept2014__
+#ifndef cumult26sept2014
+#define cumult26sept2014
 #include "../utils/dhstmem.hh"
 #include <cublas_v2.h>
 
@@ -12,8 +12,8 @@ public:
 	CuMult(int Ni);
 	~CuMult();
 	/*
-	 * C = C + A*B, A[], B[], C[] are NxN matrices
-	 * returns time in millisecs
+	 * C = C + A*B, A[], B[], C[] are NxN matrices.
+	 * Returns time in millisecs.
 	 */
 	double mult(double *A, double *B, double *C);
 };
