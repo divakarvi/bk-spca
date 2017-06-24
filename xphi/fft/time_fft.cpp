@@ -8,7 +8,7 @@
 
 
 /*
- * returns median number of cycles for an FFT of size n with count
+ * Returns median number of cycles for an FFT of size n with count.
  */
 double time_fft(int n, long count){
 	int stat_count = 20;
@@ -16,7 +16,7 @@ double time_fft(int n, long count){
 	double *v = (double *)_mm_malloc(nbytes, 64);
 	
 	FFT fft(n, count);
-	fft.fwd(v); /* cc-numa on host */
+	fft.fwd(v); //Initializes for non-unif memory access on host.
 
 #pragma omp parallel for				
 	for(long i=0; i < 2*n*count; i++)

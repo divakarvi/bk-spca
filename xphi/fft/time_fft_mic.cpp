@@ -10,7 +10,7 @@
 double *v;
 
 /*
- * returns median number of cycles for an FFT of size n with count
+ * Returns median number of cycles for an FFT of size n with count.
  */
 double time_fft(int n, long count){
 	int stat_count = 3;

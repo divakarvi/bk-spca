@@ -3,10 +3,11 @@
 #include <omp.h>
 
 /*
- * gl_scl = 4.0^(1.0/3.0)
+ * gl_scl = 4.0^(1.0/3.0).
  */
 __declspec(target(mic)) const double gl_scl = 1.5874010519681994;
 
+//leibniz_init.hh.
 __declspec(target(mic))
 double hostmic_sum(double *v, long len){
 	printf("sum:host/mic pointer v = %p \n", v);
@@ -20,6 +21,7 @@ double hostmic_sum(double *v, long len){
 	return sum;
 }
 
+//leibniz_init.hh.
 __declspec(target(mic))
 void hostmic_scale(double *v, long len){
 	printf("scale:host/mic pointer v = %p \n", v);
@@ -33,6 +35,7 @@ void hostmic_scale(double *v, long len){
 	printf("    num of threads = %d\n",omp_get_num_threads());
 }
 
+//leibniz_init.hh.
 void leibniz_init(double *v, long len){
 #pragma omp parallel for
 	for(long i=0; i < len; i+=2){

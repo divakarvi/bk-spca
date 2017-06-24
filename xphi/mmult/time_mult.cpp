@@ -8,7 +8,7 @@
 enum mult_flag_enum {HOST, MIC, AUTO};
 
 /*
- * returns flops per cycle
+ * Returns flops per cycle.
  */
 double time_mult(long dim, enum mult_flag_enum flag){
 	int count = 10;

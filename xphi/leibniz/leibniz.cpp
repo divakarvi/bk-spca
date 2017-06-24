@@ -103,7 +103,7 @@ void leibniz4(){
 	double sum[nmic];
 
 	/*
-	 * alloc mem on mic devices
+	 * Allocs mem on mic devices.
 	 */
 	for(int mc=0; mc < nmic; mc++){
 		long shft = mc*n/nmic;
@@ -113,7 +113,7 @@ void leibniz4(){
 	}
 
 	/*
-	 * offload scaling and summing to mic devices
+	 * Offloads scaling and summing to mic devices.
 	 */
 	for(int mc=0; mc < nmic; mc++){ 
 		long shft = mc*n/nmic;
@@ -133,14 +133,14 @@ void leibniz4(){
 	printf("              nmic = %d\n", nmic);
 
 	/*
-	 * wait for mics to get back
+	 * Waits for mics to get back.
 	 */
 	for(int mc=0; mc < nmic; mc++){
 #pragma offload_wait target(mic:mc)  wait(1)
 	}
 
 	/*
-	 * free mem on mic devices
+	 * Frees mem on mic devices.
 	 */
 	for(int mc=0; mc < nmic; mc++){
 		long shft = mc*n/nmic;

@@ -21,9 +21,9 @@ void mult(double *a, double *b, double *c){
 }
 
 /*
- * a[] = 8xn matrix in column major order
- * b[] = nx8 matrix in row major order
- * c[] = product of a[] and b[]
+ * a[]: 8xn matrix in column major order.
+ * b[]: nx8 matrix in row major order.
+ * c[]: product of a[] and b[].
  */
 void mult(int n, double *a, double *b, double *c){
 	for(int i=0; i < 64; i++)
@@ -35,7 +35,7 @@ void mult(int n, double *a, double *b, double *c){
 }
 
 /*
- * test asm8xnx8
+ * Tests asm8xnx8()
  */
 void testn(int n){
 	std::cout<<"testn: n = "<<n<<std::endl;

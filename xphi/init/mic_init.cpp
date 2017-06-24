@@ -6,6 +6,7 @@
 int gl_host_nthreads = -1;
 int gl_mic_nthreads = -1;
 
+//mic_init.hh.
 void mic_init(int &nmic){
 	char *s = getenv("OMP_NUM_THREADS");
 	assrt(s != NULL);
@@ -20,6 +21,7 @@ void mic_init(int &nmic){
 		omp_set_num_threads_target(TARGET_MIC, i, gl_mic_nthreads);
 }
 
+//mic_init.hh.
 void mic_exit(){
 	gl_host_nthreads = -1;
 	gl_mic_nthreads = -1;
