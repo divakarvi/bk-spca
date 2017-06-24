@@ -5,6 +5,7 @@
 
 enum gl_mpi_onoff_enum gl_mpi_onoff = MPIOFF;
 
+//mpi_init.hh.
 void mpi_initialize(int& rank, int& nprocs){
 	MPI_Init(NULL, NULL);
 	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
@@ -12,11 +13,13 @@ void mpi_initialize(int& rank, int& nprocs){
 	gl_mpi_onoff = MPION;
 }
 
+//mpi_init.hh.
 void mpi_finalize(){
 	MPI_Finalize();
 	gl_mpi_onoff = MPIOFF;
 }
 
+//mpi_init.hh.
 void BlockDivide(long n, int P, long *fst){
 	long  Q = n/P;
 	long  R = n-Q*P;
@@ -27,7 +30,7 @@ void BlockDivide(long n, int P, long *fst){
 		fst[p+1] = fst[p]+Q;
 }
 
-
+//mpi_init.hh.
 void mpi_print_name(int rank){
 	char procname[200];
 	int procnamelen;
@@ -35,4 +38,3 @@ void mpi_print_name(int rank){
 	std::cout<<"proc name = "<<procname<<" rank = "<<rank<<std::endl;
 	MPI_Barrier(MPI_COMM_WORLD);
 }
-

@@ -5,7 +5,7 @@
 enum exchange_type {BLCK, NONBLCK, PSTNT};
 
 /*
- * exchange 8 doubles 11 times and print result
+ * Exchanges 8 doubles 11 times and prints result.
  */
 void test(int rank, int nprocs, enum exchange_type flag){
 	const int bufsize = 8;

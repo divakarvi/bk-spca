@@ -3,6 +3,7 @@
 #include <cstring>
 #include <cstdlib>
 
+//lustre.hh.
 void write_mpi(void *data, long len, 
 	       char *fname, long disp){
 	MPI_File ofile;
@@ -45,6 +46,7 @@ void write_mpi(void *data, long len,
 	MPI_File_close(&ofile);
 }
 
+//lustre.hh.
 void read_mpi(void *data, long len, 
 	      char *fname, long disp){
 	MPI_File ifile;
@@ -87,6 +89,7 @@ void read_mpi(void *data, long len,
 	MPI_File_close(&ifile);
 }
 
+//lustre.hh.
 LustreFile::LustreFile(int ranki, int nprocsi,
 		       const char *diri, const char *fnamei, 
 		       long sizei){

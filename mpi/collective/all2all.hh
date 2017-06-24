@@ -1,22 +1,22 @@
-#ifndef __all2all26NOV2013__
-#define __all2all26NOV2013__
+#ifndef all2all26NOV2013
+#define all2all26NOV2013
 #include <mpi.h>
 
 /*
- * every proc sends n doubles to every other proc
- * makes a single mpi call
+ * Every proc sends n doubles to every other proc.
+ * Makes a single mpi call.
  */
 double mpi_all2all(int rank, int nprocs, 
 		   double *sendbuf, double *recvbuf, int n);
 
 /*
- * same as above but implemented using MPI_Scatter
+ * Same as above but implemented using MPI_Scatter.
  */
 double scatter_all2all(int rank, int nprocs, 
 		       double *sendbuf, double *recvbuf, int n);
 
 /*
- * same as above implemented using send/recv
+ * Same as above implemented using send/recv.
  */
 MPI_Request *all2all_init(int rank, int nprocs, 
 			  double *sendbuf, double *recvbuf, int n);

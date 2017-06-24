@@ -3,7 +3,7 @@
 #include "bcast.hh"
 
 /*
- * proc 0 broadcasts n doubles init from 0,.., n-1
+ * proc 0 broadcasts n doubles init from 0,.., n-1.
  */
 void test(int rank, int nprocs, int n){
 	assrt(n > 0);

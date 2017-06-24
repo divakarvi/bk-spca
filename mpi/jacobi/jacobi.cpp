@@ -4,7 +4,7 @@
 #include <mpi.h>
 #include <omp.h>
 
-
+//jacobi.hh
 Jacobi2D::Jacobi2D(int rank, int nprocs, int d1, int d2, int nth){
 	nthreads = nth;
 	dim1 = d1;
@@ -43,7 +43,7 @@ Jacobi2D::~Jacobi2D(){
 	delete[] b;
 }
 
-void Jacobi2D::initialize(int col1, int col2){//chessboard pattern
+void Jacobi2D::initialize(int col1, int col2){
 	for(int j=col1+1; j < col2+1; j++)
 		for(int i=0; i < dim1; i++){
 			a[i+j*dim1] = ((i+j-1)%2==0)?1:-1;

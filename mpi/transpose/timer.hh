@@ -1,8 +1,8 @@
-#ifndef __TRANSTIMER24NOV2013__
-#define __TRANSTIMER24NOV2013__
+#ifndef TRANSTIMER24NOV2013
+#define TRANSTIMER24NOV2013
 
 /*
- * struct to count cycles during transpose
+ * struct to count cycles during transpose.
  */
 struct trans_timer_struct {
 	double scopy;
@@ -13,12 +13,14 @@ struct trans_timer_struct {
 	double mpi_recv_post;
 	double rcopy;
 };
+
 /*
- * struct to save cycles used by send copy, mpi, recv copy
+ * struct to save cycles used by send copy, mpi, recv copy.
  */
 extern struct trans_timer_struct trans_timer;
+
 /*
- * zeros all entries of trans_cycles
+ * Zeros all entries of struct trans_cycles.
  */
 void zero_trans_timer();
 

@@ -3,6 +3,7 @@
 #include "exchange.hh"
 #include <mpi.h>
 
+//exchange.hh.
 void exchange_blocking(int rank, int nprocs, 
 			 double* sendbuf, double* recvbuf, 
 			 int n){
@@ -23,6 +24,7 @@ void exchange_blocking(int rank, int nprocs,
 	}
 }
 
+//exchange.hh.
 void exchange_nonblocking(int rank, int nprocs, 
 			  double* sendbuf, double* recvbuf, 
 			  int n){
@@ -37,6 +39,7 @@ void exchange_nonblocking(int rank, int nprocs,
 	MPI_Wait(&req2, MPI_STATUS_IGNORE);
 }
 
+//exchange.hh.
 Exchg::Exchg(int rank, int nprocs, int bsize){
 	assrt(nprocs==2);
 	assrt(gl_mpi_onoff == MPION);

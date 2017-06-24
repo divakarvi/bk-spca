@@ -7,6 +7,7 @@
 #include <mpi.h>
 #include <omp.h>
 
+//fast_trans.hh.
 FastTrans::FastTrans(int rank, int nprocs, long Mi, long Ni)
 	:p(rank), P(nprocs), M(Mi), N(Ni)
 {    
@@ -26,8 +27,8 @@ FastTrans::FastTrans(int rank, int nprocs, long Mi, long Ni)
 
 	/*
 	 * transpose() relies on requests getting set to MPI_REQUEST_NULL
-	 * after MPI_Testany()
-	 * therefore persistent recvs are not feasible with current design
+	 * after MPI_Testany().
+	 * Therefore, persistent recvs are not feasible with current design.
 	 */
 	sreqlist = new MPI_Request[P];
 	rreqlist = new MPI_Request[P];
@@ -47,7 +48,7 @@ FastTrans::FastTrans(int rank, int nprocs, long Mi, long Ni)
 		sendorder[i] = (sendorder[i]+p)%P;
 	
 	/*
-	 * reverse sendorder
+	 * Reverses sendorder[].
 	 */
 	for(int i=0, j=P-1; i < j; i++, j--){
 		int tmp = sendorder[i];
@@ -90,7 +91,7 @@ void FastTrans::postsend(int q){
 	long ncols = fstN[p+1]-fstN[p];
 	long nrows = fstM[q+1]-fstM[q];
 	long sbufindex = ncols*fstM[q];
-	int count = ncols*nrows; //MPI can't handle long
+	int count = ncols*nrows; //MPI can't handle long.
 	int tag = 0;
 	MPI_Isend(sendbuf+sbufindex, count, MPI_DOUBLE,
 		  q, tag, MPI_COMM_WORLD, sreqlist+q);
@@ -108,7 +109,7 @@ void FastTrans::postrecv(int q){
 	long ncols = fstM[p+1]-fstM[p];
 	long nrows = fstN[q+1]-fstN[q];
 	long rbufindex = ncols*fstN[q];
-	int count = nrows*ncols;//MPI can't handle long
+	int count = nrows*ncols;//MPI can't handle long.
 	int tag = 0;
 	MPI_Irecv(recvbuf+rbufindex, count, MPI_DOUBLE, 
 		  q, tag, MPI_COMM_WORLD, rreqlist+q);
@@ -145,8 +146,8 @@ void FastTrans::copyFROMrecvbuf(int q, double *localNM){
 }
 
 /*
- * MPI_Testany() here relies on requests getting set to MPI_REQUEST_NULL
- * therefore persistent recvs are not feasible in this design
+ * MPI_Testany() here relies on requests getting set to MPI_REQUEST_NULL.
+ * Therefore, persistent recvs are not feasible in this design.
  */
 void FastTrans::transpose(double *localMN, double *localNM){
 	for(int q=0; q < P; q++)
@@ -191,6 +192,6 @@ void FastTrans::transpose(double *localMN, double *localNM){
 		ncpyd++;
 	}
 
-	wait(); /* verify sending is finished */
+	wait(); // Verifies sending is finished.
 }
 

@@ -1,5 +1,5 @@
-#ifndef __TransposePipeline24NOV2013__
-#define __TransposePipeline24NOV2013__
+#ifndef TransposePipeline24NOV2013
+#define TransposePipeline24NOV2013
 #include <mpi.h>
 
 class FastTrans{

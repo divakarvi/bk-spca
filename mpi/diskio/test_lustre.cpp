@@ -7,7 +7,7 @@
 #include <iostream>
 
 /*
- * more testing in time_lustre.cpp
+ * More testing in time_lustre.cpp.
  */
 double test_write(long count){
 	int rank;

@@ -3,8 +3,7 @@
 #include "cycle.hh"
 #include <mpi.h>
 
-
-
+//cycle.hh.
 Cycle::Cycle(int rank, int nprocs, int bsize)
 {
 	assrt(gl_mpi_onoff == MPION);

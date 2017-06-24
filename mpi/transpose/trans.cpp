@@ -7,6 +7,7 @@
 #include <omp.h>
 
 int NTHREADS = -100;
+//trans.hh.
 Transpose::Transpose(int rank, int nprocs, long Mi, long Ni)
 	:p(rank), P(nprocs), M(Mi), N(Ni)
 {    
@@ -21,8 +22,8 @@ Transpose::Transpose(int rank, int nprocs, long Mi, long Ni)
 	assrt(ncols > 0);
 	sendbuf = new double[ncols*M];
 	/*
-	 * MPI_Alloc_mem() inhibits  numa optimization
-	 * uncomment (and comment above) to verify
+	 * MPI_Alloc_mem() inhibits  numa optimization.
+	 * Uncomment below (and comment above) to verify.
 	 */
 	//MPI_Alloc_mem(8*ncols*M, MPI_INFO_NULL, (void *)(&sendbuf));
 	
@@ -30,8 +31,8 @@ Transpose::Transpose(int rank, int nprocs, long Mi, long Ni)
 	assrt(nrows > 0);
 	recvbuf = new double[nrows*N];
 	/*
-	 * MPI_Alloc_mem() inhibits  numa optimization
-	 * uncomment (and comment above) to verify
+	 * MPI_Alloc_mem() inhibits  numa optimization.
+	 * Uncomment below  (and comment above) to verify.
 	 */
 	//MPI_Alloc_mem(8*nrows*N, MPI_INFO_NULL, (void *)(&recvbuf));
 
@@ -51,7 +52,7 @@ Transpose::~Transpose(){
 }
 
 /*
- * block size
+ * Block size.
  */
 #define B 50
 
@@ -100,7 +101,7 @@ void Transpose::postsend(){
 	for(int q=0; q < P; q++){
 		long nrows = fstM[q+1]-fstM[q];
 		long sbufindex = ncols*fstM[q];
-		int count = ncols*nrows; //MPI can't handle long
+		int count = ncols*nrows; //MPI can't handle long.
 		int tag = 0;
 		MPI_Isend(sendbuf+sbufindex, count, MPI_DOUBLE,
 			  q, tag, MPI_COMM_WORLD, sreqlist+q);
@@ -113,7 +114,7 @@ void Transpose::postrecv(){
 	for(long q=0; q < P; q++){
 		long nrows = fstN[q+1]-fstN[q];
 		long rbufindex = ncols*fstN[q];
-		int count = nrows*ncols;//MPI can't handle long
+		int count = nrows*ncols;//MPI can't handle long.
 		int tag = 0;
 		MPI_Irecv(recvbuf+rbufindex, count, MPI_DOUBLE, 
 			  q, tag, MPI_COMM_WORLD, rreqlist+q);

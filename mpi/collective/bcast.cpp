@@ -3,6 +3,7 @@
 #include "bcast.hh"
 #include <mpi.h>
 
+//bcast.hh.
 double bcast(int rank, int nprocs, double *buffer, int bufsize){
 	TimeStamp clk;
 	int root = 0;
@@ -12,6 +13,7 @@ double bcast(int rank, int nprocs, double *buffer, int bufsize){
 	return cycles;
 }
 
+//bcast.hh.
 double bcast_srecv(int rank, int nprocs, double *buffer, int bufsize){
 	TimeStamp clk;
 	int tag=0;

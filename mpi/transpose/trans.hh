@@ -1,12 +1,12 @@
-#ifndef __Transpose24NOV2013__
-#define __Transpose24NOV2013__
+#ifndef Transpose24NOV2013
+#define Transpose24NOV2013
 #include <mpi.h>
 
-extern int NTHREADS; /* initlzd using dv_omp_nthreads() in constructor */
+extern int NTHREADS; //Initlzd using dv_omp_nthreads() in constructor.
 class Transpose{
 private:
-	int p; //process rank
-	int P; //number of processes
+	int p; //Process rank.
+	int P; //Number of processes.
 	long  M;
 	long  N;
 	long *fstM;
@@ -28,8 +28,8 @@ public:
 };
 
 /*
- * helper functions defined in trans.cpp
- * usedin trans.cpp as well as fast_trans.cpp
+ * Helper functions defined in trans.cpp.
+ * Used in trans.cpp as well as fast_trans.cpp.
  */
 void transposewlda(double *in, int lda, long nrows, long ncols, double *out);
 void copywlda(double *in, int nrows, int ncols, double *out, int lda);

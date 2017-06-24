@@ -7,8 +7,8 @@
 #include <cstdlib>
 
 /*
- * sendbuf[] = double array of numOfdoubles 
- * recvbuf[] = double array of numOfdoubles
+ * sendbuf[]: double array of numOfdoubles 
+ * recvbuf[]: double array of numOfdoubles
  * rank 0 sends to nprocs-1 and then receives
  * rank nprocs-1 sends to 0 and then receives
  */
@@ -33,7 +33,7 @@ void unsafe(int numOFdoubles, int rank, int nprocs,
 }
 
 /*
- * return num of cycles to send and recv n doubles
+ * Returns num of cycles to send and recv n doubles.
  */
 double time_unsafe(int rank, int nprocs, int n){
 	double* sendbuf;
@@ -63,7 +63,7 @@ void generate_output(int rank, int nprocs){
 	}
 
 	for(int i=1; i <= 100; i++){
-		int n = i*1000/8; //num of doubles
+		int n = i*1000/8; //num of doubles.
 		double cycles = time_unsafe(rank, nprocs, n);
 		if(rank == 0){
 			ofile<<"number of bytes xchgd: "<<n*8<<std::endl;

@@ -3,6 +3,7 @@
 #include "all2all.hh"
 #include <mpi.h>
 
+//all2all.hh.
 double mpi_all2all(int rank, int nprocs, 
 		       double *sendbuf, double *recvbuf, int n){
 	TimeStamp clk;
@@ -13,6 +14,7 @@ double mpi_all2all(int rank, int nprocs,
 	return cycles;
 }
 
+//all2all.hh.
 double scatter_all2all(int rank, int nprocs, 
 		       double *sendbuf, double *recvbuf, int n){
 	TimeStamp clk;
@@ -25,6 +27,7 @@ double scatter_all2all(int rank, int nprocs,
 	return cycles;
 }
 
+//all2all.hh.
 MPI_Request *all2all_init(int rank, int nprocs, 
 			  double *sendbuf, double *recvbuf, int n){
 	MPI_Request *reqlist = new MPI_Request[2*nprocs];
@@ -43,6 +46,7 @@ MPI_Request *all2all_init(int rank, int nprocs,
 	return reqlist;
 }
 
+//all2all.hh.
 double all2all(int rank, int nprocs, MPI_Request* reqlist){
 	TimeStamp clk;
 	clk.tic();
@@ -52,6 +56,7 @@ double all2all(int rank, int nprocs, MPI_Request* reqlist){
 	return cycles;
 }
 
+//all2all.hh.
 void all2all_finalize(MPI_Request *reqlist){
 	delete[] reqlist;
 }

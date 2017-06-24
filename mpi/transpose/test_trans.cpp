@@ -18,7 +18,7 @@ void test1(int rank, int nprocs, int M, int N){
 	localNM = new double[(trans.ffstM(rank+1)-trans.ffstM(rank))*N];
 
 	/*
-	 * initialize matrices
+	 * Initializes matrices.
 	 */
 	for(long i=0; i < N*(trans.ffstM(rank+1)-trans.ffstM(rank)); i++)
 		localNM[i] = -1;
@@ -30,7 +30,7 @@ void test1(int rank, int nprocs, int M, int N){
 			localMN[row+col*M] = base*row + col+trans.ffstN(rank);
 	
 	/*
-	 * output MN matrix
+	 * Outputs MN matrix.
 	 */
 	char fname[200];
 	verify_dir("DBG");
@@ -40,12 +40,12 @@ void test1(int rank, int nprocs, int M, int N){
 	array_out(localMN, nrows, ncols, fname);
 
 	/*
-	 * transpose MN matrix to NM matrix
+	 * Transposes MN matrix to NM matrix.
 	 */
 	trans.transpose(localMN, localNM);
 
 	/*
-	 * output NM matrix
+	 * Outputs NM matrix.
 	 */
 	sprintf(fname, "DBG/test_recvd%d.txt", rank);
 	nrows = N;

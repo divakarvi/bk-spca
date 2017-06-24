@@ -3,8 +3,8 @@
 #include "cycle.hh"
 
 /*
- * left sendbuf -ve
- * right sendbuf +ve
+ * Left sendbuf -ve.
+ * Sight sendbuf +ve.
  */
 void init_sbuf(Cycle& cycle, int rank, int bufsize){
 	double *buf = cycle.lsbuf();

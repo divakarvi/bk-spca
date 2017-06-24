@@ -1,5 +1,5 @@
-#ifndef __CYCLE21NOV2013__
-#define __CYCLE21NOV2013__
+#ifndef CYCLE21NOV2013
+#define CYCLE21NOV2013
 #include <mpi.h>
 
 class Cycle{
@@ -19,8 +19,8 @@ public:
 	double* lrbuf(){return recvbufl;};
 	double* rrbuf(){return recvbufr;};
 	/*
-	 * copy recvbufl[] to sendbufr[]
-	 * copy recvbufr[] to sendbufl[]
+	 * Copies recvbufl[] to sendbufr[].
+	 * Copies recvbufr[] to sendbufl[].
 	 */
 	void copy_r2s();
 };

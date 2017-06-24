@@ -6,7 +6,7 @@
 #include "cycle.hh"
 
 /*
- * returns median number of cycles for cycling with n doubles = 8n bytes
+ * Returns median number of cycles for cycling with n doubles = 8n bytes.
  */
 double time(int rank, int nprocs, int n){
 	Cycle cycle(rank, nprocs, n);

@@ -35,7 +35,7 @@ struct BW_RW{
 
 #define DIODIRNAME "diskio-mpi"
 
-//size = total size
+//size = total size.
 void time_lustre(int rank, int nprocs, long size, 
 		 struct BW_RW& bw){
 	TimeStamp clk;
@@ -75,7 +75,7 @@ void time_lustre(int rank, int nprocs, long size,
 	bw.bw_read = 8.0*size/cycles*CPUGHZ;
 
 	/*
-	 * check correctness
+	 * Checks correctness.
 	 */
 	double avg2 = v_avg(v, lsize);
 	assrt(avg1 == avg2);
@@ -102,7 +102,7 @@ void lustre_bw(int rank, int nprocs,
 		nlist[0] = 1250l*1000;
 		nlist[1] = 4000l*1024*1024/8*5;
 	}
-	for(int i=0; i < 2; i++)//local to totalsize
+	for(int i=0; i < 2; i++)//Scales up local size to totalsize.
 		nlist[i] *= nprocs;
 	
 	std::ofstream ofile;

@@ -35,7 +35,7 @@ double time_bcast(int rank, int nprocs, int n, enum bcast_flag_enum flag){
 }
 
 /*
- * table comes out looking too heavy, but leave this as it is
+ * Table comes out looking too heavy, but leave this as it is.
  */
 void make_table(int rank, int nprocs, 
 		const char* banner, enum bcast_flag_enum flag){

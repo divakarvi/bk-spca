@@ -3,6 +3,7 @@
 #include "reduce.hh"
 #include <mpi.h>
 
+//reduce.hh.
 double reducemin(int rank, int nprocs, 
 		 double *sendbuf, double *recvbuf, int bufsize){
 	TimeStamp clk;
@@ -32,6 +33,7 @@ void minimize(double *recvbuf, double *scratch, int bufsize){
 			scratch[j] = recvbuf[j];
 }
 
+//reduce.hh
 double reducemin_tree(int rank, int nprocs,
 		      double *sendbuf, double *recvbuf, 
 		      double *scratch, int bufsize){
