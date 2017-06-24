@@ -10,8 +10,21 @@ The complete text of this book is available in html at [this link][bk]. The html
 
 This README document provides context for the source code in this GIT repository, with links to the html text as well as sources in the repository.
 
-* [Preface](#preface)
+* [Preface](#preface) ([html][bk.preface])
 * [C/C++ Review](#chapter1)
+	* [An example: The Aitken iteration][#s1.1]([html][bk.1.1])
+		* [Leibniz series and the logarithmic series][#s1.1.1] ([html][bk.1.1.1])
+		* [Modular organization of sources][#s1.1.2]([html][bk.1.1.2])
+	* [C Review][#s1.2]([html][bk.1.2])
+		* [Header files][#s1.2.1]([html][bk.1.2.1])
+		* [Arrays and pointers][#s1.2.2]([html][bk.1.2.2])
+		* [The Aitken iteration using arrays and pointers][#s1.2.3]([html][bk.1.2.3])
+		* [Declarations and definitions][#s1.2.4]([html][bk.1.2.4])
+		* [Function calls and the compilation process][#s1.2.5]([html][bk.1.2.5])
+	*[C++ Review][#s1.3]([html][bk.1.3])
+		* [The Vector class][#s1.3.1]([html][bk.1.3.1])
+		* [Aitken transformation in C++][#s1.3.2]([html][bk.1.3.2])
+	* [A little Fortran][#s1.4]([html][bk.1.4])
 * [C/C++: Libraries and Makefiles](#chapter2)
 * [The Processor](#chapter3)
 * [Memory](#chapter4)
@@ -31,45 +44,45 @@ The book digs into linkers, compilers, operating systems, and computer architect
 
 The review of C/C++ in this chapter attempts to bring out certain features that people often do not learn from a single course or two.
 
-### [1.1][bk.1.1] An example: The Aitken iteration
+### [1.1][bk.1.1] <a name="s1.1"></a> An example: The Aitken iteration
 
 The Aitken transformation maps a sequence of numbers to another sequence of numbers. It serves as the vehicle to introduce aspects of C, C++, and Fortran in this chapter. 
 
-#### [1.1.1][bk.1.1.1] Leibniz series and the logarithmic series
+#### [1.1.1][bk.1.1.1] <a name="s1.1.1"></a> Leibniz series and the logarithmic series
 
-#### [1.1.2][bk.1.1.2] Modular organization of sources
+#### [1.1.2][bk.1.1.2] <a name="s1.1.2"></a> Modular organization of sources
 
 Before we delve into the syntax of C/C++, let us look at how to structure a program for the Aitken iteration.
 
 [linking/aitken][linking.aitken]
 
-### [1.2][bk.1.2] C Review
+### [1.2][bk.1.2] <a name="s1.2"></a> C Review
 
 In this review, we go over a few features of C, emphasizing points that introductory classes often miss. Thus, we discuss header files, arrays, and pointers, with emphasis on the distinction between lvalues and rvalues, as well as the distinction between declarations and definitions.
 
-#### [1.2.1][bk.1.2.1] Header files
+#### [1.2.1][bk.1.2.1] <a name="s1.2.1"></a> Header files
 
 A header file in C is an interface to one or more source files.
 
 [aitken.h][aitken.h]
 
-#### [1.2.2][bk.1.2.2] Arrays and pointers
+#### [1.2.2][bk.1.2.2] <a name="s1.2.2"></a> Arrays and pointers
 
 Arrays and pointers are the heart of the C language. In C, arrays and pointers are almost interchangeable.
 
 [easypointers.c][easypointers.c]
 
-#### [1.2.3][bk.1.2.3] The Aitken iteration using arrays and pointers
+#### [1.2.3][bk.1.2.3] <a name="s1.2.3"></a> The Aitken iteration using arrays and pointers
 
 Here we use the Aitken example to illustrate how arrays may be passed as pointers.
 
 [aitken.c][aitken.c]
 
-#### [1.2.4][bk.1.2.4] Declarations and definitions
+#### [1.2.4][bk.1.2.4] <a name="s1.2.4"></a> Declarations and definitions
 
 Names introduced into a C program are for the most part names of either functions or variables. The names can be introduced as either declarations or definitions.
 
-#### [1.2.5][bk.1.2.5] Function calls and the compilation process
+#### [1.2.5][bk.1.2.5] <a name="s1.2.5"></a> Function calls and the compilation process
 
 Here we take a look at the mechanism of function calls and the compilation process. 
 
@@ -79,11 +92,11 @@ Here we take a look at the mechanism of function calls and the compilation proce
 
 [Makefile][aitken.MakefileC]
 
-### [1.3][bk.1.3] C++ Review
+### [1.3][bk.1.3] <a name="s1.3"></a> C++ Review
 
 The C++ language is something of a compromise to provide the facilities of high-level languages without sacrificing the speed of C. Despite its name, it is not an incremental extension of C. It is a colossal expansion of C syntax.
 
-#### [1.3.1][bk.1.3.1] The Vector class
+#### [1.3.1][bk.1.3.1] <a name="s1.3.1"></a> The Vector class
 
 We begin with a general type of class, namely, the Vector class. This class helps us review a few of the features of C++ and is used to implement the Aitken iteration later. In a later chapter, we criticize the use of this class and show it to be slow. Except for this class, our classes are narrowly defined and follow the "one class, one task" principle.
 
@@ -101,7 +114,7 @@ We begin with a general type of class, namely, the Vector class. This class help
 * The -> operator
 * Abstraction features of C++
 
-#### [1.3.2][bk.1.3.2] Aitken transformation in C++
+#### [1.3.2][bk.1.3.2]<a name="s1.3.2"></a> Aitken transformation in C++
 
 [Aitken.hh][Aitken.hh]
 
@@ -111,7 +124,7 @@ We begin with a general type of class, namely, the Vector class. This class help
 
 [Logseries.cpp][Logseries.cpp]
 
-### [1.4][bk.1.4] A little Fortran
+### [1.4][bk.1.4] <a name="s1.4"></a>A little Fortran
 
 The syntax is deliberately Fortran 77 and not the newer varieties. When the need to use old Fortran codes arises, it is often Fortran of this variety. We do not recommend programming in Fortran.
 
