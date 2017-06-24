@@ -12,19 +12,6 @@ This README document provides context for the source code in this GIT repository
 
 * [Preface](#preface) ([html][bk.preface])
 * [C/C++ Review](#chapter1) ([html][bk.1.1])
-	* [An example: The Aitken iteration](#s1.1) ([html][bk.1.1])
-		* [Leibniz series and the logarithmic series](#s1.1.1) ([html][bk.1.1.1])
-		* [Modular organization of sources](#s1.1.2) ([html][bk.1.1.2])
-	* [C Review](#s1.2) ([html][bk.1.2])
-		* [Header files](#s1.2.1) ([html][bk.1.2.1])
-		* [Arrays and pointers](#s1.2.2) ([html][bk.1.2.2])
-		* [The Aitken iteration using arrays and pointers](#s1.2.3) ([html][bk.1.2.3])
-		* [Declarations and definitions](#s1.2.4) ([html][bk.1.2.4])
-		* [Function calls and the compilation process](#s1.2.5) ([html][bk.1.2.5])
-	* [C++ Review](#s1.3) ([html][bk.1.3])
-		* [The Vector class](#s1.3.1) ([html][bk.1.3.1])
-		* [Aitken transformation in C++](#s1.3.2) ([html][bk.1.3.2])
-	* [A little Fortran](#s1.4) ([html][bk.1.4])
 * [C/C++: Libraries and Makefiles](#chapter2)
 * [The Processor](#chapter3)
 * [Memory](#chapter4)
@@ -41,6 +28,20 @@ What makes computer programs fast or slow? To answer this question, we have to g
 The book digs into linkers, compilers, operating systems, and computer architecture to understand how the different parts of the computer interact with programs. It begins with a review of C/C++ and explanations of how libraries, linkers, and Makefiles work. Programming models covered include Pthreads, OpenMP, MPI, TCP/IP, and CUDA. The emphasis on how computers work leads the reader into computer architecture and occasionally into the operating system kernel. The operating system studied is Linux, the preferred platform for scientific computing. Linux is also open source, which allows users to peer into its inner workings. A brief appendix provides a useful table of machines used to time programs.
 
 # [1][bk.1] <a name="chapter1"></a> C/C++ Review
+
+* [An example: The Aitken iteration](#s1.1) ([html][bk.1.1])
+	* [Leibniz series and the logarithmic series](#s1.1.1) ([html][bk.1.1.1])
+	* [Modular organization of sources](#s1.1.2) ([html][bk.1.1.2])
+* [C Review](#s1.2) ([html][bk.1.2])
+	* [Header files](#s1.2.1) ([html][bk.1.2.1])
+	* [Arrays and pointers](#s1.2.2) ([html][bk.1.2.2])
+	* [The Aitken iteration using arrays and pointers](#s1.2.3) ([html][bk.1.2.3])
+	* [Declarations and definitions](#s1.2.4) ([html][bk.1.2.4])
+	* [Function calls and the compilation process](#s1.2.5) ([html][bk.1.2.5])
+* [C++ Review](#s1.3) ([html][bk.1.3])
+	* [The Vector class](#s1.3.1) ([html][bk.1.3.1])
+	* [Aitken transformation in C++](#s1.3.2) ([html][bk.1.3.2])
+* [A little Fortran](#s1.4) ([html][bk.1.4])
 
 The review of C/C++ in this chapter attempts to bring out certain features that people often do not learn from a single course or two.
 
