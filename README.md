@@ -174,7 +174,7 @@ If the source has a statement such as a=b+c, for example, the names a, b, c typi
 
 [Aitken.cpp][Aitken.cpp]
 
-#### [2.1.2][bk.2.1.2]] <a name="s2.1.2"></a> Linking Fortran programs with C and C++
+#### [2.1.2][bk.2.1.2] <a name="s2.1.2"></a> Linking Fortran programs with C and C++
 
 To use Fortran functions within C or C++ programs, the naming used for the Fortran functions in C or C++ has to be cognizant of the way the names in the source files are altered in the object file. We want the names to agree in the object files because it is the object files and not the source files that get linked against each other.
 
@@ -182,24 +182,24 @@ To use Fortran functions within C or C++ programs, the naming used for the Fortr
 
 [leibnizFinCPP.cpp][leibnizFinCPP.cpp]
 
-### [2.2][bk.2.2]] <a name="s2.2"></a> Using BLAS and LAPACK libraries
+### [2.2][bk.2.2] <a name="s2.2"></a> Using BLAS and LAPACK libraries
 
 BLAS and LAPACK are widely used numerical linear algebra libraries.
 
-#### [2.2.1][bk.2.2.1]] <a name="s2.2.1"></a> Arrays, matrices, and leading dimensions
+#### [2.2.1][bk.2.2.1] <a name="s2.2.1"></a> Arrays, matrices, and leading dimensions
 
 We look at multidimensional arrays in C/C++ briefly and then at the distinction between column-major format and row-major format.
 
 [array_2d.c][array_2d.c]
 
-#### [2.2.2][bk.2.2.2]] <a name="s2.2.2"></a> BLAS and LAPACK
+#### [2.2.2][bk.2.2.2] <a name="s2.2.2"></a> BLAS and LAPACK
 BLAS and LAPACK functions, to which we now turn, typically have long argument lists.
 
 [mkl_blas.h][mkl_blas.h]
 
 [mkl_lapack.h][mkl_lapack.h]
 
-#### [2.2.3][bk.2.2.3]] <a name="s2.2.3"></a> C++ class interface to BLAS/LAPACK
+#### [2.2.3][bk.2.2.3] <a name="s2.2.3"></a> C++ class interface to BLAS/LAPACK
 
 The [Vector class][Vector.hh] is an attempt to capture the general concept of vectors. The LU_Solve class of this section is narrowly defined. It does just one thing, which is to provide an easy interface to LAPACK's LU solver functions dgetrf() and dgetrs().
 
@@ -211,10 +211,10 @@ The [Vector class][Vector.hh] is an attempt to capture the general concept of ve
 
 [test_lusolve.py][test_lusolve.py]
 
-### [2.3][bk.2.3]] <a name="s2.3"></a> Building programs using GNU Make
+### [2.3][bk.2.3] <a name="s2.3"></a> Building programs using GNU Make
 The organization of source files into directories and subdirectories is the heart of modular programming. The make utility provides a method for building a program from its source tree.
 
-#### [2.3.1][bk.2.3.1]] <a name="s.2.3.1"></a> The utils/ folder
+#### [2.3.1][bk.2.3.1] <a name="s.2.3.1"></a> The utils/ folder
 The modules in utils/ facilitate timing, generation of random numbers, gathering statistics, making tables, and manipulation of double arrays. All the modules in utils/ are used extensively. We avoid mentioning the modules in utils for the most part, but a brief discussion is given here.
 
 [utils directory listing][utils]
@@ -225,7 +225,7 @@ The modules in utils/ facilitate timing, generation of random numbers, gathering
 
 [test_lusolve.cpp][test_lusolve.cpp] showing how utils are used.
 
-#### [2.3.2][bk.2.3.2]] <a name="s2.3.2"></a> Targets, prerequisites, and dependency graphs
+#### [2.3.2][bk.2.3.2] <a name="s2.3.2"></a> Targets, prerequisites, and dependency graphs
 
 The first purpose of a Makefile is to capture the dependency graph between headers, sources, object files, and executables.
 
@@ -233,26 +233,26 @@ The first purpose of a Makefile is to capture the dependency graph between heade
 
 [Makefile 2][aitken.MakefileC2]
 
-#### [2.3.3][bk.2.3.3]] <a name="s2.3.3"></a> Make variables in makevars.mk
+#### [2.3.3][bk.2.3.3] <a name="s2.3.3"></a> Make variables in makevars.mk
 Almost all Makefiles have make variables.
 
 [Root of source tree][bk-spca]
 
 [makevars.mk][makevars.mk]
 
-#### [2.3.4][bk.2.3.4]] <a name="s2.3.4"></a> Pattern rules in makevars.mk
+#### [2.3.4][bk.2.3.4] <a name="s2.3.4"></a> Pattern rules in makevars.mk
 
 The recipes have a formulaic character. For example, if the target is an object file to be built from a C++ source, the recipe generally invokes the C++ compiler specified by CPP using the options listed in CFLAGS. Pattern rules take advantage of the repetitive nature of recipes to simplify their specification.
 
 [makevars.mk][makevars.mk]
 
-#### [2.3.5][bk.2.3.5]] <a name="s2.3.5"></a> Phony targets in makevars.mk
+#### [2.3.5][bk.2.3.5] <a name="s2.3.5"></a> Phony targets in makevars.mk
 
 Phony targets are always assumed to be out of date.
 
 [makevars.mk][makevars.mk]
 
-#### [2.3.6][bk.2.3.6]] <a name="s2.3.6"></a> Recursive make and .d files
+#### [2.3.6][bk.2.3.6] <a name="s2.3.6"></a> Recursive make and .d files
 
 When the source and object files required to build a single executable reside in several subdirectories, recursive make may be used to complete the build.
 
@@ -260,11 +260,11 @@ When the source and object files required to build a single executable reside in
 
 [Makefile that is called recursively][Makefile.rcalled]
 
-#### [2.3.7][bk.2.3.7]] <a name="s2.3.7"></a> Beyond recursive make
+#### [2.3.7][bk.2.3.7] <a name="s2.3.7"></a> Beyond recursive make
 
 Modularity and simplicity are two virtues of recursive make. However, there are several problems with it.
 
-#### [2.3.8][bk.2.3.8]] <a name="s2.3.8"></a> Building your own library
+#### [2.3.8][bk.2.3.8] <a name="s2.3.8"></a> Building your own library
 
 
 We end our discussion of make by showing how to build and link static and shared libraries. Libraries provide a level of modularity beyond what is possible within a source tree. Any program that is linked against a library in effect treats the external library as a module.
@@ -273,33 +273,33 @@ We end our discussion of make by showing how to build and link static and shared
 
 [libpath.sh][libpath.sh]
 
-### [2.4][bk.2.4]] <a name="s2.4"></a> The Fast Fourier Transform
+### [2.4][bk.2.4] <a name="s2.4"></a> The Fast Fourier Transform
 
 In this last section, we look at the speed of a few implementations of the Fast Fourier Transform (FFT). Program speed is a major theme of the rest of this book.
 
-#### [2.4.1][bk.2.4.1]] <a name="s2.4.1"></a> The FFT algorithm in outline
+#### [2.4.1][bk.2.4.1] <a name="s2.4.1"></a> The FFT algorithm in outline
 
 The power of 2 FFT moves through lg(N) levels. The number of arithmetic operations in each level consists of N/2 twiddle factor multiplications, N/2 additions, and N/2 subtractions.
 
-#### [2.4.2][bk.2.4.2]] <a name="s2.4.2"></a> FFT using MKL
+#### [2.4.2][bk.2.4.2] <a name="s2.4.2"></a> FFT using MKL
 
 [fft_mkl.hh][fft_mkl.hh]
 
 [fft_mkl.cpp][fft_mkl.cpp]
 
-#### [2.4.3][bk.2.4.3]] <a name="s2.4.3"></a> FFT using FFTW
+#### [2.4.3][bk.2.4.3] <a name="s2.4.3"></a> FFT using FFTW
 
 [fft_fftw.hh][fft_fftw.hh]
 
 [fft_fftw.cpp][fft_fftw.cpp]
 
-#### [2.4.4][bk.2.4.4]] <a name="s2.4.4"></a> Cycles and histograms
+#### [2.4.4][bk.2.4.4] <a name="s2.4.4"></a> Cycles and histograms
 
 How many cycles does a one-dimensional complex FFT of dimension 210 = 1024 take? Program performance is influenced by so many factors that the question is too simple to be answered. 
 
 [hist_fft.cpp][hist_fft.cpp]
 
-#### [2.4.5][bk.2.4.5]] <a name="s2.4.5"></a> Optimality of FFT implementations
+#### [2.4.5][bk.2.4.5] <a name="s2.4.5"></a> Optimality of FFT implementations
 
 What is the fastest possible speed of an FFT implementation? The many system features that intrude into the histograms hint that this question may not have a straightforward answer.
 
