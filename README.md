@@ -311,24 +311,24 @@ What is the fastest possible speed of an FFT implementation? The many system fea
 
 # [3][bk.3] <a name="chapter3"></a> The Processor
 
-* [Overview of the x86 architecture](#s3.1)
-	*[64-bit x86 architecture](#s3.1.1)
-	*[64-bit x86 assembly programming](#s3.1.2)
-	*[The Time Stamp Counter](#s3.1.3)
-	*[Cache parameters and the CPUID instruction](#s3.1.4)
-* [Compiler optimizations](#s3.2)
-	*[Preliminaries](#s3.2.1)
-	*[Loop unrolling](#s3.2.2)
-	*[Loop fusion](#s3.2.3)
-	*[Unroll and jam](#s3.2.4)
-	*[Loop interchange](#s3.2.5)
-	*[C++ overhead](#s3.2.6)
-	*[A little compiler theory](#s3.2.7)
-* [Optimizing for the instruction pipeline](#s3.3)
-	*[Instruction pipelines](#s3.3.1)
-	*[Chipsets](#s3.3.2)
-	*[Peak floating point performance](#s3.3.3)
-	*[Microkernel for matrix multiplication](#s3.3.4)
+* [Overview of the x86 architecture](#s3.1) ([html][bk.3.1])
+	* [64-bit x86 architecture](#s3.1.1) ([html][bk.3.1.1])
+	* [64-bit x86 assembly programming](#s3.1.2) ([html][bk.3.1.2])
+	* [The Time Stamp Counter](#s3.1.3) ([html][bk.3.1.3])
+	* [Cache parameters and the CPUID instruction](#s3.1.4) ([html][bk.3.1.4])
+* [Compiler optimizations](#s3.2) ([html][bk.3.2])
+	* [Preliminaries](#s3.2.1) ([html][bk.3.2.1])
+	* [Loop unrolling](#s3.2.2) ([html][bk.3.2.2])
+	* [Loop fusion](#s3.2.3) ([html][bk.3.2.3])
+	* [Unroll and jam](#s3.2.4) ([html][bk.3.2.4])
+	* [Loop interchange](#s3.2.5) ([html][bk.3.2.5])
+	* [C++ overhead](#s3.2.6) ([html][bk.3.2.6])
+	* [A little compiler theory](#s3.2.7) ([html][bk.3.2.7])
+* [Optimizing for the instruction pipeline](#s3.3) ([html][bk.3.3])
+	* [Instruction pipelines](#s3.3.1) ([html][bk.3.3.1])
+	* [Chipsets](#s3.3.2) ([html][bk.3.3.2])
+	* [Peak floating point performance](#s3.3.3) ([html][bk.3.3.3])
+	* [Microkernel for matrix multiplication](#s3.3.4) ([html][bk.3.3.4])
 
 
 Even for many simple programs, the compilers of today do not generate optimal code or anything like it. Good, or nearly optimal, programs for modern platforms can be written only with a knowledge of the nuances of the computer’s hardware. With that in mind, this chapter, indeed the rest of this book, will introduce programming models in close concert with computer architecture.
@@ -451,23 +451,23 @@ In this section, we write programs that multiply matrices of dimensions 4 ×�
 
 
 # [4][bk.4] <a name="chapter4"></a> Memory
-* [DRAM and cache memory](#s4.1)
-	*[DRAM and cache memory](#s4.1.1)
-	*[Cache memory](#s4.1.2)
-	*[Physical memory and virtual memory](#s4.1.3)
-	*[Latency to DRAM memory: First attempts](#s4.1.4)
-	*[Latency to DRAM](#s4.1.5)
-* [Optimizing memory access](#s4.2)
-	*[Bandwidth to DRAM](#s4.2.1)
-	*[Matrix transpose](#s4.2.2)
-	*[Optimized matrix multiplication](#s4.2.3)
-* [Reading from and writing to disk](#s4.3)
-	*[C versus C++](#s4.3.1)
-	*[Latency to disk](#s4.3.2)
-	*[Bandwidth to disk](#s4.3.3)
-* [Page tables and virtual memory](#s4.4)
-	*[Partitioning the virtual address space](#s4.4.1)
-	*[Physical address space and page tables](#s4.4.2)
+* [DRAM and cache memory](#s4.1) ([html][bk.4.1])
+	* [DRAM and cache memory](#s4.1.1) ([html][bk.4.1.1])
+	* [Cache memory](#s4.1.2) ([html][bk.4.1.2])
+	* [Physical memory and virtual memory](#s4.1.3) ([html][bk.4.1.3])
+	* [Latency to DRAM memory: First attempts](#s4.1.4) ([html][bk.4.1.4])
+	* [Latency to DRAM](#s4.1.5) ([html][bk.4.1.5])
+* [Optimizing memory access](#s4.2) ([html][bk.4.2])
+	* [Bandwidth to DRAM](#s4.2.1) ([html][bk.4.2.1])
+	* [Matrix transpose](#s4.2.2) ([html][bk.4.2.2])
+	* [Optimized matrix multiplication](#s4.2.3) ([html][bk.4.2.3])
+* [Reading from and writing to disk](#s4.3) ([html][bk.4.3])
+	* [C versus C++](#s4.3.1) ([html][bk.4.3.1])
+	* [Latency to disk](#s4.3.2) ([html][bk.4.3.2])
+	* [Bandwidth to disk](#s4.3.3) ([html][bk.4.3.3])
+* [Page tables and virtual memory](#s4.4) ([html][bk.4.4])
+	* [Partitioning the virtual address space](#s4.4.1) ([html][bk.4.4.1])
+	* [Physical address space and page tables](#s4.4.2) ([html][bk.4.4.2])
 
 In modern computers, including supercomputers, desktops, laptops, and all kinds of mobile devices, memory invariably refers to DRAM. Although file systems reside on hard disk or some other storage medium, when a program is running, much of the data that is handled is from DRAM.
 
@@ -582,23 +582,23 @@ Program speed is influenced by the paging system in several ways. If a memory wo
 
 # [5][bk.5] <a name="chapter5"></a> Threads and Shared Memory
 
-* [Introduction to OpenMP](#s5.1)
-	*[OpenMP syntax](#s5.1.1)
-	*[Shared variables and OpenMP's memory model](#s5.1.2)
-	*[Overheads of OpenMP constructs](#s5.1.3)
-* [Optimizing OpenMP programs](#s5.2)
-	*[Near memory and far memory](#s5.2.1)
-	*[Bandwidth to DRAM memory](#s5.2.2)
-	*[Matrix transpose](#s5.2.3)
-	*[Fast Fourier transform](#s5.2.4)
-* [Introduction to Pthreads](#s5.3)
-	*[Pthreads](#s5.3.1)
-	*[Overhead of thread creation](#s5.3.2)
-	*[Parallel regions using Pthreads](#s5.3.3)
-* [Program memory](#s5.4)
-	*[An easy system call](#s5.4.1)
-	*[Stacks](#s5.4.2)
-	*[Segmentation faults and memory errors](#s5.4.3)
+* [Introduction to OpenMP](#s5.1) ([html][bk.5.1])
+	* [OpenMP syntax](#s5.1.1) ([html][bk.5.1.1])
+	* [Shared variables and OpenMP's memory model](#s5.1.2) ([html][bk.5.1.2])
+	* [Overheads of OpenMP constructs](#s5.1.3) ([html][bk.5.1.3])
+* [Optimizing OpenMP programs](#s5.2) [html][bk.5.2])
+	* [Near memory and far memory](#s5.2.1) ([html][bk.5.2.1])
+	* [Bandwidth to DRAM memory](#s5.2.2) ([html][bk.5.2.2])
+	* [Matrix transpose](#s5.2.3) ([html][bk.5.2.3])
+	* [Fast Fourier transform](#s5.2.4) ([html][bk.5.2.4])
+* [Introduction to Pthreads](#s5.3) ([html][bk.5.3])
+	* [Pthreads](#s5.3.1) ([html][bk.5.3.1])
+	* [Overhead of thread creation](#s5.3.2) ([html][bk.5.3.2])
+	* [Parallel regions using Pthreads](#s5.3.3) ([html][bk.5.3.3])
+* [Program memory](#s5.4) ([html][bk.5.4])
+	* [An easy system call](#s5.4.1) ([html][bk.5.4.1])
+	* [Stacks](#s5.4.2) ([html][bk.5.4.2])
+	* [Segmentation faults and memory errors](#s5.4.3) ([html][bk.5.4.3])
 
 Programming with threads is a paradigm of great range and utility that encompasses everything from cell phones to web servers to supercomputers.
 
@@ -768,25 +768,25 @@ The use of pointers exposes the programmer to errors that corrupt memory. Memory
 # [6][bk.6] <a name="chapter6"></a>Special Topic: Networks and Message Passing
 
 
-* [MPI: Getting started](#s6.1)
-	*[Initializing MPI](#s6.1.1)
-	*[Unsafe communication in MPI](#s6.1.2)
-* [High-performance network architecture](#s6.2)
-	*[Fat-tree network](#s6.2.1)
-	*[Infiniband network architecture](#s6.2.2)
-* [MPI examples](#s6.3)
-	*[Variants of MPI send and receive](#s6.3.1)
-	*[Jacobi iteration](#s6.3.2)
-	*[Matrix transpose](#s6.3.3)
-	*[Collective communication](#s6.3.4)
-	*[Parallel I/O in MPI](#s6.3.5)
-* [The Internet](#s6.4)
-	*[IP addresses](#s6.4.1)
-	*[Send and receive](#s6.4.2)
-	*[Server](#s6.4.3)
-	*[Client](#s6.4.4)
-	*[Internet latency](#s6.4.5)
-	*[Internet bandwidth](#s6.4.6)
+* [MPI: Getting started](#s6.1) ([html][bk.6.1])
+	* [Initializing MPI](#s6.1.1) ([html][bk.6.1.1])
+	* [Unsafe communication in MPI](#s6.1.2) ([html][bk.6.1.2])
+* [High-performance network architecture](#s6.2) ([html][bk.6.2])
+	* [Fat-tree network](#s6.2.1) ([html][bk.6.2.1])
+	* [Infiniband network architecture](#s6.2.2) ([html][bk.6.2.2])
+* [MPI examples](#s6.3) ([html][bk.6.3])
+	* [Variants of MPI send and receive](#s6.3.1) ([html][bk.6.3.1])
+	* [Jacobi iteration](#s6.3.2) ([html][bk.6.3.2])
+	* [Matrix transpose](#s6.3.3) ([html][bk.6.3.3])
+	* [Collective communication](#s6.3.4) ([html][bk.6.3.4])
+	* [Parallel I/O in MPI](#s6.3.5) ([html][bk.6.3.5])
+* [The Internet](#s6.4) ([html][bk.6.4])
+	* [IP addresses](#s6.4.1) ([html][bk.6.4.1])
+	* [Send and receive](#s6.4.2) ([html][bk.6.4.2])
+	* [Server](#s6.4.3) ([html][bk.6.4.3])
+	* [Client](#s6.4.4) ([html][bk.6.4.4])
+	* [Internet latency](#s6.4.5) ([html][bk.6.4.5])
+	* [Internet bandwidth](#s6.4.6) ([html][bk.6.4.6])
 
 The principal framework for programming high-performance networks is Message Passing Interface (MPI). MPI is a library that allows processes running concurrently on different nodes to communicate by sending and receiving messages.
 
@@ -925,18 +925,18 @@ The realized bandwidth is determined to a great extent by TCP’s congestion con
 
 # [7][bk.7] <a name="chapter7"></a> Special Topic: The Xeon Phi Coprocessor
 
-* [Xeon Phi architecture](#s7.1)
-	*[Peak floating point bandwidth](#s7.1.1)
-	*[A simple Phi program](#s7.1.2)
-	*[Xeon Phi memory system](#s7.1.3)
-* [Offload](#s7.2)
-	*[Initializing to use the MIC device](#s7.2.1)
-	*[The target(mic) declaration specification](#s7.2.2)
-	*[Summing the Leibniz series](#s7.2.3)
-	*[Offload bandwidth](#s7.2.4)
-* [Two examples: FFT and matrix multiplication](#s7.3)
-	*[FFT](#s7.3.1)
-	*[Matrix multiplication](#s7.3.2)
+* [Xeon Phi architecture](#s7.1) ([html][bk.7.1])
+	* [Peak floating point bandwidth](#s7.1.1) ([html][bk.7.1.1])
+	* [A simple Phi program](#s7.1.2) ([html][bk.7.1.2])
+	* [Xeon Phi memory system](#s7.1.3) ([html][bk.7.1.3])
+* [Offload](#s7.2) ([html][bk.7.2])
+	* [Initializing to use the MIC device](#s7.2.1) ([html][bk.7.2.1])
+	* [The target(mic) declaration specification](#s7.2.2) ([html][bk.7.2.2])
+	* [Summing the Leibniz series](#s7.2.3) ([html][bk.7.2.3])
+	* [Offload bandwidth](#s7.2.4) ([html][bk.7.2.4])
+* [Two examples: FFT and matrix multiplication](#s7.3) ([html][bk.7.3])
+	* [FFT](#s7.3.1) ([html][bk.7.3.1])
+	* [Matrix multiplication](#s7.3.2) ([html][bk.7.3.2])
 
 The Intel Many Integrated Cores (MIC) or Xeon Phi coprocessor supplements the processor nodes and increases floating point throughput.
 
@@ -1031,17 +1031,17 @@ Algorithms that are capable of approaching the theoretical peak are not many. Th
 
 # [8][bk.8] <a name="chapter8"></a> Special Topic: Graphics Coprocessor
 
-* [Graphics coprocessor architecture](#s8.1)
-	*[Graphics processor capability](#s8.1.1)
-	*[Host and device memory](#s8.1.2)
-	*[Timing CUDA kernels](#s8.1.3)
-	*[Warps and thread blocks](#s8.1.4)
-* [Introduction to CUDA](#s8.2)
-	*[Summing the Leibniz series](#s8.2.1)
-	*[CUDA compilation](#s8.2.2)
-* [Two examples](#s8.3)
-	*[Bandwidth to memory](#s8.3.1)
-	*[Matrix multiplication](#s8.3.2)
+* [Graphics coprocessor architecture](#s8.1) ([html][bk.8.1])
+	* [Graphics processor capability](#s8.1.1) ([html][bk.8.1.1])
+	* [Host and device memory](#s8.1.2) ([html][bk.8.1.2])
+	* [Timing CUDA kernels](#s8.1.3) ([html][bk.8.1.3])
+	* [Warps and thread blocks](#s8.1.4) ([html][bk.8.1.4])
+* [Introduction to CUDA](#s8.2) ([html][bk.8.2])
+	* [Summing the Leibniz series](#s8.2.1) ([html][bk.8.2.1])
+	* [CUDA compilation](#s8.2.2) ([html][bk.8.2.2])
+* [Two examples](#s8.3) ([html][bk.8.3])
+	* [Bandwidth to memory](#s8.3.1) ([html][bk.8.3.1])
+	* [Matrix multiplication](#s8.3.2) ([html][bk.8.3.2])
 
 The graphics libraries provide a number of functions for rendering, shading, texture manipulation, and similar tasks. Graphics devices accelerate the execution of such library functions. In 2007, NVIDIA introduced the Compute Unified Device Architecture (CUDA) framework. CUDA added software layers to the device drivers and the GNU C/C++ compiler to greatly simplify the task of programming graphics coprocessors for scientific use.
 
@@ -1129,12 +1129,12 @@ Accesses of shared memory are considerably faster than global memory accesses.
 # [A][bk.9] <a name="chapter9"></a> Machines Used, Plotting, Python, GIT, Cscope, and gcc
 
 
-* [Machines used](#s9.1)
-* [Plotting in C/C++ and other preliminaries](#s9.2)
-* [C/C++ versus Python versus MATLAB](#s9.3)
-* [GIT](#s9.4)
-* [Cscope](#s9.5)
-* [Compiling with gcc/g++](#s9.6)
+* [Machines used](#s9.1) ([html][bk.9.1])
+* [Plotting in C/C++ and other preliminaries](#s9.2) ([html][bk.9.2])
+* [C/C++ versus Python versus MATLAB](#s9.3) ([html][bk.9.3])
+* [GIT](#s9.4) ([html][bk.9.4])
+* [Cscope](#s9.5) ([html][bk.9.5])
+* [Compiling with gcc/g++](#s9.6) ([html][bk.9.6])
 
 In this appendix, we give a list of machines used in this book as well as several pointers for downloading and using the program code.
 
