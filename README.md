@@ -8,6 +8,8 @@ The complete text of this book is available in html at [this link][bk]. The html
 1. [amazon.com](https://www.amazon.com/Scientific-Programming-Architecture-Engineering-Computation/dp/0262036290/ref=sr_1_1?s=books&ie=UTF8&qid=1497440910&sr=1-1)
 2. [bn.com](https://www.barnesandnoble.com/w/scientific-programming-and-computer-architecture-divakar-viswanath/1125986348?ean=9780262036290)
 
+3. [MIT Press](https://mitpress.mit.edu/books/scientific-programming-and-computer-architecture)
+
 This README document provides context for the source code in this GIT repository, with links to the html text as well as sources in the repository.
 
 * [Preface](#preface) ([html][bk.preface])
