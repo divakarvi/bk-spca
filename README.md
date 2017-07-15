@@ -852,7 +852,7 @@ The Jacobi iteration is a technique for solving linear systems that arise when c
 
 #### [6.3.3][bk.6.3.3] <a name="s6.3.3"></a> Matrix transpose
 
-In this section, we implement the transposition of large matrices stored on several host computers connected by QDR Infiniband network. The number of host computers ranges from 10 to 100. This examples illustrates the importance of optimizaing copying into and out of buffers and the manner in which MPI can be made to issue RDMA reads and writes so that network activity occurs in parallel with processor activity.
+In this section, we implement the transposition of large matrices stored on several host computers connected by QDR Infiniband network. The number of host computers ranges from 10 to 100. This examples illustrates the importance of optimizing copying into and out of buffers and the manner in which MPI can be made to issue RDMA reads and writes so that network activity occurs in parallel with processor activity.
 
 [trans.hh][trans.hh]
 
