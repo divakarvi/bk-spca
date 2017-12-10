@@ -10,7 +10,7 @@ The complete text of this book is available in html at [this link][bk]. The html
 
 3. [MIT Press](https://mitpress.mit.edu/books/scientific-programming-and-computer-architecture)
 
-4. [Corrections and improvements](https://divakarvi.github.io/bk-spca/fixes.html).
+4. [Corrections](https://divakarvi.github.io/bk-spca/fixes.html).
 
 5. [Frequently Asked Questions](https://divakarvi.github.io/bk-spca/faq.html).
 
