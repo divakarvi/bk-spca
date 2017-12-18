@@ -3,16 +3,16 @@
 #### MIT Press, 2017
 #### ISBN 9780262036290 
 
-The complete text of this book is available in html at [this link][bk]. The html is published under a Creative Commons license. The copyright remains with the publisher. The html has a few blemishes. For example, occasionally when the same source is split between multiple listings, the line numbering is not continued between the listings as it should be. The html does not have an index, although it is searchable. For a more correct and complete version, see the printed book.
+The complete text of this book is available in html at [this link][bk]. The html is published under a Creative Commons license. The copyright remains with the publisher. The html has a few blemishes. For example, occasionally when the same source is split between multiple listings, the line numbering is not continued between the listings as it should be. The html does not have an index, although it is searchable. For a more complete version, see the printed book.
 
 1. [amazon.com](https://www.amazon.com/Scientific-Programming-Architecture-Engineering-Computation/dp/0262036290/ref=sr_1_1?s=books&ie=UTF8&qid=1497440910&sr=1-1)
 2. [bn.com](https://www.barnesandnoble.com/w/scientific-programming-and-computer-architecture-divakar-viswanath/1125986348?ean=9780262036290)
 
 3. [MIT Press](https://mitpress.mit.edu/books/scientific-programming-and-computer-architecture)
 
-4. [Corrections](https://divakarvi.github.io/bk-spca/fixes.html).
+4. [Corrections](https://divakarvi.github.io/bk-spca/fixes.html)
 
-5. [Frequently Asked Questions](https://divakarvi.github.io/bk-spca/faq.html).
+5. [Frequently Asked Questions](https://divakarvi.github.io/bk-spca/faq.html)
 
 This README document provides context for the source code in this GIT repository, with links to the html text as well as sources in the repository.
 
