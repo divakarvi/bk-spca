@@ -3,6 +3,12 @@
 #### MIT Press, 2017
 #### ISBN 9780262036290 
 
+# <a name="preface"></a>[Preface][bk.preface]
+
+What makes computer programs fast or slow? To answer this question, we have to get behind the abstractions of programming languages and look at how a computer really works. This book examines and explains a variety of scientific programming models (programming models relevant to scientists) with an emphasis on how programming constructs map to different parts of the computer's architecture. Two themes emerge: program speed and program modularity.  Throughout this book, the premise is to "get under the hood," and the discussion is tied to specific programs. 
+
+The book digs into linkers, compilers, operating systems, and computer architecture to understand how the different parts of the computer interact with programs. It begins with a review of C/C++ and explanations of how libraries, linkers, and Makefiles work. Programming models covered include Pthreads, OpenMP, MPI, TCP/IP, and CUDA. The emphasis on how computers work leads the reader into computer architecture and occasionally into the operating system kernel. The operating system studied is Linux, the preferred platform for scientific computing. Linux is also open source, which allows users to peer into its inner workings. A brief appendix provides a useful table of machines used to time programs.
+
 The complete text of this book is available in html at [this link][bk]. The html is published under a Creative Commons license. The copyright remains with the publisher. The html has a few blemishes. For example, occasionally when the same source is split between multiple listings, the line numbering is not continued between the listings as it should be. The html does not have an index, although it is searchable. For a more complete version, see the printed book.
 
 1. [amazon.com](https://www.amazon.com/Scientific-Programming-Architecture-Engineering-Computation/dp/0262036290/ref=sr_1_1?s=books&ie=UTF8&qid=1497440910&sr=1-1)
@@ -16,7 +22,6 @@ The complete text of this book is available in html at [this link][bk]. The html
 
 This README document provides context for the source code in this GIT repository, with links to the html text as well as sources in the repository.
 
-* [Preface](#preface) ([html][bk.preface])
 * [C/C++ Review](#chapter1) ([html][bk.1])
 * [C/C++: Libraries and Makefiles](#chapter2) ([html][bk.2])
 * [The Processor](#chapter3) ([html][bk.3])
@@ -26,12 +31,6 @@ This README document provides context for the source code in this GIT repository
 * [Special Topic: The Xeon Phi Coprocessor](#chapter7) ([html][bk.7])
 * [Special Topic: Graphics Coprocessor](#chapter8) ([html][bk.8])
 * [Appendix: Machines used, Plotting, Python, GIT, Cscope, and gcc](#chapter9) ([html][bk.9])
-
-# <a name="preface"></a>[Preface][bk.preface]
-
-What makes computer programs fast or slow? To answer this question, we have to get behind the abstractions of programming languages and look at how a computer really works. This book examines and explains a variety of scientific programming models (programming models relevant to scientists) with an emphasis on how programming constructs map to different parts of the computer's architecture. Two themes emerge: program speed and program modularity.  Throughout this book, the premise is to "get under the hood," and the discussion is tied to specific programs. 
-
-The book digs into linkers, compilers, operating systems, and computer architecture to understand how the different parts of the computer interact with programs. It begins with a review of C/C++ and explanations of how libraries, linkers, and Makefiles work. Programming models covered include Pthreads, OpenMP, MPI, TCP/IP, and CUDA. The emphasis on how computers work leads the reader into computer architecture and occasionally into the operating system kernel. The operating system studied is Linux, the preferred platform for scientific computing. Linux is also open source, which allows users to peer into its inner workings. A brief appendix provides a useful table of machines used to time programs.
 
 # [1][bk.1] <a name="chapter1"></a> C/C++ Review
 
