@@ -1,15 +1,15 @@
+
+What makes computer programs fast or slow? To answer this question, this book gets behind the abstractions of programming languages and looks at how a computer really works. It examines and explains a variety of scientific programming models (programming models relevant to scientists) with an emphasis on how programming constructs map to different parts of the computer's architecture. Two themes emerge: program speed and program modularity.  Throughout this book, the premise is to "get under the hood," and the discussion is tied to specific programs. 
+
+The book digs into linkers, compilers, operating systems, and computer architecture to understand how the different parts of the computer interact with programs. It begins with a review of C/C++ and explanations of how libraries, linkers, and Makefiles work. Programming models covered include Pthreads, OpenMP, MPI, TCP/IP, and CUDA. The emphasis on how computers work leads the reader into computer architecture and occasionally into the operating system kernel. The operating system studied is Linux, the preferred platform for scientific computing. Linux is also open source, which allows users to peer into its inner workings. A brief appendix provides a useful table of machines used to time programs.
+
+The complete text of this book is available in html at [this link][bk]. The html is published under a Creative Commons license. The copyright remains with the publisher. The html has a few blemishes. For example, occasionally when the same source is split between multiple listings, the line numbering is not continued between the listings as it should be. The html does not have an index, although it is searchable. For a more complete version, see the printed book.
+
 ## Scientific Programming and Computer Architecture
 ### Divakar Viswanath
 #### MIT Press, 2017
 #### ISBN 9780262036290 
 
-# <a name="preface"></a>[Preface][bk.preface]
-
-What makes computer programs fast or slow? To answer this question, we have to get behind the abstractions of programming languages and look at how a computer really works. This book examines and explains a variety of scientific programming models (programming models relevant to scientists) with an emphasis on how programming constructs map to different parts of the computer's architecture. Two themes emerge: program speed and program modularity.  Throughout this book, the premise is to "get under the hood," and the discussion is tied to specific programs. 
-
-The book digs into linkers, compilers, operating systems, and computer architecture to understand how the different parts of the computer interact with programs. It begins with a review of C/C++ and explanations of how libraries, linkers, and Makefiles work. Programming models covered include Pthreads, OpenMP, MPI, TCP/IP, and CUDA. The emphasis on how computers work leads the reader into computer architecture and occasionally into the operating system kernel. The operating system studied is Linux, the preferred platform for scientific computing. Linux is also open source, which allows users to peer into its inner workings. A brief appendix provides a useful table of machines used to time programs.
-
-The complete text of this book is available in html at [this link][bk]. The html is published under a Creative Commons license. The copyright remains with the publisher. The html has a few blemishes. For example, occasionally when the same source is split between multiple listings, the line numbering is not continued between the listings as it should be. The html does not have an index, although it is searchable. For a more complete version, see the printed book.
 
 1. [amazon.com](https://www.amazon.com/Scientific-Programming-Architecture-Engineering-Computation/dp/0262036290/ref=sr_1_1?s=books&ie=UTF8&qid=1497440910&sr=1-1)
 2. [bn.com](https://www.barnesandnoble.com/w/scientific-programming-and-computer-architecture-divakar-viswanath/1125986348?ean=9780262036290)
@@ -1204,7 +1204,6 @@ The cscope utility is invaluable for browsing source code.
 The Makefiles in this GIT repository use Intel compilers for the most part. The switch to gcc/g++ is not too complicated
 
 [bk]: https://divakarvi.github.io/bk-spca/spca.html
-[bk.preface]: https://divakarvi.github.io/bk-spca/spca.html#toc-Chapter--1
 [bk.1]: https://divakarvi.github.io/bk-spca/spca.html#toc-Chapter-1
 [bk.1.1]: https://divakarvi.github.io/bk-spca/spca.html#toc-Section-1.1
 [bk.1.1.1]: https://divakarvi.github.io/bk-spca/spca.html#toc-Subsection-1.1.1
