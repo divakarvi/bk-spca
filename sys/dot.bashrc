@@ -85,3 +85,5 @@ py2(){
 py3(){
     export PATH=${PATH//"/usr/local/anaconda/bin"/"/usr/local/anaconda3/bin"}
 }
+
+
