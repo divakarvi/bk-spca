@@ -33,4 +33,3 @@ CFLAGS := $(CFLAGS) -Xptxas=-v
 clean cleanx cleanxx:
 	rm -f *.o; rm -f *.exe; rm -f a.out; rm -f *.cubin; \
 	rm -f *.ptx; rm -f *.fatbin; 
-

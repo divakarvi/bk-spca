@@ -23,10 +23,3 @@ client.o: client.cpp
 ipaddr.exe: ipaddr.o
 server.exe: server.o tcp_utils.o
 client.exe: client.o tcp_utils.o
-
-
-
-
-
-
-

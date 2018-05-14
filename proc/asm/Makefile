@@ -24,4 +24,3 @@ addmany.exe: addmany.o
 -include cpuid.d
 cpuid.o: cpuid.cpp
 cpuid.exe: cpuid.o
-
