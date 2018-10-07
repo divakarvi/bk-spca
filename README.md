@@ -206,7 +206,7 @@ BLAS and LAPACK functions, to which we now turn, typically have long argument li
 
 #### [2.2.3][bk.2.2.3] <a name="s2.2.3"></a> C++ class interface to BLAS/LAPACK
 
-The [Vector class][Vector.hh] is an attempt to capture the general concept of vectors. The LU_Solve class of this section is narrowly defined. It does just one thing, which is to provide an easy interface to LAPACK's LU solver functions dgetrf() and dgetrs().
+The [Vector class][Vector.hh] is an attempt to capture the general concept of vectors. In contrast, the LU_Solve class of this section is narrowly defined. It does just one thing, which is to provide an easy interface to LAPACK's LU solver functions dgetrf() and dgetrs().
 
 [lusolve.hh][lusolve.hh]
 
